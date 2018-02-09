@@ -4,7 +4,6 @@ import {
   ConnectionBackend,
   RequestOptions,
   RequestOptionsArgs,
-  Response,
   Headers
 } from "@angular/http";
 
@@ -13,12 +12,11 @@ import { Router } from "@angular/router";
 import { environment } from "../../../environments/environment";
 import { ApiResponse } from "../models/ApiResponse";
 import "rxjs/Rx";
-import { of } from "rxjs/observable/of";
 
 @Injectable()
 export class HttpService extends Http {
   constructor(
-    private backend: ConnectionBackend,
+    backend: ConnectionBackend,
     private defaultOptions: RequestOptions,
     private router: Router
   ) {
@@ -84,6 +82,7 @@ export class HttpService extends Http {
   }
 
   private onCatch(error: any, caught: Observable<any>): Observable<any> {
+    caught
     let response: ApiResponse = {
       errorMessage: "Ocorreu um erro inesperado",
       isSuccess: false,
@@ -97,7 +96,7 @@ export class HttpService extends Http {
     return Observable.throw(response);
   }
 
-  private onSuccess(res: Response) { }
+  private onSuccess() { }
 
   private onError(error: any) {
     if (error.status === 401) {
