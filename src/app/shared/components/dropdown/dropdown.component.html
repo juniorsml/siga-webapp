@@ -1,0 +1,8 @@
+<div class="wrapper" [class.active]="menuOpen" (click)="onHeaderClick()">
+  <div class="header" style="height: 54px; line-height: 54px">
+      <ng-template [ngTemplateOutlet]="header.template"></ng-template>
+  </div>
+  <div class="body" *ngIf="menuOpen">
+      <ng-template [ngTemplateOutlet]="body.template"></ng-template>
+  </div>
+</div>
