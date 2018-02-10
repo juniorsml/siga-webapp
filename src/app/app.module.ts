@@ -1,7 +1,8 @@
-import { XHRBackend, RequestOptions } from '@angular/http';
-import { NgModule } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { XHRBackend, RequestOptions } from '@angular/http';
 
+import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
 import { HttpService } from './shared/services/http.service';
@@ -18,6 +19,7 @@ import { SharedModule } from './shared/modules/shared.module';
   ],
   imports: [
     SharedModule,
+    BrowserModule,
     AppRoutingModule
   ],
   providers: [
