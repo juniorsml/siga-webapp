@@ -1,16 +1,23 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+
 import { DropdownComponent } from '../components/dropdown/dropdown.component';
+import { DropdownBodyComponent } from '../components/dropdown/dropdown-body/dropdown-body.component';
+import { DropdownHeaderComponent } from '../components/dropdown/dropdown-header/dropdown-header.component';
 
 @NgModule({
-  declarations: [DropdownComponent],
+  declarations: [
+    DropdownComponent,
+    DropdownBodyComponent,
+    DropdownHeaderComponent
+  ],
   imports: [
-    BrowserModule
+    CommonModule
   ],
   exports: [
-    BrowserModule,
-
-    DropdownComponent
+    DropdownComponent,
+    DropdownBodyComponent,
+    DropdownHeaderComponent
   ]
 })
 export class SharedModule { }
