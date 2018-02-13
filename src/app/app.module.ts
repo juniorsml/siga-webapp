@@ -11,11 +11,13 @@ import { httpFactory } from './shared/factory/http.factory';
 
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/modules/shared.module';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
   imports: [
     SharedModule,
