@@ -6,19 +6,19 @@
     </div>
     <div style="padding: 32px 42px 32px 42px;background-color: rgba(0, 0, 0, 0.3);border-radius: 8px 8px 8px 8px !important;border-color: #777777;">
       <div *ngIf="error" style="width: 100%;border-radius: 4px;line-height: 34px;background-color: rgb(255, 206, 206);margin-bottom: 30px;font-weight: 300;padding: 20px 0px;">
-        <span [innerHTML]="errorText" style="color: #af2020;width: 100%;display: inline-block; padding: 0px 22px;font-size: 16px;">Invalid username or password!</span>
+        <span style="color: #af2020;width: 100%;display: inline-block; padding: 0px 22px;font-size: 16px;">{{errorText}}</span>
       </div>
-      <form action="login" method="post">
-        <input class="material-form-control" id="email" name="email" type="email" #email placeholder="Usuário" />
+      <form #formLogin="ngForm" (ngSubmit)="login(formLogin)">
+        <input class="material-form-control" id="email" name="email" type="email" placeholder="Usuário" #email ngModel/>
 
-        <input class="material-form-control" style="margin-top: 40px" id="password" name="password" type="password" placeholder="Senha" #password/>
+        <input class="material-form-control" style="margin-top: 40px" id="password" name="password" type="password" placeholder="Senha" #password ngModel/>
 
         <div class="checkbox" style="margin-top: 20px; display: inline-block">
           <label style="min-height: 20px;font-size: 14px;margin-bottom: 0;font-weight: 400;cursor: pointer;color: rgba(255, 255, 255, 0.71) !important;font-size: 14px;text-decoration: none;text-shadow: 1px 1px 1px #000;">
             <input style="margin-right: 12px" id="rememberUser" type="checkbox" value="" />Lembrar meu usuário
           </label>
         </div>
-        <button (click)="login(email, password)" type="submit" name="action" [disabled]="isLoggingIn" [class.disabled]="isLoggingIn" class="login-button">
+        <button type="submit" [disabled]="isLoggingIn" [class.disabled]="isLoggingIn" class="login-button">
           <span *ngIf="!isLoggingIn">Log in</span>
 
           <div *ngIf="isLoggingIn" style="width: 100px; position: absolute; margin: auto; top: 16px; left: 0px; right: 0px; bottom: 0px;">
