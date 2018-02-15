@@ -1,0 +1,134 @@
+.tabs {
+  
+      list-style-type: none;
+      float: left;
+      margin-top: 8px;
+  
+      /*height: 48px;
+      list-style-type: none;
+      margin: 0px;
+      font-weight: 400;
+      font-family: 'Open Sans', sans-serif;*/
+  }
+  
+  .tabs > li {
+      float: left;
+      line-height: 40px;
+      width: 120px;
+      text-align: center;
+      font-size: 16px;
+      color: #ff0000;
+      cursor: pointer;
+  }
+  
+  .tabs > li.active {
+      border-bottom: 4px solid #ff0000;
+      cursor: default;
+  }
+  
+  .ui-tabview-tab-title {
+      color: #d6d6d6;
+      font-size: 12px;
+      letter-spacing: 1px;
+  }
+  
+  .tabs > li.active > .ui-tabview-tab-title {
+      color: #ffffff;
+      font-size: 12px;
+  }
+  
+  /********************************** Tabs (Flat) **********************************/
+  
+  .ui-tabview-flat {
+      height: 48px;
+      list-style-type: none;
+      margin: 0px;
+      font-weight: 400;
+      font-family: 'Open Sans', sans-serif;
+  }
+  
+  .ui-tabview-flat > .ui-tabview-tab {
+      background-color: rgb(186, 187, 189);
+      float: left;
+      line-height: 40px;
+      width: 120px;
+      text-align: center;
+      font-size: 16px;
+      cursor: pointer;
+      color: #fff;
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .ui-tabview-flat > .ui-tabview-tab > .ui-tabview-tab-title {
+      color: #fff;
+  }
+  
+  .ui-tabview-flat > .ui-tabview-tab.active {
+      cursor: default;
+      background: #fff;
+      border-right: 1px solid rgba(0, 0, 0, 0.5);
+  }
+  
+  .ui-tabview-flat > .ui-tabview-tab.active > .ui-tabview-tab-title {
+      color: #2ED06E;
+  }
+  
+  .ui-tabview-tab-title {
+      color: #b5b5b5;
+      font-size: 12px;
+      font-family: 'Open Sans', sans-serif;
+  }
+  
+  .ui-tabview-tab-title:hover {
+      text-decoration: none !important;
+  }
+  
+  /********************************** Tabs (Green) **********************************/
+  
+  .ui-tabview-green {
+      height: 48px;
+      list-style-type: none;
+      margin: 0px;
+      font-weight: 400;
+      font-family: 'Open Sans', sans-serif;
+  }
+  
+  .ui-tabview-green > .ui-tabview-tab {
+      float: left;
+      line-height: 40px;
+      width: 120px;
+      text-align: center;
+      font-size: 16px;
+      cursor: pointer;
+      background: #8c8e94;
+      border-color: rgba(255, 255, 255, 0.5);
+      margin-right: 1px;
+  }
+  
+  .ui-tabview-green > .ui-tabview-tab.active {
+      cursor: default;
+      color: #ffffff;
+      background: #495576;
+  }
+  
+  .ui-tabview-green > .ui-tabview-tab > .ui-tabview-tab-title {
+      color: #ffffff;
+      font-size: 13px;
+      font-family: 'Open Sans', sans-serif;
+      letter-spacing: 2px;
+      font-weight: 300;
+  }
+  
+  .ui-tabview-green > .ui-tabview-tab.active > .ui-tabview-tab-title {
+      color: #ffffff !important;
+  }
+  
+  /*.ui-tabview-green > .ui-tabview-tab.active > .ui-tabview-tab-title {
+      color: #ffffff;
+      font-size: 14px;
+  }*/
+  
+  
+  .ui-tabview-tab-title:hover {
+      text-decoration: none !important;
+  }
