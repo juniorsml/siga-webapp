@@ -2,7 +2,10 @@ import { Router } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { XHRBackend, RequestOptions } from '@angular/http';
 
+import { SharedModule } from './shared/modules/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 
 import { HttpService } from './shared/services/http.service';
@@ -10,14 +13,16 @@ import { HttpService } from './shared/services/http.service';
 import { httpFactory } from './shared/factory/http.factory';
 
 import { AppComponent } from './app.component';
-import { SharedModule } from './shared/modules/shared.module';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
   imports: [
+    FormsModule,
     SharedModule,
     BrowserModule,
     AppRoutingModule
