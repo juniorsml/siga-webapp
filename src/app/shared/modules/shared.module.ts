@@ -7,6 +7,9 @@ import { DropdownHeaderComponent } from '../components/dropdown/dropdown-header/
 import { TabsComponent } from '../components/tabs/tabs.component';
 import { TabComponent } from '../components/tabs/tab/tab.component';
 
+import { AuthService } from '../services/auth.service';
+
+
 @NgModule({
   declarations: [
     TabComponent,
@@ -17,6 +20,9 @@ import { TabComponent } from '../components/tabs/tab/tab.component';
   ],
   imports: [
     CommonModule
+  ],
+  providers: [
+    AuthService
   ],
   exports: [
     TabComponent,

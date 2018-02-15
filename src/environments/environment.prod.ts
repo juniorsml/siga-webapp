@@ -1,5 +1,5 @@
 export const environment = {
-  authTokenName: '',
+  authTokenName: 'S1G4',
   production: true,
   api: ''
 };
