@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+.material-header {
+  height: 54px;
+  background-color: #3a4358;
+}
+
+.material-header-heading {
+  height: 54px;
+  width: 150px;
+  float: left;
+  text-align: center;
+  line-height: 54px;
+  background: linear-gradient(to right, #4a5778 , #3a4358);
+  
+  span {
+    font-size: 15px;
+    color: #ffffff;
+    letter-spacing: 2px;
+    font-weight: 300;
+  }
+  
+  i {
+    margin: 0px 12px;
+    font-size: 16px;
+    color: #e2e3e4;
+  }
+}
