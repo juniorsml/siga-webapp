@@ -14,8 +14,7 @@
         <sga-dropdown-body>
           <ng-template>
             <div>
-              <h2>subtarget</h2>
-              <!-- <ul class="config-menu-list">
+              <ul class="config-menu-list">
                 <li (click)="configMenuCLick(0)" class="config-menu-item">
                   <i class="fal fa-address-card config-menu-item-icon"></i>
                   <span class="config-menu-item-text">Cadastro</span>
@@ -24,23 +23,25 @@
                   <i class="fal fa-link config-menu-item-icon"></i>
                   <span class="config-menu-item-text">Vinculo</span>
                 </li>
-              </ul> -->
+              </ul>
             </div>
           </ng-template>
         </sga-dropdown-body>
       </sga-dropdown>
-      <!-- <tabs (tabSelected)="onTabSelected($event)" [tabIndex]="selectedTabIndex" styleClass="tabs">
-        <tab heading="Grid">
-          <motorist-grid [motorists]="motorists" [dataLoading]="loadingMotorists" (onMotoristSelected)="gridMotoristSelected($event)"
+      <sga-tabs (tabSelected)="onTabSelected($event)" [tabIndex]="selectedTabIndex" styleClass="tabs">
+        <sga-tab heading="Grid">
+          Grid
+          <!-- <motorist-grid [motorists]="motorists" [dataLoading]="loadingMotorists" (onMotoristSelected)="gridMotoristSelected($event)"
             (onContextMenuItemSelected)="gridContextMenuSelected($event)">
-          </motorist-grid>
-        </tab>
-        <tab heading="Mapa">
-          <motorist-map [hasFocus]="mapHasFocus" [motoristsHistory]="mapMotoristHistory" [motorists]="motorists" [gridSelectedMotorist]="mapSelectedMotorist">
-          </motorist-map>
-        </tab>
-      </tabs> -->
-      <!-- <motorist-associate-dialog [motorists]="motorists" [showDialog]="showAssociateModal"></motorist-associate-dialog> -->
+          </motorist-grid> -->
+        </sga-tab>
+        <sga-tab heading="Mapa">
+          Map
+          <!-- <motorist-map [hasFocus]="mapHasFocus" [motoristsHistory]="mapMotoristHistory" [motorists]="motorists" [gridSelectedMotorist]="mapSelectedMotorist">
+          </motorist-map> -->
+        </sga-tab>
+      </sga-tabs>
+      <!-- <sga-motorist-associate-dialog [motorists]="motorists" [showDialog]="showAssociateModal"></sga-motorist-associate-dialog> -->
     </div>
   </div>
 </div>
