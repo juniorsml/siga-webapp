@@ -3,12 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "ng": "ng",
     "start": "ng serve -H 0.0.0.0",
     "build": "ng build --prod",
-    "test": "jest --watch",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "test": "jest --watch --coverage"
   },
   "private": true,
   "dependencies": {
@@ -32,13 +29,7 @@
     "@types/jest": "^22.1.3",
     "jest": "^22.3.0",
     "jest-preset-angular": "^5.0.0",
+    "sinon": "^4.3.0",
     "typescript": "~2.5.3"
-  },
-  "jest": {
-    "preset": "jest-preset-angular",
-    "roots": [
-      "./src/"
-    ],
-    "setupTestFrameworkScriptFile": "./src/setup-jest.ts"
   }
 }
