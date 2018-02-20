@@ -1,0 +1,125 @@
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-hamburger">
+      <span>
+        <i class="fas fa-user-circle" aria-hidden="true"></i>
+      </span>
+    </div>
+    <div class="sidebar-user">
+      <div class="sidebar-username">
+        <span>{{user?.firstName}} {{user?.lastName}}</span>
+      </div>
+      <div class="sidebar-account">
+        <span>{{user?.accountName}}</span>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="sidebar-accent"></div>-->
+  <ul class="sidebar-menu">
+    <li class="sidebar-menu-item">
+      <a routerLink="/home">
+        <span [class.selected]="router.url == '/home'" class="sidebar-list-icon fal fa-home"></span>
+        <span class="sidebar-list-text">Home</span>
+      </a>
+    </li>
+    <li class="sidebar-menu-item-accordion">
+      <!-- <accordion>
+        <accordion-header>
+          <ng-template>
+            <div class="sidebar-menu-accordion">
+              <span [class.selected]="router.url == '/riskManagement'" class="sidebar-list-icon fal fa-exclamation-square"></span>
+              <span class="sidebar-list-text">Gerenciamento Risco</span>
+            </div>
+          </ng-template>
+        </accordion-header>
+        <ul class="sidebar-submenu">
+          <li [class.selected]="router.url == '/riskManagement'" class="sidebar-menu-item">
+            <a routerLink="/riskManagement">
+              <span [class.selected]="router.url == '/riskManagement'" class="sidebar-list-icon fal fa-desktop"></span>
+              <span class="sidebar-list-text">Vigilante</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a>
+              <span class="sidebar-list-icon fal fa-tachometer-alt"></span>
+              <span class="sidebar-list-text">Dashboard</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a>
+              <span class="sidebar-list-icon fal fa-cog"></span>
+              <span class="sidebar-list-text">Configuração</span>
+            </a>
+          </li>
+        </ul>
+      </accordion> -->
+    </li>
+    <li class="sidebar-menu-item-accordion">
+      <!-- <accordion>
+        <accordion-header>
+          <ng-template>
+            <div class="sidebar-menu-accordion">
+              <span [class.selected]="router.url == '/records' || router.url == '/pickup'" class="sidebar-list-icon fal fa-stopwatch"></span>
+              <span class="sidebar-list-text">Logística</span>
+            </div>
+          </ng-template>
+        </accordion-header>
+        <ul class="sidebar-submenu">
+          <li [class.selected]="router.url == '/records'" class="sidebar-menu-item">
+            <a routerLink="/records">
+              <span class="sidebar-list-icon fal fa-copy"></span>
+              <span class="sidebar-list-text">Registros</span>
+            </a>
+          </li>
+        </ul>
+      </accordion> -->
+    </li>
+    <li class="sidebar-menu-item">
+      <a routerLink="/trip">
+        <span [class.selected]="router.url == '/trip'" class="sidebar-list-icon fal fa-road"></span>
+        <span class="sidebar-list-text">Viagens</span>
+      </a>
+    </li>
+    <li class="sidebar-menu-item">
+      <a routerLink="/vehicle">
+        <span [class.selected]="router.url == '/vehicle'" class="sidebar-list-icon fal fa-truck"></span>
+        <span class="sidebar-list-text">Veículos</span>
+      </a>
+    </li>
+    <li class="sidebar-menu-item">
+      <a routerLink="/motorist">
+        <span [class.selected]="router.url == '/motorist'" class="sidebar-list-icon fal fa-user-alt"></span>
+        <span class="sidebar-list-text">Motoristas</span>
+      </a>
+    </li>
+    <li class="sidebar-menu-item">
+      <a>
+        <span class="sidebar-list-icon fal fa-map-marker-alt"></span>
+        <span class="sidebar-list-text">Geográfico</span>
+      </a>
+    </li>
+    <li class="sidebar-menu-item">
+      <a>
+        <span [class.selected]="router.url == '/audit'" class="sidebar-list-icon fal fa-list-alt"></span>
+        <span class="sidebar-list-text">Auditorias</span>
+      </a>
+    </li>
+    <li class="sidebar-menu-item">
+      <a routerLink="/videos">
+        <span [class.selected]="router.url == '/videos'" class="sidebar-list-icon fal fa-play-circle"></span>
+        <span class="sidebar-list-text">Vídeos</span>
+      </a>
+    </li>
+    <li class="sidebar-menu-item">
+      <a>
+        <span class="sidebar-list-icon fal fa-cube"></span>
+        <span class="sidebar-list-text">Frete</span>
+      </a>
+    </li>
+  </ul>
+  <div class="sidebar-logout" (click)="logout()">
+    <div class="sidebar-logout-button">
+      <span>sair</span>
+    </div>
+  </div>
+</div>

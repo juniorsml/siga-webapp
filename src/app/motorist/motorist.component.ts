@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MotoristComponent implements OnInit {
 
+  motorists: any;
+  showAssociateModal: boolean;
+  
   constructor() { }
 
   ngOnInit() {
