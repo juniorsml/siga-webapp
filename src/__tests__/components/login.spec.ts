@@ -1,23 +1,44 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import sinon from 'sinon';
 
-import { LoginComponent } from '../../app/login/login.component'
+import { LoginComponent } from '../../app/login/login.component';
+import { AuthService } from '../../app/shared/services/auth.service';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
-  let dom: any;
   let fixture: ComponentFixture<LoginComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(
+    async(() => {
       TestBed.configureTestingModule({
-          declarations: [ LoginComponent ]
+        imports: [FormsModule],
+        declarations: [LoginComponent],
+        providers: [
+          { provide: AuthService, useValue: new AuthService() }, 
+          { provide: Router }]
       });
       fixture = TestBed.createComponent(LoginComponent);
       component = fixture.componentInstance;
+    })
+  );
 
-      dom = fixture.nativeElement;
-  }));
+  test('should exist default', () => {
+    expect(component).toBeDefined();
+    expect(component.error).toBeUndefined();
+    expect(component.errorText).toEqual('');
+    expect(component.isLoggingIn).toBeUndefined();
+  });
 
-  test('should exist', () => {
-      expect(component).toBeDefined();
+  test('should login', () => {
+    const form = {
+      value: {
+        email: 'dev@condusit.com',
+        password: '12345'
+      }
+    };
+    
+    expect(component.login(form));
   });
 });
