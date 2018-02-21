@@ -17,6 +17,11 @@ yarn start
 ```
 The application is running at `localhost:4200`
 
+Test project
+
+```
+yarn test
+```
 
 Build project
 
