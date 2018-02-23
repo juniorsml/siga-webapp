@@ -9,17 +9,23 @@ import { DropdownBodyComponent } from '../components/dropdown/dropdown-body/drop
 import { DropdownHeaderComponent } from '../components/dropdown/dropdown-header/dropdown-header.component';
 
 import { AuthService } from '../services/auth.service';
+import { GridComponent } from '../components/grid/grid.component';
+import { MapFilterComponent } from '../components/map-filter/map-filter.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     TabComponent,
+    GridComponent,
     TabsComponent,
     ModalComponent,
     DropdownComponent,
+    MapFilterComponent,
     DropdownBodyComponent,
     DropdownHeaderComponent
   ],
   imports: [
+    FormsModule,
     CommonModule
   ],
   providers: [
@@ -27,9 +33,11 @@ import { AuthService } from '../services/auth.service';
   ],
   exports: [
     TabComponent,
+    GridComponent,
     TabsComponent,
     ModalComponent,
     DropdownComponent,
+    MapFilterComponent,
     DropdownBodyComponent,
     DropdownHeaderComponent
   ]
