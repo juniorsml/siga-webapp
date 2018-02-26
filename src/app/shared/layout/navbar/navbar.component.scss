@@ -10,34 +10,46 @@ nav {
   z-index: 3;
 }
 
-.nav-logo {
-  margin-left: 18px;
-  padding-top: 10px;
-  padding-bottom: 8px;
-  height: 26px;
-  box-sizing: content-box;
-}
+    .nav-logo {
+      margin-left: 18px;
+      padding-top: 10px;
+      padding-bottom: 8px;
+      height: 26px;
+      box-sizing: content-box;
+    }
 
-.nav-header-menu {
-  position: absolute;
-  top: 0px;
-  right: 8px;
-  list-style-type: none;
-  display: inline;
-}
+    .nav-header-menu {
+      position: absolute;
+      top: 0px;
+      right: 8px;
+      list-style-type: none;
+      display: inline;
+     
+      li {
+          min-width: 60px;
+          float: left;
+          list-style-type: none;
+          display: inline;
+          text-align: center;
 
-.nav-header-menu > li {
-  min-width: 60px;
-  float: left;
-  list-style-type: none;
-  display: inline;
-  text-align: center;
+            i.fa-bell{
+              line-height: 44px; 
+              font-size: 24px; 
+              color: #cecece; 
+              cursor: pointer;
+            }
 
-}
+            .fa-window-maximize{
+              line-height: 46px; font-size: 22px; color: #cecece; cursor: pointer;
+            }
 
-.nav-header-menu > li > .nav-notification > span {
-  color: #CECECE;
-  font-size: 24px;
-  line-height: 44px;
-  cursor: pointer;
-}
+        }
+      }
+
+
+            .nav-header-menu > li > .nav-notification > span {
+              color: #CECECE;
+              font-size: 24px;
+              line-height: 44px;
+              cursor: pointer;
+            }
