@@ -1,25 +1,22 @@
 <nav class="nav">
-  <div>
-    <div class="nav-header">
-      <img class="nav-logo" alt="Siga" src="./resources/images/siga.png">
+    <div>
+        <div class="nav-header">
+          <img class="nav-logo" alt="Siga" src="/assets/login/logo-siga.png">
+        </div>
+      <ul class="nav-header-menu">
+          <li>
+              <i class="fa fa-bell"></i>
+          </li>
+          <li>
+              <span class="nav-notification">
+                <span class="fa fa-comments" aria-hidden="true"></span>
+              </span>
+          </li>
+          <li class="full-screen-button" style="min-width: 48px;">
+              <div (click)="toggleFullScreen()">
+                  <span class="fa fa-window-maximize"></span>
+              </div>
+          </li>
+      </ul>
     </div>
-    <ul class="nav-header-menu">
-      <li>
-        <i style="line-height: 44px; font-size: 24px; color: #cecece; cursor: pointer;"
-          class="fal fa-bell">
-        </i>
-      </li>
-    <li>
-    <span class="nav-notification">
-        <span class="fal fa-comments" aria-hidden="true"></span>
-    </span>
-    </li>
-      <li class="full-screen-button" style="min-width: 48px;">
-      <div (click)="toggleFullScreen()">
-        <span style="line-height: 46px; font-size: 22px; color: #cecece; cursor: pointer;"
-              class="fal fa-window-maximize"></span>
-      </div>
-      </li>
-    </ul>
-  </div>
 </nav>
