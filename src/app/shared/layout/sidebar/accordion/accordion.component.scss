@@ -1,0 +1,25 @@
+/* ACCORDION ******************************************/
+.accordion:hover {
+    cursor: pointer;
+    cursor: hand;
+}
+
+.ui-accordion {
+    display: block;
+    overflow: hidden;
+}
+    .ui-accordion-closed {
+        max-height: 0px;
+        overflow: hidden;
+        -webkit-transition: max-height 0.3s ease-out;
+        -moz-transition: max-height 0.3s ease-out;
+        -o-transition: max-height 0.3s ease-out;
+        transition: max-height 0.3s ease-out;
+    }
+    .ui-accordion-open {
+        max-height: 340px;
+        -webkit-transition: max-height 0.3s ease-in;
+        -moz-transition: max-height 0.3s ease-in;
+        -o-transition: max-height 0.3s ease-in;
+        transition: max-height 0.3s ease-in;
+    }
