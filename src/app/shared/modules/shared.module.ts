@@ -7,6 +7,8 @@ import { ModalComponent } from '../modal/modal.component';
 import { DropdownComponent } from '../components/dropdown/dropdown.component';
 import { DropdownBodyComponent } from '../components/dropdown/dropdown-body/dropdown-body.component';
 import { DropdownHeaderComponent } from '../components/dropdown/dropdown-header/dropdown-header.component';
+import { AccordionComponent } from '../layout/sidebar/accordion/accordion.component';
+import { AccordionHeaderComponent } from '../layout/sidebar/accordion/accordion.component';
 
 import { AuthService } from '../services/auth.service';
 
@@ -17,7 +19,9 @@ import { AuthService } from '../services/auth.service';
     ModalComponent,
     DropdownComponent,
     DropdownBodyComponent,
-    DropdownHeaderComponent
+    DropdownHeaderComponent,
+    AccordionComponent,
+    AccordionHeaderComponent,
   ],
   imports: [
     CommonModule
@@ -31,7 +35,9 @@ import { AuthService } from '../services/auth.service';
     ModalComponent,
     DropdownComponent,
     DropdownBodyComponent,
-    DropdownHeaderComponent
+    DropdownHeaderComponent,
+    AccordionComponent,
+    AccordionHeaderComponent,
   ]
 })
 export class SharedModule { }
