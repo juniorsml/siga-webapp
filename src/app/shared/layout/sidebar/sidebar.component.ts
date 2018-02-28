@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AccordionComponent } from './accordion/accordion.component';
 
 @Component({
   selector: 'sga-sidebar',
@@ -9,4 +10,6 @@ import { Router } from '@angular/router';
 export class SidebarComponent {
 
   constructor(public router: Router) {}
+
+   public accordion: AccordionComponent;
 }

@@ -7,6 +7,8 @@ import { ModalComponent } from '../modal/modal.component';
 import { DropdownComponent } from '../components/dropdown/dropdown.component';
 import { DropdownBodyComponent } from '../components/dropdown/dropdown-body/dropdown-body.component';
 import { DropdownHeaderComponent } from '../components/dropdown/dropdown-header/dropdown-header.component';
+import { AccordionComponent } from '../layout/sidebar/accordion/accordion.component';
+import { AccordionHeaderComponent } from '../layout/sidebar/accordion/accordion.component';
 
 import { AuthService } from '../services/auth.service';
 import { GridComponent } from '../components/grid/grid.component';
@@ -22,7 +24,9 @@ import { FormsModule } from '@angular/forms';
     DropdownComponent,
     MapFilterComponent,
     DropdownBodyComponent,
-    DropdownHeaderComponent
+    DropdownHeaderComponent,
+    AccordionComponent,
+    AccordionHeaderComponent,
   ],
   imports: [
     FormsModule,
@@ -39,7 +43,9 @@ import { FormsModule } from '@angular/forms';
     DropdownComponent,
     MapFilterComponent,
     DropdownBodyComponent,
-    DropdownHeaderComponent
+    DropdownHeaderComponent,
+    AccordionComponent,
+    AccordionHeaderComponent,
   ]
 })
 export class SharedModule { }
