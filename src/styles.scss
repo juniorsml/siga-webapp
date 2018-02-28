@@ -37,3 +37,14 @@ div, *{
     color: #e2e3e4;
   }
 }
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+.mapboxgl-map {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
