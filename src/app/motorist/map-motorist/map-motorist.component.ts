@@ -23,8 +23,6 @@ export class MapMotoristComponent implements OnInit {
   }
 
   private injectMap(): void {
-    debugger;
     this.map.append(this.mapSelector.nativeElement);
-    this.map.setZoom(12)
   }
 }

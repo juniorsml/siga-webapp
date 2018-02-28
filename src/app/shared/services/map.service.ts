@@ -2,11 +2,9 @@ import { Injectable } from '@angular/core';
 
 import {
   Feature,
-  FeatureCollection,
   GeometryObject
 } from 'geojson';
 
-// import * as L from 'leaflet';
 import {} from '@types/leaflet';
 import LatLngBounds = L.LatLngBounds;
 import LatLng = L.LatLng;
@@ -23,7 +21,8 @@ export class MapService extends Map {
   private markers: Array<Marker> = [];
   private polyLines: Array<Polyline> = [];
   private clusters: Array<any> = [];
-  private map: L.mapbox.Map;
+  private map: L.Map;
+  private container: HTMLElement;
   private mapElement: HTMLElement;
 
   constructor() {
@@ -38,7 +37,7 @@ export class MapService extends Map {
   }
 
   public clearMarkers(): void {
-    this.markers.forEach(marker => marker.remove());
+    // this.markers.forEach(marker => marker.remove());
   }
 
   public addCluster(markers: Array<Feature<GeometryObject>>): void {
@@ -63,25 +62,18 @@ export class MapService extends Map {
 
   private createMapBoxMapInstance() {
     this.mapElement = document.createElement('div');
+    
     L.mapbox.accessToken =
       'pk.eyJ1IjoiY29uZHVzaXQiLCJhIjoiY2oyeG1wcjJuMDExNTJ4cThlemU3NWlsNCJ9.d1o1-L4u4_-aY_uvAn5krQ';
-    this.map = L.mapbox.map(this.mapElement, null, <L.MarkerOptions>{
+    this.map = L.mapbox.map(this.mapElement, null, {
       zoomControl: false,
       worldCopyJump: true
-    });
-    new L.Control.Zoom({ position: 'topright' }).addTo(this.map);
-    this.map.setView([20.0, 151.0], 16);
-    this.map.addLayer(
-      L.tileLayer(
-        'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY29uZHVzaXQiLCJhIjoiY2oyeG1wcjJuMDExNTJ4cThlemU3NWlsNCJ9.d1o1-L4u4_-aY_uvAn5krQ'
-      )
-    );
+    })
+    .setView([40, -74.50], 9)
+    .addLayer(L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY29uZHVzaXQiLCJhIjoiY2oyeG1wcjJuMDExNTJ4cThlemU3NWlsNCJ9.d1o1-L4u4_-aY_uvAn5krQ'));
   }
 
-  public addSource(
-    id: string,
-    source: FeatureCollection<GeometryObject>
-  ): void {}
+  public addSource(): void {}
 
   public setBounds(markers: Array<Feature<any>>): void {
     let lat: number = markers[0].geometry.coordinates[1];
@@ -102,8 +94,8 @@ export class MapService extends Map {
     }, 1);
   }
 
-  public moveTo(latitude: number, longitude: number, options?: any): void {
-    this.map.flyTo({ lat: latitude, lng: longitude });
+  public moveTo(): void {
+    // this.map.flyTo({ lat: latitude, lng: longitude });
   }
 
   setZoom(level: number): void {
@@ -115,7 +107,8 @@ export class MapService extends Map {
   }
 
   append(container: HTMLElement) {
-    this.mapElement.appendChild(container);
+    this.container = container;
+    this.container.appendChild(this.mapElement);
   }
 
   getContainer(): HTMLElement {
@@ -133,13 +126,13 @@ export class MapService extends Map {
       point;
     });
     if (points != null && points.length > 0) {
-      const polyline = L.polyline(latLngs, {
-        color: '#ff0000',
-        weight: 6,
-        opacity: 0.7
-      }).addTo(this.map);
+      // const polyline = L.polyline(latLngs, {
+      //   color: '#ff0000',
+      //   weight: 6,
+      //   opacity: 0.7
+      // }).addTo(this.map);
 
-      this.polyLines.push(polyline);
+      // this.polyLines.push(polyline);
       
       this.setBounds(points);
     }
@@ -152,9 +145,9 @@ export class MapService extends Map {
   }
 
   resize() {
-    setTimeout(() => {
-      this.map.invalidateSize();
-    }, 1);
+    // setTimeout(() => {
+    //   this.map.invalidateSize();
+    // }, 1);
   }
 
   createMarker(feature: Feature<any>): Marker {
@@ -191,7 +184,7 @@ export class MapService extends Map {
     if (this.markers != null && this.markers.length > 0) {
       let latLng: LatLng = this.markers[0].getLatLng();
       var bounds = new LatLngBounds(latLng, latLng);
-      this.markers.forEach((marker, index, array) => {
+      this.markers.forEach(marker => {
         bounds.extend(marker.getLatLng());
       });
       setTimeout(() => {
