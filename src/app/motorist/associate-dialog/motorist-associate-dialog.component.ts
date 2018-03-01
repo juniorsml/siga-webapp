@@ -10,9 +10,27 @@ export class MotoristAssociateDialogComponent implements OnInit {
   @Input() showDialog: boolean;
   @Input() motorists: any;
 
+  currentList: any;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  addList() {
+
+  }
+
+  removeList() {
+
+  }
+
+  searchText() {
+
+  }
+
+  applyChanges() {
+    
   }
 
 }

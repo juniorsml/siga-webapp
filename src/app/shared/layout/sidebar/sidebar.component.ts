@@ -8,6 +8,8 @@ import { AccordionComponent } from './accordion/accordion.component';
   styleUrls: [ './sidebar.component.scss' ] 
 })
 export class SidebarComponent {
+  user: any;
+  logout: any;
 
   constructor(public router: Router) {}
 

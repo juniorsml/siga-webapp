@@ -6,8 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class MotoristComponent implements OnInit {
-
   motorists: any;
+  onTabSelected: any;
+  selectedTabIndex: any;
   showAssociateModal: boolean;
   
   constructor() { }
