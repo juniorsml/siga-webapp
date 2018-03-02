@@ -11,19 +11,25 @@ import { AccordionComponent } from '../layout/sidebar/accordion/accordion.compon
 import { AccordionHeaderComponent } from '../layout/sidebar/accordion/accordion.component';
 
 import { AuthService } from '../services/auth.service';
+import { GridComponent } from '../components/grid/grid.component';
+import { MapFilterComponent } from '../components/map-filter/map-filter.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     TabComponent,
+    GridComponent,
     TabsComponent,
     ModalComponent,
     DropdownComponent,
+    MapFilterComponent,
     DropdownBodyComponent,
     DropdownHeaderComponent,
     AccordionComponent,
     AccordionHeaderComponent,
   ],
   imports: [
+    FormsModule,
     CommonModule
   ],
   providers: [
@@ -31,9 +37,11 @@ import { AuthService } from '../services/auth.service';
   ],
   exports: [
     TabComponent,
+    GridComponent,
     TabsComponent,
     ModalComponent,
     DropdownComponent,
+    MapFilterComponent,
     DropdownBodyComponent,
     DropdownHeaderComponent,
     AccordionComponent,

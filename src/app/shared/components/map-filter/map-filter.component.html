@@ -1,0 +1,13 @@
+<div [ngClass]="styleClass" style="float: left; z-index: 0">
+  <div style="margin: 0px 0px 20px 20px;" class="inner-addon">
+    <span class="glyphicons glyphicons-map-marker left-addon"></span>
+    <input #input [(ngModel)]="placeText" (keyup)="onPlacesKeyUp()" style="width: 400px;float:left;" type="text" class="inner-addon-input material-input"
+      placeholder="Endereço / Região">
+  </div>
+  <div style="margin: 0px 0px 20px 0px;" class="inner-addon">
+    <span class="glyphicons glyphicons-nearby-circle left-addon"></span>
+    <span class="glyphicon glyphicon-remove right-addon"></span>
+    <input [(ngModel)]="distance" (keyup)="onDistanceKeyUp()" style="width: 176px; float:left; border-left: none;" type="text"
+      class="inner-addon-input material-input" placeholder="Distância (KM)">
+  </div>
+</div>

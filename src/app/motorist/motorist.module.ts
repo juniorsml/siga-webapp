@@ -6,6 +6,9 @@ import { MotoristComponent } from './motorist.component';
 import { SharedModule } from '../shared/modules/shared.module';
 // import { ProfileDialogComponent } from './profile-dialog/profile-dialog.component';
 import { MotoristAssociateDialogComponent } from './associate-dialog/motorist-associate-dialog.component';
+import { MapMotoristComponent } from './map-motorist/map-motorist.component';
+import { Map } from '../shared/models/Map';
+import { MapService } from '../shared/services/map.service';
 
 @NgModule({
   imports: [
@@ -16,7 +19,13 @@ import { MotoristAssociateDialogComponent } from './associate-dialog/motorist-as
   declarations: [
     MotoristComponent, 
     // ProfileDialogComponent, 
-    MotoristAssociateDialogComponent
+    MotoristAssociateDialogComponent, MapMotoristComponent
+  ],
+  providers: [
+    {
+      provide: Map,
+      useClass: MapService
+    }
   ]
 })
 export class MotoristModule { }
