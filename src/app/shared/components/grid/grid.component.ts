@@ -5,5 +5,14 @@ import { Component } from '@angular/core';
   templateUrl: './grid.component.html'
 })
 export class GridComponent {
+  
+  text: any;
 
+  onPlacesFiltered(event) {
+    console.log(event);
+  }
+
+  onPlacesFilterRemoved(event) {
+    console.log(event);
+  }
 }
