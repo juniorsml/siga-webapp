@@ -23,6 +23,6 @@ export class MapMotoristComponent implements OnInit {
   }
 
   private injectMap(): void {
-    this.map.append(this.mapSelector.nativeElement);
+    this.map.createMapBoxMapInstance(this.mapSelector.nativeElement);
   }
 }
