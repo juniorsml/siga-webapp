@@ -27,6 +27,8 @@ export abstract class Map {
 
   public abstract setBoundsByMarkers(): void;
 
+  public abstract createMapBoxMapInstance(mapElement): void;
+
   /** Shared **/
   public abstract clearAll(): void;
 

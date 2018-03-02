@@ -25,11 +25,6 @@ export class MapService extends Map {
   private container: HTMLElement;
   private mapElement: HTMLElement;
 
-  constructor() {
-    super();
-    this.createMapBoxMapInstance();
-  }
-
   public clearAll(): void {
     this.clearMarkers();
     this.removeClusters();
@@ -60,8 +55,8 @@ export class MapService extends Map {
     //todo
   }
 
-  private createMapBoxMapInstance() {
-    this.mapElement = document.createElement('div');
+  public createMapBoxMapInstance(mapElement) {
+    this.mapElement = mapElement;
     
     L.mapbox.accessToken =
       'pk.eyJ1IjoiY29uZHVzaXQiLCJhIjoiY2oyeG1wcjJuMDExNTJ4cThlemU3NWlsNCJ9.d1o1-L4u4_-aY_uvAn5krQ';
