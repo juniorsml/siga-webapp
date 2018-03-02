@@ -18,6 +18,7 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './shared/layout/navbar/navbar.component';
 import { SidebarComponent } from './shared/layout/sidebar/sidebar.component';
 import { ContentComponent } from './shared/layout/content/content.component';
+import { ProfileDialogComponent } from './motorist/profile-dialog/profile-dialog.component';
 
 
 
@@ -29,7 +30,7 @@ import { ContentComponent } from './shared/layout/content/content.component';
     NavbarComponent,
     SidebarComponent,
     ContentComponent,
-    
+    ProfileDialogComponent 
   ],
   imports: [
     FormsModule,

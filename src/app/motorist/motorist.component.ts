@@ -8,9 +8,9 @@ import { TabComponent } from '../shared/components/tabs/tab/tab.component';
 })
 export class MotoristComponent {
   motorists: any;
-  mapHasFocus: boolean;
-  selectedTabIndex: number;
+  selectedTabIndex: any;
   showAssociateModal: boolean;
+  mapHasFocus: boolean;
 
   onTabSelected(tab: TabComponent) {
     switch (tab.index) {
