@@ -27,7 +27,7 @@ export class MapFilterComponent implements AfterViewInit {
     this.placesFilteredEvent = new EventEmitter();
     this.filterRemoved = new EventEmitter();
     // this.placesInput = new google.maps.places.Autocomplete(<HTMLInputElement> document.getElementById('#mapFilter'));
-    this.placesInput.addListener('place_changed', () => this.setLocation());
+    // this.placesInput.addListener('place_changed', () => this.setLocation());
   }
 
   setLocation() {
@@ -67,6 +67,6 @@ export class MapFilterComponent implements AfterViewInit {
     // Initialize places input
     // var nativeElement: HTMLInputElement = this.input.nativeElement;
     // this.placesInput = new google.maps.places.Autocomplete(nativeElement);
-    this.placesInput.addListener('place_changed', () => this.setLocation());
+    // this.placesInput.addListener('place_changed', () => this.setLocation());
   }
 }
