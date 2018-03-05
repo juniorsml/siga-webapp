@@ -15,6 +15,9 @@ import { GridComponent } from '../components/grid/grid.component';
 import { MapFilterComponent } from '../components/map-filter/map-filter.component';
 import { FormsModule } from '@angular/forms';
 
+import { SearchPipe } from '../filters/search.pipe';
+import { PlacesPipe } from '../filters/places.pipe';
+
 @NgModule({
   declarations: [
     TabComponent,
@@ -33,6 +36,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule
   ],
   providers: [
+    PlacesPipe,
+    SearchPipe,
     AuthService
   ],
   exports: [
