@@ -9,6 +9,8 @@ import { MotoristAssociateDialogComponent } from './associate-dialog/motorist-as
 import { MapMotoristComponent } from './map-motorist/map-motorist.component';
 import { Map } from '../shared/models/Map';
 import { MapService } from '../shared/services/map.service';
+import { GridMotoristComponent } from './grid-motorist/grid-motorist.component';
+import { DomHandler } from './dom-handler/domhandler.service';
 
 @NgModule({
   imports: [
@@ -19,9 +21,12 @@ import { MapService } from '../shared/services/map.service';
   declarations: [
     MotoristComponent, 
     // ProfileDialogComponent, 
-    MotoristAssociateDialogComponent, MapMotoristComponent
+    MotoristAssociateDialogComponent,
+    MapMotoristComponent,
+    GridMotoristComponent
   ],
   providers: [
+    DomHandler,
     {
       provide: Map,
       useClass: MapService
