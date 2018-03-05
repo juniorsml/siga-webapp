@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
 })
 export class GridComponent {
   
+  placesFilter = [];
+  motorists: any;
   text: any;
 
   onPlacesFiltered(event) {
@@ -15,4 +17,6 @@ export class GridComponent {
   onPlacesFilterRemoved(event) {
     console.log(event);
   }
+
+
 }
