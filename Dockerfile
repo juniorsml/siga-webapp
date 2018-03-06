@@ -10,9 +10,10 @@ ADD . /usr/src/app
 	
 
 # install packages using Yarn
-ADD package.json /tmp/package.json
-RUN cd /tmp && yarn
-RUN cd /usr/src/app && ln -s /tmp/node_modules
+# ADD package.json /tmp/package.json
+# RUN cd /tmp && yarn
+# RUN cd /usr/src/app && ln -s /tmp/node_modules
+RUN yarn
 RUN yarn build
 
 

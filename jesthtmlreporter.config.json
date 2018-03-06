@@ -1,0 +1,4 @@
+{
+"outputPath":"./coverage/test-report.html" ,
+"includeFailureMsg" : true
+}
