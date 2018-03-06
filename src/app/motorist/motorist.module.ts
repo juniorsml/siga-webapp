@@ -11,11 +11,13 @@ import { Map } from '../shared/models/Map';
 import { MapService } from '../shared/services/map.service';
 import { GridMotoristComponent } from './grid-motorist/grid-motorist.component';
 import { DomHandler } from './dom-handler/domhandler.service';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
     FormsModule,
     SharedModule,
+    CommonModule,
     MotoristRoutingModule
   ],
   declarations: [
