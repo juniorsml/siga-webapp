@@ -8,15 +8,15 @@
   </sga-map-filter>
 
   <div style="top: 70px; position: absolute; left: 16px;  right:16px; bottom: 12px;">
-    <!-- <data-table [data]="motorists | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
+    <data-table [data]="motorists | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
       [dataLength]="motorists.length" [searchText]="text" [searchColumns]="['documentId', 'firstName', 'lastName', 'location.driverStatus', 'location.speed', 'location.altitude', 'location.mode']"
       [emptySearchText]="'nenhuma motorista foi encontrado'" [bodyBottom]="'42px'" [bodyTop]="'26px'" (onCellClick)="onCellClick($event)"
       (onCellRightClick)="onCellRightClick($event)">
       <table-empty>
         <ng-template>
-          <div *ngIf="dataLoading" style="position: absolute; top: -40px; bottom: 0px; left: 0px; right: 0px">
+          <!-- <div *ngIf="dataLoading" style="position: absolute; top: -40px; bottom: 0px; left: 0px; right: 0px">
             <rectangle-spinner></rectangle-spinner>
-          </div>
+          </div> -->
           <div *ngIf="!dataLoading" style="position: absolute; top: 50%; left: 0px; right: 0px; margin-top: -20px;">
             <i class="glyphicons glyphicons-group" style="color: #e9eaed; width: 100%; text-align: center; font-size: 20px; margin-bottom: 12px;"></i>
             <span style="width: 100%; text-align: center; display: block; color: #a5abb3; font-size: 12px;">nenhuma motorista foi encontrado</span>
@@ -115,7 +115,7 @@
           </ng-template>
         </menu-item>
       </context-menu>
-    </data-table> -->
+    </data-table>
   </div>
 </div>
 <!-- <modal>
