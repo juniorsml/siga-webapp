@@ -17,9 +17,18 @@ import { FormsModule } from '@angular/forms';
 
 import { SearchPipe } from '../filters/search.pipe';
 import { PlacesPipe } from '../filters/places.pipe';
+import { 
+  ColumnComponent,
+  MenuItemComponent,
+  DataTableComponent,
+  EmptyTableComponent,
+  ContextMenuComponent
+} from '../components/table/table.component';
 
 @NgModule({
   declarations: [
+    PlacesPipe,
+    SearchPipe,
     TabComponent,
     GridComponent,
     TabsComponent,
@@ -30,17 +39,23 @@ import { PlacesPipe } from '../filters/places.pipe';
     DropdownHeaderComponent,
     AccordionComponent,
     AccordionHeaderComponent,
+
+    ColumnComponent,
+    MenuItemComponent,
+    DataTableComponent,
+    EmptyTableComponent,
+    ContextMenuComponent
   ],
   imports: [
     FormsModule,
     CommonModule
   ],
   providers: [
-    PlacesPipe,
-    SearchPipe,
     AuthService
   ],
   exports: [
+    PlacesPipe,
+    SearchPipe,
     TabComponent,
     GridComponent,
     TabsComponent,
@@ -51,6 +66,12 @@ import { PlacesPipe } from '../filters/places.pipe';
     DropdownHeaderComponent,
     AccordionComponent,
     AccordionHeaderComponent,
+    
+    ColumnComponent,
+    MenuItemComponent,
+    DataTableComponent,
+    EmptyTableComponent,
+    ContextMenuComponent
   ]
 })
 export class SharedModule { }
