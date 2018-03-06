@@ -1,12 +1,9 @@
 /**
  * Created by davidherod on 15/3/17.
  */
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import {
   Component,
   Input,
-  NgModule,
   TemplateRef,
   ContentChild,
   forwardRef,
@@ -19,7 +16,6 @@ import {
   ElementRef,
   Output,
   EventEmitter,
-  SimpleChange,
   HostListener
 } from '@angular/core';
 import { SearchPipe } from '../../filters/search.pipe';
@@ -50,7 +46,7 @@ import { DomHandler } from '../../../motorist/dom-handler/domhandler.service';
                     <table class="ui-datatable-body-table">
                         <tbody #bodyElement class="ui-datatable-body-tbody">
                         <tr #bodyRowElement
-                            *ngFor="let row of filteredData | pager: {page:currentPage, quantity: pageQuantity}; let rowIndex = index;"
+                            *ngFor="let row of filteredData; let rowIndex = index;"
                             [class]="styleRow"
                             [class.active]="rowIndex == selectedRowIndex">
                             <td class="ui-datatable-body-cell"
@@ -59,7 +55,7 @@ import { DomHandler } from '../../../motorist/dom-handler/domhandler.service';
                                 [style.width]="column?.width + 'px'"
                                 (click)="cellClick({'event':$event,'cellIndex': cellIndex, 'rowIndex': rowIndex, 'row': row})"
                                 (contextmenu)="cellRightClick({'event':$event,'cellIndex': cellIndex, 'rowIndex': rowIndex, 'row': row})">
-                                <ng-template [ngOutletContext]="{item: row[column.key]}"
+                                <ng-template [ngTemplateOutletContext]="{item: row[column.key]}"
                                              [ngTemplateOutlet]="column.template">
                                 </ng-template>
                             </td>
@@ -83,8 +79,6 @@ import { DomHandler } from '../../../motorist/dom-handler/domhandler.service';
                             <option value="50">50</option>
                             <option value="100">100</option>
                         </select>
-                        <pager (pageChange)="onPageChange($event)" [pageQuantity]="pageQuantity" [data]="data"
-                               [styleClass]="stylePager"></pager>
                     </div>
                 </div>
 
@@ -102,7 +96,8 @@ import { DomHandler } from '../../../motorist/dom-handler/domhandler.service';
                 </div>
 
             </div>
-        </div>`
+        </div>`,
+        styleUrls: ['./table.component.scss']
 })
 export class DataTableComponent implements DoCheck, OnChanges, AfterViewInit {
   @Input() data: Array<any>;
@@ -418,22 +413,3 @@ export class MenuItemComponent {
     contextMenu.addMenuItem(this);
   }
 }
-
-@NgModule({
-  imports: [CommonModule, FormsModule],
-  exports: [
-    DataTableComponent,
-    ColumnComponent,
-    ContextMenuComponent,
-    MenuItemComponent,
-    EmptyTableComponent
-  ],
-  declarations: [
-    DataTableComponent,
-    ColumnComponent,
-    ContextMenuComponent,
-    MenuItemComponent,
-    EmptyTableComponent
-  ]
-})
-export class DataTableModule {}
