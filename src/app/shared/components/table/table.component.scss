@@ -1,0 +1,172 @@
+/*********************************** UI ************************************/
+
+.ui-datatable {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+}
+
+.ui-datatable-header-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ui-datatable-body {
+  overflow: scroll;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+}
+
+.ui-datatable-header-cell {
+  padding: 4px;
+}
+
+.ui-datatable-body-empty {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  text-align: center;
+  bottom: 50%;
+  font-size: 13px;
+  color: #4a5879;
+}
+
+.ui-datatable-body-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ui-datatable-body-table-row {
+  width: 100%;
+}
+
+.ui-datatable-body-row:hover {
+  background: #fbfbfb;
+  cursor: pointer;
+}
+
+.ui-datatable-body-row.active {
+  background: #e5e8f1;
+}
+
+.ui-datatable-body-cell {
+  /*font-size: 14px;
+  padding: 0px 4px;
+  height: 50px;*/
+  font-size: 12px;
+  padding: 0px 4px;
+  height: 50px;
+  /*color: #464646;*/
+  font-family: 'Open Sans', sans-serif;
+}
+
+.ui-datatable-footer {
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: 42px;
+  position: absolute;
+  border-top: 1px solid #eaeaea;
+}
+
+.ui-datatable-footer-wrapper {
+  margin-top: 8px;
+}
+
+.ui-datatable-footer-total {
+  float: left;
+  padding: 0px 8px;
+  margin-top: 4px;
+  color: #4a5879;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.ui-datatable-footer-qty {
+  float: right;
+  margin: 0px 12px;
+  background-color: #fff;
+  height: 24px;
+}
+
+/********************************** UI table context menu ***********************************/
+
+.ui-datatable-contextmenu {
+  position: fixed;
+  z-index: 1;
+  background-color: #333;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 4px;
+  -webkit-box-shadow: 1px 1px 12px rgba(51, 51, 51, 0.5);
+  box-shadow: 1px 1px 12px rgba(51, 51, 51, 0.5);
+
+}
+
+.ui-datatable-contextmenu-list {
+  list-style-type: none;
+}
+
+.ui-datatable-contextmenu-item {
+  height: 42px;
+  line-height: 42px;
+  padding-left: 16px;
+  /* border-bottom: 1px solid #efefef; */
+  width: 182px;
+  font-size: 16px;
+  color: #2f2f2f;
+}
+
+.ui-datatable-contextmenu-item.disabled {
+  background-color: #fff;
+  color: #000000 !important;
+}
+
+.ui-datatable-contextmenu-item.disabled:hover {
+  cursor: not-allowed;
+  background-color: #eee;
+}
+
+.ui-datatable-contextmenu-item.disabled:hover > span {
+  color: #aaaaaa
+}
+
+.ui-datatable-contextmenu-item.disabled > span {
+  color: #aaaaaa
+}
+
+.ui-datatable-contextmenu-item:hover {
+  background: #2196F3;
+  color: #fff;
+  cursor: pointer;
+}
+
+.ui-datatable-contextmenu-item:hover > span {
+  color: #fff;
+}
+
+.ui-datatable-contextmenu-icon.glyphicons {
+  width: 28px;
+  color: #757b8a;
+  font-size: 14px;
+  line-height: 42px;
+}
+
+.ui-datatable-contextmenu-icon.fa {
+  width: 28px;
+  color: #757b8a;
+  font-size: 18px;
+  line-height: 42px;
+}
