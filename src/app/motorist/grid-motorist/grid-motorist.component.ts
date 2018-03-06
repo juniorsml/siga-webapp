@@ -1,0 +1,33 @@
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'sga-grid-motorist',
+  templateUrl: './grid-motorist.component.html'
+})
+export class GridMotoristComponent {
+  @Input() motorists = new Array();
+  @Input() dataLoading: boolean = true;
+
+  text: any;
+  motorist: any;
+  filterLocation: any;
+  filterDistance: any;
+  selectedMotorist: any;
+  contextMenuSelected: any;
+
+  public onCellClick(event) {
+    event.target;
+  }
+
+  public onCellRightClick(event) {
+    event.target;
+  }
+
+  public onPlacesFiltered(event) {
+    event.target;
+  }
+
+  public onPlacesFilterRemoved(event) {
+    event.target;
+  }
+}
