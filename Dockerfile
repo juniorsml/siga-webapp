@@ -1,4 +1,4 @@
-FROM node:9 AS build
+FROM node:9 
 
 MAINTAINER Condusit 
 
@@ -19,7 +19,7 @@ RUN yarn build
 
 # Start from a new nginx image
 FROM nginx:alpine
-COPY --from=build /usr/src/app/dist /usr/share/nginx/html/
+COPY --from=0  /usr/src/app/dist /usr/share/nginx/html/
 
 #Start Server
 CMD ["nginx", "-g", "daemon off;"]
