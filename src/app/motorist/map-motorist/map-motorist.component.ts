@@ -1,5 +1,6 @@
 import { 
   Component,
+  Input,
   OnInit,
   ViewChild,
   ElementRef
@@ -18,13 +19,13 @@ import { TabComponent } from '../../shared/components/tabs/tab/tab.component';
 export class MapMotoristComponent implements OnInit {
 
   @ViewChild('mapSelector') mapSelector: ElementRef;
-
-  motorists = new Array();
+  @Input('motorists') motorists = new Array();
+  
   mapLocationHistory = new Array();
 
   mapSearchText: any;
   mapSelectedTabIndex: number;
-  mapTabsSelectedIndex: number;
+  mapTabsSelectedIndex: number = 0;
 
   constructor(private map: Map) { }
   

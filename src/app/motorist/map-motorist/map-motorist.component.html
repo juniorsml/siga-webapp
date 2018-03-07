@@ -7,9 +7,9 @@
       <sga-tab heading="Motoristas">
         <div style="position: absolute; top: 42px; bottom: 0px; left: 0px; right: 0px; ">
           <div style="position: absolute; left: 8px; right: 8px; border: 1px solid #dedede; top: 8px;" class="inner-addon">
-            <span style="color: #8f949d;" class="glyphicons glyphicons-search left-addon"></span>
-            <!-- <input [(ngModel)]="mapSearchText" placeholder="Buscar" type="text" style="background: transparent; padding: 12px 40px; border: none;"
-              class="inner-addon-input clear-focus" /> -->
+            <span style="color: #8f949d;" class="fa fa-search left-addon"></span>
+            <input [(ngModel)]="mapSearchText" placeholder="Buscar" type="text" style="background: transparent; padding: 12px 40px; border: none;"
+              class="inner-addon-input clear-focus" />
           </div>
           <div style="top: 50px; position: absolute; left: 8px; right: 8px; bottom: 0px;">
             <data-table [data]="motorists" [dataLength]="motorists.length" [searchText]="mapSearchText" [searchColumns]="['documentId', 'firstName', 'lastName']"
