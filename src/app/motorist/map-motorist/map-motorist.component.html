@@ -1,3 +1,138 @@
 <div style="margin: 0px; padding: 0px;" class="material-content-container">
   <div #mapSelector style="position:absolute; top:0; bottom:0; width:100%;"></div>
 </div>
+<div class="map-sidabar">
+  <div style="position: absolute; bottom: 0px; left: 0px; right: 0px; top: 0px;">
+    <sga-tabs [tabIndex]="mapTabsSelectedIndex" styleClass="map-tabs" (tabSelected)="onMapTabSelected($event)" (tabChanged)="onMapTabChanged($event)">
+      <sga-tab heading="Motoristas">
+        <div style="position: absolute; top: 42px; bottom: 0px; left: 0px; right: 0px; ">
+          <div style="position: absolute; left: 8px; right: 8px; border: 1px solid #dedede; top: 8px;" class="inner-addon">
+            <span style="color: #8f949d;" class="fa fa-search left-addon"></span>
+            <input [(ngModel)]="mapSearchText" placeholder="Buscar" type="text" style="background: transparent; padding: 12px 40px; border: none;"
+              class="inner-addon-input clear-focus" />
+          </div>
+          <div style="top: 50px; position: absolute; left: 8px; right: 8px; bottom: 0px;">
+            <data-table [data]="motorists" [dataLength]="motorists.length" [searchText]="mapSearchText" [searchColumns]="['documentId', 'firstName', 'lastName']"
+              [emptySearchText]="'nenhuma motorista foi encontrado'" [bodyTop]="'0px'" [bodyBottom]="'42px'" styleHeader="ui-datatable-header dark"
+              styleBody="ui-datatable-body dark" styleRow="ui-datatable-body-row dark" styleFooter="ui-datatable-footer dark"
+              stylePager="ui-table-pager-small" (onCellClick)="mapTableCellClick($event)" (onCellRightClick)="mapTableCellRightClick($event)">
+
+              <column [key]="'id'" [header]="''">
+                <ng-template let-item="item">
+                  <div>
+                    <img (click)="showMotoristModal()" class="motorist-map-table-profile-icon" src="{{'api/motorist/public/profileImage?id=' + item}}"
+                      alt="">
+                  </div>
+                </ng-template>
+              </column>
+              <column [key]="'documentId'" [header]="''">
+                <ng-template let-item="item">
+                  {{item}}
+                </ng-template>
+              </column>
+              <column [key]="'firstName'" [header]="''">
+                <ng-template let-item="item">
+                  {{item}}
+                </ng-template>
+              </column>
+              <column [key]="'lastName'" [header]="''">
+                <ng-template let-item="item">
+                  {{item}}
+                </ng-template>
+              </column>
+              <!--<column [key]="'id'" [header]="''">
+                              <ng-template let-item="item">
+                                  <hover-menu
+                                      iconClass="fa fa-ellipsis-v ui-hovermenu-icon">
+                                      <div>
+                                          <ul style="list-style-type: none;">
+                                              <li (click)="showMapHistory(item)"
+                                                  style="width: 62px; text-align: center; background: #71a236">
+                                                  <span class="fa fa-history"
+                                                        aria-hidden="true"></span>
+                                              </li>
+                                          </ul>
+                                      </div>
+                                  </hover-menu>
+                              </ng-template>
+                          </column>-->
+
+              <context-menu [mode]="'right-click'" [ignoreCells]="[0]" (onItemSelected)="onContextMenu($event)">
+
+                <menu-item [enabled]="selectedMotorist?.location != null">
+                  <ng-template>
+                    <span class="ui-datatable-contextmenu-icon fal fa-clock" aria-hidden="true"></span>
+                    <span>Histórico</span>
+                  </ng-template>
+                </menu-item>
+                <menu-item [enabled]="true">
+                  <ng-template>
+                    <span class="ui-datatable-contextmenu-icon fal fa-comments" aria-hidden="true">
+                    </span>
+                    <span>Mensagem</span>
+                  </ng-template>
+                </menu-item>
+              </context-menu>
+            </data-table>
+          </div>
+        </div>
+      </sga-tab>
+      <sga-tab heading="Histórico">
+        <div style="position: absolute; top: 42px; bottom: 0px; left: 0px; right: 0px; ">
+          <div>
+            <data-table [data]="mapLocationHistory" [dataLength]="mapLocationHistory.length" [searchColumns]="['documentId', 'firstName', 'lastName']"
+              [bodyTop]="'0px'" [bodyBottom]="'42px'" styleHeader="ui-datatable-header dark" styleBody="ui-datatable-body dark"
+              styleFooter="ui-datatable-footer dark" stylePager="ui-table-pager-small" (onCellClick)="mapHistoryTableCellClick($event)">
+              <table-empty>
+                <ng-template>
+                  <div *ngIf="historyDataLoading" style="position: absolute; top: -40px; bottom: 0px; left: 0px; right: 0px">
+                    <!-- <rectangle-spinner></rectangle-spinner> -->
+                  </div>
+                  <div *ngIf="!historyDataLoading" style="position: absolute; top: 50%; left: 0px; right: 0px; margin-top: -20px;">
+                    <i class="fa fa-map-marker" style="color: #d2d3d6; width: 100%; text-align: center; font-size: 40px; margin-bottom: 12px;"></i>
+                    <span style="width: 100%; text-align: center; display: block; color: #a5abb3; font-size: 12px;">não há histórico para o motorista selecionado</span>
+                  </div>
+                </ng-template>
+              </table-empty>
+              <column [key]="'type'" [header]="''">
+                <ng-template let-item="item">
+                  <div>
+                    <span [ngSwitch]="item">
+                      <span *ngSwitchCase="'position'" class="fal fa-map-marker map-table-position-icon" aria-hidden="true"></span>
+                      <span *ngSwitchCase="'message'" class="fal fa-exclamation-circle map-table-event-icon" aria-hidden="true"></span>
+                      <span *ngSwitchDefault></span>
+                    </span>
+                  </div>
+                </ng-template>
+              </column>
+              <column [key]="'driverStatus'" [header]="''">
+                <ng-template let-item="item">
+                  {{item}}
+                </ng-template>
+              </column>
+              <column [key]="'speed'" [header]="''">
+                <ng-template let-item="item">
+                  {{item | number:'1.1-1'}} km/h
+                </ng-template>
+              </column>
+              <column [key]="'mode'" [header]="''">
+                <ng-template let-item="item">
+                  {{item}}
+                </ng-template>
+              </column>
+              <column [key]="'time'" [header]="''">
+                <ng-template let-item="item">
+                  {{item | timeElapsedAsText}}
+                </ng-template>
+              </column>
+            </data-table>
+          </div>
+        </div>
+      </sga-tab>
+      <sga-tab heading="Mapa">
+        <div style="position: absolute; background-color: rgba(18, 27, 45, 0.45); top: 42px; bottom: 0px; left: 0px; right: 0px; ">
+        </div>
+      </sga-tab>
+    </sga-tabs>
+  </div>
+</div>

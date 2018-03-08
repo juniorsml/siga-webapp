@@ -8,7 +8,7 @@ import { TabComponent } from '../shared/components/tabs/tab/tab.component';
 })
 export class MotoristComponent implements OnInit {
   public motorists = new Array();
-  selectedTabIndex: any;
+  selectedTabIndex: any = 0;
   showAssociateModal: boolean;
   mapHasFocus: boolean;
 

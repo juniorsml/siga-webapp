@@ -24,11 +24,14 @@ import {
   EmptyTableComponent,
   ContextMenuComponent
 } from '../components/table/table.component';
+import { TimeElapsedAsTextPipe } from '../filters/time-elapsed.pipe';
 
 @NgModule({
   declarations: [
     PlacesPipe,
     SearchPipe,
+    TimeElapsedAsTextPipe,
+
     TabComponent,
     GridComponent,
     TabsComponent,
@@ -56,6 +59,8 @@ import {
   exports: [
     PlacesPipe,
     SearchPipe,
+    TimeElapsedAsTextPipe,
+
     TabComponent,
     GridComponent,
     TabsComponent,
