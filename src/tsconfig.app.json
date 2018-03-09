@@ -8,5 +8,12 @@
   "exclude": [
     "test.ts",
     "**/*.spec.ts"
+  ],
+  "typeRoots": [
+    "node_modules/@types"
+  ],
+  "types": [
+    "leaflet",
+    "leaflet-markercluster"
   ]
 }
