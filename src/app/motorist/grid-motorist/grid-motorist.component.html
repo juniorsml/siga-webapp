@@ -1,13 +1,35 @@
 <div class="material-content-container">
-  <div style="width: 300px; margin: 0px 0px 20px 0px;" class="inner-addon">
-    <span class="glyphicons glyphicons-search left-addon"></span>
-    <span class="fa fa-search"></span>
-    <input [(ngModel)]="text" placeholder="Buscar" type="text" class="inner-addon-input material-input" />
-  </div>
-  <sga-map-filter (placesFiltered)="onPlacesFiltered($event)" (filterRemoved)="onPlacesFilterRemoved($event)">
-  </sga-map-filter>
+ 
+    <div [ngClass]="styleClass" class="columns level-left">
+        <div class="column is-3">     
+            <p class="control has-icons-left"> 
+              <input [(ngModel)]="text" class="input input-filter"  placeholder="Buscar" type="text"/>
+              <span class="icon is-small is-left">
+                <i class="fa fa-search"></i>
+              </span>       
+            </p>
+        </div>
+        <div class="column is-4 level-left">     
+            <p class="control has-icons-left"> 
+             <input #input [(ngModel)]="placeText" (keyup)="onPlacesKeyUp()" type="text" class="input input-filter" placeholder="Endereço / Região">
+              <span class="icon is-small is-left">
+                <i class="fa fa-map-marker"></i>
+              </span>       
+            </p>
+        </div>
+        <div class="column is-2">        
+            <p class="control has-icons-left"> 
+                <input [(ngModel)]="distance" (keyup)="onDistanceKeyUp()" type="text" class="input input-filter" placeholder="Distância (KM)">
+                <span class="icon is-small is-left">
+                    <i class="fa glyphicons glyphicons-nearby-circle"></i>
+                </span>       
+            </p>
+        </div>
+      </div>
+      <!-- <sga-map-filter (placesFiltered)="onPlacesFiltered($event)" (filterRemoved)="onPlacesFilterRemoved($event)"  class="columns column"> 
+      </sga-map-filter> -->
 
-  <div style="top: 70px; position: absolute; left: 16px;  right:16px; bottom: 12px;">
+  <div class="container-grid">
     <data-table [data]="motorists | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
       [dataLength]="motorists.length" [searchText]="text" [searchColumns]="['documentId', 'firstName', 'lastName', 'location.driverStatus', 'location.speed', 'location.altitude', 'location.mode']"
       [emptySearchText]="'nenhuma motorista foi encontrado'" [bodyBottom]="'42px'" [bodyTop]="'26px'" (onCellClick)="onCellClick($event)"

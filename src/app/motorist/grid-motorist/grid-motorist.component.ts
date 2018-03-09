@@ -2,7 +2,8 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'sga-grid-motorist',
-  templateUrl: './grid-motorist.component.html'
+  templateUrl: './grid-motorist.component.html',
+  styleUrls: ['./grid-motorist.component.scss']
 })
 export class GridMotoristComponent {
   @Input() motorists = new Array();
