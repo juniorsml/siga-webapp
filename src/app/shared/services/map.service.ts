@@ -36,7 +36,8 @@ export class MapService extends Map {
   }
 
   public addCluster(markers: Array<Feature<GeometryObject>>): void {
-    const cluster = null;
+    const cluster = new L.MarkerClusterGroup();
+
     markers.forEach(marker => {
       cluster.addLayer(marker.properties['marker']);
     });
