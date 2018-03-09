@@ -34,12 +34,12 @@ export class MapService extends Map {
   public clearMarkers(): void {
     // this.markers.forEach(marker => marker.remove());
   }
-
+  
   public addCluster(markers: Array<Feature<GeometryObject>>): void {
-    const cluster = new L.MarkerClusterGroup();
+    const cluster = L.markerClusterGroup();
 
     markers.forEach(marker => {
-      cluster.addLayer(marker.properties['marker']);
+      cluster.addLayers(marker.properties['marker']);
     });
     this.map.addLayer(cluster);
     this.clusters.push(cluster);
