@@ -24,80 +24,8 @@ import { DomHandler } from '../../../motorist/dom-handler/domhandler.service';
 @Component({
   selector: `data-table`,
   providers: [DomHandler],
-  template: `
-        <div class="ui-datatable">
-            <div class="ui-datatable-wrapper">
-
-                <div [class]="styleHeader">
-                    <table class="ui-datatable-header-table">
-                        <thead class="ui-datatable-header-thead">
-                        <tr #headerElement>
-                            <td class="ui-datatable-header-cell"
-                                *ngFor="let column of columns; let rowIndex = index;"
-                                [style.width]="column.headerWidth + 'px'">
-                                <span>{{column.header}}</span>
-                            </td>
-                        </tr>
-                        </thead>
-                    </table>
-                </div>
-
-                <div [class]="styleBody" [style.bottom]="bodyBottom" [style.top]="bodyTop">
-                    <table class="ui-datatable-body-table">
-                        <tbody #bodyElement class="ui-datatable-body-tbody">
-                        <tr #bodyRowElement
-                            *ngFor="let row of filteredData; let rowIndex = index;"
-                            [class]="styleRow"
-                            [class.active]="rowIndex == selectedRowIndex">
-                            <td class="ui-datatable-body-cell"
-                                *ngFor="let column of columns; let cellIndex = index"
-                                [style.minWidth]="column.minWidth + 'px'"
-                                [style.width]="column?.width + 'px'"
-                                (click)="cellClick({'event':$event,'cellIndex': cellIndex, 'rowIndex': rowIndex, 'row': row})"
-                                (contextmenu)="cellRightClick({'event':$event,'cellIndex': cellIndex, 'rowIndex': rowIndex, 'row': row})">
-                                <ng-template [ngTemplateOutletContext]="{item: row[column.key]}"
-                                             [ngTemplateOutlet]="column.template">
-                                </ng-template>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div *ngIf="emptyTable && emptyView != null && emptyView?.template != null"
-                         class="ui-datatable-body-empty">
-                        <ng-template [ngTemplateOutlet]="emptyView.template"></ng-template>
-                        <!-- <span>{{emptySearchText}}</span>-->
-                    </div>
-                </div>
-
-                <div #footerElement [class]="styleFooter">
-                    <div class="ui-datatable-footer-wrapper">
-                        <span class="ui-datatable-footer-total">{{filteredData?.length}} | {{dataLength}}</span>
-                        <select class="ui-datatable-footer-qty" [(ngModel)]="pageQuantity">
-                            <option value="5">5</option>
-                            <option value="10" selected="selected">10</option>
-                            <option value="25">25</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div #contextMenuContainer *ngIf="contextMenu != null"
-                     [style.display]="!contextMenu.hidden ? 'block' : 'none'" class="ui-datatable-contextmenu"
-                     [ngStyle]="showStyle(contextMenu.x, contextMenu.y, contextMenuContainer)">
-                    <ul *ngFor="let menuItem of contextMenu.menuItems; let itemIndex = index"
-                        class="ui-datatable-contextmenu-list">
-                        <li (click)="contextMenuClick({'event': $event, 'index':itemIndex})"
-                            class="ui-datatable-contextmenu-item"
-                            [class.disabled]="!menuItem.enabled">
-                            <ng-template [ngTemplateOutlet]="menuItem.template"></ng-template>
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>`,
-        styleUrls: ['./table.component.scss']
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.scss']
 })
 export class DataTableComponent implements DoCheck, OnChanges, AfterViewInit {
   @Input() data: Array<any>;

@@ -27,7 +27,7 @@
           </ng-template>
         </sga-dropdown-body>
       </sga-dropdown>
-      <sga-tabs (tabSelected)="onTabSelected($event)" [tabIndex]="selectedTabIndex" styleClass="tabs">
+      <sga-tabs (tabSelected)="onTabSelected($event)" [tabIndex]="selectedTabIndex" styleClass="tabs" class="level">
         <sga-tab heading="Grid">
           <sga-grid-motorist [motorists]="motorists"></sga-grid-motorist>
           <!-- <motorist-grid [motorists]="motorists" [dataLoading]="loadingMotorists" (onMotoristSelected)="gridMotoristSelected($event)"

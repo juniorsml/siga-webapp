@@ -1,10 +1,13 @@
 body {
     background-color: #3f495d;
-    font-family: Open Sans,sans-serif;
+    font-family: 'Open Sans',sans-serif;
 }
 div, *{
   margin:0;
   padding:O;
+}
+.input::-webkit-input-placeholder, .textarea::-webkit-input-placeholder {
+    color: rgba(54,54,54,0.65) !important;
 }
 /* You can add global styles to this file, and also import other style files */
 .material-header {
