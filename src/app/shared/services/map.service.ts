@@ -5,6 +5,7 @@ import {
   GeometryObject
 } from 'geojson';
 
+import * as L from 'leaflet';
 import 'leaflet.markercluster';
 import LatLngBounds = L.LatLngBounds;
 import LatLng = L.LatLng;
