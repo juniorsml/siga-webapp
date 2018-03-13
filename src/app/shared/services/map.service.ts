@@ -5,8 +5,6 @@ import {
   GeometryObject
 } from 'geojson';
 
-import * as L from 'leaflet';
-import 'leaflet.markercluster';
 import LatLngBounds = L.LatLngBounds;
 import LatLng = L.LatLng;
 import Marker = L.Marker;
@@ -37,7 +35,7 @@ export class MapService extends Map {
   }
   
   public addCluster(markers: Array<Feature<GeometryObject>>): void {
-    const cluster = L.markerClusterGroup();
+    const cluster = new L.MarkerClusterGroup();
 
     markers.forEach(marker => {
       cluster.addLayers(marker.properties['marker']);
