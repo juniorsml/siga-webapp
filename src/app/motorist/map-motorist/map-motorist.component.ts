@@ -48,7 +48,7 @@ export class MapMotoristComponent implements OnInit {
           window.alert(motorist.firstName + ' ' + motorist.lastName)
         );
 
-        const marker = <Feature<any>>{
+        const marker : Feature<GeometryObject> = <Feature<any>>{
           type: 'Feature',
           properties: { iconSize: [50, 50], icon: markerElement },
           geometry: {
