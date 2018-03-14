@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 
 import { SearchPipe } from '../filters/search.pipe';
 import { PlacesPipe } from '../filters/places.pipe';
+import { SlimScroll } from 'angular-io-slimscroll';
 import { 
   ColumnComponent,
   MenuItemComponent,
@@ -47,7 +48,8 @@ import { TimeElapsedAsTextPipe } from '../filters/time-elapsed.pipe';
     MenuItemComponent,
     DataTableComponent,
     EmptyTableComponent,
-    ContextMenuComponent
+    ContextMenuComponent,
+    SlimScroll
   ],
   imports: [
     FormsModule,

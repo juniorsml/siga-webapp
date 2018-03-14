@@ -153,7 +153,7 @@ export class DataTableComponent implements DoCheck, OnChanges, AfterViewInit {
         //Todo: Added && this.bodyElement != null due to null error potentially caused by *ngif on table element displaying
         this.columns[i].headerWidth = this.bodyRowElement.nativeElement.cells[
           i
-        ].offsetWidth;
+        ].offsetWidth; 
       } else {
         this.columns[i].headerWidth = this.columns[i].fixedWidth;
         this.columns[i].width = this.columns[i].fixedWidth;
