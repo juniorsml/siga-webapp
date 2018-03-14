@@ -47,7 +47,7 @@
       </table-empty>
       <column class="photo-profile" [key]="'id'" [header]="''" [minWidth]="'50'" >
         <ng-template let-item="item">
-          <div style="width: 40px; height: 40px; border-radius: 50%; background-color: #eee">
+          <div class="cnt-img">
             <img (click)="showMotoristModal(item)" style="width: 40px; height: 40px; border-radius: 50%;" src="{{'api/motorist/public/profileImage?id=' + item}}"
               alt="">
           </div>
