@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { TableClickEvent } from '../../shared/components/table/table.component';
 
 @Component({
   selector: 'sga-grid-motorist',
@@ -8,6 +9,7 @@ import { Component, Input } from '@angular/core';
 export class GridMotoristComponent {
   @Input() motorists = new Array();
   @Input() dataLoading: boolean = true;
+  @Output() onMotoristSelected: EventEmitter<any> = new EventEmitter();
 
   text: any;
   distance: any;
@@ -18,13 +20,27 @@ export class GridMotoristComponent {
   filterDistance: any;
   selectedMotorist: any;
   contextMenuSelected: any;
-  
-  public onCellClick(event) {
-    event.target;
+
+  showDialog = false;
+  showMotoristDialog: boolean;
+
+  public showMotoristModal() {
+    this.showMotoristDialog = true;
   }
 
-  public onCellRightClick(event) {
-    event.target;
+  public motoristDialogClose() {
+    this.showMotoristDialog = false;
+  }
+
+  public onCellClick(event) {
+    this.selectedMotorist = event.data;
+    this.onMotoristSelected.emit(this.selectedMotorist);
+    if (event.cellIndex === 0) this.showMotoristDialog = true;
+  }
+
+  onCellRightClick(event: TableClickEvent) {
+    this.selectedMotorist = event.data;
+    this.onMotoristSelected.emit(this.selectedMotorist);
   }
 
   public onPlacesFiltered(event) {
@@ -35,9 +51,7 @@ export class GridMotoristComponent {
     event.target;
   }
 
-  public onPlacesKeyUp() {
-  }
+  public onPlacesKeyUp() {}
 
-  public onDistanceKeyUp() {
-  }
+  public onDistanceKeyUp() {}
 }
