@@ -6,7 +6,9 @@
     "start": "ng serve -H 0.0.0.0",
     "build": "ng build --prod",
     "test": "jest --watch --coverage",
-    "test-ci": "jest --ci --coverage --outputFile test.json  --json"
+    "test-ci": "jest --ci --coverage --outputFile test.json  --json",
+    "validate": "tsc",
+    "precommit": "yarn validate"
   },
   "private": true,
   "dependencies": {
@@ -38,6 +40,7 @@
     "@angular/compiler-cli": "^5.2.0",
     "@angular/language-service": "^5.2.0",
     "@types/jest": "^22.1.3",
+    "husky": "^0.14.3",
     "jest": "^22.3.0",
     "jest-html-reporter": "^2.0.0",
     "jest-preset-angular": "^5.0.0",
