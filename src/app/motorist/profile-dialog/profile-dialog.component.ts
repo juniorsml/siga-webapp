@@ -1,9 +1,4 @@
-import { 
-  Component, 
-  EventEmitter,
-  Output, 
-  Input 
-} from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 
 @Component({
   selector: 'sga-profile-dialog',
@@ -12,10 +7,10 @@ import {
 })
 export class ProfileDialogComponent {
   @Input() showDialog: boolean;
-  @Input() selectedMotorist;
+  @Input() selectedMotorist: any;
   @Output() onDialogClose: EventEmitter<void> = new EventEmitter<void>();
 
-  public onClose() {
+  onClose() {
     this.showDialog = false;
     this.onDialogClose.emit();
   }
