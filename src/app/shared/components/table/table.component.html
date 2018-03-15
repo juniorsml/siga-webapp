@@ -51,18 +51,21 @@
                 <div #footerElement [class]="styleFooter">
                     <div class="ui-datatable-footer-wrapper">
                         <span class="ui-datatable-footer-total">{{filteredData?.length}} | {{dataLength}}</span>
-                        <select class="ui-datatable-footer-qty" [(ngModel)]="pageQuantity">
-                            <option value="5">5</option>
-                            <option value="10" selected="selected">10</option>
-                            <option value="25">25</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
-                        </select>
+                        <div class="select is-small">
+                            <select class="ui-datatable-footer-qty" [(ngModel)]="pageQuantity">
+                                <option value="5">5</option>
+                                <option value="10" selected="selected">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
+                       
                     </div>
                 </div>
 
                 <div #contextMenuContainer *ngIf="contextMenu != null"
-                     [style.display]="!contextMenu.hidden ? 'block' : 'none'" class="ui-datatable-contextmenu"
+                     [style.display]="!contextMenu.hidden ? 'block' : 'none'" class="ui-datatable-contextmenu "
                      [ngStyle]="showStyle(contextMenu.x, contextMenu.y, contextMenuContainer)">
                     <ul *ngFor="let menuItem of contextMenu.menuItems; let itemIndex = index"
                         class="ui-datatable-contextmenu-list">

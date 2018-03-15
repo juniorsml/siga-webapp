@@ -91,7 +91,7 @@
 .ui-datatable-footer {
     bottom: 0px;
     left: 0px;
-    right: 0px;
+   right: 3px;
     height: 42px;
     position: absolute;
     border-top: 1px solid #eaeaea;
@@ -99,6 +99,8 @@
 
 .ui-datatable-footer-wrapper {
     margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .ui-datatable-footer-total {
@@ -110,12 +112,15 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-.ui-datatable-footer-qty {
-    float: right;
-    margin: 0px 12px;
-    background-color: #fff;
-    height: 24px;
+.ui-datatable-footer-qty {   
+    margin: 0px 3px;
+    padding-right: 1.5em !important;
+
 }
+
+
+
+
 //* BAterry
 .battery-level {
     border-radius: 4px;
