@@ -3,7 +3,7 @@
     <div [ngClass]="styleClass" class="columns level-left">
         <div class="column is-3">     
             <p class="control has-icons-left"> 
-              <input [(ngModel)]="text" class="input input-filter"  placeholder="Buscar" type="text"/>
+              <input [(ngModel)]="text" class="input"  placeholder="Buscar" type="text"/>
               <span class="icon is-small is-left">
                 <i class="fa fa-search"></i>
               </span>       
@@ -11,7 +11,7 @@
         </div>
         <div class="column is-4 level-left">     
             <p class="control has-icons-left"> 
-             <input #input [(ngModel)]="placeText" (keyup)="onPlacesKeyUp()" type="text" class="input input-filter" placeholder="Endereço / Região">
+             <input #input [(ngModel)]="placeText" (keyup)="onPlacesKeyUp()" type="text" class="input" placeholder="Endereço / Região">
               <span class="icon is-small is-left">
                 <i class="fa fa-map-marker"></i>
               </span>       
@@ -19,9 +19,9 @@
         </div>
         <div class="column is-2">        
             <p class="control has-icons-left"> 
-                <input [(ngModel)]="distance" (keyup)="onDistanceKeyUp()" type="text" class="input input-filter" placeholder="Distância (KM)">
+                <input [(ngModel)]="distance" (keyup)="onDistanceKeyUp()" type="text" class="input" placeholder="Distância (KM)">
                 <span class="icon is-small is-left">
-                    <i class="fa glyphicons glyphicons-nearby-circle"></i>
+                    <i class="fa fa-location-arrow"></i>
                 </span>       
             </p>
         </div>
@@ -45,9 +45,9 @@
           </div>
         </ng-template>
       </table-empty>
-      <column [key]="'id'" [header]="''" [minWidth]="'52'" [width]="'60'">
+      <column class="photo-profile" [key]="'id'" [header]="''" [minWidth]="'50'" >
         <ng-template let-item="item">
-          <div style="width: 40px; height: 40px; border-radius: 50%; background-color: #eee">
+          <div class="cnt-img">
             <img (click)="showMotoristModal(item)" style="width: 40px; height: 40px; border-radius: 50%;" src="{{'api/motorist/public/profileImage?id=' + item}}"
               alt="">
           </div>
@@ -90,7 +90,7 @@
               <span class="battery-level-charge" [style.background-color]="'hsl('+ (item?.battery?.charge * 100) +', 100%, 40%)'" [style.width]="(item?.battery?.charge * 100)+'%'">
               </span>
               <span class="battery-level-text">
-                <span *ngIf="item?.battery?.chargeMode != null" class="fas fa-bolt" aria-hidden="true"></span>
+                <span *ngIf="item?.battery?.chargeMode != null" class="fa fa-bolt" aria-hidden="true"></span>
                 <span>{{ (item?.battery?.charge * 100) | number: '2.0-0'}}%</span>
               </span>
             </span>
