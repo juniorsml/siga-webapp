@@ -5,6 +5,7 @@ import {} from 'leaflet-marker-cluster';
 import { Map } from '../../shared/models/Map';
 import { TabComponent } from '../../shared/components/tabs/tab/tab.component';
 import { Feature, GeometryObject } from 'geojson';
+import { TableClickEvent } from '../../shared/components/table/table.component';
 
 @Component({
   selector: 'sga-map-motorist',
@@ -14,6 +15,8 @@ import { Feature, GeometryObject } from 'geojson';
 export class MapMotoristComponent implements OnInit {
   private _motorists: Array<any>;
   private mapMarkers: Array<Feature<GeometryObject>> = [];
+
+  public hideMotoristModal: boolean;
 
   @ViewChild('mapSelector') mapSelector: ElementRef;
   @Input()
@@ -28,7 +31,7 @@ export class MapMotoristComponent implements OnInit {
     }
   }
 
-  plotMotoristLocations(): any {
+  plotMotoristLocations(): void {
     this.map.clearAll();
     this.mapMarkers = [];
     this._motorists.forEach(motorist => {
@@ -48,7 +51,7 @@ export class MapMotoristComponent implements OnInit {
           window.alert(motorist.firstName + ' ' + motorist.lastName)
         );
 
-        const marker : Feature<GeometryObject> = <Feature<any>>{
+        const marker: Feature<GeometryObject> = <Feature<any>>{
           type: 'Feature',
           properties: { iconSize: [50, 50], icon: markerElement },
           geometry: {
@@ -66,8 +69,54 @@ export class MapMotoristComponent implements OnInit {
       }
     });
 
-    // Add cluster
     this.map.addCluster(this.mapMarkers);
+  }
+
+  plotHistoryLocations(): void {
+    this.map.clearAll();
+    const features: Array<Feature<GeometryObject>> = [];
+
+    this.mapLocationHistory.map(location => {
+      const feature: Feature<GeometryObject> = <Feature<any>>{
+        type: 'Feature',
+        properties: {},
+        geometry: {
+          type: 'Point',
+          coordinates: [location.longitude, location.latitude]
+        }
+      };
+      features.push(feature);
+    });
+    if (features.length > 0) {
+      this.map.drawPolyline(features);
+      this.map.addMarker(this.createMotoristMarker(this.selectedMotorist));
+    }
+  }
+
+  createMotoristMarker(motorist): Feature<GeometryObject> {
+    const markerBody: HTMLElement = document.createElement('div');
+    const markerElement: HTMLElement = document.createElement('div');
+    const imageElement: HTMLImageElement = document.createElement('img');
+
+    imageElement.className = 'motorist-marker-image';
+    imageElement.src = 'api/motorist/public/profileImage?id=' + motorist.id;
+
+    markerElement.appendChild(markerBody);
+    markerBody.appendChild(imageElement);
+    markerBody.className = 'motorist-marker bounce';
+
+    markerBody.addEventListener('click', () => window.alert(motorist.firstName + ' ' + motorist.lastName));
+
+    const marker: Feature<GeometryObject> = <Feature<any>>{
+      type: 'Feature',
+      properties: { iconSize: [50, 50], icon: markerElement },
+      geometry: {
+        type: 'Point',
+        coordinates: [motorist.location.longitude, motorist.location.latitude]
+      }
+    };
+
+    return marker;
   }
 
   mapLocationHistory = new Array();
@@ -86,29 +135,46 @@ export class MapMotoristComponent implements OnInit {
 
   onMapTabChanged(tab: TabComponent) {
     this.mapSelectedTabIndex = tab.index;
-    switch (tab.index) {
-    case 0:
-        this.plotMotoristLocations();
-        break;
-    case 1:
-        //this.plotHistoryLocations();
-        break;
+    if (tab.index === 0) {
+      this.plotMotoristLocations();
+    } else if (tab.index === 1) {
+      this.plotHistoryLocations();
     }
   }
 
-  mapTableCellClick(event) {
-    console.log(event);
+  mapTableCellClick(event: TableClickEvent) {
+    this.selectedMotorist = event.data;
+
+    if (event.cellIndex === 0) {
+      this.hideMotoristModal = false;
+    } else {
+      this.centerOnMotorist(this.selectedMotorist);
+    }
   }
 
-  mapTableCellRightClick(event) {
-    console.log(event);
+  centerOnMotorist(motorist) {
+    if (motorist.location) {
+      this.map.setZoom(12);
+      this.map.resize();
+      this.map.setCenter(
+        motorist.location.latitude,
+        motorist.location.longitude
+      );
+      this.map.moveTo(motorist.location.latitude, motorist.location.longitude);
+    }
   }
 
-  mapHistoryTableCellClick(event) {
-    console.log(event);
+  mapTableCellRightClick(event: TableClickEvent) {
+    this.selectedMotorist = event.data;
   }
 
-  onContextMenu(event) {
+  mapHistoryTableCellClick(event: TableClickEvent) {
+    this.selectedMotorist = event.data;
+    this.map.setZoom(16);
+    this.map.moveTo(event.data.latitude, event.data.longitude);
+  }
+
+  onContextMenu(event: TableClickEvent) {
     console.log(event);
   }
 

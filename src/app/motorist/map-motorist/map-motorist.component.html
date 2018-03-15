@@ -12,10 +12,21 @@
               class="inner-addon-input clear-focus" />
           </div>
           <div style="top: 50px; position: absolute; left: 8px; right: 8px; bottom: 0px;">
-            <data-table [data]="motorists" [dataLength]="motorists.length" [searchText]="mapSearchText" [searchColumns]="['documentId', 'firstName', 'lastName']"
-              [emptySearchText]="'nenhuma motorista foi encontrado'" [bodyTop]="'0px'" [bodyBottom]="'42px'" styleHeader="ui-datatable-header dark"
-              styleBody="ui-datatable-body dark" styleRow="ui-datatable-body-row dark" styleFooter="ui-datatable-footer dark"
-              stylePager="ui-table-pager-small" (onCellClick)="mapTableCellClick($event)" (onCellRightClick)="mapTableCellRightClick($event)">
+            <data-table 
+              [data]="motorists" 
+              [dataLength]="motorists.length"
+              [searchText]="mapSearchText"
+              [searchColumns]="['documentId', 'firstName', 'lastName']"
+              [emptySearchText]="'nenhuma motorista foi encontrado'"
+              [bodyTop]="'0px'"
+              [bodyBottom]="'42px'"
+              styleHeader="ui-datatable-header dark"
+              styleBody="ui-datatable-body dark"
+              styleRow="ui-datatable-body-row dark"
+              styleFooter="ui-datatable-footer dark"
+              stylePager="ui-table-pager-small"
+              (onCellClick)="mapTableCellClick($event)"
+              (onCellRightClick)="mapTableCellRightClick($event)">
 
               <column [key]="'id'" [header]="''">
                 <ng-template let-item="item">
