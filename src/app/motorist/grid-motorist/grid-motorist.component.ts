@@ -19,7 +19,6 @@ export class GridMotoristComponent {
   selectedMotorist: any;
   contextMenuSelected: any;
   
-
   public onCellClick(event) {
     event.target;
   }
