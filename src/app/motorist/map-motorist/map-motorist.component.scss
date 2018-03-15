@@ -1,5 +1,17 @@
-.map-sidabar {
-  width: 361px;
+
+.material-content-container{
+    padding:0;
+    margin:0;
+
+    div{
+        position:absolute; 
+        top:0; 
+        bottom:0; 
+        width:100%;
+    }
+}
+
+.map-sidebar {
   background-color: rgba(255, 255, 255, 0.95);
   position: absolute;
   top: 54px;
@@ -7,12 +19,14 @@
   bottom: 0px;
   border-right: 1px solid;
   color: #bbbbbb;
+  padding: 0;
 }
+
+/* TABS ********************************************************/
 
 .map-tabs > li {
   float: left;
-  line-height: 40px;
-  width: 120px;
+  line-height: 40px; 
   text-align: center;
   font-size: 16px;
   cursor: pointer;
@@ -46,22 +60,9 @@
   overflow: scroll;
 }
 
-.motorist-map-table > table > tbody > tr > td {
-  padding: 8px !important;
-  font-size: 14px !important;
-  vertical-align: top;
-  color: rgb(210, 210, 210);
-  text-shadow: 1px 1px 2px #000;
+.cnt-tab-motoristas{
+
 }
-
-.motorist-map-table > table > tbody > tr:hover {
-  background-color: rgba(0, 0, 0, 0.2) !important;
-  cursor: pointer;
-}
-
-/*.motorist-map-table > table > thead > tr >th >div {
-
-}*/
 
 .motorist-map-table-footer {
   border-top: 1px solid rgba(0, 0, 0, 0.45);
@@ -73,16 +74,7 @@
   bottom: 0px;
 }
 
-.motorist-map-table-footer > select {
-  float: right;
-  width: 48px;
-  margin: 0px 12px;
-  background: rgb(23, 28, 35);
-  border: 1px solid #000;
-  height: 26px;
-  color: #e4e4e5;
-  text-shadow: 1px 1px 1px #000;
-}
+
 
 .map-table-position-icon {
   font-size: 24px !important;
