@@ -1,0 +1,69 @@
+def label = "mypod-${UUID.randomUUID().toString()}"
+
+
+podTemplate(label: label, containers: [
+    containerTemplate(name: 'git', image: 'alpine/git', ttyEnabled: true, command: 'cat'),
+    containerTemplate(name: 'yarn', image: 'kkarczmarczyk/node-yarn', ttyEnabled: true, command: 'cat'),
+    containerTemplate(name: 'docker', image: 'docker', ttyEnabled: true, command: 'cat',
+    volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')]),
+    containerTemplate(name: 'kubectl', image: 'smesch/kubectl', ttyEnabled: true, command: 'cat',
+        volumes: [secretVolume(secretName: 'kube-config', mountPath: '/root/.kube')])],
+    volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')]) {
+
+    node(label) {
+        
+         
+         
+        stage('Git Project') {
+            sh 'echo Clonning Develop'
+            container('git') {
+                stage('Clone Branch Develop') {
+                    git branch: 'develop', credentialsId: 'cb7966c4-4894-496a-8a15-02e6b592c45c', url: 'https://github.com/Condusit/siga.git'
+                }
+            }
+        }
+         stage('Yarn') {
+            container('yarn') {
+                sh 'yarn -v'
+             /*   stage('Downloading all Dependences') {
+                     sh 'yarn'
+                }
+                stage('Yarn Tests') {
+                     sh 'yarn test-ci '
+                }
+                stage('Yarn Build') {
+                     sh 'yarn build '
+                     echo sh(returnStdout: true, script: 'env')
+                }*/
+            }
+        }
+       
+        stage('Build Image') {
+         
+         
+              container('docker') {
+               sh 'ls -al'
+              
+                  withCredentials([usernamePassword(credentialsId: 'dockerHub', 
+                  passwordVariable: 'dockerHubPassword',
+                  usernameVariable: 'dockerHubUser')]) {
+                    
+                  sh ('docker -v')
+                  sh ('docker images')
+                  sh ("docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}" )     
+                  sh ("docker build -t condusit/${JOB_NAME}:latest .")
+                  sh ("docker push condusit/${JOB_NAME}:latest")
+                 
+                    
+                    
+                //   sh 'docker -v'
+                //   sh 'docker build -t condusit/${JOB_NAME}:latest .'       
+                //   sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+                //   sh 'docker push condusit/${JOB_NAME}:latest'
+                
+                   
+            }
+        }
+    }
+   }
+}
