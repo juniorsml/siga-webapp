@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import sinon from 'sinon';
 
 import { LoginComponent } from '../../app/login/login.component';
 import { AuthService } from '../../app/shared/services/auth.service';
