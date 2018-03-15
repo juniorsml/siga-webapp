@@ -18,7 +18,7 @@ export class GridMotoristComponent {
   filterDistance: any;
   selectedMotorist: any;
   contextMenuSelected: any;
-
+  
   public onCellClick(event) {
     event.target;
   }

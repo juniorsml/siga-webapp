@@ -31,3 +31,43 @@
     border-radius: 50%;
     background-color: #eee;
 }
+
+//* BAterry
+.battery-level {
+    border-radius: 4px;
+    display: inline-block;
+    height: 20px;
+    width: 48px;
+    margin-top: 10px;
+}
+
+.battery-level-body {
+    border-radius: 4px;
+    text-align: center;
+    display: inline-block;
+    width: 46px;
+    height: 18px;
+    background-color: rgb(176, 178, 181);
+    line-height: 18px;
+    padding: 0px 3px;
+    font-size: 12px;
+    color: #3c3c3c;
+    text-shadow: 0px 0px 1px #fff;
+    position: absolute;
+}
+
+.battery-level-charge {
+    height: 100%;
+    position: absolute;
+    border-radius: 4px;
+    top: 0px;
+    left: 0px;
+}
+
+.battery-level-text {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+}
