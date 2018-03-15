@@ -15,6 +15,11 @@ export class GridMotoristComponent {
   filterDistance: any;
   selectedMotorist: any;
   contextMenuSelected: any;
+  styleClass: any;
+  placeText: any;
+  distance: any;
+  onPlacesKeyUp:any; 
+  onDistanceKeyUp:any;
 
   public onCellClick(event) {
     event.target;
