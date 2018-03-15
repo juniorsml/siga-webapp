@@ -10,7 +10,10 @@ export class GridMotoristComponent {
   @Input() dataLoading: boolean = true;
 
   text: any;
+  distance: any;
   motorist: any;
+  placeText: any;
+  styleClass: any;
   filterLocation: any;
   filterDistance: any;
   selectedMotorist: any;
@@ -35,5 +38,11 @@ export class GridMotoristComponent {
 
   public onPlacesFilterRemoved(event) {
     event.target;
+  }
+
+  public onPlacesKeyUp() {
+  }
+
+  public onDistanceKeyUp() {
   }
 }

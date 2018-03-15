@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
 
-import {
-  Feature,
-  GeometryObject
-} from 'geojson';
+import { Feature, GeometryObject } from 'geojson';
 
-import {} from '@types/leaflet';
 import LatLngBounds = L.LatLngBounds;
 import LatLng = L.LatLng;
+import {} from 'leaflet-marker-cluster';
 import Marker = L.Marker;
 import Polyline = L.Polyline;
 
@@ -16,6 +13,7 @@ import { Map } from '../models/Map';
 /**
  * Created by davidherod on 25/5/17.
  */
+
 @Injectable()
 export class MapService extends Map {
   private markers: Array<Marker> = [];
@@ -24,6 +22,7 @@ export class MapService extends Map {
   private map: L.Map;
   private container: HTMLElement;
   private mapElement: HTMLElement;
+
 
   public clearAll(): void {
     this.clearMarkers();
@@ -36,10 +35,10 @@ export class MapService extends Map {
   }
 
   public addCluster(markers: Array<Feature<GeometryObject>>): void {
-    const cluster = null;
-    markers.forEach(marker => {
-      cluster.addLayer(marker.properties['marker']);
-    });
+    const cluster = new L['MarkerClusterGroup']();
+
+    markers.map(m => cluster.addLayers(m.properties['marker']));
+
     this.map.addLayer(cluster);
     this.clusters.push(cluster);
   }
@@ -57,15 +56,20 @@ export class MapService extends Map {
 
   public createMapBoxMapInstance(mapElement) {
     this.mapElement = mapElement;
-    
-    L.mapbox.accessToken =
-      'pk.eyJ1IjoiY29uZHVzaXQiLCJhIjoiY2oyeG1wcjJuMDExNTJ4cThlemU3NWlsNCJ9.d1o1-L4u4_-aY_uvAn5krQ';
-    this.map = L.mapbox.map(this.mapElement, null, {
-      zoomControl: false,
-      worldCopyJump: true
-    })
-    .setView([40, -74.50], 9)
-    .addLayer(L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY29uZHVzaXQiLCJhIjoiY2oyeG1wcjJuMDExNTJ4cThlemU3NWlsNCJ9.d1o1-L4u4_-aY_uvAn5krQ'));
+
+    // L.mapbox.accessToken =
+    //   'pk.eyJ1IjoiY29uZHVzaXQiLCJhIjoiY2oyeG1wcjJuMDExNTJ4cThlemU3NWlsNCJ9.d1o1-L4u4_-aY_uvAn5krQ';
+    this.map = L
+      .map(this.mapElement, {
+        zoomControl: false,
+        worldCopyJump: true
+      })
+      .setView([-14.9034, -43.1917], 5)
+      .addLayer(
+        L.tileLayer(
+          'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY29uZHVzaXQiLCJhIjoiY2oyeG1wcjJuMDExNTJ4cThlemU3NWlsNCJ9.d1o1-L4u4_-aY_uvAn5krQ'
+        )
+      );
   }
 
   public addSource(): void {}
@@ -128,7 +132,7 @@ export class MapService extends Map {
       // }).addTo(this.map);
 
       // this.polyLines.push(polyline);
-      
+
       this.setBounds(points);
     }
   }
