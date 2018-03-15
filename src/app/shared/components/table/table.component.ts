@@ -20,6 +20,7 @@ import {
 } from '@angular/core';
 import { SearchPipe } from '../../filters/search.pipe';
 import { DomHandler } from '../../../motorist/dom-handler/domhandler.service';
+import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
 
 @Component({
   selector: `data-table`,
@@ -59,6 +60,29 @@ export class DataTableComponent implements DoCheck, OnChanges, AfterViewInit {
   currentPage: number = 1;
   pageQuantity: number = 10;
   search: SearchPipe;
+
+  //Scroll Component
+  opts: ISlimScrollOptions;
+  scrollEvents: EventEmitter<SlimScrollEvent>;
+
+  ngOnInit() {
+    this.scrollEvents = new EventEmitter<SlimScrollEvent>();
+    this.opts = {
+      alwaysVisible: true,
+      gridOpacity: '0.2', 
+      barOpacity: '0.5',
+      gridBackground: '#ccc',
+      gridWidth: '6px',
+      gridMargin: '2px 2px',
+      barBackground: 'rgba(55, 56, 58, 0.6)',
+      barWidth: '5px',
+      barMargin: '2px 2px'
+    }
+
+    
+  }
+
+
 
   constructor(
     private changeDetector: ChangeDetectorRef,

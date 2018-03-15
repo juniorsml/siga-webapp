@@ -17,7 +17,7 @@ import { FormsModule } from '@angular/forms';
 
 import { SearchPipe } from '../filters/search.pipe';
 import { PlacesPipe } from '../filters/places.pipe';
-import { SlimScroll } from 'angular-io-slimscroll';
+import { NgSlimScrollModule, SLIMSCROLL_DEFAULTS } from 'ngx-slimscroll';
 import { 
   ColumnComponent,
   MenuItemComponent,
@@ -48,15 +48,23 @@ import { TimeElapsedAsTextPipe } from '../filters/time-elapsed.pipe';
     MenuItemComponent,
     DataTableComponent,
     EmptyTableComponent,
-    ContextMenuComponent,
-    SlimScroll
+    ContextMenuComponent
+    
+
   ],
   imports: [
     FormsModule,
-    CommonModule
+    CommonModule,
+    NgSlimScrollModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    {
+      provide: SLIMSCROLL_DEFAULTS,
+      useValue: {
+        alwaysVisible : false
+      }
+    }
   ],
   exports: [
     PlacesPipe,

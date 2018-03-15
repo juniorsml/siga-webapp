@@ -4575,6 +4575,10 @@ neo-async@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.5.0.tgz#76b1c823130cca26acfbaccc8fbaf0a2fa33b18f"
 
+ngx-slimscroll@^3.7.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/ngx-slimscroll/-/ngx-slimscroll-3.7.0.tgz#a6bb93dee0c72654ee875c8eb704080e55e72f33"
+
 nise@^1.2.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/nise/-/nise-1.3.0.tgz#7d6d506e64a0e37959495157f30a799c0436df72"

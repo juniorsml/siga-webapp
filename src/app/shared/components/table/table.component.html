@@ -15,7 +15,10 @@
                     </table>
                 </div>
 
-                <div slimScroll width="auto" height="82%" size="7px" [class]="styleBody" [style.bottom]="bodyBottom" [style.top]="bodyTop">
+
+                   
+
+                <div slimScroll [options]="opts" [scrollEvents]="scrollEvents" [class]="styleBody" [style.bottom]="bodyBottom" [style.top]="bodyTop">
                     <table class="ui-datatable-body-table">
                         <tbody #bodyElement class="ui-datatable-body-tbody">
                         <tr #bodyRowElement
@@ -41,6 +44,9 @@
                         <!-- <span>{{emptySearchText}}</span>-->
                     </div>
                 </div>
+               
+
+
 
                 <div #footerElement [class]="styleFooter">
                     <div class="ui-datatable-footer-wrapper">
