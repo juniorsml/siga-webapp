@@ -135,9 +135,12 @@ div, *{
   cursor: pointer;
 }
 
-/*.motorist-map-table > table > thead > tr >th >div {
-
-}*/
+.container-grid-map .slimscroll-wrapper{
+    height:92% !important;
+}
+.container-grid-motorist .slimscroll-wrapper{
+    height:82% !important;
+}
 
 .motorist-map-table-footer {
   border-top: 1px solid rgba(0, 0, 0, 0.45);
@@ -266,3 +269,4 @@ div, *{
   -webkit-animation-name: bounce;
   animation-name: bounce;
 }
+

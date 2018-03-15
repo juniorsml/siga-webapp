@@ -25,26 +25,25 @@
 /* TABS ********************************************************/
 
 .map-tabs > li {
-  float: left;
-  line-height: 40px; 
-  text-align: center;
-  font-size: 16px;
-  cursor: pointer;
-  background: rgba(186, 187, 189, 0.95);
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.map-tabs > li.active {
-  cursor: default;
-  background-color: rgba(253, 253, 253, 0);
-  border-right-color: #777777;
-}
-
-.map-tabs > li.active > .ui-tabview-tab-title {
-  color: #3a4358;
-  font-weight: 400;
-  font-size: 12px;
-  font-family: 'Open Sans', sans-serif;
+    line-height: 40px; 
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    background: rgba(186, 187, 189, 0.95);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    
+    &.active{
+        cursor: default;
+        background-color: rgba(253, 253, 253, 0);
+        border-right-color: #777777;
+       
+        &.ui-tabview-tab-title {
+              color: #3a4358;
+              font-weight: 400;
+              font-size: 12px;
+              font-family: 'Open Sans', sans-serif;
+          }
+    }
 }
 
 .map-tabs > .ui-tabview-tab > .ui-tabview-tab-title {
@@ -60,8 +59,37 @@
   overflow: scroll;
 }
 
-.cnt-tab-motoristas{
 
+/* Container tabs ****************************/
+.container-grid{  
+    top: 50px; 
+    position: absolute; 
+    left: 8px; 
+    right: 8px; 
+    bottom: 8px;
+}
+
+.cnt-tab-motoristas{
+    position: absolute; 
+    top: 42px; 
+    bottom: 0px; 
+    left: 0px; 
+    right: 0px; 
+
+    .columns{
+        position: absolute; 
+        left: 8px; 
+        right: 8px;  
+        top: 8px;
+    }
+}
+
+
+.container-grid-map .slimscroll-wrapper{
+    height:92% !important;
+}
+.container-grid-motorist .slimscroll-wrapper{
+    height:82% !important;
 }
 
 .motorist-map-table-footer {
