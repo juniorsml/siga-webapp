@@ -39,8 +39,10 @@
           <!-- <motorist-map [hasFocus]="mapHasFocus" [motoristsHistory]="mapMotoristHistory" [motorists]="motorists" [gridSelectedMotorist]="mapSelectedMotorist">
           </motorist-map> -->
         </sga-tab>
+        <sga-tab heading="Associar">
+          <sga-motorist-associate-dialog [motorists]="motorists" [showDialog]="showAssociateModal"></sga-motorist-associate-dialog>
+        </sga-tab>
       </sga-tabs>
-      <!-- <sga-motorist-associate-dialog [motorists]="motorists" [showDialog]="showAssociateModal"></sga-motorist-associate-dialog> -->
     </div>
   </div>
 </div>
