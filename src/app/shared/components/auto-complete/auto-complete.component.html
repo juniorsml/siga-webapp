@@ -1,0 +1,18 @@
+<div [class]="styleClass">
+  <input class="ui-autocomplete-input" #input (keyup)="onKeyUp($event)" (focus)="onFocus()" (keydown)="onKeyDown($event)" [placeholder]="placeholder">
+  <div *ngIf="hasFocus && suggestions != null">
+    <ul *ngFor="let suggestion of suggestions; let i = index">
+      <li (click)="onSelect(suggestion)" [class.focus]="suggestionIndex == i">
+        <ng-template [ngTemplateOutlet]="{item: suggestion}" [ngTemplateOutlet]="template"></ng-template>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="hasFocus && suggestions != null && suggestions.length == 0 && !searching">
+    <ul>
+      <li (click)="noSuggestionClick()">
+        <span>{{noSuggestionsText}}</span>
+      </li>
+    </ul>
+  </div>
+</div>
+<ng-content></ng-content>
