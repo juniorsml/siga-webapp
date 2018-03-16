@@ -26,6 +26,7 @@ import {
   ContextMenuComponent
 } from '../components/table/table.component';
 import { TimeElapsedAsTextPipe } from '../filters/time-elapsed.pipe';
+import { AutoCompleteComponent } from '../components/auto-complete/auto-complete.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,9 @@ import { TimeElapsedAsTextPipe } from '../filters/time-elapsed.pipe';
     MapFilterComponent,
     DropdownBodyComponent,
     DropdownHeaderComponent,
+
+    AutoCompleteComponent,
+
     AccordionComponent,
     AccordionHeaderComponent,
 
@@ -79,6 +83,9 @@ import { TimeElapsedAsTextPipe } from '../filters/time-elapsed.pipe';
     MapFilterComponent,
     DropdownBodyComponent,
     DropdownHeaderComponent,
+
+    AutoCompleteComponent,
+
     AccordionComponent,
     AccordionHeaderComponent,
     
