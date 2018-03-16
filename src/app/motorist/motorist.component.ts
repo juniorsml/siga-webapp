@@ -20,17 +20,19 @@ export class MotoristComponent implements OnInit {
       case 1:
         this.mapHasFocus = true;
         break;
+      case 2:
+        this.mapHasFocus = false;
     }
     this.selectedTabIndex = tab.index;
   }
-
+  
   ngOnInit() {
     this.motorists = [
       {
         id: '58d908b3346b164247cf8494',
         username: 'gustavo.gandolfo@kronamaxxi.com.br',
         password:
-          '$2a$10$eNErh1keYPi3pIv2EiNCWO7/YVivWvVu3YlRLcqASpK2vaMMudsRe',
+        '$2a$10$eNErh1keYPi3pIv2EiNCWO7/YVivWvVu3YlRLcqASpK2vaMMudsRe',
         token: '$2a$10$jEdu5uIr65XDDMeCBtzfA.VNnXdXmf/9mY/Q1g3k1pmxWje/bNbv6',
         accountName: null,
         accountId: null,
@@ -53,7 +55,7 @@ export class MotoristComponent implements OnInit {
         ],
         device: {
           deviceId:
-            'd5ZXQ5X-iM8:APA91bEgBaHTuKYiIa5TNGp7xD79sp_h3y64Wvb_wvvF1viI0oyfxjn3wBnc50gCsjN5pMS0GpIeOGSoG1lho5-tnSvbu7ZtpyuvyryZQd3SWb-U3DRIU6r6Y7fYVyODj6jCmjqD1lcj',
+          'd5ZXQ5X-iM8:APA91bEgBaHTuKYiIa5TNGp7xD79sp_h3y64Wvb_wvvF1viI0oyfxjn3wBnc50gCsjN5pMS0GpIeOGSoG1lho5-tnSvbu7ZtpyuvyryZQd3SWb-U3DRIU6r6Y7fYVyODj6jCmjqD1lcj',
           platform: 'android',
           appVersion: 15
         },
