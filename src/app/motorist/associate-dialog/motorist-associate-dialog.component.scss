@@ -1,0 +1,161 @@
+.motorist-admin-left-container {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 400px;
+  bottom: 0px;
+  background-color: #fff;
+}
+
+.motorist-admin-right-container {
+  position: absolute;
+  top: 0px;
+  left: 416px;
+  right: 0px;
+  bottom: 0px;
+  background-color: #fff;
+}
+
+.motorist-admin-table {
+  position: absolute;
+  top: 38px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+.motorist-admin-summary-wrapper {
+  right: 10px;
+  left: 10px;
+  position: absolute;
+  color: #4a5879;
+}
+
+.motorist-admin-summary {
+  left: 0px;
+  right: 0px;
+  position: absolute;
+  border-radius: 2px;
+  border: 1px solid rgba(92, 184, 92, 0.25);
+  background-color: rgba(92, 184, 92, 0.1);
+  color: #333;
+}
+
+.motorist-admin-summary-row {
+  display: inline-block;
+  width: 100%;
+  line-height: 26px;
+  margin-top: 1px;
+  border-radius: 2px;
+  font-size: 14px;
+  float: left;
+}
+
+.motorist-admin-summary-item {
+  width: 25%;
+  float: left;
+  text-indent: 8px;
+  line-height: 36px;
+  width: 95px;
+  float: left;
+ /* background-color: rgba(74, 88, 121, 0.03)*/
+}
+
+.motorist-admin-summary-total {
+  width: 50%;
+  line-height: 38px;
+  float: left;
+  text-indent: 8px;
+  /*background-color: rgba(74, 88, 121, 0.03)*/
+}
+
+.motorist-admin-add-wrapper {
+  top: 126px;
+  right: 10px;
+  left: 10px;
+  position: absolute;
+  color: #324263;
+}
+
+.motorist-admin-add-list {
+  top: 86px;
+  height: 106px;
+}
+
+.motorist-admin-remove-wrapper {
+  top: 334px;
+  right: 10px;
+  left: 10px;
+  position: absolute;
+  color: #324263;
+  height:120px;
+}
+
+.motorist-admin-remove-list {
+  height: 92px;
+}
+
+.motorist-admin-add-item-valid {
+  border: 1px solid #00a500;
+  font-size: 12px;
+  border-radius: 3px;
+  background: #f5fff5;
+  margin: 3px 3px 1px 0px;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 12px;
+  color: #006300;
+}
+
+.motorist-admin-add-item-validating {
+  border: 1px solid #00a500;
+  font-size: 12px;
+  border-radius: 3px;
+  background: #f5fff5;
+  margin: 3px 3px 1px 0px;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 12px;
+  color: #006300;
+}
+
+.motorist-admin-add-item-invalid {
+  font-size: 12px;
+  border-radius: 3px;
+  margin: 3px 3px 1px 0px;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 12px;
+  border: 1px solid #a50000;
+  background: #fff5f5;
+  color: #920000;
+}
+
+.motorist-admin-item-close {
+  float: right;
+  line-height: 30px !important;
+  width: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.motorist-admin-update-account {
+
+}
+
+.motorist-admin-changes-dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -100px;
+  margin-top: -80px;
+  background-color: #FFFFFF;
+  box-shadow: 0px 0px 3px #888;
+  text-align: center;
+  width: 200px;
+  padding: 12px 0px;
+  color: #000;
+  display: block;
+  font-family: 'Varela Round', sans-serif;
+  border-radius: 8px;
+}
