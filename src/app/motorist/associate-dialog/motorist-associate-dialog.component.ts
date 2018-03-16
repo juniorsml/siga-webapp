@@ -38,6 +38,14 @@ export class MotoristAssociateDialogComponent implements OnInit {
     return this.removeList.find(m => m.id == motoristId);
   }
 
+  onMotoristSelected(event) {
+    event
+  }
+
+  onAdminMotoristCellClick(event) {
+    event
+  }
+
   ngOnInit() {}
 
   applyChanges() {}
