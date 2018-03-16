@@ -102,7 +102,7 @@
           </div>
 
           <div style="top: 70px; position: absolute; left: 4px;  right: 4px; bottom: 0px;">
-            <!-- <data-table [data]="currentList" [dataLength]="currentList.length" [searchText]="searchText" [searchColumns]="['documentId', 'firstName', 'lastName', 'email', 'cellPhone']"
+            <data-table [data]="currentList" [dataLength]="currentList.length" [searchText]="searchText" [searchColumns]="['documentId', 'firstName', 'lastName', 'email', 'cellPhone']"
               [emptySearchText]="'nenhuma motorista foi encontrado'" [bodyBottom]="'42px'" [bodyTop]="'24px'" (onCellClick)="onAdminMotoristCellClick($event)">
 
               <column [key]="'id'" [header]="''" [minWidth]="'60'" [fixedWidth]="'60'">
@@ -143,7 +143,7 @@
                   <span style="color: red; padding: 10px 0px; font-size: 18px;" class="fas fa-times" aria-hidden="true"></span>
                 </ng-template>
               </column>
-            </data-table> -->
+            </data-table>
           </div>
         </div>
       </div>
@@ -152,7 +152,7 @@
     <!-- <loading-spinner [isHidden]="!isUpdating" text="Aplicando mudanças...">
     </loading-spinner> -->
 
-    <!-- <sga-modal *ngIf="!hideAdminErrorModal">
+    <sga-modal *ngIf="!hideAdminErrorModal">
       <div class="admin-error-dialog-overlay">
         <div class="admin-error-dialog">
           <div style="width: 440px; height: 60px; display: inline-block; margin-top: 52px;">
@@ -168,6 +168,6 @@
           </div>
         </div>
       </div>
-    </sga-modal> -->
+    </sga-modal>
   </sga-modal>
 </div>
