@@ -29,7 +29,8 @@
       <!-- <sga-map-filter (placesFiltered)="onPlacesFiltered($event)" (filterRemoved)="onPlacesFilterRemoved($event)"  class="columns column"> 
       </sga-map-filter> -->
 
-  <div class="container-grid">
+
+  <div class="container-grid container-grid-motorist">
     <data-table 
       [data]="motorists | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
       [dataLength]="motorists.length" 
@@ -39,6 +40,7 @@
       [bodyBottom]="'42px'" 
       [bodyTop]="'26px'"
       (onCellClick)="onCellClick($event)"
+
       (onCellRightClick)="onCellRightClick($event)">
       <table-empty>
         <ng-template>
