@@ -18,7 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { SearchPipe } from '../filters/search.pipe';
 import { PlacesPipe } from '../filters/places.pipe';
 import { NgSlimScrollModule, SLIMSCROLL_DEFAULTS } from 'ngx-slimscroll';
-import { 
+import {
   ColumnComponent,
   MenuItemComponent,
   DataTableComponent,
@@ -27,6 +27,11 @@ import {
 } from '../components/table/table.component';
 import { TimeElapsedAsTextPipe } from '../filters/time-elapsed.pipe';
 import { AutoCompleteComponent } from '../components/auto-complete/auto-complete.component';
+import {
+  ListViewComponent,
+  ListViewItemComponent,
+  ListViewEmptyComponent
+} from '../components/listview/listview.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +50,10 @@ import { AutoCompleteComponent } from '../components/auto-complete/auto-complete
 
     AutoCompleteComponent,
 
+    ListViewComponent,
+    ListViewItemComponent,
+    ListViewEmptyComponent,
+
     AccordionComponent,
     AccordionHeaderComponent,
 
@@ -53,20 +62,14 @@ import { AutoCompleteComponent } from '../components/auto-complete/auto-complete
     DataTableComponent,
     EmptyTableComponent,
     ContextMenuComponent
-    
-
   ],
-  imports: [
-    FormsModule,
-    CommonModule,
-    NgSlimScrollModule
-  ],
+  imports: [FormsModule, CommonModule, NgSlimScrollModule],
   providers: [
     AuthService,
     {
       provide: SLIMSCROLL_DEFAULTS,
       useValue: {
-        alwaysVisible : false
+        alwaysVisible: false
       }
     }
   ],
@@ -86,9 +89,13 @@ import { AutoCompleteComponent } from '../components/auto-complete/auto-complete
 
     AutoCompleteComponent,
 
+    ListViewComponent,
+    ListViewItemComponent,
+    ListViewEmptyComponent,
+
     AccordionComponent,
     AccordionHeaderComponent,
-    
+
     ColumnComponent,
     MenuItemComponent,
     DataTableComponent,
@@ -96,4 +103,4 @@ import { AutoCompleteComponent } from '../components/auto-complete/auto-complete
     ContextMenuComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule {}
