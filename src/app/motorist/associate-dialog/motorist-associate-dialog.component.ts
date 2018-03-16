@@ -18,10 +18,12 @@ export class MotoristAssociateDialogComponent implements OnInit {
 
   private _motorists: Array<any> = [];
 
+  public addList: Array<any> = [];
   public removeList: Array<any> = [];
   public currentList: Array<any> = [];
-  public hideAdminErrorModal: false;
+
   public searchText: any;
+  public hideAdminErrorModal = true;
 
   constructor() {}
 
@@ -37,8 +39,6 @@ export class MotoristAssociateDialogComponent implements OnInit {
   }
 
   ngOnInit() {}
-
-  addList() {}
 
   applyChanges() {}
 }
