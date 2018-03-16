@@ -20,7 +20,7 @@
         <div class="motorist-admin-add-wrapper">
           <div class="admin-section-header">Adicionar Motorista</div>
           <div>
-            <!-- <auto-complete minLength="3" noSuggestionsText="Nenhum motorista encontrado" url="api/motorist/search?query=" placeholder="Digite o número do documento"
+            <sga-auto-complete minLength="3" noSuggestionsText="Nenhum motorista encontrado" url="api/motorist/search?query=" placeholder="Digite o número do documento"
               style="width: 100%;" type="text" (itemSelected)="onMotoristSelected($event)">
               <ng-template let-item="item">
                 <div class="autocomplete-suggestion">
@@ -35,7 +35,7 @@
                   </span>
                 </div>
               </ng-template>
-            </auto-complete> -->
+            </sga-auto-complete>
           </div>
           <div>
             <!-- <list-view [listItems]="addList" styleClass="admin-list motorist-admin-add-list">
