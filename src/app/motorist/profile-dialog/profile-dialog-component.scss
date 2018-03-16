@@ -2,81 +2,114 @@
 .cnt-dialog{
     width: 100%; 
     height: 100%; 
-    background-color: rgba(0, 0, 0, 0.25); 
+    background-color: rgba(0, 0, 0, 0.4); 
     position: fixed; 
-    z-index: 3; 
+    z-index: 999; 
     left: 0px; 
     top: 0px;
 }
 
+.profile-photo{
+    width: 100%; 
+    max-width: 196px; 
+    height: 196px; 
+    display: block;  
+    box-shadow: 0px 0px 3px #333; 
+    background: #aaaaaa url("/assets/layout/unknown_user.png") no-repeat center center;
+
+    img{
+      width: 196px; 
+      height: 196px;
+    }
+}
+
+
+
 
 .trip-dialog-container {  
-  position: absolute;
-  top: 42px;
-  bottom: 0px;  
-  left: 0px;
-  right: 0px;
-  background-color: #ffffff; 
+    position: absolute;
+    top: 42px;
+    bottom: 0px;  
+    left: 0px;
+    right: 0px;
+    background-color: #ffffff; 
 }
 
 .sidbar {   
-  position: relative;    
-  width: 400px;
-  background: #fdfdfd;  
-  height: 100%;   
-  border-right: 1px solid #d4d4d4;
-  min-height: 400px;
+    position: relative;    
+    width: 400px;
+    background: #fdfdfd;  
+    height: 100%;   
+    border-right: 1px solid #d4d4d4;
+    min-height: 400px;
 }
 
 .content-body { 
-  position: absolute;
-  left: 50%;
-  top: 100px;
-  width: 920px;
-  margin-left: -460px;
-  padding: 16px 16px 62px 16px;
-  background: #ffffff;
-  box-shadow: 1px 1px 12px #000;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 40px;
+    width: 100%;
+    max-width: 920px;
+    padding: 22px;
+    background: #ffffff;
+    box-shadow: 1px 1px 12px #000;
+
+    .column{
+        margin:0;
+        padding:0;
+    }
+    .header-modal{
+        margin-bottom:20px;
+    }
+    .header-modal-title{
+        margin-bottom:17px;
+    }
+    .motorist-profile-info {        
+        padding-left:25px;
+    }
 }
+        
 
 .ui-button-close {
-  position: absolute;
-  right: 50%;
-  margin-right: -102px;
-  bottom: 12px;
-  color: #2196f3;
-  font-size: 14px;
-  padding: 10px 80px;
-  border-radius: 4px;
-  cursor: pointer;
+    margin: 0px auto;
+    color: #2196f3;
+    font-size: 14px;
+    padding: 10px 69px;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+      background-color: #f3f3f3;
+    }
 }
 
-.ui-button-close:hover {
-  background-color: #f3f3f3;
-}
+
 
 .button-container {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
 }
 
 .ui-button-primary {
-  border: 1px solid #5cb85c;
-  background: #5cb85c;
-  color: #fff;
-  padding: 8px 0px;
-  border-radius: 4px;
-  font-size: 13px;
-  width: 160px;
-  text-align: center;
-  cursor: pointer;
+    border: 1px solid #5cb85c;
+    background: #5cb85c;
+    color: #fff;
+    padding: 8px 0px;
+    border-radius: 4px;
+    font-size: 13px;
+    width: 160px;
+    text-align: center;
+    cursor: pointer;
+
+    &:focus {
+        outline: 0;
+        box-shadow: 0px 0px 1px rgb(0, 121, 255);
+      }
 }
 
-.ui-button-primary:focus {
-  outline: 0;
-  box-shadow: 0px 0px 1px rgb(0, 121, 255);
-}
+.ui-button-primary
 
 .ui-button-secondary {
   border-color: #ececec;
@@ -107,36 +140,22 @@
   line-height: 50px;
 }
 
-.page-header > h3 {
+.title-modal {
   font-weight: 300;
-  float: left;
   font-family: 'Open Sans', sans-serif;
   color: #424248;
   letter-spacing: 2px;
   font-size: 20px;
 }
-
-.group {
-  border-bottom: 1px solid #f3f3f3;
-  float: left;
-  width: 100%;
-}
-
-.group-header {
-  height: 40px;
-  margin-top: 20px;
-}
-
-.group-header > h4 {
+.ttl-profile {
   font-weight: 300;
-  float: left;
   color: #333333;
   letter-spacing: 1px;
 }
 
 .ui-icon-info {
   color: #7182a9;
-  float: right;
+  text-align: right;
   cursor: pointer;
 }
 
@@ -156,10 +175,6 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-.motorist-profile-info {
-  list-style-type: none;
-  min-width: 150px;
-}
 
 .motorist-profile-info-item {
   height: 56px;
@@ -283,9 +298,7 @@
   line-height: 16px;
   font-size: 15px;
   font-family: 'Source Sans Pro', sans-serif;
-  color: #424242;
-  float: left;
-  width: 206px;
+  color: #424242;  
 }
 
 /************************************* Vehicle tab *****************************************/
