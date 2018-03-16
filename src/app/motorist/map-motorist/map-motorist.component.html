@@ -9,7 +9,7 @@
         (tabSelected)="onMapTabSelected($event)" 
         (tabChanged)="onMapTabChanged($event)">
       <sga-tab heading="Motoristas">
-          <div class="cnt-tab-motoristas">
+          <div class="cnt-tab cnt-tab-motoristas">
             <div class="columns">
                 <div class="column">     
                     <p class="control has-icons-left"> 
@@ -97,11 +97,19 @@
           </div>
       </sga-tab>
       <sga-tab heading="Histórico">
-        <div style="position: absolute; top: 42px; bottom: 0px; left: 0px; right: 0px; ">
+        <div class="cnt-tab cnt-tab-historico">
           <div>
-            <data-table [data]="mapLocationHistory" [dataLength]="mapLocationHistory.length" [searchColumns]="['documentId', 'firstName', 'lastName']"
-              [bodyTop]="'0px'" [bodyBottom]="'42px'" styleHeader="ui-datatable-header dark" styleBody="ui-datatable-body dark"
-              styleFooter="ui-datatable-footer dark" stylePager="ui-table-pager-small" (onCellClick)="mapHistoryTableCellClick($event)">
+            <data-table 
+                [data]="mapLocationHistory" 
+                [dataLength]="mapLocationHistory.length" 
+                [searchColumns]="['documentId', 'firstName', 'lastName']"
+                [bodyTop]="'0px'" 
+                [bodyBottom]="'42px'" 
+                styleHeader="no-header-table" 
+                styleBody="ui-datatable-body dark"
+                styleFooter="ui-datatable-footer dark" 
+                stylePager="ui-table-pager-small" 
+                (onCellClick)="mapHistoryTableCellClick($event)">
               <table-empty>
                 <ng-template>
                   <div *ngIf="historyDataLoading" style="position: absolute; top: -40px; bottom: 0px; left: 0px; right: 0px">

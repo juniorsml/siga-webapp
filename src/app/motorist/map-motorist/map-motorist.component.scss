@@ -60,7 +60,7 @@
 }
 
 
-/* Container tabs ****************************/
+/* Container Tabs ********************************************/
 .container-grid{  
     top: 50px; 
     position: absolute; 
@@ -68,29 +68,32 @@
     right: 8px; 
     bottom: 8px;
 }
-
-.cnt-tab-motoristas{
+.cnt-tab {
     position: absolute; 
     top: 42px; 
     bottom: 0px; 
     left: 0px; 
     right: 0px; 
-
-    .columns{
-        position: absolute; 
-        left: 8px; 
-        right: 8px;  
-        top: 8px;
-    }
 }
 
+  /* Tab Motoristas ********************************************/
+  .cnt-tab-motoristas .columns{
+      position: absolute; 
+      left: 8px; 
+      right: 8px;  
+      top: 8px;
+  }
+  
 
-.container-grid-map .slimscroll-wrapper{
-    height:92% !important;
-}
-.container-grid-motorist .slimscroll-wrapper{
-    height:82% !important;
-}
+
+  /* Tab Historico ********************************************/
+  .cnt-tab-historico{
+     
+  }
+
+
+
+
 
 .motorist-map-table-footer {
   border-top: 1px solid rgba(0, 0, 0, 0.45);
