@@ -3,7 +3,7 @@
   <div *ngIf="hasFocus && suggestions != null">
     <ul *ngFor="let suggestion of suggestions; let i = index">
       <li (click)="onSelect(suggestion)" [class.focus]="suggestionIndex == i">
-        <ng-template [ngTemplateOutlet]="{item: suggestion}" [ngTemplateOutlet]="template"></ng-template>
+        <ng-template [ngTemplateOutletContext]="{item: suggestion}" [ngTemplateOutlet]="template"></ng-template>
       </li>
     </ul>
   </div>
