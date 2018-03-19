@@ -20,12 +20,19 @@
         <div class="motorist-admin-add-wrapper">
           <div class="admin-section-header">Adicionar Motorista</div>
           <div class="cnt-autocomplete">
-            <sga-auto-complete  minLength="3" noSuggestionsText="Nenhum motorista encontrado" url="api/motorist/search?query=" placeholder="Digite o número do documento"
-              style="width: 100%;" type="text" (itemSelected)="onMotoristSelected($event)">
+            <sga-auto-complete 
+              [motorists]="motorists"
+              minLength="3"
+              noSuggestionsText="Nenhum motorista encontrado"
+              url="api/motorist/search?query="
+              placeholder="Digite o número do documento"
+              style="width: 100%;"
+              type="text"
+              (itemSelected)="onMotoristSelected($event)">
               <ng-template let-item="item">
                 <div class="autocomplete-suggestion">
                   <span>
-                    <img class="img-autocomplete" src="{{'/resources/images/flags/' + item.country +'.png'}}"
+                    <img class="img-autocomplete" src="{{'/assets/images/flags/' + item.country +'.png'}}"
                       alt="">
                     <img>
                     <span>
