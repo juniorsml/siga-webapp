@@ -24,6 +24,14 @@
   bottom: 0px;
 }
 
+.grid-associate{
+    top: 60px;
+    position: absolute;
+    left: 11px;
+    right: 11px;
+    bottom: 11px;
+}
+
 .motorist-admin-summary-wrapper {
   right: 10px;
   left: 10px;
@@ -83,12 +91,12 @@
 }
 
 .motorist-admin-remove-wrapper {
-  top: 334px;
+  top: 297px;
   right: 10px;
   left: 10px;
   position: absolute;
   color: #324263;
-  height:120px;
+  height: 97px;
 }
 
 .motorist-admin-remove-list {
@@ -144,18 +152,92 @@
 }
 
 .motorist-admin-changes-dialog {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -100px;
-  margin-top: -80px;
-  background-color: #FFFFFF;
-  box-shadow: 0px 0px 3px #888;
-  text-align: center;
-  width: 200px;
-  padding: 12px 0px;
-  color: #000;
-  display: block;
-  font-family: 'Varela Round', sans-serif;
-  border-radius: 8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -100px;
+    margin-top: -80px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 3px #888;
+    text-align: center;
+    width: 200px;
+    padding: 12px 0px;
+    color: #000;
+    display: block;
+    font-family: 'Varela Round', sans-serif;
+    border-radius: 8px;
 }
+
+.admin-section-header{
+  padding-left: 10px; 
+  width: 180px; 
+  float: left;
+
+}
+.cnt-custom-button{
+    position: absolute; 
+    left: 10px; 
+    right: 10px; 
+    bottom: 0px;
+
+    .custom-button{
+        background-color: #2ed06e;
+        color: #fff;
+        font-size: 14px;
+        border: none;
+        border-radius: 4px;
+        transition: all .2s ease;
+        position: relative;
+        width: 100%; 
+        padding: 10px 0px; 
+        bottom: 10px;
+
+        &:disable{
+           background-color: #fafafb;
+            cursor: not-allowed;
+            color: #7788a1;
+        }
+    }
+}
+
+
+.cnt-autocomplete{
+    margin: 0px 0 8px 0;
+    
+    .img-autocomplete{
+        width: 30px; 
+        height: 20px; 
+        float: left; 
+        margin: 8px 4px;
+        display: block;
+    }
+}
+.cnt-btn-search{
+    width: 360px;
+    margin: 10px 12px 0px 0;
+    float: right;
+}
+
+.list-view-empty{
+    position: absolute; 
+    top: 50%; 
+    left: 0px; 
+    right: 0px; 
+    margin-top: -20px;
+    
+    i{
+        color: #e9eaed; 
+        width: 100%; 
+        text-align: center; 
+        font-size: 20px; 
+        margin-bottom: 12px;
+    }
+    span{
+        width: 100%; 
+        text-align: center; 
+        display: block; 
+        color: #a5abb3; 
+        font-size: 12px;
+    }
+}
+

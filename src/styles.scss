@@ -14,6 +14,13 @@ div, *{
   height: 54px;
   background-color: #3a4358;
 }
+.cnt-img{
+    width: 40px;
+    height: 40px;
+    margin-left: 16%;
+    border-radius: 50%;
+    background-color: #eee;
+}
 
 .material-header-heading {
   height: 54px;
@@ -135,10 +142,13 @@ div, *{
   cursor: pointer;
 }
 
+
+/* SLIM SCROLL ************************/
 .container-grid-map .slimscroll-wrapper{
     height:92% !important;
 }
-.container-grid-motorist .slimscroll-wrapper{
+.container-grid-motorist .slimscroll-wrapper,
+.grid-associate .slimscroll-wrapper {
     height:82% !important;
 }
 .cnt-tab-historico .slimscroll-wrapper{
