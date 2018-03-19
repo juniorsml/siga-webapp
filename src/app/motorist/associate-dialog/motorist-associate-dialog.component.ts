@@ -33,7 +33,8 @@ export class MotoristAssociateDialogComponent implements OnInit {
   private setCurrentMotorists() {
     this.currentList = [];
     this.motorists.map(motorist => {
-      if (!this.motoristIsDuplicate(motorist.id)) this.currentList.push(motorist)
+      if (!this.motoristIsDuplicate(motorist.id))
+        this.currentList.push(motorist);
     });
   }
 
@@ -41,8 +42,8 @@ export class MotoristAssociateDialogComponent implements OnInit {
     return this.removeList.find(m => m.id == motoristId);
   }
 
-  public onMotoristSelected(event) {
-    event
+  public onMotoristSelected(motorist) {
+    this.addList.push(motorist);
   }
 
   public showMotoristModal(id) {
@@ -54,8 +55,27 @@ export class MotoristAssociateDialogComponent implements OnInit {
     this.showMotoristDialog = false;
   }
 
+  public undoAddMotorist(motorist) {
+    this.removeFromList(this.addList, motorist);
+  }
+
+  public deleteMotorist(motorist) {
+    this.removeFromList(this.currentList, motorist);
+    this.removeList.push(motorist);
+  }
+
+  public undoRemoveMotorist(motorist) {
+    this.removeFromList(this.removeList, motorist);
+    this.currentList.unshift(motorist);
+  }
+
+  private removeFromList(list, motorist) {
+    const indexToRemove = list.findIndex(m => m.id === motorist.id);
+    list.splice(indexToRemove, 1);
+  }
+
   onAdminMotoristCellClick(event) {
-    event
+    event;
   }
 
   ngOnInit() {}
