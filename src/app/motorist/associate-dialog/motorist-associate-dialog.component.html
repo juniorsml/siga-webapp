@@ -19,13 +19,13 @@
         </div>
         <div class="motorist-admin-add-wrapper">
           <div class="admin-section-header">Adicionar Motorista</div>
-          <div>
-            <sga-auto-complete minLength="3" noSuggestionsText="Nenhum motorista encontrado" url="api/motorist/search?query=" placeholder="Digite o número do documento"
+          <div class="cnt-autocomplete">
+            <sga-auto-complete  minLength="3" noSuggestionsText="Nenhum motorista encontrado" url="api/motorist/search?query=" placeholder="Digite o número do documento"
               style="width: 100%;" type="text" (itemSelected)="onMotoristSelected($event)">
               <ng-template let-item="item">
                 <div class="autocomplete-suggestion">
                   <span>
-                    <img style="width: 30px; height: 20px; float: left; margin: 8px 4px; display: block;" src="{{'/resources/images/flags/' + item.country +'.png'}}"
+                    <img class="img-autocomplete" src="{{'/resources/images/flags/' + item.country +'.png'}}"
                       alt="">
                     <img>
                     <span>
@@ -50,9 +50,9 @@
               </list-view-item>
               <list-view-empty>
                 <ng-template>
-                  <div style="position: absolute; top: 50%; left: 0px; right: 0px; margin-top: -20px;">
-                    <i class="fa fa-group" style="color: #e9eaed; width: 100%; text-align: center; font-size: 20px; margin-bottom: 12px;"></i>
-                    <span style="width: 100%; text-align: center; display: block; color: #a5abb3; font-size: 12px;">Não há motoristas para adicionar à sua conta</span>
+                  <div class="list-view-empty">
+                    <i class="fa fa-group"></i>
+                    <span>Não há motoristas para adicionar à sua conta</span>
                   </div>
                 </ng-template>
               </list-view-empty>
@@ -74,40 +74,42 @@
               </list-view-item>
               <list-view-empty>
                 <ng-template>
-                  <div style="position: absolute; top: 50%; left: 0px; right: 0px; margin-top: -20px;">
-                    <i class="fa fa-group" style="color: #e9eaed; width: 100%; text-align: center; font-size: 20px; margin-bottom: 12px;"></i>
-                    <span style="width: 100%; text-align: center; display: block; color: #a5abb3; font-size: 12px;">Não há motoristas para remover da sua conta</span>
+                  <div class="list-view-empty">
+                    <i class="fa fa-group"></i>
+                    <span>Não há motoristas para remover da sua conta</span>
                   </div>
                 </ng-template>
               </list-view-empty>
             </list-view>
           </div>
         </div>
-        <div style="position: absolute; left: 10px; right: 10px; bottom: 0px;">
-          <button (click)="applyChanges()" [disabled]="addList?.length == 0 && removeList?.length == 0" class="custom-button" style="width: 100%; padding: 10px 0px; bottom: 10px">
+        <div>
+          <button (click)="applyChanges()" [disabled]="addList?.length == 0 && removeList?.length == 0" class="custom-button" >
             aplicar mudanças
           </button>
         </div>
 
       </div>
       <div class="motorist-admin-right-container admin-section">
-        <div class="admin-section-header" style="padding-left: 10px; width: 180px; float: left;">
+        <div class="admin-section-header">
           Motoristas Associados
         </div>
+        <div class="inner-addon cnt-btn-search">       
+           <p class="control has-icons-left"> 
+              <input  [(ngModel)]="searchText" class="input"  placeholder="Buscar" type="text"/>
+              <span class="icon is-small is-left">
+                <i class="fa fa-search"></i>
+              </span>       
+            </p>
+        </div>
         <div>
-          <div style="width: 360px; margin: 6px 6px 0px 8px; float: right;" class="inner-addon">
-            <span class="glyphicons glyphicons-search left-addon"></span>
-            <span class="glyphicons glyphicons-remove right-addon"></span>
-            <input [(ngModel)]="searchText" placeholder="Buscar" type="text" class="inner-addon-input material-input" />
-          </div>
-
-          <div style="top: 70px; position: absolute; left: 4px;  right: 4px; bottom: 0px;">
+          <div class="grid-associate">
             <data-table [data]="currentList" [dataLength]="currentList.length" [searchText]="searchText" [searchColumns]="['documentId', 'firstName', 'lastName', 'email', 'cellPhone']"
               [emptySearchText]="'nenhuma motorista foi encontrado'" [bodyBottom]="'42px'" [bodyTop]="'24px'" (onCellClick)="onAdminMotoristCellClick($event)">
 
               <column [key]="'id'" [header]="''" [minWidth]="'60'" [fixedWidth]="'60'">
                 <ng-template let-item="item">
-                  <div style="width: 40px; height: 40px; border-radius: 50%; background-color: #eee">
+                  <div class="cnt-img">
                     <img *ngIf="item !=null" (click)="showMotoristModal(item)" style="width: 40px; height: 40px; border-radius: 50%;" src="{{'api/motorist/public/profileImage?id=' + item}}"
                       alt="">
                   </div>

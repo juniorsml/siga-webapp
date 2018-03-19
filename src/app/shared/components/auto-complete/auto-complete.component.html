@@ -1,5 +1,5 @@
 <div [class]="styleClass">
-  <input class="ui-autocomplete-input" #input (keyup)="onKeyUp($event)" (focus)="onFocus()" (keydown)="onKeyDown($event)" [placeholder]="placeholder">
+  <input class="input" #input (keyup)="onKeyUp($event)" (focus)="onFocus()" (keydown)="onKeyDown($event)" [placeholder]="placeholder">
   <div *ngIf="hasFocus && suggestions != null">
     <ul *ngFor="let suggestion of suggestions; let i = index">
       <li (click)="onSelect(suggestion)" [class.focus]="suggestionIndex == i">
