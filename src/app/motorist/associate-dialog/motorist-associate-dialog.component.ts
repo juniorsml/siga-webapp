@@ -18,6 +18,9 @@ export class MotoristAssociateDialogComponent implements OnInit {
 
   private _motorists: Array<any> = [];
 
+  public selectedMotorist: any;
+  public showMotoristDialog = false;
+
   public addList: Array<any> = [];
   public removeList: Array<any> = [];
   public currentList: Array<any> = [];
@@ -27,19 +30,28 @@ export class MotoristAssociateDialogComponent implements OnInit {
 
   constructor() {}
 
-  setCurrentMotorists() {
+  private setCurrentMotorists() {
     this.currentList = [];
     this.motorists.map(motorist => {
       if (!this.motoristIsDuplicate(motorist.id)) this.currentList.push(motorist)
     });
   }
 
-  motoristIsDuplicate(motoristId): boolean {
+  private motoristIsDuplicate(motoristId): boolean {
     return this.removeList.find(m => m.id == motoristId);
   }
 
-  onMotoristSelected(event) {
+  public onMotoristSelected(event) {
     event
+  }
+
+  public showMotoristModal(id) {
+    this.showMotoristDialog = true;
+    this.selectedMotorist = this.motorists.filter(m => m.id === id)[0];
+  }
+
+  public motoristDialogClose() {
+    this.showMotoristDialog = false;
   }
 
   onAdminMotoristCellClick(event) {
