@@ -152,22 +152,12 @@
     <!-- <loading-spinner [isHidden]="!isUpdating" text="Aplicando mudanças...">
     </loading-spinner> -->
 
-    <sga-modal *ngIf="!hideAdminErrorModal">
-      <div class="admin-error-dialog-overlay">
-        <div class="admin-error-dialog">
-          <div style="width: 440px; height: 60px; display: inline-block; margin-top: 52px;">
-            <span class="fas fa-exclamation-circle" aria-hidden="true" style="font-size: 42px; float: left;">
-            </span>
-            <span style="width:370px; float: left; margin-left: 26px; margin-top: 12px; text-align: left;">
-              {{adminErrorMessage}}
-            </span>
-          </div>
-          <div style="margin: 20px">
-            <button #dialogButton (click)="hideAdminErrorModal = !hideAdminErrorModal" class="button-thin">OK
-            </button>
-          </div>
-        </div>
-      </div>
+    <sga-modal>
+      <sga-profile-dialog
+        [showDialog]="showMotoristDialog"
+        [selectedMotorist]="selectedMotorist"
+        (onDialogClose)="motoristDialogClose()">
+      </sga-profile-dialog>
     </sga-modal>
   </sga-modal>
 </div>
