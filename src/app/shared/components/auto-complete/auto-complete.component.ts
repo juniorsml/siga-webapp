@@ -16,6 +16,7 @@ import {
   styleUrls: ['./auto-complete.component.scss']
 })
 export class AutoCompleteComponent {
+  @Input() motorists: Array<any>;
   @Input() suggestions: any[];
   @Input() styleClass: string = 'autocomplete';
   @Input() minLength: number;
@@ -117,7 +118,7 @@ export class AutoCompleteComponent {
   }
 
   search() {
-    console.log('search');
+    this.suggestions = this.motorists.filter(m => m.documentId.indexOf(this.inputElement.nativeElement.value) > -1)
     // this.dataService.get(this.url + this.inputElement.nativeElement.value)
     //     .toPromise()
     //     .then(data => {
