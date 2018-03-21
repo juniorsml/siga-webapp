@@ -1,34 +1,20 @@
 <div class="material-content-container">
  
-    <div [ngClass]="styleClass" class="columns level-left">
-        <div class="column is-3">     
-            <p class="control has-icons-left"> 
-              <input [(ngModel)]="text" class="input"  placeholder="Buscar" type="text"/>
-              <span class="icon is-small is-left">
-                <i class="fa fa-search"></i>
-              </span>       
-            </p>
-        </div>
-        <div class="column is-4 level-left">     
-            <p class="control has-icons-left"> 
-             <input #input [(ngModel)]="placeText" (keyup)="onPlacesKeyUp()" type="text" class="input" placeholder="Endereço / Região">
-              <span class="icon is-small is-left">
-                <i class="fa fa-map-marker"></i>
-              </span>       
-            </p>
-        </div>
-        <div class="column is-2">        
-            <p class="control has-icons-left"> 
-                <input [(ngModel)]="distance" (keyup)="onDistanceKeyUp()" type="text" class="input" placeholder="Distância (KM)">
-                <span class="icon is-small is-left">
-                    <i class="fa fa-location-arrow"></i>
-                </span>       
-            </p>
-        </div>
-      </div>
-      <!-- <sga-map-filter (placesFiltered)="onPlacesFiltered($event)" (filterRemoved)="onPlacesFilterRemoved($event)"  class="columns column"> 
-      </sga-map-filter> -->
-
+  <div [ngClass]="styleClass" class="columns level-left">
+    <div class="column is-3">     
+      <p class="control has-icons-left"> 
+        <input [(ngModel)]="text" class="input"  placeholder="Buscar" type="text"/>
+        <span class="icon is-small is-left">
+          <i class="fa fa-search"></i>
+        </span>       
+      </p>
+    </div>
+    <sga-map-filter 
+      (placesFiltered)="onPlacesFiltered($event)" 
+      (filterRemoved)="onPlacesFilterRemoved()"
+      class="column is-12">
+    </sga-map-filter>
+  </div>
 
   <div class="container-grid container-grid-motorist">
     <data-table 
