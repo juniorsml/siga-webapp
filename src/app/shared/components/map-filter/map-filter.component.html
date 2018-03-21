@@ -1,1 +1,19 @@
+<div [ngClass]="styleClass" class="columns level-left">
+  <div class="column is-4 level-left">
+    <p class="control has-icons-left">
+      <input #input [(ngModel)]="placeText" class="input" (keyup)="onPlacesKeyUp()" type="text" placeholder="Endereço / Região">
+      <span class="icon is-small is-left">
+        <i class="fa fa-map-marker"></i>
+      </span>
+    </p>
+  </div>
 
+  <div class="column is-4">
+    <p class="control has-icons-left">
+      <input [(ngModel)]="distance" (keyup)="onDistanceKeyUp()" type="text" class="input" placeholder="Distância (KM)">
+      <span class="icon is-small is-left">
+        <i class="fa fa-location-arrow"></i>
+      </span>
+    </p>
+  </div>
+</div>

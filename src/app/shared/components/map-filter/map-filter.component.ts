@@ -26,14 +26,16 @@ export class MapFilterComponent implements AfterViewInit {
   constructor(private ngZone: NgZone) {
     this.placesFilteredEvent = new EventEmitter();
     this.filterRemoved = new EventEmitter();
-    // this.placesInput = new google.maps.places.Autocomplete(<HTMLInputElement> document.getElementById('#mapFilter'));
-    // this.placesInput.addListener('place_changed', () => this.setLocation());
+    this.placesInput = new google.maps.places.Autocomplete(<HTMLInputElement> document.getElementById('#mapFilter'));
+    this.placesInput.addListener('place_changed', () => this.setLocation());
   }
 
   setLocation() {
     this.ngZone.run(() => {
-      this.location = this.placesInput.getPlace().geometry.location;
-      this.setDistanceAndLocation();
+      if (this.placesInput.getPlace()){
+        this.location = this.placesInput.getPlace().geometry.location;
+        this.setDistanceAndLocation();
+      }
     });
   }
 
@@ -65,8 +67,8 @@ export class MapFilterComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     // Initialize places input
-    // var nativeElement: HTMLInputElement = this.input.nativeElement;
-    // this.placesInput = new google.maps.places.Autocomplete(nativeElement);
-    // this.placesInput.addListener('place_changed', () => this.setLocation());
+    var nativeElement: HTMLInputElement = this.input.nativeElement;
+    this.placesInput = new google.maps.places.Autocomplete(nativeElement);
+    this.placesInput.addListener('place_changed', () => this.setLocation());
   }
 }
