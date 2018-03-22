@@ -22,6 +22,8 @@ export class PlacesAutoCompleteComponent implements AfterViewInit {
 
   @ViewChild('input') private input: ElementRef;
 
+  public placeText: any;
+
   private place: any;
   private placesInput: any;
 
