@@ -15,20 +15,23 @@ import { MapMotoristComponent } from './map-motorist/map-motorist.component';
 import { GridMotoristComponent } from './grid-motorist/grid-motorist.component';
 import { ProfileDialogComponent } from './profile-dialog/profile-dialog.component';
 import { MotoristAssociateDialogComponent } from './associate-dialog/motorist-associate-dialog.component';
+import { RegisterMotoristComponent } from './register-motorist/register-motorist.component';
 
 @NgModule({
   imports: [
     FormsModule,
     SharedModule,
     CommonModule,
-    MotoristRoutingModule
+    MotoristRoutingModule,
+    
   ],
   declarations: [
     MotoristComponent, 
     MapMotoristComponent,
     GridMotoristComponent,
     ProfileDialogComponent,
-    MotoristAssociateDialogComponent
+    MotoristAssociateDialogComponent,
+    RegisterMotoristComponent
   ],
   providers: [
     DomHandler,
@@ -39,3 +42,5 @@ import { MotoristAssociateDialogComponent } from './associate-dialog/motorist-as
   ]
 })
 export class MotoristModule { }
+
+

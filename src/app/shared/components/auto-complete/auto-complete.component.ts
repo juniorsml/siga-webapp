@@ -25,6 +25,7 @@ export class AutoCompleteComponent {
   @Input() noSuggestionsText: string = '';
   @ViewChild('input') inputElement: ElementRef;
   @Output() public itemSelected: EventEmitter<any> = new EventEmitter();
+  @Output('onCreateNew') public onCreateNew = new EventEmitter<any>();
   @ContentChild(TemplateRef) template: TemplateRef<any>;
   searching: boolean = false;
   searchRequested: boolean = false;
@@ -40,6 +41,10 @@ export class AutoCompleteComponent {
     if (!clickedInside && !this.suggestionSelected) {
       this.hasFocus = false;
     }
+  }
+
+  create() {
+    this.onCreateNew.emit(this.inputElement.nativeElement.value);
   }
 
   onKeyDown(event) {
@@ -118,7 +123,9 @@ export class AutoCompleteComponent {
   }
 
   search() {
-    this.suggestions = this.motorists.filter(m => m.documentId.indexOf(this.inputElement.nativeElement.value) > -1)
+    this.suggestions = this.motorists.filter(
+      m => m.documentId.indexOf(this.inputElement.nativeElement.value) > -1
+    );
     // this.dataService.get(this.url + this.inputElement.nativeElement.value)
     //     .toPromise()
     //     .then(data => {

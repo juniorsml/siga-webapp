@@ -28,6 +28,7 @@
               placeholder="Digite o número do documento"
               style="width: 100%;"
               type="text"
+              (onCreateNew)="showMotoristForm($event)"
               (itemSelected)="onMotoristSelected($event)">
               <ng-template let-item="item">
                 <div class="autocomplete-suggestion">
@@ -160,6 +161,13 @@
 
     <!-- <loading-spinner [isHidden]="!isUpdating" text="Aplicando mudanças...">
     </loading-spinner> -->
+
+    <sga-modal>
+      <sga-register-motorist
+        [showForm]="showMotoristRegister"
+        (onFormClose)="motoristFormClose()">
+      </sga-register-motorist>
+    </sga-modal>
 
     <sga-modal>
       <sga-profile-dialog

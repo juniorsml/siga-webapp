@@ -32,6 +32,7 @@ import {
   ListViewItemComponent,
   ListViewEmptyComponent
 } from '../components/listview/listview.component';
+import { PlacesAutoCompleteComponent } from '../components/places-auto-complete/places-auto-complete.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,8 @@ import {
 
     AccordionComponent,
     AccordionHeaderComponent,
+
+    PlacesAutoCompleteComponent,
 
     ColumnComponent,
     MenuItemComponent,
@@ -95,6 +98,8 @@ import {
 
     AccordionComponent,
     AccordionHeaderComponent,
+
+    PlacesAutoCompleteComponent,
 
     ColumnComponent,
     MenuItemComponent,
