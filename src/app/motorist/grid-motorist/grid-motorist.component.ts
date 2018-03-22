@@ -44,11 +44,13 @@ export class GridMotoristComponent {
   }
 
   public onPlacesFiltered(event) {
-    event.target;
+    this.filterDistance = event.distance;
+    this.filterLocation = { lat: event.lat, lng: event.lng };
   }
 
-  public onPlacesFilterRemoved(event) {
-    event.target;
+  public onPlacesFilterRemoved() {
+    this.filterDistance = null;
+    this.filterLocation = null;
   }
 
   public onPlacesKeyUp() {}
