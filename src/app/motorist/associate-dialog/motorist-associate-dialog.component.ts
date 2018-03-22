@@ -6,7 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./motorist-associate-dialog.component.scss']
 })
 export class MotoristAssociateDialogComponent implements OnInit {
-  @Input() showDialog: boolean;
+  @Input() 
+  public showDialog: boolean;
+
   @Input()
   get motorists(): Array<any> {
     return this._motorists;
@@ -20,6 +22,7 @@ export class MotoristAssociateDialogComponent implements OnInit {
 
   public selectedMotorist: any;
   public showMotoristDialog = false;
+  public showMotoristRegister = false;
 
   public addList: Array<any> = [];
   public removeList: Array<any> = [];
@@ -67,6 +70,15 @@ export class MotoristAssociateDialogComponent implements OnInit {
   public undoRemoveMotorist(motorist) {
     this.removeFromList(this.removeList, motorist);
     this.currentList.unshift(motorist);
+  }
+
+  public showMotoristForm(suggestion) {
+    suggestion;
+    this.showMotoristRegister = true;
+  }
+
+  public motoristFormClose() {
+    this.showMotoristRegister = false;
   }
 
   private removeFromList(list, motorist) {
