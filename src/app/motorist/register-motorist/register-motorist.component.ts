@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'sga-register-motorist',
   templateUrl: './register-motorist.component.html',
-  styles: []
+  styleUrls: ['./register-motorist.component.scss']
 })
 export class RegisterMotoristComponent implements OnInit {
 
@@ -13,3 +14,5 @@ export class RegisterMotoristComponent implements OnInit {
   }
 
 }
+
+

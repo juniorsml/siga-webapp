@@ -22,7 +22,8 @@ import { RegisterMotoristComponent } from './register-motorist/register-motorist
     FormsModule,
     SharedModule,
     CommonModule,
-    MotoristRoutingModule
+    MotoristRoutingModule,
+    
   ],
   declarations: [
     MotoristComponent, 

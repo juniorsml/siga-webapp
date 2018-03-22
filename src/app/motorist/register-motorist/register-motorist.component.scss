@@ -1,0 +1,47 @@
+$main-blue:#4d5675;
+
+.container-form{
+	margin: auto;
+    width: 100%;
+    max-width: 1024px;
+}
+.form-header{
+	padding-left:20px;
+
+	.area{
+		background:$main-blue;
+		color:#FFF;
+		padding:0 20px;
+		font: 300 17px "Open Sans", sans-serif;
+		display: flex;
+		align-items: center;
+	}
+	.action{		
+		color:$main-blue;		
+		font: 300 24px "Open Sans", sans-serif;
+	}
+}
+
+.cnt-form {
+	padding: 0px 8px;
+	
+	.title-block{	
+		color:$main-blue;		
+		font: 300 17px "Open Sans", sans-serif;
+		margin-bottom: 0;
+	}
+	.file-cta, select, input {
+		color:#8c8a8a;
+		font-size:0.89rem
+	}
+	.uf.select select:not([multiple]) {
+	    padding-right: 22px;
+	}
+	.uf.select:not(.is-multiple)::after{
+		right:10px;
+	}
+	.column{
+		padding-bottom:0.23rem;
+	}
+}
+

@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { MotoristComponent } from './motorist.component';
+import { RegisterMotoristComponent } from './register-motorist/register-motorist.component';
 
 const routes: Routes = [
-  { path: '', component: MotoristComponent }
+  	{ path: '', component: MotoristComponent },
+	{ path: 'register', component: RegisterMotoristComponent }
 ];
 
 @NgModule({
@@ -12,3 +14,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class MotoristRoutingModule { }
+
+
