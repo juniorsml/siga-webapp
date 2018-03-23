@@ -1,6 +1,6 @@
 <div *ngIf="showForm" class="cnt-dialog">
 	<div class="container-form">
-		<div class="form-header columns column is-12">
+		<div class="form-header columns column is-12 is-marginless">
 			<h3 class="area column is-narrow">Motorista</h3>
 			<h2 class="action column">Cadastro</h2>
 		</div>
@@ -130,7 +130,7 @@
 					<sga-places-auto-complete class="column is-10" (onPlacesFilteredEvent)="placesFiltered($event)" (onFilterRemovedEvent)="filterRemoved()">
 					</sga-places-auto-complete>
 
-					<div class="column is-2">
+					<div class="column is-2"> 
 						<div class="control">
 							<input class="input" type="number" placeholder="Nº">
 						</div>
