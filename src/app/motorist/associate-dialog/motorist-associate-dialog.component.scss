@@ -1,11 +1,81 @@
 .motorist-admin-left-container {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 400px;
-  bottom: 0px;
-  background-color: #fff;
+    position: relative;
+    height: 100%;
+    width: 400px;
+    background-color: #fff;
 }
+  .motorist-admin-summary-wrapper{     
+      position: relative;
+      color: #4a5879;
+      height:20%;
+      padding-top: 6px;
+
+      .admin-section-header {
+        color: rgb(56, 66, 91);
+        padding: 0 0 6px 0;
+        font-size: 14px;
+      }
+  }
+      
+      .motorist-admin-summary {      
+        position: relative;
+        border-radius: 2px;
+        border: 1px solid rgba(92, 184, 92, 0.25);
+        background-color: rgba(92, 184, 92, 0.1);
+        color: #333;
+      }
+        .motorist-admin-summary-row {
+            border-radius: 2px;
+            font-size: 14px;
+            border-bottom: 1px solid #cae8ca;
+            
+            .column{
+              padding: 6px 7px;
+            }
+        }
+
+.motorist-admin-wrapper { 
+    color: #324263;
+    height:36%;
+    position: relative;
+
+    .wrapper-header{
+        height: 16%;         
+        font-size: 14px;     
+    }
+    .cnt-list-view{
+        position: relative;
+        height: 60%;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.motorist-admin-remove-wrapper { 
+    .cnt-list-view{
+        height: 82%;
+    }
+}
+
+.autocomplete-suggestion {
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+    line-height: 38px;
+    height: 38px;
+    cursor: pointer;
+    &:hover {
+        background-color: #eee;
+        
+    }
+}
+
+.autocomplete-suggestion.focus {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+
 
 .motorist-admin-right-container {
   position: absolute;
@@ -15,7 +85,6 @@
   bottom: 0px;
   background-color: #fff;
 }
-
 .motorist-admin-table {
   position: absolute;
   top: 38px;
@@ -23,7 +92,6 @@
   right: 0px;
   bottom: 0px;
 }
-
 .grid-associate{
     top: 60px;
     position: absolute;
@@ -31,78 +99,16 @@
     right: 11px;
     bottom: 11px;
 }
+.motorist-admin-right-container  {
+  .title{
+    color: #38425b;
+    padding:10px;
+    font-weight: 400;
+    font-size: 14px;
+  }
 
-.motorist-admin-summary-wrapper {
-  right: 10px;
-  left: 10px;
-  position: absolute;
-  color: #4a5879;
+  
 }
-
-.motorist-admin-summary {
-  left: 0px;
-  right: 0px;
-  position: absolute;
-  border-radius: 2px;
-  border: 1px solid rgba(92, 184, 92, 0.25);
-  background-color: rgba(92, 184, 92, 0.1);
-  color: #333;
-}
-
-.motorist-admin-summary-row {
-  display: inline-block;
-  width: 100%;
-  line-height: 26px;
-  margin-top: 1px;
-  border-radius: 2px;
-  font-size: 14px;
-  float: left;
-}
-
-.motorist-admin-summary-item {
-  width: 25%;
-  float: left;
-  text-indent: 8px;
-  line-height: 36px;
-  width: 95px;
-  float: left;
- /* background-color: rgba(74, 88, 121, 0.03)*/
-}
-
-.motorist-admin-summary-total {
-  width: 50%;
-  line-height: 38px;
-  float: left;
-  text-indent: 8px;
-  /*background-color: rgba(74, 88, 121, 0.03)*/
-}
-
-.motorist-admin-add-wrapper {
-  top: 126px;
-  right: 10px;
-  left: 10px;
-  position: absolute;
-  color: #324263;
-}
-
-.motorist-admin-add-list {
-  top: 86px;
-  height: 106px;
-}
-
-.motorist-admin-remove-wrapper {
-  top: 297px;
-  right: 10px;
-  left: 10px;
-  position: absolute;
-  color: #324263;
-  height: 97px;
-}
-
-.motorist-admin-remove-list {
-  height: 92px;
-}
-
 .motorist-admin-add-item-valid {
   border: 1px solid #00a500;
   font-size: 12px;
@@ -147,10 +153,6 @@
   cursor: pointer;
 }
 
-.motorist-admin-update-account {
-
-}
-
 .motorist-admin-changes-dialog {
     position: absolute;
     top: 50%;
@@ -167,31 +169,22 @@
     font-family: 'Varela Round', sans-serif;
     border-radius: 8px;
 }
-
-.admin-section-header{
-  padding-left: 10px; 
-  width: 180px; 
-  float: left;
-
-}
-.cnt-custom-button{
-    position: absolute; 
-    left: 10px; 
-    right: 10px; 
-    bottom: 0px;
-
+.cnt-custom-button{   
+      height: 8%;
+      margin: 0;
+      padding: 0;
+      position: relative;
     .custom-button{
         background-color: #2ed06e;
         color: #fff;
         font-size: 14px;
-        border: none;
-        border-radius: 4px;
+        border: none;        
         transition: all .2s ease;
         position: relative;
         width: 100%; 
-        padding: 10px 0px; 
-        bottom: 10px;
-
+        padding: 11px 0px;
+        z-index: 99;
+        cursor: pointer;
         &:disable{
            background-color: #fafafb;
             cursor: not-allowed;
@@ -202,7 +195,9 @@
 
 
 .cnt-autocomplete{
-    margin: 0px 0 8px 0;
+    margin: 0px 0 8px 0; 
+    position:relative;
+    height: 21%;
     
     .img-autocomplete{
         width: 30px; 
