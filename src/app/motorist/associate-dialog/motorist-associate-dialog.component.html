@@ -24,6 +24,7 @@
             <sga-auto-complete 
               [motorists]="motorists"
               minLength="3"
+              styleClass = "autocomplete"
               noSuggestionsText="Nenhum motorista encontrado"
               url="api/motorist/search?query="
               placeholder="Digite o número do documento"
@@ -104,11 +105,11 @@
         </div>
 
       </div>
-      <div class="motorist-admin-right-container admin-section">
-        <div class="admin-section-header">
+      <div class="motorist-admin-right-container admin-section columns is-multiline is-marginless ">
+        <div class="title column">
           Motoristas Associados
         </div>
-        <div class="inner-addon cnt-btn-search">       
+        <div class="cnt-btn-search">       
            <p class="control has-icons-left"> 
               <input  [(ngModel)]="searchText" class="input"  placeholder="Buscar" type="text"/>
               <span class="icon is-small is-left">
