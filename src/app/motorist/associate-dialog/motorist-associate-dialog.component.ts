@@ -36,8 +36,7 @@ export class MotoristAssociateDialogComponent implements OnInit {
   private setCurrentMotorists() {
     this.currentList = [];
     this.motorists.map(motorist => {
-      if (!this.motoristIsDuplicate(motorist.id))
-        this.currentList.push(motorist);
+      if (!this.motoristIsDuplicate(motorist.id)) this.currentList.push(motorist);
     });
   }
 
@@ -87,7 +86,7 @@ export class MotoristAssociateDialogComponent implements OnInit {
   }
 
   onAdminMotoristCellClick(event) {
-    event;
+    if (event.cellIndex === 6) this.deleteMotorist(event.data);
   }
 
   ngOnInit() {}

@@ -119,13 +119,20 @@
         </div>
         <div>
           <div class="grid-associate">
-            <data-table [data]="currentList" [dataLength]="currentList.length" [searchText]="searchText" [searchColumns]="['documentId', 'firstName', 'lastName', 'email', 'cellPhone']"
-              [emptySearchText]="'nenhuma motorista foi encontrado'" [bodyBottom]="'42px'" [bodyTop]="'24px'" (onCellClick)="onAdminMotoristCellClick($event)">
+            <data-table 
+              [data]="currentList"
+              [dataLength]="currentList.length"
+              [searchText]="searchText"
+              [searchColumns]="['documentId', 'firstName', 'lastName', 'email', 'cellPhone']"
+              [emptySearchText]="'nenhuma motorista foi encontrado'"
+              [bodyBottom]="'42px'"
+              [bodyTop]="'24px'"
+              (onCellClick)="onAdminMotoristCellClick($event)">
 
               <column [key]="'id'" [header]="''" [minWidth]="'60'" [fixedWidth]="'60'">
                 <ng-template let-item="item">
                   <div class="cnt-img">
-                    <img *ngIf="item !=null" (click)="showMotoristModal(item)" style="width: 40px; height: 40px; border-radius: 50%;" src="{{'api/motorist/public/profileImage?id=' + item}}"
+                    <img *ngIf="item !== null" (click)="showMotoristModal(item)" style="width: 40px; height: 40px; border-radius: 50%;" src="{{'api/motorist/public/profileImage?id=' + item}}"
                       alt="">
                   </div>
                 </ng-template>
