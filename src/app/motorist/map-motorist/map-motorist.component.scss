@@ -11,122 +11,27 @@
     }
 }
 
-.map-sidebar {
-  background-color: rgba(255, 255, 255, 0.95);
-  position: absolute;
-  top: 54px;
-  left: 0px;
-  bottom: 0px;
-  border-right: 1px solid;
-  color: #bbbbbb;
-  padding: 0;
+.map-center-bar{
+    position: absolute;
+    width: 90%;
+    max-width: 1050px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    padding-left: 9px;
+    top: 87px;
+    background: #FFF;
+   
 }
-
-/* TABS ********************************************************/
-
-.map-tabs > li {
-    line-height: 40px; 
-    text-align: center;
-    font-size: 16px;
-    cursor: pointer;
-    background: rgba(186, 187, 189, 0.95);
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
-    
-    &.active{
-        cursor: default;
-        background-color: rgba(253, 253, 253, 0);
-        border-right-color: #777777;
-       
-        &.ui-tabview-tab-title {
-              color: #3a4358;
-              font-weight: 400;
-              font-size: 12px;
-              font-family: 'Open Sans', sans-serif;
-          }
+    .menu-map-center{
+        align-items: center;
+        display: flex;
+        a{
+          font-size:28px;
+          color:#cecece;
+        }
     }
-}
-
-.map-tabs > .ui-tabview-tab > .ui-tabview-tab-title {
-  color: #ffffff;
-}
-
-.motorist-map-table {
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  top: 0px;
-  overflow: scroll;
-}
-
-
-/* Container Tabs ********************************************/
-.container-grid{  
-    top: 50px; 
-    position: absolute; 
-    left: 8px; 
-    right: 8px; 
-    bottom: 8px;
-}
-.cnt-tab {
-    position: absolute; 
-    top: 42px; 
-    bottom: 0px; 
-    left: 0px; 
-    right: 0px; 
-}
-
-  /* Tab Motoristas ********************************************/
-  .cnt-tab-motoristas .columns{
-      position: absolute; 
-      left: 8px; 
-      right: 8px;  
-      top: 8px;
-  }
-  
-
-
-  /* Tab Historico ********************************************/
-  .cnt-tab-historico{
-     
-  }
 
 
 
 
-
-.motorist-map-table-footer {
-  border-top: 1px solid rgba(0, 0, 0, 0.45);
-  float: left;
-  padding: 8px 0px;
-  position: absolute;
-  left: 8px;
-  right: 8px;
-  bottom: 0px;
-}
-
-
-
-.map-table-position-icon {
-  font-size: 24px !important;
-  line-height: 34px !important;
-  color: #476894 !important;
-  width: 100%;
-  text-align: center;
-}
-
-.map-table-event-icon {
-  font-size: 20px !important;
-  line-height: 34px !important;
-  color: #6f794a !important;
-  width: 100%;
-  text-align: center;
-}
-
-.motorist-map-table-profile-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  margin-top: 6px;
-}
