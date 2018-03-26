@@ -40,7 +40,10 @@
     right: 0px; 
     top: 0px;
     bottom: 0px;
-    border: 1px solid #dadada;
+
+    tbody tr:nth-child(odd) {
+        background-color: #fbfbfb;
+    }
 }
 
 .ui-datatable-header-table { 
@@ -93,9 +96,6 @@
     font-family: 'Open Sans', sans-serif;
 
     
-}
-.ui-datatable-body-row:not(:last-child){
-    border-bottom:1px solid #dadada;
 }
 .ui-datatable-footer {
     bottom: 0px;
