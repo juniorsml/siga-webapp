@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'sga-register-motorist',
@@ -15,9 +16,15 @@ export class RegisterMotoristComponent {
   @Output('onFormClose')
   public onFormClose = new EventEmitter();
 
-  constructor() {}
+  public mapUrl: SafeResourceUrl;
 
+  constructor(private domSanitizer : DomSanitizer) {
+    this.mapUrl = domSanitizer.bypassSecurityTrustResourceUrl(this.getMapUrlByLatLng(-23.53, -46.62));
+  }
+  
   placesFiltered(place: any) {
+    const urlValue = this.getMapUrlByLatLng(place.geometry.location.lat(), place.geometry.location.lng());
+    this.mapUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(urlValue);
     this.place = place;
   }
 
@@ -36,5 +43,9 @@ export class RegisterMotoristComponent {
     };
 
     console.log(motorist);
+  }
+
+  getMapUrlByLatLng(lat: number, lng: number) {
+    return `https://maps.google.com/maps?q=${lat},${lng}&hl=es;z=14&amp&output=embed`;
   }
 }
