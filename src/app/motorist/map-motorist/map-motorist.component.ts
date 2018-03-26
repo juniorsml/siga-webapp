@@ -17,6 +17,7 @@ export class MapMotoristComponent implements OnInit {
   private mapMarkers: Array<Feature<GeometryObject>> = [];
 
   public hideMotoristModal: boolean;
+  public text: any;
 
   @ViewChild('mapSelector') mapSelector: ElementRef;
   @Input()
@@ -172,6 +173,14 @@ export class MapMotoristComponent implements OnInit {
     this.selectedMotorist = event.data;
     this.map.setZoom(16);
     this.map.moveTo(event.data.latitude, event.data.longitude);
+  }
+
+  onPlacesFiltered(event) {
+    event
+  }
+
+  onPlacesFilterRemoved() {
+
   }
 
   onContextMenu(event: TableClickEvent) {
