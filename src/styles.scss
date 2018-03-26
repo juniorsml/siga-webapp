@@ -20,7 +20,7 @@ div, *{
 /* You can add global styles to this file, and also import other style files */
 .material-header {
   height: 54px;
-  background-color: #3a4358;
+  border-top:1px solid #ececec;
 }
 .cnt-img{
     width: 40px;
@@ -40,11 +40,10 @@ div, *{
   float: left;
   text-align: center;
   line-height: 54px;
-  background: linear-gradient(to right, #4a5778 , #3a4358);
   
   span {
     font-size: 15px;
-    color: #ffffff;
+    color: #3c465c;
     letter-spacing: 2px;
     font-weight: 300;
   }
