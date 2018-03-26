@@ -2,6 +2,7 @@
     position: relative;
     height: 100%;
     width: 400px;
+    border: 1px solid #ececec;
     background-color: #fff;
 }
   .motorist-admin-summary-wrapper{     
@@ -83,6 +84,7 @@
   left: 416px;
   right: 0px;
   bottom: 0px;
+  border: 1px solid #ececec;
   background-color: #fff;
 }
 .motorist-admin-table {
@@ -173,6 +175,7 @@
       height: 8%;
       margin: 0;
       padding: 0;
+      bottom:5px;
       position: relative;
     .custom-button{
         background-color: #2ed06e;
@@ -181,10 +184,12 @@
         border: none;        
         transition: all .2s ease;
         position: relative;
-        width: 100%; 
+        width: 93.5%;
         padding: 11px 0px;
-        z-index: 99;
-        cursor: pointer;
+        margin: auto;
+        display: block;
+        border-radius: 3px;
+
         &:disable{
            background-color: #fafafb;
             cursor: not-allowed;

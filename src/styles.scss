@@ -6,13 +6,21 @@ div, *{
   margin:0;
   padding:O;
 }
-.input::-webkit-input-placeholder, .textarea::-webkit-input-placeholder {
-    color: rgba(54,54,54,0.65) !important;
+/** CLean Theme ********************************************************/
+.light-theme{
+  
 }
+
+.input::-webkit-input-placeholder, .textarea::-webkit-input-placeholder {
+    color: rgba(54,54,54,0.75) !important;
+}
+
+
+
 /* You can add global styles to this file, and also import other style files */
 .material-header {
   height: 54px;
-  background-color: #3a4358;
+  border-top:1px solid #ececec;
 }
 .cnt-img{
     width: 40px;
@@ -32,11 +40,10 @@ div, *{
   float: left;
   text-align: center;
   line-height: 54px;
-  background: linear-gradient(to right, #4a5778 , #3a4358);
   
   span {
     font-size: 15px;
-    color: #ffffff;
+    color: #3c465c;
     letter-spacing: 2px;
     font-weight: 300;
   }
@@ -60,17 +67,14 @@ div, *{
 }
 
 .material-content-container {
-  margin: 12px;
-  padding: 10px;
+  padding: 20px;
   position: absolute;
   left: 0px;
   right: 0px;
   bottom: 0px;
   top: 54px;
   background-color: #fff;
-  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
-  -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+  
 }
 
 .map-tabs {

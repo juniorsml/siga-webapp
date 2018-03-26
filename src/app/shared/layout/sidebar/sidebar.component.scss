@@ -13,10 +13,10 @@
     width: 52px;
     overflow: hidden;
     left:0;/*background: #303a4e;*/
-    background: #2b3242; 
+    background: #565d6d; 
     bottom: 0px;
     top: 0;
-    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.6);
+    // box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.6);
     @include transition(0.5s, ease);
 }
 .sidebar {
@@ -25,7 +25,7 @@
     width: 50px;
     height: 100%;
     overflow: hidden;
-    background: rgb(45, 50, 62);
+    background:#565d6d;
     @include transition(0.5s, ease);
         &:hover {
           width: 250px;        
@@ -33,14 +33,14 @@
 }
 
   .sidebar-header {
-      width: 250px;
+      width: 250px; 
       height: 72px;        
       border-bottom: 1px solid rgba(0, 0, 0, 0);
       @include transition(.8s, ease);  
   }
   .sidebar:hover > .sidebar-header {
     border-color: rgba(103, 103, 103, 0.1);
-    background: linear-gradient(to right, #2c3242 , #3a4358);
+    background: linear-gradient(to right, #2c3242 , #404756);
   }
 
       .sidebar-hamburger {
@@ -86,10 +86,11 @@
         .sidebar-menu-item {
           height: 52px;
           line-height: 52px;
-          cursor: pointer;        
+          cursor: pointer;   
+           transition: all 200ms ease-out;        
 
             &:hover {
-              background-color: #454d68;
+              background-color: #404756;
             }
 
             a {
@@ -109,7 +110,7 @@
             display: block;
             text-align: center;
             /*color: #11141b;*/
-            color: #6c7588;
+            color: #969cad;
             /*text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.12);*/
             -webkit-transition: all 0.5s ease-out;
             transition: all 0.5s ease-out;    
@@ -133,15 +134,16 @@
     .sidebar-menu-accordion {
         height: 50px;
         line-height: 50px;
+         transition: all 200ms ease-out;   
 
         &:hover {
-          background-color: #454d68;
+          background-color: #454b59;
           cursor: pointer;
         }
     }
 
     .sidebar-submenu {
-        background-color: #232325;
+        background-color: #313642;
         list-style-type: none;    
 
         li > a {
