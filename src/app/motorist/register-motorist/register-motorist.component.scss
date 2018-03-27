@@ -93,9 +93,51 @@ $main-blue:#4d5675;
 			width:100%;
 		}
 	}
-	label.file-label, span.file-cta{
-		width: 100%;
-   		height: 160px;
+	.input-profile-photo{
+		width: 183px;
+   		max-width: 183px;
+
+		label.file-label, span.file-cta{
+			width: 100%;
+			max-width: 183px;
+	   		height: 160px;
+		}
+		.img-profile{
+			position: absolute;
+		    top: 0;
+		    height: 100%;
+		    width: 100%;
+		    max-width: 183px;
+		    border-radius: 3px;
+		    overflow: hidden;
+		    display: none;  
+		    background-size: cover;
+	    	background-position: center center;
+	    	
+		}
+
+		.remove-img-profile{
+			position: absolute;
+		    top: 0;
+		     border-radius: 3px;
+		    height: 100%;
+		    width: 100%;
+		    opacity: 0;
+		    max-width: 183px;
+		    background:rgba(0,0,0,0.6);
+		    display: none;
+		    color: #FFF;
+		    flex-wrap: wrap;
+		    align-items: center;
+		    justify-content: center;
+		    cursor:pointer;
+		    transition:all 300ms ease;
+	    	&:hover{
+				opacity: 1;
+	    	}
+	    }
 	}
+	
+
 }
 

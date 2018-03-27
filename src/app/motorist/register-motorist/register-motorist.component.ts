@@ -21,6 +21,31 @@ export class RegisterMotoristComponent implements  OnInit {
     }
   }
 
+  // Show image profile
+  addProfilePhoto(event:any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      reader.onload = (event:any) => {
+        this.url = event.target.result;
+        var removeImage = document.querySelector('.remove-img-profile');
+        var containerImage = document.querySelector('.img-profile');
+        removeImage.style.display = 'flex';
+        containerImage.style.display = 'block';
+        containerImage.style.backgroundImage  = "url("+this.url+")";
+      }
+      reader.readAsDataURL(event.target.files[0]);
+
+    }
+  }
+  removeProfilePhoto(){
+     var containerImage = document.querySelector('.img-profile');
+     var removeImage = document.querySelector('.remove-img-profile');
+     containerImage.style.backgroundImage  = "url(' ')";
+     containerImage.style.display = 'none';
+     removeImage.style.display = 'none';
+
+  }
+
   private place: any;
 
   @Input('showForm')

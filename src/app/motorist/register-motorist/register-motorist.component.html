@@ -13,11 +13,11 @@
 						<div class="block column columns is-12 is-multiline">
 							<h4 class="title-block column columns is-12">Dados Pessoais</h4>
 
-							<div class="column">
+							<div class="column input-profile-photo">
 								<div class="control">
 									<div class="file">
 										<label class="file-label">
-											<input class="file-input" type="file" name="resume">
+											<input class="file-input" type="file" name="resume" (change)="addProfilePhoto($event)">
 											<span class="file-cta">
 												<span class="file-icon">
 													<i class="fas fa-upload"></i>
@@ -28,117 +28,128 @@
 											</span>
 										</label>
 									</div>
+									<div class="img-profile">
+										
+									</div>
+									<a class="remove-img-profile" (click)="removeProfilePhoto()">										
+										<span>Remover Foto</span>
+									</a>
+									
 								</div>
 							</div>
-							<div class="column is-3">
-								<div class="control">
-									<input class="input" type="text" placeholder="Nome" name="firstName" #firstName ngModel>
+							<div class="column columns is-multiline">
+								<div class="column is-4">
+									<div class="control">
+										<input class="input" type="text" placeholder="Nome" name="firstName" #firstName ngModel>
+									</div>
 								</div>
-							</div>
-							<div class="column is-3">
-								<div class="control">
-									<input class="input" type="text" placeholder="Sobrenome" name="lastName" #lastName ngModel>
+								<div class="column is-4">
+									<div class="control">
+										<input class="input" type="text" placeholder="Sobrenome" name="lastName" #lastName ngModel>
+									</div>
 								</div>
-							</div>
 
-							<div class="column is-2">
-								<div class="control">
-									<input class="input" type="date" placeholder="Data de Nasc." name="dateOfBirth" #dateOfBirth ngModel>
+								<div class="column is-3">
+									<div class="control">
+										<input class="input" type="date" placeholder="Data de Nasc." name="dateOfBirth" #dateOfBirth ngModel>
+									</div>
 								</div>
-							</div>
 
-							<div class="column is-4">
-								<div class="control">
-									<input class="input" type="text" placeholder="Nome da Mãe" name="motherName" #motherName ngModel>
+								<div class="column is-5">
+									<div class="control">
+										<input class="input" type="text" placeholder="Nome da Mãe" name="motherName" #motherName ngModel>
+									</div>
 								</div>
-							</div>
 
-							<div class="column is-2">
-								<div class="control">
-									<div class="select">
-										<select>
-											<option>Documento</option>
-											<option>RG</option>
-											<option>CPF</option>
-											<option>RNA</option>
-											<option>Passaporte</option>
-										</select>
+								<div class="column is-2">
+									<div class="control">
+										<div class="select">
+											<select>
+												<option>Documento</option>
+												<option>RG</option>
+												<option>CPF</option>
+												<option>RNA</option>
+												<option>Passaporte</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="column is-4">
+									<div class="control">
+										<input class="input" type="text" placeholder="Nº" name="documentId" #documentId ngModel>
+									</div>
+								</div>
+								<div class="column is-3">
+									<div class="control">
+										<div class="select">
+											<select>
+												<option>Estado Civil</option>
+												<option>Casado</option>
+												<option>Divorciado </option>
+												<option>Solteiro </option>
+												<option>União estável</option>
+												<option>Viúvo</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="column is-4">
+									<div class="control">
+										<input class="input" type="text" placeholder="Nome da Esposa" name="wifeName" #wifeName ngModel>
+									</div>
+								</div>
+								<div class="column is-2">
+									<div class="control">
+										<div class="select">
+											<select>
+												<option>Tem filhos?</option>
+												<option>Sim</option>
+												<option>Não </option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div class="column is-2">
+									<div class="control">
+										<input class="input" type="text" placeholder="Quantos?">
 									</div>
 								</div>
 							</div>
-							<div class="column is-4">
-								<div class="control">
-									<input class="input" type="text" placeholder="Nº" name="documentId" #documentId ngModel>
-								</div>
-							</div>
-							<div class="column is-2">
-								<div class="control">
-									<div class="select">
-										<select>
-											<option>Estado Civil</option>
-											<option>Casado</option>
-											<option>Divorciado </option>
-											<option>Solteiro </option>
-											<option>União estável</option>
-											<option>Viúvo</option>
-										</select>
-									</div>
-								</div>
-							</div>
-							<div class="column is-4">
-								<div class="control">
-									<input class="input" type="text" placeholder="Nome da Esposa" name="wifeName" #wifeName ngModel>
-								</div>
-							</div>
-							<div class="column is-2">
-								<div class="control">
-									<div class="select">
-										<select>
-											<option>Tem filhos?</option>
-											<option>Sim</option>
-											<option>Não </option>
-										</select>
-									</div>
-								</div>
-							</div>
 
-							<div class="column is-2">
-								<div class="control">
-									<input class="input" type="text" placeholder="Quantos?">
-								</div>
-							</div>
-
-							<div class="column is-2">
-								<div class="control">
-									<input class="input" type="text" placeholder="Escolaridade">
-								</div>
-							</div>
-							<div class="column is-2">
-								<div class="control">
-									<input class="input" type="text" placeholder="Nº CNH">
-								</div>
-							</div>
-							<div class="column is-2">
-								<div class="control">
-									<div class="select">
-										<select>
-											<option>Categoria CNH</option>
-											<option>A</option>
-											<option>AB</option>
-											<option>AC</option>
-											<option>AD</option>
-											<option>AE</option>
-											<option>B</option>
-											<option>C</option>
-											<option>D</option>
-											<option>E</option>
-										</select>
+							<div class="column columns is-multiline is-12">
+								<div class="column is-2">
+									<div class="control">
+										<input class="input" type="text" placeholder="Escolaridade">
 									</div>
 								</div>
-							</div>
-							<div class="column is-2">
-								<div class="control">
-									<input class="input" type="text" placeholder="Vencimento">
+								<div class="column is-2">
+									<div class="control">
+										<input class="input" type="text" placeholder="Nº CNH">
+									</div>
+								</div>
+								<div class="column is-2">
+									<div class="control">
+										<div class="select">
+											<select>
+												<option>Categoria CNH</option>
+												<option>A</option>
+												<option>AB</option>
+												<option>AC</option>
+												<option>AD</option>
+												<option>AE</option>
+												<option>B</option>
+												<option>C</option>
+												<option>D</option>
+												<option>E</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="column is-2">
+									<div class="control">
+										<input class="input" type="text" placeholder="Vencimento">
+									</div>
 								</div>
 							</div>
 
