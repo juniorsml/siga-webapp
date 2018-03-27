@@ -26,12 +26,12 @@ export class RegisterMotoristComponent implements  OnInit {
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
       reader.onload = (event:any) => {
-        this.url = event.target.result;
+        var url = event.target.result;
         var removeImage = document.querySelector('.remove-img-profile');
         var containerImage = document.querySelector('.img-profile');
-        removeImage.style.display = 'flex';
-        containerImage.style.display = 'block';
-        containerImage.style.backgroundImage  = "url("+this.url+")";
+        (removeImage as HTMLElement).style.display = 'flex';
+        (containerImage as HTMLElement).style.display = 'block';
+        (containerImage as HTMLElement).style.backgroundImage  = "url("+url+")";
       }
       reader.readAsDataURL(event.target.files[0]);
 
@@ -40,9 +40,9 @@ export class RegisterMotoristComponent implements  OnInit {
   removeProfilePhoto(){
      var containerImage = document.querySelector('.img-profile');
      var removeImage = document.querySelector('.remove-img-profile');
-     containerImage.style.backgroundImage  = "url(' ')";
-     containerImage.style.display = 'none';
-     removeImage.style.display = 'none';
+     (containerImage as HTMLElement).style.backgroundImage  = "url(' ')";
+     (containerImage as HTMLElement).style.display = 'none';
+     (removeImage as HTMLElement).style.display = 'none';
 
   }
 
