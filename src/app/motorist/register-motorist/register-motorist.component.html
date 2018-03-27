@@ -43,7 +43,7 @@
 										<input class="input" type="text" placeholder="Nome" name="firstName" #firstName ngModel>
 									</div>
 								</div>
-								<div class="column is-4">
+								<div class="column is-5">
 									<div class="control">
 										<input class="input" type="text" placeholder="Sobrenome" name="lastName" #lastName ngModel>
 									</div>
@@ -55,7 +55,7 @@
 									</div>
 								</div>
 
-								<div class="column is-5">
+								<div class="column is-6">
 									<div class="control">
 										<input class="input" type="text" placeholder="Nome da Mãe" name="motherName" #motherName ngModel>
 									</div>
@@ -93,7 +93,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="column is-4">
+								<div class="column is-5">
 									<div class="control">
 										<input class="input" type="text" placeholder="Nome da Esposa" name="wifeName" #wifeName ngModel>
 									</div>
@@ -115,15 +115,12 @@
 										<input class="input" type="text" placeholder="Quantos?">
 									</div>
 								</div>
-							</div>
-
-							<div class="column columns is-multiline is-12">
-								<div class="column is-2">
+								<div class="column is-4">
 									<div class="control">
 										<input class="input" type="text" placeholder="Escolaridade">
 									</div>
 								</div>
-								<div class="column is-2">
+								<div class="column is-3">
 									<div class="control">
 										<input class="input" type="text" placeholder="Nº CNH">
 									</div>
@@ -153,53 +150,58 @@
 								</div>
 							</div>
 
+							
+
 						</div>
 
 						<!-- Endereço -->
-						<div class="block column columns is-12 is-multiline">
+						<div class="block column columns is-12 is-multiline" style="align-items: flex-start;">
 							<h4 class="title-block column columns is-12">Endereço</h4>
-							<sga-places-auto-complete class="column is-6" (onPlacesFilteredEvent)="placesFiltered($event)" (onFilterRemovedEvent)="filterRemoved()">
-							</sga-places-auto-complete>
-
-							<div class="column is-6"> 
+							<div class="columns column is-half is-multiline">
+								<sga-places-auto-complete class="column is-12" (onPlacesFilteredEvent)="placesFiltered($event)" (onFilterRemovedEvent)="filterRemoved()">
+								</sga-places-auto-complete>
+								<div class="column is-12"> 
 								<iframe [src]="mapUrl" width="100%">
 								</iframe>
 							</div>
+							</div>
+							<div class="columns column is-half is-multiline">
+								<div class="column is-6">
+									<div class="control">
+										<input class="input" type="text" placeholder="Telefone Fixo">
+									</div>
+								</div>
+
+								<div class="column is-6">
+									<div class="control">
+										<input class="input" type="text" placeholder="Telefone Fixo">
+									</div>
+								</div>
+
+								<div class="column is-6">
+									<div class="control">
+										<input class="input" type="text" placeholder="Telefone Celular">
+									</div>
+								</div>
+								<div class="column is-6">
+									<div class="control">
+										<input class="input" type="text" placeholder="Telefone para recado">
+									</div>
+								</div>
+
+								<div class="column is-6">
+									<div class="control">
+										<input class="input" type="text" placeholder="Nextel">
+									</div>
+								</div>
+							</div>
+							
+
+							
 						</div>
 
 
-						<!-- Telefone -->
-						<div class="block column columns is-12 is-multiline">
-							<div class="column is-2">
-								<div class="control">
-									<input class="input" type="text" placeholder="Telefone Fixo">
-								</div>
-							</div>
-
-							<div class="column is-2">
-								<div class="control">
-									<input class="input" type="text" placeholder="Telefone Fixo">
-								</div>
-							</div>
-
-							<div class="column is-2">
-								<div class="control">
-									<input class="input" type="text" placeholder="Telefone Celular">
-								</div>
-							</div>
-							<div class="column is-2">
-								<div class="control">
-									<input class="input" type="text" placeholder="Telefone para recado">
-								</div>
-							</div>
-
-							<div class="column is-4">
-								<div class="control">
-									<input class="input" type="text" placeholder="Nextel">
-								</div>
-							</div>
-
-						</div>
+						
 
 						<!-- Perfil -->
 						<div class="block column columns is-12 is-multiline">

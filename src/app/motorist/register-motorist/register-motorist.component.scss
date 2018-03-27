@@ -94,20 +94,20 @@ $main-blue:#4d5675;
 		}
 	}
 	.input-profile-photo{
-		width: 183px;
-   		max-width: 183px;
+		width: 200px;
+   		max-width: 200px;
 
 		label.file-label, span.file-cta{
 			width: 100%;
-			max-width: 183px;
-	   		height: 160px;
+			max-width: 200px;
+	   		height: 185px;
 		}
 		.img-profile{
 			position: absolute;
 		    top: 0;
 		    height: 100%;
 		    width: 100%;
-		    max-width: 183px;
+		    max-width: 200px;
 		    border-radius: 3px;
 		    overflow: hidden;
 		    display: none;  
@@ -123,7 +123,7 @@ $main-blue:#4d5675;
 		    height: 100%;
 		    width: 100%;
 		    opacity: 0;
-		    max-width: 183px;
+		    max-width: 200px;
 		    background:rgba(0,0,0,0.6);
 		    display: none;
 		    color: #FFF;
