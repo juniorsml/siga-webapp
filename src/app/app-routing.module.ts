@@ -13,6 +13,10 @@ const routes: Routes = [
       {
         path: 'motorist',
         loadChildren: 'app/motorist/motorist.module#MotoristModule'
+      },
+      {
+        path: 'trip',
+        loadChildren: 'app/trip/trip.module#TripModule'
       }
     ]
   },
