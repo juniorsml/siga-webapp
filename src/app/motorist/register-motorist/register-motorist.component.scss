@@ -1,5 +1,15 @@
 $main-blue:#4d5675;
-
+.slimscroll-bar{
+    background:rgba(55, 56, 58, 0.4) !important;
+    height: 250px !important;
+    width: 8px !important;
+    opacity: 0.8 !important;
+    right: 5px !important;
+    display: block !important;
+}
+.slimscroll-grid{
+     background:transparent !important;
+}
 .cnt-dialog{
 	width: 100%; 
 	height: 100%; 
@@ -9,12 +19,27 @@ $main-blue:#4d5675;
 	left: 0px; 
 	top: 0px;
 }
+.container-scroll{
+	position: relative;
+	height: 91%;
+}
+	.wrapper-scroll{
+		position: absolute;
+		height: 91%;
+	}
+	.cnt-scroll{
+		height: 100%;
+	}
 
 .container-form{
 	background-color: #FFF;
 	margin: 1.5rem auto 0 auto;
 	width: 100%;
 	max-width: 1024px;
+	height: 91%;
+}
+.cnt-form{
+	height: 100%;
 }
 
 .form-header{
@@ -67,6 +92,10 @@ $main-blue:#4d5675;
 		select{
 			width:100%;
 		}
+	}
+	label.file-label, span.file-cta{
+		width: 100%;
+   		height: 160px;
 	}
 }
 
