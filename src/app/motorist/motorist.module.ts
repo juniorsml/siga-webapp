@@ -16,6 +16,8 @@ import { GridMotoristComponent } from './grid-motorist/grid-motorist.component';
 import { ProfileDialogComponent } from './profile-dialog/profile-dialog.component';
 import { MotoristAssociateDialogComponent } from './associate-dialog/motorist-associate-dialog.component';
 import { RegisterMotoristComponent } from './register-motorist/register-motorist.component';
+import { NgSlimScrollModule } from 'ngx-slimscroll';
+
 
 @NgModule({
   imports: [
@@ -23,6 +25,7 @@ import { RegisterMotoristComponent } from './register-motorist/register-motorist
     SharedModule,
     CommonModule,
     MotoristRoutingModule,
+    NgSlimScrollModule
     
   ],
   declarations: [

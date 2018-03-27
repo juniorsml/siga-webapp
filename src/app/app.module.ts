@@ -19,6 +19,8 @@ import { NavbarComponent } from './shared/layout/navbar/navbar.component';
 import { SidebarComponent } from './shared/layout/sidebar/sidebar.component';
 import { ContentComponent } from './shared/layout/content/content.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,8 @@ import { ContentComponent } from './shared/layout/content/content.component';
     FormsModule,
     SharedModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
   ],
   providers: [
     {
@@ -47,4 +50,7 @@ import { ContentComponent } from './shared/layout/content/content.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+
+}

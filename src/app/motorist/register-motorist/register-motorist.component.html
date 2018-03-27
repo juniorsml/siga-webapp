@@ -1,237 +1,257 @@
-<div *ngIf="showForm" class="cnt-dialog">
-	<div class="container-form">
+
+<div *ngIf="showForm" class="cnt-dialog" >
+	<div class="container-form"  >
 		<div class="form-header columns column is-12 is-marginless">
 			<h3 class="area column is-narrow">Motorista</h3>
 			<h2 class="action column">Cadastro</h2>
 		</div>
-		<div class="columns is-multiline is-marginless">
-			<form class="cnt-form" #formMotorist="ngForm" (ngSubmit)="create(formMotorist)">
-				<!-- Dados pessoais -->
-				<div class="block column columns is-12 is-multiline">
-					<h4 class="title-block column columns is-12">Dados Pessoais</h4>
-					<div class="column is-3">
-						<div class="control">
-							<input class="input" type="text" placeholder="Nome" name="firstName" #firstName ngModel>
-						</div>
-					</div>
-					<div class="column is-3">
-						<div class="control">
-							<input class="input" type="text" placeholder="Sobrenome" name="lastName" #lastName ngModel>
-						</div>
-					</div>
+		<div class="container-scroll">		
+			<div  class="wrapper-scroll">
+				<div class="columns is-multiline is-marginless cnt-scroll"   slimScroll [options]="opts" [scrollEvents]="scrollEvents"  >
+					<form class="cnt-form" #formMotorist="ngForm" (ngSubmit)="create(formMotorist)">
+						<!-- Dados pessoais -->
+						<div class="block column columns is-12 is-multiline">
+							<h4 class="title-block column columns is-12">Dados Pessoais</h4>
 
-					<div class="column is-2">
-						<div class="control">
-							<input class="input" type="date" placeholder="Data de Nasc." name="dateOfBirth" #dateOfBirth ngModel>
-						</div>
-					</div>
+							<div class="column input-profile-photo">
+								<div class="control">
+									<div class="file">
+										<label class="file-label">
+											<input class="file-input" type="file" name="resume" (change)="addProfilePhoto($event)">
+											<span class="file-cta">
+												<span class="file-icon">
+													<i class="fas fa-upload"></i>
+												</span>
+												<span class="file-label">
+													Escolha uma foto...
+												</span>
+											</span>
+										</label>
+									</div>
+									<div class="img-profile">
+										
+									</div>
+									<a class="remove-img-profile" (click)="removeProfilePhoto()">										
+										<span>Remover Foto</span>
+									</a>
+									
+								</div>
+							</div>
+							<div class="column columns is-multiline">
+								<div class="column is-4">
+									<div class="control">
+										<input class="input" type="text" placeholder="Nome" name="firstName" #firstName ngModel>
+									</div>
+								</div>
+								<div class="column is-5">
+									<div class="control">
+										<input class="input" type="text" placeholder="Sobrenome" name="lastName" #lastName ngModel>
+									</div>
+								</div>
 
-					<div class="column is-4">
-						<div class="control">
-							<input class="input" type="text" placeholder="Nome da Mãe" name="motherName" #motherName ngModel>
-						</div>
-					</div>
+								<div class="column is-3">
+									<div class="control">
+										<input class="input" type="date" placeholder="Data de Nasc." name="dateOfBirth" #dateOfBirth ngModel>
+									</div>
+								</div>
 
-					<div class="column is-2">
-						<div class="control">
-							<div class="select">
-								<select>
-									<option>Documento</option>
-									<option>RG</option>
-									<option>CPF</option>
-									<option>RNA</option>
-									<option>Passaporte</option>
-								</select>
+								<div class="column is-6">
+									<div class="control">
+										<input class="input" type="text" placeholder="Nome da Mãe" name="motherName" #motherName ngModel>
+									</div>
+								</div>
+
+								<div class="column is-2">
+									<div class="control">
+										<div class="select">
+											<select>
+												<option>Documento</option>
+												<option>RG</option>
+												<option>CPF</option>
+												<option>RNA</option>
+												<option>Passaporte</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="column is-4">
+									<div class="control">
+										<input class="input" type="text" placeholder="Nº" name="documentId" #documentId ngModel>
+									</div>
+								</div>
+								<div class="column is-3">
+									<div class="control">
+										<div class="select">
+											<select>
+												<option>Estado Civil</option>
+												<option>Casado</option>
+												<option>Divorciado </option>
+												<option>Solteiro </option>
+												<option>União estável</option>
+												<option>Viúvo</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="column is-5">
+									<div class="control">
+										<input class="input" type="text" placeholder="Nome da Esposa" name="wifeName" #wifeName ngModel>
+									</div>
+								</div>
+								<div class="column is-2">
+									<div class="control">
+										<div class="select">
+											<select>
+												<option>Tem filhos?</option>
+												<option>Sim</option>
+												<option>Não </option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div class="column is-2">
+									<div class="control">
+										<input class="input" type="text" placeholder="Quantos?">
+									</div>
+								</div>
+								<div class="column is-4">
+									<div class="control">
+										<input class="input" type="text" placeholder="Escolaridade">
+									</div>
+								</div>
+								<div class="column is-3">
+									<div class="control">
+										<input class="input" type="text" placeholder="Nº CNH">
+									</div>
+								</div>
+								<div class="column is-2">
+									<div class="control">
+										<div class="select">
+											<select>
+												<option>Categoria CNH</option>
+												<option>A</option>
+												<option>AB</option>
+												<option>AC</option>
+												<option>AD</option>
+												<option>AE</option>
+												<option>B</option>
+												<option>C</option>
+												<option>D</option>
+												<option>E</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="column is-2">
+									<div class="control">
+										<input class="input" type="text" placeholder="Vencimento">
+									</div>
+								</div>
+							</div>
+
+							
+
+						</div>
+
+						<!-- Endereço -->
+						<div class="block column columns is-12 is-multiline" style="align-items: flex-start;">
+							<h4 class="title-block column columns is-12">Endereço</h4>
+							<div class="columns column is-half is-multiline">
+								<sga-places-auto-complete class="column is-12" (onPlacesFilteredEvent)="placesFiltered($event)" (onFilterRemovedEvent)="filterRemoved()">
+								</sga-places-auto-complete>
+								<div class="column is-12"> 
+								<iframe [src]="mapUrl" width="100%">
+								</iframe>
+							</div>
+							</div>
+							<div class="columns column is-half is-multiline">
+								<div class="column is-6">
+									<div class="control">
+										<input class="input" type="text" placeholder="Telefone Fixo">
+									</div>
+								</div>
+
+								<div class="column is-6">
+									<div class="control">
+										<input class="input" type="text" placeholder="Telefone Fixo">
+									</div>
+								</div>
+
+								<div class="column is-6">
+									<div class="control">
+										<input class="input" type="text" placeholder="Telefone Celular">
+									</div>
+								</div>
+								<div class="column is-6">
+									<div class="control">
+										<input class="input" type="text" placeholder="Telefone para recado">
+									</div>
+								</div>
+
+								<div class="column is-6">
+									<div class="control">
+										<input class="input" type="text" placeholder="Nextel">
+									</div>
+								</div>
+							</div>
+							
+
+							
+						</div>
+
+
+						
+
+						<!-- Perfil -->
+						<div class="block column columns is-12 is-multiline">
+							<h4 class="title-block column columns is-12">Perfil</h4>
+							
+
+							<div class="column is-3">
+								<div class="control">
+									<div class="select">
+										<select>
+											<option>Vínculo</option>
+											<option value="Frota">Frota</option>
+											<option value="Agregado">Agregado</option>
+											<option value="Terceiro">Terceiro</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+							<div class="column is-2">
+								<div class="control">
+									<input class="input" type="text" placeholder="Vencimento Mopp">
+								</div>
+							</div>
+							<div class="column is-2">
+								<div class="control">
+									<input class="input" type="text" placeholder="Vencimento Aso">
+								</div>
+							</div>
+							<div class="column is-2">
+								<div class="control">
+									<input class="input" type="text" placeholder="Vencimento Cdd">
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="column is-4">
-						<div class="control">
-							<input class="input" type="text" placeholder="Nº" name="documentId" #documentId ngModel>
-						</div>
-					</div>
-					<div class="column is-2">
-						<div class="control">
-							<div class="select">
-								<select>
-									<option>Estado Civil</option>
-									<option>Casado</option>
-									<option>Divorciado </option>
-									<option>Solteiro </option>
-									<option>União estável</option>
-									<option>Viúvo</option>
-								</select>
+						<!-- Botões de Ação -->
+						<div class="block column columns is-12 is-multiline">
+							<div class="columns column is-3 is-offset-9">
+								<div class="control column  is-6 ">
+									<button class="button" (click)="cancel()">Cancelar</button>
+								</div>
+								<div class="control column  is-6 ">
+									<button class="button is-info" [disabled]="!formMotorist.valid">Cadastrar</button>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="column is-4">
-						<div class="control">
-							<input class="input" type="text" placeholder="Nome da Esposa" name="wifeName" #wifeName ngModel>
-						</div>
-					</div>
-					<div class="column is-2">
-						<div class="control">
-							<div class="select">
-								<select>
-									<option>Tem filhos?</option>
-									<option>Sim</option>
-									<option>Não </option>
-								</select>
-							</div>
-						</div>
-					</div>
 
-					<div class="column is-2">
-						<div class="control">
-							<input class="input" type="text" placeholder="Quantos?">
-						</div>
-					</div>
-
-					<div class="column is-2">
-						<div class="control">
-							<input class="input" type="text" placeholder="Escolaridade">
-						</div>
-					</div>
-					<div class="column is-2">
-						<div class="control">
-							<input class="input" type="text" placeholder="Nº CNH">
-						</div>
-					</div>
-					<div class="column is-2">
-						<div class="control">
-							<div class="select">
-								<select>
-									<option>Categoria CNH</option>
-									<option>A</option>
-									<option>AB</option>
-									<option>AC</option>
-									<option>AD</option>
-									<option>AE</option>
-									<option>B</option>
-									<option>C</option>
-									<option>D</option>
-									<option>E</option>
-								</select>
-							</div>
-						</div>
-					</div>
-					<div class="column is-2">
-						<div class="control">
-							<input class="input" type="text" placeholder="Vencimento">
-						</div>
-					</div>
-
+					</form>
 				</div>
-
-				<!-- Endereço -->
-				<div class="block column columns is-12 is-multiline">
-					<h4 class="title-block column columns is-12">Endereço</h4>
-					<sga-places-auto-complete class="column is-6" (onPlacesFilteredEvent)="placesFiltered($event)" (onFilterRemovedEvent)="filterRemoved()">
-					</sga-places-auto-complete>
-
-					<div class="column is-6"> 
-						<iframe [src]="mapUrl" width="100%">
-						</iframe>
-					</div>
-				</div>
-
-
-				<!-- Telefone -->
-				<div class="block column columns is-12 is-multiline">
-					<div class="column is-2">
-						<div class="control">
-							<input class="input" type="text" placeholder="Telefone Fixo">
-						</div>
-					</div>
-
-					<div class="column is-2">
-						<div class="control">
-							<input class="input" type="text" placeholder="Telefone Fixo">
-						</div>
-					</div>
-
-					<div class="column is-2">
-						<div class="control">
-							<input class="input" type="text" placeholder="Telefone Celular">
-						</div>
-					</div>
-					<div class="column is-2">
-						<div class="control">
-							<input class="input" type="text" placeholder="Telefone para recado">
-						</div>
-					</div>
-
-					<div class="column is-4">
-						<div class="control">
-							<input class="input" type="text" placeholder="Nextel">
-						</div>
-					</div>
-
-				</div>
-
-				<!-- Perfil -->
-				<div class="block column columns is-12 is-multiline">
-					<h4 class="title-block column columns is-12">Perfil</h4>
-					<div class="column is-3">
-						<div class="control">
-							<div class="file">
-								<label class="file-label">
-									<input class="file-input" type="file" name="resume">
-									<span class="file-cta">
-										<span class="file-icon">
-											<i class="fas fa-upload"></i>
-										</span>
-										<span class="file-label">
-											Escolha uma foto...
-										</span>
-									</span>
-								</label>
-							</div>
-						</div>
-					</div>
-
-					<div class="column is-3">
-						<div class="control">
-							<div class="select">
-								<select>
-									<option>Vínculo</option>
-									<option value="Frota">Frota</option>
-									<option value="Agregado">Agregado</option>
-									<option value="Terceiro">Terceiro</option>
-								</select>
-							</div>
-						</div>
-					</div>
-
-					<div class="column is-2">
-						<div class="control">
-							<input class="input" type="text" placeholder="Vencimento Mopp">
-						</div>
-					</div>
-					<div class="column is-2">
-						<div class="control">
-							<input class="input" type="text" placeholder="Vencimento Aso">
-						</div>
-					</div>
-					<div class="column is-2">
-						<div class="control">
-							<input class="input" type="text" placeholder="Vencimento Cdd">
-						</div>
-					</div>
-				</div>
-				<!-- Botões de Ação -->
-				<div class="block column columns is-12 is-multiline">
-					<div class="columns column is-3 is-offset-9">
-						<div class="control column  is-6 ">
-							<button class="button" (click)="cancel()">Cancelar</button>
-						</div>
-						<div class="control column  is-6 ">
-							<button class="button is-info" [disabled]="!formMotorist.valid">Cadastrar</button>
-						</div>
-					</div>
-				</div>
-
-			</form>
+			</div>
 		</div>
 	</div>
 </div>
