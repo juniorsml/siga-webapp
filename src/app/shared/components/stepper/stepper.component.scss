@@ -67,7 +67,7 @@
 
   .steps.is-medium:not(.is-vertical):not(.is-thin).has-content-centered.has-gaps .steps-segment:not(:last-child):after, .steps.is-medium:not(.is-vertical):not(.is-thin).has-content-centered .steps-segment.has-gaps:not(:last-child):after {
     left: calc(50% + 1.55rem);
-    right: calc(-50% + 6.6rem);
+    right: calc(-50% + 6rem);
   }
 
   .steps.is-medium:not(.is-vertical):not(.is-thin).has-gaps .steps-segment:not(:last-child):after, .steps.is-medium:not(.is-vertical):not(.is-thin) .steps-segment.has-gaps:not(:last-child):after {
@@ -190,4 +190,8 @@ a {
 
 .steps.is-hollow .steps-marker, .steps-marker.is-hollow {
   border: .3em solid #00d1b2;
+}
+
+.steps.is-hollow .steps-segment.is-active ~ .steps-segment .steps-marker, .steps-segment.is-active ~ .steps-segment .steps-marker.is-hollow {
+  border-color: #dbdbdb;
 }
