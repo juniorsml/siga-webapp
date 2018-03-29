@@ -1,7 +1,13 @@
-import { Component, Output,OnInit, EventEmitter, Input } from '@angular/core';
+import { Component, Output,OnInit, EventEmitter, Input,ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
+
+
+class RegisterForm {
+  
+}
+
 
 @Component({
   selector: 'sga-register-motorist',
@@ -11,6 +17,11 @@ import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
 
 export class RegisterMotoristComponent implements  OnInit {
 
+  
+  model: RegisterForm = new RegisterForm();
+  @ViewChild('formMotorist') formMotorist: any;
+  
+  //Slim Scroll options
   opts: ISlimScrollOptions;
   scrollEvents: EventEmitter<SlimScrollEvent>;
 
@@ -20,6 +31,13 @@ export class RegisterMotoristComponent implements  OnInit {
       alwaysVisible: true
     }
   }
+
+  onSubmit() {
+      if (this.formMotorist.valid) {
+        console.log("Form Submitted!");
+        this.formMotorist.reset();
+      }
+    }
 
   // Show image profile
   addProfilePhoto(event:any) {

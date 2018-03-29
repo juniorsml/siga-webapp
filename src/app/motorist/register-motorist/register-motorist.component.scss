@@ -87,12 +87,27 @@ $main-blue:#4d5675;
 	.columns:last-child {
     	margin-bottom: 0;
 	}
+	.form-control-feedback .help {	    
+	    font-size: .6666rem;
+	}
+
 	.select{
 		display: block;
 		select{
 			width:100%;
 		}
 	}
+	.document .select{
+    	max-width: 67%;
+    	float: right;
+    	
+	}
+	.document .control span{
+		float:left;
+		font-size: 13px;
+		color: #686868;
+	}
+
 	.input-profile-photo{
 		width: 200px;
    		max-width: 200px;
