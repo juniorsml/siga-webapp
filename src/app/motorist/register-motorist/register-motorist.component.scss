@@ -83,6 +83,13 @@ $main-blue:#4d5675;
 	}
 	.column{
 		padding-bottom:0.23rem;
+	    position: relative;
+		.label-input{
+			font-size: 11px;
+		    color: #686868;
+		    position: absolute;
+		    top: -4px;
+		}
 	}
 	.columns:last-child {
     	margin-bottom: 0;

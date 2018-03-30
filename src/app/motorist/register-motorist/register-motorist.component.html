@@ -66,14 +66,17 @@
 								</div>
 
 								<div class="column is-3">
+									<span class="label-input">Data de Nascimento</span>	
 									<div class="control">
-										<p-calendar [(ngModel)]="datepicker" dateFormat="dd/mm/yy"></p-calendar>
-
-										<input type="date" class="input" placeholder="Data de Nasc."  name="dateOfBirth"
+										<p-calendar [locale]="pt" [(ngModel)]="datepicker" dateFormat="dd/mm/yy">
+											<input type="hidden" class="input" placeholder="Data de Nasc."  name="dateOfBirth"
 										 [(ngModel)]="model.dateOfBirth" required #dateOfBirth="ngModel"
 									       [ngClass]="{
 								           'is-danger': dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched)
 								          }">
+										</p-calendar>
+
+										
 						          	    <div class="form-control-feedback"
 					                        *ngIf="dateOfBirth.errors && (dateOfBirth.dirty || dateOfBirth.touched)">
 						                    <p class="help is-danger" *ngIf="dateOfBirth.errors.required">Data de Nascimento é obrigatória</p>
@@ -95,10 +98,11 @@
 									</div>
 								</div>
 
-								<div class="column is-2 document">
+								<div class="column is-2">
+									<span class="label-input">Documento</span>	
 									
 									<div class="control">	
-										<span>Doc.</span>									
+													
 										<div class="select">											
 											<select name="document"
 											 [(ngModel)]="model.document" required #document="ngModel"
@@ -132,6 +136,7 @@
 									</div>
 								</div>
 								<div class="column is-3">
+									<span class="label-input">Estado Civil</span>	
 									<div class="control">
 										<div class="select">									         	
 											<select name="maritalStatus"
@@ -139,13 +144,11 @@
 										       [ngClass]="{
 									           'is-danger': maritalStatus.invalid && (maritalStatus.dirty || maritalStatus.touched)
 									          }">
-
-												<option>Estado Civil</option>
-												<option>Casado</option>
-												<option>Divorciado </option>
-												<option>Solteiro </option>
-												<option>União estável</option>
-												<option>Viúvo</option>
+												<option value="Casado">Casado</option>
+												<option value="Divorciado ">Divorciado </option>
+												<option value="Solteiro ">Solteiro </option>
+												<option value="União estável">União estável</option>
+												<option value="Viúvo">Viúvo</option>
 											</select>
 										</div>
 									</div>
@@ -169,10 +172,10 @@
 					                </div>
 								</div>
 								<div class="column is-2">
+									<span class="label-input">Tem Filhos?</span>	
 									<div class="control">
 										<div class="select">											
-											<select [(ngModel)]="model.haveChildren"  #maritalStatus="ngModel">
-												<option>Tem filhos?</option>
+											<select [(ngModel)]="model.haveChildren"  #haveChildren="ngModel">									
 												<option value="Sim">Sim</option>
 												<option value="Não">Não </option>
 											</select>
@@ -209,13 +212,13 @@
 					                </div>
 								</div>
 								<div class="column is-2">
+									<span class="label-input">Categoria CNH</span>	
 									<div class="control">
 										<div class="select">
 											<select [(ngModel)]="model.cnhCategory" required #cnhCategory="ngModel"
 										       [ngClass]="{
 									           'is-danger': cnhCategory.invalid && (cnhCategory.dirty || cnhCategory.touched)
 									          }">
-												<option>Categoria CNH</option>
 												<option value="A">A</option>
 												<option value="AB">AB</option>
 												<option value="AC">AC</option>
@@ -234,12 +237,16 @@
 					                </div>
 								</div>
 								<div class="column is-2">
-									<div class="control">									
-										<input type="text" class="input" placeholder="Vencimento"  name="dueDate"
-										 [(ngModel)]="model.dueDate" required #dueDate="ngModel"
-									       [ngClass]="{    
-								           'is-danger': dueDate.invalid && (dueDate.dirty || dueDate.touched)
-								          }">
+
+									<span class="label-input">Vencimento CNH</span>	
+									<div class="control">
+										<p-calendar [locale]="pt" [(ngModel)]="due" dateFormat="dd/mm/yy">
+											<input type="hidden" class="input" placeholder="Vencimento CNH"  name="dueDate"
+											 [(ngModel)]="model.dueDate" required #dueDate="ngModel"
+										       [ngClass]="{
+									           'is-danger': dueDate.invalid && (dueDate.dirty || dueDate.touched)
+									          }">
+										</p-calendar>
 									</div>
 									<div class="form-control-feedback"
 				                        *ngIf="dueDate.errors && (dueDate.dirty || dueDate.touched)">
@@ -260,10 +267,10 @@
 								</iframe>
 							</div>
 							</div>
-							<div class="columns column is-half is-multiline">
+							<div class="columns columnhalf is-multiline">
 								<div class="column is-6">
 									<div class="control">
-										<input type="text" class="input" placeholder="Telefone Fixo"  name="landlinePhone"
+										<input type="text" [textMask]="{landlinePhone: landlinePhone}" is- class="input" placeholder="Telefone Fixo"  name="landlinePhone"
 										 [(ngModel)]="model.landlinePhone" required #landlinePhone="ngModel"
 									       [ngClass]="{    
 								           'is-danger': landlinePhone.invalid && (landlinePhone.dirty || landlinePhone.touched)
@@ -328,36 +335,44 @@
 						<div class="block column columns is-12 is-multiline">
 							<h4 class="title-block column columns is-12">Perfil</h4>
 							
+							
 
-							<div class="column is-3">
-								<div class="control">
-									<div class="select">
-										<select [(ngModel)]="model.bond" required #bond="ngModel"
-										       [ngClass]="{
-									           'is-danger': bond.invalid && (bond.dirty || bond.touched)
-									          }">
-											<option>Vínculo</option>
-											<option value="Frota">Frota</option>
-											<option value="Agregado">Agregado</option>
-											<option value="Terceiro">Terceiro</option>
-										</select>
+							
+									
+								<div class="column is-3">
+									<span class="label-input">Vínculo</span>	
+									<div class="control">
+										<div class="select">
+											<select [(ngModel)]="model.bond" required #bond="ngModel"
+											       [ngClass]="{
+										           'is-danger': bond.invalid && (bond.dirty || bond.touched)
+										          }">
+												
+												<option value="Frota">Frota</option>
+												<option value="Agregado">Agregado</option>
+												<option value="Terceiro">Terceiro</option>
+											</select>
+										</div>
 									</div>
+									<div class="form-control-feedback"
+				                        *ngIf="bond.errors && (bond.dirty || bond.touched)">
+					                    <p class="help is-danger" *ngIf="bond.errors.required">Vínculo é obrigatório</p>
+					                </div>
+
+
 								</div>
-								<div class="form-control-feedback"
-			                        *ngIf="bond.errors && (bond.dirty || bond.touched)">
-				                    <p class="help is-danger" *ngIf="bond.errors.required">Vínculo é obrigatório</p>
-				                </div>
-
-
-							</div>
 
 							<div class="column is-3">
-								<div class="control">									
-									<input type="text" class="input" placeholder="Vencimento Mopp"  name="dueDateMopp"
+								<span class="label-input">Vencimento Mopp</span>	
+								<div class="control">	
+									<p-calendar [locale]="pt" [(ngModel)]="dueMopp" dateFormat="dd/mm/yy">
+										<input type="hidden" class="input" placeholder="Vencimento Mopp"  name="dueDateMopp"
 									 [(ngModel)]="model.dueDateMopp" required #dueDateMopp="ngModel"
 								       [ngClass]="{    
 							           'is-danger': dueDateMopp.invalid && (dueDateMopp.dirty || dueDateMopp.touched)
 							          }">
+									</p-calendar>								
+									
 								</div>
 								<div class="form-control-feedback"
 			                        *ngIf="dueDateMopp.errors && (dueDateMopp.dirty || dueDateMopp.touched)">
@@ -365,13 +380,15 @@
 				                </div>
 							</div>
 							<div class="column is-3">								
-
-								<div class="control">									
-									<input type="text" class="input" placeholder="Vencimento Aso"  name="dueDateAso"
-									 [(ngModel)]="model.dueDateAso" required #dueDateAso="ngModel"
-								       [ngClass]="{    
-							           'is-danger': dueDateAso.invalid && (dueDateAso.dirty || dueDateAso.touched)
-							          }">
+								<span class="label-input">Vencimento Aso</span>	
+								<div class="control">
+									<p-calendar [locale]="pt" [(ngModel)]="dueAso" dateFormat="dd/mm/yy">
+										<input type="hidden" class="input" placeholder="Vencimento Aso"  name="dueDateAso"
+										 [(ngModel)]="model.dueDateAso" required #dueDateAso="ngModel"
+									       [ngClass]="{    
+								           'is-danger': dueDateAso.invalid && (dueDateAso.dirty || dueDateAso.touched)
+								          }">
+									</p-calendar>				
 								</div>
 								<div class="form-control-feedback"
 			                        *ngIf="dueDateAso.errors && (dueDateAso.dirty || dueDateAso.touched)">
@@ -380,12 +397,16 @@
 
 							</div>
 							<div class="column is-3">
-								<div class="control">									
-									<input type="text" class="input" placeholder="Vencimento Cdd"  name="dueDateCdd"
-									 [(ngModel)]="model.dueDateCdd" required #dueDateCdd="ngModel"
-								       [ngClass]="{    
-							           'is-danger': dueDateCdd.invalid && (dueDateCdd.dirty || dueDateCdd.touched)
-							          }">
+								<span class="label-input">Vencimento Cdd</span>	
+								<div class="control">	
+									<p-calendar [locale]="pt" [(ngModel)]="dueCdd" dateFormat="dd/mm/yy">
+										<input type="hidden" class="input" placeholder="Vencimento Cdd"  name="dueDateCdd"
+										 [(ngModel)]="model.dueDateCdd" required #dueDateCdd="ngModel"
+									       [ngClass]="{    
+								           'is-danger': dueDateCdd.invalid && (dueDateCdd.dirty || dueDateCdd.touched)
+								          }">
+									</p-calendar>								
+									
 								</div>
 								<div class="form-control-feedback"
 			                        *ngIf="dueDateCdd.errors && (dueDateCdd.dirty || dueDateCdd.touched)">

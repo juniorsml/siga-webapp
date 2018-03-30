@@ -36,6 +36,7 @@ import { PlacesAutoCompleteComponent } from '../components/places-auto-complete/
 
 import {CalendarModule} from 'primeng/calendar'; 
 
+
 @NgModule({
   declarations: [
     PlacesPipe,

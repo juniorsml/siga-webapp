@@ -20,7 +20,13 @@ export class RegisterMotoristComponent implements  OnInit {
 
   model: RegisterForm = new RegisterForm();
   @ViewChild('formMotorist') formMotorist: any;
-  datepicker: Date;
+  dateOfBirth: Date;
+  dueDate: Date;
+  dueDateMopp: Date;
+  dueDateAso: Date;
+  dueDateCdd: Date;
+  pt:any;
+  public landlinePhone = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
   //Slim Scroll options
   opts: ISlimScrollOptions;
@@ -30,6 +36,16 @@ export class RegisterMotoristComponent implements  OnInit {
     this.scrollEvents = new EventEmitter<SlimScrollEvent>();
     this.opts = {
       alwaysVisible: true
+    }
+    this.pt = {
+        firstDayOfWeek: 1,
+        dayNames: [ "Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado" ],
+        dayNamesShort: [ "Dom","Seg","Ter","Qua","Qui","Sex","Sáb" ],
+        dayNamesMin: [ "D","S","T","Q","Q","S","S" ],
+        monthNames: [ "Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro" ],
+        monthNamesShort: [ "Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez" ],
+        today: 'Hoje',
+        clear: 'Limpar'
     }
 
   }
