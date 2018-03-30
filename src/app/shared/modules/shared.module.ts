@@ -35,6 +35,7 @@ import {
 import { PlacesAutoCompleteComponent } from '../components/places-auto-complete/places-auto-complete.component';
 
 import {CalendarModule} from 'primeng/calendar'; 
+import { TextMaskModule } from 'angular2-text-mask';
 
 
 @NgModule({
@@ -70,7 +71,7 @@ import {CalendarModule} from 'primeng/calendar';
     ContextMenuComponent
 
   ],
-  imports: [FormsModule, CommonModule, NgSlimScrollModule,CalendarModule],
+  imports: [FormsModule, CommonModule, NgSlimScrollModule,CalendarModule,TextMaskModule],
   providers: [
     AuthService,
     {
@@ -110,7 +111,8 @@ import {CalendarModule} from 'primeng/calendar';
     DataTableComponent,
     EmptyTableComponent,
     ContextMenuComponent,
-    CalendarModule
+    CalendarModule,
+    TextMaskModule
   ]
 })
 export class SharedModule {}

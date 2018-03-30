@@ -26,7 +26,9 @@ export class RegisterMotoristComponent implements  OnInit {
   dueDateAso: Date;
   dueDateCdd: Date;
   pt:any;
-  public landlinePhone = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  public landlinephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  public mobilephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/,/\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  public messagephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/,/\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
   //Slim Scroll options
   opts: ISlimScrollOptions;

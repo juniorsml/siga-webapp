@@ -259,18 +259,18 @@
 						<!-- Endereço -->
 						<div class="block column columns is-12 is-multiline" style="align-items: flex-start;">
 							<h4 class="title-block column columns is-12">Endereço</h4>
+								<div class="columns column  is-multiline">
+									<sga-places-auto-complete class="column is-12" (onPlacesFilteredEvent)="placesFiltered($event)" (onFilterRemovedEvent)="filterRemoved()">
+									</sga-places-auto-complete>
+									<div class="column is-12"> 
+										<iframe [src]="mapUrl" width="100%">
+										</iframe>
+									</div>
+								</div>
 							<div class="columns column is-half is-multiline">
-								<sga-places-auto-complete class="column is-12" (onPlacesFilteredEvent)="placesFiltered($event)" (onFilterRemovedEvent)="filterRemoved()">
-								</sga-places-auto-complete>
-								<div class="column is-12"> 
-								<iframe [src]="mapUrl" width="100%">
-								</iframe>
-							</div>
-							</div>
-							<div class="columns columnhalf is-multiline">
 								<div class="column is-6">
 									<div class="control">
-										<input type="text" [textMask]="{landlinePhone: landlinePhone}" is- class="input" placeholder="Telefone Fixo"  name="landlinePhone"
+										<input type="text" [textMask]="{mask: landlinephone}" class="input" placeholder="Telefone Fixo"  name="landlinePhone"
 										 [(ngModel)]="model.landlinePhone" required #landlinePhone="ngModel"
 									       [ngClass]="{    
 								           'is-danger': landlinePhone.invalid && (landlinePhone.dirty || landlinePhone.touched)
@@ -284,7 +284,7 @@
 
 								<div class="column is-6">
 									<div class="control">
-										<input type="text" class="input" placeholder="Telefone Celular"  name="mobilePhone"
+										<input type="text" [textMask]="{mask: mobilephone}" class="input" placeholder="Telefone Celular"  name="mobilePhone"
 										 [(ngModel)]="model.mobilePhone" required #mobilePhone="ngModel"
 									       [ngClass]="{    
 								           'is-danger': mobilePhone.invalid && (mobilePhone.dirty || mobilePhone.touched)
@@ -297,7 +297,7 @@
 								</div>
 								<div class="column is-6">
 									<div class="control">
-										<input type="text" class="input" placeholder="Telefone para recado"  name="messagePhone"
+										<input type="text" [textMask]="{mask: mobilephone}" class="input" placeholder="Telefone para recado"  name="messagePhone"
 										 [(ngModel)]="model.messagePhone" required #messagePhone="ngModel"
 									       [ngClass]="{    
 								           'is-danger': messagePhone.invalid && (messagePhone.dirty || messagePhone.touched)
