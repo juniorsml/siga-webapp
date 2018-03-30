@@ -35,6 +35,10 @@ import {
 import { PlacesAutoCompleteComponent } from '../components/places-auto-complete/places-auto-complete.component';
 import { StepperComponent } from '../components/stepper/stepper.component';
 
+import {CalendarModule} from 'primeng/calendar'; 
+import { TextMaskModule } from 'angular2-text-mask';
+
+
 @NgModule({
   declarations: [
     PlacesPipe,
@@ -68,8 +72,9 @@ import { StepperComponent } from '../components/stepper/stepper.component';
     DataTableComponent,
     EmptyTableComponent,
     ContextMenuComponent
+
   ],
-  imports: [FormsModule, CommonModule, NgSlimScrollModule],
+  imports: [FormsModule, CommonModule, NgSlimScrollModule,CalendarModule,TextMaskModule],
   providers: [
     AuthService,
     {
@@ -110,7 +115,9 @@ import { StepperComponent } from '../components/stepper/stepper.component';
     MenuItemComponent,
     DataTableComponent,
     EmptyTableComponent,
-    ContextMenuComponent
+    ContextMenuComponent,
+    CalendarModule,
+    TextMaskModule
   ]
 })
 export class SharedModule {}
