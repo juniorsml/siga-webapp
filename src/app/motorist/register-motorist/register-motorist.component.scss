@@ -75,11 +75,9 @@ $main-blue:#4d5675;
 		color:#8c8a8a;
 		font-size:0.89rem !important;
 	}
-	.uf.select select:not([multiple]) {
-	    padding-right: 22px;
-	}
-	.uf.select:not(.is-multiple)::after{
-		right:10px;
+	
+	.select:not(.is-multiple)::after{
+		right: 0.8em;
 	}
 	.column{
 		padding-bottom:0.23rem;
