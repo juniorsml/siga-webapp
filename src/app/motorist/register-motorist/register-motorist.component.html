@@ -49,7 +49,7 @@
 							              *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
 							           <p class="help is-danger" *ngIf="firstName.errors.required">Nome é obrigatório</p>
 							        </div>
-								</div>  
+								</div>   
 								</div>
 								<div class="column is-5">
 									<div class="control">
@@ -66,7 +66,9 @@
 								</div>
 
 								<div class="column is-3">
-									<div class="control">										
+									<div class="control">
+										<p-calendar [(ngModel)]="datepicker" dateFormat="dd/mm/yy"></p-calendar>
+
 										<input type="date" class="input" placeholder="Data de Nasc."  name="dateOfBirth"
 										 [(ngModel)]="model.dateOfBirth" required #dateOfBirth="ngModel"
 									       [ngClass]="{
@@ -131,11 +133,12 @@
 								</div>
 								<div class="column is-3">
 									<div class="control">
-										<div class="select">
-											<select [(ngModel)]="model.maritalStatus" required #maritalStatus="ngModel"
+										<div class="select">									         	
+											<select name="maritalStatus"
+											 [(ngModel)]="model.maritalStatus" required #maritalStatus="ngModel"
 										       [ngClass]="{
 									           'is-danger': maritalStatus.invalid && (maritalStatus.dirty || maritalStatus.touched)
-									          }">	
+									          }">
 
 												<option>Estado Civil</option>
 												<option>Casado</option>

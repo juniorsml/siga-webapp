@@ -1,7 +1,8 @@
-import { Component, Output,OnInit, EventEmitter, Input,ViewChild } from '@angular/core';
+import { Component, Output,OnInit, EventEmitter, Input,ViewChild  } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
+
 
 
 class RegisterForm {
@@ -17,10 +18,10 @@ class RegisterForm {
 
 export class RegisterMotoristComponent implements  OnInit {
 
-  
   model: RegisterForm = new RegisterForm();
   @ViewChild('formMotorist') formMotorist: any;
-  
+  datepicker: Date;
+
   //Slim Scroll options
   opts: ISlimScrollOptions;
   scrollEvents: EventEmitter<SlimScrollEvent>;
@@ -30,6 +31,7 @@ export class RegisterMotoristComponent implements  OnInit {
     this.opts = {
       alwaysVisible: true
     }
+
   }
 
   onSubmit() {

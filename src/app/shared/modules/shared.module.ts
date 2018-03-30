@@ -34,6 +34,8 @@ import {
 } from '../components/listview/listview.component';
 import { PlacesAutoCompleteComponent } from '../components/places-auto-complete/places-auto-complete.component';
 
+import {CalendarModule} from 'primeng/calendar'; 
+
 @NgModule({
   declarations: [
     PlacesPipe,
@@ -65,8 +67,9 @@ import { PlacesAutoCompleteComponent } from '../components/places-auto-complete/
     DataTableComponent,
     EmptyTableComponent,
     ContextMenuComponent
+
   ],
-  imports: [FormsModule, CommonModule, NgSlimScrollModule],
+  imports: [FormsModule, CommonModule, NgSlimScrollModule,CalendarModule],
   providers: [
     AuthService,
     {
@@ -105,7 +108,8 @@ import { PlacesAutoCompleteComponent } from '../components/places-auto-complete/
     MenuItemComponent,
     DataTableComponent,
     EmptyTableComponent,
-    ContextMenuComponent
+    ContextMenuComponent,
+    CalendarModule
   ]
 })
 export class SharedModule {}
