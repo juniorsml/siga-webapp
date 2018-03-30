@@ -33,6 +33,7 @@ import {
   ListViewEmptyComponent
 } from '../components/listview/listview.component';
 import { PlacesAutoCompleteComponent } from '../components/places-auto-complete/places-auto-complete.component';
+import { StepperComponent } from '../components/stepper/stepper.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,8 @@ import { PlacesAutoCompleteComponent } from '../components/places-auto-complete/
     GridComponent,
     TabsComponent,
     ModalComponent,
+    StepperComponent,
+
     DropdownComponent,
     MapFilterComponent,
     DropdownBodyComponent,
@@ -85,6 +88,8 @@ import { PlacesAutoCompleteComponent } from '../components/places-auto-complete/
     GridComponent,
     TabsComponent,
     ModalComponent,
+    StepperComponent,
+    
     DropdownComponent,
     MapFilterComponent,
     DropdownBodyComponent,
