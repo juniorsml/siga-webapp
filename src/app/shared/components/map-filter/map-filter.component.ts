@@ -28,6 +28,7 @@ export class MapFilterComponent implements AfterViewInit {
     this.filterRemoved = new EventEmitter();
     this.placesInput = new google.maps.places.Autocomplete(<HTMLInputElement> document.getElementById('#mapFilter'));
     this.placesInput.addListener('place_changed', () => this.setLocation());
+    this.location = null;
   }
 
   setLocation() {
