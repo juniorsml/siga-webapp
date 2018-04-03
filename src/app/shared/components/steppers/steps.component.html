@@ -1,0 +1,17 @@
+<ul class="steps is-narrow is-medium is-centered has-content-centered" [ngStyle]="{width: width}">
+  <li class="steps-segment" 
+      *ngFor="let step of steps"
+      (click)="onClick($event, step)"
+      [ngClass]="{ 'is-active has-gaps': step.hasGap }">
+    <a class="has-text-dark">
+      <span class="steps-marker" [ngClass]="{ 'is-hollow': step.isHollow }">
+        <span class="icon">
+          <i [ngClass]="step.icon"></i>
+        </span>
+      </span>
+      <div class="steps-content">
+        <p class="heading">{{step.header}}</p>
+      </div>
+    </a>
+  </li>
+</ul>
