@@ -26,7 +26,6 @@ import { NgSlimScrollModule } from 'ngx-slimscroll';
     CommonModule,
     MotoristRoutingModule,
     NgSlimScrollModule
-    
   ],
   declarations: [
     MotoristComponent, 
@@ -35,6 +34,9 @@ import { NgSlimScrollModule } from 'ngx-slimscroll';
     ProfileDialogComponent,
     MotoristAssociateDialogComponent,
     RegisterMotoristComponent
+  ],
+  exports: [
+    MotoristAssociateDialogComponent
   ],
   providers: [
     DomHandler,
