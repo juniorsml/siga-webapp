@@ -1,5 +1,11 @@
 <div class="m-top">
-  <sga-stepper [width]="'90%'"></sga-stepper>
+
+  <sga-steps [width]="'35%'" (onSelectStep)="onSelectStep($event)">
+    <sga-step [header]="'Geral'" [icon]="'fal fa-home'"></sga-step>
+    <sga-step [header]="'Motorista'" [icon]="'fal fa-user'" [hasGap]="true" ></sga-step>
+    <sga-step [header]="'Viagem'" [icon]="'fal fa-road'" [isHollow]="true"></sga-step>
+  </sga-steps>
+
   <h5 class="title is-6 column m-top">Dados da Viagem</h5>
   <hr>
   <div class="block column columns is-12 is-multiline">

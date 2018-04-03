@@ -33,11 +33,14 @@ import {
   ListViewEmptyComponent
 } from '../components/listview/listview.component';
 import { PlacesAutoCompleteComponent } from '../components/places-auto-complete/places-auto-complete.component';
-import { StepperComponent } from '../components/stepper/stepper.component';
+// import { StepperComponent } from '../components/stepper/stepper.component';
 
-import {CalendarModule} from 'primeng/calendar'; 
+import { CalendarModule } from 'primeng/calendar';
 import { TextMaskModule } from 'angular2-text-mask';
 
+import { StepComponent } from '../components/steppers/stepper/step.component';
+import { StepsComponent } from '../components/steppers/steps.component';
+import { StepperComponent } from '../components/stepper/stepper.component';
 
 @NgModule({
   declarations: [
@@ -45,11 +48,14 @@ import { TextMaskModule } from 'angular2-text-mask';
     SearchPipe,
     TimeElapsedAsTextPipe,
 
+    StepComponent,
+    StepsComponent,
+    StepperComponent,
+
     TabComponent,
     GridComponent,
     TabsComponent,
     ModalComponent,
-    StepperComponent,
 
     DropdownComponent,
     MapFilterComponent,
@@ -72,9 +78,14 @@ import { TextMaskModule } from 'angular2-text-mask';
     DataTableComponent,
     EmptyTableComponent,
     ContextMenuComponent
-
   ],
-  imports: [FormsModule, CommonModule, NgSlimScrollModule,CalendarModule,TextMaskModule],
+  imports: [
+    FormsModule,
+    CommonModule,
+    NgSlimScrollModule,
+    CalendarModule,
+    TextMaskModule
+  ],
   providers: [
     AuthService,
     {
@@ -93,8 +104,11 @@ import { TextMaskModule } from 'angular2-text-mask';
     GridComponent,
     TabsComponent,
     ModalComponent,
+
+    StepComponent,
+    StepsComponent,
     StepperComponent,
-    
+
     DropdownComponent,
     MapFilterComponent,
     DropdownBodyComponent,
