@@ -23,6 +23,10 @@ export class TripComponent {
         this.router.navigateByUrl('trip/motorist');
         break;
 
+      case 'Veículos':
+        this.router.navigateByUrl('trip/vehicles');
+        break;
+
       case 'Viagem':
         break; 
     }
