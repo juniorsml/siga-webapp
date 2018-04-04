@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'sga-places',
   templateUrl: './places.component.html',
-  styles: []
+  styleUrls: ['./places.component.scss']
 })
 export class PlacesComponent implements OnInit {
 
