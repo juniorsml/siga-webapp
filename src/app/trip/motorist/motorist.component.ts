@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { MotoristAssociateDialogComponent } from '../../motorist/associate-dialog/motorist-associate-dialog.component';
 
 @Component({
   selector: 'sga-motorist',
   templateUrl: './motorist.component.html',
    styleUrls: ['./motorist.component.scss',]
 })
-export class MotoristComponent implements OnInit {
+
+export class MotoristComponent  extends MotoristAssociateDialogComponent implements OnInit {
   public motorists = [];
 
   public showAssociateModal = false;
@@ -709,3 +711,4 @@ export class MotoristComponent implements OnInit {
     ];
   }
 }
+

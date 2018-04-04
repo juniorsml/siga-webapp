@@ -7,16 +7,13 @@
         <div class="trip-vehicles-ac">
             <div class="cnt-autocomplete">
 	            <sga-auto-complete 
-	              [motorists]="motorists" 
 	              minLength="3"
 	              styleClass = "autocomplete"
 	              noSuggestionsText="Nenhum motorista encontrado"
 	              url="api/motorist/search?query="
 	              placeholder="Digite o número do documento"
 	              style="width: 100%;"
-	              type="text"
-	              (onCreateNew)="showMotoristForm($event)"
-	              (itemSelected)="onMotoristSelected($event)">
+	              type="text">
 	              <ng-template let-item="item">
 	                <div class="autocomplete-suggestion">
 	                  <span>
@@ -36,15 +33,13 @@
         </div>
         <div class="trip-vehicles-lv">
             <list-view
-                [listItems]="trip?.motorists"
                 styleClass="motorist-list-item">
                 <list-view-item>
                     <ng-template let-item="item" let-index="index">
                         <div
-                            [class.selected]="motoristIndex == index"
                             class="listview-item-destination"
                             style="min-height: 56px"
-                            (click)="onMotoristSelected(item, index)">
+                           >
                             <div class="listview-item-destination-index">
                                 <span></span>
                             </div>
@@ -52,11 +47,9 @@
                                  class="listview-item-destination-wrapper">
                                         <span
                                             class="listview-item-destination-name"></span>
-                                <span
-                                    class="listview-item-destination-address"></span>
+                                <span class="listview-item-destination-address"></span>
                             </div>
-                            <span (click)="onMotoristRemove(item, index)"
-                                  class="listview-item-destination-remove">Remove</span>
+                            <span class="listview-item-destination-remove">Remove</span>
                         </div>
                     </ng-template>
                 </list-view-item>
