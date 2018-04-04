@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'sga-motorist',
-  templateUrl: './motorist.component.html'
+  templateUrl: './motorist.component.html',
+   styleUrls: ['./motorist.component.scss',]
 })
 export class MotoristComponent implements OnInit {
   public motorists = [];
