@@ -6,6 +6,7 @@ import { Map } from '../../shared/models/Map';
 import { TabComponent } from '../../shared/components/tabs/tab/tab.component';
 import { Feature, GeometryObject } from 'geojson';
 import { TableClickEvent } from '../../shared/components/table/table.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'sga-map-motorist',
@@ -128,9 +129,10 @@ export class MapMotoristComponent implements OnInit {
 
   selectedMotorist: any;
 
-  constructor(private map: Map) {}
+  constructor(private map: Map, private router: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.router.data.subscribe(data => this.motorists = data.motorists);
     this.injectMap();
   }
 

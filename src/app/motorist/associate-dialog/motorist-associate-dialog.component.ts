@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'sga-motorist-associate-dialog',
@@ -31,7 +32,11 @@ export class MotoristAssociateDialogComponent implements OnInit {
   public searchText: any;
   public hideAdminErrorModal = true;
 
-  constructor() {}
+  constructor(private router: ActivatedRoute) {}
+
+  ngOnInit() :void {
+    this.router.data.subscribe(data => this.motorists = data.motorists);
+  }
 
   private setCurrentMotorists() {
     this.currentList = [];
@@ -88,8 +93,6 @@ export class MotoristAssociateDialogComponent implements OnInit {
   onAdminMotoristCellClick(event) {
     if (event.cellIndex === 6) this.deleteMotorist(event.data);
   }
-
-  ngOnInit() {}
 
   applyChanges() {}
 }
