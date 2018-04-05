@@ -1,3 +1,6 @@
+:host{
+  width: 100%;
+}
 @media screen and (min-width: 769px), print {
   .steps:not(.is-vertical).is-narrow.is-centered {
     justify-content: center;
@@ -12,7 +15,7 @@
   }
 
   .steps:not(.is-vertical).is-narrow .steps-segment:not(:last-child) {
-    min-width: 10em;
+    min-width: 7em;
   }
 
   .steps:not(.is-vertical).is-narrow .steps-segment {
@@ -47,7 +50,7 @@
   }
 
   .steps.is-medium:not(.is-vertical) .steps-segment:not(:last-child):after {
-    height: .4em;
+    height: .2em;
     left: 2.26rem;
     right: -.24rem;
     top: calc(1.25rem - (.2em));
@@ -59,15 +62,15 @@
   }
 
   .steps:not(.is-vertical) .steps-segment:not(:last-child):after {
-    height: .4em;
+    height: .2em;
     left: 1.76rem;
     right: -.24rem;
     top: calc(1rem - (.2em));
   }
 
   .steps.is-medium:not(.is-vertical):not(.is-thin).has-content-centered.has-gaps .steps-segment:not(:last-child):after, .steps.is-medium:not(.is-vertical):not(.is-thin).has-content-centered .steps-segment.has-gaps:not(:last-child):after {
-    left: calc(50% + 1.55rem);
-    right: calc(-50% + 6rem);
+    left: calc(48% + 1.55rem);
+    right: calc(-45% + 6rem);
   }
 
   .steps.is-medium:not(.is-vertical):not(.is-thin).has-gaps .steps-segment:not(:last-child):after, .steps.is-medium:not(.is-vertical):not(.is-thin) .steps-segment.has-gaps:not(:last-child):after {
@@ -79,25 +82,24 @@
     right: calc(-50% + 1.3rem);
   }
   .steps.is-medium:not(.is-vertical).has-content-centered .steps-segment:not(:last-child):after {
-    left: 50%;
-    right: -50%;
+    left: 58%;
+    right: -42%;
   }
   .steps:not(.is-vertical):not(.is-thin).has-gaps .steps-segment:not(:last-child):after, .steps:not(.is-vertical):not(.is-thin) .steps-segment.has-gaps:not(:last-child):after {
     left: 2.3rem;
     right: .3rem;
   }
   .steps.is-medium:not(.is-vertical) .steps-segment:not(:last-child):after {
-    height: .4em;
-    left: 2.26rem;
-    right: -.24rem;
-    top: calc(1.25rem - (.2em));
+    height: 2px;
+    top: 19px;
+    
   }
   .steps:not(.is-vertical).has-content-centered .steps-segment:not(:last-child):after {
     left: 50%;
     right: -50%;
   }
   .steps:not(.is-vertical) .steps-segment:not(:last-child):after {
-    height: .4em;
+    height: .2em;
     left: 1.76rem;
     right: -.24rem;
     top: calc(1rem - (.2em));
@@ -111,25 +113,25 @@
 .steps.is-medium {
   font-size: 1.25rem;
 }
+  .has-text-dark {
+    color: #363636 !important;
+  }
 
-.has-text-dark {
-  color: #363636 !important;
-}
-
-a {
-  color: #00d1b2;
-  cursor: pointer;
-  text-decoration: none;
-}
+  a {
+    color: #00d1b2;
+    cursor: pointer;
+    text-decoration: none;
+  }
 
 .steps:not(.is-hollow) .steps-marker:not(.is-hollow) {
-  background-color: #00d1b2;
-  color: #fff;
+  border:2px solid #00d1b2;
+  color: #00d1b2;
 }
 
 .steps.is-medium .steps-marker {
   height: 2.5rem;
   width: 2.5rem;
+  color:#dbdbdb;
 }
 
 .steps .steps-marker {
@@ -189,7 +191,7 @@ a {
 }
 
 .steps.is-hollow .steps-marker, .steps-marker.is-hollow {
-  border: .3em solid #00d1b2;
+  border: 2px solid #00d1b2;
 }
 
 .steps.is-hollow .steps-segment.is-active ~ .steps-segment .steps-marker, .steps-segment.is-active ~ .steps-segment .steps-marker.is-hollow {
