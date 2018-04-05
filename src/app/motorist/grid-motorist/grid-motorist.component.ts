@@ -1,12 +1,13 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { TableClickEvent } from '../../shared/components/table/table.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'sga-grid-motorist',
   templateUrl: './grid-motorist.component.html',
   styleUrls: ['./grid-motorist.component.scss']
 })
-export class GridMotoristComponent {
+export class GridMotoristComponent implements OnInit {
   @Input() motorists = new Array();
   @Input() dataLoading: boolean = true;
   @Output() onMotoristSelected: EventEmitter<any> = new EventEmitter();
@@ -23,6 +24,12 @@ export class GridMotoristComponent {
 
   showDialog = false;
   showMotoristDialog: boolean;
+
+  constructor(private router: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    this.router.data.subscribe(data => this.motorists = data.motorists);
+  }
 
   public showMotoristModal() {
     this.showMotoristDialog = true;
