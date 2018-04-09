@@ -84,8 +84,8 @@
       list-style: none;
     }
         .sidebar-menu-item {
-          height: 52px;
-          line-height: 52px;
+          height: 42px;
+          line-height: 42px;
           cursor: pointer;   
            transition: all 200ms ease-out;        
 
@@ -102,11 +102,11 @@
           }
 
         .sidebar-list-icon {
-            font-size: 18px;
+            font-size: 14px;
             width: 52px;
             float: left;
             height: 40px;
-            line-height: 52px!important;
+            line-height: 40px!important;
             display: block;
             text-align: center;
             /*color: #11141b;*/
@@ -124,16 +124,16 @@
       margin-left: 14px;
       float: left;      
       color: #ffffff;
-        margin-top: 16px;
+        margin-top: 13px;
       display: block;   
-      font:300 15px 'Open Sans', sans-serif;
+      font:300 12.5px 'Open Sans', sans-serif;
       letter-spacing: 1px;    
       @include transition(0.5s, ease-out);  
     }
 
     .sidebar-menu-accordion {
-        height: 50px;
-        line-height: 50px;
+        height: 42px;
+        line-height: 42px;
          transition: all 200ms ease-out;   
 
         &:hover {
@@ -148,11 +148,11 @@
 
         li > a {
             text-decoration: none;
-            line-height: 48px;
+            line-height: 41px;
             color: #95A8C3;
 
             .sidebar-list-icon {
-                line-height: 50px;
+                line-height: 42x;
                 color: #95A8C3;
               }
             .sidebar-list-text {
