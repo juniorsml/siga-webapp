@@ -6,8 +6,6 @@ import {
   Input,
   TemplateRef,
   ContentChild,
-  forwardRef,
-  Inject,
   ViewChild,
   OnChanges,
   AfterViewInit,
@@ -56,10 +54,11 @@ export class DataTableComponent implements DoCheck, OnChanges, AfterViewInit {
   emptyView: EmptyTableComponent;
   filteredData: Array<any>;
   emptyTable: boolean;
-  columns: ColumnComponent[] = [];
+  columns = new Array<ColumnComponent>();
   currentPage: number = 1;
   pageQuantity: number = 10;
   search: SearchPipe;
+  sortableColumns = new Array<string>();
 
   //Scroll Component
   opts: ISlimScrollOptions;
@@ -69,7 +68,7 @@ export class DataTableComponent implements DoCheck, OnChanges, AfterViewInit {
     this.scrollEvents = new EventEmitter<SlimScrollEvent>();
     this.opts = {
       alwaysVisible: true,
-      gridOpacity: '0.2', 
+      gridOpacity: '0.2',
       barOpacity: '0.5',
       gridBackground: '#ccc',
       gridWidth: '6px',
@@ -77,12 +76,8 @@ export class DataTableComponent implements DoCheck, OnChanges, AfterViewInit {
       barBackground: 'rgba(55, 56, 58, 0.6)',
       barWidth: '5px',
       barMargin: '2px 2px'
-    }
-
-    
+    };
   }
-
-
 
   constructor(
     private changeDetector: ChangeDetectorRef,
@@ -91,8 +86,44 @@ export class DataTableComponent implements DoCheck, OnChanges, AfterViewInit {
     this.search = new SearchPipe();
   }
 
+  public isASC(header: string): boolean {
+    return this.sortableColumns.indexOf(header) > -1;
+  }
+
+  existsInSortable(header: string): boolean {
+    const i = this.sortableColumns.indexOf(header);
+    if (i === -1) {
+      this.sortableColumns.push(header);
+      return false;
+    } else {
+      this.sortableColumns.splice(i, 1);
+      return true;
+    }
+  }
+
+  order(header: string, key: string, isSortable: boolean): void {
+    if (!isSortable) return;
+    const headerIndex = this.columns.findIndex(a => a.header === header);
+    if (this.existsInSortable(header)) {
+      this.reverseBy(headerIndex, key);
+    } else {
+      this.sortBy(headerIndex, key);
+    }
+  }
+
+  sortBy(index: number, key: string): void {
+    this.columns[index].dataTable.data.sort(
+      (a, b) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0)
+    );
+  }
+
+  reverseBy(index: number, key: string): void {
+    this.columns[index].dataTable.data.sort(
+      (a, b) => (a[key] < b[key] ? 1 : a[key] > b[key] ? -1 : 0)
+    );
+  }
+
   showStyle(x, y, contextMenu) {
-    //console.log(contextMenu);
     let contextWidth = contextMenu.offsetWidth;
     let contextHeight = contextMenu.offsetHeight;
 
@@ -130,7 +161,7 @@ export class DataTableComponent implements DoCheck, OnChanges, AfterViewInit {
     }
   }
 
-  addColumn(column) {
+  addColumn(column: ColumnComponent) {
     this.columns.push(column);
   }
 
@@ -177,7 +208,7 @@ export class DataTableComponent implements DoCheck, OnChanges, AfterViewInit {
         //Todo: Added && this.bodyElement != null due to null error potentially caused by *ngif on table element displaying
         this.columns[i].headerWidth = this.bodyRowElement.nativeElement.cells[
           i
-        ].offsetWidth; 
+        ].offsetWidth;
       } else {
         this.columns[i].headerWidth = this.columns[i].fixedWidth;
         this.columns[i].width = this.columns[i].fixedWidth;
@@ -283,22 +314,20 @@ export class TableClickEvent {
 }
 
 @Component({
-  selector: `column`,
+  selector: 'column',
   template: ``
 })
 export class ColumnComponent {
   @Input() public key;
-  @Input() public header;
   @Input() public width;
-  @Input() public fixedWidth;
+  @Input() public header;
   @Input() public minWidth;
+  @Input() public isSortable;
+  @Input() public fixedWidth;
   @Input() public headerWidth;
   @ContentChild(TemplateRef) template: TemplateRef<any>;
 
-  constructor(
-    @Inject(forwardRef(() => DataTableComponent))
-    public dataTable: DataTableComponent
-  ) {
+  constructor(public dataTable: DataTableComponent) {
     dataTable.addColumn(this);
   }
 }
@@ -311,7 +340,6 @@ export class EmptyTableComponent {
   @ContentChild(TemplateRef) public template: TemplateRef<any>;
 
   constructor(
-    @Inject(forwardRef(() => DataTableComponent))
     public dataTable: DataTableComponent
   ) {
     dataTable.setEmptyView(this);
@@ -333,7 +361,6 @@ export class ContextMenuComponent {
   y: number;
 
   constructor(
-    @Inject(forwardRef(() => DataTableComponent))
     public dataTable: DataTableComponent,
     public elementRef: ElementRef
   ) {
@@ -359,7 +386,6 @@ export class MenuItemComponent {
   @ContentChild(TemplateRef) public template: TemplateRef<any>;
 
   constructor(
-    @Inject(forwardRef(() => ContextMenuComponent))
     public contextMenu: ContextMenuComponent
   ) {
     contextMenu.addMenuItem(this);
