@@ -39,7 +39,7 @@
           </div>
         </ng-template>
       </table-empty>
-      <column class="photo-profile" [key]="'id'" [header]="''" [minWidth]="'50'" >
+      <column class="photo-profile" [key]="'id'" [header]="''" [minWidth]="'50'" [isSortable]="false">
         <ng-template let-item="item">
           <div class="cnt-img">
             <img (click)="showMotoristModal(item)" style="width: 40px; height: 40px; border-radius: 50%;" src="{{'api/motorist/public/profileImage?id=' + item}}"
@@ -47,37 +47,37 @@
           </div>
         </ng-template>
       </column>
-      <column [key]="'documentId'" [header]="'Documento'" [minWidth]="'82'">
+      <column [key]="'documentId'" [header]="'Documento'" [minWidth]="'82'" [isSortable]="false">
         <ng-template let-item="item">
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'firstName'" [header]="'Nome'" [minWidth]="'43'">
+      <column [key]="'firstName'" [header]="'Nome'" [minWidth]="'43'" [isSortable]="true"> 
         <ng-template let-item="item">
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'lastName'" [header]="'Sobre Nome'" [minWidth]="'90'">
+      <column [key]="'lastName'" [header]="'Sobrenome'" [minWidth]="'90'" [isSortable]="true">
         <ng-template let-item="item">
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'location'" [header]="'Status'" [minWidth]="'46'">
+      <column [key]="'location'" [header]="'Status'" [minWidth]="'46'" [isSortable]="false">
         <ng-template let-item="item">
           {{item != null ? (item.driverStatus) : '-'}}
         </ng-template>
       </column>
-      <column [key]="'location'" [header]="'Velocidade'" [minWidth]="'80'">
+      <column [key]="'location'" [header]="'Velocidade'" [minWidth]="'80'" [isSortable]="false">
         <ng-template let-item="item">
           {{item != null ? (item.speed | number:'1.1-1') : '- '}} km/h
         </ng-template>
       </column>
-      <column [key]="'location'" [header]="'Altitude'" [minWidth]="'56'">
+      <column [key]="'location'" [header]="'Altitude'" [minWidth]="'56'" [isSortable]="false">
         <ng-template let-item="item">
           {{item != null ? (item.altitude | number:'1.1-1') : '- '}} m
         </ng-template>
       </column>
-      <column [key]="'location'" [header]="'Bateria'" [minWidth]="'52'">
+      <column [key]="'location'" [header]="'Bateria'" [minWidth]="'52'" [isSortable]="false">
         <ng-template let-item="item">
           <span class="battery-level">
             <span class="battery-level-body">
@@ -91,12 +91,12 @@
           </span>
         </ng-template>
       </column>
-      <column [key]="'location'" [header]="'Modo'" [minWidth]="'46'">
+      <column [key]="'location'" [header]="'Modo'" [minWidth]="'46'" [isSortable]="false">
         <ng-template let-item="item">
           {{item != null ? (item?.mode) : '-'}}
         </ng-template>
       </column>
-      <column [key]="'location'" [header]="'Atualizado'" [minWidth]="'82'">
+      <column [key]="'location'" [header]="'Atualizado'" [minWidth]="'82'" [isSortable]="false">
         <ng-template let-item="item">
           {{item != null ? (item?.time | date:'medium') : '-'}}
         </ng-template>
