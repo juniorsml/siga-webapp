@@ -9,7 +9,7 @@ import { AccordionComponent } from './accordion/accordion.component';
 })
 export class SidebarComponent {
   user: any;
-  logout: any;
+  
 
   constructor(public router: Router) {}
 
