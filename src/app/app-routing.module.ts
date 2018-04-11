@@ -17,6 +17,22 @@ const routes: Routes = [
       {
         path: 'trip',
         loadChildren: 'app/trip/trip.module#TripModule'
+      },
+      {
+        path: 'carrier',
+        loadChildren: 'app/carrier/carrier.module#CarrierModule'
+      },
+      {
+        path: 'vehicle',
+        loadChildren: 'app/vehicle/vehicle.module#VehicleModule'
+      },
+      {
+        path: 'device',
+        loadChildren: 'app/device/device.module#DeviceModule'
+      },
+      {
+        path: 'truck',
+        loadChildren: 'app/truck/truck.module#TruckModule'
       }
     ]
   },
