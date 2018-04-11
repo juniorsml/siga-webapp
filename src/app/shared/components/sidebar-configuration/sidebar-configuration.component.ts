@@ -5,11 +5,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './sidebar-configuration.component.html',
   styleUrls: ['./sidebar-configuration.component.scss']
 })
-export class SidebarConfigurationComponent implements OnInit {
+export class SidebarConfigurationComponent {
 
-  constructor() { }
+	private status: boolean = false;
 
-  ngOnInit() {
-  }
+	toggleMenu(){
+	    this.status = !this.status;       
+	}
+  
 
 }

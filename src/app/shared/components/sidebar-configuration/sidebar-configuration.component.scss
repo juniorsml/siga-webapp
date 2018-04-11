@@ -5,9 +5,14 @@
     position: relative;
     right: 24px;
 	}
+	.cnt-configuration-menu.opened{
+		right: 10px;
+	  opacity:1;
+	}
 	.cnt-configuration-menu{
-		position: absolute;
-	  right: 10px;
+		position: absolute;	  
+	  right: -147px;
+	  opacity: 0;
 	  background:#FFF; 
 	  z-index: 99999;
 	  width: 233px;
@@ -15,6 +20,7 @@
 	  top: 27px;
 	  border: 1px solid #cecece;
 	  border-radius:3px;
+	  transition:all 450ms ease;
 
 	  span{
 	  	font-size: 14px;
