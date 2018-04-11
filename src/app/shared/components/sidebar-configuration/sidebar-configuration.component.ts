@@ -6,12 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidebar-configuration.component.scss']
 })
 export class SidebarConfigurationComponent {
+  public status: boolean = false;
 
-	private status: boolean = false;
-
-	toggleMenu(){
-	    this.status = !this.status;       
-	}
-  
-
+  toggleMenu() {
+    this.status = !this.status;
+  }
 }
