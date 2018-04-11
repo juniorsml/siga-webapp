@@ -1,0 +1,55 @@
+.cnt-sidebar-configuration{
+
+	.trigger{
+		color: #7e8492;
+    position: relative;
+    right: 24px;
+	}
+	.cnt-configuration-menu.opened{
+		right: 10px;
+	  opacity:1;
+	}
+	.cnt-configuration-menu{
+		position: absolute;	  
+	  right: -147px;
+	  opacity: 0;
+	  background:#FFF; 
+	  z-index: 99999;
+	  width: 233px;
+	  bottom: 10px;
+	  top: 27px;
+	  border: 1px solid #cecece;
+	  border-radius:3px;
+	  transition:all 450ms ease;
+
+	  span{
+	  	font-size: 14px;
+	    margin: 2px 5px 4px 5px;
+	    display: block;
+	    padding: 4px 0px;
+	    color: #6b7280;
+	    border-bottom: 1px solid #d9dce0;
+	  }
+		ul{
+		  li{
+		  	a{
+		  		color:#afb5c1;
+		  		font-size: 12.5px;
+    			padding: 4px 13px;
+		  		display: block;
+		  		transition:all 250ms ease;
+
+		  		&:hover{
+		  			background: #afb5c1;
+		  			color:#FFF;
+		  		}
+		 	 }
+
+		  }
+		}
+
+	}
+
+
+}
+

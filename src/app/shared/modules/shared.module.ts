@@ -42,6 +42,8 @@ import { StepComponent } from '../components/steppers/stepper/step.component';
 import { StepsComponent } from '../components/steppers/steps.component';
 import { StepperComponent } from '../components/stepper/stepper.component';
 
+import { SidebarConfigurationComponent } from '../components/sidebar-configuration/sidebar-configuration.component';
+
 @NgModule({
   declarations: [
     PlacesPipe,
@@ -77,7 +79,9 @@ import { StepperComponent } from '../components/stepper/stepper.component';
     MenuItemComponent,
     DataTableComponent,
     EmptyTableComponent,
-    ContextMenuComponent
+    ContextMenuComponent,
+
+    SidebarConfigurationComponent
   ],
   imports: [
     FormsModule,
@@ -131,7 +135,9 @@ import { StepperComponent } from '../components/stepper/stepper.component';
     EmptyTableComponent,
     ContextMenuComponent,
     CalendarModule,
-    TextMaskModule
+    TextMaskModule,
+
+    SidebarConfigurationComponent
   ]
 })
 export class SharedModule {}
