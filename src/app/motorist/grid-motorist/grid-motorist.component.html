@@ -18,7 +18,7 @@
     </sga-map-filter>
   </div>
 
-  <div class="container-grid container-grid-motorist">
+  <div class="container-grid container-grid-wrapper">
     <data-table 
       [data]="motorists | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
       [dataLength]="motorists.length" 
