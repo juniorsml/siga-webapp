@@ -85,6 +85,39 @@
         <span class="sidebar-list-text">Veículos</span>
       </a>
     </li>
+
+
+    <!-- VEICULOS -->
+
+      <li class="sidebar-menu-item-accordion">      
+        <accordion>
+          <accordion-header>
+            <ng-template>
+              <div class="sidebar-menu-accordion">
+                <span [class.selected]="router.url == '/'" class="sidebar-list-icon fal fa-truck"></span>
+                <span class="sidebar-list-text">Veículos</span>
+              </div>
+            </ng-template>
+          </accordion-header>
+          <ul class="sidebar-submenu">
+            <li [class.selected]="router.url == '/motorist/grid'" class="sidebar-menu-item">
+              <a routerLink="/motorist/grid">
+                <span [class.selected]="router.url == '/motorist/grid'" class="sidebar-list-icon fal fa-th-list"></span>
+                <span class="sidebar-list-text">Grid</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item" [class.selected]="router.url == '/motorist/map'">
+              <a  routerLink="/motorist/map" >
+
+                <span class="sidebar-list-icon fal fa-map"></span>
+                <span class="sidebar-list-text">Mapa</span>
+              </a>
+            </li>
+          </ul>
+        </accordion>
+      </li>
+
+    <!-- VEICULOS -->
     <li class="sidebar-menu-item-accordion">      
       <accordion>
         <accordion-header>
