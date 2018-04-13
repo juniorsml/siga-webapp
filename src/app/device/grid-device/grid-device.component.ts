@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TableClickEvent } from '../../shared/components/table/table.component';
 import { ActivatedRoute } from '@angular/router';
 
@@ -16,6 +16,10 @@ export class GridDeviceComponent implements OnInit {
   public selectedDevice: any;
   public onDeviceSelected: any;
 
+  @Input()
+  public showFilterBar = true;
+
+  @Input()
   public devices = new Array<any>();
   
   constructor(private router: ActivatedRoute) { }
