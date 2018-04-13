@@ -10,6 +10,7 @@ import { MapDeviceComponent } from './map-device/map-device.component';
 import { MapService } from '../shared/services/map.service';
 
 import { Map } from '../shared/models/Map';
+import { ConfigDeviceComponent } from './config-device/config-device.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import { Map } from '../shared/models/Map';
     CommonModule,
     DeviceRoutingModule
   ],
-  declarations: [GridDeviceComponent, MapDeviceComponent],
+  declarations: [GridDeviceComponent, MapDeviceComponent, ConfigDeviceComponent],
   providers: [
     {
       provide: Map,
