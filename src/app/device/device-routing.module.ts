@@ -3,14 +3,18 @@ import { Routes, RouterModule } from '@angular/router';
 import { MapDeviceComponent } from './map-device/map-device.component';
 import { GridDeviceComponent } from './grid-device/grid-device.component';
 
+import { devices } from '../shared/mocks/device';
+
 const routes: Routes = [
   {
     path: 'map',
-    component: MapDeviceComponent
+    component: MapDeviceComponent,
+    data: { devices }
   },
   {
     path: 'grid',
-    component: GridDeviceComponent
+    component: GridDeviceComponent,
+    data: { devices }
   }
 ];
 
@@ -18,4 +22,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DeviceRoutingModule { }
+export class DeviceRoutingModule {}
