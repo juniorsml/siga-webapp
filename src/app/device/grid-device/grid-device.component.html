@@ -1,6 +1,6 @@
-<sga-sidebar-configuration></sga-sidebar-configuration>
+<sga-sidebar-configuration *ngIf="showFilterBar"></sga-sidebar-configuration>
    
-<div class="material-content-container">
+<div class="material-content-container" [ngStyle]="{'top': showFilterBar ? '54px' : '0'}">
  
   <div *ngIf="showFilterBar" [ngClass]="styleClass" class="columns level-left">
     <div class="column is-3">     
@@ -18,7 +18,7 @@
     </sga-map-filter>
   </div>
 
-  <div class="container-grid container-grid-wrapper">
+  <div class="container-grid container-grid-wrapper" [ngStyle]="{'top': showFilterBar ? '65px' : '0'}">
     <data-table 
       [data]="devices | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
       [dataLength]="devices.length" 
