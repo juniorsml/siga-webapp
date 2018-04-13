@@ -399,3 +399,72 @@ div, *{
 .p-start {
   padding: 1em;
 }
+
+
+// GRID GENERIC
+/* Grid Motorist SCSS ************************************************/
+.input-filter{
+  border-bottom: 1px solid rgba(54,54,54,0.65);
+  border-top:0;
+  border-right:0;
+  border-left:0;
+  border-radius:0;
+  outline:0;
+}
+.input-filter:focus {  
+    border-color: none;
+    -webkit-box-shadow: 0 0 0 0em rgba(50,115,220,0);
+    box-shadow: 0 0 0 0em rgba(50,115,220,0);
+}
+
+.inner-addon{ 
+  width: 300px; 
+  margin: 0px 0px 20px 0px;
+}
+.container-grid{
+    top: 65px;
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+}
+
+//* BAterry
+.battery-level {
+    border-radius: 4px;
+    display: inline-block;
+    height: 20px;
+    width: 48px;
+    margin-top: 10px;
+}
+
+.battery-level-body {
+    border-radius: 4px;
+    text-align: center;
+    display: inline-block;
+    width: 46px;
+    height: 18px;
+    background-color: rgb(176, 178, 181);
+    line-height: 18px;
+    padding: 0px 3px;
+    font-size: 12px;
+    color: #3c3c3c;
+    text-shadow: 0px 0px 1px #fff;
+    position: absolute;
+}
+
+.battery-level-charge {
+    height: 100%;
+    position: absolute;
+    border-radius: 4px;
+    top: 0px;
+    left: 0px;
+}
+
+.battery-level-text {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+}
