@@ -1,0 +1,35 @@
+.wrapper {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 22px;
+  top: 79px;
+
+  .sidebar,
+  .detail {
+    height: 100%;
+    border: 1px solid #ececec;
+    padding: 4px 10px 0 10px;
+  }
+
+  .sidebar {
+    position: absolute;
+    width: 365px;
+
+    .header {
+      color: #38425b;
+      padding: 0 0 6px 0;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 7%;
+    }
+  }
+
+  .detail {
+    position: absolute;
+    left: 389px;
+    right: 0;
+  }
+}
