@@ -19,6 +19,9 @@ import { ConfigDeviceComponent } from './config-device/config-device.component';
     CommonModule,
     DeviceRoutingModule
   ],
+  exports: [
+    GridDeviceComponent
+  ],
   declarations: [GridDeviceComponent, MapDeviceComponent, ConfigDeviceComponent],
   providers: [
     {
