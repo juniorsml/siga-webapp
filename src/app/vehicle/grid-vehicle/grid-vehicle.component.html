@@ -20,11 +20,12 @@
 
   <div class="container-grid container-grid-motorist">
     <data-table 
-      [data]="motorists | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
-      [dataLength]="motorists.length" 
+     
+      [data]="vehicles | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
+      [dataLength]="vehicles.length" 
       [searchText]="text" 
-      [searchColumns]="['documentId', 'firstName', 'lastName', 'location.driverStatus', 'location.speed', 'location.altitude', 'location.mode']"
-      [emptySearchText]="'nenhuma motorista foi encontrado'" 
+      [searchColumns]="['vehiclePlate', 'renavan', 'brand', 'model', 'color', 'year', 'type', 'capacity']"
+      [emptySearchText]="'nenhum veículo foi encontrado'" 
       [bodyBottom]="'42px'" 
       [bodyTop]="'26px'"
       (onCellClick)="onCellClick($event)"
@@ -44,63 +45,45 @@
       <column class="photo-profile" [key]="'id'" [header]="''" [minWidth]="'50'" [isSortable]="false">
         <ng-template let-item="item">
           <div class="cnt-img">
-            <img (click)="showMotoristModal(item)" style="width: 40px; height: 40px; border-radius: 50%;" src="{{'api/motorist/public/profileImage?id=' + item}}"
+            <!-- (click)="showMotoristModal(item)"   -->
+            <img style="width: 40px; height: 40px; border-radius: 50%;" src="{{'api/motorist/public/profileImage?id=' + item}}"
               alt="">
           </div>
         </ng-template>
       </column>
-      <column [key]="'documentId'" [header]="'Documento'" [minWidth]="'82'" [isSortable]="false">
+      <column [key]="'vehiclePlate'" [header]="'Placa'" [minWidth]="'82'" [isSortable]="false">
         <ng-template let-item="item">
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'firstName'" [header]="'Nome'" [minWidth]="'43'" [isSortable]="true"> 
+      <column [key]="'renavan'" [header]="'Renavan'" [minWidth]="'43'" [isSortable]="true"> 
         <ng-template let-item="item">
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'lastName'" [header]="'Sobrenome'" [minWidth]="'90'" [isSortable]="true">
+      <column [key]="'brand'" [header]="'Marca'" [minWidth]="'90'" [isSortable]="true">
         <ng-template let-item="item">
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'location'" [header]="'Status'" [minWidth]="'46'" [isSortable]="false">
+      <column [key]="'model'" [header]="'Modelo'" [minWidth]="'46'" [isSortable]="false">
         <ng-template let-item="item">
-          {{item != null ? (item.driverStatus) : '-'}}
+         {{item}}
         </ng-template>
       </column>
-      <column [key]="'location'" [header]="'Velocidade'" [minWidth]="'80'" [isSortable]="false">
+      <column [key]="'color'" [header]="'Cor'" [minWidth]="'56'" [isSortable]="false">
         <ng-template let-item="item">
-          {{item != null ? (item.speed | number:'1.1-1') : '- '}} km/h
+           {{item}}
+        </ng-template>
+      </column>     
+      <column [key]="'year'" [header]="'Ano'" [minWidth]="'46'" [isSortable]="false">
+        <ng-template let-item="item">
+          {{item}}
         </ng-template>
       </column>
-      <column [key]="'location'" [header]="'Altitude'" [minWidth]="'56'" [isSortable]="false">
+      <column [key]="'type'" [header]="'Tipo'" [minWidth]="'82'" [isSortable]="false">
         <ng-template let-item="item">
-          {{item != null ? (item.altitude | number:'1.1-1') : '- '}} m
-        </ng-template>
-      </column>
-      <column [key]="'location'" [header]="'Bateria'" [minWidth]="'52'" [isSortable]="false">
-        <ng-template let-item="item">
-          <span class="battery-level">
-            <span class="battery-level-body">
-              <span class="battery-level-charge" [style.background-color]="'hsl('+ (item?.battery?.charge * 100) +', 100%, 40%)'" [style.width]="(item?.battery?.charge * 100)+'%'">
-              </span>
-              <span class="battery-level-text">
-                <span *ngIf="item?.battery?.chargeMode != null" class="fa fa-bolt" aria-hidden="true"></span>
-                <span>{{ (item?.battery?.charge * 100) | number: '2.0-0'}}%</span>
-              </span>
-            </span>
-          </span>
-        </ng-template>
-      </column>
-      <column [key]="'location'" [header]="'Modo'" [minWidth]="'46'" [isSortable]="false">
-        <ng-template let-item="item">
-          {{item != null ? (item?.mode) : '-'}}
-        </ng-template>
-      </column>
-      <column [key]="'location'" [header]="'Atualizado'" [minWidth]="'82'" [isSortable]="false">
-        <ng-template let-item="item">
-          {{item != null ? (item?.time | date:'medium') : '-'}}
+          {{item}}
         </ng-template>
       </column>
       <context-menu [mode]="'click'" [ignoreCells]="[0]" (onItemSelected)="contextMenuSelected($event)">
@@ -136,10 +119,10 @@
     </data-table>
   </div>
 </div>
-<sga-modal>
+<!-- <sga-modal>
   <sga-profile-dialog
     [showDialog]="showMotoristDialog"
     [selectedMotorist]="selectedMotorist"
     (onDialogClose)="motoristDialogClose()">
   </sga-profile-dialog>
-</sga-modal>
+</sga-modal> -->

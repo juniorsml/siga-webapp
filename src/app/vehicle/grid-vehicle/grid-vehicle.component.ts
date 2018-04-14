@@ -29,7 +29,7 @@ export class GridVehicleComponent implements OnInit {
   constructor(private router: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.router.data.subscribe(data => this.motorists = data.motorists);
+    this.router.data.subscribe(data => this.vehicles = data.vehicles);
   }
 
   public showMotoristModal() {

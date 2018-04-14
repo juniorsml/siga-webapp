@@ -26,6 +26,14 @@ export const vehicles = [
       uf:'SP',
       cep:'18105-512'
     },
+    location: {
+      id: null,
+      userId: '58d908b5346b164247cf8495',
+      latitude: -9.5722922,
+      longitude: -35.7732131,
+      accuracy: 10.0,
+      altitude: 84.0     
+    },
     devices: [
       { 
         id: '5900d959f5e17b63799d4990', 
@@ -73,6 +81,13 @@ export const vehicles = [
       uf:'SP',
       cep:'13800-732'
     },
+    location: {
+      id: null,
+      userId: '58d908ff346b164247cf84af',
+      latitude: -17.995435,
+      longitude: -49.3649333,
+      accuracy: 3.9
+    },
     devices: [
       { 
         id: '4400d959f5e17b63799d4990', 
@@ -119,6 +134,13 @@ export const vehicles = [
       city:'Aracajú',
       uf:'SE',
       cep:'49043-700'
+    },
+    location: {
+      id: null,
+      userId: '5936e386fb6c25015f6cd302',
+      latitude: -19.4832173,
+      longitude: -44.2523411,
+      accuracy: 19.721
     },
     devices: [
       { 

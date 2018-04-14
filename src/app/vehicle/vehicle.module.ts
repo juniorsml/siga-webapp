@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { VehicleRoutingModule } from './vehicle-routing.module';
@@ -11,6 +12,7 @@ import { SharedModule } from '../shared/modules/shared.module';
   imports: [
     CommonModule,
     VehicleRoutingModule,
+    FormsModule,
     SharedModule
   ],
   declarations: [MapVehicleComponent, GridVehicleComponent]
