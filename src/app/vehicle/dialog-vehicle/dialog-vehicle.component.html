@@ -1,18 +1,18 @@
 <div *ngIf="showDialog" class="cnt-dialog">
   <div class="content-body columns is-12 is-multiline">
       <div class="header-modal columns column is-12">
-          <h3 class="title-modal column is-11">Motorista</h3>
+          <h3 class="title-modal column is-11">Veículo</h3>
           <i class="fa fa-question-circle ui-icon-info column is-1" ></i>
       </div>
       <div class="columns column is-12 is-multiline">
           <div class="header-modal-title columns column is-12">
-              <h4 class="ttl-profile column is-11">Dados pessoais</h4>
+              <h4 class="ttl-profile column is-11">Dados</h4>
               <i class="fa fa-question-circle ui-icon-info column is-1"></i>
           </div>
           <div class="columns column is-12" style="padding: 0 28px;">
               <div class="column">
-                <div class="profile-photo">
-                  <img *ngIf="selectedMotorist != null" src="{{'api/motorist/public/profileImage?id=' + selectedMotorist?.id}}"
+                <div class="vehicle-photo">
+                  <img *ngIf="selectedVehicle != null" src="{{'api/motorist/public/profileImage?id=' + selectedVehicle?.id}}"
                   alt="">
                 </div>
                 
@@ -20,44 +20,38 @@
               <div class="columns column is-three-quarters">
                   <ul class="motorist-profile-info column is-half">
                     <li class="motorist-profile-info-item">
-                      <h6 class="personal-info-title">Nome</h6>
-                      <span class="personal-info">{{selectedMotorist == null ? '-' : selectedMotorist?.firstName}}</span>
+                      <h6 class="personal-info-title">Placa</h6>
+                      <span class="personal-info">{{selectedVehicle == null ? '-' : selectedVehicle?.vehiclePlate}}</span>
                     </li>
                     <li class="motorist-profile-info-item">
-                      <h6 class="personal-info-title">Documento</h6>
-                      <span class="personal-info">{{selectedMotorist == null ? '-' : selectedMotorist?.documentId}}</span>
-                    </li>
-
-                    <li class="motorist-profile-info-item">
-                      <h6 class="personal-info-title">Endereço</h6>
-                      <span class="personal-info">{{selectedMotorist?.address}}</span>
+                      <h6 class="personal-info-title">Renavan</h6>
+                      <span class="personal-info">{{selectedVehicle == null ? '-' : selectedVehicle?.renavan}}</span>
                     </li>
 
                     <li class="motorist-profile-info-item">
-                      <h6 class="personal-info-title">Email</h6>
-                      <span class="personal-info">{{selectedMotorist?.email}}</span>
+                      <h6 class="personal-info-title">Marca</h6>
+                      <span class="personal-info">{{selectedVehicle?.brand}}</span>
+                    </li>
+
+                    <li class="motorist-profile-info-item">
+                      <h6 class="personal-info-title">Modelo</h6>
+                      <span class="personal-info">{{selectedVehicle?.model}}</span>
                     </li>
                   </ul>
                   <ul  class="motorist-profile-info  column is-half">
                       <li class="motorist-profile-info-item">
-                        <h6 class="personal-info-title">Sobre Nome</h6>
-                        <span class="personal-info">{{selectedMotorist == null ? '-' : selectedMotorist?.lastName}}</span>
+                        <h6 class="personal-info-title">Cor</h6>
+                        <span class="personal-info">{{selectedVehicle == null ? '-' : selectedVehicle?.color}}</span>
                       </li>
                       <li class="motorist-profile-info-item">
-                        <h6 class="personal-info-title">Data de nascimento</h6>
-                        <span class="personal-info">{{selectedMotorist?.dateOfBirth | date}}</span>
+                        <h6 class="personal-info-title">Ano</h6>
+                        <span class="personal-info">{{selectedVehicle?.ano | date}}</span>
                       </li>
                       <li class="motorist-profile-info-item">
-                        <h6 class="personal-info-title">Telefone</h6>
-                        <span class="personal-info">{{selectedMotorist?.cellPhone}}</span>
+                        <h6 class="personal-info-title">Tipo</h6>
+                        <span class="personal-info">{{selectedVehicle?.type}}</span>
                       </li>
-                      <li class="motorist-profile-info-item">
-                        <h6 class="personal-info-title">Aplicativo</h6>
-                        <span class="personal-info" style="padding-right: 6px">
-                          {{selectedMotorist?.device?.appVersion == null ? '-' : 'Siga v.' + selectedMotorist?.device?.appVersion}} | {{selectedMotorist?.device?.platform
-                          == null ? '-' : selectedMotorist?.device?.platform}}
-                        </span>
-                      </li>
+                      
                   </ul>
               </div>
           </div>

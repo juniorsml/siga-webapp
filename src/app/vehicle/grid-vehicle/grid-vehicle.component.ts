@@ -15,7 +15,7 @@ export class GridVehicleComponent implements OnInit {
 
   text: any;
   distance: any;
-  motorist: any;
+  vehicle: any;
   placeText: any;
   styleClass: any;
   filterLocation: any;
@@ -32,23 +32,23 @@ export class GridVehicleComponent implements OnInit {
     this.router.data.subscribe(data => this.vehicles = data.vehicles);
   }
 
-  public showMotoristModal() {
-    this.showMotoristDialog = true;
+  public showVehicleModal() {
+    this.showVehicleDialog = true;
   }
 
-  public motoristDialogClose() {
-    this.showvehicleDialog = false;
+  public vehicleDialogClose() {
+    this.showVehicleDialog = false;
   }
 
   public onCellClick(event) {
-    this.selectedMotorist = event.data;
-    this.onMotoristSelected.emit(this.selectedMotorist);
-    if (event.cellIndex === 0) this.showMotoristDialog = true;
+    this.selectedVehicle = event.data;
+    this.onVehicleSelected.emit(this.selectedVehicle);
+    if (event.cellIndex === 0) this.showVehicleDialog = true;
   }
 
   onCellRightClick(event: TableClickEvent) {
-    this.selectedMotorist = event.data;
-    this.onMotoristSelected.emit(this.selectedMotorist);
+    this.selectedVehicle = event.data;
+    this.onVehicleSelected.emit(this.selectedVehicle);
   }
 
   public onPlacesFiltered(event) {

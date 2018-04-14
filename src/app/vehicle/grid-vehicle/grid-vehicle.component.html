@@ -45,8 +45,8 @@
       <column class="photo-profile" [key]="'id'" [header]="''" [minWidth]="'50'" [isSortable]="false">
         <ng-template let-item="item">
           <div class="cnt-img">
-            <!-- (click)="showMotoristModal(item)"   -->
-            <img style="width: 40px; height: 40px; border-radius: 50%;" src="{{'api/motorist/public/profileImage?id=' + item}}"
+         
+            <img (click)="showVehicletModal(item)" style="width: 40px; height: 40px; border-radius: 50%;" src="{{'api/motorist/public/profileImage?id=' + item}}"
               alt="">
           </div>
         </ng-template>
@@ -87,14 +87,14 @@
         </ng-template>
       </column>
       <context-menu [mode]="'click'" [ignoreCells]="[0]" (onItemSelected)="contextMenuSelected($event)">
-        <menu-item [enabled]="selectedMotorist?.location != null">
+        <menu-item [enabled]="selectedVehicle?.location != null">
           <ng-template>
             <span class="table-menu-icon fa fa-location-arrow" aria-hidden="true">
             </span>
             <span>Localização</span>
           </ng-template>
         </menu-item>
-        <menu-item [enabled]="selectedMotorist?.location != null">
+        <menu-item [enabled]="selectedVehicle?.location != null">
           <ng-template>
             <span class="table-menu-icon fa fa-calendar" aria-hidden="true">
             </span>
@@ -122,7 +122,7 @@
 <sga-modal>
   <sga-dialog-vehicle
     [showDialog]="showVehicleDialog"
-    [selectedMotorist]="selectedVehicle"
+    [selectedVehicle]="selectedVehicle"
     (onDialogClose)="vehicleDialogClose()">
-  </sga-dialog-vehicleg>
+  </sga-dialog-vehicle>
 </sga-modal>
