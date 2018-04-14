@@ -1,0 +1,314 @@
+
+.cnt-dialog{
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.4); 
+    position: fixed; 
+    z-index: 999; 
+    left: 0px; 
+    top: 0px;
+}
+
+.profile-photo{
+    width: 100%; 
+    max-width: 196px; 
+    height: 196px; 
+    display: block;  
+    box-shadow: 0px 0px 3px #333; 
+    background: #aaaaaa url("/assets/layout/unknown_user.png") no-repeat center center;
+
+    img{
+      width: 196px; 
+      height: 196px;
+    }
+}
+
+
+
+
+.trip-dialog-container {  
+    position: absolute;
+    top: 42px;
+    bottom: 0px;  
+    left: 0px;
+    right: 0px;
+    background-color: #ffffff; 
+}
+
+.sidbar {   
+    position: relative;    
+    width: 400px;
+    background: #fdfdfd;  
+    height: 100%;   
+    border-right: 1px solid #d4d4d4;
+    min-height: 400px;
+}
+
+.content-body { 
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 40px;
+    width: 100%;
+    max-width: 920px;
+    padding: 22px;
+    background: #ffffff;
+    box-shadow: 1px 1px 12px #000;
+
+    .column{
+        margin:0;
+        padding:0;
+    }
+    .header-modal{
+        margin-bottom:20px;
+    }
+    .header-modal-title{
+        margin-bottom:17px;
+    }
+    .motorist-profile-info {        
+        padding-left:25px;
+    }
+}
+        
+
+.ui-button-close {
+    margin: 0px auto;
+    color: #2196f3;
+    font-size: 14px;
+    padding: 10px 69px;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+      background-color: #f3f3f3;
+    }
+}
+
+
+
+.button-container {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+.ui-button-primary {
+    border: 1px solid #5cb85c;
+    background: #5cb85c;
+    color: #fff;
+    padding: 8px 0px;
+    border-radius: 4px;
+    font-size: 13px;
+    width: 160px;
+    text-align: center;
+    cursor: pointer;
+
+    &:focus {
+        outline: 0;
+        box-shadow: 0px 0px 1px rgb(0, 121, 255);
+      }
+}
+
+.ui-button-primary
+
+.ui-button-secondary {
+  border-color: #ececec;
+  background: #f5f5f5;
+  color: #555555;
+  padding: 8px 0px;
+  border-radius: 4px;
+  font-size: 13px;
+  border: 1px solid #dcdcdc;
+  width: 160px;
+  cursor: pointer;
+}
+
+.ui-button-secondary:focus {
+  outline: 0;
+  box-shadow: 0px 0px 1px rgb(0, 121, 255);
+}
+
+.page-header {
+  border-bottom: 1px solid #f3f3f3;
+  height: 50px;
+  line-height: 50px;
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
+.page-header > i {
+  line-height: 50px;
+}
+
+.title-modal {
+  font-weight: 300;
+  font-family: 'Open Sans', sans-serif;
+  color: #424248;
+  letter-spacing: 2px;
+  font-size: 20px;
+}
+.ttl-profile {
+  font-weight: 300;
+  color: #333333;
+  letter-spacing: 1px;
+}
+
+.ui-icon-info {
+  color: #7182a9;
+  text-align: right;
+  cursor: pointer;
+}
+
+.personal-info-title {
+  font-size: 13px;
+  font-weight: 300;
+  color: #777777;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.personal-info {
+  letter-spacing: 1px;
+  font-size: 14px;
+  color: #2c3242;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+.motorist-profile-info-item {
+  height: 56px;
+  line-height: 16px;
+  font-size: 15px;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #424242;
+}
+
+.motorist-list-item {
+  font-size: 12px;
+  background: #ffffff;
+  height: 60px;
+  line-height: 60px;
+  color: #333333;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-color: #d4d4d4;
+}
+
+.motorist-list-item-route {
+  font-size: 12px;
+  background: #ffffff;
+  height: 42px;
+  line-height: 42px;
+  color: #5cb85c;
+  border-bottom: 1px solid;
+  border-color: #d4d4d4;
+}
+
+.map-container {
+  position: absolute;
+  left: 400px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  background: #ffffff;
+}
+
+/************************************* Route tab *****************************************/
+
+.listview-item-destination {
+  font-size: 12px;
+  background: #ffffff;
+  min-height: 42px;
+  color: #5cb85c;
+  border-color: #d4d4d4;
+  float: left;
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.listview-item-destination.selected
+  > .listview-item-destination-wrapper
+  > .listview-item-destination-name {
+  color: #5cb85c;
+}
+
+.listview-item-destination.selected > .listview-item-destination-index {
+  background-color: #5cb85c;
+}
+
+.listview-item-destination-wrapper {
+  float: left;
+  width: 230px;
+  position: relative;
+}
+
+.listview-item-destination-index {
+  width: 22px;
+  background-color: #babbbd;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  color: #fff;
+}
+
+.listview-item-destination-index > span {
+  vertical-align: middle;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  margin-top: -10px;
+  text-align: center;
+  width: 100%;
+  font-size: 14px;
+}
+
+.listview-item-destination-name {
+  color: #333333;
+  display: block;
+  font-size: 14px;
+  margin: 4px 4px 0px 30px;
+}
+
+.listview-item-destination-address {
+  display: block;
+  font-size: 10px;
+  margin: 0px 0px 4px 30px;
+  color: #777;
+}
+
+.listview-item-destination-remove {
+  line-height: 42px;
+  float: right;
+  margin-right: 12px;
+  color: #0066ff;
+  cursor: pointer;
+}
+
+/************************************* Motorists tab *****************************************/
+
+.stars {
+  color: #aaa;
+}
+
+.motorist-profile-metrics {
+  height: 56px;
+  line-height: 16px;
+  font-size: 15px;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #424242;  
+}
+
+/************************************* Vehicle tab *****************************************/
+
+.vehicle-profile-info-item {
+  height: 56px;
+  line-height: 16px;
+  font-size: 15px;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #424242;
+  float: left;
+  width: 240px;
+}

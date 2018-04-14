@@ -6,6 +6,8 @@ import { VehicleRoutingModule } from './vehicle-routing.module';
 import { MapVehicleComponent } from './map-vehicle/map-vehicle.component';
 import { GridVehicleComponent } from './grid-vehicle/grid-vehicle.component';
 
+import { DialogVehicleComponent } from './dialog-vehicle/dialog-vehicle.component';
+
 import { SharedModule } from '../shared/modules/shared.module';
 
 @NgModule({
@@ -15,6 +17,6 @@ import { SharedModule } from '../shared/modules/shared.module';
     FormsModule,
     SharedModule
   ],
-  declarations: [MapVehicleComponent, GridVehicleComponent]
+  declarations: [MapVehicleComponent, GridVehicleComponent,DialogVehicleComponent]
 })
 export class VehicleModule { }

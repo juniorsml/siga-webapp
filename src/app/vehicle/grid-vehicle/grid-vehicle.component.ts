@@ -11,7 +11,7 @@ export class GridVehicleComponent implements OnInit {
 
   @Input() vehicles = new Array();
   @Input() dataLoading: boolean = true;
-  @Output() onMotoristSelected: EventEmitter<any> = new EventEmitter();
+  @Output() onVehicleSelected: EventEmitter<any> = new EventEmitter();
 
   text: any;
   distance: any;
@@ -20,11 +20,11 @@ export class GridVehicleComponent implements OnInit {
   styleClass: any;
   filterLocation: any;
   filterDistance: any;
-  selectedMotorist: any;
+  selectedVehicle: any;
   contextMenuSelected: any;
 
   showDialog = false;
-  showMotoristDialog: boolean;
+  showVehicleDialog: boolean;
 
   constructor(private router: ActivatedRoute) { }
 
@@ -37,7 +37,7 @@ export class GridVehicleComponent implements OnInit {
   }
 
   public motoristDialogClose() {
-    this.showMotoristDialog = false;
+    this.showvehicleDialog = false;
   }
 
   public onCellClick(event) {
