@@ -5,11 +5,11 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'sga-grid-vehicle',
   templateUrl: './grid-vehicle.component.html',
-  styles: []
+  styleUrls: ['./grid-vehicle.component.scss']
 })
 export class GridVehicleComponent implements OnInit {
 
-  @Input() motorists = new Array();
+  @Input() vehicles = new Array();
   @Input() dataLoading: boolean = true;
   @Output() onMotoristSelected: EventEmitter<any> = new EventEmitter();
 

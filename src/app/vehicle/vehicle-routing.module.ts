@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { MapVehicleComponent } from './map-vehicle/map-vehicle.component';
 import { GridVehicleComponent } from './grid-vehicle/grid-vehicle.component';
 
+import { vehicles } from '../shared/mocks/vehicles';
+
 const routes: Routes = [
   {
     path: 'map',
@@ -10,7 +12,8 @@ const routes: Routes = [
   },
   {
     path: 'grid',
-    component: GridVehicleComponent
+    component: GridVehicleComponent,
+    data: { vehicles }
   }
 ];
 
