@@ -3,37 +3,16 @@
   left: 22px;
   right: 22px;
   bottom: 22px;
-  top: 79px;
-
-  .sidebar,
-  .detail {
-    height: 100%;
-    border: 1px solid #ececec;
-    padding: 4px 10px 0 10px;
-  }
-
-  .sidebar {
+  top: 60px;
+  
+  .register-area {
     position: absolute;
-    width: 365px;
-
-    .header {
-      color: #38425b;
-      padding: 0 0 6px 0;
-      font-size: 14px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 7%;
-    }
-
-    .content {
-      height: 11%;
-    }
+    top: 10px;  
   }
-
-  .detail {
-    position: absolute;
-    left: 389px;
-    right: 0;
-  }
+  .grid-area {
+    top: 42px;
+    margin-top: 5px;
+    position: relative;
+    height: 95%;
+  }  
 }

@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { devices } from '../shared/mocks/device';
+
 import { MapDeviceComponent } from './map-device/map-device.component';
 import { GridDeviceComponent } from './grid-device/grid-device.component';
 import { ConfigDeviceComponent } from './config-device/config-device.component';
+import { RegisterDeviceComponent } from './register-device/register-device.component';
 
-import { devices } from '../shared/mocks/device';
 
 const routes: Routes = [
   {
@@ -22,6 +24,10 @@ const routes: Routes = [
     path: 'config',
     component: ConfigDeviceComponent,
     data: { devices }
+  },
+  {
+    path: 'register',
+    component: RegisterDeviceComponent
   }
 ];
 
