@@ -10,13 +10,13 @@
           <div class="field">
             <label class="label">ID</label>
             <div class="control">
-              <input type="text" class="input" placeholder="ID" name="id" ngModel />
+              <input type="text" class="input" placeholder="ID" name="id" ngModel required />
             </div>
           </div>
           <div class="field">
             <label class="label">Modelo</label>
             <div class="control">
-              <input type="text" class="input" placeholder="Modelo" name="model" ngModel />
+              <input type="text" class="input" placeholder="Modelo" name="model" ngModel required/>
             </div>
           </div>
         </div>
@@ -25,19 +25,19 @@
           <div class="field">
             <label class="label">Apelido</label>
             <div class="control">
-              <input type="text" class="input" placeholder="Apelido" name="alias" ngModel />
+              <input type="text" class="input" placeholder="Apelido" name="alias" ngModel required/>
             </div>
           </div>
           <div class="field">
             <label class="label">Tecnologia</label>
             <div class="control">
-              <input type="text" class="input" placeholder="Tecnologia" name="tech" ngModel />
+              <input type="text" class="input" placeholder="Tecnologia" name="tech" ngModel required/>
             </div>
           </div>
 
           <div class="field is-grouped">
             <div class="control">
-              <button class="button is-link">Cadastrar</button>
+              <button class="button is-link" [disabled]="!formDevice.valid">Cadastrar</button>
             </div>
             <div class="control">
               <button class="button is-text">Cancelar</button>
