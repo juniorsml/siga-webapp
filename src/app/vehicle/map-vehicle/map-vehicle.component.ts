@@ -1,5 +1,3 @@
-import { Component, OnInit } from '@angular/core';
-
 import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 import {} from 'leaflet-marker-cluster';
@@ -13,46 +11,48 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'sga-map-vehicle',
   templateUrl: './map-vehicle.component.html',
-  styleUrls: ['./map-vehicle.component.scss',]
+  styleUrls: ['./map-vehicle.component.scss']
 })
 export class MapVehicleComponent implements OnInit {
-private _motorists: Array<any>;
+	private _vehicles: Array<any>;
   private mapMarkers: Array<Feature<GeometryObject>> = [];
 
-  public hideMotoristModal: boolean;
+  public hideVehicleModal: boolean;
   public text: any;
 
   @ViewChild('mapSelector') mapSelector: ElementRef;
   @Input()
-  get motorists(): Array<any> {
-    return this._motorists;
+  get vehicles(): Array<any> {
+   
+    return this._vehicles;
+
   }
 
-  set motorists(value: Array<any>) {
-    this._motorists = value;
+  set vehicles(value: Array<any>) {
+    this._vehicles = value;
     if (this.mapSelectedTabIndex && this.mapSelectedTabIndex != 1) {
-      this.plotMotoristLocations();
+      this.plotVehicleLocations();
     }
   }
 
-  plotMotoristLocations(): void {
+  plotVehicleLocations(): void {
     this.map.clearAll();
     this.mapMarkers = [];
-    this._motorists.forEach(motorist => {
-      if (motorist.location) {
+    this._vehicles.forEach(vehicle => {
+      if (vehicle.location) {
         const markerElement: HTMLElement = document.createElement('div');
         const markerBody: HTMLElement = document.createElement('div');
         const imageElement: HTMLImageElement = document.createElement('img');
 
         imageElement.className = 'motorist-marker-image';
-        imageElement.src = 'api/motorist/public/profileImage?id=' + motorist.id;
+        imageElement.src = 'api/motorist/public/profileImage?id=' + vehicle.id;
 
         markerElement.appendChild(markerBody);
         markerBody.appendChild(imageElement);
         markerBody.className = 'motorist-marker bounce';
 
         markerBody.addEventListener('click', () =>
-          window.alert(motorist.firstName + ' ' + motorist.lastName)
+          window.alert(vehicle.vehiclePlate + ' ' + vehicle.model)
         );
 
         const marker: Feature<GeometryObject> = <Feature<any>>{
@@ -61,8 +61,8 @@ private _motorists: Array<any>;
           geometry: {
             type: 'Point',
             coordinates: [
-              motorist.location.longitude,
-              motorist.location.latitude
+              vehicle.location.longitude,
+              vehicle.location.latitude
             ]
           }
         };
@@ -93,30 +93,30 @@ private _motorists: Array<any>;
     });
     if (features.length > 0) {
       this.map.drawPolyline(features);
-      this.map.addMarker(this.createMotoristMarker(this.selectedMotorist));
+      this.map.addMarker(this.createVehicleMarker(this.selectedVehicle));
     }
   }
 
-  createMotoristMarker(motorist): Feature<GeometryObject> {
+  createVehicleMarker(vehicle): Feature<GeometryObject> {
     const markerBody: HTMLElement = document.createElement('div');
     const markerElement: HTMLElement = document.createElement('div');
     const imageElement: HTMLImageElement = document.createElement('img');
 
     imageElement.className = 'motorist-marker-image';
-    imageElement.src = 'api/motorist/public/profileImage?id=' + motorist.id;
+    imageElement.src = 'api/motorist/public/profileImage?id=' + vehicle.id;
 
     markerElement.appendChild(markerBody);
     markerBody.appendChild(imageElement);
     markerBody.className = 'motorist-marker bounce';
 
-    markerBody.addEventListener('click', () => window.alert(motorist.firstName + ' ' + motorist.lastName));
+    markerBody.addEventListener('click', () => window.alert(vehicle.ownerName + ' ' + vehicle.vehiclePlate));
 
     const marker: Feature<GeometryObject> = <Feature<any>>{
       type: 'Feature',
       properties: { iconSize: [50, 50], icon: markerElement },
       geometry: {
         type: 'Point',
-        coordinates: [motorist.location.longitude, motorist.location.latitude]
+        coordinates: [vehicle.location.longitude, vehicle.location.latitude]
       }
     };
 
@@ -129,52 +129,52 @@ private _motorists: Array<any>;
   mapSelectedTabIndex: number;
   mapTabsSelectedIndex: number = 0;
 
-  selectedMotorist: any;
+  selectedVehicle: any;
 
   constructor(private map: Map, private router: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.router.data.subscribe(data => this.motorists = data.motorists);
+    this.router.data.subscribe(data => this.vehicles = data.vehicles);
     this.injectMap();
   }
 
   onMapTabChanged(tab: TabComponent) {
     this.mapSelectedTabIndex = tab.index;
     if (tab.index === 0) {
-      this.plotMotoristLocations();
+      this.plotVehicleLocations();
     } else if (tab.index === 1) {
       this.plotHistoryLocations();
     }
   }
 
   mapTableCellClick(event: TableClickEvent) {
-    this.selectedMotorist = event.data;
+    this.selectedVehicle = event.data;
 
     if (event.cellIndex === 0) {
-      this.hideMotoristModal = false;
+      this.hideVehicleModal = false;
     } else {
-      this.centerOnMotorist(this.selectedMotorist);
+      this.centerOnVehicle(this.selectedVehicle);
     }
   }
 
-  centerOnMotorist(motorist) {
-    if (motorist.location) {
+  centerOnVehicle(vehicle) {
+    if (vehicle.location) {
       this.map.setZoom(12);
       this.map.resize();
       this.map.setCenter(
-        motorist.location.latitude,
-        motorist.location.longitude
+        vehicle.location.latitude,
+        vehicle.location.longitude
       );
-      this.map.moveTo(motorist.location.latitude, motorist.location.longitude);
+      this.map.moveTo(vehicle.location.latitude, vehicle.location.longitude);
     }
   }
 
   mapTableCellRightClick(event: TableClickEvent) {
-    this.selectedMotorist = event.data;
+    this.selectedVehicle = event.data;
   }
 
   mapHistoryTableCellClick(event: TableClickEvent) {
-    this.selectedMotorist = event.data;
+    this.selectedVehicle = event.data;
     this.map.setZoom(16);
     this.map.moveTo(event.data.latitude, event.data.longitude);
   }
@@ -197,6 +197,6 @@ private _motorists: Array<any>;
 
   private injectMap(): void {
     this.map.createMapBoxMapInstance(this.mapSelector.nativeElement);
-    this.plotMotoristLocations();
+    this.plotVehicleLocations();
   }
 }
