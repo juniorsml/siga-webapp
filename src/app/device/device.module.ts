@@ -11,6 +11,7 @@ import { MapService } from '../shared/services/map.service';
 
 import { Map } from '../shared/models/Map';
 import { ConfigDeviceComponent } from './config-device/config-device.component';
+import { RegisterDeviceComponent } from './register-device/register-device.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,7 @@ import { ConfigDeviceComponent } from './config-device/config-device.component';
   exports: [
     GridDeviceComponent
   ],
-  declarations: [GridDeviceComponent, MapDeviceComponent, ConfigDeviceComponent],
+  declarations: [GridDeviceComponent, MapDeviceComponent, ConfigDeviceComponent, RegisterDeviceComponent],
   providers: [
     {
       provide: Map,
