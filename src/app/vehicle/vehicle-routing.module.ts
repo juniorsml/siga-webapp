@@ -8,7 +8,8 @@ import { vehicles } from '../shared/mocks/vehicles';
 const routes: Routes = [
   {
     path: 'map',
-    component: MapVehicleComponent
+    component: MapVehicleComponent,
+    data: { vehicles }
   },
   {
     path: 'grid',

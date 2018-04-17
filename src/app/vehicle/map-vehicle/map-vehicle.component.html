@@ -1,3 +1,21 @@
-<p>
-  map-vehicle works!
-</p>
+<div class="material-content-container">
+  <div #mapSelector></div>
+</div>
+<div class="map-center-bar columns">
+  <div class="column menu-map-center">
+    <a class="fal fa-bars" href=""></a>
+  </div>
+  <div class="column is-4">     
+    <p class="control has-icons-left"> 
+      <input [(ngModel)]="text" class="input"  placeholder="Buscar" type="text"/>
+      <span class="icon is-small is-left">
+        <i class="fa fa-search"></i>
+      </span>       
+    </p>
+  </div>
+  <sga-map-filter 
+    (placesFiltered)="onPlacesFiltered($event)" 
+    (filterRemoved)="onPlacesFilterRemoved()"
+    class="column is-11">
+  </sga-map-filter>
+</div>

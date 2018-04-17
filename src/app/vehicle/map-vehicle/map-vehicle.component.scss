@@ -1,0 +1,32 @@
+.material-content-container {
+  padding: 0;
+  margin: 0;
+ 
+  div {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+  }
+}
+
+.map-center-bar {
+  position: absolute;
+  width: 90%;
+  max-width: 1050px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  padding-left: 9px;
+  top: 87px;
+  background: #fff;
+}
+
+.menu-map-center {
+  align-items: center;
+  display: flex;
+  a {
+    font-size: 28px;
+    color: #cecece;
+  }
+}

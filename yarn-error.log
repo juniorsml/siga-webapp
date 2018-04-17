@@ -2,7 +2,7 @@ Arguments:
   C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js start
 
 PATH: 
-  C:\Users\ronaldo\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\ronaldo\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\Yarn\bin;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Users\ronaldo\AppData\Local\Microsoft\WindowsApps;C:\Users\ronaldo\AppData\Local\Yarn\bin;C:\Users\ronaldo\AppData\Roaming\npm;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+  C:\Users\ronaldo\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\ronaldo\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\Yarn\bin;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Program Files\dotnet;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Users\ronaldo\AppData\Local\Microsoft\WindowsApps;C:\Users\ronaldo\AppData\Local\Yarn\bin;C:\Users\ronaldo\AppData\Roaming\npm;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
 
 Yarn version: 
   1.5.1
