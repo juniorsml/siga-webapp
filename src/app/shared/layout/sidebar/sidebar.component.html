@@ -171,12 +171,41 @@
         </ul>
       </accordion>
     </li>
-    <li class="sidebar-menu-item">
-      <a>
-        <span class="sidebar-list-icon fal fa-map-marker"></span>
-        <span class="sidebar-list-text">Geográfico</span>
-      </a>
+
+    <li class="sidebar-menu-item-accordion">      
+      <accordion>
+        <accordion-header>
+          <ng-template>
+            <div class="sidebar-menu-accordion">
+              <span [class.selected]="router.url == '/'" class="sidebar-list-icon fal fa-globe"></span>
+              <span class="sidebar-list-text">Geográfico</span>
+            </div>
+          </ng-template>
+        </accordion-header>
+        <ul class="sidebar-submenu">
+          <li [class.selected]="router.url == '/geographic/grid'" class="sidebar-menu-item">
+            <a routerLink="/geographic/grid">
+              <span [class.selected]="router.url == '/geographic/grid'" class="sidebar-list-icon fal fa-chart-area"></span>
+              <span class="sidebar-list-text">Áreas</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item" [class.selected]="router.url == '/geographic/map'">
+            <a  routerLink="/geographic/map" >
+
+              <span class="sidebar-list-icon fal fa-map-marker"></span>
+              <span class="sidebar-list-text">Pontos</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item"  [class.selected]="router.url == '/geographic/config'">
+            <a routerLink="/geographic/config">
+              <span class="sidebar-list-icon fal fa-thumbtack"></span>
+              <span class="sidebar-list-text">Entidades</span>
+            </a>
+          </li>
+        </ul>
+      </accordion>
     </li>
+    
     <li class="sidebar-menu-item">
       <a>
         <span [class.selected]="router.url == '/audit'" class="sidebar-list-icon fal fa-list-alt"></span>
