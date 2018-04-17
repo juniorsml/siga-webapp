@@ -7,6 +7,8 @@ import { MapVehicleComponent } from './map-vehicle/map-vehicle.component';
 import { GridVehicleComponent } from './grid-vehicle/grid-vehicle.component';
 
 import { DialogVehicleComponent } from './dialog-vehicle/dialog-vehicle.component';
+import { AssociateVehicleComponent } from './associate-vehicle/associate-vehicle.component';
+
 
 import { MapService } from '../shared/services/map.service';
 import { DomHandler } from '../shared/dom-handler/domhandler.service';
@@ -22,7 +24,7 @@ import { SharedModule } from '../shared/modules/shared.module';
     FormsModule,
     SharedModule
   ],
-  declarations: [MapVehicleComponent, GridVehicleComponent,DialogVehicleComponent],
+  declarations: [MapVehicleComponent, GridVehicleComponent,DialogVehicleComponent,AssociateVehicleComponent],
   providers: [
     DomHandler,
     {

@@ -2,24 +2,24 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'sga-motorist-associate-dialog',
-  templateUrl: './motorist-associate-dialog.component.html',
-  styleUrls: ['./motorist-associate-dialog.component.scss']
+  selector: 'sga-associate-vehicle',
+  templateUrl: './associate-vehicle.component.html',
+  styleUrls: ['./associate-vehicle.component.scss']
 })
-export class MotoristAssociateDialogComponent implements OnInit {
+export class AssociateVehicleComponent implements OnInit {
   @Input() 
   public showDialog: boolean;
 
   @Input()
-  get motorists(): Array<any> {
-    return this._motorists;
+  get vehicles(): Array<any> {
+    return this._vehicles;
   }
-  set motorists(motorists: Array<any>) {
-    this._motorists = motorists;
-    this.setCurrentMotorists();
+  set vehicles(vehicles: Array<any>) {
+    this._vehicles = vehicles;
+    this.setCurrentvehicles();
   }
 
-  private _motorists: Array<any> = [];
+  private _vehicles: Array<any> = [];
 
   public selectedMotorist: any;
   public showMotoristDialog = false;
@@ -35,12 +35,12 @@ export class MotoristAssociateDialogComponent implements OnInit {
   constructor(private router: ActivatedRoute) {}
 
   ngOnInit() :void {
-    this.router.data.subscribe(data => this.motorists = data.motorists);
+    this.router.data.subscribe(data => this.vehicles = data.vehicles);
   }
 
-  private setCurrentMotorists() {
+  private setCurrentvehicles() {
     this.currentList = [];
-    this.motorists.map(motorist => {
+    this.vehicles.map(motorist => {
       if (!this.motoristIsDuplicate(motorist.id)) this.currentList.push(motorist);
     });
   }
@@ -49,13 +49,13 @@ export class MotoristAssociateDialogComponent implements OnInit {
     return this.removeList.find(m => m.id == motoristId);
   }
 
-  public onMotoristSelected(motorist) {
+  public onVehicleselected(motorist) {
     this.addList.push(motorist);
   }
 
   public showMotoristModal(id) {
     this.showMotoristDialog = true;
-    this.selectedMotorist = this.motorists.filter(m => m.id === id)[0];
+    this.selectedMotorist = this.vehicles.filter(m => m.id === id)[0];
   }
 
   public motoristDialogClose() {
