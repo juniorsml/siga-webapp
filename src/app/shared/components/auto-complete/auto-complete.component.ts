@@ -16,38 +16,43 @@ import {
   styleUrls: ['./auto-complete.component.scss']
 })
 export class AutoCompleteComponent {
-  @Input() motorists: Array<any>;
-  @Input() suggestions: any[];
-  @Input() styleClass: string = 'autocomplete';
-  @Input() minLength: number;
-  @Input() placeholder: string = '';
-  @Input() url: string = '';
-  @Input() noSuggestionsText: string = '';
+  @Input() public data: Array<any>;
+  @Input() public url: string = '';
+  @Input() public minLength: number;
+  @Input() public placeholder: string = '';
+  @Input() public propToFilter: string = '';
+  @Input() public noSuggestionsText: string = '';
+  @Input() public suggestions = new Array<any>();
+  @Input() public styleClass: string = 'autocomplete';
+
+  @Output() public itemSelected = new EventEmitter();
+  @Output() public onCreateNew = new EventEmitter<any>();
+
   @ViewChild('input') inputElement: ElementRef;
-  @Output() public itemSelected: EventEmitter<any> = new EventEmitter();
-  @Output('onCreateNew') public onCreateNew = new EventEmitter<any>();
+  
   @ContentChild(TemplateRef) template: TemplateRef<any>;
-  searching: boolean = false;
-  searchRequested: boolean = false;
-  hasFocus: boolean;
-  suggestionSelected: boolean;
-  suggestionIndex: number = 0;
+
+  public hasFocus = false;
+  public searching = false;
+  public suggestionIndex = 0;
+  public searchRequested = false;
+  public suggestionSelected = false;
 
   constructor(private elementRef: ElementRef) {}
 
   @HostListener('document:click', ['$event.target'])
-  public onClick(targetElement) {
+  public onClick(targetElement): void {
     const clickedInside = this.elementRef.nativeElement.contains(targetElement);
     if (!clickedInside && !this.suggestionSelected) {
       this.hasFocus = false;
     }
   }
 
-  create() {
+  public create(): void {
     this.onCreateNew.emit(this.inputElement.nativeElement.value);
   }
 
-  onKeyDown(event) {
+  onKeyDown(event): boolean {
     // up
     if (event.keyCode == 38 && this.suggestionIndex > 0) {
       event.preventDefault();
@@ -64,7 +69,7 @@ export class AutoCompleteComponent {
     }
   }
 
-  onKeyUp(event: any) {
+  public onKeyUp(event: any): void {
     this.suggestionSelected = false;
 
     if (this.hasFocus && this.suggestions != null) {
@@ -108,11 +113,11 @@ export class AutoCompleteComponent {
     }
   }
 
-  onFocus() {
+  public onFocus(): void {
     this.hasFocus = true;
   }
 
-  onSelect(suggestion) {
+  private onSelect(suggestion): void {
     this.searchRequested = false;
     this.suggestionSelected = true;
     this.suggestions = null;
@@ -122,9 +127,9 @@ export class AutoCompleteComponent {
     this.itemSelected.emit(suggestion);
   }
 
-  search() {
-    this.suggestions = this.motorists.filter(
-      m => m.documentId.indexOf(this.inputElement.nativeElement.value) > -1
+  private search(): void {
+    this.suggestions = this.data.filter(
+      m => m[this.propToFilter].indexOf(this.inputElement.nativeElement.value) > -1
     );
     // this.dataService.get(this.url + this.inputElement.nativeElement.value)
     //     .toPromise()
@@ -139,7 +144,7 @@ export class AutoCompleteComponent {
     // });
   }
 
-  noSuggestionClick() {
+  public noSuggestionClick(): void {
     this.suggestions = null;
   }
 }
