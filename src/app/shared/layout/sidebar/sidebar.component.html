@@ -80,30 +80,30 @@
       </a>
     </li>
     <li class="sidebar-menu-item-accordion">      
-        <accordion>
-          <accordion-header>
-            <ng-template>
-              <div class="sidebar-menu-accordion">
-                <span [class.selected]="router.url == '/vehicle'" class="sidebar-list-icon fal fa-truck"></span>
-                <span class="sidebar-list-text">Veículos</span>
-              </div>
-            </ng-template>
-          </accordion-header>
-          <ul class="sidebar-submenu">
-            <li [class.selected]="router.url == '/vehicle/grid'" class="sidebar-menu-item">
-              <a routerLink="/vehicle/grid">
-                <span [class.selected]="router.url == '/vehicle/grid'" class="sidebar-list-icon fal fa-th-list"></span>
-                <span class="sidebar-list-text">Grid</span>
-              </a>
-            </li>
-            <li class="sidebar-menu-item" [class.selected]="router.url == '/vehicle/map'">
-              <a  routerLink="/vehicle/map" >
-                <span class="sidebar-list-icon fal fa-map"></span>
-                <span class="sidebar-list-text">Mapa</span>
-              </a>
-            </li>
-          </ul>
-        </accordion>
+      <accordion>
+        <accordion-header>
+          <ng-template>
+            <div class="sidebar-menu-accordion">
+              <span [class.selected]="router.url == '/vehicle'" class="sidebar-list-icon fal fa-truck"></span>
+              <span class="sidebar-list-text">Veículos</span>
+            </div>
+          </ng-template>
+        </accordion-header>
+        <ul class="sidebar-submenu">
+          <li [class.selected]="router.url == '/vehicle/grid'" class="sidebar-menu-item">
+            <a routerLink="/vehicle/grid">
+              <span [class.selected]="router.url == '/vehicle/grid'" class="sidebar-list-icon fal fa-th-list"></span>
+              <span class="sidebar-list-text">Grid</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item" [class.selected]="router.url == '/vehicle/map'">
+            <a  routerLink="/vehicle/map" >
+              <span class="sidebar-list-icon fal fa-map"></span>
+              <span class="sidebar-list-text">Mapa</span>
+            </a>
+          </li>
+        </ul>
+      </accordion>
     </li>
     <li class="sidebar-menu-item-accordion">      
       <accordion>
@@ -183,7 +183,39 @@
           </ng-template>
         </accordion-header>
         <ul class="sidebar-submenu">
-          <li [class.selected]="router.url == '/geographic/grid'" class="sidebar-menu-item">
+          <li class="sidebar-menu-item-accordion">
+            <accordion>
+              <accordion-header>
+                <ng-template>
+                  <div class="sidebar-menu-accordion">
+                    <span class="sidebar-list-icon fal fa-chart-area"></span>
+                    <span class="sidebar-list-text">Áreas</span>
+                  </div>
+                </ng-template>
+              </accordion-header>
+              <ul class="sidebar-submenu">
+                <li [class.selected]="router.url == '/geographic/area/grid'" class="sidebar-menu-item">
+                  <a routerLink="/geographic/area/grid">
+                    <span [class.selected]="router.url == '/geographic/area/grid'" class="sidebar-list-icon fal fa-th-list"></span>
+                    <span class="sidebar-list-text">Grid</span>
+                  </a>
+                </li>
+                <li class="sidebar-menu-item" [class.selected]="router.url == '/geographic/area/map'">
+                  <a  routerLink="/geographic/area/map" >
+                    <span [class.selected]="router.url == '/geographic/area/map'" class="sidebar-list-icon fal fa-map"></span>
+                    <span class="sidebar-list-text">Mapa</span>
+                  </a>
+                </li>
+              </ul>
+            </accordion>
+          </li>
+            
+
+
+
+
+
+          <!-- <li [class.selected]="router.url == '/geographic/grid'" class="sidebar-menu-item">
             <a routerLink="/geographic/grid">
               <span [class.selected]="router.url == '/geographic/grid'" class="sidebar-list-icon fal fa-chart-area"></span>
               <span class="sidebar-list-text">Áreas</span>
@@ -201,7 +233,7 @@
               <span class="sidebar-list-icon fal fa-thumbtack"></span>
               <span class="sidebar-list-text">Entidades</span>
             </a>
-          </li>
+          </li> -->
         </ul>
       </accordion>
     </li>
