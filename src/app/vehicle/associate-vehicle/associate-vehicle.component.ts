@@ -16,14 +16,14 @@ export class AssociateVehicleComponent implements OnInit {
   }
   set vehicles(vehicles: Array<any>) {
     this._vehicles = vehicles;
-    this.setCurrentvehicles();
+    this.setCurrentVehicles();
   }
 
   private _vehicles: Array<any> = [];
 
-  public selectedMotorist: any;
-  public showMotoristDialog = false;
-  public showMotoristRegister = false;
+  public selectedVehicle: any;
+  public showVehicleDialog = false;
+  public showVehicleRegister = false;
 
   public addList: Array<any> = [];
   public removeList: Array<any> = [];
@@ -38,60 +38,60 @@ export class AssociateVehicleComponent implements OnInit {
     this.router.data.subscribe(data => this.vehicles = data.vehicles);
   }
 
-  private setCurrentvehicles() {
+  private setCurrentVehicles() {
     this.currentList = [];
-    this.vehicles.map(motorist => {
-      if (!this.motoristIsDuplicate(motorist.id)) this.currentList.push(motorist);
+    this.vehicles.map(vehicle => {
+      if (!this.vehicleIsDuplicate(vehicle.id)) this.currentList.push(vehicle);
     });
   }
 
-  private motoristIsDuplicate(motoristId): boolean {
-    return this.removeList.find(m => m.id == motoristId);
+  private vehicleIsDuplicate(vehicleId): boolean {
+    return this.removeList.find(m => m.id == vehicleId);
   }
 
-  public onVehicleselected(motorist) {
-    this.addList.push(motorist);
+  public onVehicleselected(vehicle) {
+    this.addList.push(vehicle);
   }
 
-  public showMotoristModal(id) {
-    this.showMotoristDialog = true;
-    this.selectedMotorist = this.vehicles.filter(m => m.id === id)[0];
+  public showVehicleModal(id) {
+    this.showVehicleDialog = true;
+    this.selectedVehicle = this.vehicles.filter(m => m.id === id)[0];
   }
 
   public motoristDialogClose() {
-    this.showMotoristDialog = false;
+    this.showVehicleDialog = false;
   }
 
-  public undoAddMotorist(motorist) {
-    this.removeFromList(this.addList, motorist);
+  public undoAddVehicle(vehicle) {
+    this.removeFromList(this.addList, vehicle);
   }
 
-  public deleteMotorist(motorist) {
-    this.removeFromList(this.currentList, motorist);
-    this.removeList.push(motorist);
+  public deleteVehicle(vehicle) {
+    this.removeFromList(this.currentList, vehicle);
+    this.removeList.push(vehicle);
   }
 
-  public undoRemoveMotorist(motorist) {
-    this.removeFromList(this.removeList, motorist);
-    this.currentList.unshift(motorist);
+  public undoRemoveVehicle(vehicle) {
+    this.removeFromList(this.removeList, vehicle);
+    this.currentList.unshift(vehicle);
   }
 
-  public showMotoristForm(suggestion) {
+  public showVehicleForm(suggestion) {
     suggestion;
-    this.showMotoristRegister = true;
+    this.showVehicleRegister = true;
   }
 
-  public motoristFormClose() {
-    this.showMotoristRegister = false;
+  public vehicleFormClose() {
+    this.showVehicleRegister = false;
   }
 
-  private removeFromList(list, motorist) {
-    const indexToRemove = list.findIndex(m => m.id === motorist.id);
+  private removeFromList(list, vehicle) {
+    const indexToRemove = list.findIndex(m => m.id === vehicle.id);
     list.splice(indexToRemove, 1);
   }
 
-  onAdminMotoristCellClick(event) {
-    if (event.cellIndex === 6) this.deleteMotorist(event.data);
+  onAdminVehicleCellClick(event) {
+    if (event.cellIndex === 6) this.deleteVehicle(event.data);
   }
 
   applyChanges() {}

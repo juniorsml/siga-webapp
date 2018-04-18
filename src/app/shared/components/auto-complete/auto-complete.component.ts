@@ -17,6 +17,7 @@ import {
 })
 export class AutoCompleteComponent {
   @Input() motorists: Array<any>;
+  @Input() vehicles: Array<any>;
   @Input() suggestions: any[];
   @Input() styleClass: string = 'autocomplete';
   @Input() minLength: number;
@@ -101,7 +102,13 @@ export class AutoCompleteComponent {
       this.inputElement.nativeElement.value.length >= this.minLength
     ) {
       if (!this.searching) {
-        this.search();
+        if(this.motorists){
+          this.searchMotorist();
+        }
+        else if(this.vehicles){
+          this.searchVehicle();
+        }
+        
       } else {
         this.searchRequested = true;
       }
@@ -122,9 +129,25 @@ export class AutoCompleteComponent {
     this.itemSelected.emit(suggestion);
   }
 
-  search() {
+  searchMotorist() {
     this.suggestions = this.motorists.filter(
       m => m.documentId.indexOf(this.inputElement.nativeElement.value) > -1
+    );
+    // this.dataService.get(this.url + this.inputElement.nativeElement.value)
+    //     .toPromise()
+    //     .then(data => {
+    //         console.log(data);
+    //         this.suggestions = data.json();
+    //         if (this.searchRequested) {
+    //             this.search();
+    //         }
+    //     }).catch((ex) => {
+    //     console.log(ex);
+    // });
+  }
+  searchVehicle() {
+    this.suggestions = this.vehicles.filter(
+      m => m.vehiclePlate.indexOf(this.inputElement.nativeElement.value) > -1
     );
     // this.dataService.get(this.url + this.inputElement.nativeElement.value)
     //     .toPromise()
