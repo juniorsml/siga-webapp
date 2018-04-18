@@ -49,7 +49,7 @@ export class AssociateVehicleComponent implements OnInit {
     return this.removeList.find(m => m.id == vehicleId);
   }
 
-  public onVehicleselected(vehicle) {
+  public onVehicleSelected(vehicle) {
     this.addList.push(vehicle);
   }
 
@@ -58,7 +58,7 @@ export class AssociateVehicleComponent implements OnInit {
     this.selectedVehicle = this.vehicles.filter(m => m.id === id)[0];
   }
 
-  public motoristDialogClose() {
+  public vehicleDialogClose() {
     this.showVehicleDialog = false;
   }
 
@@ -91,7 +91,7 @@ export class AssociateVehicleComponent implements OnInit {
   }
 
   onAdminVehicleCellClick(event) {
-    if (event.cellIndex === 6) this.deleteVehicle(event.data);
+    if (event.cellIndex === 5) this.deleteVehicle(event.data);
   }
 
   applyChanges() {}

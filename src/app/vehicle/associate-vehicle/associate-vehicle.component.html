@@ -38,8 +38,8 @@
                       alt="">
                     <img>
                     <span>
-                      <span style="font-size: 16px; font-weight: 500; color: #324263; margin-left: 4px;">{{item.id}} </span>
-                      <span style="font-size: 14px; margin-left: 10px;">{{item.vehiclePlate}}, {{item.model}}</span>
+                      <span style="font-size: 16px; font-weight: 500; color: #324263; margin-left: 4px;">{{item.vehiclePlate}} </span>
+                      <span style="font-size: 14px; margin-left: 10px;">{{item.model}}</span>
                     </span>
                   </span>
                 </div>
@@ -51,8 +51,8 @@
               <list-view-item>
                 <ng-template let-item="item">
                   <div class="motorist-admin-add-item-valid">
-                    <span>({{item.id}})</span>
-                    <span style="font-weight: 500; margin-left: 8px">{{item.vehiclePlate}} {{item.model}}</span>
+                    <span>({{item.vehiclePlate}})</span>
+                    <span style="font-weight: 500; margin-left: 8px">{{item.vehiclePlate}}</span>
                     <span (click)="undoAddVehicle(item)" class="fa fa-times motorist-admin-item-close" aria-hidden="true"></span>
                   </div>
                 </ng-template>
@@ -76,8 +76,8 @@
               <list-view-item>
                 <ng-template let-item="item">
                   <div class="motorist-admin-add-item-invalid">
-                    <span>({{item.documentId}})</span>
-                    <span style="font-weight: 500; margin-left: 8px">{{item.firstName}} {{item.lastName}}</span>
+                    <span>({{item.vehiclePlate}})</span>
+                    <span style="font-weight: 500; margin-left: 8px">{{item.vehiclePlate}}</span>
                     <span (click)="undoRemoveVehicle(item)" class="fas fa-times motorist-admin-item-close" aria-hidden="true"></span>
                   </div>
                 </ng-template>
