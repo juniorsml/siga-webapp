@@ -171,19 +171,19 @@
     <!-- <loading-spinner [isHidden]="!isUpdating" text="Aplicando mudanças...">
     </loading-spinner> -->
 
- <!--    <sga-modal>
-      <sga-register-motorist
-        [showForm]="showMotoristRegister"
-        (onFormClose)="motoristFormClose()">
-      </sga-register-motorist>
+   <sga-modal>
+      <sga-register-vehicle
+        [showForm]="showVehicleRegister"
+        (onFormClose)="vehicleFormClose()">
+      </sga-register-vehicle>
     </sga-modal>
 
     <sga-modal>
-      <sga-profile-dialog
-        [showDialog]="showMotoristDialog"
-        [selectedMotorist]="selectedMotorist"
-        (onDialogClose)="motoristDialogClose()">
-      </sga-profile-dialog>
-    </sga-modal> -->
+      <sga-dialog-vehicle
+        [showDialog]="showVehicleDialog"
+        [selectedVehicle]="selectedVehicle"
+        (onDialogClose)="vehicleDialogClose()">
+      </sga-dialog-vehicle>
+    </sga-modal>
   
 </div>

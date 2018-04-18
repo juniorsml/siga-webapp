@@ -1,0 +1,357 @@
+
+<div *ngIf="showForm" class="cnt-dialog" >
+	<div class="container-form"  >
+		<div class="form-header columns column is-12 is-marginless">
+			<h3 class="area column is-narrow">Veículo</h3>
+			<h2 class="action column">Cadastro</h2>
+		</div>
+		<div class="container-scroll">		
+			<div  class="wrapper-scroll">
+				<div class="columns is-multiline is-marginless cnt-scroll"   slimScroll [options]="opts" [scrollEvents]="scrollEvents"  >
+					<form novalidate  (ngSubmit)="onSubmit()"   class="cnt-form" #formVeiculo="ngForm">
+						<!-- Dados pessoais -->
+						<div class="block column columns is-12 is-multiline">
+							<h4 class="title-block column columns is-12">Dados do Veículo</h4>
+							<div class="column input-profile-photo">
+								<div class="control">
+									<div class="file">
+										<label class="file-label">
+											<input class="file-input" type="file" name="resume" (change)="addProfilePhoto($event)">
+											<span class="file-cta">
+												<span class="file-icon">
+													<i class="fas fa-upload"></i>
+												</span>
+												<span class="file-label">
+													Escolha uma foto...
+												</span>
+											</span>
+										</label>
+									</div>
+									<div class="img-profile">
+										
+									</div>
+									<a class="remove-img-profile" (click)="removeProfilePhoto()">										
+										<span>Remover Foto</span>
+									</a>
+									
+								</div>
+							</div>
+							<div class="column columns is-multiline">
+								<div class="column is-4">
+									<div class="form-group">								         
+										<input type="text" class="input" name="vehiclePlate" placeholder="Placa" 
+										       [(ngModel)]="model.vehiclePlate" required #vehiclePlate="ngModel"
+										       [ngClass]="{
+									          'is-danger': vehiclePlate.invalid && (vehiclePlate.dirty || vehiclePlate.touched)
+									          }">
+									    <div class="form-control-feedback"
+								              *ngIf="vehiclePlate.errors && (vehiclePlate.dirty || vehiclePlate.touched)">
+								           <p class="help is-danger" *ngIf="vehiclePlate.errors.required">Placa é obrigatória</p>
+								        </div>
+									</div>   
+								</div>
+								<div class="column is-5">
+									<div class="control">
+										<input type="text" class="input" placeholder="Renavan" name="renavan"
+										 [(ngModel)]="model.renavan" required #renavan="ngModel"
+									       [ngClass]="{
+								           'is-danger': renavan.invalid && (renavan.dirty || renavan.touched)
+								          }">
+						          	    <div class="form-control-feedback"
+					                        *ngIf="renavan.errors && (renavan.dirty || renavan.touched)">
+						                     <p class="help is-danger" *ngIf="renavan.errors.required">Renavan é obrigatório</p>
+						                </div>
+									</div>
+								</div>
+								<div class="column is-2">
+									<span class="label-input">Marca</span>	
+									
+									<div class="control">	
+													
+										<div class="select">											
+											<select name="brand"
+											 [(ngModel)]="model.brand" required #brand="ngModel"
+										       [ngClass]="{
+									           'is-danger': brand.invalid && (brand.dirty || brand.touched)
+									          }">												
+												<option value="Marca 01">Marca 01</option>
+												<option value="Marca 02">Marca 02</option>
+												<option value="Marca 03">Marca 03</option>
+												<option value="Marca 04">Marca 04</option>
+											</select>
+										</div>									  
+						          	    
+									</div>
+					          	    <div class="form-control-feedback"
+				                        *ngIf="brand.errors && (brand.dirty || brand.touched)">
+					                    <p class="help is-danger" *ngIf="brand.errors.required">Escolha um documento</p>
+					                </div>
+								</div>
+								<div class="column is-5"> 
+									<div class="control">										 
+										<input type="text" class="input" placeholder="Modelo"  name="model"
+										 [(ngModel)]="model.model" required #model="ngModel"
+									       [ngClass]="{    
+								           'is-danger': model.invalid && (model.dirty || model.touched)
+								          }">
+
+									</div>
+									<div class="form-control-feedback"
+				                        *ngIf="model.errors && (model.dirty || model.touched)">
+					                    <p class="help is-danger" *ngIf="model.errors.required">Modelo é obrigatório</p>
+					                </div>
+								</div>
+								<div class="column is-3">
+									<span class="label-input">Cor</span>	
+									<div class="control">
+										<div class="select">									         	
+											<select name="color"
+											 [(ngModel)]="model.color" required #color="ngModel"
+										       [ngClass]="{
+									           'is-danger': color.invalid && (color.dirty || color.touched)
+									          }">
+												<option value="Azul">Azul</option>
+												<option value="Preto">Preto </option>
+												<option value="Amarelo">Amarelo </option>
+												<option value="Branco">Branco</option>
+												<option value="Vermelho">Vermelho</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-control-feedback"
+				                        *ngIf="color.errors && (color.dirty || color.touched)">
+					                    <p class="help is-danger" *ngIf="color.errors.required">Estado civil é obrigatório</p>  
+					                </div>
+								</div>
+							
+								<div class="column is-4">
+									<div class="control">
+										<input  type="text" class="input" placeholder="Ano de Fab.:" name="year"
+										[(ngModel)]=model.year required #year="ngModel"
+										[ngClass]="{'is-danger': year.invalid && (year.dirty || year.touched)}" >
+										
+									</div>
+									<div class="form-control-feedback"
+                        *ngIf="year.errors && (year.dirty || year.touched)">
+	                    <p class="help is-danger" *ngIf="year.errors.required">Ano é obrigatória</p>
+	                </div>
+								</div>
+								<div class="column is-2">
+									<span class="label-input">Tipo</span>	
+									<div class="control">
+										<div class="select">
+											<select [(ngModel)]="model.type" required #type="ngModel"
+										       [ngClass]="{
+									           'is-danger': type.invalid && (type.dirty || type.touched)
+									          }">
+												<option value="A">A</option>
+												<option value="B">B</option>
+												<option value="C">C</option>
+												<option value="D">AD</option>
+												<option value="E">AE</option>
+												<option value="B">B</option>
+												<option value="C">C</option>
+												<option value="D">D</option>
+												<option value="E">E</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-control-feedback"
+				                        *ngIf="type.errors && (type.dirty || type.touched)">
+					                    <p class="help is-danger" *ngIf="type.errors.required">Tipo é obrigatório</p>
+					                </div>
+								</div>
+								<div class="column is-3">
+									<div class="control">
+										<input  type="text" class="input" placeholder="Capacidade" name="capacity"
+										[(ngModel)]=model.capacity required #capacity="ngModel"
+										[ngClass]="{'is-danger': capacity.invalid && (capacity.dirty || capacity.touched)}" >										
+									</div>
+									<div class="form-control-feedback"
+                        *ngIf="capacity.errors && (capacity.dirty || capacity.touched)">
+	                    <p class="help is-danger" *ngIf="capacity.errors.required">Capacidade é obrigatória</p>
+	                </div>
+								</div>
+								<div class="column is-3">
+									<div class="control">
+										<input  type="text" class="input" placeholder="Nº Frota" name="fleetNumber"
+										[(ngModel)]=model.fleetNumber required #fleetNumber="ngModel"
+										[ngClass]="{'is-danger': fleetNumber.invalid && (fleetNumber.dirty || fleetNumber.touched)}" >										
+									</div>
+									<div class="form-control-feedback"
+                        *ngIf="fleetNumber.errors && (fleetNumber.dirty || fleetNumber.touched)">
+	                    <p class="help is-danger" *ngIf="fleetNumber.errors.required">Nº é obrigatório</p>
+	                </div>
+								</div>
+								<div class="column is-3">
+									<div class="control">
+										<input  type="text" class="input" placeholder="Nº  registro ANTT" name="anttNumber"
+										[(ngModel)]=model.anttNumber required #anttNumber="ngModel"
+										[ngClass]="{'is-danger': anttNumber.invalid && (anttNumber.dirty || anttNumber.touched)}" >										
+									</div>
+									<div class="form-control-feedback"
+                        *ngIf="anttNumber.errors && (anttNumber.dirty || anttNumber.touched)">
+	                    <p class="help is-danger" *ngIf="anttNumber.errors.required">Nº ANTT é obrigatório</p>
+	                </div>
+								</div>
+								<div class="column is-3">
+								<span class="label-input">Validade ANTT</span>	
+								<div class="control">	
+									<p-calendar [locale]="pt" [(ngModel)]="anttDueDate" dateFormat="dd/mm/yy">
+										<input type="hidden" class="input" placeholder="Vencimento Cdd"  name="anttDueDate"
+										 [(ngModel)]="model.anttDueDate" required #anttDueDate="ngModel"
+									       [ngClass]="{    
+								           'is-danger': anttDueDate.invalid && (anttDueDate.dirty || anttDueDate.touched)
+								          }">
+									</p-calendar>								
+									
+								</div>
+								<div class="form-control-feedback"
+			                        *ngIf="anttDueDate.errors && (anttDueDate.dirty || anttDueDate.touched)">
+				                    <p class="help is-danger" *ngIf="anttDueDate.errors.required">Validade ANTT é obrigatório</p>
+				                </div>
+
+							</div>
+
+							</div>
+						</div>
+
+
+						<!-- DADOS DO PROPRIETÁRIO -->
+						<div class="block column columns is-12 is-multiline" style="align-items: flex-start;">
+							<h4 class="title-block column columns is-12">Dados do Proprietário</h4>
+							
+							<div class="columns column is-half is-multiline">
+								<div class="column is-5">
+									<div class="form-group">								         
+										<input type="text" class="input" name="ownerName" placeholder="Nome" 
+										       [(ngModel)]="model.ownerName" required #ownerName="ngModel"
+										       [ngClass]="{
+									          'is-danger': ownerName.invalid && (ownerName.dirty || ownerName.touched)
+									          }">
+									    <div class="form-control-feedback"
+								              *ngIf="ownerName.errors && (ownerName.dirty || ownerName.touched)">
+								           <p class="help is-danger" *ngIf="ownerName.errors.required">Nome é obrigatóri0</p>
+								        </div>
+									</div>   
+								</div>
+								<div class="column is-5">
+									<div class="form-group">								         
+										<input type="text" class="input" name="ownerName" placeholder="CPF/CNPJ" 
+										       [(ngModel)]="model.ownerDocument" required #ownerDocument="ngModel"
+										       [ngClass]="{
+									          'is-danger': ownerDocument.invalid && (ownerDocument.dirty || ownerDocument.touched)
+									          }">
+									    <div class="form-control-feedback"
+								              *ngIf="ownerDocument.errors && (ownerDocument.dirty || ownerDocument.touched)">
+								           <p class="help is-danger" *ngIf="ownerDocument.errors.required">Documento é obrigatóri0</p>
+								        </div>
+									</div>   
+								</div>
+							</div>
+							<div class="columns column  is-multiline">
+								<sga-places-auto-complete class="column is-12" (onPlacesFilteredEvent)="placesFiltered($event)" (onFilterRemovedEvent)="filterRemoved()">
+								</sga-places-auto-complete>
+								<div class="column is-12"> 
+									<iframe [src]="mapUrl" width="100%">
+									</iframe>
+								</div>
+							</div>
+							
+
+							
+						</div>
+
+						<!-- DADOS DO PROPRIETÁRIO -->
+						<div class="block column columns is-12 is-multiline" style="align-items: flex-start;">
+							<h4 class="title-block column columns is-12">Rastreadores</h4>
+							<div class="trackers">
+								<div class="column is-4">
+									<span class="label-input">Tecnologia</span>	
+									<div class="control">
+										<div class="select">									         	
+											<select name="tech"
+											 [(ngModel)]="model.tech" required #tech="ngModel"
+										       [ngClass]="{
+									           'is-danger': tech.invalid && (tech.dirty || tech.touched)
+									          }">
+												<option value="01">01</option>
+												<option value="02">02</option>
+												<option value="03">03</option>
+												<option value="04">04</option>
+												<option value="06">06</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-control-feedback"
+                        *ngIf="tech.errors && (tech.dirty || tech.touched)">
+	                    <p class="help is-danger" *ngIf="tech.errors.required">Tecnologia é obrigatória</p>  
+	                </div>
+								</div>
+								<div class="column is-4">
+										<div class="form-group">								         
+											<input type="text" class="input" name="number" placeholder="Nº Rastreador" 
+											       [(ngModel)]="model.number" required #number="ngModel"
+											       [ngClass]="{
+										          'is-danger': number.invalid && (number.dirty || number.touched)
+										          }">
+										    <div class="form-control-feedback"
+								              *ngIf="number.errors && (number.dirty || number.touched)">
+								           <p class="help is-danger" *ngIf="number.errors.required">Nº é obrigatório</p>
+								        </div>
+										</div>   
+								</div>
+
+								<div class="column is-4">
+									<span class="label-input">Comunicação</span>	
+									<div class="control">
+										<div class="select">									         	
+											<select name="comunication"
+											 [(ngModel)]="model.comunication" required #comunication="ngModel"
+										       [ngClass]="{
+									           'is-danger': comunication.invalid && (comunication.dirty || comunication.touched)
+									          }">
+												<option value="01">01</option>
+												<option value="02">02</option>
+												<option value="03">03</option>
+												<option value="04">04</option>
+												<option value="06">06</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-control-feedback"
+                        *ngIf="comunication.errors && (comunication.dirty || comunication.touched)">
+	                    <p class="help is-danger" *ngIf="comunication.errors.required">Tecnologia é obrigatória</p>  
+	                </div>
+								</div>
+
+								
+							</div>
+						
+						</div>
+
+
+						
+
+						
+						<!-- Botões de Ação -->
+						<div class="block column columns is-12 is-multiline">
+							<div class="columns column is-3 is-offset-9">
+								<div class="control column  is-6 ">
+									<button class="button" (click)="cancel()">Cancelar</button>
+								</div>
+								<div class="control column  is-6 ">									
+									<button type="submit"
+									        class="button is-info"
+									        [disabled]="formMotorist.invalid">Cadastrar
+									</button>
+								</div>
+							</div>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

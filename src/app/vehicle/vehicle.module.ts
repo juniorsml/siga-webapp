@@ -9,6 +9,8 @@ import { GridVehicleComponent } from './grid-vehicle/grid-vehicle.component';
 import { DialogVehicleComponent } from './dialog-vehicle/dialog-vehicle.component';
 import { AssociateVehicleComponent } from './associate-vehicle/associate-vehicle.component';
 
+import { RegisterVehicleComponent } from './register-vehicle/register-vehicle.component';
+
 
 import { MapService } from '../shared/services/map.service';
 import { DomHandler } from '../shared/dom-handler/domhandler.service';
@@ -17,14 +19,23 @@ import { Map } from '../shared/models/Map';
 
 import { SharedModule } from '../shared/modules/shared.module';
 
+import { NgSlimScrollModule } from 'ngx-slimscroll';
+
 @NgModule({
   imports: [
     CommonModule,
     VehicleRoutingModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    NgSlimScrollModule
   ],
-  declarations: [MapVehicleComponent, GridVehicleComponent,DialogVehicleComponent,AssociateVehicleComponent],
+  declarations: [
+    MapVehicleComponent, 
+    GridVehicleComponent,
+    DialogVehicleComponent,
+    AssociateVehicleComponent,
+    RegisterVehicleComponent
+    ],
   providers: [
     DomHandler,
     {
