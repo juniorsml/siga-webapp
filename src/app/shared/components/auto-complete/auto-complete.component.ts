@@ -16,6 +16,10 @@ import {
   styleUrls: ['./auto-complete.component.scss']
 })
 export class AutoCompleteComponent {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 53a2e647771bc9a7bec01f022802ca40fb4fb885
   @Input() public data: Array<any>;
   @Input() public url: string = '';
   @Input() public minLength: number;
@@ -27,7 +31,10 @@ export class AutoCompleteComponent {
 
   @Output() public itemSelected = new EventEmitter();
   @Output() public onCreateNew = new EventEmitter<any>();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 53a2e647771bc9a7bec01f022802ca40fb4fb885
   @ViewChild('input') inputElement: ElementRef;
   
   @ContentChild(TemplateRef) template: TemplateRef<any>;
@@ -130,6 +137,10 @@ export class AutoCompleteComponent {
   private search(): void {
     this.suggestions = this.data.filter(
       m => m[this.propToFilter].indexOf(this.inputElement.nativeElement.value) > -1
+<<<<<<< HEAD
+=======
+
+>>>>>>> 53a2e647771bc9a7bec01f022802ca40fb4fb885
     );
     // this.dataService.get(this.url + this.inputElement.nativeElement.value)
     //     .toPromise()
@@ -143,7 +154,7 @@ export class AutoCompleteComponent {
     //     console.log(ex);
     // });
   }
-
+ 
   public noSuggestionClick(): void {
     this.suggestions = null;
   }
