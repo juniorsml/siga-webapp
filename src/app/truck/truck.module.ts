@@ -7,6 +7,7 @@ import { GridTruckComponent } from './grid-truck/grid-truck.component';
 import { MapTruckComponent } from './map-truck/map-truck.component';
 
 import { DialogVehicleComponent } from '../vehicle/dialog-vehicle/dialog-vehicle.component';
+import { RegisterTruckComponent } from './register-truck/register-truck.component'; 
 
 import { SharedModule } from '../shared/modules/shared.module';
 
@@ -17,6 +18,7 @@ import { MapService } from '../shared/services/map.service';
 import { DomHandler } from '../shared/dom-handler/domhandler.service';
 
 import { Map } from '../shared/models/Map';
+import { AssociateTruckComponent } from './associate-truck/associate-truck.component';
 
 @NgModule({
   imports: [ 
@@ -29,7 +31,9 @@ import { Map } from '../shared/models/Map';
   declarations: [
 	  GridTruckComponent, 
 	  MapTruckComponent,
-	  DialogVehicleComponent
+	  DialogVehicleComponent,
+	  AssociateTruckComponent,
+	  RegisterTruckComponent
 	  
   ],
   providers: [
