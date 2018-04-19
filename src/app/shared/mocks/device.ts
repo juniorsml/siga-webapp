@@ -3,7 +3,7 @@ export const devices = [
     id: '1ASFAAG977',
     tech: '3425HTR',
     model: 'Fiat', 
-    name: 'old',
+    name: 'oldest',
     distance: 1,
     battery: {
       charge: 0.09,
@@ -20,7 +20,7 @@ export const devices = [
     id: '9ASFBBG923',
     tech: '7775EBB',
     model: 'Ford', 
-    name: 'new',
+    name: 'newest',
     distance: 9.8,
     battery: {
       charge: 0.5

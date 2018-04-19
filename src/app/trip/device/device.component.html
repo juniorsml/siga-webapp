@@ -6,7 +6,41 @@
       <i class="fa fa-question-circle ui-icon-info"></i>
     </div>
     <div class="content">
-      <input class="input" type="text" placeholder="Digite um dispositivo">
+      <sga-auto-complete 
+        [data]="devices"
+        [propToFilter]="'name'"
+        minLength="3"
+        styleClass = "autocomplete"
+        noSuggestionsText="Nenhum dispositivo encontrado"
+        placeholder="Digite um dispositivo"
+        style="width: 100%;"
+        type="text"
+        (onCreateNew)="showDeviceForm($event)"
+        (itemSelected)="onDeviceSelected($event)">
+        <ng-template let-item="item">
+          <div class="autocomplete-suggestion">
+            <span>
+              <span style="font-size: 16px; font-weight: 500; color: #324263; margin-left: 4px;">{{item.name}}</span>
+              <span style="font-size: 14px; margin-left: 10px;">{{item.id}}</span>
+            </span>
+          </div>
+        </ng-template>
+      </sga-auto-complete>
+
+      <hr>
+
+      <ul>
+        <li *ngFor="let device of associateDevice">
+          <div class="columns">
+            <div class="column is-10">
+              {{device.name}} - {{device.id}}
+            </div>
+            <div class="column">
+              <span (click)="removeAssociate(device)" class="fal fa-trash" style="cursor: pointer; color: red;"></span>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 
@@ -16,5 +50,11 @@
       [devices]="devices">
     </sga-grid-device>
   </div>
+
+  <sga-modal *ngIf="showRegisterForm">
+    <sga-register-device
+      (onFinish)="closeFormRegister()">>
+    </sga-register-device>
+  </sga-modal>
 
 </div>
