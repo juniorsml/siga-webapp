@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TableClickEvent } from '../../shared/components/table/table.component';
 import { ActivatedRoute } from '@angular/router';
 

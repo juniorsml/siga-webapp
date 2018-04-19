@@ -6,7 +6,7 @@ import { TruckRoutingModule } from './truck-routing.module';
 import { GridTruckComponent } from './grid-truck/grid-truck.component';
 import { MapTruckComponent } from './map-truck/map-truck.component';
 
-import { DialogVehicleComponent } from '../vehicle/dialog-vehicle/dialog-vehicle.component';
+import { DialogTruckComponent } from './dialog-truck/dialog-truck.component';
 import { RegisterTruckComponent } from './register-truck/register-truck.component'; 
 
 import { SharedModule } from '../shared/modules/shared.module';
@@ -26,13 +26,13 @@ import { AssociateTruckComponent } from './associate-truck/associate-truck.compo
     TruckRoutingModule,
     SharedModule,
     FormsModule,
-    NgSlimScrollModule,
+    NgSlimScrollModule
   ],
   declarations: [
 	  GridTruckComponent, 
 	  MapTruckComponent,
-	  DialogVehicleComponent,
 	  AssociateTruckComponent,
+    DialogTruckComponent,
 	  RegisterTruckComponent
 	  
   ],

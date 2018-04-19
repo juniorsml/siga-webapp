@@ -25,9 +25,9 @@
               [propToFilter]="'vehiclePlate'"
               minLength="3"
               styleClass = "autocomplete"
-              noSuggestionsText="Nenhum Veículo encontrado"
+              noSuggestionsText="Nenhum Reboque encontrado"
               url="api/vehicle/search?query="
-              placeholder="Digite o número do documento"
+              placeholder="Digite o número da Placa"
               style="width: 100%;"
               type="text"
               (onCreateNew)="showVehicleForm($event)"
@@ -180,11 +180,11 @@
     </sga-modal>
 
     <sga-modal>
-      <sga-dialog-vehicle
+      <sga-dialog-truck
         [showDialog]="showVehicleDialog"
         [selectedVehicle]="selectedVehicle"
         (onDialogClose)="vehicleDialogClose()">
-      </sga-dialog-vehicle>
+      </sga-dialog-truck>
     </sga-modal>
   
 </div>
