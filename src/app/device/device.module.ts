@@ -21,7 +21,8 @@ import { RegisterDeviceComponent } from './register-device/register-device.compo
     DeviceRoutingModule
   ],
   exports: [
-    GridDeviceComponent
+    GridDeviceComponent,
+    RegisterDeviceComponent
   ],
   declarations: [GridDeviceComponent, MapDeviceComponent, ConfigDeviceComponent, RegisterDeviceComponent],
   providers: [

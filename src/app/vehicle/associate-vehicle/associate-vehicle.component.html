@@ -21,7 +21,8 @@
           <div class="wrapper-header">Adicionar Veículo</div>
           <div class="cnt-autocomplete">
             <sga-auto-complete 
-              [vehicles]="vehicles"
+              [data]="vehicles"
+              [propToFilter]="'vehiclePlate'"
               minLength="3"
               styleClass = "autocomplete"
               noSuggestionsText="Nenhum Veículo encontrado"

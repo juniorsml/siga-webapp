@@ -22,7 +22,8 @@
           <div class="wrapper-header">Adicionar Motorista</div>
           <div class="cnt-autocomplete">
             <sga-auto-complete 
-              [motorists]="motorists"
+              [data]="motorists"
+              [propToFilter]="'documentId'"
               minLength="3"
               styleClass = "autocomplete"
               noSuggestionsText="Nenhum motorista encontrado"
