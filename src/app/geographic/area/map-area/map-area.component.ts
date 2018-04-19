@@ -1,5 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { GeometryObject, Feature } from 'geojson';
+
+import { PlacesPipe } from '../../../shared/filters/places.pipe';
+import { areas } from '../../../shared/mocks/area';
 import { Map } from '../../../shared/models/Map';
 
 @Component({
@@ -8,15 +11,17 @@ import { Map } from '../../../shared/models/Map';
   styleUrls: ['./map-area.component.scss']
 })
 export class MapAreaComponent implements OnInit {
-
-  private _data: Array<any>;
-  private mapMarkers: Array<Feature<GeometryObject>> = [];
-
   public text: any;
+  public filterDistance: any;
+  public filterLocation: any;
+
+  private selectedData: any;
+  private _data = new Array<any>();
+  private mapLocationHistory = new Array();
+  private mapMarkers: Array<Feature<GeometryObject>> = [];
 
   @ViewChild('mapSelector') mapSelector: ElementRef;
 
-  @Input()
   get data(): Array<any> {
     return this._data;
   }
@@ -26,35 +31,38 @@ export class MapAreaComponent implements OnInit {
     this.plotDataLocations();
   }
 
+  constructor(private map: Map) {}
+
+  ngOnInit(): void {
+    this.injectMap();
+    this._data = areas;
+    this.plotDataLocations();
+  }
+
   plotDataLocations(): void {
     this.map.clearAll();
     this.mapMarkers = [];
-    this._data.forEach(motorist => {
-      if (motorist.location) {
-        const markerElement: HTMLElement = document.createElement('div');
+    this._data.forEach(item => {
+      if (item.location) {
         const markerBody: HTMLElement = document.createElement('div');
+        const markerElement: HTMLElement = document.createElement('div');
         const imageElement: HTMLImageElement = document.createElement('img');
 
         imageElement.className = 'motorist-marker-image';
-        imageElement.src = 'api/motorist/public/profileImage?id=' + motorist.id;
+        imageElement.src = 'api/motorist/public/profileImage?id=' + item.id;
 
-        markerElement.appendChild(markerBody);
         markerBody.appendChild(imageElement);
+        markerElement.appendChild(markerBody);
         markerBody.className = 'motorist-marker bounce';
 
-        markerBody.addEventListener('click', () =>
-          window.alert(motorist.firstName + ' ' + motorist.lastName)
-        );
+        markerBody.addEventListener('click', () => window.alert(item.id));
 
         const marker: Feature<GeometryObject> = <Feature<any>>{
           type: 'Feature',
           properties: { iconSize: [50, 50], icon: markerElement },
           geometry: {
             type: 'Point',
-            coordinates: [
-              motorist.location.longitude,
-              motorist.location.latitude
-            ]
+            coordinates: [item.location.longitude, item.location.latitude]
           }
         };
 
@@ -114,24 +122,23 @@ export class MapAreaComponent implements OnInit {
     return marker;
   }
 
-  mapLocationHistory = new Array();
-
-  mapSearchText: any;
-  mapSelectedTabIndex: number;
-
-  private selectedData: any;
-
-  constructor(private map: Map) {}
-
-  ngOnInit(): void {
-    this.injectMap();
+  public onPlacesFiltered(event) {
+    this.filterDistance = event.distance;
+    this.filterLocation = { lat: event.lat, lng: event.lng };
+    this.filterDataByLocation();
   }
 
-  onPlacesFiltered(event) {
-    event;
+  private filterDataByLocation() {
+    const placesFilter = new PlacesPipe();
+    this.data = placesFilter.transform(areas, 
+      [this.filterLocation, Number(this.filterDistance), 'location.latitude', 'location.longitude']);
   }
-
-  onPlacesFilterRemoved() {}
+  
+  onPlacesFilterRemoved() {
+    this.filterDistance = null;
+    this.filterLocation = null;
+    this.data = areas;
+  }
 
   private injectMap(): void {
     this.map.createMapBoxMapInstance(this.mapSelector.nativeElement);
