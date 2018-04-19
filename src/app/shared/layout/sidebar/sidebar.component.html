@@ -80,30 +80,36 @@
       </a>
     </li>
     <li class="sidebar-menu-item-accordion">      
-      <accordion>
-        <accordion-header>
-          <ng-template>
-            <div class="sidebar-menu-accordion">
-              <span [class.selected]="router.url == '/vehicle'" class="sidebar-list-icon fal fa-truck"></span>
-              <span class="sidebar-list-text">Veículos</span>
-            </div>
-          </ng-template>
-        </accordion-header>
-        <ul class="sidebar-submenu">
-          <li [class.selected]="router.url == '/vehicle/grid'" class="sidebar-menu-item">
-            <a routerLink="/vehicle/grid">
-              <span [class.selected]="router.url == '/vehicle/grid'" class="sidebar-list-icon fal fa-th-list"></span>
-              <span class="sidebar-list-text">Grid</span>
-            </a>
-          </li>
-          <li class="sidebar-menu-item" [class.selected]="router.url == '/vehicle/map'">
-            <a  routerLink="/vehicle/map" >
-              <span class="sidebar-list-icon fal fa-map"></span>
-              <span class="sidebar-list-text">Mapa</span>
-            </a>
-          </li>
-        </ul>
-      </accordion>
+        <accordion>
+          <accordion-header>
+            <ng-template>
+              <div class="sidebar-menu-accordion">
+                <span [class.selected]="router.url == '/vehicle'" class="sidebar-list-icon fal fa-truck"></span>
+                <span class="sidebar-list-text">Veículos</span>
+              </div>
+            </ng-template>
+          </accordion-header>
+          <ul class="sidebar-submenu">
+            <li [class.selected]="router.url == '/vehicle/grid'" class="sidebar-menu-item">
+              <a routerLink="/vehicle/grid">
+                <span [class.selected]="router.url == '/vehicle/grid'" class="sidebar-list-icon fal fa-th-list"></span>
+                <span class="sidebar-list-text">Grid</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item" [class.selected]="router.url == '/vehicle/map'">
+              <a  routerLink="/vehicle/map" >
+                <span class="sidebar-list-icon fal fa-map"></span>
+                <span class="sidebar-list-text">Mapa</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item"  [class.selected]="router.url == '/vehicle/account'">
+              <a routerLink="/vehicle/account">
+                <span class="sidebar-list-icon fal fa-user-plus"></span>
+                <span class="sidebar-list-text">Configuração</span>
+              </a>
+            </li>
+          </ul>
+        </accordion>
     </li>
     <li class="sidebar-menu-item-accordion">      
       <accordion>
@@ -137,6 +143,38 @@
           </li>
         </ul>
       </accordion>
+    </li>
+     <li class="sidebar-menu-item-accordion">      
+        <accordion>
+          <accordion-header>
+            <ng-template>
+              <div class="sidebar-menu-accordion">
+                <span [class.selected]="router.url == '/truck'" class="sidebar-list-icon fal fa-truck"></span>
+                <span class="sidebar-list-text">Reboques</span>
+              </div>
+            </ng-template>
+          </accordion-header>
+          <ul class="sidebar-submenu">
+            <li [class.selected]="router.url == '/truck/grid'" class="sidebar-menu-item">
+              <a routerLink="/truck/grid">
+                <span [class.selected]="router.url == '/truck/grid'" class="sidebar-list-icon fal fa-th-list"></span>
+                <span class="sidebar-list-text">Grid</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item" [class.selected]="router.url == '/truck/map'">
+              <a  routerLink="/truck/map" >
+                <span class="sidebar-list-icon fal fa-map"></span>
+                <span class="sidebar-list-text">Mapa</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item"  [class.selected]="router.url == '/truck/account'">
+              <a routerLink="/truck/account">
+                <span class="sidebar-list-icon fal fa-user-plus"></span>
+                <span class="sidebar-list-text">Configuração</span>
+              </a>
+            </li>
+          </ul>
+        </accordion>
     </li>
     <li class="sidebar-menu-item-accordion">      
       <accordion>

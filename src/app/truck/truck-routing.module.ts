@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MapTruckComponent } from './map-truck/map-truck.component';
 import { GridTruckComponent } from './grid-truck/grid-truck.component';
+import { AssociateTruckComponent } from './associate-truck/associate-truck.component';
+
+import { vehicles } from '../shared/mocks/vehicles';
 
 const routes: Routes = [
   {
@@ -10,7 +13,13 @@ const routes: Routes = [
   },
   {
     path: 'grid',
-    component: GridTruckComponent
+    component: GridTruckComponent,
+    data: { vehicles }
+  },
+  {
+    path: 'account',
+    component: AssociateTruckComponent,
+    data: { vehicles }
   }
 ];
 

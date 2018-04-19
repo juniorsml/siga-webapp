@@ -16,13 +16,14 @@ import {
   styleUrls: ['./auto-complete.component.scss']
 })
 export class AutoCompleteComponent {
+
   @Input() public data: Array<any>;
   @Input() public url: string = '';
   @Input() public minLength: number;
   @Input() public placeholder: string = '';
   @Input() public propToFilter: string = '';
   @Input() public noSuggestionsText: string = '';
-  @Input() public suggestions = new Array<any>();
+  @Input() public suggestions = new Array<any>(); 
   @Input() public styleClass: string = 'autocomplete';
 
   @Output() public itemSelected = new EventEmitter();
@@ -130,6 +131,7 @@ export class AutoCompleteComponent {
   private search(): void {
     this.suggestions = this.data.filter(
       m => m[this.propToFilter].indexOf(this.inputElement.nativeElement.value) > -1
+
     );
     // this.dataService.get(this.url + this.inputElement.nativeElement.value)
     //     .toPromise()
@@ -143,8 +145,9 @@ export class AutoCompleteComponent {
     //     console.log(ex);
     // });
   }
-
+ 
   public noSuggestionClick(): void {
     this.suggestions = null;
   }
 }
+

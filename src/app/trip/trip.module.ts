@@ -14,6 +14,7 @@ import { DeviceComponent } from './device/device.component';
 import { PlacesComponent } from './places/places.component';
 import { MotoristComponent } from './motorist/motorist.component';
 import { VehiclesComponent } from './vehicles/vehicles.component';
+import { TrucksComponent } from './trucks/trucks.component';
 
 
 @NgModule({
@@ -27,6 +28,6 @@ import { VehiclesComponent } from './vehicles/vehicles.component';
 
     TripRoutingModule
   ],
-  declarations: [TripComponent, DetailComponent, PlacesComponent, MotoristComponent, VehiclesComponent, DeviceComponent]
+  declarations: [TripComponent, DetailComponent, PlacesComponent, MotoristComponent, VehiclesComponent, DeviceComponent,TrucksComponent]
 })
 export class TripModule { }
