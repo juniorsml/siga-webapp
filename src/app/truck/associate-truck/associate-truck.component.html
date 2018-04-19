@@ -18,14 +18,14 @@
         </div>
 
         <div class="motorist-admin-wrapper motorist-admin-add-wrapper column is-12 is-marginless">
-          <div class="wrapper-header">Adicionar Veículo</div>
+          <div class="wrapper-header">Adicionar Reboque</div>
           <div class="cnt-autocomplete">
             <sga-auto-complete 
               [data]="vehicles"
               [propToFilter]="'vehiclePlate'"
               minLength="3"
               styleClass = "autocomplete"
-              noSuggestionsText="Nenhum Veículo encontrado"
+              noSuggestionsText="Nenhum Reboque encontrado"
               url="api/vehicle/search?query="
               placeholder="Digite o número da Placa"
               style="width: 100%;"
@@ -62,7 +62,7 @@
                 <ng-template>
                   <div class="list-view-empty">
                     <i class="fa fa-group"></i>
-                    <span>Não há Veículos para adicionar à sua conta</span>
+                    <span>Não há Reboques para adicionar à sua conta</span>
                   </div>
                 </ng-template>
               </list-view-empty>
@@ -71,7 +71,7 @@
         </div>
 
         <div class="motorist-admin-wrapper motorist-admin-remove-wrapper column is-12 is-marginless">
-          <div class="wrapper-header">Remover Veículo</div>
+          <div class="wrapper-header">Remover Reboque</div>
           <div class="cnt-list-view ">
             <list-view [listItems]="removeList" styleClass="admin-list motorist-admin-remove-list">
               <list-view-item>
@@ -107,7 +107,7 @@
       </div>
       <div class="motorist-admin-right-container columns is-multiline is-marginless ">
         <div class="title column">
-          Veículos Associados
+          Reboques Associados
         </div>
         <div class="cnt-btn-search">       
            <p class="control has-icons-left"> 
@@ -173,18 +173,18 @@
     </loading-spinner> -->
 
    <sga-modal>
-      <sga-register-vehicle
+      <sga-register-truck
         [showForm]="showVehicleRegister"
         (onFormClose)="vehicleFormClose()">
-      </sga-register-vehicle>
+      </sga-register-truck>
     </sga-modal>
 
     <sga-modal>
-      <sga-dialog-vehicle
+      <sga-dialog-truck
         [showDialog]="showVehicleDialog"
         [selectedVehicle]="selectedVehicle"
         (onDialogClose)="vehicleDialogClose()">
-      </sga-dialog-vehicle>
+      </sga-dialog-truck>
     </sga-modal>
   
 </div>

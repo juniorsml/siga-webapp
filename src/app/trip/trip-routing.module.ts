@@ -6,8 +6,10 @@ import { DetailComponent } from './detail/detail.component';
 import { PlacesComponent } from './places/places.component';
 import { MotoristComponent } from './motorist/motorist.component';
 import { VehiclesComponent } from './vehicles/vehicles.component';
+import { TrucksComponent } from './trucks/trucks.component';
 import { DeviceComponent } from './device/device.component';
 import { devices } from '../shared/mocks/device';
+
 
 const routes: Routes = [
   {
@@ -18,6 +20,7 @@ const routes: Routes = [
       { path: 'places', component: PlacesComponent },
       { path: 'motorist', component: MotoristComponent },
       { path: 'vehicles', component: VehiclesComponent },
+      { path: 'trucks', component: TrucksComponent },
       { path: 'device', component: DeviceComponent, data: { devices } }
     ]
   }
