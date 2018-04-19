@@ -26,6 +26,9 @@ export class TripComponent {
       case 'Veículos':
         this.router.navigateByUrl('trip/vehicles');
         break;
+      case 'Reboque':
+        this.router.navigateByUrl('trip/trucks');
+        break;
 
       case 'Dispositivo':
         this.router.navigateByUrl('trip/device');
