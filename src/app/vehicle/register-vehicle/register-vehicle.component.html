@@ -1,5 +1,5 @@
 
-<div *ngIf="showForm" class="cnt-dialog" >
+<div *ngIf="showForm" class="cnt-dialog cnt-dialog-vehicle" >
 	<div class="container-form"  >
 		<div class="form-header columns column is-12 is-marginless">
 			<h3 class="area column is-narrow">Veículo</h3>
@@ -120,7 +120,7 @@
 									</div>
 									<div class="form-control-feedback"
 				                        *ngIf="color.errors && (color.dirty || color.touched)">
-					                    <p class="help is-danger" *ngIf="color.errors.required">Estado civil é obrigatório</p>  
+					                    <p class="help is-danger" *ngIf="color.errors.required">Cor é obrigatório</p>  
 					                </div>
 								</div>
 							
@@ -196,20 +196,17 @@
 								</div>
 								<div class="column is-3">
 								<span class="label-input">Validade ANTT</span>	
-								<div class="control">	
-									<p-calendar [locale]="pt" [(ngModel)]="model.anttDueDate" name="anttDueDate"  dateFormat="dd/mm/yy">
-										<input type="hidden" name="anttDueDate" class="input" placeholder="Validade ANTT" 
-										 [(ngModel)]="model.anttDueDate"   required #anttDueDate="ngModel"
-									       [ngClass]="{    
+								<div class="control">										
+											<input type="date" class="input" placeholder="Validade ANTT"  name="anttDueDate"
+										 [(ngModel)]="model.anttDueDate" required #anttDueDate="ngModel"
+									       [ngClass]="{
 								           'is-danger': anttDueDate.invalid && (anttDueDate.dirty || anttDueDate.touched)
 								          }">
-									</p-calendar>								
-									
-								</div>
-								<div class="form-control-feedback"
-                      *ngIf="anttDueDate.errors && (anttDueDate.dirty || anttDueDate.touched)">
-                    <p class="help is-danger" *ngIf="anttDueDate.errors.required">Validade ANTT é obrigatório</p>
-                </div>
+		          	    <div class="form-control-feedback"
+	                        *ngIf="anttDueDate.errors && (anttDueDate.dirty || anttDueDate.touched)">
+		                    <p class="help is-danger" *ngIf="anttDueDate.errors.required">Validade ANTTé obrigatória</p>
+		                </div>
+									</div>
 
 							</div>
 
@@ -220,35 +217,37 @@
 						<!-- DADOS DO PROPRIETÁRIO -->
 						<div class="block column columns is-12 is-multiline" style="align-items: flex-start;">
 
-							<div class="columns column is-half is-multiline">
+							<div class="columns column  is-12  is-multiline" style="align-items: flex-start;">
 								<h4 class="title-block column columns is-12">Dados do Proprietário</h4>
-								<div class="column is-8">
-									<div class="form-group">								         
-										<input type="text" class="input" name="ownerName" placeholder="Nome" 
-										       [(ngModel)]="model.ownerName" required #ownerName="ngModel"
-										       [ngClass]="{
-									          'is-danger': ownerName.invalid && (ownerName.dirty || ownerName.touched)
-									          }">
-									    <div class="form-control-feedback"
-								              *ngIf="ownerName.errors && (ownerName.dirty || ownerName.touched)">
-								           <p class="help is-danger" *ngIf="ownerName.errors.required">Nome é obrigatóri0</p>
-								        </div>
-									</div>   
+								<div class="column columns is-half is-multiline " >
+									<div class="column is-12">
+										<div class="form-group">								         
+											<input type="text" class="input" name="ownerName" placeholder="Nome" 
+											       [(ngModel)]="model.ownerName" required #ownerName="ngModel"
+											       [ngClass]="{
+										          'is-danger': ownerName.invalid && (ownerName.dirty || ownerName.touched)
+										          }">
+										    <div class="form-control-feedback"
+									              *ngIf="ownerName.errors && (ownerName.dirty || ownerName.touched)">
+									           <p class="help is-danger" *ngIf="ownerName.errors.required">Nome é obrigatóri0</p>
+									        </div>
+										</div>   
+										</div>
+									<div class="column is-6">
+										<div class="form-group">								         
+											<input type="text" class="input" name="ownerName" placeholder="CPF/CNPJ" 
+											       [(ngModel)]="model.ownerDocument" required #ownerDocument="ngModel"
+											       [ngClass]="{
+										          'is-danger': ownerDocument.invalid && (ownerDocument.dirty || ownerDocument.touched)
+										          }">
+										    <div class="form-control-feedback"
+									              *ngIf="ownerDocument.errors && (ownerDocument.dirty || ownerDocument.touched)">
+									           <p class="help is-danger" *ngIf="ownerDocument.errors.required">Documento é obrigatóri0</p>
+									        </div>
+										</div>   
+									</div>	
 								</div>
-								<div class="column is-6">
-									<div class="form-group">								         
-										<input type="text" class="input" name="ownerName" placeholder="CPF/CNPJ" 
-										       [(ngModel)]="model.ownerDocument" required #ownerDocument="ngModel"
-										       [ngClass]="{
-									          'is-danger': ownerDocument.invalid && (ownerDocument.dirty || ownerDocument.touched)
-									          }">
-									    <div class="form-control-feedback"
-								              *ngIf="ownerDocument.errors && (ownerDocument.dirty || ownerDocument.touched)">
-								           <p class="help is-danger" *ngIf="ownerDocument.errors.required">Documento é obrigatóri0</p>
-								        </div>
-									</div>   
-								</div>
-								<div class="columns column is-12 is-multiline">
+								<div class="column columns is-half is-multiline">
 									<sga-places-auto-complete class="column is-12" (onPlacesFilteredEvent)="placesFiltered($event)" (onFilterRemovedEvent)="filterRemoved()">
 									</sga-places-auto-complete>
 									<div class="column is-12"> 
@@ -256,12 +255,27 @@
 										</iframe>
 									</div>
 								</div>
+								
+								
 							</div>
 
-							<div class="columns column is-half is-multiline">
+							<div class="columns column  is-12 is-multiline">
 								<h4 class="title-block column columns is-12">Rastreadores</h4>
-								<div class="trackers column columns is-12 is-multiline">
-									<div class="column is-6">
+								<div class="trackers column columns is-12">
+									<div class="column is-4">
+											<div class="form-group">								         
+												<input type="text" class="input" name="number" placeholder="Nº Rastreador" 
+												       [(ngModel)]="model.number" required #number="ngModel"
+												       [ngClass]="{
+											          'is-danger': number.invalid && (number.dirty || number.touched)
+											          }">
+											    <div class="form-control-feedback"
+									              *ngIf="number.errors && (number.dirty || number.touched)">
+									           <p class="help is-danger" *ngIf="number.errors.required">Nº é obrigatório</p>
+									        </div>
+											</div>   
+									</div>
+									<div class="column is-4">
 										<span class="label-input">Tecnologia</span>	
 										<div class="control">
 											<div class="select">									         	
@@ -283,21 +297,9 @@
 		                    <p class="help is-danger" *ngIf="tech.errors.required">Tecnologia é obrigatória</p>  
 		                </div>
 									</div>
-									<div class="column is-6">
-											<div class="form-group">								         
-												<input type="text" class="input" name="number" placeholder="Nº Rastreador" 
-												       [(ngModel)]="model.number" required #number="ngModel"
-												       [ngClass]="{
-											          'is-danger': number.invalid && (number.dirty || number.touched)
-											          }">
-											    <div class="form-control-feedback"
-									              *ngIf="number.errors && (number.dirty || number.touched)">
-									           <p class="help is-danger" *ngIf="number.errors.required">Nº é obrigatório</p>
-									        </div>
-											</div>   
-									</div>
+									
 
-									<div class="column is-6">
+									<div class="column is-4">
 										<span class="label-input">Comunicação</span>	
 										<div class="control">
 											<div class="select">									         	
