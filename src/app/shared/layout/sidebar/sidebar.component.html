@@ -102,6 +102,12 @@
                 <span class="sidebar-list-text">Mapa</span>
               </a>
             </li>
+            <li class="sidebar-menu-item"  [class.selected]="router.url == '/vehicle/account'">
+              <a routerLink="/vehicle/account">
+                <span class="sidebar-list-icon fal fa-user-plus"></span>
+                <span class="sidebar-list-text">Configuração</span>
+              </a>
+            </li>
           </ul>
         </accordion>
     </li>
