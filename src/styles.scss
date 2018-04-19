@@ -149,6 +149,9 @@ div, *{
 
 
 /* SLIM SCROLL ************************/
+.container-grid-vehicle .slimscroll-wrapper{
+    height:94% !important;
+}
 .container-grid-map .slimscroll-wrapper{
     height:92% !important;
 }
