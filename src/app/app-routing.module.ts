@@ -33,6 +33,10 @@ const routes: Routes = [
       {
         path: 'truck',
         loadChildren: 'app/truck/truck.module#TruckModule'
+      },
+      {
+        path: 'geographic',
+        loadChildren: 'app/geographic/geographic.module#GeographicModule'
       }
     ]
   },
