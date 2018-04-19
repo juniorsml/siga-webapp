@@ -19,15 +19,10 @@ export class RegisterVehicleComponent implements  OnInit {
 
   model: RegisterForm = new RegisterForm();
   @ViewChild('formVehicle') formVehicle: any;
-  dateOfBirth: Date;
-  dueDate: Date;
-  dueDateMopp: Date;
-  dueDateAso: Date;
-  dueDateCdd: Date;
+  anttDueDate: Date;
+  comunication: string;
+ 
   pt:any;
-  public landlinephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/];
-  public mobilephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/,/\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/];
-  public messagephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/,/\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
   //Slim Scroll options
   opts: ISlimScrollOptions;
@@ -112,12 +107,12 @@ export class RegisterVehicleComponent implements  OnInit {
   }
 
   create(formMotorist: NgForm) {
-    const motorist = {
+    const vehicle = {
       location: this.place.formatted_address,
       ...formMotorist.value
     };
 
-    console.log(motorist);
+    console.log(vehicle);
   }
 
   getMapUrlByLatLng(lat: number, lng: number) {

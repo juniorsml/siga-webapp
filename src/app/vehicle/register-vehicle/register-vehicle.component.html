@@ -140,9 +140,9 @@
 									<span class="label-input">Tipo</span>	
 									<div class="control">
 										<div class="select">
-											<select [(ngModel)]="model.type" required #type="ngModel"
+											<select [(ngModel)]="model.vehicleType" name="vehicleType" required #vehicleType="ngModel"
 										       [ngClass]="{
-									           'is-danger': type.invalid && (type.dirty || type.touched)
+									           'is-danger': vehicleType.invalid && (vehicleType.dirty || vehicleType.touched)
 									          }">
 												<option value="A">A</option>
 												<option value="B">B</option>
@@ -157,8 +157,8 @@
 										</div>
 									</div>
 									<div class="form-control-feedback"
-				                        *ngIf="type.errors && (type.dirty || type.touched)">
-					                    <p class="help is-danger" *ngIf="type.errors.required">Tipo é obrigatório</p>
+				                        *ngIf="vehicleType.errors && (vehicleType.dirty || vehicleType.touched)">
+					                    <p class="help is-danger" *ngIf="vehicleType.errors.required">Tipo é obrigatório</p>
 					                </div>
 								</div>
 								<div class="column is-3">
@@ -197,9 +197,9 @@
 								<div class="column is-3">
 								<span class="label-input">Validade ANTT</span>	
 								<div class="control">	
-									<p-calendar [locale]="pt" [(ngModel)]="anttDueDate" dateFormat="dd/mm/yy">
-										<input type="hidden" class="input" placeholder="Vencimento Cdd"  name="anttDueDate"
-										 [(ngModel)]="model.anttDueDate" required #anttDueDate="ngModel"
+									<p-calendar [locale]="pt" [(ngModel)]="model.anttDueDate" name="anttDueDate"  dateFormat="dd/mm/yy">
+										<input type="hidden" name="anttDueDate" class="input" placeholder="Validade ANTT" 
+										 [(ngModel)]="model.anttDueDate"   required #anttDueDate="ngModel"
 									       [ngClass]="{    
 								           'is-danger': anttDueDate.invalid && (anttDueDate.dirty || anttDueDate.touched)
 								          }">
@@ -207,9 +207,9 @@
 									
 								</div>
 								<div class="form-control-feedback"
-			                        *ngIf="anttDueDate.errors && (anttDueDate.dirty || anttDueDate.touched)">
-				                    <p class="help is-danger" *ngIf="anttDueDate.errors.required">Validade ANTT é obrigatório</p>
-				                </div>
+                      *ngIf="anttDueDate.errors && (anttDueDate.dirty || anttDueDate.touched)">
+                    <p class="help is-danger" *ngIf="anttDueDate.errors.required">Validade ANTT é obrigatório</p>
+                </div>
 
 							</div>
 
@@ -219,10 +219,10 @@
 
 						<!-- DADOS DO PROPRIETÁRIO -->
 						<div class="block column columns is-12 is-multiline" style="align-items: flex-start;">
-							<h4 class="title-block column columns is-12">Dados do Proprietário</h4>
-							
+
 							<div class="columns column is-half is-multiline">
-								<div class="column is-5">
+								<h4 class="title-block column columns is-12">Dados do Proprietário</h4>
+								<div class="column is-8">
 									<div class="form-group">								         
 										<input type="text" class="input" name="ownerName" placeholder="Nome" 
 										       [(ngModel)]="model.ownerName" required #ownerName="ngModel"
@@ -235,7 +235,7 @@
 								        </div>
 									</div>   
 								</div>
-								<div class="column is-5">
+								<div class="column is-6">
 									<div class="form-group">								         
 										<input type="text" class="input" name="ownerName" placeholder="CPF/CNPJ" 
 										       [(ngModel)]="model.ownerDocument" required #ownerDocument="ngModel"
@@ -248,87 +248,93 @@
 								        </div>
 									</div>   
 								</div>
-							</div>
-							<div class="columns column  is-multiline">
-								<sga-places-auto-complete class="column is-12" (onPlacesFilteredEvent)="placesFiltered($event)" (onFilterRemovedEvent)="filterRemoved()">
-								</sga-places-auto-complete>
-								<div class="column is-12"> 
-									<iframe [src]="mapUrl" width="100%">
-									</iframe>
-								</div>
-							</div>
-							
-
-							
-						</div>
-
-						<!-- DADOS DO PROPRIETÁRIO -->
-						<div class="block column columns is-12 is-multiline" style="align-items: flex-start;">
-							<h4 class="title-block column columns is-12">Rastreadores</h4>
-							<div class="trackers">
-								<div class="column is-4">
-									<span class="label-input">Tecnologia</span>	
-									<div class="control">
-										<div class="select">									         	
-											<select name="tech"
-											 [(ngModel)]="model.tech" required #tech="ngModel"
-										       [ngClass]="{
-									           'is-danger': tech.invalid && (tech.dirty || tech.touched)
-									          }">
-												<option value="01">01</option>
-												<option value="02">02</option>
-												<option value="03">03</option>
-												<option value="04">04</option>
-												<option value="06">06</option>
-											</select>
-										</div>
+								<div class="columns column is-12 is-multiline">
+									<sga-places-auto-complete class="column is-12" (onPlacesFilteredEvent)="placesFiltered($event)" (onFilterRemovedEvent)="filterRemoved()">
+									</sga-places-auto-complete>
+									<div class="column is-12"> 
+										<iframe [src]="mapUrl" width="100%">
+										</iframe>
 									</div>
-									<div class="form-control-feedback"
-                        *ngIf="tech.errors && (tech.dirty || tech.touched)">
-	                    <p class="help is-danger" *ngIf="tech.errors.required">Tecnologia é obrigatória</p>  
-	                </div>
 								</div>
-								<div class="column is-4">
-										<div class="form-group">								         
-											<input type="text" class="input" name="number" placeholder="Nº Rastreador" 
-											       [(ngModel)]="model.number" required #number="ngModel"
+							</div>
+
+							<div class="columns column is-half is-multiline">
+								<h4 class="title-block column columns is-12">Rastreadores</h4>
+								<div class="trackers column columns is-12 is-multiline">
+									<div class="column is-6">
+										<span class="label-input">Tecnologia</span>	
+										<div class="control">
+											<div class="select">									         	
+												<select name="tech"
+												 [(ngModel)]="model.tech" required #tech="ngModel"
 											       [ngClass]="{
-										          'is-danger': number.invalid && (number.dirty || number.touched)
+										           'is-danger': tech.invalid && (tech.dirty || tech.touched)
 										          }">
-										    <div class="form-control-feedback"
-								              *ngIf="number.errors && (number.dirty || number.touched)">
-								           <p class="help is-danger" *ngIf="number.errors.required">Nº é obrigatório</p>
-								        </div>
-										</div>   
-								</div>
-
-								<div class="column is-4">
-									<span class="label-input">Comunicação</span>	
-									<div class="control">
-										<div class="select">									         	
-											<select name="comunication"
-											 [(ngModel)]="model.comunication" required #comunication="ngModel"
-										       [ngClass]="{
-									           'is-danger': comunication.invalid && (comunication.dirty || comunication.touched)
-									          }">
-												<option value="01">01</option>
-												<option value="02">02</option>
-												<option value="03">03</option>
-												<option value="04">04</option>
-												<option value="06">06</option>
-											</select>
+													<option value="01">01</option>
+													<option value="02">02</option>
+													<option value="03">03</option>
+													<option value="04">04</option>
+													<option value="06">06</option>
+												</select>
+											</div>
 										</div>
+										<div class="form-control-feedback"
+	                        *ngIf="tech.errors && (tech.dirty || tech.touched)">
+		                    <p class="help is-danger" *ngIf="tech.errors.required">Tecnologia é obrigatória</p>  
+		                </div>
 									</div>
-									<div class="form-control-feedback"
-                        *ngIf="comunication.errors && (comunication.dirty || comunication.touched)">
-	                    <p class="help is-danger" *ngIf="comunication.errors.required">Tecnologia é obrigatória</p>  
-	                </div>
-								</div>
+									<div class="column is-6">
+											<div class="form-group">								         
+												<input type="text" class="input" name="number" placeholder="Nº Rastreador" 
+												       [(ngModel)]="model.number" required #number="ngModel"
+												       [ngClass]="{
+											          'is-danger': number.invalid && (number.dirty || number.touched)
+											          }">
+											    <div class="form-control-feedback"
+									              *ngIf="number.errors && (number.dirty || number.touched)">
+									           <p class="help is-danger" *ngIf="number.errors.required">Nº é obrigatório</p>
+									        </div>
+											</div>   
+									</div>
+
+									<div class="column is-6">
+										<span class="label-input">Comunicação</span>	
+										<div class="control">
+											<div class="select">									         	
+												<select name="comunication"
+												 [(ngModel)]="model.comunication" required #comunication="ngModel"
+											       [ngClass]="{
+										           'is-danger': comunication.invalid && (comunication.dirty || comunication.touched)
+										          }">
+													<option value="01">01</option>
+													<option value="02">02</option>
+													<option value="03">03</option>
+													<option value="04">04</option>
+													<option value="06">06</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-control-feedback"
+	                        *ngIf="comunication.errors && (comunication.dirty || comunication.touched)">
+		                    <p class="help is-danger" *ngIf="comunication.errors.required">Comunicação é obrigatória</p>  
+		                </div>
+										
+									</div>
 
 								
+								</div>
+
 							</div>
+							
 						
+							
+							
+
+							
 						</div>
+
+						<!-- RASTREADORES -->
+						
 
 
 						
