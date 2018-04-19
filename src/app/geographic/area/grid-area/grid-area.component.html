@@ -17,7 +17,7 @@
 
   <div class="container-grid container-grid-wrapper">
     <data-table 
-      [data]="data | placesFilter: ['location.latitude', 'location.longitude']"
+      [data]="data | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
       [dataLength]="data.length" 
       [searchText]="text" 
       [searchColumns]="['name']"

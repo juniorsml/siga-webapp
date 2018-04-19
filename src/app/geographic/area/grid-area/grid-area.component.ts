@@ -8,16 +8,20 @@ import { areas } from '../../../shared/mocks/area';
 })
 export class GridAreaComponent implements OnInit {
 
+  public filterDistance: any;
+  public filterLocation: any;
   public text: any;
 
   public data = new Array<any>();
 
-  public onPlacesFiltered(event): void {
-    event
+  public onPlacesFiltered(event) {
+    this.filterDistance = event.distance;
+    this.filterLocation = { lat: event.lat, lng: event.lng };
   }
 
-  public onPlacesFilterRemoved(): void {
-
+  public onPlacesFilterRemoved() {
+    this.filterDistance = null;
+    this.filterLocation = null;
   }
 
   public onCellClick(event) {
