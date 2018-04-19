@@ -67,10 +67,11 @@
     right: -.24rem;
     top: calc(1rem - (.2em));
   }
-
+  
+  //INATIVO
   .steps.is-medium:not(.is-vertical):not(.is-thin).has-content-centered.has-gaps .steps-segment:not(:last-child):after, .steps.is-medium:not(.is-vertical):not(.is-thin).has-content-centered .steps-segment.has-gaps:not(:last-child):after {
-    left: calc(49% + 1.55rem);
-    right: calc(-49% + 1.55rem);
+    left: calc(49% + 1.344rem);
+    right: calc(-49% + 4.5rem);
   }
 
   .steps.is-medium:not(.is-vertical):not(.is-thin).has-gaps .steps-segment:not(:last-child):after, .steps.is-medium:not(.is-vertical):not(.is-thin) .steps-segment.has-gaps:not(:last-child):after {
@@ -82,8 +83,8 @@
     right: calc(-50% + 1.3rem);
   }
   .steps.is-medium:not(.is-vertical).has-content-centered .steps-segment:not(:last-child):after {
-    left: 58%;
-    right: -42%;
+    left: 59.7777777%;
+    right: -41%;
   }
   .steps:not(.is-vertical):not(.is-thin).has-gaps .steps-segment:not(:last-child):after, .steps:not(.is-vertical):not(.is-thin) .steps-segment.has-gaps:not(:last-child):after {
     left: 2.3rem;
