@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { GeometryObject, Feature } from 'geojson';
+import { Router } from '@angular/router';
 
 import { PlacesPipe } from '../../../shared/filters/places.pipe';
 import { areas } from '../../../shared/mocks/area';
@@ -33,7 +34,7 @@ export class MapAreaComponent implements OnInit {
     this.plotDataLocations();
   }
 
-  constructor(private map: Map) {}
+  constructor(private map: Map, private route: Router) {}
 
   ngOnInit(): void {
     this.injectMap();
@@ -125,8 +126,9 @@ export class MapAreaComponent implements OnInit {
     return marker;
   }
 
-  public redirectToRegister() {
-
+  public redirectToRegister(event) {
+    event
+    this.route.navigateByUrl('geographic/area/register');
   }
   
   public onDataSelected(event) {
