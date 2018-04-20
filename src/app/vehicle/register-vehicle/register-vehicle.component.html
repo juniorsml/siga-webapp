@@ -84,7 +84,7 @@
 									</div>
 					          	    <div class="form-control-feedback"
 				                        *ngIf="brand.errors && (brand.dirty || brand.touched)">
-					                    <p class="help is-danger" *ngIf="brand.errors.required">Escolha um documento</p>
+					                    <p class="help is-danger" *ngIf="brand.errors.required">Marca é obrigatória</p>
 					                </div>
 								</div>
 								<div class="column is-3"> 
@@ -233,7 +233,7 @@
 									        </div>
 										</div>   
 										</div>
-									<div class="column is-6">
+									<div class="column is-12">
 										<div class="form-group">								         
 											<input type="text" class="input" name="ownerName" placeholder="CPF/CNPJ" 
 											       [(ngModel)]="model.ownerDocument" required #ownerDocument="ngModel"
@@ -242,7 +242,7 @@
 										          }">
 										    <div class="form-control-feedback"
 									              *ngIf="ownerDocument.errors && (ownerDocument.dirty || ownerDocument.touched)">
-									           <p class="help is-danger" *ngIf="ownerDocument.errors.required">Documento é obrigatóri0</p>
+									           <p class="help is-danger" *ngIf="ownerDocument.errors.required">Documento é obrigatório</p>
 									        </div>
 										</div>   
 									</div>	
