@@ -1,4 +1,4 @@
-import { Component, Output,OnInit, EventEmitter, Input,ViewChild  } from '@angular/core';
+import { Component, Output,OnInit, EventEmitter,ViewChild  } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
@@ -18,7 +18,7 @@ class RegisterForm {
 export class RegisterTruckComponent implements  OnInit {
 
   model: RegisterForm = new RegisterForm();
-  @ViewChild('formVehicle') formVehicle: any;
+  @ViewChild('formTruck') formTruck: any;
   anttDueDate: Date;
   comunication: string;
  
@@ -47,9 +47,9 @@ export class RegisterTruckComponent implements  OnInit {
   }
 
   onSubmit() {
-      if (this.formVehicle.valid) {
+      if (this.formTruck.valid) {
         console.log("Form Submitted!");
-        this.formVehicle.reset();
+        this.formTruck.reset();
       }
     }
 
@@ -79,13 +79,10 @@ export class RegisterTruckComponent implements  OnInit {
   }
 
   private place: any;
-  formMotorist:any;
+  
 
-  @Input('showForm')
-  public showForm: boolean;
-
-  @Output('onFormClose')
-  public onFormClose = new EventEmitter();
+  @Output()
+  public onFinish = new EventEmitter();
 
   public mapUrl: SafeResourceUrl;
 
@@ -103,17 +100,17 @@ export class RegisterTruckComponent implements  OnInit {
     this.place = null;
   }
   
-  cancel() {
-    this.onFormClose.emit();
+  onCancel() {
+    this.onFinish.emit();
   }
 
-  create(formMotorist: NgForm) {
-    const vehicle = {
+  create(formTruck: NgForm) {
+    const truck = {
       location: this.place.formatted_address,
-      ...formMotorist.value
+      ...formTruck.value
     };
 
-    console.log(vehicle);
+    console.log(truck);
   }
 
   getMapUrlByLatLng(lat: number, lng: number) {

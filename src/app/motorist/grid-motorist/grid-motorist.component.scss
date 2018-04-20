@@ -1,22 +1,16 @@
 /* Grid Motorist SCSS ************************************************/
-.input-filter{
-	border-bottom: 1px solid rgba(54,54,54,0.65);
-	border-top:0;
-	border-right:0;
-	border-left:0;
-	border-radius:0;
-	outline:0;
-}
-.input-filter:focus {  
-    border-color: none;
-    -webkit-box-shadow: 0 0 0 0em rgba(50,115,220,0);
-    box-shadow: 0 0 0 0em rgba(50,115,220,0);
+
+.content-wrapper {
+  padding: 20px;
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  top: 54px;
+
 }
 
-.inner-addon{ 
-	width: 300px; 
-	margin: 0px 0px 20px 0px;
-}
+
 .container-grid{
     top: 65px;
     position: absolute;
@@ -24,6 +18,23 @@
     right: 20px;
     bottom: 20px;
 }
+
+/* Inputs Motorist SCSS ************************************************/
+
+// .input-filter{
+//     border-bottom: 1px solid rgba(54,54,54,0.65);
+//     border-top:0;
+//     border-right:0;
+//     border-left:0;
+//     border-radius:0;
+//     outline:0;
+// }
+// .input-filter:focus {  
+//     border-color: none;
+//     -webkit-box-shadow: 0 0 0 0em rgba(50,115,220,0);
+//     box-shadow: 0 0 0 0em rgba(50,115,220,0);
+// }
+
 
 //* BAterry
 .battery-level {

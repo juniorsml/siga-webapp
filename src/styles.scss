@@ -3,7 +3,7 @@ html{
 }
 
 body {
-    background-color: #3f495d;
+    
     font-family: 'Open Sans',sans-serif;
 }
 div, *{
@@ -14,7 +14,26 @@ div, *{
     color: rgba(54,54,54,0.75) !important;
 }
 
+
 /* You can add global styles to this file, and also import other style files */
+/* GRID **************************************************************************/
+.main-content{
+  background-color: #f5f7fa;
+  position: absolute; 
+  top: 44px; 
+  bottom: 0px; 
+  left: 52px; 
+  right: 0px
+}
+.box-shadow{
+  background-color: #FFF;
+  border: none;
+  border-radius: 0;
+  -webkit-box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
+  box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
+}
+
+
 .material-header {
   height: 54px;
   border-top:1px solid #ececec;
@@ -63,16 +82,7 @@ div, *{
   height: 100%;
 }
 
-.material-content-container {
-  padding: 20px;
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  top: 54px;
-  background-color: #fff;
-  
-}
+
 
 .map-tabs {
   display: block;
