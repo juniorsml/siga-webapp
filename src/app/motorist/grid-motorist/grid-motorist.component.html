@@ -5,7 +5,7 @@
   <div [ngClass]="styleClass" class="columns level-left">
     <div class="column is-3">     
       <p class="control has-icons-left"> 
-        <input [(ngModel)]="text" class="input"  placeholder="Buscar" type="text"/>
+        <input [(ngModel)]="text" class="input is-small"  placeholder="Buscar" type="text"/>
         <span class="icon is-small is-left">
           <i class="fa fa-search"></i>
         </span>       
@@ -138,7 +138,7 @@
 
 </div>
 
-<sga-modal>
+<sga-modal [@visibilityChanged]="visiblityState">
   <sga-profile-dialog
     [showDialog]="showMotoristDialog"
     [selectedMotorist]="selectedMotorist"

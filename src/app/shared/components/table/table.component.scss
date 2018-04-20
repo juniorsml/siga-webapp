@@ -43,24 +43,43 @@
 
     tbody tr:nth-child(odd) {
         background-color: #fbfbfb;
+        border: 1px solid #e2e6ec;
     }
 }
 
 .ui-datatable-header-table { 
     width: 100%; 
     border-collapse: collapse;
-    border-bottom:1px solid #dadada;
+   border: 1px solid #e2e6ec;
 }
-.ui-datatable-header-cell,
-.ui-datatable-body-cell  {
-    padding: 10px 4px;
+
+.ui-datatable-header-table tr,
+.ui-datatable-header-table tr td{
+    display: flex;
+}
+.ui-datatable-header-cell{
+    height: 32px;
+    align-items: center;
+    padding-left: 11px;
+}
+
+
+
+.ui-datatable-body-cell { 
+    padding: 6px 11px;
     vertical-align: middle;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 11.5px;
+    color: #616c7d;
+
+    
 }
 
 .ui-datatable-header-cell span{
     font-family: 'Open Sans', sans-serif;
-    font-size:14px;
-    color:#4d5574;
+    font-size: 11.5px;
+    color: #77829a;
+    font-weight: 700;
 }
 
 .ui-datatable-body-empty {
@@ -76,10 +95,13 @@
 .ui-datatable-body-table {
     width: 100%;
     border-collapse: collapse;
+    border: 1px solid #e2e6ec;
+    border-top: 2px solid #e2e6ec;
 }
 
 .ui-datatable-body-table-row {
     width: 100%;
+    border: 1px solid #e2e6ec;
 }
 .ui-datatable-body-row:hover {
     background: #fbfbfb;
@@ -90,12 +112,9 @@
     background: #e5e8f1;
 }
 
-.ui-datatable-body-cell { 
-    font-size: 12.5px;
-    color: #7d7d7d;
-    font-family: 'Open Sans', sans-serif;
-
-    
+.ui-datatable-body-cell:not(:last-child),
+.ui-datatable-header-cell:not(:last-child){
+    border-right: 1px solid #e2e6ec;
 }
 .ui-datatable-footer {
     bottom: 0px;
