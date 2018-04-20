@@ -1,4 +1,4 @@
-import { Component, Output,OnInit, EventEmitter, Input,ViewChild  } from '@angular/core';
+import { Component, Output,OnInit, EventEmitter,ViewChild  } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
@@ -46,12 +46,7 @@ export class RegisterVehicleComponent implements  OnInit {
 
   }
 
-  onSubmit() {
-      if (this.formVehicle.valid) {
-        console.log("Form Submitted!");
-        this.formVehicle.reset();
-      }
-    }
+ 
 
   // Show image profile
   addProfilePhoto(event:any) {
@@ -81,11 +76,31 @@ export class RegisterVehicleComponent implements  OnInit {
   private place: any;
   formMotorist:any;
 
-  @Input('showForm')
-  public showForm: boolean;
+  onSubmit() {
+      if (this.formVehicle.valid) {
+        console.log("Form Submitted!");
+        this.formVehicle.reset();
+      }
+    }
 
-  @Output('onFormClose')
-  public onFormClose = new EventEmitter();
+  @Output()
+  public onFinish = new EventEmitter();
+  
+  onCancel() {
+    this.onFinish.emit();
+  }
+
+  create(formMotorist: NgForm) {
+    const vehicle = {
+      location: this.place.formatted_address,
+      ...formMotorist.value
+    };
+
+    console.log(vehicle);
+  }
+
+
+
 
   public mapUrl: SafeResourceUrl;
 
@@ -102,20 +117,6 @@ export class RegisterVehicleComponent implements  OnInit {
   filterRemoved() {
     this.place = null;
   }
-  
-  cancel() {
-    this.onFormClose.emit();
-  }
-
-  create(formMotorist: NgForm) {
-    const vehicle = {
-      location: this.place.formatted_address,
-      ...formMotorist.value
-    };
-
-    console.log(vehicle);
-  }
-
   getMapUrlByLatLng(lat: number, lng: number) {
     return `https://maps.google.com/maps?q=${lat},${lng}&hl=es;z=14&amp&output=embed`;
   }

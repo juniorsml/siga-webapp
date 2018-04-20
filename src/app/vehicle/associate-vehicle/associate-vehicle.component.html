@@ -30,7 +30,7 @@
               placeholder="Digite o número da Placa"
               style="width: 100%;"
               type="text"
-              (onCreateNew)="showVehicleForm($event)"
+              (onCreateNew)="openFormRegister()"
               (itemSelected)="onVehicleSelected($event)">
               <ng-template let-item="item">
                 <div class="autocomplete-suggestion">
@@ -172,10 +172,9 @@
     <!-- <loading-spinner [isHidden]="!isUpdating" text="Aplicando mudanças...">
     </loading-spinner> -->
 
-   <sga-modal>
-      <sga-register-vehicle
-        [showForm]="showVehicleRegister"
-        (onFormClose)="vehicleFormClose()">
+   <sga-modal *ngIf="showFormRegister">
+      <sga-register-vehicle 
+        (onFinish)="closeFormRegister()">       
       </sga-register-vehicle>
     </sga-modal>
 
