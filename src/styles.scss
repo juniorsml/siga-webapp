@@ -16,31 +16,37 @@ div, *{
 
 
 /* You can add global styles to this file, and also import other style files */
-/* GRID **************************************************************************/
-.main-content{
-  background-color: #f5f7fa;
-  position: absolute; 
-  top: 44px; 
-  bottom: 0px; 
-  left: 52px; 
-  right: 0px
-}
-.box-shadow{
-  background-color: #FFF;
-  border: none;
-  border-radius: 0;
-  -webkit-box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
-  box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
-}
 
-.container-grid .ui-datatable-wrapper .ui-datatable-header{
-      padding:0 !important;
+/* GRID **************************************************************************/
+  .main-content{
+    background-color: #f5f7fa;
+    position: absolute; 
+    top: 44px; 
+    bottom: 0px; 
+    left: 52px; 
+    right: 0px
+  }
+  .box-shadow{
+    background-color: #FFF;
+    border: none;
+    border-radius: 0;
+    -webkit-box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
+    box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
+  }
+  
+  .container-grid .ui-datatable-wrapper .ui-datatable-header{
+        padding:0 !important;
+    }
+
+  .material-header {
+    height: 54px;
+    border-top:1px solid #ececec;
   }
 
-.material-header {
-  height: 54px;
-  border-top:1px solid #ececec;
-}
+/* DIALOGS ********************************************************************/
+  
+
+
 .cnt-img{
     width: 40px;
     height: 40px;
