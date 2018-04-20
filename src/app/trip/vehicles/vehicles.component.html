@@ -6,64 +6,51 @@
         </div>
         <div class="trip-vehicles-ac">
             <div class="cnt-autocomplete">
-	            <sga-auto-complete 
-	              minLength="3"
-	              styleClass = "autocomplete"
-	              noSuggestionsText="Nenhum motorista encontrado"
-	              url="api/motorist/search?query="
-	              placeholder="Digite a placa do veículo"
-	              style="width: 100%;"
-	              type="text">
-	              <ng-template let-item="item">
-	                <div class="autocomplete-suggestion">
-	                  <span>
-	                    <img class="img-autocomplete" src="{{'/assets/images/flags/' + item.country +'.png'}}"
-	                      alt="">
-	                    <img>
-	                    <span>
-	                      <span style="font-size: 16px; font-weight: 500; color: #324263; margin-left: 4px;">{{item.documentId}} </span>
-	                      <span style="font-size: 14px; margin-left: 10px;">{{item.firstName}}, {{item.lastName}}</span>
-	                    </span>
-	                  </span>
-	                </div>
-	              </ng-template>
-	            </sga-auto-complete>
+	           <sga-auto-complete 
+              [data]="vehicles"
+              [propToFilter]="'vehiclePlate'"
+              minLength="3"
+              styleClass = "autocomplete"
+              noSuggestionsText="Nenhum Veículo encontrado"
+              url="api/vehicle/search?query="
+              placeholder="Digite o número da Placa"
+              style="width: 100%;"
+              type="text"
+              (onCreateNew)="showVehicleForm($event)"
+              (itemSelected)="VehicleSelected($event)">
+              <ng-template let-item="item">
+                <div class="autocomplete-suggestion">
+                  <span>
+                    <img class="img-autocomplete" src="{{'/assets/images/flags/' + item.country +'.png'}}"
+                      alt="">
+                    <img>
+                    <span>
+                      <span style="font-size: 16px; font-weight: 500; color: #324263; margin-left: 4px;">{{item.vehiclePlate}} </span>
+                      <span style="font-size: 14px; margin-left: 10px;">{{item.model}}</span>
+                    </span>
+                  </span>
+                </div>
+              </ng-template>
+            </sga-auto-complete>
           	</div>
 
         </div>
         <div class="trip-vehicles-lv">
-            <list-view
-                styleClass="motorist-list-item">
-                <list-view-item>
-                    <ng-template let-item="item" let-index="index">
-                        <div
-                            class="listview-item-destination"
-                            style="min-height: 56px"
-                           >
-                            <div class="listview-item-destination-index">
-                                <span></span>
-                            </div>
-                            <div style="margin-top: 6px"
-                                 class="listview-item-destination-wrapper">
-                                        <span
-                                            class="listview-item-destination-name"></span>
-                                <span class="listview-item-destination-address"></span>
-                            </div>
-                            <span class="listview-item-destination-remove">Remove</span>
-                        </div>
-                    </ng-template>
-                </list-view-item>
-                <list-view-empty>
-                    <ng-template let-item="item" let-index="index">
-                        <div style="position: absolute; top: 50%; left: 0px; right: 0px; margin-top: -42px;">
-                            <i style="color: #e9eaed; width: 100%; text-align: center; font-size: 40px; margin-bottom: 12px;"
-                               class="fal fa-truck"></i>
-                            <span
-                                style="width: 100%; text-align: center; display: block; color: #a5abb3; font-size: 12px;">Nenhum veículo associado com à viagem</span>
-                        </div>
-                    </ng-template>
-                </list-view-empty>
-            </list-view>
+            <ul>
+              <li *ngFor="let vehicle of associateVehicle">
+                <div class="columns">
+                  <div class="column is-10">
+                    <span (click)="showVehicleData(vehicle)"  style="cursor: pointer; color: blue;">
+                        {{vehicle.vehiclePlate}} - {{vehicle.brand}}
+                    </span>
+                    
+                  </div>
+                  <div class="column">
+                    <span (click)="removeAssociate(vehicle)" class="fal fa-trash" style="cursor: pointer; color: red;"></span>
+                  </div>
+                </div>
+              </li>
+            </ul>
         </div>
     </div>
     <div class="vehicle-detail">
@@ -81,46 +68,46 @@
     		        <ul class="columns is-multiline  motorist-profile-info ">
     		            <li class="column is-4 vehicle-profile-info-item">
     		                <h6 class="vehicle-info-title">Placa</h6>
-    		                <span class="vehicle-info">3425HTR</span>
+    		                <span class="vehicle-info">{{selectedVehicle == null ? '-' : selectedVehicle?.vehiclePlate}}</span>
     		            </li>
     		            <li class="column is-4 vehicle-profile-info-item">
     		                <h6 class="vehicle-info-title">Marca</h6>
-    		                <span class="vehicle-info">Fiat</span>
+    		                <span class="vehicle-info">-</span>
     		            </li>
 
     		            <li class="column is-4 vehicle-profile-info-item">
     		                <h6 class="vehicle-info-title">Modelo</h6>
-    		                <span class="vehicle-info">1977</span>
+    		                <span class="vehicle-info">-</span>
     		            </li>
 
     		            <li class="column is-4 vehicle-profile-info-item">
     		                <h6 class="vehicle-info-title">Cor</h6>
-    		                <span class="vehicle-info">Azul</span>
+    		                <span class="vehicle-info">-</span>
     		            </li>
 
     		            <li class="column is-4 vehicle-profile-info-item">
-    		                <h6 class="vehicle-info-title">Ano</h6>
-    		                <span class="vehicle-info">1978</span>
+    		                <h6 class="vehicle-info-title">-</h6>
+    		                <span class="vehicle-info">-</span>
     		            </li>
     		            <li class="column is-4 vehicle-profile-info-item">
     		                <h6 class="vehicle-info-title">Tipo</h6>
-    		                <span class="vehicle-info"></span>
+    		                <span class="vehicle-info">-</span>
     		            </li>
     		            <li class="column is-4 vehicle-profile-info-item">
     		                <h6 class="vehicle-info-title">Capacidade</h6>
-    		                <span class="vehicle-info">4</span>
+    		                <span class="vehicle-info">-</span>
     		            </li>
     		            <li class="column is-4 vehicle-profile-info-item">
     		                <h6 class="vehicle-info-title">N. Frota</h6>
-    		                <span class="vehicle-info">234525235</span>
+    		                <span class="vehicle-info">-</span>
     		            </li>
     		            <li class="column is-4 vehicle-profile-info-item">
     		                <h6 class="vehicle-info-title">Nº registro ANTT</h6>
-    		                <span class="vehicle-info">2373754747</span>
+    		                <span class="vehicle-info">-</span>
     		            </li>
     		            <li class="column is-4 vehicle-profile-info-item">
     		                <h6 class="vehicle-info-title">Validade ANTT</h6>
-    		                <span class="vehicle-info"></span>
+    		                <span class="vehicle-info">-</span>
     		            </li>
     		        </ul>
         		    
@@ -157,3 +144,9 @@
         </div>
     </div>
 </div>
+
+<sga-modal *ngIf="showRegisterForm">
+    <sga-register-vehicle
+      (onFormClose)="closeFormRegister()">
+    </sga-register-vehicle>
+</sga-modal>

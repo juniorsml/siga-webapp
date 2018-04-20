@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { DeviceModule } from '../device/device.module';
 import { MotoristModule } from '../motorist/motorist.module';
+import { VehicleModule } from '../vehicle/vehicle.module';
 
 import { SharedModule } from '../shared/modules/shared.module';
 import { TripRoutingModule } from './trip-routing.module';
@@ -25,6 +26,7 @@ import { TrucksComponent } from './trucks/trucks.component';
 
     DeviceModule,
     MotoristModule,
+    VehicleModule,
 
     TripRoutingModule
   ],
