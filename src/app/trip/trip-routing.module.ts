@@ -9,7 +9,7 @@ import { VehiclesComponent } from './vehicles/vehicles.component';
 import { TrucksComponent } from './trucks/trucks.component';
 import { DeviceComponent } from './device/device.component';
 import { devices } from '../shared/mocks/device';
-
+import { vehicles } from '../shared/mocks/vehicles';
 
 
 const routes: Routes = [
@@ -20,8 +20,8 @@ const routes: Routes = [
       { path: 'detail', component: DetailComponent },
       { path: 'places', component: PlacesComponent },
       { path: 'motorist', component: MotoristComponent },
-      { path: 'vehicles', component: VehiclesComponent },
-      { path: 'trucks', component: TrucksComponent },
+      { path: 'vehicles', component: VehiclesComponent,  data: { vehicles }  },
+      { path: 'trucks', component: TrucksComponent, data: { vehicles }  },
       { path: 'device', component: DeviceComponent, data: { devices } }
     ]
   }
