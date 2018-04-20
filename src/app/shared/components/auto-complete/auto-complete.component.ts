@@ -20,6 +20,7 @@ export class AutoCompleteComponent {
   @Input() public data: Array<any>;
   @Input() public url: string = '';
   @Input() public minLength: number;
+  @Input() public keepSelect: boolean;
   @Input() public placeholder: string = '';
   @Input() public propToFilter: string = '';
   @Input() public noSuggestionsText: string = '';
@@ -123,14 +124,14 @@ export class AutoCompleteComponent {
     this.suggestionSelected = true;
     this.suggestions = null;
     this.suggestionIndex = 0;
-    this.inputElement.nativeElement.value = null;
+    this.inputElement.nativeElement.value = this.keepSelect ? suggestion[this.propToFilter] : null;
     this.inputElement.nativeElement.focus();
     this.itemSelected.emit(suggestion);
   }
 
   private search(): void {
     this.suggestions = this.data.filter(
-      m => m[this.propToFilter].indexOf(this.inputElement.nativeElement.value) > -1
+      m => m[this.propToFilter].toLowerCase().indexOf(this.inputElement.nativeElement.value.toLowerCase()) > -1
 
     );
     // this.dataService.get(this.url + this.inputElement.nativeElement.value)

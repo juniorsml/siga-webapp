@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { GeometryObject, Feature } from 'geojson';
+import { Router } from '@angular/router';
 
 import { PlacesPipe } from '../../../shared/filters/places.pipe';
 import { areas } from '../../../shared/mocks/area';
@@ -15,9 +16,11 @@ export class MapAreaComponent implements OnInit {
   public filterDistance: any;
   public filterLocation: any;
 
+  public originalData = new Array<any>();
+  private mapLocationHistory = new Array();
+
   private selectedData: any;
   private _data = new Array<any>();
-  private mapLocationHistory = new Array();
   private mapMarkers: Array<Feature<GeometryObject>> = [];
 
   @ViewChild('mapSelector') mapSelector: ElementRef;
@@ -31,11 +34,12 @@ export class MapAreaComponent implements OnInit {
     this.plotDataLocations();
   }
 
-  constructor(private map: Map) {}
+  constructor(private map: Map, private route: Router) {}
 
   ngOnInit(): void {
     this.injectMap();
     this._data = areas;
+    this.originalData = areas;
     this.plotDataLocations();
   }
 
@@ -49,7 +53,7 @@ export class MapAreaComponent implements OnInit {
         const imageElement: HTMLImageElement = document.createElement('img');
 
         imageElement.className = 'motorist-marker-image';
-        imageElement.src = 'api/motorist/public/profileImage?id=' + item.id;
+        // imageElement.src = 'api/motorist/public/profileImage?id=' + item.id;
 
         markerBody.appendChild(imageElement);
         markerElement.appendChild(markerBody);
@@ -122,6 +126,15 @@ export class MapAreaComponent implements OnInit {
     return marker;
   }
 
+  public redirectToRegister(event) {
+    event
+    this.route.navigateByUrl('geographic/area/register');
+  }
+  
+  public onDataSelected(event) {
+    this.data = this.originalData.filter(d => d.id === event.id);
+  }
+
   public onPlacesFiltered(event) {
     this.filterDistance = event.distance;
     this.filterLocation = { lat: event.lat, lng: event.lng };
@@ -130,14 +143,14 @@ export class MapAreaComponent implements OnInit {
 
   private filterDataByLocation() {
     const placesFilter = new PlacesPipe();
-    this.data = placesFilter.transform(areas, 
+    this.data = placesFilter.transform(this.originalData, 
       [this.filterLocation, Number(this.filterDistance), 'location.latitude', 'location.longitude']);
   }
   
   onPlacesFilterRemoved() {
     this.filterDistance = null;
     this.filterLocation = null;
-    this.data = areas;
+    this.data = this.originalData;
   }
 
   private injectMap(): void {
