@@ -53,7 +53,7 @@ export class MapAreaComponent implements OnInit {
         const imageElement: HTMLImageElement = document.createElement('img');
 
         imageElement.className = 'motorist-marker-image';
-        imageElement.src = 'api/motorist/public/profileImage?id=' + item.id;
+        // imageElement.src = 'api/motorist/public/profileImage?id=' + item.id;
 
         markerBody.appendChild(imageElement);
         markerElement.appendChild(markerBody);
