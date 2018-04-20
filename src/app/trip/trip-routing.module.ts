@@ -11,6 +11,7 @@ import { DeviceComponent } from './device/device.component';
 import { devices } from '../shared/mocks/device';
 import { vehicles } from '../shared/mocks/vehicles';
 
+
 const routes: Routes = [
   {
     path: '',
