@@ -41,7 +41,7 @@
           </div>
         </ng-template>
       </table-empty>
-      <column class="photo-profile" [key]="'id'" [header]="''" [minWidth]="'50'" [isSortable]="false">
+      <column class="photo-profile" [key]="'id'" [header]="''" [width]="'60'" [isSortable]="false">
         <ng-template let-item="item">
           <div class="cnt-img">
             <img (click)="showMotoristModal(item)" style="width: 40px; height: 40px; border-radius: 50%;" src="{{'api/motorist/public/profileImage?id=' + item}}"
@@ -64,7 +64,7 @@
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'location'" [header]="'Status'" [minWidth]="'46'" [isSortable]="false">
+      <column [key]="'location'" [header]="'Status'" [minWidth]="'100'" [isSortable]="false">
         <ng-template let-item="item">
           {{item != null ? (item.driverStatus) : '-'}}
         </ng-template>
