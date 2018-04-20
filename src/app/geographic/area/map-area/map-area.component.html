@@ -1,21 +1,36 @@
 <div class="material-content-container">
-    <div #mapSelector></div>
+  <div #mapSelector></div>
+</div>
+<div class="map-center-bar columns">
+  <div class="column menu-map-center">
+    <a class="fal fa-bars" href=""></a>
   </div>
-  <div class="map-center-bar columns">
-    <div class="column menu-map-center">
-      <a class="fal fa-bars" href=""></a>
-    </div>
-    <div class="column is-4">     
-      <p class="control has-icons-left"> 
-        <input [(ngModel)]="text" class="input" placeholder="Buscar" type="text"/>
-        <span class="icon is-small is-left">
-          <i class="fa fa-search"></i>
-        </span>       
-      </p>
-    </div>
-    <sga-map-filter 
-      (placesFiltered)="onPlacesFiltered($event)" 
-      (filterRemoved)="onPlacesFilterRemoved()"
-      class="column is-11">
-    </sga-map-filter>
+  <div class="column is-4">     
+    <sga-auto-complete 
+      [data]="originalData"
+      [keepSelect]="true"
+      propToFilter="name"
+      minLength="3"
+      styleClass = "autocomplete"
+      noSuggestionsText="Nenhuma área encontrado"
+      placeholder="Digite uma área"
+      style="width: 100%;"
+      type="text"
+      (onCreateNew)="redirectToRegister($event)"
+      (itemSelected)="onDataSelected($event)">
+      <ng-template let-item="item">
+        <div class="autocomplete-suggestion">
+          <span>
+            <span style="font-size: 16px; font-weight: 500; color: #324263; margin-left: 4px;">{{item.name}}</span>
+            <span style="font-size: 14px; margin-left: 10px;">{{item.id}}</span>
+          </span>
+        </div>
+      </ng-template>
+    </sga-auto-complete>
   </div>
+  <sga-map-filter 
+    (placesFiltered)="onPlacesFiltered($event)" 
+    (filterRemoved)="onPlacesFilterRemoved()"
+    class="column is-11">
+  </sga-map-filter>
+</div>
