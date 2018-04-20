@@ -33,8 +33,17 @@ div, *{
     -webkit-box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
     box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
   }
+  .content-wrapper {
+    
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    top: 54px;
+  }
   
-  .container-grid .ui-datatable-wrapper .ui-datatable-header{
+  .container-grid .ui-datatable-wrapper .ui-datatable-header,
+  .grid-associate .ui-datatable-wrapper .ui-datatable-header{
         padding:0 !important;
     }
 
@@ -169,13 +178,32 @@ div, *{
 .container-grid-vehicle .slimscroll-wrapper{
     height:94% !important;
 }
+.container-grid .slimscroll-bar.slimscroll-bar.slimscroll-bar,
+.grid-associate .slimscroll-bar.slimscroll-bar.slimscroll-bar{
+  right: 1px !important;
+  width: 6px !important;
+  background: rgba(156, 159, 165, 0.4) !important;
+}
+.container-grid .slimscroll-grid.slimscroll-grid.slimscroll-grid,
+.grid-associate .slimscroll-bar.slimscroll-bar.slimscroll-bar{
+  width: 6px !important;
+  right: -1px !important;
+  background:#e6e2e2  !important;
+}
 .container-grid-map .slimscroll-wrapper{
     height:92% !important;
 }
 .container-grid-wrapper .slimscroll-wrapper,
 .grid-associate .slimscroll-wrapper {
-    height:82% !important;
+    height: 87% !important;
+    border-bottom: 1px solid #e2e6ec;
 }
+
+
+
+
+
+
 .cnt-tab-historico .slimscroll-wrapper{
     height:100% !important;
 }

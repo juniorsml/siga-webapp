@@ -1,7 +1,7 @@
 <div>
   <sga-modal>
-    <div class="admin-dialog">
-      <div class="motorist-admin-left-container columns is-multiline is-marginless ">
+    <div class="content-wrapper">
+      <div class="motorist-admin-left-container columns is-multiline is-marginless box-shadow ">
         <div class="motorist-admin-summary-wrapper column is-12 is-marginless">
           <div class="admin-section-header">Resumo</div>
           <div class="motorist-admin-summary">
@@ -106,14 +106,14 @@
         </div>
 
       </div>
-      <div class="motorist-admin-right-container columns is-multiline is-marginless ">
+      <div class="motorist-admin-right-container columns is-multiline is-marginless box-shadow ">
         <div class="title column">
           Motoristas Associados
         </div>
         <div class="cnt-btn-search">       
            <p class="control has-icons-left"> 
-              <input  [(ngModel)]="searchText" class="input"  placeholder="Buscar" type="text"/>
-              <span class="icon is-small is-left">
+              <input  [(ngModel)]="searchText" class="input is-small"  placeholder="Buscar" type="text"/>
+              <span class="icon  is-left">
                 <i class="fa fa-search"></i>
               </span>       
             </p>
@@ -138,17 +138,17 @@
                   </div>
                 </ng-template>
               </column>
-              <column [key]="'documentId'" [header]="'ID'" [minWidth]="'82'">
+              <column [key]="'documentId'" [header]="'ID'" [width]="'100'"> 
                 <ng-template let-item="item">
                   {{item}}
                 </ng-template>
               </column>
-              <column [key]="'firstName'" [header]="'Nome'" [minWidth]="'82'">
+              <column [key]="'firstName'" [header]="'Nome'" [width]="'120'">
                 <ng-template let-item="item">
                   {{item}}
                 </ng-template>
               </column>
-              <column [key]="'lastName'" [header]="'Sobrenome'" [minWidth]="'82'">
+              <column [key]="'lastName'" [header]="'Sobrenome'" [width]="'150'">
                 <ng-template let-item="item">
                   {{item}}
                 </ng-template>
@@ -158,7 +158,7 @@
                   {{item}}
                 </ng-template>
               </column>
-              <column [key]="'cellPhone'" [header]="'Celular'" [minWidth]="'82'">
+              <column [key]="'cellPhone'" [header]="'Celular'" [width]="'122'">
                 <ng-template let-item="item">
                   {{item}}
                 </ng-template>

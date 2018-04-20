@@ -1,6 +1,6 @@
 <sga-sidebar-configuration></sga-sidebar-configuration>
    
-<div class="content-wrapper box-shadow">
+<div class="content-wrapper box-shadow content-grid-motorist">
  
   <div [ngClass]="styleClass" class="columns level-left">
     <div class="column is-3">     
@@ -138,7 +138,7 @@
 
 </div>
 
-<sga-modal [@visibilityChanged]="visiblityState">
+<sga-modal>
   <sga-profile-dialog
     [showDialog]="showMotoristDialog"
     [selectedMotorist]="selectedMotorist"
