@@ -36,6 +36,9 @@ import { AssociateTruckComponent } from './associate-truck/associate-truck.compo
 	  RegisterTruckComponent
 	  
   ],
+  exports:[
+    RegisterTruckComponent
+  ],
   providers: [
     DomHandler,
     {

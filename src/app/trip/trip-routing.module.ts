@@ -20,7 +20,7 @@ const routes: Routes = [
       { path: 'places', component: PlacesComponent },
       { path: 'motorist', component: MotoristComponent },
       { path: 'vehicles', component: VehiclesComponent,  data: { vehicles }  },
-      { path: 'trucks', component: TrucksComponent },
+      { path: 'trucks', component: TrucksComponent, data: { vehicles }  },
       { path: 'device', component: DeviceComponent, data: { devices } }
     ]
   }

@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { DeviceModule } from '../device/device.module';
 import { MotoristModule } from '../motorist/motorist.module';
 import { VehicleModule } from '../vehicle/vehicle.module';
+import { TruckModule } from '../truck/truck.module';
 
 import { SharedModule } from '../shared/modules/shared.module';
 import { TripRoutingModule } from './trip-routing.module';
@@ -27,9 +28,18 @@ import { TrucksComponent } from './trucks/trucks.component';
     DeviceModule,
     MotoristModule,
     VehicleModule,
+    TruckModule,
 
     TripRoutingModule
   ],
-  declarations: [TripComponent, DetailComponent, PlacesComponent, MotoristComponent, VehiclesComponent, DeviceComponent,TrucksComponent]
+  declarations: [
+      TripComponent, 
+      DetailComponent, 
+      PlacesComponent, 
+      MotoristComponent, 
+      VehiclesComponent, 
+      DeviceComponent,
+      TrucksComponent
+  ]
 })
 export class TripModule { }
