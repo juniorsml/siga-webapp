@@ -15,9 +15,11 @@ export class MapAreaComponent implements OnInit {
   public filterDistance: any;
   public filterLocation: any;
 
+  public originalData = new Array<any>();
+  private mapLocationHistory = new Array();
+
   private selectedData: any;
   private _data = new Array<any>();
-  private mapLocationHistory = new Array();
   private mapMarkers: Array<Feature<GeometryObject>> = [];
 
   @ViewChild('mapSelector') mapSelector: ElementRef;
@@ -36,6 +38,7 @@ export class MapAreaComponent implements OnInit {
   ngOnInit(): void {
     this.injectMap();
     this._data = areas;
+    this.originalData = areas;
     this.plotDataLocations();
   }
 
@@ -122,6 +125,14 @@ export class MapAreaComponent implements OnInit {
     return marker;
   }
 
+  public redirectToRegister() {
+
+  }
+  
+  public onDataSelected(event) {
+    this.data = this.originalData.filter(d => d.id === event.id);
+  }
+
   public onPlacesFiltered(event) {
     this.filterDistance = event.distance;
     this.filterLocation = { lat: event.lat, lng: event.lng };
@@ -130,14 +141,14 @@ export class MapAreaComponent implements OnInit {
 
   private filterDataByLocation() {
     const placesFilter = new PlacesPipe();
-    this.data = placesFilter.transform(areas, 
+    this.data = placesFilter.transform(this.originalData, 
       [this.filterLocation, Number(this.filterDistance), 'location.latitude', 'location.longitude']);
   }
   
   onPlacesFilterRemoved() {
     this.filterDistance = null;
     this.filterLocation = null;
-    this.data = areas;
+    this.data = this.originalData;
   }
 
   private injectMap(): void {
