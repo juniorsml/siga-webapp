@@ -36,6 +36,9 @@ import { NgSlimScrollModule } from 'ngx-slimscroll';
     AssociateVehicleComponent,
     RegisterVehicleComponent
     ],
+  exports: [
+    RegisterVehicleComponent
+  ],
   providers: [
     DomHandler,
     {

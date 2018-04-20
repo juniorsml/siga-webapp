@@ -79,6 +79,7 @@ export class RegisterVehicleComponent implements  OnInit {
   }
 
   private place: any;
+  formMotorist:any;
 
   @Input('showForm')
   public showForm: boolean;
