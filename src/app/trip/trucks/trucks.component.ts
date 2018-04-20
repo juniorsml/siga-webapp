@@ -1,4 +1,4 @@
-import { Component, OnInit,EventEmitter, Output} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 export class TrucksComponent implements OnInit {
 
  
-  @Output() onTruckSelected: EventEmitter<any> = new EventEmitter();
+ 
   selectedTruck: any;
 
   public trucks: Array<any>;
@@ -25,10 +25,9 @@ export class TrucksComponent implements OnInit {
     );
   }
 
-  public showVehicleData(event) {
-    this.selectedTruck = event.data;
-    this.onTruckSelected.emit(this.selectedTruck);
-   
+  public showVehicleData(truck) {
+    this.selectedTruck = truck;
+    // debugger
   }
 
 
@@ -47,5 +46,6 @@ export class TrucksComponent implements OnInit {
   public removeAssociate(truck: any): void {
     const index = this.associateTruck.findIndex(a => a === truck);
     this.associateTruck.splice(index, 1);
+    this.selectedTruck =null;
   }
 }
