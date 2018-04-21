@@ -19,6 +19,17 @@ export class AssociateVehicleComponent implements OnInit {
     this.setCurrentVehicles();
   }
 
+
+  public showFormRegister = false;
+  
+  openFormRegister() {
+    this.showFormRegister = !this.showFormRegister;
+  }
+
+  closeFormRegister() {
+    this.showFormRegister = false;
+  }
+
   private _vehicles: Array<any> = [];
 
   public selectedVehicle: any;

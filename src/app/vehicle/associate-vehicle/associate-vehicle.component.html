@@ -30,7 +30,7 @@
               placeholder="Digite o número da Placa"
               style="width: 100%;"
               type="text"
-              (onCreateNew)="showVehicleForm($event)"
+              (onCreateNew)="openFormRegister()"
               (itemSelected)="onVehicleSelected($event)">
               <ng-template let-item="item">
                 <div class="autocomplete-suggestion">
@@ -137,22 +137,22 @@
                   </div>
                 </ng-template>
               </column>
-              <column [key]="'vehiclePlate'" [header]="'ID'" [minWidth]="'82'">
+              <column [key]="'vehiclePlate'" [header]="'Placa'" [minWidth]="'82'">
                 <ng-template let-item="item">
                   {{item}}
                 </ng-template>
               </column>
-              <column [key]="'renavan'" [header]="'Nome'" [minWidth]="'82'">
+              <column [key]="'renavan'" [header]="'Renavan'" [minWidth]="'82'">
                 <ng-template let-item="item">
                   {{item}}
                 </ng-template>
               </column>
-              <column [key]="'brand'" [header]="'Sobrenome'" [minWidth]="'82'">
+              <column [key]="'brand'" [header]="'Marca'" [minWidth]="'82'">
                 <ng-template let-item="item">
                   {{item}}
                 </ng-template>
               </column>
-              <column [key]="'model'" [header]="'Email'" [minWidth]="'82'">
+              <column [key]="'model'" [header]="'Modelo'" [minWidth]="'82'">
                 <ng-template let-item="item">
                   {{item}}
                 </ng-template>
@@ -172,10 +172,9 @@
     <!-- <loading-spinner [isHidden]="!isUpdating" text="Aplicando mudanças...">
     </loading-spinner> -->
 
-   <sga-modal>
-      <sga-register-vehicle
-        [showForm]="showVehicleRegister"
-        (onFormClose)="vehicleFormClose()">
+   <sga-modal *ngIf="showFormRegister">
+      <sga-register-vehicle 
+        (onFinish)="closeFormRegister()">       
       </sga-register-vehicle>
     </sga-modal>
 

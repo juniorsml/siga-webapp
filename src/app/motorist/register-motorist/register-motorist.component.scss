@@ -42,23 +42,24 @@ $main-blue:#4d5675;
 	height: 100%;
 }
 
-.form-header{
-	padding-left:20px;
-	padding-top: 0;
 
-	.area{
-		background:$main-blue;
-		color:#FFF;
-		padding:0 20px;
-		font: 300 17px "Open Sans", sans-serif;
-		display: flex;
-		align-items: center;
-	}
-	.action{		
-		color:$main-blue;		
-		font: 300 24px "Open Sans", sans-serif;
-	}
-}
+  .form-header{
+    padding-left:20px;
+    padding-top: 0;
+
+    .area{
+      background:$main-blue;
+      color:#FFF;
+      padding:0 20px;
+      font: 300 17px "Open Sans", sans-serif;
+      display: flex;
+      align-items: center;
+    }
+    .action{    
+      color:$main-blue;   
+      font: 300 24px "Open Sans", sans-serif;
+    }
+  }
 
 .cnt-form {
 	

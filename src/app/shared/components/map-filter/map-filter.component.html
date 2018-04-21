@@ -4,12 +4,12 @@
       <input 
         #input
         [(ngModel)]="placeText"
-        class="input"
+        class="input is-small"
         (keyup)="onPlacesKeyUp()"
         type="text"
         placeholder="Endereço / Região">
       <span class="icon is-small is-left">
-        <i class="fa fa-map-marker"></i>
+        <i class="fal fa-map-marker"></i>
       </span>
     </p>
   </div>
@@ -21,10 +21,10 @@
         [disabled]="location === null"
         (keyup)="onDistanceKeyUp()"
         type="text"
-        class="input"
+        class="input is-small"
         placeholder="Distância (KM)">
       <span class="icon is-small is-left">
-        <i class="fa fa-location-arrow"></i>
+        <i class="fal fa-location-arrow"></i>
       </span>
     </p>
   </div>
