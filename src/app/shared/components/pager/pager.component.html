@@ -1,7 +1,7 @@
 
 <nav class="pagination is-centered is-small" role="navigation" aria-label="pagination">
-  <a (click)="previousPage()" class="pagination-previous">Previous</a>
-  <a (click)="nextPage()" class="pagination-next">Next page</a>
+  <a (click)="previousPage()" class="pagination-previous">Anterior</a>
+  <a (click)="nextPage()" class="pagination-next">Próxima</a>
   <ul class="pagination-list">
     <li><a (click)="onPageClick(page)" class="pagination-link" *ngFor="let page of pager" [class.is-current]="page == selectedPage" >{{page}} </a></li>
   </ul>
