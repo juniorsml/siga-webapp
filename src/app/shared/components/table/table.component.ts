@@ -114,13 +114,13 @@ export class DataTableComponent implements DoCheck, OnChanges, AfterViewInit {
 
   sortBy(index: number, key: string): void {
     this.columns[index].dataTable.data.sort(
-      (a, b) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0)
+      (a, b) => (a[key].toLowerCase() > b[key].toLowerCase() ? 1 : a[key].toLowerCase() < b[key].toLowerCase() ? -1 : 0)
     );
   }
 
   reverseBy(index: number, key: string): void {
     this.columns[index].dataTable.data.sort(
-      (a, b) => (a[key] < b[key] ? 1 : a[key] > b[key] ? -1 : 0)
+      (a, b) => (a[key].toLowerCase() < b[key].toLowerCase() ? 1 : a[key].toLowerCase() > b[key].toLowerCase() ? -1 : 0)
     );
   }
 
