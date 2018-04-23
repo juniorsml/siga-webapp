@@ -138,17 +138,17 @@
                   </div>
                 </ng-template>
               </column>
-              <column [key]="'documentId'" [header]="'ID'" [width]="'100'"> 
+              <column [key]="'documentId'" [header]="'ID'" [width]="'100'" [isSortable]="true"> 
                 <ng-template let-item="item">
                   {{item}}
                 </ng-template>
               </column>
-              <column [key]="'firstName'" [header]="'Nome'" [width]="'120'">
+              <column [key]="'firstName'" [header]="'Nome'" [width]="'120'" [isSortable]="true">
                 <ng-template let-item="item">
                   {{item}}
                 </ng-template>
               </column>
-              <column [key]="'lastName'" [header]="'Sobrenome'" [width]="'150'">
+              <column [key]="'lastName'" [header]="'Sobrenome'" [width]="'150'" [isSortable]="true">
                 <ng-template let-item="item">
                   {{item}}
                 </ng-template>
