@@ -18,7 +18,7 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './shared/layout/navbar/navbar.component';
 import { SidebarComponent } from './shared/layout/sidebar/sidebar.component';
 import { ContentComponent } from './shared/layout/content/content.component';
-import { PagerComponent } from './shared/components/pager/pager.component';
+
 
 
 
@@ -30,8 +30,8 @@ import { PagerComponent } from './shared/components/pager/pager.component';
     HomeComponent,
     NavbarComponent,
     SidebarComponent,
-    ContentComponent,
-    PagerComponent
+    ContentComponent
+    
   ],
   imports: [
     FormsModule,

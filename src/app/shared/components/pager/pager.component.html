@@ -1,3 +1,9 @@
-<p>
-  pager works!
-</p>
+<div>
+  <ul [class]="styleClass">
+      <li (click)="previousPage()" [class]="styleClass + ' back fas'" ><i class="fas fa-angle-left"></i></li>
+
+      <li (click)="onPageClick(page)" *ngFor="let page of pager" [class.active]="page == selectedPage" >{{page}} </li>
+
+      <li (click)="nextPage()" [class]="styleClass + ' forward'"><i class="fas fa-angle-right"></i></li>
+  </ul>
+</div>`
