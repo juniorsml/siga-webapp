@@ -1,9 +1,8 @@
-<div>
-  <ul [class]="styleClass">
-      <li (click)="previousPage()" [class]="styleClass + ' back fas'" ><i class="fas fa-angle-left"></i></li>
 
-      <li (click)="onPageClick(page)" *ngFor="let page of pager" [class.active]="page == selectedPage" >{{page}} </li>
-
-      <li (click)="nextPage()" [class]="styleClass + ' forward'"><i class="fas fa-angle-right"></i></li>
+<nav class="pagination is-centered is-small" role="navigation" aria-label="pagination">
+  <a (click)="previousPage()" class="pagination-previous">Previous</a>
+  <a (click)="nextPage()" class="pagination-next">Next page</a>
+  <ul class="pagination-list">
+    <li><a (click)="onPageClick(page)" class="pagination-link" *ngFor="let page of pager" [class.is-current]="page == selectedPage" >{{page}} </a></li>
   </ul>
-</div>`
+</nav>
