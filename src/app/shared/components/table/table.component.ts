@@ -17,6 +17,7 @@ import {
   HostListener
 } from '@angular/core';
 import { SearchPipe } from '../../filters/search.pipe';
+import { PagerPipe } from '../../filters/pager.pipe';
 import { DomHandler } from '../../../motorist/dom-handler/domhandler.service';
 import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
 

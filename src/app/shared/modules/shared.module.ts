@@ -16,6 +16,7 @@ import { MapFilterComponent } from '../components/map-filter/map-filter.componen
 import { FormsModule } from '@angular/forms';
 
 import { SearchPipe } from '../filters/search.pipe';
+import { PagerPipe } from '../filters/pager.pipe';
 import { PlacesPipe } from '../filters/places.pipe';
 import { NgSlimScrollModule, SLIMSCROLL_DEFAULTS } from 'ngx-slimscroll';
 import {
@@ -50,6 +51,7 @@ import { SidebarConfigurationComponent } from '../components/sidebar-configurati
   declarations: [
     PlacesPipe,
     SearchPipe,
+    PagerPipe,
     TimeElapsedAsTextPipe,
 
     StepComponent,
@@ -106,6 +108,7 @@ import { SidebarConfigurationComponent } from '../components/sidebar-configurati
   exports: [
     PlacesPipe,
     SearchPipe,
+    PagerPipe,
     TimeElapsedAsTextPipe,
 
     TabComponent,
