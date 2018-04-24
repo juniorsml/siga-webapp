@@ -133,22 +133,22 @@
               <column [key]="'id'" [header]="''" [minWidth]="'60'" [fixedWidth]="'60'">
                 <ng-template let-item="item">
                   <div class="cnt-img">
-                    <img *ngIf="item !== null" (click)="showMotoristModal(item)" style="width: 40px; height: 40px; border-radius: 50%;" src="{{'api/motorist/public/profileImage?id=' + item}}"
+                    <img (click)="showMotoristModal()" style="width: 40px; height: 40px; border-radius: 50%;" src="{{'api/motorist/public/profileImage?id=' + item}}"
                       alt="">
                   </div>
                 </ng-template>
               </column>
-              <column [key]="'documentId'" [header]="'ID'" [width]="'100'"> 
+              <column [key]="'documentId'" [header]="'ID'" [width]="'100'" [isSortable]="true"> 
                 <ng-template let-item="item">
                   {{item}}
                 </ng-template>
               </column>
-              <column [key]="'firstName'" [header]="'Nome'" [width]="'120'">
+              <column [key]="'firstName'" [header]="'Nome'" [width]="'120'" [isSortable]="true">
                 <ng-template let-item="item">
                   {{item}}
                 </ng-template>
               </column>
-              <column [key]="'lastName'" [header]="'Sobrenome'" [width]="'150'">
+              <column [key]="'lastName'" [header]="'Sobrenome'" [width]="'150'" [isSortable]="true">
                 <ng-template let-item="item">
                   {{item}}
                 </ng-template>

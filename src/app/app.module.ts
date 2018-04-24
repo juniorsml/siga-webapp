@@ -22,6 +22,7 @@ import { ContentComponent } from './shared/layout/content/content.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { ContentComponent } from './shared/layout/content/content.component';
     NavbarComponent,
     SidebarComponent,
     ContentComponent
+    
   ],
   imports: [
     FormsModule,
