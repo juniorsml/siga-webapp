@@ -13,12 +13,10 @@ export abstract class Map {
     options?: any
   ): void;
   
+  public abstract setSatellite(): void;
+
   public abstract setCenter(latitude: number, longitude: number): void;
   
-  public abstract getContainer(): HTMLElement;
-
-  public abstract append(container: HTMLElement): void;
-
   public abstract resize(): void;
 
   public abstract setZoom(level: number): void;
