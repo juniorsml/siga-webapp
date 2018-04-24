@@ -22,7 +22,8 @@ $main-blue: #4d5675;
     margin: 1.5rem auto 0 auto;
     width: 100%;
     max-width: 1024px;
-    height: 91%;
+    max-height: 91%;
+    min-height: 400px;
 
     .form-header {
       padding-left: 20px;

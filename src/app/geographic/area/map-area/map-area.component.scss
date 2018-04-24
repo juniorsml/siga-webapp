@@ -9,16 +9,19 @@
     width: 100%;
   }
 }
-
+.area-map input.input{
+   border-radius: 2px !important;
+    font-size: .75rem !important;
+}
 .map-center-bar {
   position: absolute;
   width: 90%;
-  max-width: 1050px;
+  max-width: 750px;
   margin: auto;
   left: 0;
   right: 0;
   padding-left: 9px;
-  top: 87px;
+  top: 31px;
   background: #fff;
 }
 
@@ -26,7 +29,7 @@
   align-items: center;
   display: flex;
   a {
-    font-size: 28px;
+    font-size: 19px;
     color: #cecece;
   }
 }

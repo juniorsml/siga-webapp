@@ -21,7 +21,8 @@ export class AccordionComponent {
 
 @Component({
     selector: 'accordion-header',
-    template: ''
+    template: '',
+    styleUrls:['./accordion.component.scss']
 })
 export class AccordionHeaderComponent {
 
