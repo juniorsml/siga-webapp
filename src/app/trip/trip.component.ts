@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'sga-trip',
-  templateUrl: './trip.component.html'
+  templateUrl: './trip.component.html',
+  styleUrls: ['./trip.component.scss']
 })
 export class TripComponent {
   constructor(private router: Router) { }
