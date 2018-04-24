@@ -1,11 +1,11 @@
 <sga-sidebar-configuration *ngIf="showFilterBar"></sga-sidebar-configuration>
    
-<div class="material-content-container" [ngStyle]="{'top': showFilterBar ? '54px' : '0'}">
+<div class="content-wrapper box-shadow content-grid-device" [ngStyle]="{'top': showFilterBar ? '54px' : '0'}">
  
   <div *ngIf="showFilterBar" [ngClass]="styleClass" class="columns level-left">
     <div class="column is-3">     
       <p class="control has-icons-left"> 
-        <input [(ngModel)]="text" class="input"  placeholder="Buscar" type="text"/>
+        <input [(ngModel)]="text" class="input is-small"  placeholder="Buscar" type="text"/>
         <span class="icon is-small is-left">
           <i class="fa fa-search"></i>
         </span>       
@@ -56,12 +56,12 @@
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'tech'" [header]="'Tecnologia'" [minWidth]="'90'" [isSortable]="false">
+      <column [key]="'tech'" [header]="'Tecnologia'" [minWidth]="'90'" [isSortable]="true">
         <ng-template let-item="item">
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'updated'" [header]="'Atualizado'" [minWidth]="'43'" [isSortable]="false"> 
+      <column [key]="'updated'" [header]="'Atualizado'" [minWidth]="'43'" [isSortable]="true"> 
         <ng-template let-item="item">
           {{item}}
         </ng-template>
