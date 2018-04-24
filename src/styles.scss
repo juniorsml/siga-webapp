@@ -41,6 +41,18 @@ div, *{
     bottom: 20px;
     top: 54px;
   }
+  .content-trip{
+    position: absolute;
+    left: 33px;
+    right: 33px;
+    bottom: 33px;
+    top: 54px;
+  }
+    .trip-header{
+      background: #FFF;
+      margin: 0;
+      padding: 0px 0;
+    }
   
   .container-grid .ui-datatable-wrapper .ui-datatable-header,
   .grid-associate .ui-datatable-wrapper .ui-datatable-header{
