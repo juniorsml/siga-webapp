@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Feature } from 'geojson';
+
+import { MapStyle } from './MapStyle';
 /**
  * Created by davidherod on 19/5/17.
  */
@@ -13,7 +15,7 @@ export abstract class Map {
     options?: any
   ): void;
   
-  public abstract setSatellite(): void;
+  public abstract setStyle(style: MapStyle): void;
 
   public abstract setCenter(latitude: number, longitude: number): void;
   
