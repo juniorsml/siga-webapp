@@ -7,6 +7,7 @@ import { TabComponent } from '../../shared/components/tabs/tab/tab.component';
 import { Feature, GeometryObject } from 'geojson';
 import { TableClickEvent } from '../../shared/components/table/table.component';
 import { ActivatedRoute } from '@angular/router';
+import { MapStyle } from '../../shared/models/MapStyle';
 
 @Component({
   selector: 'sga-map-motorist',
@@ -38,8 +39,8 @@ export class MapMotoristComponent implements OnInit {
     this.mapMarkers = [];
     this._motorists.forEach(motorist => {
       if (motorist.location) {
-        const markerElement: HTMLElement = document.createElement('div');
         const markerBody: HTMLElement = document.createElement('div');
+        const markerElement: HTMLElement = document.createElement('div');
         const imageElement: HTMLImageElement = document.createElement('img');
 
         imageElement.className = 'motorist-marker-image';
@@ -137,8 +138,13 @@ export class MapMotoristComponent implements OnInit {
     }
   }
 
-  changeSatellite() {
-    this.map.setSatellite();
+  toggleMapStyle(mapStyle) {
+    debugger
+    if (mapStyle.value === "1") {
+      this.map.setStyle(MapStyle.Outdoor);
+    } else {
+      this.map.setStyle(MapStyle.Street);
+    }
   }
 
   mapTableCellRightClick(event: TableClickEvent) {

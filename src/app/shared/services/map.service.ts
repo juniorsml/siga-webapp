@@ -8,6 +8,7 @@ import Polyline = L.Polyline;
 
 import { Map } from '../models/Map';
 import { environment } from '../../../environments/environment';
+import { MapStyle } from '../models/MapStyle';
 
 @Injectable()
 export class MapService extends Map {
@@ -58,26 +59,15 @@ export class MapService extends Map {
   }
 
   public createMapBoxMapInstance(mapElement) {
-    // L.mapbox.accessToken =
-    //   'pk.eyJ1IjoiY29uZHVzaXQiLCJhIjoiY2oyeG1wcjJuMDExNTJ4cThlemU3NWlsNCJ9.d1o1-L4u4_-aY_uvAn5krQ';
-    this.map = L.map(mapElement, {maxZoom: 20}).setView([-14.9034, -43.1917], 5);
+    this.map = L
+      .map(mapElement, {
+        maxZoom: 20,
+        zoomControl: false,
+        worldCopyJump: true
+      })
+      .setView([-14.9034, -43.1917], 5);
 
-    L['mapboxGL']({
-      accessToken: environment.mapbox.accessToken, 
-      style: 'mapbox://styles/mapbox/outdoors-v10?optimize=true'
-    }).addTo(this.map);
-
-    // this.map = L
-    //   .map(this.mapElement, {
-    //     zoomControl: false,
-    //     worldCopyJump: true
-    //   })
-    //   .setView([-14.9034, -43.1917], 5)
-    //   .addLayer(
-    //     L.tileLayer(
-    //       'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY29uZHVzaXQiLCJhIjoiY2oyeG1wcjJuMDExNTJ4cThlemU3NWlsNCJ9.d1o1-L4u4_-aY_uvAn5krQ'
-    //     )
-    //   );
+    this.setStyle(MapStyle.Outdoor);
   }
 
   public addSource(): void {}
@@ -174,10 +164,10 @@ export class MapService extends Map {
     //this.markers.push(this.createMarker(feature).addTo(this.map));
   }
 
-  public setSatellite(): void {
+  public setStyle(style: MapStyle): void {
     L['mapboxGL']({
       accessToken: environment.mapbox.accessToken, 
-      style: 'mapbox://styles/mapbox/satellite-streets-v10?optimize=true'
+      style: `mapbox://styles/mapbox/${style}?optimize=true`
     }).addTo(this.map);
   }
 
