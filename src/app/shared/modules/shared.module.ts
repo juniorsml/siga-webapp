@@ -16,6 +16,7 @@ import { MapFilterComponent } from '../components/map-filter/map-filter.componen
 import { FormsModule } from '@angular/forms';
 
 import { SearchPipe } from '../filters/search.pipe';
+import { PagerPipe } from '../filters/pager.pipe';
 import { PlacesPipe } from '../filters/places.pipe';
 import { NgSlimScrollModule, SLIMSCROLL_DEFAULTS } from 'ngx-slimscroll';
 import {
@@ -42,12 +43,15 @@ import { StepComponent } from '../components/steppers/stepper/step.component';
 import { StepsComponent } from '../components/steppers/steps.component';
 import { StepperComponent } from '../components/stepper/stepper.component';
 
+import { PagerComponent } from '../components/pager/pager.component';
+
 import { SidebarConfigurationComponent } from '../components/sidebar-configuration/sidebar-configuration.component';
 
 @NgModule({
   declarations: [
     PlacesPipe,
     SearchPipe,
+    PagerPipe,
     TimeElapsedAsTextPipe,
 
     StepComponent,
@@ -81,7 +85,9 @@ import { SidebarConfigurationComponent } from '../components/sidebar-configurati
     EmptyTableComponent,
     ContextMenuComponent,
 
-    SidebarConfigurationComponent
+    SidebarConfigurationComponent,
+
+    PagerComponent
   ],
   imports: [
     FormsModule,
@@ -102,6 +108,7 @@ import { SidebarConfigurationComponent } from '../components/sidebar-configurati
   exports: [
     PlacesPipe,
     SearchPipe,
+    PagerPipe,
     TimeElapsedAsTextPipe,
 
     TabComponent,
@@ -137,7 +144,8 @@ import { SidebarConfigurationComponent } from '../components/sidebar-configurati
     CalendarModule,
     TextMaskModule,
 
-    SidebarConfigurationComponent
+    SidebarConfigurationComponent,
+    PagerComponent
   ]
 })
 export class SharedModule {}

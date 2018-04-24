@@ -24,7 +24,10 @@
     <div slimScroll [options]="opts" [scrollEvents]="scrollEvents" [class]="styleBody" [style.bottom]="bodyBottom" [style.top]="bodyTop">
       <table class="ui-datatable-body-table">
         <tbody #bodyElement class="ui-datatable-body-tbody">
-          <tr #bodyRowElement *ngFor="let row of filteredData; let rowIndex = index;" [class]="styleRow" [class.active]="rowIndex == selectedRowIndex">
+          <tr #bodyRowElement *ngFor="let row of filteredData | pager: {page:currentPage, quantity: pageQuantity}; let rowIndex = index;"
+          [class]="styleRow"
+          [class.active]="rowIndex == selectedRowIndex">
+
             <td class="ui-datatable-body-cell" 
             *ngFor="let column of columns; 
             let cellIndex = index" 
@@ -47,18 +50,24 @@
 
 
     <div #footerElement [class]="styleFooter">
-      <div class="ui-datatable-footer-wrapper">
-        <span class="ui-datatable-footer-total">{{filteredData?.length}} | {{dataLength}}</span>
-        <div class="select is-small">
-          <select class="ui-datatable-footer-qty" [(ngModel)]="pageQuantity">
-            <option value="5">5</option>
-            <option value="10" selected="selected">10</option>
-            <option value="25">25</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-          </select>
+      <div class="ui-datatable-footer-wrapper">      
+        <div>
+            <span class="ui-datatable-footer-total">{{filteredData?.length}} | {{dataLength}}</span>
         </div>
-
+        <div class="ui-datatable-footer-right">
+          <div class="select is-small">
+            <select class="ui-datatable-footer-qty" [(ngModel)]="pageQuantity">
+              <option value="5">5</option>
+              <option value="10" selected="selected">10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
+          </div>
+          <sga-pager (pageChange)="onPageChange($event)" [pageQuantity]="pageQuantity" [data]="data"
+                               [styleClass]="stylePager"></sga-pager>
+        </div>
+      
       </div>
     </div>
 
