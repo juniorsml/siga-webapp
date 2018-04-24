@@ -1,4 +1,4 @@
-<div (click)="toggle()" class="ui-accordion-header">
+<div [class]="styleClass" (click)="toggle()" class="ui-accordion-header">
     <ng-template [ngTemplateOutlet]="header.template"></ng-template>
 </div>
 <div [ngClass]="{'ui-accordion-open': isOpen, 'ui-accordion-closed': !isOpen}" class="ui-accordion">

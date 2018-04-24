@@ -7,7 +7,8 @@ import {Component, ContentChild, forwardRef, Inject, Input, TemplateRef} from '@
 })
 export class AccordionComponent { 
 
-
+    styleClass: any;
+    
     public header: AccordionHeaderComponent;
     @Input() public isOpen:boolean = false;
 
@@ -21,7 +22,8 @@ export class AccordionComponent {
 
 @Component({
     selector: 'accordion-header',
-    template: ''
+    template: '',
+    styleUrls:['./accordion.component.scss']
 })
 export class AccordionHeaderComponent {
 

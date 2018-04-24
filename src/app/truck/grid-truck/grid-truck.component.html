@@ -1,11 +1,11 @@
 <sga-sidebar-configuration></sga-sidebar-configuration>
    
-<div class="material-content-container">
+<div class="content-wrapper box-shadow content-grid-vehicle">
  
   <div [ngClass]="styleClass" class="columns level-left">
     <div class="column is-3">     
       <p class="control has-icons-left"> 
-        <input [(ngModel)]="text" class="input"  placeholder="Buscar" type="text"/>
+        <input [(ngModel)]="text" class="input is-small"  placeholder="Buscar" type="text"/>
         <span class="icon is-small is-left">
           <i class="fa fa-search"></i>
         </span>       
@@ -42,7 +42,7 @@
           </div>
         </ng-template>
       </table-empty>
-      <column class="photo-profile" [key]="'id'" [header]="''" [minWidth]="'50'" [isSortable]="false">
+      <column class="photo-profile" [key]="'id'" [header]="''" [width]="'60'">
         <ng-template let-item="item">
           <div class="cnt-img">
          
@@ -51,7 +51,7 @@
           </div>
         </ng-template>
       </column>
-      <column [key]="'vehiclePlate'" [header]="'Placa'" [minWidth]="'82'" [isSortable]="false">
+      <column [key]="'vehiclePlate'" [header]="'Placa'" [minWidth]="'82'" [isSortable]="true">
         <ng-template let-item="item">
           {{item}}
         </ng-template>
@@ -66,22 +66,22 @@
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'model'" [header]="'Modelo'" [minWidth]="'46'" [isSortable]="false">
+      <column [key]="'model'" [header]="'Modelo'" [minWidth]="'46'" [isSortable]="true">
         <ng-template let-item="item">
          {{item}}
         </ng-template>
       </column>
-      <column [key]="'color'" [header]="'Cor'" [minWidth]="'56'" [isSortable]="false">
+      <column [key]="'color'" [header]="'Cor'" [minWidth]="'56'" [isSortable]="true">
         <ng-template let-item="item">
            {{item}}
         </ng-template>
       </column>     
-      <column [key]="'year'" [header]="'Ano'" [minWidth]="'46'" [isSortable]="false">
+      <column [key]="'year'" [header]="'Ano'" [minWidth]="'46'" [isSortable]="true">
         <ng-template let-item="item">
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'type'" [header]="'Tipo'" [minWidth]="'82'" [isSortable]="false">
+      <column [key]="'type'" [header]="'Tipo'" [minWidth]="'82'" [isSortable]="true">
         <ng-template let-item="item">
           {{item}}
         </ng-template>
