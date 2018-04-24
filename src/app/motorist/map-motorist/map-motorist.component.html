@@ -12,7 +12,16 @@
         <i class="fa fa-search"></i>
       </span>       
     </p>
-    <button class="button" (click)="changeSatellite()">Street/Map</button>
+    <div class="control">
+      <label class="radio" (click)="toggleMapStyle(map)">
+        <input type="radio" name="map" #map value="1">
+        Map
+      </label>
+      <label class="radio" (click)="toggleMapStyle(street)">
+        <input type="radio" name="map" #street value="2">
+        Street
+      </label>
+    </div>
   </div>
   <sga-map-filter 
     (placesFiltered)="onPlacesFiltered($event)" 
