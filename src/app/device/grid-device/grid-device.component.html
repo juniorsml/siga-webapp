@@ -18,7 +18,7 @@
     </sga-map-filter>
   </div>
 
-  <div class="container-grid container-grid-wrapper" [ngStyle]="{'top': showFilterBar ? '65px' : '0'}">
+  <div class="container-grid container-grid-wrapper" [ngStyle]="{'top': showFilterBar ? '65px' : '20px'}">
     <data-table 
       [data]="devices | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
       [dataLength]="devices.length" 
