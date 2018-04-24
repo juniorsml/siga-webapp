@@ -14,7 +14,7 @@ div, *{
     color: rgba(54,54,54,0.75) !important;
 }
 
-
+$bg-titles: #4d5675;
 /* You can add global styles to this file, and also import other style files */
 
 /* GRID **************************************************************************/
@@ -41,6 +41,23 @@ div, *{
     bottom: 20px;
     top: 54px;
   }
+
+  /* Trip **************************************************************************/
+
+  .content-trip{
+    position: absolute;
+    left: 33px;
+    right: 33px;
+    bottom: 33px;
+    top: 54px;
+    
+  }
+    .trip-header{
+      background: #FFF;
+      margin: 0;
+      padding: 0px 0;
+      height: 83px;
+    }
   
   .container-grid .ui-datatable-wrapper .ui-datatable-header,
   .grid-associate .ui-datatable-wrapper .ui-datatable-header{

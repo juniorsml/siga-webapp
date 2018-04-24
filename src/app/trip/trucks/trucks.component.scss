@@ -1,27 +1,22 @@
 .cnt-trip-vehicles{
-	position: absolute;
-    left: 22px;
-    right: 22px;
-    bottom: 22px;
-    top: 79px;
+
 	.vehicles-sidebar,.vehicle-detail{
 		height: 100%; 
-		border:1px solid #ececec;
 		padding: 4px 10px 0 10px;
 	}
 	.trip-vehicles-header{
-		color: #38425b;
-	    padding: 0 0 6px 0;
-	    font-size: 14px;
-	    display: flex;
-	    justify-content: space-between;
-	    align-items: center;
-	    height: 7%;
+	  color: #38425b;
+    padding: 0 0 6px 0;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 7%;
 	  
 	}
     .vehicles-sidebar{
-		position: absolute;
-	    width:365px;
+		 position: absolute;
+	    width:377px;
 	   
 	    .trip-vehicles-ac{
  			height: 11%;

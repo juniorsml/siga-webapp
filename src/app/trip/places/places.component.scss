@@ -1,13 +1,13 @@
 .cnt-trip-places {
-  position: absolute;
-  left: 22px;
-  right: 22px;
-  bottom: 22px;
-  top: 79px;
+  // position: absolute;
+  // left: 22px;
+  // right: 22px;
+  // bottom: 22px;
+  // top: 79px;
   .places-sidebar,
   .places-detail {
     height: 100%;
-    border: 1px solid #ececec;
+    
     padding: 4px 10px 0 10px;
   }
   .trip-places-header {
@@ -21,7 +21,7 @@
   }
   .places-sidebar {
     position: absolute;
-    width: 365px;
+    width: 378px;
 
     .trip-places-ac {
       height: 11%;
@@ -43,6 +43,7 @@
     position: absolute;
     left: 389px;
     right: 0;
+    padding: 0;
     .cnt-details {
       padding: 12px;
     }

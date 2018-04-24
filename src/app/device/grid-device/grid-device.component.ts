@@ -15,9 +15,17 @@ export class GridDeviceComponent implements OnInit {
   public filterDistance: any;
   public selectedDevice: any;
   public onDeviceSelected: any;
+ 
+
+   @Input()
+  public hasHeight = false;
 
   @Input()
   public showFilterBar = true;
+
+
+
+
 
   @Input()
   public devices = new Array<any>();
