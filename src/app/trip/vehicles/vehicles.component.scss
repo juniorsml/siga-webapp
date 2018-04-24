@@ -1,12 +1,7 @@
 .cnt-trip-vehicles{
-	position: absolute;
-    left: 22px;
-    right: 22px;
-    bottom: 22px;
-    top: 79px;
+	
 	.vehicles-sidebar,.vehicle-detail{
 		height: 100%; 
-		border:1px solid #ececec;
 		padding: 4px 10px 0 10px;
 	}
 	.trip-vehicles-header{
@@ -21,7 +16,7 @@
 	}
     .vehicles-sidebar{
 		position: absolute;
-	    width:365px;
+	    width:377px;
 	   
 	    .trip-vehicles-ac{
  			height: 11%;
