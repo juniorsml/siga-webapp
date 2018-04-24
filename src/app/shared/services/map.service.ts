@@ -1,28 +1,21 @@
 import { Injectable } from '@angular/core';
 
 import { Feature, GeometryObject } from 'geojson';
-
 import LatLngBounds = L.LatLngBounds;
 import LatLng = L.LatLng;
-import {} from 'leaflet-marker-cluster';
 import Marker = L.Marker;
 import Polyline = L.Polyline;
 
 import { Map } from '../models/Map';
-
-/**
- * Created by davidherod on 25/5/17.
- */
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class MapService extends Map {
+
   private markers: Array<Marker> = [];
   private polyLines: Array<Polyline> = [];
   private clusters: Array<any> = [];
   private map: L.Map;
-  private container: HTMLElement;
-  private mapElement: HTMLElement;
-
 
   public clearAll(): void {
     this.clearMarkers();
@@ -34,13 +27,23 @@ export class MapService extends Map {
     // this.markers.forEach(marker => marker.remove());
   }
 
-  public addCluster(markers: Array<Feature<GeometryObject>>): void {
-    const cluster = new L['MarkerClusterGroup']();
+  public addCluster(points: Array<Feature<GeometryObject>>): void {
+    const markers = L['markerClusterGroup']();
+    points.map(p => {
+      const latLng = p.properties.marker.getLatLng();
+      var marker = L.marker(new L.LatLng(latLng.lat, latLng.lng), {title: 'Title'});
+      marker.bindPopup('Title');
+      markers.addLayer(marker);
+    })
+    this.map.addLayer(markers);
 
-    markers.map(m => cluster.addLayers(m.properties['marker']));
 
-    this.map.addLayer(cluster);
-    this.clusters.push(cluster);
+    // const cluster = new L['MarkerClusterGroup']();
+
+    // markers.map(m => cluster.addLayers(m.properties['marker']));
+
+    // this.map.addLayer(cluster);
+    // this.clusters.push(cluster);
   }
 
   public removeClusters() {
@@ -55,21 +58,26 @@ export class MapService extends Map {
   }
 
   public createMapBoxMapInstance(mapElement) {
-    this.mapElement = mapElement;
-
     // L.mapbox.accessToken =
     //   'pk.eyJ1IjoiY29uZHVzaXQiLCJhIjoiY2oyeG1wcjJuMDExNTJ4cThlemU3NWlsNCJ9.d1o1-L4u4_-aY_uvAn5krQ';
-    this.map = L
-      .map(this.mapElement, {
-        zoomControl: false,
-        worldCopyJump: true
-      })
-      .setView([-14.9034, -43.1917], 5)
-      .addLayer(
-        L.tileLayer(
-          'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY29uZHVzaXQiLCJhIjoiY2oyeG1wcjJuMDExNTJ4cThlemU3NWlsNCJ9.d1o1-L4u4_-aY_uvAn5krQ'
-        )
-      );
+    this.map = L.map(mapElement, {maxZoom: 20}).setView([-14.9034, -43.1917], 5);
+
+    L['mapboxGL']({
+      accessToken: environment.mapbox.accessToken, 
+      style: 'mapbox://styles/mapbox/outdoors-v10?optimize=true'
+    }).addTo(this.map);
+
+    // this.map = L
+    //   .map(this.mapElement, {
+    //     zoomControl: false,
+    //     worldCopyJump: true
+    //   })
+    //   .setView([-14.9034, -43.1917], 5)
+    //   .addLayer(
+    //     L.tileLayer(
+    //       'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY29uZHVzaXQiLCJhIjoiY2oyeG1wcjJuMDExNTJ4cThlemU3NWlsNCJ9.d1o1-L4u4_-aY_uvAn5krQ'
+    //     )
+    //   );
   }
 
   public addSource(): void {}
@@ -103,15 +111,6 @@ export class MapService extends Map {
 
   setCenter(latitude: number, longitude: number): void {
     this.map.panTo(new LatLng(latitude, longitude));
-  }
-
-  append(container: HTMLElement) {
-    this.container = container;
-    this.container.appendChild(this.mapElement);
-  }
-
-  getContainer(): HTMLElement {
-    return this.mapElement;
   }
 
   drawPolyline(points: Array<Feature<any>>): void {
@@ -167,12 +166,19 @@ export class MapService extends Map {
   }
 
   public addMarker(feature: Feature<any>): any {
-    let marker: Marker = this.createMarker(feature);
+    const marker: Marker = this.createMarker(feature);
     marker.addTo(this.map);
     this.markers.push(marker);
 
     return marker;
     //this.markers.push(this.createMarker(feature).addTo(this.map));
+  }
+
+  public setSatellite(): void {
+    L['mapboxGL']({
+      accessToken: environment.mapbox.accessToken, 
+      style: 'mapbox://styles/mapbox/satellite-streets-v10?optimize=true'
+    }).addTo(this.map);
   }
 
   addMarkerPopUp(marker: Marker, text: string) {
