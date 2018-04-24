@@ -74,27 +74,6 @@ export class MapMotoristComponent implements OnInit {
     this.map.addCluster(this.mapMarkers);
   }
 
-  plotHistoryLocations(): void {
-    this.map.clearAll();
-    const features: Array<Feature<GeometryObject>> = [];
-
-    this.mapLocationHistory.map(location => {
-      const feature: Feature<GeometryObject> = <Feature<any>>{
-        type: 'Feature',
-        properties: {},
-        geometry: {
-          type: 'Point',
-          coordinates: [location.longitude, location.latitude]
-        }
-      };
-      features.push(feature);
-    });
-    if (features.length > 0) {
-      this.map.drawPolyline(features);
-      this.map.addMarker(this.createMotoristMarker(this.selectedMotorist));
-    }
-  }
-
   createMotoristMarker(motorist): Feature<GeometryObject> {
     const markerBody: HTMLElement = document.createElement('div');
     const markerElement: HTMLElement = document.createElement('div');
@@ -136,15 +115,6 @@ export class MapMotoristComponent implements OnInit {
     this.injectMap();
   }
 
-  onMapTabChanged(tab: TabComponent) {
-    this.mapSelectedTabIndex = tab.index;
-    if (tab.index === 0) {
-      this.plotMotoristLocations();
-    } else if (tab.index === 1) {
-      this.plotHistoryLocations();
-    }
-  }
-
   mapTableCellClick(event: TableClickEvent) {
     this.selectedMotorist = event.data;
 
@@ -165,6 +135,10 @@ export class MapMotoristComponent implements OnInit {
       );
       this.map.moveTo(motorist.location.latitude, motorist.location.longitude);
     }
+  }
+
+  changeSatellite() {
+    this.map.setSatellite();
   }
 
   mapTableCellRightClick(event: TableClickEvent) {
