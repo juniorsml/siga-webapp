@@ -1,6 +1,6 @@
 <sga-sidebar-configuration *ngIf="showFilterBar"></sga-sidebar-configuration>
    
-<div class="content-wrapper box-shadow content-grid-device" [ngStyle]="{'top': showFilterBar ? '54px' : '0'}">
+<div [ngClass]="{'has-height' : hasHeight}"  class="content-wrapper box-shadow content-grid-device" [ngStyle]="{'top': showFilterBar ? '54px' : '0'}">
  
   <div *ngIf="showFilterBar" [ngClass]="styleClass" class="columns level-left">
     <div class="column is-3">     
