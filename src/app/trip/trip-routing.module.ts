@@ -8,6 +8,7 @@ import { MotoristComponent } from './motorist/motorist.component';
 import { VehiclesComponent } from './vehicles/vehicles.component';
 import { TrucksComponent } from './trucks/trucks.component';
 import { DeviceComponent } from './device/device.component';
+import { StartedTripsComponent } from './started/started.component';
 import { devices } from '../shared/mocks/device';
 import { vehicles } from '../shared/mocks/vehicles';
 
@@ -17,6 +18,7 @@ const routes: Routes = [
     path: '',
     component: TripComponent,
     children: [
+      { path: 'started', component: StartedTripsComponent },
       { path: 'detail', component: DetailComponent },
       { path: 'places', component: PlacesComponent },
       { path: 'motorist', component: MotoristComponent },
