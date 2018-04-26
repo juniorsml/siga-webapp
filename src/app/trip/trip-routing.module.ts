@@ -34,7 +34,7 @@ const routes: Routes = [
     path: 'started', 
     component: StartedTripsComponent,
     data: { trips }
-  }
+  },
   { 
     path: 'scheduled', 
     component: ScheduledTripsComponent,

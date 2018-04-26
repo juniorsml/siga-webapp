@@ -90,6 +90,12 @@
                 <span class="sidebar-list-text">Iniciadas</span>
               </a>
             </li>
+            <li [class.selected]="router.url == '/trip/scheduled'" class="sidebar-menu-item">
+              <a routerLink="/trip/scheduled">
+                <span [class.selected]="router.url == '/trip/scheduled'" class="sidebar-list-icon fal fa-calendar-alt"></span>
+                <span class="sidebar-list-text">Programadas</span>
+              </a>
+            </li>
             
            <!--  <li class="sidebar-menu-item" [class.selected]="router.url == '/vehicle/map'">
               <a  routerLink="/vehicle/map" >
