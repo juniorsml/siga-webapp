@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { RegisterTripComponent } from './register-trip/register-trip.component';
+import { RegisterTripComponent } from './register/register-trip.component';
 
 
-import { DetailComponent } from './register-trip/detail/detail.component';
-import { PlacesComponent } from './register-trip/places/places.component';
-import { MotoristComponent } from './register-trip/motorist/motorist.component';
-import { VehiclesComponent } from './register-trip/vehicles/vehicles.component';
-import { TrucksComponent } from './register-trip/trucks/trucks.component';
-import { DeviceComponent } from './register-trip/device/device.component';
-import { StartedTripsComponent } from './started-trips/started.component';
+import { DetailComponent } from './register/detail/detail.component';
+import { PlacesComponent } from './register/places/places.component';
+import { MotoristComponent } from './register/motorist/motorist.component';
+import { VehiclesComponent } from './register/vehicles/vehicles.component';
+import { TrucksComponent } from './register/trucks/trucks.component';
+import { DeviceComponent } from './register/device/device.component';
+import { StartedTripsComponent } from './started/started.component';
 import { devices } from '../shared/mocks/device';
 import { vehicles } from '../shared/mocks/vehicles';
 import { trips } from '../shared/mocks/trips';
@@ -18,7 +18,7 @@ import { trips } from '../shared/mocks/trips';
 
 const routes: Routes = [
   { 
-    path: 'register-trip', 
+    path: 'register', 
     component: RegisterTripComponent,
     children: [  
       { path: 'detail', component: DetailComponent },
@@ -30,7 +30,7 @@ const routes: Routes = [
     ]
   },
   { 
-    path: 'started-trips', 
+    path: 'started', 
     component: StartedTripsComponent,
     data: { trips }
   }

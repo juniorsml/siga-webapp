@@ -11,14 +11,14 @@ import { SharedModule } from '../shared/modules/shared.module';
 import { TripRoutingModule } from './trip-routing.module';
 
 
-import { RegisterTripComponent } from './register-trip/register-trip.component';
-import { DetailComponent } from './register-trip/detail/detail.component';
-import { DeviceComponent } from './register-trip/device/device.component';
-import { PlacesComponent } from './register-trip/places/places.component';
-import { MotoristComponent } from './register-trip/motorist/motorist.component';
-import { VehiclesComponent } from './register-trip/vehicles/vehicles.component';
-import { TrucksComponent } from './register-trip/trucks/trucks.component';
-import { StartedTripsComponent } from './started-trips/started.component';
+import { RegisterTripComponent } from './register/register-trip.component';
+import { DetailComponent } from './register/detail/detail.component';
+import { DeviceComponent } from './register/device/device.component';
+import { PlacesComponent } from './register/places/places.component';
+import { MotoristComponent } from './register/motorist/motorist.component';
+import { VehiclesComponent } from './register/vehicles/vehicles.component';
+import { TrucksComponent } from './register/trucks/trucks.component';
+import { StartedTripsComponent } from './started/started.component';
 
 
 @NgModule({
