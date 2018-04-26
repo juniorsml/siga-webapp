@@ -3,17 +3,16 @@ import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
-  selector: 'sga-started',
-  templateUrl: './started.component.html',
+  selector: 'sga-scheduled',
+  templateUrl: './scheduled.component.html',
   styles: []
 })
-export class StartedTripsComponent implements OnInit {
+export class ScheduledTripsComponent implements OnInit {
 	@Input() trips = new Array();
   @Input() dataLoading: boolean = true;
 
   text: any;
   distance: any;
-  motorist: any;
   placeText: any;
   styleClass: any;
   filterLocation: any;

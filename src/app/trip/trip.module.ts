@@ -19,6 +19,8 @@ import { MotoristComponent } from './register/motorist/motorist.component';
 import { VehiclesComponent } from './register/vehicles/vehicles.component';
 import { TrucksComponent } from './register/trucks/trucks.component';
 import { StartedTripsComponent } from './started/started.component';
+import { ScheduledTripsComponent } from './scheduled/scheduled.component';
+
 
 
 @NgModule({
@@ -42,7 +44,8 @@ import { StartedTripsComponent } from './started/started.component';
       VehiclesComponent, 
       DeviceComponent,
       TrucksComponent,
-      StartedTripsComponent
+      StartedTripsComponent,
+      ScheduledTripsComponent
   ]
 })
 export class TripModule { }
