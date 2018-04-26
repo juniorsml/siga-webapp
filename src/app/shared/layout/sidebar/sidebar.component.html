@@ -96,6 +96,12 @@
                 <span class="sidebar-list-text">Programadas</span>
               </a>
             </li>
+             <li [class.selected]="router.url == '/trip/historic'" class="sidebar-menu-item">
+              <a routerLink="/trip/historic">
+                <span [class.selected]="router.url == '/trip/historic'" class="sidebar-list-icon fal fal fa-clock"></span>
+                <span class="sidebar-list-text">Histórico</span>
+              </a>
+            </li>
             
            <!--  <li class="sidebar-menu-item" [class.selected]="router.url == '/vehicle/map'">
               <a  routerLink="/vehicle/map" >
