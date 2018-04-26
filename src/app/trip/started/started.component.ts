@@ -1,6 +1,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+
 @Component({
   selector: 'sga-started',
   templateUrl: './started.component.html',
@@ -17,11 +18,7 @@ export class StartedTripsComponent implements OnInit {
   styleClass: any;
   filterLocation: any;
   filterDistance: any;
-  selectedMotorist: any;
   contextMenuSelected: any;
-
-  showDialog = false;
-  showMotoristDialog: boolean;
 
   constructor(private router: ActivatedRoute) { }
 
@@ -29,24 +26,6 @@ export class StartedTripsComponent implements OnInit {
     this.router.data.subscribe(data => this.trips = data.trips);
   }
 
-  public showMotoristModal() {
-    this.showMotoristDialog = true;
-  }
-
-  public motoristDialogClose() {
-    this.showMotoristDialog = false;
-  }
-
-  public onCellClick(event) {
-    this.selectedMotorist = event.data;
-    this.onMotoristSelected.emit(this.selectedMotorist);
-    if (event.cellIndex === 0) this.showMotoristDialog = true;
-  }
-
-  onCellRightClick(event: TableClickEvent) {
-    this.selectedMotorist = event.data;
-    this.onMotoristSelected.emit(this.selectedMotorist);
-  }
 
   public onPlacesFiltered(event) {
     this.filterDistance = event.distance;

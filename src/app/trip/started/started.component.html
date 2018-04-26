@@ -1,6 +1,6 @@
 <sga-sidebar-configuration></sga-sidebar-configuration>
    
-<div class="content-wrapper box-shadow content-grid-motorist">
+<div class="content-wrapper box-shadow content-grid-motorist grid-spacing-search">
  
   <div [ngClass]="styleClass" class="columns level-left">
     <div class="column is-3">     
@@ -23,28 +23,24 @@
       [data]="trips | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
       [dataLength]="trips.length"
       [searchText]="text" 
-      [searchColumns]="['documentId', 'firstName', 'lastName', 'location.driverStatus', 'location.speed', 'location.altitude', 'location.mode']"
-      [emptySearchText]="'nenhuma motorista foi encontrado'" 
+      [searchColumns]="['id','motorists.documentId','currentState.Status','motorists.documentId','motorists.documentId']"
+      [emptySearchText]="'nenhuma viagem foi encontrado'" 
       [bodyBottom]="'42px'" 
       [bodyTop]="'26px'"
       (onCellClick)="onCellClick($event)"
-
       (onCellRightClick)="onCellRightClick($event)">
           <table-empty>
-        <ng-template>
-            <!-- <div *ngIf="dataLoading"
-                 style="position: absolute; top: -40px; bottom: 0px; left: 0px; right: 0px">
-                <spinner></spinner>
-            </div> -->
-            <div *ngIf="!dataLoading"
-                 style="position: absolute; top: 50%; left: 0px; right: 0px; margin-top: -20px;">
-                <i class="glyphicons glyphicons-road"
-                   style="color: #dadbde; width: 100%; text-align: center; font-size: 30px; margin-bottom: 12px;"></i>
-                <span
-                    style="width: 100%; text-align: center; display: block; color: #a5abb3; font-size: 12px;">nenhuma viagem encontrada</span>
-            </div>
-        </ng-template>
-    </table-empty>  
+		        <ng-template>
+		            <!-- <div *ngIf="dataLoading"
+		                 style="position: absolute; top: -40px; bottom: 0px; left: 0px; right: 0px">
+		                <spinner></spinner>
+		            </div> -->
+		            <div *ngIf="!dataLoading" style="position: absolute; top: 50%; left: 0px; right: 0px; margin-top: -20px;">
+		            <i class="glyphicons glyphicons-group" style="color: #e9eaed; width: 100%; text-align: center; font-size: 20px; margin-bottom: 12px;"></i>
+		            <span style="width: 100%; text-align: center; display: block; color: #a5abb3; font-size: 12px;">Nenhuma Viagem foi encontrado</span>
+		          </div>
+		        </ng-template>
+    	</table-empty>  
       <column [key]="'clientId'" [header]="'Id'" [minWidth]="'82'" [isSortable]="true">
         <ng-template let-item="item">
           {{item}}
@@ -83,7 +79,7 @@
       </column>
       <column [key]="'vehicles'" [header]="'Veículo'" [minWidth]="'40'">
           <ng-template let-item="item">
-              {{item != null ? item[0]?.numberPlate: '-'}}
+              {{item != null ? item?.numberPlate: '-'}}
           </ng-template>
       </column>
       <column [key]="''" [header]="'Rota'" [minWidth]="'40'">
@@ -132,7 +128,7 @@
           </menu-item>
       </context-menu>
 
-  </data-table>
+  	</data-table>
   </div>
 
 </div>
