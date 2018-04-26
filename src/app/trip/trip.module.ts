@@ -17,6 +17,7 @@ import { PlacesComponent } from './places/places.component';
 import { MotoristComponent } from './motorist/motorist.component';
 import { VehiclesComponent } from './vehicles/vehicles.component';
 import { TrucksComponent } from './trucks/trucks.component';
+import { StartedTripsComponent } from './started/started.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { TrucksComponent } from './trucks/trucks.component';
       MotoristComponent, 
       VehiclesComponent, 
       DeviceComponent,
-      TrucksComponent
+      TrucksComponent,
+      StartedTripsComponent
   ]
 })
 export class TripModule { }
