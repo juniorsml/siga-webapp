@@ -73,11 +73,38 @@
         </ul>
       </accordion>
     </li>
-    <li class="sidebar-menu-item">
-      <a routerLink="/trip/detail">
-        <span [class.selected]="router.url == '/trip'" class="sidebar-list-icon fal fa-road"></span>
-        <span class="sidebar-list-text">Viagens</span>
-      </a>
+     <li class="sidebar-menu-item-accordion">      
+        <accordion>
+          <accordion-header>
+            <ng-template>
+              <div class="sidebar-menu-accordion">
+                <span [class.selected]="router.url == '/trip'" class="sidebar-list-icon fal fal fa-road"></span>
+                <span class="sidebar-list-text">Viagens</span>
+              </div>
+            </ng-template>
+          </accordion-header>
+          <ul class="sidebar-submenu">
+            <li [class.selected]="router.url == '/trip/started'" class="sidebar-menu-item">
+              <a routerLink="/trip/started">
+                <span [class.selected]="router.url == '/trip/started'" class="sidebar-list-icon fal fa-th-list"></span>
+                <span class="sidebar-list-text">Iniciadas</span>
+              </a>
+            </li>
+            
+           <!--  <li class="sidebar-menu-item" [class.selected]="router.url == '/vehicle/map'">
+              <a  routerLink="/vehicle/map" >
+                <span class="sidebar-list-icon fal fa-map"></span>
+                <span class="sidebar-list-text">Mapa</span>
+              </a>
+            </li> -->
+            <li class="sidebar-menu-item"  [class.selected]="router.url == '/trip/account'">
+              <a routerLink="/trip/account">
+                <span class="sidebar-list-icon fal fa-user-plus"></span>
+                <span class="sidebar-list-text">Configuração</span>
+              </a>
+            </li>
+          </ul>
+        </accordion>
     </li>
     <li class="sidebar-menu-item-accordion">      
         <accordion>
