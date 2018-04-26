@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MotoristAssociateDialogComponent } from '../../motorist/associate-dialog/motorist-associate-dialog.component';
+import { MotoristAssociateDialogComponent } from '../../../motorist/associate-dialog/motorist-associate-dialog.component';
 
 @Component({
   selector: 'sga-motorist',

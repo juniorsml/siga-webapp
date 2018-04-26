@@ -10,14 +10,15 @@ import { TruckModule } from '../truck/truck.module';
 import { SharedModule } from '../shared/modules/shared.module';
 import { TripRoutingModule } from './trip-routing.module';
 
-import { TripComponent } from './trip.component';
-import { DetailComponent } from './detail/detail.component';
-import { DeviceComponent } from './device/device.component';
-import { PlacesComponent } from './places/places.component';
-import { MotoristComponent } from './motorist/motorist.component';
-import { VehiclesComponent } from './vehicles/vehicles.component';
-import { TrucksComponent } from './trucks/trucks.component';
-import { StartedTripsComponent } from './started/started.component';
+
+import { RegisterTripComponent } from './register-trip/register-trip.component';
+import { DetailComponent } from './register-trip/detail/detail.component';
+import { DeviceComponent } from './register-trip/device/device.component';
+import { PlacesComponent } from './register-trip/places/places.component';
+import { MotoristComponent } from './register-trip/motorist/motorist.component';
+import { VehiclesComponent } from './register-trip/vehicles/vehicles.component';
+import { TrucksComponent } from './register-trip/trucks/trucks.component';
+import { StartedTripsComponent } from './started-trips/started.component';
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import { StartedTripsComponent } from './started/started.component';
     TripRoutingModule
   ],
   declarations: [
-      TripComponent, 
+      RegisterTripComponent, 
       DetailComponent, 
       PlacesComponent, 
       MotoristComponent, 

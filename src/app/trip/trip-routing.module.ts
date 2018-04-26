@@ -1,24 +1,25 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TripComponent } from './trip.component';
-import { DetailComponent } from './detail/detail.component';
-import { PlacesComponent } from './places/places.component';
-import { MotoristComponent } from './motorist/motorist.component';
-import { VehiclesComponent } from './vehicles/vehicles.component';
-import { TrucksComponent } from './trucks/trucks.component';
-import { DeviceComponent } from './device/device.component';
-import { StartedTripsComponent } from './started/started.component';
+import { RegisterTripComponent } from './register-trip/register-trip.component';
+
+
+import { DetailComponent } from './register-trip/detail/detail.component';
+import { PlacesComponent } from './register-trip/places/places.component';
+import { MotoristComponent } from './register-trip/motorist/motorist.component';
+import { VehiclesComponent } from './register-trip/vehicles/vehicles.component';
+import { TrucksComponent } from './register-trip/trucks/trucks.component';
+import { DeviceComponent } from './register-trip/device/device.component';
+import { StartedTripsComponent } from './started-trips/started.component';
 import { devices } from '../shared/mocks/device';
 import { vehicles } from '../shared/mocks/vehicles';
 
 
 const routes: Routes = [
-  {
-    path: '',
-    component: TripComponent,
-    children: [
-      { path: 'started', component: StartedTripsComponent },
+  { 
+    path: 'register-trip', 
+    component: RegisterTripComponent,
+    children: [  
       { path: 'detail', component: DetailComponent },
       { path: 'places', component: PlacesComponent },
       { path: 'motorist', component: MotoristComponent },
@@ -26,7 +27,12 @@ const routes: Routes = [
       { path: 'trucks', component: TrucksComponent, data: { vehicles }  },
       { path: 'device', component: DeviceComponent, data: { devices } }
     ]
+  },
+  { 
+    path: 'started-trips', 
+    component: StartedTripsComponent 
   }
+ 
 ];
 
 @NgModule({
