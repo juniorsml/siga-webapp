@@ -9,6 +9,8 @@ import { DropdownBodyComponent } from '../components/dropdown/dropdown-body/drop
 import { DropdownHeaderComponent } from '../components/dropdown/dropdown-header/dropdown-header.component';
 import { AccordionComponent } from '../layout/sidebar/accordion/accordion.component';
 import { AccordionHeaderComponent } from '../layout/sidebar/accordion/accordion.component';
+import { SpinnerComponent } from '../components/spinner/spinner.component';
+
 
 import { AuthService } from '../services/auth.service';
 import { GridComponent } from '../components/grid/grid.component';
@@ -87,7 +89,9 @@ import { SidebarConfigurationComponent } from '../components/sidebar-configurati
 
     SidebarConfigurationComponent,
 
-    PagerComponent
+    PagerComponent,
+
+    SpinnerComponent
   ],
   imports: [
     FormsModule,
@@ -145,7 +149,9 @@ import { SidebarConfigurationComponent } from '../components/sidebar-configurati
     TextMaskModule,
 
     SidebarConfigurationComponent,
-    PagerComponent
+    PagerComponent,
+
+    SpinnerComponent
   ]
 })
 export class SharedModule {}
