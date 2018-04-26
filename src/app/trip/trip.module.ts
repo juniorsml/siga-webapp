@@ -20,6 +20,7 @@ import { VehiclesComponent } from './register/vehicles/vehicles.component';
 import { TrucksComponent } from './register/trucks/trucks.component';
 import { StartedTripsComponent } from './started/started.component';
 import { ScheduledTripsComponent } from './scheduled/scheduled.component';
+import { HistoricTripsComponent } from './historic/historic.component';
 
 
 
@@ -45,7 +46,8 @@ import { ScheduledTripsComponent } from './scheduled/scheduled.component';
       DeviceComponent,
       TrucksComponent,
       StartedTripsComponent,
-      ScheduledTripsComponent
+      ScheduledTripsComponent,
+      HistoricTripsComponent
   ]
 })
 export class TripModule { }
