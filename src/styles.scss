@@ -16,7 +16,16 @@ div, *{
 
 $bg-titles: #4d5675;
 /* You can add global styles to this file, and also import other style files */
-
+.breadcrumb li a {
+    font-size: 14px !important;
+        color: #c10000  !important;
+}
+.breadcrumb li.is-active a{
+   color: #dcd7d7  !important;
+}
+.breadcrumb li+li::before {
+    color: #dcd7d7  !important;
+  }
 /* GRID **************************************************************************/
   .main-content{
     background-color: #f5f7fa;
