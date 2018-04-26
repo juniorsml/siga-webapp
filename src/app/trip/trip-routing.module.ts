@@ -13,6 +13,7 @@ import { DeviceComponent } from './register-trip/device/device.component';
 import { StartedTripsComponent } from './started-trips/started.component';
 import { devices } from '../shared/mocks/device';
 import { vehicles } from '../shared/mocks/vehicles';
+import { trips } from '../shared/mocks/trips';
 
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
   },
   { 
     path: 'started-trips', 
-    component: StartedTripsComponent 
+    component: StartedTripsComponent,
+    data: { trips }
   }
  
 ];
