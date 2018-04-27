@@ -14,7 +14,7 @@ export class RegisterTripComponent {
     switch (event.data.header) {
       
       case 'Geral': 
-        this.router.navigateByUrl('trip/register-trip/detail');
+        this.router.navigateByUrl('trip/register/detail');
         break;
         
       case 'Itinerário':

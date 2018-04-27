@@ -16,15 +16,75 @@ div, *{
 
 $bg-titles: #4d5675;
 /* You can add global styles to this file, and also import other style files */
-.breadcrumb li a {
-    font-size: 14px !important;
-        color: #c10000  !important;
+
+// MAP SEARCH
+.cnt-map{
+    position: relative;
+    height: 100%;
+    top:-10px;
 }
-.breadcrumb li.is-active a{
-   color: #dcd7d7  !important;
+.material-content-container {
+  padding: 0;
+  margin: 0;
+
+  div {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+  }
 }
+
+.map-center-bar {
+  position: absolute;
+  width: 90%;
+  max-width: 750px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  padding-left: 9px;
+  top: 83px;
+  background: #fff;
+  z-index:1188;
+}
+
+.menu-map-center {
+  align-items: center;
+  display: flex;
+  a {
+    font-size: 19px;
+    color: #cecece;
+  }
+}
+
+.breadcrumb{
+  position:relative;
+  z-index:12;
+  flex-wrap:wrap;
+  margin-top: 8px;
+  margin-left: 21px;
+  ul{
+    width:100% !important;
+
+    li a {
+        font-size: 12px !important;
+        color: #c10000 !important;
+        text-transform: uppercase;
+    }
+    li.is-active a{
+       color: #929292  !important;
+    }
+  
+ }
+}
+
 .breadcrumb li+li::before {
     color: #dcd7d7  !important;
+  }
+  .breadcrumb h5{
+    color: #929292;
+    line-height: 13px;
+    text-transform: uppercase;
   }
 /* GRID **************************************************************************/
   .main-content{
@@ -48,7 +108,7 @@ $bg-titles: #4d5675;
     left: 20px;
     right: 20px;
     bottom: 20px;
-    top: 54px;
+    top: 66px;
   }
 
   /* Trip **************************************************************************/
@@ -58,7 +118,7 @@ $bg-titles: #4d5675;
     left: 33px;
     right: 33px;
     bottom: 33px;
-    top: 54px;
+    top: 71px;
     
   }
     .trip-header{
@@ -122,6 +182,7 @@ $bg-titles: #4d5675;
 
 .mapboxgl-map {
   position: absolute;
+  z-index:10;
   width: 100%;
   height: 100%;
 }

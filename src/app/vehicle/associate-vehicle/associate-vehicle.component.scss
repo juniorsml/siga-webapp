@@ -2,7 +2,7 @@
     position: relative;
     height: 100%;
     width: 400px;
-    border: 1px solid #ececec;
+   
     background-color: #fff;
 }
   .motorist-admin-summary-wrapper{     
@@ -21,7 +21,6 @@
       .motorist-admin-summary {      
         position: relative;
         border-radius: 2px;
-        border: 1px solid rgba(92, 184, 92, 0.25);
         background-color: rgba(92, 184, 92, 0.1);
         color: #333;
       }
@@ -80,11 +79,10 @@
 
 .motorist-admin-right-container {
   position: absolute;
-  top: 0px;
-  left: 416px;
-  right: 0px;
-  bottom: 0px;
-  border: 1px solid #ececec;
+      top: 11px;
+    left: 426px;
+    right: 11px;
+    bottom: 11px;
   background-color: #fff;
 }
 .motorist-admin-table {
