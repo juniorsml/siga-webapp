@@ -33,9 +33,7 @@
       [searchColumns]="['id','motorists.documentId','currentState.Status','motorists.documentId','motorists.documentId']"
       [emptySearchText]="'nenhuma viagem foi encontrado'" 
       [bodyBottom]="'42px'" 
-      [bodyTop]="'26px'"
-      (onCellClick)="onCellClick($event)"
-      (onCellRightClick)="onCellRightClick($event)">
+      [bodyTop]="'26px'">
           <table-empty>
 		        <ng-template>
 		            <!-- <div *ngIf="dataLoading"
@@ -103,7 +101,7 @@
 
       <context-menu
           [mode]="'click'"
-          (onItemSelected)="onMenuItemSelected($event)">
+          (onItemSelected)="contextMenuSelected($event)">
           <menu-item>
               <ng-template>
                   <span class="table-menu-icon fal fa-list"
