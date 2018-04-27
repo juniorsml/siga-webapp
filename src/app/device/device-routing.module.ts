@@ -26,7 +26,7 @@ const routes: Routes = [
     data: { devices }
   },
   {
-    path: 'register',
+    path: 'register-device',
     component: RegisterDeviceComponent
   }
 ];

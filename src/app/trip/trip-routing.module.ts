@@ -1,22 +1,29 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TripComponent } from './trip.component';
-import { DetailComponent } from './detail/detail.component';
-import { PlacesComponent } from './places/places.component';
-import { MotoristComponent } from './motorist/motorist.component';
-import { VehiclesComponent } from './vehicles/vehicles.component';
-import { TrucksComponent } from './trucks/trucks.component';
-import { DeviceComponent } from './device/device.component';
+import { RegisterTripComponent } from './register/register-trip.component';
+
+import { StartedTripsComponent } from './started/started.component';
+import { ScheduledTripsComponent } from './scheduled/scheduled.component';
+import { HistoricTripsComponent } from './historic/historic.component';
+
+import { DetailComponent } from './register/detail/detail.component';
+import { PlacesComponent } from './register/places/places.component';
+import { MotoristComponent } from './register/motorist/motorist.component';
+import { VehiclesComponent } from './register/vehicles/vehicles.component';
+import { TrucksComponent } from './register/trucks/trucks.component';
+import { DeviceComponent } from './register/device/device.component';
+
 import { devices } from '../shared/mocks/device';
 import { vehicles } from '../shared/mocks/vehicles';
+import { trips } from '../shared/mocks/trips';
 
 
 const routes: Routes = [
-  {
-    path: '',
-    component: TripComponent,
-    children: [
+  { 
+    path: 'register', 
+    component: RegisterTripComponent,
+    children: [  
       { path: 'detail', component: DetailComponent },
       { path: 'places', component: PlacesComponent },
       { path: 'motorist', component: MotoristComponent },
@@ -24,7 +31,23 @@ const routes: Routes = [
       { path: 'trucks', component: TrucksComponent, data: { vehicles }  },
       { path: 'device', component: DeviceComponent, data: { devices } }
     ]
+  },
+  { 
+    path: 'started', 
+    component: StartedTripsComponent,
+    data: { trips }
+  },
+  { 
+    path: 'scheduled', 
+    component: ScheduledTripsComponent,
+    data: { trips }
+  },
+  { 
+    path: 'historic', 
+    component: HistoricTripsComponent,
+    data: { trips }
   }
+ 
 ];
 
 @NgModule({

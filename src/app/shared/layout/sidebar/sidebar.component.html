@@ -73,11 +73,50 @@
         </ul>
       </accordion>
     </li>
-    <li class="sidebar-menu-item">
-      <a routerLink="/trip/detail">
-        <span [class.selected]="router.url == '/trip'" class="sidebar-list-icon fal fa-road"></span>
-        <span class="sidebar-list-text">Viagens</span>
-      </a>
+     <li class="sidebar-menu-item-accordion">      
+        <accordion>
+          <accordion-header>
+            <ng-template>
+              <div class="sidebar-menu-accordion">
+                <span [class.selected]="router.url == '/trip'" class="sidebar-list-icon fal fal fa-road"></span>
+                <span class="sidebar-list-text">Viagens</span>
+              </div>
+            </ng-template>
+          </accordion-header>
+          <ul class="sidebar-submenu">
+            <li [class.selected]="router.url == '/trip/started'" class="sidebar-menu-item">
+              <a routerLink="/trip/started">
+                <span [class.selected]="router.url == '/trip/started'" class="sidebar-list-icon fal fa-th-list"></span>
+                <span class="sidebar-list-text">Iniciadas</span>
+              </a>
+            </li>
+            <li [class.selected]="router.url == '/trip/scheduled'" class="sidebar-menu-item">
+              <a routerLink="/trip/scheduled">
+                <span [class.selected]="router.url == '/trip/scheduled'" class="sidebar-list-icon fal fa-calendar-alt"></span>
+                <span class="sidebar-list-text">Programadas</span>
+              </a>
+            </li>
+             <li [class.selected]="router.url == '/trip/historic'" class="sidebar-menu-item">
+              <a routerLink="/trip/historic">
+                <span [class.selected]="router.url == '/trip/historic'" class="sidebar-list-icon fal fal fa-clock"></span>
+                <span class="sidebar-list-text">Histórico</span>
+              </a>
+            </li>
+            
+           <!--  <li class="sidebar-menu-item" [class.selected]="router.url == '/vehicle/map'">
+              <a  routerLink="/vehicle/map" >
+                <span class="sidebar-list-icon fal fa-map"></span>
+                <span class="sidebar-list-text">Mapa</span>
+              </a>
+            </li> -->
+            <li class="sidebar-menu-item"  [class.selected]="router.url == '/trip/register'">
+              <a routerLink="/trip/register">
+                <span class="sidebar-list-icon fal fa-plus"></span>
+                <span class="sidebar-list-text">Cadastrar</span>
+              </a>
+            </li>
+          </ul>
+        </accordion>
     </li>
     <li class="sidebar-menu-item-accordion">      
         <accordion>
