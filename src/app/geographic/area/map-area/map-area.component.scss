@@ -1,3 +1,8 @@
+.cnt-map{
+    position: relative;
+    height: 100%;
+    top:-10px;
+}
 .material-content-container {
   padding: 0;
   margin: 0;
@@ -9,10 +14,7 @@
     width: 100%;
   }
 }
-.area-map input.input{
-   border-radius: 2px !important;
-    font-size: .75rem !important;
-}
+
 .map-center-bar {
   position: absolute;
   width: 90%;
@@ -21,8 +23,9 @@
   left: 0;
   right: 0;
   padding-left: 9px;
-  top: 31px;
+  top: 83px;
   background: #fff;
+  z-index:1188;
 }
 
 .menu-map-center {
