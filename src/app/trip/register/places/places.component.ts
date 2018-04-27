@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Map } from '../../shared/models/Map';
+import { Map } from '../../../shared/models/Map';
 
 @Component({
   selector: 'sga-places',
