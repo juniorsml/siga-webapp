@@ -16,7 +16,7 @@ export class MapService extends Map {
   private markers: Array<Marker> = [];
   private polyLines: Array<Polyline> = [];
   private clusters: Array<any> = [];
-  private map: L.Map;
+  private map: any;
 
   public clearAll(): void {
     this.clearMarkers();
@@ -28,23 +28,12 @@ export class MapService extends Map {
     // this.markers.forEach(marker => marker.remove());
   }
 
-  public addCluster(points: Array<Feature<GeometryObject>>): void {
-    const markers = L['markerClusterGroup']();
-    points.map(p => {
-      const latLng = p.properties.marker.getLatLng();
-      var marker = L.marker(new L.LatLng(latLng.lat, latLng.lng), {title: 'Title'});
-      marker.bindPopup('Title');
-      markers.addLayer(marker);
-    })
-    this.map.addLayer(markers);
+  public addCluster(markers: Array<Feature<GeometryObject>>): void {
+    const cluster = new L['markerClusterGroup']();
+    markers.map(m => cluster.addLayers(m.properties['marker']));
 
-
-    // const cluster = new L['MarkerClusterGroup']();
-
-    // markers.map(m => cluster.addLayers(m.properties['marker']));
-
-    // this.map.addLayer(cluster);
-    // this.clusters.push(cluster);
+    this.map.addLayer(cluster);
+    this.clusters.push(cluster);
   }
 
   public removeClusters() {
@@ -58,16 +47,21 @@ export class MapService extends Map {
     //todo
   }
 
-  public createMapBoxMapInstance(mapElement) {
+  public createMapBoxMapInstance(showControls?: boolean) {
     this.map = L
-      .map(mapElement, {
-        maxZoom: 20,
-        zoomControl: false,
-        worldCopyJump: true
-      })
-      .setView([-14.9034, -43.1917], 5);
+    .map('map', {
+      maxZoom: 20,
+      zoomControl: false,
+      worldCopyJump: true
+    })
+    .setView([-14.9034, -43.1917], 5);
 
-    this.setStyle(MapStyle.Outdoor);
+    if (showControls) {
+      this.addDraw(MapStyle.Street);
+    } else {
+      this.setStyle(MapStyle.Outdoor);
+    }
+
   }
 
   public addSource(): void {}
@@ -139,17 +133,16 @@ export class MapService extends Map {
   }
 
   createMarker(feature: Feature<any>): Marker {
-    var myIcon = L.divIcon({
-      html: feature.properties['icon'].outerHTML,
-      className: null,
-      iconAnchor: [25, 50]
-    });
-    var marker = L.marker(
+    // const myIcon = L.divIcon({
+    //   html: feature.properties['icon'].outerHTML,
+    //   className: null,
+    //   iconAnchor: [25, 50]
+    // });
+    const marker = L.marker(
       new LatLng(
         feature.geometry['coordinates'][1],
         feature.geometry['coordinates'][0]
-      ),
-      { icon: myIcon }
+      )
     );
     this.markers.push(marker);
     return marker;
@@ -169,6 +162,38 @@ export class MapService extends Map {
       accessToken: environment.mapbox.accessToken, 
       style: `mapbox://styles/mapbox/${style}?optimize=true`
     }).addTo(this.map);
+  }
+
+  private addDraw(style: MapStyle): void {
+    mapboxgl.accessToken = environment.mapbox.accessToken;
+    this.map = new mapboxgl.Map({
+      container: 'map',
+      style: `mapbox://styles/mapbox/${style}?optimize=true` 
+    });
+      
+    const draw = new window['MapboxDraw']({
+      displayControlsDefault: false,
+      controls: {
+        polygon: true,
+        trash: true
+      }
+    });
+
+    this.map.addControl(draw);
+
+    const updateArea = () => {
+      const data = draw.getAll();
+      debugger
+      if (data.features.length > 0) {
+          // var area = window['turf'].area(data);
+          // restrict to area to 2 decimal points
+          // var rounded_area = Math.round(area*100)/100;
+      }
+    };
+
+    this.map.on('draw.create', updateArea);
+    this.map.on('draw.delete', updateArea);
+    this.map.on('draw.update', updateArea);
   }
 
   addMarkerPopUp(marker: Marker, text: string) {
