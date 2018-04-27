@@ -25,6 +25,7 @@
     "@types/googlemaps": "^3.30.8",
     "@types/leaflet": "^1.2.5",
     "@types/mapbox": "^1.6.37",
+    "@types/mapbox-gl": "^0.44.3",
     "angular2-text-mask": "^8.0.4",
     "bulma": "^0.6.2",
     "bulma-extensions": "^1.0.14",

@@ -44,15 +44,13 @@ export class MapMotoristComponent implements OnInit {
         const imageElement: HTMLImageElement = document.createElement('img');
 
         imageElement.className = 'motorist-marker-image';
-        imageElement.src = 'api/motorist/public/profileImage?id=' + motorist.id;
+        // imageElement.src = 'api/motorist/public/profileImage?id=' + motorist.id;
 
         markerElement.appendChild(markerBody);
         markerBody.appendChild(imageElement);
         markerBody.className = 'motorist-marker bounce';
 
-        markerBody.addEventListener('click', () =>
-          window.alert(motorist.firstName + ' ' + motorist.lastName)
-        );
+        markerBody.addEventListener('click', () => window.alert(motorist.firstName));
 
         const marker: Feature<GeometryObject> = <Feature<any>>{
           type: 'Feature',
@@ -72,6 +70,7 @@ export class MapMotoristComponent implements OnInit {
       }
     });
 
+    debugger
     this.map.addCluster(this.mapMarkers);
   }
 
@@ -174,7 +173,7 @@ export class MapMotoristComponent implements OnInit {
   }
 
   private injectMap(): void {
-    this.map.createMapBoxMapInstance(this.mapSelector.nativeElement);
-    this.plotMotoristLocations();
+    this.map.createMapBoxMapInstance(false);
+    this.plotMotoristLocations()
   }
 }

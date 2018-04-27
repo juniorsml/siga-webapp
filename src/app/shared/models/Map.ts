@@ -15,7 +15,7 @@ export abstract class Map {
     options?: any
   ): void;
   
-  public abstract setStyle(style: MapStyle): void;
+  public abstract setStyle(style: MapStyle, handle?: Function): void;
 
   public abstract setCenter(latitude: number, longitude: number): void;
   
@@ -27,7 +27,7 @@ export abstract class Map {
 
   public abstract setBoundsByMarkers(): void;
 
-  public abstract createMapBoxMapInstance(mapElement): void;
+  public abstract createMapBoxMapInstance(showControls: boolean): void;
 
   /** Shared **/
   public abstract clearAll(): void;
