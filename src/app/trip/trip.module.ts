@@ -21,6 +21,7 @@ import { TrucksComponent } from './register/trucks/trucks.component';
 import { StartedTripsComponent } from './started/started.component';
 import { ScheduledTripsComponent } from './scheduled/scheduled.component';
 import { HistoricTripsComponent } from './historic/historic.component';
+import { SummaryDialogComponent } from './summary-dialog/summary-dialog.component';
 
 
 
@@ -47,7 +48,8 @@ import { HistoricTripsComponent } from './historic/historic.component';
       TrucksComponent,
       StartedTripsComponent,
       ScheduledTripsComponent,
-      HistoricTripsComponent
+      HistoricTripsComponent,
+      SummaryDialogComponent
   ]
 })
 export class TripModule { }
