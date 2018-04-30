@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'sga-summary-dialog',
   templateUrl: './summary-dialog.component.html',
-  styles: []
+  styleUrls: ['./summary-dialog.component.scss']
 })
+
 export class SummaryDialogComponent implements OnInit {
 
-  constructor() { }
+  @Input() showDialog: boolean;
+  @Input() selectedMotorist: any;
+  @Output() onDialogClose: EventEmitter<void> = new EventEmitter<void>();
 
-  ngOnInit() {
+  onClose() {
+    this.showDialog = false;
+    this.onDialogClose.emit();
+  }
+   ngOnInit() {
   }
 
+
 }
+
+ 

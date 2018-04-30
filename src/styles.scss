@@ -139,9 +139,20 @@ $bg-titles: #4d5675;
   }
 
 /* DIALOGS ********************************************************************/
-  .grid-spacing-search{
-    padding:20px;
-  }
+
+.cnt-dialog{
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.4); 
+    position: fixed; 
+    z-index: 999; 
+    left: 0px; 
+    top: 0px;
+    
+}
+.grid-spacing-search{
+  padding:20px;
+}
 
 .cnt-img{
   width: 33px;

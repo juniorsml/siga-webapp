@@ -101,7 +101,7 @@
 
       <context-menu
           [mode]="'click'"
-          (onItemSelected)="contextMenuSelected($event)">
+          (onItemSelected)="contextMenuSelected()">
           <menu-item>
               <ng-template>
                   <span class="table-menu-icon fal fa-list"
@@ -135,5 +135,10 @@
 
   	</data-table>
   </div>
-
+      <sga-modal>
+        <sga-summary-dialog
+            [showDialog]="showSummaryDialog"
+            (onDialogClose)="summaryDialogClose()">
+        </sga-summary-dialog>
+      </sga-modal>
 </div>

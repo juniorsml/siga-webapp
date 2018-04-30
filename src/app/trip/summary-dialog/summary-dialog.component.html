@@ -1,3 +1,11 @@
-<p>
-  summary-dialog works!
-</p>
+<div *ngIf="showDialog"  class="cnt-dialog">	
+	<div class="container-dialog">
+		<p>
+		  summary-dialog works!
+		</p>
+ 		<button (click)="onClose()" class="button is-pulled-right" >Fechar</button>
+
+	</div>
+
+</div>
+
