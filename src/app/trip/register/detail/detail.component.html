@@ -1,16 +1,23 @@
 <div class="column is-12 is-paddingless box-shadow">
   <h5 class="trip-title">Dados da Viagem</h5>
   
-  <div class="block column columns is-12 is-multiline">
+  <div class="block column columns is-12 is-multiline cnt-detail"> 
     <div class="column is-4">
       <div class="control">
-        <input class="input" type="text" placeholder="Id Cliente" name="idClient" #idClient ngModel>
+        <input class="input" type="text" placeholder="Doc. Cliente" name="idClient" #idClient ngModel>
       </div>
     </div>
-    <div class="column is-4">
+    <div class="column is-4">      
       <div class="control">
-        <input class="input" type="text" placeholder="Mercadoria/Produto" name="firstName" #firstName ngModel>
-      </div>
+         <div class="select">
+           <select name="product">
+             <option>Mercadoria/Produto</option>
+             <option value="Mercadoria/Produto I">Mercadoria/Produto I</option>
+             <option value="Mercadoria/Produto II">Mercadoria/Produto II</option>
+             <option value="Mercadoria/Produto III">Mercadoria/Produto III</option>
+           </select>
+         </div>
+       </div>
     </div>
     <div class="column is-4">
       <div class="control">
@@ -33,19 +40,43 @@
       </div>
     </div>
     <div class="column is-4">
+      
       <div class="control">
-        <input class="input" type="text" placeholder="Operação" name="firstName" #idClient ngModel>
-      </div>
+         <div class="select">
+           <select name="op">
+             <option>Operação</option>
+             <option value="Operação I">Operação I</option>
+             <option value="Operação II">Operação II</option>
+             <option value="Operação III">Operação III</option>
+           </select>
+         </div>
+       </div>
     </div>
     <div class="column is-4">
-      <div class="control">
-        <input class="input" type="text" placeholder="Tipo" name="firstName" #firstName ngModel>
-      </div>
+       <div class="control">
+         <div class="select">
+           <select name="type">
+             <option>Tipo</option>
+             <option value="Tipo I">Tipo I</option>
+             <option value="Tipo II">Tipo II</option>
+             <option value="Tipo III">Tipo III</option>
+           </select>
+         </div>
+       </div>
     </div>
     <div class="column is-4">
-      <div class="control">
-        <input class="input" type="text" placeholder="Percurso" name="firstName" #firstName ngModel>
-      </div>
+     
+       <div class="control">
+         <div class="select">
+           <select name="route">
+             <option>Percurso</option>
+             <option value="Rodoviário">RODOVIÁRIO</option>
+             <option value="Urbano">URBANO</option>
+             <option value="Rodoviário/Urbano">RODOVIÁRIO/URBANO</option>
+           </select>
+         </div>
+       </div>
+ 
     </div>
     <div class="column is-4">
       <div class="control">
@@ -54,14 +85,10 @@
     </div>
     <div class="column is-4">
       <div class="control">
-        <input class="input" type="text" placeholder="Valor" name="firstName" #firstName ngModel>
+        <input class="input" type="text" placeholder="Código de liberação" name="firstName" #firstName ngModel>
       </div>
     </div>
-    <div class="column is-4">
-      <div class="control">
-        <input class="input" type="text" placeholder="Peso" name="firstName" #firstName ngModel>
-      </div>
-    </div>
+  
     <div class="column is-12">
       <div class="control">
         <input class="input" type="text" placeholder="Observação" name="firstName" #firstName ngModel>

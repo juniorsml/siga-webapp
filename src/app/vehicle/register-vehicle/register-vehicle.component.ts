@@ -21,6 +21,7 @@ export class RegisterVehicleComponent implements  OnInit {
   @ViewChild('formVehicle') formVehicle: any;
   anttDueDate: Date;
   comunication: string;
+
  
   pt:any;
 
@@ -74,7 +75,7 @@ export class RegisterVehicleComponent implements  OnInit {
   }
 
   private place: any;
-  formMotorist:any;
+
 
   onSubmit() {
       if (this.formVehicle.valid) {

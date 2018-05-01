@@ -58,23 +58,7 @@
     }
 }
 
-.autocomplete-suggestion {
-    width: 100%;
-    border-bottom: 1px solid #eee;
-    background: #fff;
-    line-height: 38px;
-    height: 38px;
-    cursor: pointer;
-    &:hover {
-        background-color: #eee;
-        
-    }
-}
 
-.autocomplete-suggestion.focus {
-  background-color: #eee;
-  cursor: pointer;
-}
 
 
 

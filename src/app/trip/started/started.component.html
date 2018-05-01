@@ -1,10 +1,10 @@
 <nav class="breadcrumb" aria-label="breadcrumbs">
   <ul>
     <li><a href="#">Home</a></li>
-    <li><a href="#">Viagens</a></li>
-    <li class="is-active"><a href="#" aria-current="page">Viagens Iniciadas</a></li>
+    <li class="is-active"><a href="#">Viagens</a></li>
+    <li class="is-active"><a href="#" aria-current="page">Em Viagem</a></li>
   </ul>
-  <h5>Viagens Iniciadas</h5>
+  <h5>Em Viagem</h5>
 </nav>
    
 <div class="content-wrapper box-shadow content-grid-motorist grid-spacing-search">
@@ -101,7 +101,7 @@
 
       <context-menu
           [mode]="'click'"
-          (onItemSelected)="contextMenuSelected($event)">
+          (onItemSelected)="contextMenuSelected()">
           <menu-item>
               <ng-template>
                   <span class="table-menu-icon fal fa-list"
@@ -135,5 +135,10 @@
 
   	</data-table>
   </div>
-
+      <sga-modal>
+        <sga-summary-dialog
+            [showDialog]="showSummaryDialog"
+            (onDialogClose)="summaryDialogClose()">
+        </sga-summary-dialog>
+      </sga-modal>
 </div>
