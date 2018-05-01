@@ -1,22 +1,22 @@
-FROM condusit/nginx-node-yarn:1.1.0
+FROM node:9 AS build
 
 MAINTAINER Condusit 
 
 # Create app directory
-WORKDIR /tmp
+WORKDIR /usr/src/app
 
-ADD . /tmp
-	
+ADD . /usr/src/app
 
-RUN apt-get install make
-RUN npm rebuild node-sass --force
-RUN yarn
+# install packages using Yarn
+ADD package.json /tmp/package.json
+RUN cd /tmp && yarn
+RUN cd /usr/src/app && ln -s /tmp/node_modules
 RUN yarn build
-RUN  ls -al
 
 
-
-RUN cp -R  /tmp/dist/*  /usr/share/nginx/html/
+# Start from a new nginx image
+FROM nginx:alpine
+COPY --from=build /usr/src/app/dist /usr/share/nginx/html/
 
 #Start Server
 CMD ["nginx", "-g", "daemon off;"]
