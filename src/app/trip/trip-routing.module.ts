@@ -17,7 +17,7 @@ import { DeviceComponent } from './register/device/device.component';
 import { SummaryDialogComponent } from './summary-dialog/summary-dialog.component';
 import { SummaryMotoristComponent } from './summary-dialog/motorist/summary-motorist.component';
 
-
+import { motorists } from '../shared/mocks/motorist';
 import { devices } from '../shared/mocks/device';
 import { vehicles } from '../shared/mocks/vehicles';
 import { trips } from '../shared/mocks/trips';
@@ -30,7 +30,7 @@ const routes: Routes = [
     children: [  
       { path: 'detail', component: DetailComponent },
       { path: 'places', component: PlacesComponent },
-      { path: 'motorist', component: MotoristComponent },
+      { path: 'motorist', component: MotoristComponent, data: {motorists} },
       { path: 'vehicles', component: VehiclesComponent,  data: { vehicles }  },
       { path: 'trucks', component: TrucksComponent, data: { vehicles }  },
       { path: 'device', component: DeviceComponent, data: { devices } }
