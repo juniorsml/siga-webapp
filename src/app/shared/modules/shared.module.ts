@@ -151,7 +151,9 @@ import { SidebarConfigurationComponent } from '../components/sidebar-configurati
     SidebarConfigurationComponent,
     PagerComponent,
 
-    SpinnerComponent
+    SpinnerComponent,
+    NgSlimScrollModule
+
   ]
 })
 export class SharedModule {}
