@@ -18,7 +18,10 @@ export class StartedTripsComponent implements OnInit {
   styleClass: any;
   filterLocation: any;
   filterDistance: any;
-  contextMenuSelected: any;
+  showTripDialog = false;
+  
+  public showSummaryDialog = false;
+
 
   constructor(private router: ActivatedRoute) { }
 
@@ -40,4 +43,29 @@ export class StartedTripsComponent implements OnInit {
   public onPlacesKeyUp() {}
 
   public onDistanceKeyUp() {}
+
+  contextMenuSelected() {
+      this.showSummaryDialog = true;
+      // switch (menuIndex) {
+      //     case 0:
+      //         this.tripDialogIndex = 0;
+      //         break;
+      //     case 1:
+      //         this.tripDialogIndex = 1;
+      //         break;
+      //     case 2:
+      //         this.tripDialogIndex = 2;
+      //         break;
+      //     case 3:
+      //         this.tripDialogIndex = 3;
+      //         break;
+      //     case 4:
+      //         this.tripDialogIndex = 4;
+      //         break;
+      // }
+  }
+  summaryDialogClose(){
+    this.showSummaryDialog = false;
+  }
+
 }

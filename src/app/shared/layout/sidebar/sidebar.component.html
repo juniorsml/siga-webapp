@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div class="sidebar" >
   <div class="sidebar-header">
     <div class="sidebar-hamburger">
       <span>
@@ -14,7 +14,7 @@
       </div>
     </div>
   </div>  <!-- <div class="sidebar-accent"></div>-->
-  <ul class="sidebar-menu">
+  <ul class="sidebar-menu" >
     <li class="sidebar-menu-item">
       <a routerLink="/home">
         <span [class.selected]="router.url == '/home'" class="sidebar-list-icon fal fa-home"></span>
@@ -87,13 +87,13 @@
             <li [class.selected]="router.url == '/trip/started'" class="sidebar-menu-item">
               <a routerLink="/trip/started">
                 <span [class.selected]="router.url == '/trip/started'" class="sidebar-list-icon fal fa-th-list"></span>
-                <span class="sidebar-list-text">Iniciadas</span>
+                <span class="sidebar-list-text">Em Viagem</span>
               </a>
             </li>
             <li [class.selected]="router.url == '/trip/scheduled'" class="sidebar-menu-item">
               <a routerLink="/trip/scheduled">
                 <span [class.selected]="router.url == '/trip/scheduled'" class="sidebar-list-icon fal fa-calendar-alt"></span>
-                <span class="sidebar-list-text">Programadas</span>
+                <span class="sidebar-list-text">Não Iniciadas</span>
               </a>
             </li>
              <li [class.selected]="router.url == '/trip/historic'" class="sidebar-menu-item">
