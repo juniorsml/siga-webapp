@@ -4,7 +4,7 @@
   <div class="block column columns is-12 is-multiline">
     <div class="column is-4">
       <div class="control">
-        <input class="input" type="text" placeholder="Id Cliente" name="idClient" #idClient ngModel>
+        <input class="input" type="text" placeholder="Id Cliente" name="Doc. Cliente" #idClient ngModel>
       </div>
     </div>
     <div class="column is-4">
@@ -39,13 +39,22 @@
     </div>
     <div class="column is-4">
       <div class="control">
-        <input class="input" type="text" placeholder="Tipo" name="firstName" #firstName ngModel>
+        <input class="input" type="text" placeholder="Tipo" name="type" #type ngModel>
       </div>
     </div>
     <div class="column is-4">
-      <div class="control">
-        <input class="input" type="text" placeholder="Percurso" name="firstName" #firstName ngModel>
-      </div>
+     <div class="field">
+       <div class="control">
+         <div class="select">
+           <select name="route" #route ngModel>
+             <optioo value="">Percurso</option>
+             <option value="Rodoviário">RODOVIÁRIO</option>
+             <option value="Urbano">URBANO</option>
+             <option value="Rodoviário/Urbano">RODOVIÁRIO/URBANO</option>
+           </select>
+         </div>
+       </div>
+     </div>
     </div>
     <div class="column is-4">
       <div class="control">
