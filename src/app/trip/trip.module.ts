@@ -21,7 +21,10 @@ import { TrucksComponent } from './register/trucks/trucks.component';
 import { StartedTripsComponent } from './started/started.component';
 import { ScheduledTripsComponent } from './scheduled/scheduled.component';
 import { HistoricTripsComponent } from './historic/historic.component';
+
 import { SummaryDialogComponent } from './summary-dialog/summary-dialog.component';
+  import { SummaryMotoristComponent } from './summary-dialog/motorist/summary-motorist.component';
+
 
 
 
@@ -49,7 +52,9 @@ import { SummaryDialogComponent } from './summary-dialog/summary-dialog.componen
       StartedTripsComponent,
       ScheduledTripsComponent,
       HistoricTripsComponent,
-      SummaryDialogComponent
+
+      SummaryDialogComponent,
+      SummaryMotoristComponent
   ]
 })
 export class TripModule { }

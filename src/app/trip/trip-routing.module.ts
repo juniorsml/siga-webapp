@@ -14,6 +14,10 @@ import { VehiclesComponent } from './register/vehicles/vehicles.component';
 import { TrucksComponent } from './register/trucks/trucks.component';
 import { DeviceComponent } from './register/device/device.component';
 
+import { SummaryDialogComponent } from './summary-dialog/summary-dialog.component';
+import { SummaryMotoristComponent } from './summary-dialog/motorist/summary-motorist.component';
+
+
 import { devices } from '../shared/mocks/device';
 import { vehicles } from '../shared/mocks/vehicles';
 import { trips } from '../shared/mocks/trips';
@@ -46,7 +50,15 @@ const routes: Routes = [
     path: 'historic', 
     component: HistoricTripsComponent,
     data: { trips }
-  }
+  },
+  { 
+    path: 'summary', 
+    component: SummaryDialogComponent,
+       children: [  
+    
+      { path: 'motorist', component: SummaryMotoristComponent }
+    ]
+  },
  
 ];
 

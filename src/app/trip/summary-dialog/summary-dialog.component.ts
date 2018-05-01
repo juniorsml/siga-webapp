@@ -30,7 +30,7 @@ export class SummaryDialogComponent implements OnInit {
         break;
         
       case 'Motorista':
-        this.router.navigateByUrl('trip/summary/motoris');
+        this.router.navigateByUrl('trip/summary/motorist');
         break;
       
       
