@@ -14,6 +14,8 @@ import { MapStyle } from '../models/MapStyle';
 export class MapService extends Map {
 
   private markers: Array<Marker> = [];
+  private markersGl: Array<mapboxgl.Marker> = [];
+
   private polyLines: Array<Polyline> = [];
   private clusters: Array<any> = [];
   private map: any;
@@ -25,6 +27,7 @@ export class MapService extends Map {
   }
 
   public clearMarkers(): void {
+    this.markersGl.map(marker => marker.remove());
     // this.markers.forEach(marker => marker.remove());
   }
 
@@ -85,8 +88,8 @@ export class MapService extends Map {
     }, 1);
   }
 
-  public moveTo(): void {
-    // this.map.flyTo({ lat: latitude, lng: longitude });
+  public moveTo(latitude: number, longitude: number, options?: any): void {
+    this.map.flyTo({ lat: latitude, lng: longitude }, options);
   }
 
   setZoom(level: number): void {
@@ -132,6 +135,17 @@ export class MapService extends Map {
     // }, 1);
   }
 
+  addGeoMarker(geometry: any): void {
+    const el = document.createElement('div');
+    el.className = 'motorist-marker';
+  
+    const marker = new mapboxgl.Marker(el)
+      .setLngLat(geometry.coordinates)
+      .addTo(this.map);
+
+    this.markersGl.push(marker);
+  }
+
   createMarker(feature: Feature<any>): Marker {
     // const myIcon = L.divIcon({
     //   html: feature.properties['icon'].outerHTML,
@@ -160,7 +174,7 @@ export class MapService extends Map {
   public setStyle(style: MapStyle): void {
     L['mapboxGL']({
       accessToken: environment.mapbox.accessToken, 
-      style: `mapbox://styles/mapbox/${style}?optimize=true`
+      style: `mapbox://styles/mapbox/${style}`
     }).addTo(this.map);
   }
 
@@ -168,7 +182,7 @@ export class MapService extends Map {
     mapboxgl.accessToken = environment.mapbox.accessToken;
     this.map = new mapboxgl.Map({
       container: 'map',
-      style: `mapbox://styles/mapbox/${style}?optimize=true` 
+      style: `mapbox://styles/mapbox/${style}`
     });
       
     const draw = new window['MapboxDraw']({
@@ -183,7 +197,6 @@ export class MapService extends Map {
 
     const updateArea = () => {
       const data = draw.getAll();
-      debugger
       if (data.features.length > 0) {
           // var area = window['turf'].area(data);
           // restrict to area to 2 decimal points
