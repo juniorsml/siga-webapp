@@ -31,8 +31,7 @@ export class RegisterPlaceComponent implements OnInit {
     event;
   }
 
-  public openTabRegister(event) {
-    event;
+  public openTabRegister() {
   }
 
   public onTabSelected(event) {
