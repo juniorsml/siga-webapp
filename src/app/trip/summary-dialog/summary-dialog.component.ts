@@ -1,4 +1,4 @@
-import { Component, OnInit,EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { StepClickEvent } from '../../shared/events/StepClickEvent';
 import { Router } from '@angular/router';
 
@@ -8,36 +8,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./summary-dialog.component.scss']
 })
 
-export class SummaryDialogComponent implements OnInit {
+export class SummaryDialogComponent {
 
   constructor(private router: Router) { }
 
-  @Input() showDialog: boolean;
-  @Input() selectedMotorist: any;
-  @Output() onDialogClose: EventEmitter<void> = new EventEmitter<void>();
+  @Input()
+  public showDialog = false;
 
-  onClose() {
-    this.showDialog = false;
+  @Output() 
+  public onDialogClose = new EventEmitter();
+
+  public onClose() {
     this.onDialogClose.emit();
   }
-   ngOnInit() {
-  }
-  onSelectStep(event: StepClickEvent) {
+
+  public onSelectStep(event: StepClickEvent) {
     switch (event.data.header) {
       
       case 'Geral': 
-        this.router.navigateByUrl('trip/summary/detail');
+        this.router.navigateByUrl('trip/started/detail');
         break;
         
       case 'Motorista':
-        this.router.navigateByUrl('trip/summary/motorist');
+        this.router.navigateByUrl('trip/started/motorist');
         break;
-      
-      
     }
   }
-
-
 }
-
  
