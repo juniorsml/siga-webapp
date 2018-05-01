@@ -36,6 +36,8 @@ export abstract class Map {
 
   public abstract createMarker(feature: Feature<any>): any;
 
+  public abstract addGeoMarker(geometry: any): void;
+
   public abstract addMarker(feature: Feature<any>): any;
 
   public abstract addMarkerPopUp(marker: any, text: string): any;

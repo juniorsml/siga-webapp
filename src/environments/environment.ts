@@ -7,7 +7,12 @@ export const environment = {
   authTokenName: 'S1G4',
   production: false,
   api: '',
+
   mapbox: {
-    accessToken: 'pk.eyJ1IjoiY29uZHVzaXQiLCJhIjoiY2oyeG1wcjJuMDExNTJ4cThlemU3NWlsNCJ9.d1o1-L4u4_-aY_uvAn5krQ'
+    accessToken: 'pk.eyJ1IjoiY29uZHVzaXQiLCJhIjoiY2oyeG1wcjJuMDExNTJ4cThlemU3NWlsNCJ9.d1o1-L4u4_-aY_uvAn5krQ',
+    location: {
+      latitude: -23.533773, 
+      longitude: -46.625290
+    }
   }
 };

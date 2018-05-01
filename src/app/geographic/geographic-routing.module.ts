@@ -9,7 +9,16 @@ import { MapPointComponent } from './point/map-point/map-point.component';
 import { GridPointComponent } from './point/grid-point/grid-point.component';
 import { RegisterPointComponent } from './point/register-point/register-point.component';
 
+import { RegisterPlaceComponent } from './place/register-place/register-place.component';
+
 const routes: Routes = [
+  {
+    path: 'place',
+    children: [
+      { path: 'register', component: RegisterPlaceComponent }
+    ]
+  },
+
   {
     path: 'area',
     children: [
