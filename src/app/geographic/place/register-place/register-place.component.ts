@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { places } from '../../../shared/mocks/place';
 import { areas } from '../../../shared/mocks/area';
 import { Map } from '../../../shared/models/Map';
+import { environment } from '../../../../environments/environment.prod';
 
 @Component({
   selector: 'sga-register-place',
@@ -24,7 +25,7 @@ export class RegisterPlaceComponent implements OnInit {
   private setupMap(): void {
     this.map.createMapBoxMapInstance(true);
     this.map.setZoom(7);
-    this.map.setCenter(-23.533773, -46.625290);
+    this.map.setCenter(environment.mapbox.location.latitude, environment.mapbox.location.longitude);
   }
 
   public onCellRightClick(event) {
