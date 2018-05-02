@@ -32,6 +32,12 @@ export class SummaryDialogComponent {
       case 'Motorista':
         this.router.navigateByUrl('trip/started/motorist');
         break;
+      case 'Veículo':
+        this.router.navigateByUrl('trip/started/vehicle');
+        break;
+      case 'Itinerário':
+        this.router.navigateByUrl('trip/started/itinerary');
+        break;
     }
   }
 }
