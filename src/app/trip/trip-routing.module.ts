@@ -14,6 +14,7 @@ import { VehiclesComponent } from './register/vehicles/vehicles.component';
 import { TrucksComponent } from './register/trucks/trucks.component';
 import { DeviceComponent } from './register/device/device.component';
 
+import { SummaryComponent } from './summary-dialog/summary/summary.component';
 import { SummaryMotoristComponent } from './summary-dialog/motorist/summary-motorist.component';
 import { SummaryVehicleComponent } from './summary-dialog/vehicle/summary-vehicle.component';
 import { SummaryItineraryComponent } from './summary-dialog/itinerary/summary-itinerary.component';
@@ -41,6 +42,7 @@ const routes: Routes = [
     component: StartedTripsComponent,
     data: { trips },
     children: [
+      { path: 'summary', component: SummaryComponent },
       { path: 'motorist', component: SummaryMotoristComponent },
       { path: 'vehicle', component: SummaryVehicleComponent },
       { path: 'itinerary', component: SummaryItineraryComponent }

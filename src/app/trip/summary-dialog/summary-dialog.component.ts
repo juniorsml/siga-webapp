@@ -25,8 +25,8 @@ export class SummaryDialogComponent {
   public onSelectStep(event: StepClickEvent) {
     switch (event.data.header) {
       
-      case 'Geral': 
-        this.router.navigateByUrl('trip/started/detail');
+      case 'Resumo': 
+        this.router.navigateByUrl('trip/started/summary');
         break;
         
       case 'Motorista':
