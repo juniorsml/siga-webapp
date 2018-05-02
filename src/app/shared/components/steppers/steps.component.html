@@ -1,4 +1,4 @@
-<ul class="column is-12 steps is-narrow is-medium is-centered has-content-centered" [ngStyle]="{width: width}">
+<ul class="column is-12 steps is-narrow is-medium is-centered has-content-centered" [ngStyle]="{width: width}" [ngClass]="{'is-vertical':isVertical == true }" >
   <li class="steps-segment" 
       *ngFor="let step of steps"
       (click)="onClick($event, step)"

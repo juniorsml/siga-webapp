@@ -11,6 +11,9 @@ export class StepsComponent {
   @Input() 
   public width: string;
 
+  @Input() 
+  public isVertical: boolean;
+
   @Output()
   public onSelectStep = new EventEmitter<StepClickEvent>();
 
