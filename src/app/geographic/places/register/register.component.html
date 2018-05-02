@@ -1,0 +1,28 @@
+<section>
+  <div class="trip-places-header">
+    <h3>Lugares / Áreas</h3>
+    <i class="fa fa-question-circle ui-icon-info"></i>
+  </div> 
+  <div class="wrapper-flex">
+    <i class="fa fa-long-arrow-left" (click)="backButton();"></i>
+    <sga-places-auto-complete
+      (onPlacesFilteredEvent)="onPlacesFiltered($event)" 
+      (onFilterRemovedEvent)="onPlacesFilterRemoved()">
+    </sga-places-auto-complete>
+  </div>
+
+  <div class="form" [class.load]="placeSelected">
+    <hr>
+    <div class="control">
+      <input class="input" type="text" placeholder="Nome">
+    </div>
+    
+    <div class="control">
+      <input class="input" type="text" placeholder="Categoria">
+    </div>
+    
+    <div class="control">
+      <input class="button is-info" type="button" value="Enviar">
+    </div>
+  </div>
+</section>

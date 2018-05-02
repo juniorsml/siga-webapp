@@ -1,0 +1,43 @@
+.trip-places-header {
+  color: #38425b;
+  padding: 0 0 6px 0;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 7%;
+}
+
+.wrapper-flex {
+  display: flex;
+
+  i {
+    flex: 1;
+    cursor: pointer;
+    margin-top: .2em;
+    font-size: 1.5em;
+  }
+  sga-places-auto-complete {
+    width: 90%;
+  }
+}
+.form {
+  -webkit-transition: opacity .5s ease-in;
+  -moz-transition: opacity .5s ease-in;
+  -ms-transition: opacity .5s ease-in;
+  -o-transition: opacity .5s ease-in;
+  transition: opacity .5s ease-in;
+  opacity: 0;
+
+  .control {
+    margin-top: 1em;
+  }
+
+  .control:last-child {
+    text-align: right;
+  }
+}
+
+.load {
+  opacity: 1;
+}
