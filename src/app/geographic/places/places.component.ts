@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../environments/environment.prod';
+
+import { TabComponent } from '../../shared/components/tabs/tab/tab.component';
+
+import { Map } from '../../shared/models/Map';
+
+import { groups } from '../../shared/mocks/group';
 import { places } from '../../shared/mocks/place';
 import { areas } from '../../shared/mocks/area';
-import { Map } from '../../shared/models/Map';
-import { environment } from '../../../environments/environment.prod';
 
 @Component({
   selector: 'sga-places',
@@ -12,13 +17,15 @@ import { environment } from '../../../environments/environment.prod';
 export class RegisterPlaceComponent implements OnInit {
   public areas: Array<any>;
   public places: Array<any>;
+  public groups: Array<any>;
   public selectedTabIndex = 0;
-  public showRegister = true;
+  public showRegister = false;
 
   constructor(private map: Map) {}
 
   ngOnInit() {
     this.places = places;
+    this.groups = groups;
     this.areas = areas;
     this.setupMap();
   }
@@ -43,6 +50,10 @@ export class RegisterPlaceComponent implements OnInit {
     };
   }
 
+  private addMarker(geometry) {
+    this.map.addGeoMarker(geometry);
+  }
+
   public onPlaceSelected(location) {
     this.map.clearAll();
     this.moveMap(location.lat(), location.lng(), 18);
@@ -54,28 +65,32 @@ export class RegisterPlaceComponent implements OnInit {
     event;
   }
 
-
   public openRegister() {
     this.showRegister = true;
   }
 
-  public closeRegister() {
+  public closeRegister(tabIndex) {
     this.showRegister = false;
+    this.selectedTabIndex = tabIndex;
   }
 
-  public onTabSelected(event) {
-    event;
+  onTabSelected(tab: TabComponent) {
+    this.selectedTabIndex = tab.index;
   }
 
   public onSelected(place) {
+    debugger;
     this.map.clearAll();
-    this.map.setZoom(14);
-    this.map.setCenter(place.location.latitude, place.location.longitude);
+    
+    if (Array.isArray(place.location)) {
+      place.location.map(loc => this.addMarker(this.createPoint(loc.latitude, loc.longitude)));
+      this.map.setZoom(3);
+      this.map.setCenter(place.location[0].latitude, place.location[0].longitude);
+    } else {
+      this.addMarker(this.createPoint(place.location.latitude, place.location.longitude));
+      this.map.setZoom(14);
+      this.map.setCenter(place.location.latitude, place.location.longitude);
+    }
 
-    const geometry = this.createPoint(
-      place.location.latitude,
-      place.location.longitude
-    );
-    this.map.addGeoMarker(geometry);
   }
 }
