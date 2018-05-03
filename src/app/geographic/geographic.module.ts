@@ -16,6 +16,7 @@ import { RegisterPointComponent } from './point/register-point/register-point.co
 import { MapPointComponent } from './point/map-point/map-point.component';
 import { RegisterPlaceComponent } from './places/places.component';
 import { RegisterComponent } from './places/register/register.component';
+import { GridControlComponent } from './places/grid-control/grid-control.component';
 
 
 @NgModule({
@@ -31,6 +32,6 @@ import { RegisterComponent } from './places/register/register.component';
       useClass: MapService
     }
   ],
-  declarations: [GridAreaComponent, RegisterAreaComponent, MapAreaComponent, GridPointComponent, RegisterPointComponent, MapPointComponent, RegisterPlaceComponent, RegisterComponent]
+  declarations: [GridAreaComponent, RegisterAreaComponent, MapAreaComponent, GridPointComponent, RegisterPointComponent, MapPointComponent, RegisterPlaceComponent, RegisterComponent, GridControlComponent]
 })
 export class GeographicModule { }
