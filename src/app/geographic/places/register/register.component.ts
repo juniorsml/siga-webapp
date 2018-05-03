@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 
 @Component({
   selector: 'sga-register',
@@ -6,8 +6,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
+  @Input()
+  public backParam: string;
+  
   @Output()
-  public onBackButton = new EventEmitter();
+  public onBackButton = new EventEmitter<string>();
   
   @Output()
   public onPlaceSelected = new EventEmitter();
@@ -15,7 +18,7 @@ export class RegisterComponent {
   public placeSelected = false;
 
   public backButton() {
-    this.onBackButton.emit();
+    this.onBackButton.emit(this.backParam);
   }
 
   public onPlacesFiltered(event) {
