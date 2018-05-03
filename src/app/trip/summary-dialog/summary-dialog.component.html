@@ -1,18 +1,21 @@
 <div *ngIf="showDialog" class="cnt-dialog">	
 	<div class="columns">
-		<div class="container-dialog">
-			<div class="column is-12">
+		<div class="container-dialog is-multiline columns">
+			<div class="column is-narrow" style="width: 120px;">
 				<sga-steps [isVertical]="true" [width]="'90%'" (onSelectStep)="onSelectStep($event)">
-			    <sga-step [header]="'Resumo'" [icon]="'fal fa-home'"></sga-step>
+			    <sga-step  [header]="'Resumo'" [icon]="'fal fa-home'"></sga-step>
 			    <sga-step [header]="'Motorista'" [icon]="'fal fa-user'"></sga-step>
 			    <sga-step [header]="'Veículo'" [icon]="'fal fa-truck'"></sga-step>	 
 			    <sga-step [header]="'Itinerário'" [icon]="'fal fa-map'"></sga-step>	    
 			  </sga-steps>
 			</div>
-		  <div class="column is-12 is-paddingless cnt-trip">
+		  <div class="column">
 				<router-outlet></router-outlet>
 			</div>
-	 		<button (click)="onClose()" class="button is-pulled-right">Fechar</button>
+			<div class="column is-12">
+				<button (click)="onClose()" class="button is-pulled-right">Fechar</button>
+			</div>
+	 		
 		</div>
 	</div>
 </div>

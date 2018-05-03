@@ -18,15 +18,23 @@ export class SummaryDialogComponent {
   @Output() 
   public onDialogClose = new EventEmitter();
 
+  wasClicked = false;
+
   public onClose() {
     this.onDialogClose.emit();
   }
 
   public onSelectStep(event: StepClickEvent) {
+
+    this.wasClicked= !this.wasClicked;
+
+    console.log(this.wasClicked);
+    
     switch (event.data.header) {
       
       case 'Resumo': 
         this.router.navigateByUrl('trip/started/summary');
+
         break;
         
       case 'Motorista':
