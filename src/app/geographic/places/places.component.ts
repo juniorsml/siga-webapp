@@ -15,7 +15,7 @@ import { areas } from '../../shared/mocks/area';
   styleUrls: ['./places.component.scss']
 })
 export class RegisterPlaceComponent implements OnInit {
-  public areas: Array<any>;
+  public areas:  Array<any>;
   public places: Array<any>;
   public groups: Array<any>;
   public selectedTabIndex = 0;
@@ -74,23 +74,19 @@ export class RegisterPlaceComponent implements OnInit {
     this.selectedTabIndex = tabIndex;
   }
 
-  onTabSelected(tab: TabComponent) {
+  public onTabSelected(tab: TabComponent) {
     this.selectedTabIndex = tab.index;
   }
 
   public onSelected(place) {
-    debugger;
     this.map.clearAll();
-    
+
     if (Array.isArray(place.location)) {
       place.location.map(loc => this.addMarker(this.createPoint(loc.latitude, loc.longitude)));
-      this.map.setZoom(3);
-      this.map.setCenter(place.location[0].latitude, place.location[0].longitude);
+      this.moveMap(place.location[0].latitude, place.location[0].longitude, 3);
     } else {
       this.addMarker(this.createPoint(place.location.latitude, place.location.longitude));
-      this.map.setZoom(14);
-      this.map.setCenter(place.location.latitude, place.location.longitude);
+      this.moveMap(place.location.latitude, place.location.longitude, 14);
     }
-
   }
 }
