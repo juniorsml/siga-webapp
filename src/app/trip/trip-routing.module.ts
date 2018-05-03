@@ -43,8 +43,8 @@ const routes: Routes = [
     data: { trips },
     children: [
       { path: 'summary', component: SummaryComponent },
-      { path: 'motorist', component: SummaryMotoristComponent },
-      { path: 'vehicle', component: SummaryVehicleComponent },
+      { path: 'motorist', component: SummaryMotoristComponent, data: {motorists}  },
+      { path: 'vehicle', component: SummaryVehicleComponent,data: { vehicles } },
       { path: 'itinerary', component: SummaryItineraryComponent }
     ]
   },

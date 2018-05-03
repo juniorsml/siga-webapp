@@ -1,15 +1,10 @@
   .trip-dialog-container {
-        position: absolute;
-        top: 42px;
-        bottom: 0px;
-        left: 0px;
-        right: 0px;
-        background-color: #FFFFFF
+        
     }
 
     .dialog-sidebar {
         position: relative;
-        width: 400px;
+        width: 350px;
         background: #fdfdfd;
         height: 100%;
         border-right: 1px solid #d4d4d4;
@@ -17,7 +12,7 @@
     }
 
     .content-body {
-        position: absolute;
+        position: relative;
         left: 400px;
         right: 0px;
         top: 0px;
@@ -26,29 +21,8 @@
         background: #ffffff;
     }
 
-    .ui-button-close {
-        position: absolute;
-        right: 100px;
-        top: 70px;
-        color: #ffffff;
-        font-size: 14px;
-        border: 2px solid #5cb85c;
-        padding: 4px 16px;
-        border-radius: 14px;
-        background-color: #5cb85c;
-        cursor: pointer;
-    }
+    
 
-    .ui-button-close:hover {
-        background-color: #6ecf6e;
-        border-color: #6ecf6e;
-    }
-
-    .button-container {
-        position: absolute;
-        bottom: 20px;
-        left: 20px;
-    }
 
     .ui-button-primary {
         border: 1px solid #5cb85c;
