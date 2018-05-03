@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit,ViewChild,ElementRef } from '@angular/core';
+import { Map } from '../../../shared/models/Map';
 
 @Component({
   selector: 'sga-summary-itinerary',
@@ -9,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
 
 export class SummaryItineraryComponent implements OnInit {
 
-   ngOnInit() {
+  @ViewChild('containerMap') containerMap: ElementRef;
+
+  constructor(private map: Map) { }
+
+  ngOnInit(): void {
+    this.injectMap();
   }
 
-   
+  private injectMap(): void {
+    this.map.createMapBoxMapInstance(this.containerMap.nativeElement);
+  }
 
 
 }
