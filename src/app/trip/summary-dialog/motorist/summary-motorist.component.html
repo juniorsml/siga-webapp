@@ -1,1 +1,175 @@
-<p>Summary Works</p>
+<div class="trip-dialog-container columns">
+  <div class="column is-3 side-left-cnt">
+    <div class="page-header">
+      <h3>Adicionar / Remover</h3>
+      <i class="fal fa-question-circle"></i>
+    </div>
+    <div class="side-left">
+      <div class="cnt-autocomplete">
+        <sga-auto-complete
+          [data]="motorists"
+				  [propToFilter]="'documentId'"
+          minLength="3"
+          noSuggestionsText="Nenhum motorista encontrado"
+          url="api/motorist/search?query="
+          placeholder="Digite o número do documento"
+          type="text"
+          (itemSelected)="MotoristSelected($event)">
+          <ng-template let-item="item">
+            <div class="autocomplete-suggestion">
+              <span>
+                <img
+                    style="width: 30px; height: 20px; float: left; margin: 8px 4px; display: block;"
+                    src="{{'/resources/images/flags/' + item.country +'.png'}}"
+                    alt=""><img>
+                <span>
+                  <span
+                      style="font-size: 16px; font-weight: 500; color: #324263; margin-left: 4px;">{{item.documentId}} </span>
+                  <span style="font-size: 14px; margin-left: 10px;">{{item.firstName}}, {{item.lastName}}</span>
+                </span>
+              </span>
+            </div>
+          </ng-template>
+        </sga-auto-complete> 
+      </div>
+    </div>
+    <div class="trip-vehicles-lv">
+      <ul>
+        <li *ngFor="let motorist of associateMotorist">
+          <div class="columns">
+            <div class="column is-10">
+              <span (click)="showMotoristData(motorist)"  style="cursor: pointer; color: blue;">
+                  {{motorist.documentId}} - {{motorist.firstName}}
+              </span>
+              
+            </div>
+            <div class="column">
+              <span (click)="removeAssociate(motorist)" class="fal fa-trash" style="cursor: pointer; color: red;"></span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="button-container">
+      <button class="button is-primary">Salvar</button>
+      <button style="margin-left: 22px;" class="button">Cancelar</button>
+    </div>
+  </div>
+  <div class="column is-9">         
+    <div class=" columns cnt-details cnt-summary">
+    	<div class="columns is-multiline is-marginless column is-12">
+    		<div class="column is-12">
+    		   <h4 class="is-pulled-left">Dados Pessoais</h4>
+    		   <i class="fal fa-question-circle is-pulled-right"></i>
+    		</div>
+    		<div  class="columns is-multiline column is-12 ">         		    
+	        <ul class="motorist-profile-info column is-2">
+	            <li class="motorist-profile-info-item">
+                 <div class="profile-photo" style="background-image: url('/assets/layout/unknown_user.png');background-size: contain;">
+                        <img *ngIf="selectedMotorist !=null"
+                             style="width: 192px; height: 192px;"
+                             src="{{'api/motorist/public/profileImage?id=' + selectedMotorist?.id}}"
+                             alt="">
+                 </div>
+              </li>
+          </ul>
+          <ul class="columns is-multiline column is-10">
+            <li class="column is-4 info-item">
+                <h6 class="info-title">Nome</h6>
+                <span>{{selectedMotorist == null ? '-' : selectedMotorist?.firstName}}</span>
+            </li>
+            <li class="column is-4 info-item">
+                <h6>Documento</h6>
+                <span>{{selectedMotorist == null ? '-' : selectedMotorist?.documentId}}</span>
+            </li>
+            <li class="column is-4 info-item">
+                <h6>Endereço</h6>
+                <span>{{selectedMotorist == null ? '-' : selectedMotorist?.address}}</span>
+            </li>
+            <li class="column is-6 info-item">
+                <h6>Email</h6>
+                <span>{{selectedMotorist == null ? '-' : selectedMotorist?.email}}</span>
+            </li>
+            <li class="column is-4 info-item">
+                <h6>Sobrenome</h6>
+                <span>{{selectedMotorist == null ? '-' : selectedMotorist?.lastName}}</span>
+            </li>
+          </ul>
+  		    
+  		  </div>
+  	 </div>
+    </div>
+
+    <div class=" columns cnt-details cnt-summary">
+    	<div class="columns is-multiline is-marginless column is-12">
+    		<div class="column is-12 ">
+    		    <h4 class="is-pulled-left">Perfil</h4>
+    		    <i class="fal fa-question-circle is-pulled-right"></i>
+    		</div>
+    		<div  class="column is-12">         		    
+		        <ul class="columns is-multiline  motorist-profile-info ">
+	            <li class="column is-4 info-item">
+                <h6>Ranking</h6>
+                <span>
+                  <i class="stars fa fa-star" aria-hidden="true"></i>
+                  <i class="stars fa fa-star" aria-hidden="true"></i>
+                  <i class="stars fa fa-star" aria-hidden="true"></i>
+                  <i class="stars fa fa-star" aria-hidden="true"></i>
+                  <i class="stars fa fa-star" aria-hidden="true"></i>
+                  <span style="padding-left: 8px">0%</span>
+             		</span>
+	            </li>
+		           <li class="column is-4 info-item">
+		               <h6>GR</h6>
+		               <span class="vehicle-info">
+		                       <span class="vehicle-info">
+		                       <i class="stars fa fa-star" aria-hidden="true"></i>
+		                       <i class="stars fa fa-star" aria-hidden="true"></i>
+		                       <i class="stars fa fa-star" aria-hidden="true"></i>
+		                       <i class="stars fa fa-star" aria-hidden="true"></i>
+		                       <i class="stars fa fa-star" aria-hidden="true"></i>
+		                       <span style="padding-left: 8px">0%</span>
+		                   </span>
+		                   </span>
+		           </li>
+		           <li class="column is-4 info-item">
+		               <h6>Logística</h6>
+		               <span class="vehicle-info">
+		                       <span class="vehicle-info">
+		                       <i class="stars fa fa-star" aria-hidden="true"></i>
+		                       <i class="stars fa fa-star" aria-hidden="true"></i>
+		                       <i class="stars fa fa-star" aria-hidden="true"></i>
+		                       <i class="stars fa fa-star" aria-hidden="true"></i>
+		                       <i class="stars fa fa-star" aria-hidden="true"></i>
+		                       <span style="padding-left: 8px">0%</span>
+		                   </span>
+		                   </span>
+		           </li>
+		           <li class="column is-4 info-item">
+		               <h6>Viagens</h6>
+		               <span>-</span>
+		           </li>
+		           <li class="column is-4 info-item">
+		               <h6>Quilômetros</h6>
+		               <span>-</span>
+		           </li>
+		           <li class="column is-4 info-item">
+		               <h6>Horas</h6>
+		               <span>-</span>
+		           </li>
+		           <li class="column is-4 info-item">
+		               <h6>Vídeos</h6>
+		               <span>-</span>
+		           </li>
+		           <li class="column is-4 info-item">
+		               <h6>Restrições</h6>
+		               <span>-</span>
+		           </li>
+		            
+		        </ul>
+    		    
+    		</div>
+    	</div>
+    </div>
+  </div>
+</div>

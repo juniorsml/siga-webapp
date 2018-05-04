@@ -23,7 +23,11 @@ import { ScheduledTripsComponent } from './scheduled/scheduled.component';
 import { HistoricTripsComponent } from './historic/historic.component';
 
 import { SummaryDialogComponent } from './summary-dialog/summary-dialog.component';
+  import { SummaryComponent } from './summary-dialog/summary/summary.component';
   import { SummaryMotoristComponent } from './summary-dialog/motorist/summary-motorist.component';
+  import { SummaryVehicleComponent } from './summary-dialog/vehicle/summary-vehicle.component';
+  import { SummaryItineraryComponent } from './summary-dialog/itinerary/summary-itinerary.component';
+
 
 
 
@@ -54,7 +58,10 @@ import { SummaryDialogComponent } from './summary-dialog/summary-dialog.componen
       HistoricTripsComponent,
 
       SummaryDialogComponent,
-      SummaryMotoristComponent
+      SummaryComponent,
+      SummaryMotoristComponent,
+      SummaryVehicleComponent,
+      SummaryItineraryComponent
   ]
 })
 export class TripModule { }
