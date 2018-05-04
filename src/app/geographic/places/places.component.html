@@ -1,0 +1,49 @@
+<div class="cnt-trip-places">
+  <div class="places-sidebar box-shadow">
+    <sga-register 
+      *ngIf="showRegister"
+      [backParam]="selectedTabIndex"
+      (onBackButton)="closeRegister($event)"
+      (onPlaceSelected)="onPlaceSelected($event)"
+      (onSubmitForm)="createPlace($event)">
+    </sga-register>
+
+    <sga-tabs 
+      (tabSelected)="onTabSelected($event)"
+      [tabIndex]="selectedTabIndex"
+      *ngIf="!showRegister"
+      styleClass="tabs">
+
+      <sga-tab heading="Áreas">
+        <sga-grid-control 
+          [data]="areas"
+          title="Áreas"
+          (onItemSelected)="onSelected($event)"
+          (onRegisterClick)="openRegister()">
+        </sga-grid-control>
+      </sga-tab>
+
+      <sga-tab heading="Lugares">
+        <sga-grid-control 
+          [data]="places"
+          title="Lugares"
+          (onItemSelected)="onSelected($event)"
+          (onRegisterClick)="openRegister()">
+        </sga-grid-control> 
+      </sga-tab>
+      
+      <sga-tab heading="Grupos">
+        <sga-grid-control 
+          [data]="groups"
+          title="Grupos"
+          (onItemSelected)="onSelected($event)"
+          (onRegisterClick)="openRegister()">
+        </sga-grid-control> 
+      </sga-tab>
+    </sga-tabs>
+  </div>
+
+  <div class="places-detail box-shadow">
+    <div id="map"></div>
+  </div>
+</div>

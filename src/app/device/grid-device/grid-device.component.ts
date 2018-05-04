@@ -23,10 +23,6 @@ export class GridDeviceComponent implements OnInit {
   @Input()
   public showFilterBar = true;
 
-
-
-
-
   @Input()
   public devices = new Array<any>();
   

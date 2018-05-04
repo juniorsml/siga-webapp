@@ -249,52 +249,12 @@
       </accordion>
     </li>
 
-    <li class="sidebar-menu-item-accordion">      
-      <accordion>
-        <accordion-header>
-          <ng-template>
-            <div class="sidebar-menu-accordion">
-              <span [class.selected]="router.url == '/'" class="sidebar-list-icon fal fa-globe"></span>
-              <span class="sidebar-list-text">Geográfico</span>
-            </div>
-          </ng-template>
-        </accordion-header>
-        <ul class="sidebar-submenu">
-          <li class="sidebar-menu-item-accordion sub-item">
-            <accordion styleClass="area-map">
-              <accordion-header>
-                <ng-template>
-                  <div class="sidebar-menu-accordion sub-accordion">
-                    <span class="sidebar-list-icon fal fa-chart-area"></span>
-                    <span class="sidebar-list-text">Áreas</span>
-                  </div>
-                </ng-template>
-              </accordion-header>
-              <ul class="sidebar-submenu">
-                <li [class.selected]="router.url == '/geographic/area/grid'" class="sidebar-menu-item">
-                  <a routerLink="/geographic/area/grid">
-                    <span [class.selected]="router.url == '/geographic/area/grid'" class="sidebar-list-icon fal fa-th-list"></span>
-                    <span class="sidebar-list-text">Grid</span>
-                  </a>
-                </li>
-                <li class="sidebar-menu-item" [class.selected]="router.url == '/geographic/area/map'">
-                  <a  routerLink="/geographic/area/map" >
-                    <span [class.selected]="router.url == '/geographic/area/map'" class="sidebar-list-icon fal fa-map"></span>
-                    <span class="sidebar-list-text">Mapa</span>
-                  </a>
-                </li>
-              </ul>
-            </accordion>
-          </li>
-          <li class="sidebar-menu-item" [class.selected]="router.url == '/geographic/place/register'">
-            <a  routerLink="/geographic/place/register" >
+    <li class="sidebar-menu-item" [class.selected]="router.url == '/geographic/places'">
+      <a  routerLink="/geographic/places" >
 
-              <span class="sidebar-list-icon fal fa-map-marker"></span>
-              <span class="sidebar-list-text">Lugares</span>
-            </a>
-          </li> 
-        </ul>
-      </accordion>
+        <span class="sidebar-list-icon fal fa-map-marker"></span>
+        <span class="sidebar-list-text">Lugares</span>
+      </a>
     </li>
     
     <li class="sidebar-menu-item">
