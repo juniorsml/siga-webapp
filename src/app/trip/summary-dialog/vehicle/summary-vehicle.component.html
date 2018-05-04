@@ -1,0 +1,148 @@
+  <div class="columns">
+      <div class="column is-3 side-left-cnt">
+          <div class="page-header">
+              <h3>Adicionar / Remover</h3>
+              <i class="fa fa-question-circle ui-icon-info"></i>
+          </div>
+          <div class="side-left">
+		       <div class="cnt-autocomplete">
+              <sga-auto-complete
+                  [data]="vehicles"
+      					  [propToFilter]="'vehiclePlate'"
+                  minLength="3"
+                  noSuggestionsText="Nenhum Veiculo encontrado"
+                  url="api/motorist/search?query="
+                  placeholder="Digite o número da placaa"
+                  type="text"
+                  (onCreateNew)="showVehicleForm()"
+                  (itemSelected)="VehicleSelected($event)">
+                  <ng-template let-item="item">
+                      <div class="autocomplete-suggestion">
+                          <span>
+                              <img
+                                  style="width: 30px; height: 20px; float: left; margin: 8px 4px; display: block;"
+                                  src="{{'/resources/images/flags/' + item.country +'.png'}}"
+                                  alt=""><img>
+                              <span>
+                                  <span
+                                      style="font-size: 16px; font-weight: 500; color: #324263; margin-left: 4px;">{{item.vehiclePlate}} </span>
+                                  <span style="font-size: 14px; margin-left: 10px;">{{item.model}}</span>
+                                  </span>
+                          </span>
+                      </div>
+                  </ng-template>
+              </sga-auto-complete>
+          </div>
+           </div>
+           <div class="trip-vehicles-lv">
+              <ul>
+              <li *ngFor="let vehicle of associateVehicle">
+                <div class="columns">
+                  <div class="column is-10">
+                    <span (click)="showVehicleData(vehicle)"  style="cursor: pointer; color: blue;">
+                        {{vehicle.vehiclePlate}} - {{vehicle.brand}}
+                    </span>
+                    
+                  </div>
+                  <div class="column">
+                    <span (click)="removeAssociate(vehicle)" class="fal fa-trash" style="cursor: pointer; color: red;"></span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="button-container">
+              <button class="button is-primary">Save</button>
+              <button style="margin-left: 22px;" class="button">Cancel</button>
+          </div>
+      </div>
+     
+     <div class="column is-9">	 
+		    <div class="columns cnt-details cnt-summary">
+		    	<div class="columns is-multiline is-marginless column is-12">
+		    		<div class="column is-12">
+		    		    <h4 class="is-pulled-left">Dados do veículo</h4>
+		    		    <i class="fal fa-question-circle is-pulled-right"></i>
+		    		</div>
+		    		<div  class="column is-12">         		    
+				        <ul class="columns is-multiline  motorist-profile-info ">
+				            <li class="column is-4 info-item">
+				                <h6>Placa</h6>
+				                <span>{{selectedVehicle == null ? '-' : selectedVehicle?.vehiclePlate}}</span>
+				            </li>
+				            <li class="column is-4 info-item">
+				                <h6>Marca</h6>
+				                <span>{{selectedVehicle == null ? '-' : selectedVehicle?.brand}}</span>
+				            </li>
+
+				            <li class="column is-4 info-item">
+				                <h6>Modelo</h6>
+				                <span>{{selectedVehicle == null ? '-' : selectedVehicle?.model}}</span>
+				            </li>
+
+				            <li class="column is-4 info-item">
+				                <h6>Cor</h6>
+				                <span>{{selectedVehicle == null ? '-' : selectedVehicle?.color}}</span>
+				            </li>
+
+				            <li class="column is-4 info-item">
+				                <h6>Ano</h6>
+				                <span>{{selectedVehicle == null ? '-' : selectedVehicle?.year}}</span>
+				            </li>
+				            <li class="column is-4 info-item">
+				                <h6>Tipo</h6>
+				                <span>{{selectedVehicle == null ? '-' : selectedVehicle?.type}}</span>
+				            </li>
+				            <li class="column is-4 info-item">
+				                <h6>Capacidade</h6>
+				                <span>{{selectedVehicle == null ? '-' : selectedVehicle?.capacity}}</span>
+				            </li>
+				            <li class="column is-4 info-item">
+				                <h6>N. Frota</h6>
+				                <span>{{selectedVehicle == null ? '-' : selectedVehicle?.fleetNumber}}</span>
+				            </li>
+				            <li class="column is-4 info-item">
+				                <h6>Nº registro ANTT</h6>
+				                <span>{{selectedVehicle == null ? '-' : selectedVehicle?.anttNumber}}</span>
+				            </li>
+				            <li class="column is-4 info-item">
+				                <h6>Validade ANTT</h6>
+				                <span>{{selectedVehicle == null ? '-' : selectedVehicle?.anttDueDate}}</span>
+				            </li>
+				        </ul>
+		    		    
+		    		</div>
+		    	</div>
+		    </div>
+
+		    <div class=" columns cnt-details cnt-summary">
+		    	<div class="columns is-multiline is-marginless column is-12">
+		    		<div class="column is-12">
+		    		    <h4 class="is-pulled-left">Rastreador</h4>
+		    		    <i class="fal fa-question-circle is-pulled-right"></i>
+		    		</div>
+		    		<div  class="column is-12" *ngFor="let device of selectedVehicle?.devices">         		    
+				        <ul class="columns is-multiline  motorist-profile-info ">
+				            <li class="column is-4 info-item">
+				                <h6>Tecnologia</h6>
+				                <span>{{device== null ? '-' : device?.tech}}</span>
+				            </li>
+				            <li class="column is-4 info-item">
+				                <h6>Comunicação</h6>
+				                <span>{{device== null ? '-' : device?.comunication}}</span>
+				            </li>
+
+				            <li class="column is-4 info-item">
+				                <h6>Id</h6>
+				                <span>{{device== null ? '-' : device?.number}}</span>
+				            </li>
+				            
+				        </ul>
+		    		    
+		    		</div>
+		    	</div>
+		    </div>
+
+     </div>
+
+</div>
