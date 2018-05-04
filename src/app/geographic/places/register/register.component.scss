@@ -27,10 +27,16 @@
   -ms-transition: opacity .5s ease-in;
   -o-transition: opacity .5s ease-in;
   transition: opacity .5s ease-in;
+  overflow-y: auto;
   opacity: 0;
+  height: 33em;
+
+  hr {
+    margin: .5em;
+  }
 
   .control {
-    margin-top: 1em;
+    margin-top: .7em;
   }
 
   .control:last-child {
