@@ -15,11 +15,12 @@ import { areas } from '../../shared/mocks/area';
   styleUrls: ['./places.component.scss']
 })
 export class RegisterPlaceComponent implements OnInit {
+  private location: any;
   public areas:  Array<any>;
   public places: Array<any>;
   public groups: Array<any>;
+  public showRegister = true;
   public selectedTabIndex = 0;
-  public showRegister = false;
 
   constructor(private map: Map) {}
 
@@ -55,6 +56,11 @@ export class RegisterPlaceComponent implements OnInit {
   }
 
   public onPlaceSelected(location) {
+    this.location = {
+      latitude: location.lat(),
+      longitude: location.lng()
+    };
+
     this.map.clearAll();
     this.moveMap(location.lat(), location.lng(), 18);
     const geometry = this.createPoint(location.lat(), location.lng());
@@ -80,7 +86,6 @@ export class RegisterPlaceComponent implements OnInit {
 
   public onSelected(place) {
     this.map.clearAll();
-
     if (Array.isArray(place.location)) {
       place.location.map(loc => this.addMarker(this.createPoint(loc.latitude, loc.longitude)));
       this.moveMap(place.location[0].latitude, place.location[0].longitude, 3);
@@ -88,5 +93,10 @@ export class RegisterPlaceComponent implements OnInit {
       this.addMarker(this.createPoint(place.location.latitude, place.location.longitude));
       this.moveMap(place.location.latitude, place.location.longitude, 14);
     }
+  }
+
+  public createPlace(place) {
+    place.location = this.location;
+    console.log(place);
   }
 }

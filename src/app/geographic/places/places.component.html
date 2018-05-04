@@ -4,7 +4,8 @@
       *ngIf="showRegister"
       [backParam]="selectedTabIndex"
       (onBackButton)="closeRegister($event)"
-      (onPlaceSelected)="onPlaceSelected($event)">
+      (onPlaceSelected)="onPlaceSelected($event)"
+      (onSubmitForm)="createPlace($event)">
     </sga-register>
 
     <sga-tabs 
