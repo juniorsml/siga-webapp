@@ -6,16 +6,15 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  @Input()
-  public backParam: string;
+  @Input() public backParam: string;
   
-  @Output()
-  public onBackButton = new EventEmitter<string>();
+  @Output() public onSubmitForm = new EventEmitter<any>();
+  @Output() public onBackButton = new EventEmitter<string>();
+  @Output() public onPlaceSelected = new EventEmitter<any>();
   
-  @Output()
-  public onPlaceSelected = new EventEmitter();
-  
-  public placeSelected = false;
+  public placeSelected = true;
+
+  public docType = 0;
 
   public backButton() {
     this.onBackButton.emit(this.backParam);
@@ -31,5 +30,14 @@ export class RegisterComponent {
   
   public onPlacesFilterRemoved() {
     this.placeSelected = false;
+  }
+
+  public isValidForm(form) {
+    return form.valid && this.docType !== 0;
+  }
+
+  public onSubmit(form) {
+    const { value } = form;
+    this.onSubmitForm.emit(value);
   }
 }
