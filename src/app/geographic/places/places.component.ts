@@ -19,7 +19,7 @@ export class RegisterPlaceComponent implements OnInit {
   public areas:  Array<any>;
   public places: Array<any>;
   public groups: Array<any>;
-  public showRegister = true;
+  public showRegister = false;
   public selectedTabIndex = 0;
 
   constructor(private map: Map) {}

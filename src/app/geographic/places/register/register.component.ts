@@ -12,7 +12,7 @@ export class RegisterComponent {
   @Output() public onBackButton = new EventEmitter<string>();
   @Output() public onPlaceSelected = new EventEmitter<any>();
   
-  public placeSelected = true;
+  public placeSelected = false;
 
   public docType = 0;
 
