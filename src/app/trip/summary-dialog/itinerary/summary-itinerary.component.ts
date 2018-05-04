@@ -18,8 +18,10 @@ export class SummaryItineraryComponent implements OnInit {
   }
 
   private injectMap(): void {
-    this.map.createMapBoxMapInstance(this.containerMap.nativeElement);
+    this.map.createMapBoxMapInstance(false);
+
   }
+
 
 
 }
