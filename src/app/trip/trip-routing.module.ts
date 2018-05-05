@@ -40,13 +40,7 @@ const routes: Routes = [
   { 
     path: 'started', 
     component: StartedTripsComponent,
-    data: { trips },
-    children: [
-      { path: 'summary', component: SummaryComponent },
-      { path: 'motorist', component: SummaryMotoristComponent, data: {motorists}  },
-      { path: 'vehicle', component: SummaryVehicleComponent,data: { vehicles } },
-      { path: 'itinerary', component: SummaryItineraryComponent }
-    ]
+    data: { trips }
   },
   { 
     path: 'scheduled', 
