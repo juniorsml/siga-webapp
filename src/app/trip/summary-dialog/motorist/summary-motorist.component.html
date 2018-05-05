@@ -66,10 +66,10 @@
 	        <ul class="motorist-profile-info column is-2">
 	            <li class="motorist-profile-info-item">
                  <div class="profile-photo" style="background-image: url('/assets/layout/unknown_user.png');background-size: contain;">
-                        <img *ngIf="selectedMotorist !=null"
-                             style="width: 192px; height: 192px;"
-                             src="{{'api/motorist/public/profileImage?id=' + selectedMotorist?.id}}"
-                             alt="">
+                        <img *ngIf="selectedMotorist !== null"
+                          style="width: 192px; height: 192px;"
+                          src="{{'api/motorist/public/profileImage?id=' + selectedMotorist?.id}}"
+                          alt="">
                  </div>
               </li>
           </ul>
