@@ -14,14 +14,9 @@ import { VehiclesComponent } from './register/vehicles/vehicles.component';
 import { TrucksComponent } from './register/trucks/trucks.component';
 import { DeviceComponent } from './register/device/device.component';
 
-import { SummaryComponent } from './summary-dialog/summary/summary.component';
-import { SummaryMotoristComponent } from './summary-dialog/motorist/summary-motorist.component';
-import { SummaryVehicleComponent } from './summary-dialog/vehicle/summary-vehicle.component';
-import { SummaryItineraryComponent } from './summary-dialog/itinerary/summary-itinerary.component';
-
 import { motorists } from '../shared/mocks/motorist';
-import { devices } from '../shared/mocks/device';
 import { vehicles } from '../shared/mocks/vehicles';
+import { devices } from '../shared/mocks/device';
 import { trips } from '../shared/mocks/trips';
 
 const routes: Routes = [
