@@ -32,7 +32,8 @@
       [searchColumns]="['id','motorists.documentId','currentState.Status','motorists.documentId','motorists.documentId']"
       [emptySearchText]="'nenhuma viagem foi encontrado'" 
       [bodyBottom]="'42px'" 
-      [bodyTop]="'26px'">
+      [bodyTop]="'26px'"
+      (onCellClick)="updateSelectedTrip($event)">
       <table-empty>
         <ng-template>
             <!-- <div *ngIf="dataLoading"
@@ -100,7 +101,7 @@
 
       <context-menu
           [mode]="'click'"
-          (onItemSelected)="contextMenuSelected()">
+          (onItemSelected)="contextMenuSelected($event)">
           <menu-item>
               <ng-template>
                   <span class="table-menu-icon fal fa-list"
@@ -136,6 +137,8 @@
   </div>
   <sga-modal>
     <sga-summary-dialog
+      [trip]="selectedTrip"
+      [stepIndex]="stepIndex"
       [showDialog]="showSummaryDialog"
       (onDialogClose)="summaryDialogClose()">
     </sga-summary-dialog>
