@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { Component, EventEmitter, Output, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { StepClickEvent } from '../../shared/events/StepClickEvent';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'sga-summary-dialog',
@@ -8,45 +7,33 @@ import { Router } from '@angular/router';
   styleUrls: ['./summary-dialog.component.scss']
 })
 
-export class SummaryDialogComponent {
+export class SummaryDialogComponent implements OnChanges {
 
-  constructor(private router: Router) { }
-
-  @Input()
-  public showDialog = false;
-
-  @Output() 
-  public onDialogClose = new EventEmitter();
-
-  wasClicked = false;
+  @Input() public trip: any;
+  
+  @Input() public showDialog = false;
+  
+  @Input() public stepIndex: number;
+  
+  @Output() public onDialogClose = new EventEmitter();
+  
+  private wasClicked = false;
+  
+  public selectedStepIndex: number;
+  
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.stepIndex && !changes.firstChange) {
+      this.selectedStepIndex = changes.stepIndex.currentValue;
+    }
+  }
 
   public onClose() {
     this.onDialogClose.emit();
   }
 
   public onSelectStep(event: StepClickEvent) {
-
+    this.selectedStepIndex = event.index;
     this.wasClicked= !this.wasClicked;
-
-    console.log(this.wasClicked);
-    
-    switch (event.data.header) {
-      
-      case 'Resumo': 
-        this.router.navigateByUrl('trip/started/summary');
-
-        break;
-        
-      case 'Motorista':
-        this.router.navigateByUrl('trip/started/motorist');
-        break;
-      case 'Veículo':
-        this.router.navigateByUrl('trip/started/vehicle');
-        break;
-      case 'Itinerário':
-        this.router.navigateByUrl('trip/started/itinerary');
-        break;
-    }
   }
 }
  
