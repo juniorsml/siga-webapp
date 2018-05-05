@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 
 @Component({
@@ -7,14 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./summary.component.scss']
 })
 
-export class SummaryComponent implements OnInit {
-
-   ngOnInit() {
-  }
-
-   
-
-
+export class SummaryComponent {
+  @Input() public trip: any;
 }
 
  
