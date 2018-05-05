@@ -14,7 +14,6 @@ export class StepsComponent {
   @Input() 
   public isVertical: boolean;
 
-
   @Output()
   public onSelectStep = new EventEmitter<StepClickEvent>();
 
@@ -24,8 +23,7 @@ export class StepsComponent {
     if (step) this.steps.push(step);
   }
 
-  public onClick(event: Event, step: StepComponent): void {
-    this.onSelectStep.emit(new StepClickEvent(event, step));
-    
+  public onClick(event: Event, step: StepComponent, index: number): void {
+    this.onSelectStep.emit(new StepClickEvent(event, step, index));
   }
 }
