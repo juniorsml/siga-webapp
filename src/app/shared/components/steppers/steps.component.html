@@ -1,7 +1,7 @@
 <ul class="column is-12 steps is-narrow is-medium is-centered has-content-centered" [ngStyle]="{width: width}" [ngClass]="{'is-vertical':isVertical == true }" >
   <li class="steps-segment" 
-      *ngFor="let step of steps"
-      (click)="onClick($event, step)"
+      *ngFor="let step of steps; let itemIndex = index"
+      (click)="onClick($event, step, itemIndex)"
       [ngClass]="{ 'is-active has-gaps': step.hasGap }">
     <a class="has-text-dark">
       <span class="steps-marker" [ngClass]="{ 'is-hollow': step.isHollow }">
