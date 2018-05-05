@@ -8,18 +8,19 @@ import { ActivatedRoute } from '@angular/router';
   styles: []
 })
 export class StartedTripsComponent implements OnInit {
-	@Input() trips = new Array();
-  @Input() dataLoading: boolean = true;
+  @Input() public trips = new Array();
+  @Input() public dataLoading = true;
 
-  text: any;
-  distance: any;
-  motorist: any;
-  placeText: any;
-  styleClass: any;
-  filterLocation: any;
-  filterDistance: any;
-  showTripDialog = false;
-  
+  public text: any;
+  public distance: any;
+  public motorist: any;
+  public placeText: any;
+  public styleClass: any;
+  public stepIndex: number;
+  public selectedTrip: any;
+  public filterLocation: any;
+  public filterDistance: any;
+  public showTripDialog = false;
   public showSummaryDialog = false;
 
   constructor(private route: ActivatedRoute) { }
@@ -42,28 +43,16 @@ export class StartedTripsComponent implements OnInit {
 
   public onDistanceKeyUp() {}
 
-  contextMenuSelected() {
-    this.showSummaryDialog = true;
-
-    // switch (menuIndex) {
-    //     case 0:
-    //         this.tripDialogIndex = 0;
-    //         break;
-    //     case 1:
-    //         this.tripDialogIndex = 1;
-    //         break;
-    //     case 2:
-    //         this.tripDialogIndex = 2;
-    //         break;
-    //     case 3:
-    //         this.tripDialogIndex = 3;
-    //         break;
-    //     case 4:
-    //         this.tripDialogIndex = 4;
-    //         break;
-    // }
+  public updateSelectedTrip(event) {
+    this.selectedTrip = event.data;
   }
-  summaryDialogClose(){
+
+  public contextMenuSelected(index) {
+    this.stepIndex = index;
+    this.showSummaryDialog = true;
+  }
+
+  public summaryDialogClose(){
     this.showSummaryDialog = false;
   }
 
