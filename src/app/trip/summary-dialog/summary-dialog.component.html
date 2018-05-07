@@ -10,7 +10,12 @@
 			  </sga-steps>
 			</div>
 		  <div class="column">
-				<router-outlet></router-outlet>
+				<div [ngSwitch]="selectedStepIndex">
+					<sga-summary *ngSwitchCase="0" [trip]="trip"></sga-summary>
+					<sga-summary-motorist *ngSwitchCase="1" [motorists]="trip.motorists"></sga-summary-motorist>
+					<sga-summary-vehicle *ngSwitchCase="2" [vehicles]="trip.vehicles"></sga-summary-vehicle>
+					<sga-summary-itinerary *ngSwitchCase="3"></sga-summary-itinerary>
+				</div>
 			</div>
 			<div class="column is-12">
 				<button (click)="onClose()" class="button is-pulled-right">Fechar</button>

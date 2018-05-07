@@ -452,7 +452,45 @@ export const trips =
         "credentials": null
       }
     ],
-    "vehicles": null,
+    "vehicles": [
+      {
+        id: '5a7e3dce97b8767b5443e3e3',
+        vehiclePlate: 'KLL-2492',
+        renavan: '39793808800',
+        token: '$2a$10$SICT8iZvkOQNjudZ3rXBFeC/cHIV9nJqpDgHWK0M0W7kjQPKy4f1a',
+        brand: 'LOBINI',
+        model: 'H1 1.8 20V Turbo 180cv 2p',
+        color: 'Prata',
+        year: '2005',
+        type: 'Carreta',
+        capacity: 10,
+        fleetNumber: '29054114534467',
+        anttNumber: '29054114534467',
+        anttDueDate: '29054114534467',
+        ownerName: '29054114534467',
+        ownerDocument: '29054114534467',
+        devices: [
+          { 
+            id: '5900d959f5e17b63799d4990', 
+            tech: 'GHSYT', 
+            number:'3265888441',
+            comunication:null
+          },
+          { 
+            id: '0615414asf1894517b63799s', 
+            tech: 'VETYER', 
+            number:'7346100934',
+            comunication:null
+          },
+          { 
+            id: '94b637911009d4G527jy1199', 
+            tech: 'ETTETS', 
+            number:'0981335888',
+            comunication:null
+          }
+        ],
+      }
+    ],
     "gpsDevices": null,
     "geography": {
       "destinations": [

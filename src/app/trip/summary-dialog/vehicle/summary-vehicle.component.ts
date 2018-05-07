@@ -1,6 +1,4 @@
-
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'sga-summary-vehicle',
@@ -8,28 +6,25 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./summary-vehicle.component.scss']
 })
 
-
 export class SummaryVehicleComponent implements OnInit {
-
- 
-  selectedVehicle: any;
-
-  public vehicles: Array<any>;
+  
+  @Input() public vehicles: Array<any>;
+  
   public associateVehicle = new Array<any>();
   public showRegisterForm = false;
-
-  constructor(private router: ActivatedRoute) {}
+  public selectedVehicle: any;
 
   ngOnInit(): void {
-    this.router.data.subscribe(
-      data => (this.vehicles = data.vehicles || new Array<any>())
-    );
+    if (this.vehicles === null || 
+        this.vehicles.length === 0) return;
+
+    this.associateVehicle = this.vehicles;
+    this.showVehicleData(this.associateVehicle[0]);
   }
 
   public showVehicleData(vehicle) {
     this.selectedVehicle = vehicle
   }
-
 
   public showVehicleForm() {  
     this.showRegisterForm = true;
