@@ -33,12 +33,22 @@
       </sga-tab>
       
       <sga-tab heading="Grupos">
+        <sga-register-group 
+          *ngIf="showRegisterGroup"
+          [group]="selectedGroup"
+          (onBackButton)="closeRegisterGroup()"
+          (onPlaceSelected)="onSelected($event)">
+        </sga-register-group>
+
         <sga-grid-control 
           [data]="groups"
           title="Grupos"
+          [useContext]="true"
+          *ngIf="!showRegisterGroup"
+          (onContextClick)="onContextMenu($event)"
           (onItemSelected)="onSelected($event)"
           (onRegisterClick)="openRegister()">
-        </sga-grid-control> 
+        </sga-grid-control>
       </sga-tab>
     </sga-tabs>
   </div>

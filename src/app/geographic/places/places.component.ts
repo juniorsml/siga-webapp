@@ -19,8 +19,12 @@ export class RegisterPlaceComponent implements OnInit {
   public areas:  Array<any>;
   public places: Array<any>;
   public groups: Array<any>;
-  public showRegister = false;
+  
+  public selectedGroup: any;
   public selectedTabIndex = 0;
+
+  public showRegister = false;
+  public showRegisterGroup = false;
 
   constructor(private map: Map) {}
 
@@ -82,6 +86,16 @@ export class RegisterPlaceComponent implements OnInit {
 
   public onTabSelected(tab: TabComponent) {
     this.selectedTabIndex = tab.index;
+  }
+
+  public onContextMenu(event: any) {
+    debugger
+    this.selectedGroup = event.item;
+    this.showRegisterGroup = event.index === 1;
+  }
+
+  public closeRegisterGroup() {
+    this.showRegisterGroup = false;
   }
 
   public onSelected(place) {
