@@ -1,0 +1,15 @@
+<section>
+  <div class="wrapper-flex">
+    <i class="fa fa-long-arrow-left" (click)="backButton()"></i>
+    <input type="text" [ngModel]="group.name">
+  </div>
+
+  <div class="grid">
+    <sga-grid-control 
+      marginTop="9"
+      title="Itens do grupo"
+      [data]="group.location"
+      (onItemSelected)="onSelected($event)">
+    </sga-grid-control> 
+  </div>
+</section>

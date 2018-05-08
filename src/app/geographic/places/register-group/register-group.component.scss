@@ -1,0 +1,21 @@
+section {
+  .wrapper-flex {
+    display: flex;
+    
+    i {
+      flex: 1;
+      cursor: pointer;
+      margin-top: .2em;
+      font-size: 1.5em;
+    }
+    
+    input {
+      width: 90%;
+    }
+  }
+  
+  .grid {
+    margin-top: 1.3em;
+  }
+}
+  
