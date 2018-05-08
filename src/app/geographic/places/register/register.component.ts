@@ -12,8 +12,9 @@ export class RegisterComponent {
   @Output() public onBackButton = new EventEmitter<string>();
   @Output() public onPlaceSelected = new EventEmitter<any>();
   
-  public placeSelected = false;
+  private location: any;
 
+  public placeSelected = false;
   public docType = 0;
 
   public backButton() {
@@ -24,11 +25,12 @@ export class RegisterComponent {
     this.placeSelected = true;
     const { location } = event.geometry;
     if (location === undefined) return;
-
-    this.onPlaceSelected.emit(location);
+    this.location = location;
+    this.onPlaceSelected.emit(this.location);
   }
   
   public onPlacesFilterRemoved() {
+    this.location = null;
     this.placeSelected = false;
   }
 
@@ -38,6 +40,8 @@ export class RegisterComponent {
 
   public onSubmit(form) {
     const { value } = form;
+    value.latitude = this.location.lat();
+    value.longitude = this.location.lng()
     this.onSubmitForm.emit(value);
   }
 }
