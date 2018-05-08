@@ -12,7 +12,7 @@
       (tabSelected)="onTabSelected($event)"
       [tabIndex]="selectedTabIndex"
       *ngIf="!showRegister"
-      styleClass="tabs">
+      styleClass="tabs no-margin">
 
       <sga-tab heading="Áreas">
         <sga-grid-control 
@@ -37,7 +37,8 @@
           *ngIf="showRegisterGroup"
           [group]="selectedGroup"
           (onBackButton)="closeRegisterGroup()"
-          (onPlaceSelected)="onSelected($event)">
+          (onPlaceSelected)="onSelected($event)"
+          (onRegisterNewItem)="registerNewGroupItem($event)">
         </sga-register-group>
 
         <sga-grid-control 

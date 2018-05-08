@@ -16,6 +16,7 @@ import { areas } from '../../shared/mocks/area';
 })
 export class RegisterPlaceComponent implements OnInit {
   private location: any;
+  
   public areas:  Array<any>;
   public places: Array<any>;
   public groups: Array<any>;
@@ -59,6 +60,10 @@ export class RegisterPlaceComponent implements OnInit {
     this.map.addGeoMarker(geometry);
   }
 
+  private resetGroupMapView() {
+    this.onSelected(this.selectedGroup); 
+  }
+
   public onPlaceSelected(location) {
     this.location = {
       latitude: location.lat(),
@@ -89,9 +94,11 @@ export class RegisterPlaceComponent implements OnInit {
   }
 
   public onContextMenu(event: any) {
-    debugger
     this.selectedGroup = event.item;
-    this.showRegisterGroup = event.index === 1;
+    this.showRegisterGroup = event.index === 0;
+
+    if (this.showRegisterGroup)
+      this.resetGroupMapView();
   }
 
   public closeRegisterGroup() {
@@ -109,8 +116,12 @@ export class RegisterPlaceComponent implements OnInit {
     }
   }
 
+  public registerNewGroupItem(event) {
+    this.selectedGroup.location.push(event.item);
+    this.resetGroupMapView();
+  }
+
   public createPlace(place) {
     place.location = this.location;
-    console.log(place);
   }
 }
