@@ -27,7 +27,6 @@ export class TrucksComponent implements OnInit {
 
   public showVehicleData(truck) {
     this.selectedTruck = truck;
-    // debugger
   }
 
 

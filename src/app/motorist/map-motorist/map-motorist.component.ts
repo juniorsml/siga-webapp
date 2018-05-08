@@ -70,7 +70,6 @@ export class MapMotoristComponent implements OnInit {
       }
     });
 
-    debugger
     this.map.addCluster(this.mapMarkers);
   }
 
@@ -138,7 +137,6 @@ export class MapMotoristComponent implements OnInit {
   }
 
   toggleMapStyle(mapStyle) {
-    debugger
     if (mapStyle.value === "1") {
       this.map.setStyle(MapStyle.Outdoor);
     } else {

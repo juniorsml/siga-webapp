@@ -29,7 +29,6 @@ export class MotoristComponent implements OnInit {
 
 
   public showMotoristForm() {  
-    debugger
     this.showMotoristRegister = true;
   }
 
