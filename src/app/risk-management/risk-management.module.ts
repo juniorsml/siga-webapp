@@ -11,6 +11,7 @@ import { RiskManagementRoutingModule } from './risk-management-routing.module';
 
 import { SharedModule } from '../shared/modules/shared.module';
 
+import { StartedTripsComponent } from './started/started.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,7 @@ import { SharedModule } from '../shared/modules/shared.module';
     RiskManagementRoutingModule
   ],
   declarations: [
-     
+     StartedTripsComponent
 
   ]
 })
