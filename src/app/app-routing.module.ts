@@ -38,6 +38,7 @@ const routes: Routes = [
         path: 'geographic',
         loadChildren: 'app/geographic/geographic.module#GeographicModule'
       }
+      
     ]
   },
   { path: 'home', component: HomeComponent },
