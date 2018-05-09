@@ -26,4 +26,4 @@ import { SharedModule } from '../shared/modules/shared.module';
 
   ]
 })
-export class TripModule { }
+export class RiskManagement { }
