@@ -16,7 +16,6 @@ import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './shared/layout/navbar/navbar.component';
 import { SidebarComponent } from './shared/layout/sidebar/sidebar.component';
 import { ContentComponent } from './shared/layout/content/content.component';
-import { RiskManagementComponent } from './risk-management/risk-management.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +24,7 @@ import { RiskManagementComponent } from './risk-management/risk-management.compo
     LoginComponent,
     NavbarComponent,
     SidebarComponent,
-    ContentComponent,
-    RiskManagementComponent
+    ContentComponent
   ],
   imports: [FormsModule, SharedModule, BrowserModule, AppRoutingModule],
   providers: [

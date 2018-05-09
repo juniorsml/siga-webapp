@@ -7,6 +7,8 @@ import { MotoristModule } from '../motorist/motorist.module';
 import { VehicleModule } from '../vehicle/vehicle.module';
 import { TruckModule } from '../truck/truck.module';
 
+import { RiskManagementRoutingModule } from './risk-management-routing.module';
+
 import { SharedModule } from '../shared/modules/shared.module';
 
 
@@ -19,11 +21,12 @@ import { SharedModule } from '../shared/modules/shared.module';
     DeviceModule,
     MotoristModule,
     VehicleModule,
-    TruckModule
+    TruckModule,
+    RiskManagementRoutingModule
   ],
   declarations: [
      
 
   ]
 })
-export class RiskManagement { }
+export class RiskManagementModule { }

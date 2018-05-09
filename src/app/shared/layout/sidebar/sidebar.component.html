@@ -31,12 +31,27 @@
             </div>
           </ng-template>
         </accordion-header>
-        <ul class="sidebar-submenu">
-          <li [class.selected]="router.url == '/riskManagement'" class="sidebar-menu-item">
-            <a routerLink="/riskManagement">
-              <span [class.selected]="router.url == '/riskManagement'" class="sidebar-list-icon fal fa-desktop"></span>
-              <span class="sidebar-list-text">Vigilante</span>
-            </a>
+        <ul class="sidebar-submenu sidebar-menu-item-accordion">
+          <li [class.selected]="router.url == '/risk-management'" class="sidebar-menu-item-accordion">
+            <accordion>
+              <accordion-header>
+                <ng-template>
+                  <div class="sidebar-menu-accordion">
+                    <span [class.selected]="router.url == '/risk-management'" class="sidebar-list-icon fal fa-exclamation-square"></span>
+                    <span class="sidebar-list-text">Monitoramento</span>
+                  </div>
+                </ng-template>
+              </accordion-header>
+              <ul class="sidebar-submenu">
+                <li [class.selected]="router.url == '/risk-management/started'" class="sidebar-menu-item">
+                  <a routerLink="/risk-management">
+                    <span [class.selected]="router.url == '/risk-management/started'" class="sidebar-list-icon fal fa-desktop"></span>
+                    <span class="sidebar-list-text">Em viagem</span>
+                  </a>
+                </li>
+                
+              </ul>
+            </accordion>
           </li>
           <li class="sidebar-menu-item">
             <a>
