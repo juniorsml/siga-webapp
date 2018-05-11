@@ -1,8 +1,10 @@
 <nav class="nav">
-    <div>
-        <div class="nav-header">
-          <img class="nav-logo" alt="Siga" src="/assets/layout/siga.png">
-        </div>
+  <div>
+    <div  class="full-screen-button">
+      <a title="Tela Cheia" (click)="toggleFullScreen()">
+        <span class="fal fa-window-maximize"></span>
+      </a>
+    </div>
       <ul class="nav-header-menu">
           <li>
              <a title="Notificações" ><i class="fal fa-bell"></i></a>
@@ -13,12 +15,6 @@
                 <span class="fal fa-comments" aria-hidden="true"></span>
               </a>
           </li>
-          <li class="full-screen-button" style="min-width: 48px;">
-              <a title="Tela Cheia" (click)="toggleFullScreen()">
-                  <span class="fal fa-window-maximize"></span>
-              </a>
-          </li>
-
            <li style="min-width: 48px;">
               <a title="Sair" class="sign-out"  (click)="logout()">
                   <i class="fal fa-sign-out"></i>

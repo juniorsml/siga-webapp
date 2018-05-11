@@ -12,7 +12,8 @@ import { RiskManagementRoutingModule } from './risk-management-routing.module';
 import { SharedModule } from '../shared/modules/shared.module';
 
 import { StartedTripsComponent } from './started/started.component';
-import { ScheduledTripsComponent } from './schedule/schedule.component';
+
+import { ScheduledTripsComponent } from './scheduled/scheduled.component';
 
 
 @NgModule({
