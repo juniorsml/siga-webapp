@@ -34,6 +34,15 @@ export class MapMotoristComponent implements OnInit {
     }
   }
 
+  public status: boolean = false;
+
+  toggleMapType() {
+    this.status = !this.status;
+  }
+
+
+
+
   plotMotoristLocations(): void {
     this.map.clearAll();
     this.mapMarkers = [];

@@ -1,20 +1,25 @@
 <div class="sidebar" >
   <div class="sidebar-header">
-    <div class="sidebar-hamburger">
+    <!-- <div class="sidebar-hamburger">
       <span>
         <i class="fa fa-user-circle" aria-hidden="true"></i>
       </span>
-    </div>
-    <div class="sidebar-user">
+    </div> -->
+   <!--  <div class="sidebar-user">
       <div class="ssidebar-username">
         <span>{{user?.firstName}} {{user?.lastName}}</span>
       </div>
       <div class="sidebar-account">
         <span>{{user?.accountName}}</span>
       </div>
+    </div> -->
+    <div class="cnt-brand-sidebar">
+      <img alt="Siga" src="/assets/layout/siga-side.png">
     </div>
+    
+
   </div>  <!-- <div class="sidebar-accent"></div>-->
-  <ul class="sidebar-menu" >
+  <ul class="sidebar-menu">
     <li class="sidebar-menu-item">
       <a routerLink="/home">
         <span [class.selected]="router.url == '/home'" class="sidebar-list-icon fal fa-home"></span>
@@ -31,12 +36,32 @@
             </div>
           </ng-template>
         </accordion-header>
-        <ul class="sidebar-submenu">
-          <li [class.selected]="router.url == '/riskManagement'" class="sidebar-menu-item">
-            <a routerLink="/riskManagement">
-              <span [class.selected]="router.url == '/riskManagement'" class="sidebar-list-icon fal fa-desktop"></span>
-              <span class="sidebar-list-text">Vigilante</span>
-            </a>
+        <ul class="sidebar-submenu sidebar-menu-item-accordion">
+          <li [class.selected]="router.url == '/risk-management'" class="sidebar-menu-item-accordion">
+            <accordion>
+              <accordion-header>
+                <ng-template>
+                  <div class="sidebar-menu-accordion">
+                    <span [class.selected]="router.url == '/risk-management'" class="sidebar-list-icon fal fa-exclamation-square"></span>
+                    <span class="sidebar-list-text">Monitoramento</span>
+                  </div>
+                </ng-template>
+              </accordion-header>
+              <ul class="sidebar-submenu">
+                <li [class.selected]="router.url == '/risk-management/started'" class="sidebar-menu-item">
+                  <a routerLink="/risk-management/started">
+                    <span [class.selected]="router.url == '/risk-management/started'" class="sidebar-list-icon fal fa-desktop"></span>
+                    <span class="sidebar-list-text">Em viagem</span>
+                  </a>
+                </li>
+                <li [class.selected]="router.url == '/risk-management/scheduled'" class="sidebar-menu-item">
+                  <a routerLink="/risk-management/scheduled">
+                    <span [class.selected]="router.url == '/risk-management/scheduled'" class="sidebar-list-icon fal fa-desktop"></span>
+                    <span class="sidebar-list-text">Não iniciadas</span>
+                  </a>
+                </li>
+              </ul>
+            </accordion>
           </li>
           <li class="sidebar-menu-item">
             <a>

@@ -37,7 +37,13 @@ const routes: Routes = [
       {
         path: 'geographic',
         loadChildren: 'app/geographic/geographic.module#GeographicModule'
+      },
+      {
+        path: 'risk-management',
+        loadChildren: 'app/risk-management/risk-management.module#RiskManagementModule'
       }
+
+
     ]
   },
   { path: 'home', component: HomeComponent },

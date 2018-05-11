@@ -15,6 +15,7 @@
   }
 }
 
+
 .map-center-bar {
   position: absolute;
   width: 90%;
@@ -33,6 +34,8 @@
   display: flex;
   a {
     font-size: 19px;
+    width: 13px;
+    transition: all 150ms ease;
     color: #cecece;
   }
 }

@@ -6,7 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: [ './navbar.component.scss' ]
 })
 export class NavbarComponent implements OnInit {
-    logout: any;
+  logout: any;
+
+  public status: boolean = false;
+
+  toggleProfileUser() {
+    this.status = !this.status;
+  }
 	
   toggleFullScreen() {
         var doc: any = document;

@@ -1,29 +1,49 @@
 <nav class="nav">
-    <div>
-        <div class="nav-header">
-          <img class="nav-logo" alt="Siga" src="/assets/layout/siga.png">
-        </div>
-      <ul class="nav-header-menu">
-          <li>
-             <a title="Notificações" ><i class="fal fa-bell"></i></a>
-              
-          </li>
-          <li>
-              <a title="Mensagens" class="nav-notification">
-                <span class="fal fa-comments" aria-hidden="true"></span>
-              </a>
-          </li>
-          <li class="full-screen-button" style="min-width: 48px;">
-              <a title="Tela Cheia" (click)="toggleFullScreen()">
-                  <span class="fal fa-window-maximize"></span>
-              </a>
-          </li>
 
-           <li style="min-width: 48px;">
-              <a title="Sair" class="sign-out"  (click)="logout()">
-                  <i class="fal fa-sign-out"></i>
-              </a>
-          </li>
-      </ul>
+    <div  class="full-screen-button">
+      <a title="Tela Cheia" (click)="toggleFullScreen()">
+        <span class="fal fa-window-maximize"></span>
+      </a>
     </div>
+    <ul class="nav-header-menu">
+      <li>
+         <a title="Notificações">
+          <i class="fal fa-bell"></i>
+          <span class="amount notifications">10</span>
+        </a>              
+      </li>
+      <li>
+        <a title="Mensagens">
+          <i class="fal fa-comments" aria-hidden="true"></i>
+           <span class="amount messages">5</span>
+        </a>
+      </li>
+      <li>
+        <a class="user" (click)="toggleProfileUser()">
+          <span class="avatar avatar-online">
+            <img src="/assets/layout/avatar.png" alt="avatar"><i></i>
+          </span>
+          <span class="user-name">Operador</span>
+          <i class="fal fa-angle-down"></i>
+        </a>          
+        <ul class="cnt-menu-profile"  [ngClass]="status ? 'opened' : 'closed'">
+          <li>
+            <a href=""><i class="fal fa-pen-square"></i> Editar Perfil</a>
+          </li>
+          <li class="last">
+            <a href=""><i class="fal fa-power-off"></i> Logout</a>
+          </li>
+         
+        </ul>
+        
+      </li>
+      <!-- <li style="min-width: 48px;">
+          <a title="Sair" class="sign-out"  (click)="logout()">
+              <i class="fal fa-sign-out"></i>
+          </a>
+      </li> -->
+
+      
+    </ul>
+   
 </nav>
