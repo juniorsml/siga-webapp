@@ -58,6 +58,28 @@ nav {
                color: #cecece; 
                cursor: pointer;
             }
+            span{
+              color: #FFF;
+              text-align: center;
+              width: 20px;
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              height: 20px;
+              border-radius: 50%;
+              font-size: 12px;
+              position: relative;
+              top: -13px;
+              right: 10px;
+            }
+            span.notifications{
+              background:#f96478;
+              
+            }
+
+            span.messages{
+              background:#fd9764;
+            }
 
         }
       }
