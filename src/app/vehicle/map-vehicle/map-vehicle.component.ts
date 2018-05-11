@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ElementRef,EventEmitter } from '@angular/core';
 
 import {} from 'leaflet-marker-cluster';
 
@@ -6,6 +6,7 @@ import { Map } from '../../shared/models/Map';
 import { TabComponent } from '../../shared/components/tabs/tab/tab.component';
 import { Feature, GeometryObject } from 'geojson';
 import { TableClickEvent } from '../../shared/components/table/table.component';
+
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -19,6 +20,13 @@ export class MapVehicleComponent implements OnInit {
 
   public hideVehicleModal: boolean;
   public text: any;
+
+  public status: boolean = false;
+  toggleMapType() {
+    this.status = !this.status;
+  }
+
+
 
   @ViewChild('mapSelector') mapSelector: ElementRef;
   @Input()
@@ -196,7 +204,8 @@ export class MapVehicleComponent implements OnInit {
   }
 
   private injectMap(): void {
-    this.map.createMapBoxMapInstance(this.mapSelector.nativeElement);
+    this.map.createMapBoxMapInstance(false);
     this.plotVehicleLocations();
   }
 }
+

@@ -87,9 +87,8 @@ $bg-titles: #4d5675;
 .cnt-select-map{
   background:#FFF;
   position: absolute;
-  
-      top: 46px;
-    opacity: 0;
+  top: 46px;
+  opacity: 0;
   padding: 7px 12px;
   left: 0px;
   transition: all 200ms ease;
@@ -101,8 +100,7 @@ $bg-titles: #4d5675;
 }
 .container {
   position: relative;
-  padding-left: 30px;
-  margin-bottom: 11px;
+  padding: 0 12px 0 24px;
   cursor: pointer;
   font-size: 13px;
   -webkit-user-select: none;
@@ -162,10 +160,9 @@ $bg-titles: #4d5675;
   z-index:999;
   margin-top: 8px;
   margin-left: 21px;
+  width: 77%;
   ul{
     width:100% !important;
-
-
     li a {
         font-size: 12px !important;
         color: #c10000 !important;

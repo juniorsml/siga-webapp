@@ -15,7 +15,7 @@
     <a class="fal" [ngClass]="status ? 'fa-times' : 'fa-bars'" (click)="toggleMapType()"></a>
     <div class="cnt-select-map" [ngClass]="status ? 'opened' : 'closed'">
       <label class="container" (click)="toggleMapStyle(map)">Mapa        
-        <input type="radio" name="map" #map value="1" >
+        <input type="radio" name="map" #map value="1" checked>
         <span class="checkmark"></span>
       </label>
       <label class="container" (click)="toggleMapStyle(street)">Satélite        

@@ -28,6 +28,10 @@ private _vehicles: Array<any>;
     return this._vehicles;
 
   }
+  public status: boolean = false;
+  toggleMapType() {
+    this.status = !this.status;
+  }
 
   set vehicles(value: Array<any>) {
     this._vehicles = value;
