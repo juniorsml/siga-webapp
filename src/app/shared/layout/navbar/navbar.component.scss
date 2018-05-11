@@ -33,7 +33,7 @@ nav {
       display: inline;
      
       li {
-          min-width: 60px;
+          min-width: 37px;
           float: left;
           list-style-type: none;
           display: inline;
@@ -46,10 +46,10 @@ nav {
               cursor: pointer;
             }
 
-            .fa-window-maximize{
-              line-height: 46px; 
-              font-size: 20px; 
-              color: #cecece; 
+            i.fa-comments{
+              line-height: 50px;
+              font-size: 17px;
+              color: #a9a9a9;
               cursor: pointer;
             }
             .sign-out{
@@ -61,9 +61,4 @@ nav {
 
         }
       }
-            .nav-header-menu > li > .nav-notification > span {
-              color: #CECECE;
-              font-size: 21px;
-              line-height: 44px;
-              cursor: pointer;
-            }
+          
