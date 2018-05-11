@@ -7,21 +7,29 @@ import { groups } from '../../../shared/mocks/group';
   styleUrls: ['./modal-group.component.scss']
 })
 export class ModalGroupComponent implements OnInit {
+  @Output() public onSaveDialog = new EventEmitter<any>();
+  @Output() public onCancelDialog = new EventEmitter<void>();
+
   public groups: Array<any>;
 
-  @Output() public onCloseDialog = new EventEmitter<void>();
-  @Output() public onSelectedGroup = new EventEmitter<any>();
+  private selectedGroup: any;
 
   ngOnInit() {
     this.groups = groups;
   }
 
   public selectGroup(group: any) {
-    debugger
-    this.onSelectedGroup.emit(group);
+    this.groups.map(i => i.selected = false);
+    group.selected = true;
+
+    this.selectedGroup = group;
   }
 
-  public close() {
-    this.onCloseDialog.emit();
+  public save() {
+    this.onSaveDialog.emit(this.selectedGroup);
+  }
+
+  public cancel() {
+    this.onCancelDialog.emit();
   }
 }
