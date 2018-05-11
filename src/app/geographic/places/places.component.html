@@ -17,16 +17,29 @@
       <sga-tab heading="Áreas">
         <sga-grid-control 
           [data]="areas"
+          [useContext]="false"
           title="Áreas"
+          (onCellRightClick)="onSelectedArea($event)"
+          (onContextClick)="onContextMenu($event)"
           (onItemSelected)="onSelected($event)"
           (onRegisterClick)="openRegister()">
         </sga-grid-control>
       </sga-tab>
 
+      <sga-modal *ngIf="showSelectGroup">
+        <sga-modal-group 
+          (onSelectedGroup)="onSelectedGroupByPlace($event)"
+          (onCloseDialog)="closeModalGroup()">
+        </sga-modal-group>
+      </sga-modal>
+
       <sga-tab heading="Lugares">
         <sga-grid-control 
           [data]="places"
+          [useContext]="false"
           title="Lugares"
+          (onCellRightClick)="onSelectedPlace($event)"
+          (onContextClick)="onContextMenu($event)"
           (onItemSelected)="onSelected($event)"
           (onRegisterClick)="openRegister()">
         </sga-grid-control> 

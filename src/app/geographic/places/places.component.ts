@@ -21,10 +21,14 @@ export class RegisterPlaceComponent implements OnInit {
   public places: Array<any>;
   public groups: Array<any>;
   
+  public selectedArea: any;
   public selectedGroup: any;
-  public selectedTabIndex = 0;
+  public selectedPlace: any;
 
+  public selectedTabIndex = 0;
+  
   public showRegister = false;
+  public showSelectGroup = false;
   public showRegisterGroup = false;
 
   constructor(private map: Map) {}
@@ -94,11 +98,22 @@ export class RegisterPlaceComponent implements OnInit {
   }
 
   public onContextMenu(event: any) {
-    this.selectedGroup = event.item;
-    this.showRegisterGroup = event.index === 0;
+    switch (this.selectedTabIndex)
+    {
+      case 0:
+        this.showSelectGroup = true;
+        break;
 
-    if (this.showRegisterGroup)
-      this.resetGroupMapView();
+      case 1:
+        this.showSelectGroup = true;
+        break;
+
+      case 2:
+        this.showRegisterGroup = true;
+        this.selectedGroup = event.item.data;
+        this.resetGroupMapView();
+        break;
+    }
   }
 
   public closeRegisterGroup() {
@@ -110,10 +125,32 @@ export class RegisterPlaceComponent implements OnInit {
     if (Array.isArray(place.location)) {
       place.location.map(loc => this.addMarker(this.createPoint(loc.latitude, loc.longitude)));
       this.moveMap(place.location[0].latitude, place.location[0].longitude, 3);
-    } else {
+    } else if (place.location) {
       this.addMarker(this.createPoint(place.location.latitude, place.location.longitude));
-      this.moveMap(place.location.latitude, place.location.longitude, 14);
+      this.moveMap(place.location.latitude, place.location.longitude, 14); 
+    } else {
+      this.addMarker(this.createPoint(place.latitude, place.longitude));
+      this.moveMap(place.latitude, place.longitude, 14);
     }
+  }
+
+  public onSelectedGroupByPlace(group) {
+    if (this.selectedTabIndex === 0)
+      group.location.push(this.selectedArea.data);
+    else 
+      group.location.push(this.selectedPlace.data);
+  }
+
+  public onSelectedArea(area) {
+    this.selectedArea = area;
+  }
+
+  public onSelectedPlace(place) {
+    this.selectedPlace = place;
+  }
+
+  public onSelectedGroup(event) {
+    this.selectedGroup.location.push(event.item);
   }
 
   public registerNewGroupItem(event) {
@@ -123,5 +160,9 @@ export class RegisterPlaceComponent implements OnInit {
 
   public createPlace(place) {
     place.location = this.location;
+  }
+
+  public closeModalGroup() {
+    this.showSelectGroup = false;
   }
 }
