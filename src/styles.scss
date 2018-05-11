@@ -78,14 +78,93 @@ $bg-titles: #4d5675;
   }
 }
 
+.leaflet-container .leaflet-control-attribution {
+    background: none !important;
+  }
+
+//Radio Map Select
+
+.cnt-select-map{
+  background:#FFF;
+  position: absolute;
+  
+      top: 46px;
+    opacity: 0;
+  padding: 7px 12px;
+  left: 0px;
+  transition: all 200ms ease;
+}
+.cnt-select-map.opened{
+  top: 53px;
+  opacity: 1;
+
+}
+.container {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 11px;
+  cursor: pointer;
+  font-size: 13px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  height: 18px;
+  width: 18px;
+  background-color: #FFF;
+  border: 1px solid #bdbdbd;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  }
+
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #e41b1b;
+}
+
+
+
 .breadcrumb{
   position:relative;
   z-index:12;
   flex-wrap:wrap;
+  z-index:999;
   margin-top: 8px;
   margin-left: 21px;
   ul{
     width:100% !important;
+
 
     li a {
         font-size: 12px !important;
