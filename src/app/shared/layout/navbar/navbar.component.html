@@ -1,28 +1,38 @@
 <nav class="nav">
-  <div>
+
     <div  class="full-screen-button">
       <a title="Tela Cheia" (click)="toggleFullScreen()">
         <span class="fal fa-window-maximize"></span>
       </a>
     </div>
-      <ul class="nav-header-menu">
-        <li>
-           <a title="Notificações">
-            <i class="fal fa-bell"></i>
-            <span class="notifications">10</span>
-          </a>              
-        </li>
-        <li>
-          <a title="Mensagens">
-            <i class="fal fa-comments" aria-hidden="true"></i>
-             <span class="messages">5</span>
+    <ul class="nav-header-menu">
+      <li>
+         <a title="Notificações">
+          <i class="fal fa-bell"></i>
+          <span class="amount notifications">10</span>
+        </a>              
+      </li>
+      <li>
+        <a title="Mensagens">
+          <i class="fal fa-comments" aria-hidden="true"></i>
+           <span class="amount messages">5</span>
+        </a>
+      </li>
+      <li>
+        <a class="user" href="#">
+          <span class="avatar avatar-online">
+            <img src="/assets/layout/avatar.png" alt="avatar"><i></i>
+          </span>
+          <span class="user-name">Operador</span>
+        </a>
+      </li>
+      <!-- <li style="min-width: 48px;">
+          <a title="Sair" class="sign-out"  (click)="logout()">
+              <i class="fal fa-sign-out"></i>
           </a>
-        </li>
-           <li style="min-width: 48px;">
-              <a title="Sair" class="sign-out"  (click)="logout()">
-                  <i class="fal fa-sign-out"></i>
-              </a>
-          </li>
-      </ul>
-    </div>
+      </li> -->
+
+      
+    </ul>
+   
 </nav>
