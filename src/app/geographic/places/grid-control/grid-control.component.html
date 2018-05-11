@@ -29,7 +29,7 @@
     bodyBottom="42px" 
     bodyTop="26px"
     (onCellClick)="onSelected($event.data)"
-    (onCellRightClick)="onCellRightSelected($event.data)">
+    (onCellRightClick)="onCellRightSelected($event)">
     <table-empty>
       <ng-template>
         <div *ngIf="!dataLoading" style="position: absolute; top: 50%; left: 0px; right: 0px; margin-top: -20px;">
@@ -52,13 +52,31 @@
     </column>
 
     <context-menu
-      *ngIf="useContext === true"
       mode="right-click"
-      (onItemSelected)="onContextMenu($event)">
-      <menu-item>
+      (onItemSelected)="onContextMenu($event)"
+      *ngIf="useContext !== undefined">
+      <menu-item *ngIf="useContext === true">
         <ng-template>
           <span class="ui-datatable-contextmenu-icon fal fa-edit" aria-hidden="true"></span>
-          <span>Ver</span>
+          <span>Ver/Editar</span>
+        </ng-template>
+      </menu-item>
+      <menu-item *ngIf="useContext === true">
+        <ng-template>
+          <span class="ui-datatable-contextmenu-icon fal fa-plus" aria-hidden="true"></span>
+          <span>Adicionar Lugares</span>
+        </ng-template>
+      </menu-item>
+      <menu-item *ngIf="useContext === true">
+        <ng-template>
+          <span class="ui-datatable-contextmenu-icon fal fa-plus" aria-hidden="true"></span>
+          <span>Adicionar Áreas</span>
+        </ng-template>
+      </menu-item>
+      <menu-item *ngIf="useContext === false">
+        <ng-template>
+          <span class="ui-datatable-contextmenu-icon fal fa-plus" aria-hidden="true"></span>
+          <span>Adicionar ao grupo</span>
         </ng-template>
       </menu-item>
     </context-menu>

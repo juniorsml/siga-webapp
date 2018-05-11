@@ -14,6 +14,7 @@ export class GridControlComponent {
   @Output() public onRegisterClick = new EventEmitter();
   @Output() public onItemSelected = new EventEmitter<any>();
   @Output() public onContextClick = new EventEmitter<any>();
+  @Output() public onCellRightClick = new EventEmitter<any>();
 
   public selectedItem: any;
 
@@ -30,6 +31,7 @@ export class GridControlComponent {
   }
 
   public onCellRightSelected(item) {
-    if (this.useContext) this.selectedItem = item;
+    this.selectedItem = item;
+    this.onCellRightClick.emit(item);
   }
 }
