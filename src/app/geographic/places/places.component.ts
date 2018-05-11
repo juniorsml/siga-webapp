@@ -25,6 +25,7 @@ export class RegisterPlaceComponent implements OnInit {
   public selectedGroup: any;
   public selectedPlace: any;
 
+  public formType: string;
   public selectedTabIndex = 0;
   
   public showRegister = false;
@@ -84,7 +85,8 @@ export class RegisterPlaceComponent implements OnInit {
     event;
   }
 
-  public openRegister() {
+  public openRegister(type) {
+    this.formType = type;
     this.showRegister = true;
   }
 
@@ -139,6 +141,8 @@ export class RegisterPlaceComponent implements OnInit {
       group.location.push(this.selectedArea.data);
     else 
       group.location.push(this.selectedPlace.data);
+
+    this.showSelectGroup = false;
   }
 
   public onSelectedArea(area) {
@@ -160,6 +164,7 @@ export class RegisterPlaceComponent implements OnInit {
 
   public createPlace(place) {
     place.location = this.location;
+    this.showRegister = false;
   }
 
   public closeModalGroup() {

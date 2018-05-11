@@ -2,6 +2,7 @@
   <div class="places-sidebar box-shadow">
     <sga-register 
       *ngIf="showRegister"
+      [formType]="formType"
       [backParam]="selectedTabIndex"
       (onBackButton)="closeRegister($event)"
       (onPlaceSelected)="onPlaceSelected($event)"
@@ -22,14 +23,14 @@
           (onCellRightClick)="onSelectedArea($event)"
           (onContextClick)="onContextMenu($event)"
           (onItemSelected)="onSelected($event)"
-          (onRegisterClick)="openRegister()">
+          (onRegisterClick)="openRegister('area')">
         </sga-grid-control>
       </sga-tab>
 
       <sga-modal *ngIf="showSelectGroup">
         <sga-modal-group 
-          (onSelectedGroup)="onSelectedGroupByPlace($event)"
-          (onCloseDialog)="closeModalGroup()">
+          (onCancelDialog)="closeModalGroup()"
+          (onSaveDialog)="onSelectedGroupByPlace($event)">
         </sga-modal-group>
       </sga-modal>
 
@@ -41,7 +42,7 @@
           (onCellRightClick)="onSelectedPlace($event)"
           (onContextClick)="onContextMenu($event)"
           (onItemSelected)="onSelected($event)"
-          (onRegisterClick)="openRegister()">
+          (onRegisterClick)="openRegister('place')">
         </sga-grid-control> 
       </sga-tab>
       
