@@ -3,13 +3,14 @@ html{
 }
 
 body {
-    
-    font-family: 'Open Sans',sans-serif;
+  font-family: 'Open Sans',sans-serif;
 }
+
 div, *{
   margin:0;
   padding:O;
 }
+
 .input::-webkit-input-placeholder, .textarea::-webkit-input-placeholder {
     color: rgba(54,54,54,0.75) !important;
 }
@@ -644,4 +645,8 @@ $bg-titles: #4d5675;
     right: 0px;
     top: 0px;
     bottom: 0px;
+}
+
+.no-margin {
+  margin: 0 !important;
 }

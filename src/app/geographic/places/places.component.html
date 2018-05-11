@@ -2,6 +2,7 @@
   <div class="places-sidebar box-shadow">
     <sga-register 
       *ngIf="showRegister"
+      [formType]="formType"
       [backParam]="selectedTabIndex"
       (onBackButton)="closeRegister($event)"
       (onPlaceSelected)="onPlaceSelected($event)"
@@ -12,33 +13,57 @@
       (tabSelected)="onTabSelected($event)"
       [tabIndex]="selectedTabIndex"
       *ngIf="!showRegister"
-      styleClass="tabs">
+      styleClass="tabs no-margin">
 
       <sga-tab heading="Áreas">
         <sga-grid-control 
           [data]="areas"
+          [useContext]="false"
           title="Áreas"
+          (onCellRightClick)="onSelectedArea($event)"
+          (onContextClick)="onContextMenu($event)"
           (onItemSelected)="onSelected($event)"
-          (onRegisterClick)="openRegister()">
+          (onRegisterClick)="openRegister('area')">
         </sga-grid-control>
       </sga-tab>
+
+      <sga-modal *ngIf="showSelectGroup">
+        <sga-modal-group 
+          (onCancelDialog)="closeModalGroup()"
+          (onSaveDialog)="onSelectedGroupByPlace($event)">
+        </sga-modal-group>
+      </sga-modal>
 
       <sga-tab heading="Lugares">
         <sga-grid-control 
           [data]="places"
+          [useContext]="false"
           title="Lugares"
+          (onCellRightClick)="onSelectedPlace($event)"
+          (onContextClick)="onContextMenu($event)"
           (onItemSelected)="onSelected($event)"
-          (onRegisterClick)="openRegister()">
+          (onRegisterClick)="openRegister('place')">
         </sga-grid-control> 
       </sga-tab>
       
       <sga-tab heading="Grupos">
+        <sga-register-group 
+          *ngIf="showRegisterGroup"
+          [group]="selectedGroup"
+          (onBackButton)="closeRegisterGroup()"
+          (onPlaceSelected)="onSelected($event)"
+          (onRegisterNewItem)="registerNewGroupItem($event)">
+        </sga-register-group>
+
         <sga-grid-control 
           [data]="groups"
           title="Grupos"
+          [useContext]="true"
+          *ngIf="!showRegisterGroup"
+          (onContextClick)="onContextMenu($event)"
           (onItemSelected)="onSelected($event)"
           (onRegisterClick)="openRegister()">
-        </sga-grid-control> 
+        </sga-grid-control>
       </sga-tab>
     </sga-tabs>
   </div>

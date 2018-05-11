@@ -1,0 +1,71 @@
+.dialog{
+  width: 100%; 
+  height: 100%; 
+  background-color: rgba(0, 0, 0, 0.4); 
+  position: fixed; 
+  z-index: 999; 
+  left: 0px; 
+  top: 0px;
+
+  .container-dialog-modal{
+    background-color: #FFF;
+    margin: 7em auto 0 auto;
+    border-radius: 1em;
+    width: 50%;
+    max-width: 500px;
+    height: 50%;
+    background: #ffffff;
+    -webkit-box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.1);
+    transition:all 360ms ease;
+
+    h3 {
+      padding: .5em;
+    }
+
+    .main {
+      margin-top: 1em;
+
+      .controls {
+        padding: 1em;
+
+        button {
+          margin: .3rem;
+        }
+      }
+    }
+
+    .selected {
+      background-color: #c32a1e;
+      color: #fff;
+      span {
+        font-weight: 600;
+      }
+    }
+
+    .admin-list {
+      position: absolute;
+      left: 0px;
+      right: 0px;
+      padding: 0px 12px;
+      border-radius: 3px;
+      border: 1px solid #ebecf0;
+      background: rgba(74, 88, 121, 0);
+      overflow: auto;
+    }
+
+    .motorist-admin-add-list {
+      position: relative;
+      margin: 0;
+      padding: 3px 6px;
+    }
+  }
+}
+
+.row {
+  padding: .5rem;
+  cursor: pointer;
+  margin-bottom: 3px;
+  border: 1px solid #e2e6ec;
+  background-color: #fbfbfb;
+}

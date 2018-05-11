@@ -8,9 +8,15 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class GridControlComponent {
   @Input() public title: string;
   @Input() public data: Array<any>;
-  
+  @Input() public marginTop: string;
+  @Input() public useContext: boolean;
+
   @Output() public onRegisterClick = new EventEmitter();
   @Output() public onItemSelected = new EventEmitter<any>();
+  @Output() public onContextClick = new EventEmitter<any>();
+  @Output() public onCellRightClick = new EventEmitter<any>();
+
+  public selectedItem: any;
 
   public openRegister() {
     this.onRegisterClick.emit();
@@ -18,5 +24,14 @@ export class GridControlComponent {
 
   public onSelected(event) {
     this.onItemSelected.emit(event);
+  }
+
+  public onContextMenu(index) {
+    this.onContextClick.emit({ index, item: this.selectedItem });
+  }
+
+  public onCellRightSelected(item) {
+    this.selectedItem = item;
+    this.onCellRightClick.emit(item);
   }
 }

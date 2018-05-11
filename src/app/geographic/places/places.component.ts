@@ -16,11 +16,21 @@ import { areas } from '../../shared/mocks/area';
 })
 export class RegisterPlaceComponent implements OnInit {
   private location: any;
+  
   public areas:  Array<any>;
   public places: Array<any>;
   public groups: Array<any>;
-  public showRegister = false;
+  
+  public selectedArea: any;
+  public selectedGroup: any;
+  public selectedPlace: any;
+
+  public formType: string;
   public selectedTabIndex = 0;
+  
+  public showRegister = false;
+  public showSelectGroup = false;
+  public showRegisterGroup = false;
 
   constructor(private map: Map) {}
 
@@ -55,6 +65,10 @@ export class RegisterPlaceComponent implements OnInit {
     this.map.addGeoMarker(geometry);
   }
 
+  private resetGroupMapView() {
+    this.onSelected(this.selectedGroup); 
+  }
+
   public onPlaceSelected(location) {
     this.location = {
       latitude: location.lat(),
@@ -71,7 +85,8 @@ export class RegisterPlaceComponent implements OnInit {
     event;
   }
 
-  public openRegister() {
+  public openRegister(type) {
+    this.formType = type;
     this.showRegister = true;
   }
 
@@ -84,19 +99,75 @@ export class RegisterPlaceComponent implements OnInit {
     this.selectedTabIndex = tab.index;
   }
 
+  public onContextMenu(event: any) {
+    switch (this.selectedTabIndex)
+    {
+      case 0:
+        this.showSelectGroup = true;
+        break;
+
+      case 1:
+        this.showSelectGroup = true;
+        break;
+
+      case 2:
+        this.showRegisterGroup = true;
+        this.selectedGroup = event.item.data;
+        this.resetGroupMapView();
+        break;
+    }
+  }
+
+  public closeRegisterGroup() {
+    this.showRegisterGroup = false;
+  }
+
   public onSelected(place) {
     this.map.clearAll();
     if (Array.isArray(place.location)) {
       place.location.map(loc => this.addMarker(this.createPoint(loc.latitude, loc.longitude)));
       this.moveMap(place.location[0].latitude, place.location[0].longitude, 3);
-    } else {
+    } else if (place.location) {
       this.addMarker(this.createPoint(place.location.latitude, place.location.longitude));
-      this.moveMap(place.location.latitude, place.location.longitude, 14);
+      this.moveMap(place.location.latitude, place.location.longitude, 14); 
+    } else {
+      this.addMarker(this.createPoint(place.latitude, place.longitude));
+      this.moveMap(place.latitude, place.longitude, 14);
     }
+  }
+
+  public onSelectedGroupByPlace(group) {
+    if (this.selectedTabIndex === 0)
+      group.location.push(this.selectedArea.data);
+    else 
+      group.location.push(this.selectedPlace.data);
+
+    this.showSelectGroup = false;
+  }
+
+  public onSelectedArea(area) {
+    this.selectedArea = area;
+  }
+
+  public onSelectedPlace(place) {
+    this.selectedPlace = place;
+  }
+
+  public onSelectedGroup(event) {
+    this.selectedGroup.location.push(event.item);
+  }
+
+  public registerNewGroupItem(event) {
+    this.selectedGroup.location.push(event.item);
+    this.resetGroupMapView();
   }
 
   public createPlace(place) {
     place.location = this.location;
-    console.log(place);
+    this.showRegister = false;
+  }
+
+  public closeModalGroup() {
+    this.showSelectGroup = false;
   }
 }

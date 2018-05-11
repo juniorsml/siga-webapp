@@ -1,0 +1,24 @@
+<div class="dialog">
+  <div class="container-dialog-modal">
+    <h3>Selecione um grupo</h3>
+    <div class="main">
+      <list-view
+        [listItems]="groups"
+        emptyMessage="Não há nenhum grupo"
+        styleClass="ui-datatable-body-row">
+        <list-view-item>
+          <ng-template let-item="item">
+            <div class="row" [class.selected]="item.selected" (click)="selectGroup(item)">
+              <span style="margin-left: 8px">{{item.name}}</span>
+            </div>
+          </ng-template>
+        </list-view-item>
+      </list-view>
+
+      <div class="controls">
+        <button class="button is-pulled-right" (click)="save()">Salvar</button>
+        <button class="button is-pulled-right" (click)="cancel()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>

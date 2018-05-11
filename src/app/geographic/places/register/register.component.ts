@@ -1,20 +1,28 @@
-import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { Component, EventEmitter, Output, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'sga-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
+
+  @Input() public formType: string;
   @Input() public backParam: string;
   
   @Output() public onSubmitForm = new EventEmitter<any>();
   @Output() public onBackButton = new EventEmitter<string>();
   @Output() public onPlaceSelected = new EventEmitter<any>();
   
-  public placeSelected = false;
+  private location: any;
 
   public docType = 0;
+  public placeSelected = false;
+
+  ngOnInit(): void {
+    this.placeSelected = this.formType === 'area';
+  }
+  
 
   public backButton() {
     this.onBackButton.emit(this.backParam);
@@ -24,11 +32,12 @@ export class RegisterComponent {
     this.placeSelected = true;
     const { location } = event.geometry;
     if (location === undefined) return;
-
-    this.onPlaceSelected.emit(location);
+    this.location = location;
+    this.onPlaceSelected.emit(this.location);
   }
   
   public onPlacesFilterRemoved() {
+    this.location = null;
     this.placeSelected = false;
   }
 
@@ -38,6 +47,12 @@ export class RegisterComponent {
 
   public onSubmit(form) {
     const { value } = form;
-    this.onSubmitForm.emit(value);
+    try {
+      value.latitude = this.location.lat();
+      value.longitude = this.location.lng();
+      this.onSubmitForm.emit(value);
+    } catch {
+      this.onSubmitForm.emit(value);
+    }
   }
 }
