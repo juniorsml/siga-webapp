@@ -21,65 +21,68 @@
       <input class="input" type="text" placeholder="Tipo" name="type" 
         #type="ngModel" ngModel required [class.is-danger]="type.touched && !type.valid"/>
     </div>
-    <div class="control">
-      <select class="input" name="docType" [(ngModel)]="docType" required>
-        <option value="0">Selecione um documento</option>
-        <option>CNPJ</option>
-        <option>CPF</option>
-        <option>DOC Externo</option>
-      </select>
-    </div>
 
-    <div [ngSwitch]="docType">
-      <div *ngSwitchCase="'CNPJ'">
-        <div class="control">
-          <input type="text" class="input" placeholder="CNPJ Número" name="cnpjNumber" 
+    <div *ngIf="formType === 'place'">
+      <div class="control">
+        <select class="input" name="docType" [(ngModel)]="docType" required>
+          <option value="0">Selecione um documento</option>
+          <option>CNPJ</option>
+          <option>CPF</option>
+          <option>DOC Externo</option>
+        </select>
+      </div>
+      
+      <div [ngSwitch]="docType">
+        <div *ngSwitchCase="'CNPJ'">
+          <div class="control">
+            <input type="text" class="input" placeholder="CNPJ Número" name="cnpjNumber" 
             #cnpjNumber="ngModel" ngModel required [class.is-danger]="cnpjNumber.touched && !cnpjNumber.valid"/>
-        </div>
-        <div class="control">
-          <input type="text" class="input" placeholder="Razão Social" name="socialReason" 
+          </div>
+          <div class="control">
+            <input type="text" class="input" placeholder="Razão Social" name="socialReason" 
             #socialReason="ngModel" ngModel required [class.is-danger]="socialReason.touched && !socialReason.valid"/>
-        </div>
-        <div class="control">
-          <input type="text" class="input" placeholder="Nome Fantasia" name="fantasyName"
+          </div>
+          <div class="control">
+            <input type="text" class="input" placeholder="Nome Fantasia" name="fantasyName"
             #fantasyName="ngModel" ngModel required [class.is-danger]="fantasyName.touched && !fantasyName.valid"/>
+          </div>
         </div>
-      </div>
-      <div *ngSwitchCase="'CPF'">
-        <div class="control">
-          <input type="text" class="input" placeholder="CPF Número" name="cpfNumber"
+        <div *ngSwitchCase="'CPF'">
+          <div class="control">
+            <input type="text" class="input" placeholder="CPF Número" name="cpfNumber"
             #cpfNumber="ngModel" ngModel required [class.is-danger]="cpfNumber.touched && !cpfNumber.valid"/>
+          </div>
+        </div>
+        <div *ngSwitchCase="'DOC Externo'">
+          <div class="control">
+            <input type="text" class="input" placeholder="DOC Número" name="docNumber"
+            #docNumber="ngModel" ngModel required [class.is-danger]="docNumber.touched && !docNumber.valid"/>
+          </div> 
         </div>
       </div>
-      <div *ngSwitchCase="'DOC Externo'">
-        <div class="control">
-          <input type="text" class="input" placeholder="DOC Número" name="docNumber"
-            #docNumber="ngModel" ngModel required [class.is-danger]="docNumber.touched && !docNumber.valid"/>
-        </div> 
-      </div>
+      <div class="control">
+        <input type="text" class="input" placeholder="Website" name="website" ngModel />
+      </div> 
+      <div class="control">
+        <input type="text" class="input" placeholder="Responsável" name="docNumber" ngModel />
+      </div> 
+      <div class="control">
+        <input type="text" class="input" placeholder="E-mail" name="email" ngModel />
+      </div> 
+      <div class="control">
+        <input type="text" class="input" placeholder="Celular" name="mobileNumber" ngModel />
+      </div> 
+      <div class="control">
+        <input type="text" class="input" placeholder="Telefone" name="phoneNumber" ngModel />
+      </div> 
     </div>
-    <div class="control">
-      <input type="text" class="input" placeholder="Website" name="website" ngModel />
-    </div> 
-    <div class="control">
-      <input type="text" class="input" placeholder="Responsável" name="docNumber" ngModel />
-    </div> 
-    <div class="control">
-      <input type="text" class="input" placeholder="E-mail" name="email" ngModel />
-    </div> 
-    <div class="control">
-      <input type="text" class="input" placeholder="Celular" name="mobileNumber" ngModel />
-    </div> 
-    <div class="control">
-      <input type="text" class="input" placeholder="Telefone" name="phoneNumber" ngModel />
-    </div> 
-
+      
     <div class="control">
       <input 
-        [disabled]="!isValidForm(formPlace)" 
-        class="button is-info"
-        value="Enviar"
-        type="submit">
+      [disabled]="!formPlace.valid"
+      class="button is-info"
+      value="Enviar"
+      type="submit">
     </div>
   </form>
 </section>
