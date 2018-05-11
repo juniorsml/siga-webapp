@@ -8,6 +8,8 @@ import { Feature, GeometryObject } from 'geojson';
 import { TableClickEvent } from '../../shared/components/table/table.component';
 import { ActivatedRoute } from '@angular/router';
 
+import { MapStyle } from '../../shared/models/MapStyle';
+
 @Component({
   selector: 'sga-map-truck',
   templateUrl: './map-truck.component.html',
@@ -32,6 +34,16 @@ private _vehicles: Array<any>;
   toggleMapType() {
     this.status = !this.status;
   }
+
+  toggleMapStyle(mapStyle) {
+    debugger
+    if (mapStyle.value === "1") {
+      this.map.setStyle(MapStyle.Outdoor);
+    } else {
+      this.map.setStyle(MapStyle.Street);
+    }
+  }
+
 
   set vehicles(value: Array<any>) {
     this._vehicles = value;
@@ -201,7 +213,7 @@ private _vehicles: Array<any>;
   }
 
   private injectMap(): void {
-    this.map.createMapBoxMapInstance(this.mapSelector.nativeElement);
+    this.map.createMapBoxMapInstance(false);
     this.plotVehicleLocations();
   }
 }

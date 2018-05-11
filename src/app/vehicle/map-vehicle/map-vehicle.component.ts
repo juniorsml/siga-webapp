@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, ElementRef,EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 import {} from 'leaflet-marker-cluster';
 
@@ -8,6 +8,7 @@ import { Feature, GeometryObject } from 'geojson';
 import { TableClickEvent } from '../../shared/components/table/table.component';
 
 import { ActivatedRoute } from '@angular/router';
+import { MapStyle } from '../../shared/models/MapStyle';
 
 @Component({
   selector: 'sga-map-vehicle',
@@ -24,6 +25,14 @@ export class MapVehicleComponent implements OnInit {
   public status: boolean = false;
   toggleMapType() {
     this.status = !this.status;
+  }
+  toggleMapStyle(mapStyle) {
+    debugger
+    if (mapStyle.value === "1") {
+      this.map.setStyle(MapStyle.Outdoor);
+    } else {
+      this.map.setStyle(MapStyle.Street);
+    }
   }
 
 
