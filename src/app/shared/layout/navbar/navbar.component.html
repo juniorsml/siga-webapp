@@ -19,12 +19,23 @@
         </a>
       </li>
       <li>
-        <a class="user" href="#">
+        <a class="user" (click)="toggleProfileUser()">
           <span class="avatar avatar-online">
             <img src="/assets/layout/avatar.png" alt="avatar"><i></i>
           </span>
           <span class="user-name">Operador</span>
-        </a>
+          <i class="fal fa-angle-down"></i>
+        </a>          
+        <ul class="cnt-menu-profile"  [ngClass]="status ? 'opened' : 'closed'">
+          <li>
+            <a href=""><i class="fal fa-pen-square"></i> Editar Perfil</a>
+          </li>
+          <li class="last">
+            <a href=""><i class="fal fa-power-off"></i> Logout</a>
+          </li>
+         
+        </ul>
+        
       </li>
       <!-- <li style="min-width: 48px;">
           <a title="Sair" class="sign-out"  (click)="logout()">
