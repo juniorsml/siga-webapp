@@ -23,7 +23,7 @@
   left: 0;
   right: 0;
   padding-left: 9px;
-  top: 70px;
+  top: 87px;
   background: #fff;
   z-index:1188;
 }
@@ -33,6 +33,8 @@
   display: flex;
   a {
     font-size: 19px;
+    width: 13px;
+    transition: all 150ms ease;
     color: #cecece;
   }
 }
