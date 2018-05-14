@@ -15,6 +15,8 @@ import { StartedTripsComponent } from './started/started.component';
 
 import { ScheduledTripsComponent } from './scheduled/scheduled.component';
 
+import { CTOTripsComponent } from './cto/cto.component';
+
 
 @NgModule({
   imports: [
@@ -30,7 +32,8 @@ import { ScheduledTripsComponent } from './scheduled/scheduled.component';
   ],
   declarations: [
      StartedTripsComponent,
-     ScheduledTripsComponent
+     ScheduledTripsComponent,
+     CTOTripsComponent
 
   ]
 })
