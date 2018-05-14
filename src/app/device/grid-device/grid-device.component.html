@@ -1,12 +1,15 @@
-<!-- <nav  class="breadcrumb" aria-label="breadcrumbs">
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Dispositivos</a></li>
-    <li class="is-active"><a href="#" aria-current="page">Grid</a></li>
-  </ul>
-  <h5>Grid</h5>
-</nav> -->
-<sga-sidebar-configuration *ngIf="showFilterBar"></sga-sidebar-configuration>
+<div class="columns">
+  <nav class="breadcrumb column is-8" aria-label="breadcrumbs">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li class="is-active"><a>Dispostivos</a></li>
+      <li class="is-active"><a href="#" aria-current="page">Grid</a></li>
+    </ul>
+    <h5>Grid</h5>
+  </nav>
+  <sga-sidebar-configuration *ngIf="showFilterBar" class="column is-4"></sga-sidebar-configuration>
+</div>
+
    
 <div [ngClass]="{'has-height' : hasHeight}"  class="content-wrapper box-shadow content-grid-device" [ngStyle]="{'top': showFilterBar ? '66px' : '0'}">
  
