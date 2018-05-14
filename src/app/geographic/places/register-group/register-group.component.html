@@ -1,6 +1,6 @@
 <section>
   <div class="wrapper-flex">
-    <i *ngIf="!showRegister" class="fa fa-long-arrow-left" (click)="backButton()"></i>
+    <i *ngIf="!showRegister" class="fal fa-arrow-left" (click)="backButton()"></i>
     <input type="text" [ngModel]="group.name">
   </div>
 
@@ -8,6 +8,7 @@
     <sga-register 
       *ngIf="showRegister"
       (onSubmitForm)="registerNewItem($event)"
+      (onBackButton)="backButton()"
       (onPlaceSelected)="onSelected($event)">
     </sga-register>
 
