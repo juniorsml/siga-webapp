@@ -158,13 +158,27 @@ export class RegisterPlaceComponent implements OnInit {
   }
 
   public registerNewGroupItem(event) {
+    debugger
     this.selectedGroup.location.push(event.item);
     this.resetGroupMapView();
   }
 
-  public createPlace(place) {
-    place.location = this.location;
+  public create(item) {
     this.showRegister = false;
+    switch (this.selectedTabIndex)
+    {
+      case 0:
+        this.areas.push(item);
+        break;
+
+      case 1:
+        this.places.push(item);
+        break;
+
+      case 2:
+        this.groups.push({...item, location: []});
+        break;
+    } 
   }
 
   public closeModalGroup() {

@@ -6,7 +6,7 @@
       [backParam]="selectedTabIndex"
       (onBackButton)="closeRegister($event)"
       (onPlaceSelected)="onPlaceSelected($event)"
-      (onSubmitForm)="createPlace($event)">
+      (onSubmitForm)="create($event)">
     </sga-register>
 
     <sga-tabs 
@@ -62,7 +62,7 @@
           *ngIf="!showRegisterGroup"
           (onContextClick)="onContextMenu($event)"
           (onItemSelected)="onSelected($event)"
-          (onRegisterClick)="openRegister()">
+          (onRegisterClick)="openRegister('group')">
         </sga-grid-control>
       </sga-tab>
     </sga-tabs>

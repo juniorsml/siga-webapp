@@ -5,7 +5,7 @@
   </div> 
   <div class="wrapper-flex">
     <i class="fal fa-arrow-left" (click)="backButton();"></i>
-    <sga-places-auto-complete
+    <sga-places-auto-complete *ngIf="formType !== 'group'"
       (onPlacesFilteredEvent)="onPlacesFiltered($event)" 
       (onFilterRemovedEvent)="onPlacesFilterRemoved()">
     </sga-places-auto-complete>
@@ -17,7 +17,7 @@
       <input class="input" type="text" placeholder="Nome" name="name" 
         #name="ngModel" ngModel required [class.is-danger]="name.touched && !name.valid"/>
     </div>
-    <div class="control">
+    <div class="control" *ngIf="formType !== 'group'">
       <input class="input" type="text" placeholder="Tipo" name="type" 
         #type="ngModel" ngModel required [class.is-danger]="type.touched && !type.valid"/>
     </div>
