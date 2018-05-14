@@ -20,9 +20,8 @@ export class RegisterComponent implements OnInit {
   public placeSelected = false;
 
   ngOnInit(): void {
-    this.placeSelected = this.formType === 'area';
+    this.placeSelected = this.formType === 'area' || this.formType === 'group';
   }
-  
 
   public backButton() {
     this.onBackButton.emit(this.backParam);
