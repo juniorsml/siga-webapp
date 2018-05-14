@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { StartedTripsComponent } from './started/started.component';
 import { ScheduledTripsComponent } from './scheduled/scheduled.component';
+import { CTOTripsComponent } from './cto/cto.component';
 
 
 import { trips } from '../shared/mocks/trips';
@@ -20,6 +21,12 @@ const routes: Routes = [
   { 
     path: 'schedule', 
     component: ScheduledTripsComponent,
+    data: { trips }
+  },
+
+  { 
+    path: 'cto', 
+    component: CTOTripsComponent,
     data: { trips }
   }
 ];

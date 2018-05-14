@@ -60,6 +60,12 @@
                     <span class="sidebar-list-text">Não iniciadas</span>
                   </a>
                 </li>
+                <li [class.selected]="router.url == '/risk-management/cto'" class="sidebar-menu-item">
+                  <a routerLink="/risk-management/cto">
+                    <span [class.selected]="router.url == '/risk-management/cto'" class="sidebar-list-icon fal fa-desktop"></span>
+                    <span class="sidebar-list-text">CTO</span>
+                  </a>
+                </li>
               </ul>
             </accordion>
           </li>
