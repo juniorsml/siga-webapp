@@ -6,6 +6,7 @@ import { TableClickEvent } from '../../shared/components/table/table.component';
 import { TabComponent } from '../../shared/components/tabs/tab/tab.component';
 
 import { Map } from '../../shared/models/Map';
+import { MapStyle } from '../../shared/models/MapStyle';
 
 @Component({
   selector: 'sga-map-device',
@@ -29,6 +30,19 @@ export class MapDeviceComponent implements OnInit {
     this._devices = value;
     if (this.mapSelectedTabIndex && this.mapSelectedTabIndex != 1) {
       this.plotMotoristLocations();
+    }
+  }
+
+   public status: boolean = false;
+  toggleMapType() {
+    this.status = !this.status;
+  }
+  toggleMapStyle(mapStyle) {
+    debugger
+    if (mapStyle.value === "1") {
+      this.map.setStyle(MapStyle.Outdoor);
+    } else {
+      this.map.setStyle(MapStyle.Street);
     }
   }
 
@@ -190,7 +204,7 @@ export class MapDeviceComponent implements OnInit {
   }
 
   private injectMap(): void {
-    this.map.createMapBoxMapInstance(this.mapSelector.nativeElement);
+    this.map.createMapBoxMapInstance(false);
     this.plotMotoristLocations();
   }
 }
