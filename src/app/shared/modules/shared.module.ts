@@ -48,6 +48,7 @@ import { StepperComponent } from '../components/stepper/stepper.component';
 import { PagerComponent } from '../components/pager/pager.component';
 
 import { SidebarConfigurationComponent } from '../components/sidebar-configuration/sidebar-configuration.component';
+import { PageNotFoundComponent } from '../layout/404page/not-found.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { SidebarConfigurationComponent } from '../components/sidebar-configurati
     SidebarConfigurationComponent,
 
     PagerComponent,
+    PageNotFoundComponent,
 
     SpinnerComponent
   ],
@@ -115,6 +117,8 @@ import { SidebarConfigurationComponent } from '../components/sidebar-configurati
     PagerPipe,
     TimeElapsedAsTextPipe,
 
+    PageNotFoundComponent,
+    
     TabComponent,
     GridComponent,
     TabsComponent,
