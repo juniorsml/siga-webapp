@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-
+import { PageNotFoundComponent } from './shared/layout/404page/not-found.component';
 
 const routes: Routes = [
   {
@@ -40,19 +40,18 @@ const routes: Routes = [
       },
       {
         path: 'risk-management',
-        loadChildren: 'app/risk-management/risk-management.module#RiskManagementModule'
+        loadChildren:
+          'app/risk-management/risk-management.module#RiskManagementModule'
       }
-
-
     ]
   },
   { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent }
-  
+  { path: 'login', component: LoginComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
