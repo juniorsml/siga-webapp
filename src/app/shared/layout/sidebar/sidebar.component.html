@@ -72,6 +72,12 @@
                     <span class="sidebar-list-text">RATC</span>
                   </a>
                 </li>
+                 <li [class.selected]="router.url == '/risk-management/radar'" class="sidebar-menu-item">
+                  <a routerLink="/risk-management/radar">
+                    <span [class.selected]="router.url == '/risk-management/radar'" class="sidebar-list-icon fal fa-th-list"></span>
+                    <span class="sidebar-list-text">Radar</span>
+                  </a>
+                </li>
 
               </ul>
             </accordion>

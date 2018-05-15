@@ -7,6 +7,7 @@ import { StartedTripsComponent } from './started/started.component';
 import { ScheduledTripsComponent } from './scheduled/scheduled.component';
 import { CTOTripsComponent } from './cto/cto.component';
 import { RATCTripsComponent } from './ratc/ratc.component';
+import { RadarComponent } from './radar/radar.component';
 
 
 
