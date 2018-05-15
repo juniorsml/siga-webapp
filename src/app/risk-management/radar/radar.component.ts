@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
-  selector: 'sga-started',
-  templateUrl: './started.component.html',
+  selector: 'sga-radar',
+  templateUrl: './radar.component.html',
   styles: []
 })
 export class RadarComponent implements OnInit {

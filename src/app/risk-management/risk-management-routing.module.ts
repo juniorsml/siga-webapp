@@ -32,6 +32,11 @@ const routes: Routes = [
     path: 'ratc', 
     component: RATCTripsComponent,
     data: { trips }
+  },
+  { 
+    path: 'radar', 
+    component: RadarComponent,
+    data: { trips }
   }
 ];
 
