@@ -19,6 +19,8 @@ import { CTOTripsComponent } from './cto/cto.component';
 
 import { RATCTripsComponent } from './ratc/ratc.component';
 
+import { RadarComponent } from './radar/radar.component';
+
 
 @NgModule({
   imports: [
@@ -36,7 +38,8 @@ import { RATCTripsComponent } from './ratc/ratc.component';
      StartedTripsComponent,
      ScheduledTripsComponent,
      CTOTripsComponent,
-     RATCTripsComponent
+     RATCTripsComponent,
+     RadarComponent
 
   ]
 })

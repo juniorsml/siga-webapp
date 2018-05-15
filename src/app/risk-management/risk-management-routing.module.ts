@@ -13,13 +13,11 @@ import { RATCTripsComponent } from './ratc/ratc.component';
 import { trips } from '../shared/mocks/trips';
 
 const routes: Routes = [
-
   { 
     path: 'started', 
     component: StartedTripsComponent,
     data: { trips }
   },
-
   { 
     path: 'schedule', 
     component: ScheduledTripsComponent,

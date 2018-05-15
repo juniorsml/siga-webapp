@@ -56,17 +56,23 @@
                 </li>
                 <li [class.selected]="router.url == '/risk-management/scheduled'" class="sidebar-menu-item">
                   <a routerLink="/risk-management/scheduled">
-                    <span [class.selected]="router.url == '/risk-management/scheduled'" class="sidebar-list-icon fal  fa-calendar-alt"></span>
+                    <span [class.selected]="router.url == '/risk-management/scheduled'" class="sidebar-list-icon fal fa-th-list"></span>
                     <span class="sidebar-list-text">Não iniciadas</span>
                   </a>
                 </li>
                 <li [class.selected]="router.url == '/risk-management/cto'" class="sidebar-menu-item">
                   <a routerLink="/risk-management/cto">
-                    <span [class.selected]="router.url == '/risk-management/cto'" class="sidebar-list-icon fal fa-desktop"></span>
+                    <span [class.selected]="router.url == '/risk-management/cto'" class="sidebar-list-icon fal fa-th-list"></span>
                     <span class="sidebar-list-text">CTO</span>
                   </a>
                 </li>
-                
+                <li [class.selected]="router.url == '/risk-management/ratc'" class="sidebar-menu-item">
+                  <a routerLink="/risk-management/ratc">
+                    <span [class.selected]="router.url == '/risk-management/ratc'" class="sidebar-list-icon fal fa-th-list"></span>
+                    <span class="sidebar-list-text">RATC</span>
+                  </a>
+                </li>
+
               </ul>
             </accordion>
           </li>
