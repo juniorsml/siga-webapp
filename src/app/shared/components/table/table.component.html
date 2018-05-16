@@ -25,17 +25,16 @@
       <table class="ui-datatable-body-table">
         <tbody #bodyElement class="ui-datatable-body-tbody">
           <tr #bodyRowElement *ngFor="let row of filteredData | pager: {page:currentPage, quantity: pageQuantity}; let rowIndex = index;"
-          [class]="styleRow"
-          [class.active]="rowIndex == selectedRowIndex">
+            [class]="styleRow"
+            [class.active]="rowIndex == selectedRowIndex">
 
             <td class="ui-datatable-body-cell" 
-            *ngFor="let column of columns; 
-            let cellIndex = index" 
-            [style.minWidth]="column.minWidth + 'px'"
-            [style.width]="column?.width + 'px'" (click)="cellClick({'event':$event,'cellIndex': cellIndex, 'rowIndex': rowIndex, 'row': row})"
+              *ngFor="let column of columns; 
+              let cellIndex = index" 
+              [style.minWidth]="column.minWidth + 'px'"
+              [style.width]="column?.width + 'px'" (click)="cellClick({'event':$event,'cellIndex': cellIndex, 'rowIndex': rowIndex, 'row': row})"
               (contextmenu)="cellRightClick({'event':$event,'cellIndex': cellIndex, 'rowIndex': rowIndex, 'row': row})">
-              <ng-template [ngTemplateOutletContext]="{item: row[column.key]}" [ngTemplateOutlet]="column.template">
-              </ng-template>
+              <ng-template [ngTemplateOutletContext]="{item: row[column.key]}" [ngTemplateOutlet]="column.template"></ng-template>
             </td>
           </tr>
         </tbody>
