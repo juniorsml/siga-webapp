@@ -1,14 +1,21 @@
-/* Grid Device SCSS ************************************************/
-
-.has-height{
-    width: 97.7%;
-    height: 100%;
+/* Grid  SCSS ************************************************/
+.wrapper {
+  position: absolute;
+     left: 21px;
+    right: 4px;
+    bottom: 1px;
+    top: 68px;
 }
-
-.content-grid-device{
+.grid-area{
     padding: 20px;
-
+    position: absolute;
+    left: 0;
+    right: 23px;
+    top: 48px;
+    bottom: 20px;
 }
+
+
 .input-filter{
 	border-bottom: 1px solid rgba(54,54,54,0.65);
 	border-top:0;

@@ -10,14 +10,14 @@
   </nav>
   <sga-sidebar-configuration *ngIf="showFilterBar" class="column is-4"></sga-sidebar-configuration>
 </div>
+<div class="wrapper">
+  
 
-
+<div class="register-area">
+  <button class="button is-link" (click)="openFormRegister()">Novo</button>
+</div>
    
-<div [ngClass]="{'has-height' : hasHeight}"  class="content-wrapper box-shadow content-grid-device" [ngStyle]="{'top': showFilterBar ? '66px' : '0'}">
-
-  <div class="register-area">
-    <button class="button is-link" (click)="openFormRegister()">Novo</button>
-  </div>
+<div class="grid-area box-shadow">
  
   <div *ngIf="showFilterBar" [ngClass]="styleClass" class="columns level-left">
     <div class="column is-3">     
@@ -66,4 +66,5 @@
       
     </data-table>
   </div>
+</div>
 </div>
