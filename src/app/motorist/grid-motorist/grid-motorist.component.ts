@@ -25,18 +25,13 @@ export class GridMotoristComponent implements OnInit {
   showDialog = false;
   showMotoristDialog: boolean;
 
+  public headers = new Array<string>();
+  public filterHeaders = new Array<string>();
+
   constructor(private router: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.router.data.subscribe(data => this.motorists = data.motorists);
-  }
-
-  public showMotoristModal() {
-    this.showMotoristDialog = true;
-  }
-
-  public motoristDialogClose() {
-    this.showMotoristDialog = false;
   }
 
   public onCellClick(event) {
@@ -45,7 +40,7 @@ export class GridMotoristComponent implements OnInit {
     if (event.cellIndex === 0) this.showMotoristDialog = true;
   }
 
-  onCellRightClick(event: TableClickEvent) {
+  public onCellRightClick(event: TableClickEvent) {
     this.selectedMotorist = event.data;
     this.onMotoristSelected.emit(this.selectedMotorist);
   }
@@ -60,7 +55,11 @@ export class GridMotoristComponent implements OnInit {
     this.filterLocation = null;
   }
 
-  public onPlacesKeyUp() {}
+  public showMotoristModal = () => this.showMotoristDialog = true;
 
-  public onDistanceKeyUp() {}
+  public motoristDialogClose = () => this.showMotoristDialog = false;
+
+  public whenHeaderReady = headers => this.headers = headers;
+
+  public onToggleItem = itemsSelected => this.filterHeaders = itemsSelected;
 }
