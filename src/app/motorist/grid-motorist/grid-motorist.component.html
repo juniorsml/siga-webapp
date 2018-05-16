@@ -8,13 +8,12 @@
     <h5>Grid</h5>
   </nav>
   <sga-sidebar-configuration class="column is-4"></sga-sidebar-configuration>
-
-  <sga-column-selector
-    [columns]="headers"
-    (onToggleItem)="onToggleItem($event)">
-  </sga-column-selector>
 </div>
 
+<sga-column-selector
+  [columns]="headers"
+  (onToggleItem)="onToggleItem($event)">
+</sga-column-selector>
 
    
 <div class="content-wrapper box-shadow content-grid-motorist">
