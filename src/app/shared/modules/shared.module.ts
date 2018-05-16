@@ -49,6 +49,7 @@ import { PagerComponent } from '../components/pager/pager.component';
 
 import { SidebarConfigurationComponent } from '../components/sidebar-configuration/sidebar-configuration.component';
 import { PageNotFoundComponent } from '../layout/404page/not-found.component';
+import { ColumnSelectorComponent } from '../components/column-selector/column-selector.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +88,7 @@ import { PageNotFoundComponent } from '../layout/404page/not-found.component';
     DataTableComponent,
     EmptyTableComponent,
     ContextMenuComponent,
+    ColumnSelectorComponent,
 
     SidebarConfigurationComponent,
 
@@ -149,6 +151,8 @@ import { PageNotFoundComponent } from '../layout/404page/not-found.component';
     DataTableComponent,
     EmptyTableComponent,
     ContextMenuComponent,
+    ColumnSelectorComponent,
+
     CalendarModule,
     TextMaskModule,
 
