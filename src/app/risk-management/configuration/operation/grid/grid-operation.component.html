@@ -11,8 +11,13 @@
   <sga-sidebar-configuration *ngIf="showFilterBar" class="column is-4"></sga-sidebar-configuration>
 </div>
 
+
    
 <div [ngClass]="{'has-height' : hasHeight}"  class="content-wrapper box-shadow content-grid-device" [ngStyle]="{'top': showFilterBar ? '66px' : '0'}">
+
+  <div class="register-area">
+    <button class="button is-link" (click)="openFormRegister()">Novo</button>
+  </div>
  
   <div *ngIf="showFilterBar" [ngClass]="styleClass" class="columns level-left">
     <div class="column is-3">     
@@ -23,19 +28,14 @@
         </span>       
       </p>
     </div>
-    <sga-map-filter 
-      (placesFiltered)="onPlacesFiltered($event)" 
-      (filterRemoved)="onPlacesFilterRemoved()"
-      class="column is-12">
-    </sga-map-filter>
   </div>
 
   <div class="container-grid container-grid-wrapper" [ngStyle]="{'top': showFilterBar ? '65px' : '20px'}">
     <data-table 
-      [data]="devices | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
-      [dataLength]="devices.length" 
+      [data]="operations | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
+      [dataLength]="operations.length" 
       [searchText]="text" 
-      [searchColumns]="['alias', 'model']"
+      [searchColumns]="['description','obs']"
       [emptySearchText]="'Nenhum dispositivo encontrado'" 
       [bodyBottom]="'42px'" 
       [bodyTop]="'26px'"
@@ -53,55 +53,17 @@
           </div>
         </ng-template>
       </table-empty>
-      <column [key]="'id'" [header]="'ID'" [minWidth]="'82'" [isSortable]="false">
-        <ng-template let-item="item">
-          {{item}}
+       <column [key]="'description'" [header]="'Descrição'" [minWidth]="'43'" [isSortable]="true"> 
+        <ng-template let-item="item">          
+            {{item == null ? '-' : item}}          
         </ng-template>
       </column>
-      <column [key]="'name'" [header]="'Nome'" [minWidth]="'43'" [isSortable]="true"> 
-        <ng-template let-item="item">
-          {{item}}
-        </ng-template>
+      <column [key]="'obs'" [header]="'Observação'" [minWidth]="'82'" [isSortable]="true">
+          <ng-template let-item="item">
+              {{item == null ? '-' : item}}  
+          </ng-template>
       </column>
-      <column [key]="'model'" [header]="'Modelo'" [minWidth]="'90'" [isSortable]="true">
-        <ng-template let-item="item">
-          {{item}}
-        </ng-template>
-      </column>
-      <column [key]="'tech'" [header]="'Tecnologia'" [minWidth]="'90'" [isSortable]="true">
-        <ng-template let-item="item">
-          {{item}}
-        </ng-template>
-      </column>
-      <column [key]="'updated'" [header]="'Atualizado'" [minWidth]="'43'" [isSortable]="true"> 
-        <ng-template let-item="item">
-          {{item}}
-        </ng-template>
-      </column>
-      <column [key]="'distance'" [header]="'Localização'" [minWidth]="'43'" [isSortable]="false"> 
-        <ng-template let-item="item">
-          {{item}}
-        </ng-template>
-      </column>
-      <column [key]="'speed'" [header]="'Velocidade'" [minWidth]="'43'" [isSortable]="false"> 
-        <ng-template let-item="item">
-          {{item}}
-        </ng-template>
-      </column>
-      <column [key]="'battery'" [header]="'Bateria'" [minWidth]="'43'" [isSortable]="false"> 
-        <ng-template let-item="item">
-          <span class="battery-level">
-            <span class="battery-level-body">
-              <span class="battery-level-charge" [style.background-color]="'hsl('+ (item?.battery?.charge * 100) +', 100%, 40%)'" [style.width]="(item?.battery?.charge * 100)+'%'">
-              </span>
-              <span class="battery-level-text">
-                <span *ngIf="item?.battery?.chargeMode !== null" class="fa fa-bolt" aria-hidden="true"></span>
-                <span>{{ (item?.battery?.charge * 100) | number: '2.0-0'}}%</span>
-              </span>
-            </span>
-          </span>
-        </ng-template>
-      </column>
+      
     </data-table>
   </div>
 </div>

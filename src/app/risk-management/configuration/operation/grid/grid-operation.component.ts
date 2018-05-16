@@ -24,12 +24,12 @@ export class GridOperationComponent implements OnInit {
   public showFilterBar = true;
 
   @Input()
-  public devices = new Array<any>();
+  public operations = new Array<any>();
   
   constructor(private router: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.router.data.subscribe(data => this.devices = data.devices);
+    this.router.data.subscribe(data => this.operations = data.operations);
   }
 
   public onPlacesFiltered(event) {

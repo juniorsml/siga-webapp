@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { TableClickEvent } from '../../shared/components/table/table.component';
 import { ActivatedRoute } from '@angular/router';
 
@@ -22,6 +22,9 @@ export class GridDeviceComponent implements OnInit {
 
   @Input()
   public showFilterBar = true;
+
+  @Input()
+  public showBreadcrumb = true;
 
   @Input()
   public devices = new Array<any>();
