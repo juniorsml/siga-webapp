@@ -30,9 +30,11 @@ export class ColumnSelectorComponent implements OnChanges {
   private removeFromSelectedItems(column: string) {
     const index = this.selectedItems.indexOf(column);
     this.selectedItems.splice(index, 1);
+    this.selectedItems = Object.assign([], this.selectedItems);
   }
 
   private addToSelectedItems(column: string) {
     this.selectedItems.push(column);
+    this.selectedItems = Object.assign([], this.selectedItems);
   }
 }
