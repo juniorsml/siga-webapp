@@ -2,7 +2,27 @@ import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from
 
 @Component({
   selector: 'sga-column-selector',
-  templateUrl: './column-selector.component.html'
+  template: `
+    <div class="box">
+      <h3>Selecione as colunas:</h3>
+      <ul>
+        <li *ngFor="let column of columns">
+          <label class="checkbox">
+            <input type="checkbox" checked="exists(column)" (click)="onToggle(column)"/> {{column}}
+          </label>
+        </li>
+      </ul>
+    </div>`,
+  styles: [`
+    .box {
+      z-index: 99999 !important;
+      position: absolute;
+      padding: 0 1em;
+      right: 0;
+      background-color: #FFF;
+      border-radius: 1em;
+    }
+  `] 
 })
 export class ColumnSelectorComponent implements OnChanges {
   
