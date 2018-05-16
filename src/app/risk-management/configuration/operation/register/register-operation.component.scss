@@ -11,10 +11,6 @@ $main-blue: #4d5675;
   .container-scroll {
     position: relative;
     height: 91%;
-
-    .input {
-      margin: .7em;
-    }
   }
 
   .container-form {
@@ -43,4 +39,12 @@ $main-blue: #4d5675;
       }
     }
   }
+}
+
+.form{
+    width: 96%;
+    margin: auto;
+}
+.select select,.select{
+width:100%;
 }

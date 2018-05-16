@@ -1,7 +1,7 @@
 export const operations = [
   {
     description: '007 - OPERAÇÃO TI ( I )',
-    obs: 'gustavo.gandolfo@kronamaxxi.com.br'    
+    obs: 'CENTRAL COMPARTILHADA'    
   },
   {
     description: 'S TRANSPORTES - ( SANTITISTA )',
@@ -21,7 +21,7 @@ export const operations = [
   },
   {
     description: '007 - OPERAÇÃO TI ( I )',
-    obs: 'gustavo.gandolfo@kronamaxxi.com.br'    
+    obs: 'CENTRAL COMPARTILHADA'    
   },
   {
     description: 'S TRANSPORTES - ( SANTITISTA )',

@@ -23,6 +23,9 @@ import { RadarComponent } from './monitoring/radar/radar.component';
 
 import { GridOperationComponent } from './configuration/operation/grid/grid-operation.component';
 
+import { RegisterOperationComponent } from './configuration/operation/register/register-operation.component';
+
+
 
 @NgModule({
   imports: [
@@ -42,8 +45,12 @@ import { GridOperationComponent } from './configuration/operation/grid/grid-oper
      CTOTripsComponent,
      RATCTripsComponent,
      RadarComponent,
-     GridOperationComponent
+     GridOperationComponent,
+     RegisterOperationComponent
 
+  ],
+  exports:[
+      RegisterOperationComponent
   ]
 })
 export class RiskManagementModule { }

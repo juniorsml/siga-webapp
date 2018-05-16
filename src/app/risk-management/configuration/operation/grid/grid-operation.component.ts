@@ -15,7 +15,8 @@ export class GridOperationComponent implements OnInit {
   public filterDistance: any;
   public selectedDevice: any;
   public onDeviceSelected: any;
- 
+   
+  public showFormRegister = false;
 
    @Input()
   public hasHeight = false;
@@ -30,6 +31,15 @@ export class GridOperationComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.data.subscribe(data => this.operations = data.operations);
+  }
+
+
+  openFormRegister() {
+    this.showFormRegister = !this.showFormRegister;
+  }
+
+  closeFormRegister() {
+    this.showFormRegister = false;
   }
 
   public onPlacesFiltered(event) {

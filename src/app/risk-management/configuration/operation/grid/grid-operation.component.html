@@ -17,8 +17,7 @@
   <button class="button is-link" (click)="openFormRegister()">Novo</button>
 </div>
    
-<div class="grid-area box-shadow">
- 
+<div class="grid-area box-shadow"> 
   <div *ngIf="showFilterBar" [ngClass]="styleClass" class="columns level-left">
     <div class="column is-3">     
       <p class="control has-icons-left"> 
@@ -68,3 +67,9 @@
   </div>
 </div>
 </div>
+
+<sga-modal *ngIf="showFormRegister">
+    <sga-register-operation
+      (onFinish)="closeFormRegister()">
+    </sga-register-operation>
+  </sga-modal>
