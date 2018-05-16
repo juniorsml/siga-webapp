@@ -50,31 +50,65 @@
               <ul class="sidebar-submenu">
                 <li [class.selected]="router.url == '/risk-management/started'" class="sidebar-menu-item">
                   <a routerLink="/risk-management/started">
-                    <span [class.selected]="router.url == '/risk-management/started'" class="sidebar-list-icon fal fa-desktop"></span>
+                    <span [class.selected]="router.url == '/risk-management/started'" class="sidebar-list-icon fal fa-th-list"></span>
                     <span class="sidebar-list-text">Em viagem</span>
                   </a>
                 </li>
                 <li [class.selected]="router.url == '/risk-management/scheduled'" class="sidebar-menu-item">
                   <a routerLink="/risk-management/scheduled">
-                    <span [class.selected]="router.url == '/risk-management/scheduled'" class="sidebar-list-icon fal fa-desktop"></span>
+                    <span [class.selected]="router.url == '/risk-management/scheduled'" class="sidebar-list-icon fal fa-th-list"></span>
                     <span class="sidebar-list-text">Não iniciadas</span>
                   </a>
                 </li>
+                <li [class.selected]="router.url == '/risk-management/cto'" class="sidebar-menu-item">
+                  <a routerLink="/risk-management/cto">
+                    <span [class.selected]="router.url == '/risk-management/cto'" class="sidebar-list-icon fal fa-th-list"></span>
+                    <span class="sidebar-list-text">CTO</span>
+                  </a>
+                </li>
+                <li [class.selected]="router.url == '/risk-management/ratc'" class="sidebar-menu-item">
+                  <a routerLink="/risk-management/ratc">
+                    <span [class.selected]="router.url == '/risk-management/ratc'" class="sidebar-list-icon fal fa-th-list"></span>
+                    <span class="sidebar-list-text">RATC</span>
+                  </a>
+                </li>
+                 <li [class.selected]="router.url == '/risk-management/radar'" class="sidebar-menu-item">
+                  <a routerLink="/risk-management/radar">
+                    <span [class.selected]="router.url == '/risk-management/radar'" class="sidebar-list-icon fal fa-th-list"></span>
+                    <span class="sidebar-list-text">Radar</span>
+                  </a>
+                </li>
+
               </ul>
             </accordion>
-          </li>
-          <li class="sidebar-menu-item">
-            <a>
-              <span class="sidebar-list-icon fal fa-tachometer-alt"></span>
-              <span class="sidebar-list-text">Dashboard</span>
-            </a>
-          </li>
-          <li class="sidebar-menu-item">
-            <a>
-              <span class="sidebar-list-icon fal fa-cog"></span>
-              <span class="sidebar-list-text">Configuração</span>
-            </a>
-          </li>
+          </li>        
+         <li class="sidebar-menu-item-accordion">      
+            <accordion>
+              <accordion-header>
+                <ng-template>
+                  <div class="sidebar-menu-accordion">
+                    <span [class.selected]="router.url == '/trip'" class="sidebar-list-icon fal fa-cog"></span>
+                    <span class="sidebar-list-text">Configuração</span>
+                  </div>
+                </ng-template>
+              </accordion-header>
+              <ul class="sidebar-submenu">
+                <li [class.selected]="router.url == '/risk-management/operation'" class="sidebar-menu-item">
+                  <a routerLink="/risk-management/operation">
+                    <span [class.selected]="router.url == '/risk-management/operation'" class="sidebar-list-icon fal fa-th-list"></span>
+                    <span class="sidebar-list-text">Operação</span>
+                  </a>
+                </li>
+                <li [class.selected]="router.url == '/risk-management/rules'" class="sidebar-menu-item">
+                  <a routerLink="/risk-management/rules">
+                    <span [class.selected]="router.url == '/risk-management/rules'" class="sidebar-list-icon fal fa-th-list"></span>
+                    <span class="sidebar-list-text">Regras GR</span>
+                  </a>
+                </li>
+               
+              </ul>
+            </accordion>
+        </li>
         </ul>
       </accordion>
     </li>

@@ -114,6 +114,7 @@ nav {
     position: absolute;   
     top:40px;
     opacity: 0;
+    visibility:hidden;
     right:27px;
     height: 74px;
     background:#FFF; 
@@ -156,6 +157,7 @@ nav {
 .cnt-menu-profile.opened{
     top: 54px;
     opacity:1;
+    visibility:visible;
     z-index: 99999;
   }
   

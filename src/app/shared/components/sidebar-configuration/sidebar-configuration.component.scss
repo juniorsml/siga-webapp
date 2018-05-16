@@ -4,27 +4,47 @@
 .cnt-sidebar-configuration{
 
 	.trigger{
-		color: #7e8492;
+		color: #8d8e9e;
     position: relative;
-    right: 24px;
-    top: 18px;
+    right: 47px;
+    border-radius: 3px;
+    font-size: 14px;
+    top: 23px;
+    padding: 8px;
+    border: 1px solid #afb2d8;
+    transition:all 90ms ease;
+
+		&:hover,
+		&:focus{
+			border: 1px solid #afb2d8;
+			background:#afb2d8;
+			color:#FFF;
+		}
+    span{
+     		padding: 0 6px;
+     }
+	}
+	.trigger.opened{
+		background:#afb2d8;
+		color:#FFF;
 	}
 	.cnt-configuration-menu.opened{
-		right: 19px;
-	  opacity:1;
-	  z-index: 99999;
+    opacity: 1;    
+    top: 56px;
+    z-index: 99999;
 	}
 	.cnt-configuration-menu{
-		position: absolute;	  
-	  right: -147px;
+		position: absolute;
+		border: 1px solid #c9cad0;
+		top: 40px;	 
+		right:26px; 
 	  opacity: 0;
 	  background:#FFF; 
 	  z-index: 0;
-	  width: 233px;
-	  bottom: 21px;
+	  min-width: 158px;
     top: 53px;
 	  border-radius:3px;
-	  transition:all 450ms ease;
+	  transition:all 250ms ease;
 	  -webkit-box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.1);
     box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.1);
 
@@ -37,16 +57,17 @@
 	    border-bottom: 1px solid #d9dce0;
 	  }
 		ul{
+			padding: 3px 0px;
 		  li{
 		  	a{
-		  		color:#afb5c1;
+		  		color:#afb2d8;
 		  		font-size: 12.5px;
-    			padding: 4px 13px;
+    			    padding: 7px 14px;
 		  		display: block;
 		  		transition:all 250ms ease;
 
 		  		&:hover{
-		  			background: #afb5c1;
+		  			background: #afb2d8;
 		  			color:#FFF;
 		  		}
 		 	 }

@@ -1,11 +1,14 @@
-<nav  class="breadcrumb" aria-label="breadcrumbs">
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Reboque</a></li>
-    <li class="is-active"><a href="#" aria-current="page">MAPA</a></li>
-  </ul>
-  <h5>MAPA</h5>
-</nav>
+<div class="columns">
+  <nav class="breadcrumb column is-8" aria-label="breadcrumbs">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li class="is-active"><a>Reboque</a></li>
+      <li class="is-active"><a href="#" aria-current="page">Mapa</a></li>
+    </ul>
+    <h5>Mapa</h5>
+  </nav>
+  <sga-sidebar-configuration class="column is-4"></sga-sidebar-configuration>
+</div>
 <div class="material-content-container cnt-map">
   <div id="map" #mapSelector></div>
 </div>
