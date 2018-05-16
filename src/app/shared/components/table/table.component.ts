@@ -29,7 +29,8 @@ import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class DataTableComponent implements OnInit, OnChanges, DoCheck, AfterViewInit {
+export class DataTableComponent
+  implements OnInit, OnChanges, DoCheck, AfterViewInit {
   @Input() data: Array<any>;
   @Input() bodyTop;
   @Input() bodyBottom;
@@ -61,6 +62,7 @@ export class DataTableComponent implements OnInit, OnChanges, DoCheck, AfterView
   filteredData: Array<any>;
   emptyTable: boolean;
   private _columns = new Array<ColumnComponent>();
+  private _originalColumns = new Array<ColumnComponent>();
   currentPage: number = 1;
   pageQuantity: number = 10;
   search: SearchPipe;
@@ -94,6 +96,8 @@ export class DataTableComponent implements OnInit, OnChanges, DoCheck, AfterView
       this.searchText,
       this.searchColumns
     ]);
+
+    this._originalColumns = Object.assign([], this.columns);
   }
 
   ngDoCheck() {
@@ -104,7 +108,8 @@ export class DataTableComponent implements OnInit, OnChanges, DoCheck, AfterView
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.filterHeaders && !changes.filterHeaders.isFirstChange()) {
-      this.columns = this.columns;
+      this.filteredColumns = changes.filterHeaders.currentValue;
+      this.columns = this._originalColumns;
     }
 
     if (changes.searchText && !changes.searchText.isFirstChange()) {
@@ -115,8 +120,8 @@ export class DataTableComponent implements OnInit, OnChanges, DoCheck, AfterView
       this.emptyTable = this.filteredData.length === 0;
     }
 
-    if (this.bodyRowElement !== null)
-    this.setHeaderColumnWidth();
+    // if (this.bodyRowElement !== null)
+    // this.setHeaderColumnWidth();
 
     this.changeDetector.detectChanges();
   }
@@ -126,11 +131,11 @@ export class DataTableComponent implements OnInit, OnChanges, DoCheck, AfterView
     setTimeout(() => this.whenHeaderReady.emit(headers), 500);
   }
 
-  public get filteredColumns() { 
+  private get filteredColumns() {
     return this.filterHeaders;
   }
 
-  public set filteredColumns(value: Array<any>) {
+  private set filteredColumns(value: Array<any>) {
     this.filterHeaders = value;
   }
 
@@ -139,8 +144,12 @@ export class DataTableComponent implements OnInit, OnChanges, DoCheck, AfterView
   }
 
   public set columns(value: Array<any>) {
-    debugger
-    this._columns = value.filter(c => this.filteredColumns.indexOf(c.header) > 0);
+    const result = value.filter(c => {
+      const item = this.filteredColumns.find(f => c.header === f);
+      return item !== undefined;
+    });
+
+    this._columns = result;
   }
 
   public isASC(header: string): boolean {
