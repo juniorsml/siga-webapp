@@ -1,13 +1,13 @@
-import { Component, OnInit, Input} from '@angular/core';
-import { TableClickEvent } from '../../shared/components/table/table.component';
+import { Component, OnInit, Input } from '@angular/core';
+import { TableClickEvent } from '../../../../shared/components/table/table.component';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'sga-grid-device',
-  templateUrl: './grid-device.component.html',
-  styleUrls: ['./grid-device.component.scss']
+  selector: 'sga-grid-operation',
+  templateUrl: './grid-operation.component.html',
+  styleUrls: ['./grid-operation.component.scss']
 })
-export class GridDeviceComponent implements OnInit {
+export class GridOperationComponent implements OnInit {
 
   public text: any;
   public styleClass: any;
@@ -15,7 +15,8 @@ export class GridDeviceComponent implements OnInit {
   public filterDistance: any;
   public selectedDevice: any;
   public onDeviceSelected: any;
- 
+   
+  public showFormRegister = false;
 
    @Input()
   public hasHeight = false;
@@ -24,15 +25,21 @@ export class GridDeviceComponent implements OnInit {
   public showFilterBar = true;
 
   @Input()
-  public showBreadcrumb = true;
-
-  @Input()
-  public devices = new Array<any>();
+  public operations = new Array<any>();
   
   constructor(private router: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.router.data.subscribe(data => this.devices = data.devices);
+    this.router.data.subscribe(data => this.operations = data.operations);
+  }
+
+
+  openFormRegister() {
+    this.showFormRegister = !this.showFormRegister;
+  }
+
+  closeFormRegister() {
+    this.showFormRegister = false;
   }
 
   public onPlacesFiltered(event) {

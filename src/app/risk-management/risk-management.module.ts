@@ -11,9 +11,20 @@ import { RiskManagementRoutingModule } from './risk-management-routing.module';
 
 import { SharedModule } from '../shared/modules/shared.module';
 
-import { StartedTripsComponent } from './started/started.component';
+import { StartedTripsComponent } from './monitoring/started/started.component';
 
-import { ScheduledTripsComponent } from './scheduled/scheduled.component';
+import { ScheduledTripsComponent } from './monitoring/scheduled/scheduled.component';
+
+import { CTOTripsComponent } from './monitoring/cto/cto.component';
+
+import { RATCTripsComponent } from './monitoring/ratc/ratc.component';
+
+import { RadarComponent } from './monitoring/radar/radar.component';
+
+import { GridOperationComponent } from './configuration/operation/grid/grid-operation.component';
+
+import { RegisterOperationComponent } from './configuration/operation/register/register-operation.component';
+
 
 
 @NgModule({
@@ -30,8 +41,16 @@ import { ScheduledTripsComponent } from './scheduled/scheduled.component';
   ],
   declarations: [
      StartedTripsComponent,
-     ScheduledTripsComponent
+     ScheduledTripsComponent,
+     CTOTripsComponent,
+     RATCTripsComponent,
+     RadarComponent,
+     GridOperationComponent,
+     RegisterOperationComponent
 
+  ],
+  exports:[
+      RegisterOperationComponent
   ]
 })
 export class RiskManagementModule { }

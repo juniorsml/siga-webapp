@@ -1,0 +1,50 @@
+$main-blue: #4d5675;
+.cnt-dialog {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  z-index: 999;
+  left: 0px;
+  top: 0px;
+
+  .container-scroll {
+    position: relative;
+    height: 91%;
+  }
+
+  .container-form {
+    background-color: #fff;
+    margin: 1.5rem auto 0 auto;
+    width: 100%;
+    max-width: 1024px;
+    max-height: 91%;
+    min-height: 400px;
+
+    .form-header {
+      padding-left: 20px;
+      padding-top: 0;
+
+      .area {
+        background: $main-blue;
+        color: #fff;
+        padding: 0 20px;
+        font: 300 17px 'Open Sans', sans-serif;
+        display: flex;
+        align-items: center;
+      }
+      .action {
+        color: $main-blue;
+        font: 300 24px 'Open Sans', sans-serif;
+      }
+    }
+  }
+}
+
+.form{
+    width: 96%;
+    margin: auto;
+}
+.select select,.select{
+width:100%;
+}
