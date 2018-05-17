@@ -153,13 +153,15 @@ $bg-titles: #4d5675;
 }
 
 
-
+// HEADER by CONTEXT
+.header-content{
+  width: 78%;
+}
 .breadcrumb{
   position:relative;
   z-index:12;
   flex-wrap:wrap;
   z-index:999;
-  margin-top: 8px;
   margin-bottom:0 !important;
   margin-left: 21px;
   width: 77%;
@@ -187,12 +189,11 @@ $bg-titles: #4d5675;
   }
 /* GRID **************************************************************************/
   .main-content{
-    background-color: #f5f7fa;
-    position: absolute; 
-    top: 44px; 
-    bottom: 0px; 
-    left: 52px; 
-    right: 0px
+    position: absolute;
+    top: 11px;
+    bottom: 0px;
+    left: 50px;
+    right: 0px;
   }
   .box-shadow{
     background-color: #FFF;
@@ -202,16 +203,14 @@ $bg-titles: #4d5675;
     box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
   }
   .content-wrapper {
-    
     position: absolute;
-    left: 20px;
-    right: 20px;
-    bottom: 20px;
-    top: 66px;
+    left: 0;
+    right: 16px;
+    bottom: 5px;
+    top: 43px;
   }
 
   /* Trip **************************************************************************/
-
   .content-trip{
     position: absolute;
     left: 33px;

@@ -1,25 +1,14 @@
-<div class="cnt-sidebar-configuration is-pulled-right">
+<div class="cnt-sidebar-configuration">
 	<a class="trigger" (click)="toggleMenu()" [ngClass]="status ? 'opened' : 'closed'">
 		<i class="fal fa-cog"></i> 
 		<span>Configuração</span>
-		<i class="fal fa-angle-down"></i>
-		</a>
+	</a>
 	<div class="cnt-configuration-menu"  [ngClass]="status ? 'opened' : 'closed'">		
 		<ul>
-			<li>
-				<a href="">Option I</a>
-			</li>
-			<li>
-				<a href="">Option II</a>
-			</li>
-			<li>
-				<a href="">Option III</a>
-			</li>
-			<li>
-				<a href="">Option IV</a>
-			</li>
-			<li>
-				<a href="">Option V</a>
+			<li 
+			 *ngFor="let option of options; let itemIndex = index"
+      (click)="onClick($event, option, itemIndex)">
+				<a href="">{{option.header}}</a>
 			</li>
 		</ul>
 	</div>

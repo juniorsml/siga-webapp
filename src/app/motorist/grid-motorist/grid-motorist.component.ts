@@ -24,6 +24,7 @@ export class GridMotoristComponent implements OnInit {
 
   showDialog = false;
   showMotoristDialog: boolean;
+  showColumnSelector = false;
 
   public headers = new Array<string>();
   public filterHeaders = new Array<string>();
