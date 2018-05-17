@@ -50,6 +50,7 @@ import { PagerComponent } from '../components/pager/pager.component';
 import { SidebarConfigurationComponent } from '../components/sidebar-configuration/sidebar-configuration.component';
 import { PageNotFoundComponent } from '../layout/404page/not-found.component';
 import { ColumnSelectorComponent } from '../components/column-selector/column-selector.component';
+import { MapComponent } from '../components/map/map.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,8 @@ import { ColumnSelectorComponent } from '../components/column-selector/column-se
     SearchPipe,
     PagerPipe,
     TimeElapsedAsTextPipe,
+
+    MapComponent,
 
     StepComponent,
     StepsComponent,
@@ -125,6 +128,8 @@ import { ColumnSelectorComponent } from '../components/column-selector/column-se
     GridComponent,
     TabsComponent,
     ModalComponent,
+
+    MapComponent,
 
     StepComponent,
     StepsComponent,
