@@ -12,7 +12,6 @@ import { MapStyle } from '../models/MapStyle';
 
 @Injectable()
 export class MapService extends Map {
-
   private markers: Array<Marker> = [];
   private markersGl: Array<mapboxgl.Marker> = [];
 
@@ -51,20 +50,17 @@ export class MapService extends Map {
   }
 
   public createMapBoxMapInstance(showControls?: boolean) {
-    this.map = L
-    .map('map', {
+    this.map = L.map('map', {
       maxZoom: 20,
       zoomControl: false,
       worldCopyJump: true
-    })
-    .setView([-14.9034, -43.1917], 5);
+    }).setView([-14.9034, -43.1917], 5);
 
     if (showControls) {
       this.addDraw(MapStyle.Street);
     } else {
       this.setStyle(MapStyle.Outdoor);
     }
-
   }
 
   public addSource(): void {}
@@ -138,7 +134,7 @@ export class MapService extends Map {
   addGeoMarker(geometry: any): void {
     const el = document.createElement('div');
     el.className = 'motorist-marker';
-  
+
     const marker = new mapboxgl.Marker(el)
       .setLngLat(geometry.coordinates)
       .addTo(this.map);
@@ -173,7 +169,7 @@ export class MapService extends Map {
 
   public setStyle(style: MapStyle): void {
     L['mapboxGL']({
-      accessToken: environment.mapbox.accessToken, 
+      accessToken: environment.mapbox.accessToken,
       style: `mapbox://styles/mapbox/${style}`
     }).addTo(this.map);
   }
@@ -184,7 +180,7 @@ export class MapService extends Map {
       container: 'map',
       style: `mapbox://styles/mapbox/${style}`
     });
-      
+
     const draw = new window['MapboxDraw']({
       displayControlsDefault: false,
       controls: {
@@ -197,10 +193,31 @@ export class MapService extends Map {
 
     const updateArea = () => {
       const data = draw.getAll();
+
       if (data.features.length > 0) {
-          // var area = window['turf'].area(data);
-          // restrict to area to 2 decimal points
-          // var rounded_area = Math.round(area*100)/100;
+        const src = {
+          id: `${new Date().getTime()}`,
+          type: 'fill',
+          source: {
+            type: 'geojson',
+            data: data.features[0]
+          },
+          layout: {},
+          paint: {
+            'fill-color': '#c23329',
+            'fill-opacity': 0.8
+          }
+        };
+
+        this.map.addLayer(src);
+        const polygonBox = document.getElementById('calculated-area');
+
+        if (polygonBox !== null) {
+          document.getElementById('calculation-box').style.opacity = '1';
+          const area = window['turf'].area(data);
+          const rounded_area = Math.round(area * 100) / 100;
+          polygonBox.innerHTML = '<p><strong>' + rounded_area + '</strong></p><p>Metros quadrados</p>';
+        }
       }
     };
 
