@@ -13,8 +13,8 @@
     </sga-sidebar-configuration>
   </div>  
 </div>
-
-<sga-modal *ngIf="showColumnSelector">
+<!-- *ngIf="showColumnSelector" -->
+<sga-modal >
   <sga-column-selector
     [columns]="headers"
     (onToggleItem)="onToggleItem($event)">
