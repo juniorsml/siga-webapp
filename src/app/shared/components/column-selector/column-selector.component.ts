@@ -23,7 +23,9 @@ export class ColumnSelectorComponent implements OnChanges, OnInit {
     if (!changes.columns.isFirstChange()) this.updateSelectedItems();
   }
   
-  public closeBox = () => this.onClose.emit();
+  public closeBox = (event) => {
+    if (event === 'hide') this.onClose.emit();
+  }
 
   public exists = (column: string) => this.selectedItems.find(a => a === column);
 
