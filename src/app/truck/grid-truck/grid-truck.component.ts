@@ -27,6 +27,11 @@ export class GridTruckComponent implements OnInit {
   showDialog = false;
   showVehicleDialog: boolean;
 
+  showColumnSelector = false;
+  closeColumnSelector() {
+    this.showColumnSelector = false;
+  }
+
   constructor(private router: ActivatedRoute) { }
 
   ngOnInit(): void {
