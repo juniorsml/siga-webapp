@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 
 @Component({
   selector: 'sga-column-selector',
@@ -6,24 +6,24 @@ import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from
   styleUrls: ['./column-selector.component.scss']
    
 })
-export class ColumnSelectorComponent implements OnChanges {
+export class ColumnSelectorComponent implements OnChanges, OnInit {
   
   @Input() public columns = new Array<string>();
+  
+  @Output() public onClose = new EventEmitter();
   @Output() public onToggleItem = new EventEmitter<Array<any>>();
-
+  
   private selectedItems = new Array<string>();
+  
+  ngOnInit(): void {
+    if (Array.isArray(this.columns)) this.updateSelectedItems();
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.columns.isFirstChange() === false)
-      this.selectedItems = Object.assign([], this.columns);
+    if (!changes.columns.isFirstChange()) this.updateSelectedItems();
   }
-
-  @Output()
-  public onClose = new EventEmitter();
   
-  closeBox() {
-    this.onClose.emit();
-  }
+  public closeBox = () => this.onClose.emit();
 
   public exists = (column: string) => this.selectedItems.find(a => a === column);
 
@@ -35,6 +35,8 @@ export class ColumnSelectorComponent implements OnChanges {
 
     this.onToggleItem.emit(this.selectedItems);
   }
+
+  private updateSelectedItems = () => this.selectedItems = Object.assign([], this.columns);
 
   private removeFromSelectedItems(column: string) {
     const index = this.selectedItems.indexOf(column);
