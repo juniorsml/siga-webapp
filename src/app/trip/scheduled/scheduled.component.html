@@ -1,11 +1,25 @@
-<nav class="breadcrumb" aria-label="breadcrumbs">
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li class="is-active"><a href="#">Viagens</a></li>
-    <li class="is-active"><a href="#" aria-current="page">Não iniciadas</a></li>
-  </ul>
-  <h5>Não iniciadas</h5>
-</nav>
+<div class="columns header-content">
+  <nav  class="breadcrumb column is-8" aria-label="breadcrumbs">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li class="is-active"><a>Viagens</a></li>
+      <li class="is-active"><a href="#" aria-current="page">Não iniciadas</a></li>
+    </ul>
+  </nav>
+  <div class="columns column is-4 header-content-right">    
+    <sga-sidebar-configuration (onSelectOption)="onSelectOption($event)" class="column is-6">
+      <sga-option header="Seleção de Colunas"></sga-option>
+    </sga-sidebar-configuration>
+  </div>  
+</div>
+
+<sga-modal  *ngIf="showColumnSelector">
+  <sga-column-selector   
+    [columns]="headers"
+    (onToggleItem)="onToggleItem($event)"
+    (onClose)="closeColumnSelector()">
+  </sga-column-selector>
+</sga-modal>
    
 <div class="content-wrapper box-shadow content-grid-motorist grid-spacing-search">
  
