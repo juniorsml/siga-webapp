@@ -47,7 +47,9 @@
       [searchColumns]="['id','motorists.documentId','currentState.Status','motorists.documentId','motorists.documentId']"
       [emptySearchText]="'nenhuma viagem foi encontrado'" 
       [bodyBottom]="'42px'" 
-      [bodyTop]="'26px'">
+      [bodyTop]="'26px'"
+      [filterHeaders]="filterHeaders"
+      (whenHeaderReady)="whenHeaderReady($event)">
           <table-empty>
 		        <ng-template>
 		            <!-- <div *ngIf="dataLoading"

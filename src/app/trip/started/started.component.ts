@@ -23,7 +23,7 @@ export class StartedTripsComponent implements OnInit {
   public filterDistance: any;
   public showTripDialog = false;
   public showSummaryDialog = false;
-   showColumnSelector = false;
+  showColumnSelector = false;
 
 
   closeColumnSelector() {
