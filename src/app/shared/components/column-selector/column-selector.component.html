@@ -1,10 +1,14 @@
-<div class="box">
-  <h3>Selecione as colunas:</h3>
-  <ul>
-    <li *ngFor="let column of columns">
-      <label class="checkbox">
-        <input type="checkbox" checked="exists(column)" (click)="onToggle(column)"/> {{column}}
-      </label>
-    </li>
-  </ul>
+<div class="cnt-dialog">
+  <div class="box">
+    <h3>Selecione as colunas:</h3>
+    <ul>
+      <li *ngFor=" let column of columns; let i = index ">        
+
+         <input class="styled-checkbox" id="check_{{i}}" type="checkbox" checked="exists(column)" >
+         <label (click)="onToggle(column)" for="check_{{i}}"> {{column}} </label>
+       
+      </li>
+    </ul>
+    <a (click)="closeBox()" class="button is-pulled-right"> OK</a>
+</div>
 </div>

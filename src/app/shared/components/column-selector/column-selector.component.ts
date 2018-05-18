@@ -18,6 +18,13 @@ export class ColumnSelectorComponent implements OnChanges {
       this.selectedItems = Object.assign([], this.columns);
   }
 
+  @Output()
+  public onClose = new EventEmitter();
+  
+  closeBox() {
+    this.onClose.emit();
+  }
+
   public exists = (column: string) => this.selectedItems.find(a => a === column);
 
   public onToggle(column: string): void {
