@@ -28,6 +28,11 @@ export class GridTruckComponent implements OnInit {
   showVehicleDialog: boolean;
 
   showColumnSelector = false;
+
+  public headers = new Array<string>();
+  public filterHeaders = new Array<string>();
+
+  
   closeColumnSelector() {
     this.showColumnSelector = false;
   }
@@ -79,4 +84,8 @@ export class GridTruckComponent implements OnInit {
   public onPlacesKeyUp() {}
 
   public onDistanceKeyUp() {}
+
+    public whenHeaderReady = headers => this.headers = headers;
+
+  public onToggleItem = itemsSelected => this.filterHeaders = itemsSelected;
 }
