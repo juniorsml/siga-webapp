@@ -84,7 +84,6 @@ $bg-titles: #4d5675;
   }
 
 //Radio Map Select
-
 .cnt-select-map{
   background:#FFF;
   position: absolute;
@@ -110,7 +109,6 @@ $bg-titles: #4d5675;
   user-select: none;
 }
 
-/* Hide the browser's default radio button */
 .container input {
   position: absolute;
   opacity: 0;
@@ -118,8 +116,8 @@ $bg-titles: #4d5675;
 
 // Create Custom CheckBox
 .styled-checkbox {
-  position: absolute; // take it out of document flow
-  opacity: 0; // hide it
+  position: absolute;
+  opacity: 0;
 
   & + label {
     position: relative;
@@ -145,20 +143,7 @@ $bg-titles: #4d5675;
   &:checked + label:before {
     background: #ff4141;
   }
-  
-  // Disabled state label.
-  &:disabled + label {
-    color: #b8b8b8;
-    cursor: auto;
-  }
-
-  // Disabled box.
-  &:disabled + label:before {
-    box-shadow: none;
-    background: #ddd;
-  }
-
-  // Checkmark. Could be replaced with an image
+  // Checked
   &:checked + label:after {
     content: '';
     position: absolute;
@@ -179,7 +164,7 @@ $bg-titles: #4d5675;
 }
 
 
-/* Create a custom radio button */
+/* Create Custom Radio */
 .checkmark {
   position: absolute;
   top: 0;
