@@ -21,7 +21,7 @@
   </sga-column-selector>
 </sga-modal>
    
-<div class="content-wrapper box-shadow content-grid-motorist grid-spacing-search">
+<div class="content-wrapper content-grid-motorist grid-spacing-search">
   <div [ngClass]="styleClass" class="columns level-left">
     <div class="column is-3">     
       <p class="control has-icons-left"> 
@@ -47,7 +47,9 @@
       [emptySearchText]="'nenhuma viagem foi encontrado'" 
       [bodyBottom]="'42px'" 
       [bodyTop]="'26px'"
-      (onCellClick)="updateSelectedTrip($event)">
+      (onCellClick)="updateSelectedTrip($event)"
+      [filterHeaders]="filterHeaders"
+      (whenHeaderReady)="whenHeaderReady($event)">
       <table-empty>
         <ng-template>
             <!-- <div *ngIf="dataLoading"
