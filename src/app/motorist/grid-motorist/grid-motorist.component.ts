@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { TableClickEvent } from '../../shared/components/table/table.component';
 import { ActivatedRoute } from '@angular/router';
+import { StepClickEvent } from '../../shared/events/StepClickEvent';
 
 @Component({
   selector: 'sga-grid-motorist',
@@ -24,19 +25,28 @@ export class GridMotoristComponent implements OnInit {
 
   showDialog = false;
   showMotoristDialog: boolean;
+  showColumnSelector = false;
+
+
+  closeColumnSelector() {
+    this.showColumnSelector = false;
+  }
+
+  onSelectOption(event: StepClickEvent) {
+    switch (event.data.header) {      
+      case 'Seleção de Colunas': 
+        this.showColumnSelector = true;
+        break;
+      }
+    }
+
+  public headers = new Array<string>();
+  public filterHeaders = new Array<string>();
 
   constructor(private router: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.router.data.subscribe(data => this.motorists = data.motorists);
-  }
-
-  public showMotoristModal() {
-    this.showMotoristDialog = true;
-  }
-
-  public motoristDialogClose() {
-    this.showMotoristDialog = false;
   }
 
   public onCellClick(event) {
@@ -45,7 +55,7 @@ export class GridMotoristComponent implements OnInit {
     if (event.cellIndex === 0) this.showMotoristDialog = true;
   }
 
-  onCellRightClick(event: TableClickEvent) {
+  public onCellRightClick(event: TableClickEvent) {
     this.selectedMotorist = event.data;
     this.onMotoristSelected.emit(this.selectedMotorist);
   }
@@ -60,7 +70,11 @@ export class GridMotoristComponent implements OnInit {
     this.filterLocation = null;
   }
 
-  public onPlacesKeyUp() {}
+  public showMotoristModal = () => this.showMotoristDialog = true;
 
-  public onDistanceKeyUp() {}
+  public motoristDialogClose = () => this.showMotoristDialog = false;
+
+  public whenHeaderReady = headers => this.headers = headers;
+
+  public onToggleItem = itemsSelected => this.filterHeaders = itemsSelected;
 }

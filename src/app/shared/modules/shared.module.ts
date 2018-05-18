@@ -48,7 +48,12 @@ import { StepperComponent } from '../components/stepper/stepper.component';
 import { PagerComponent } from '../components/pager/pager.component';
 
 import { SidebarConfigurationComponent } from '../components/sidebar-configuration/sidebar-configuration.component';
+import { OptionComponent } from '../components/sidebar-configuration/option/option.component';
+
+
 import { PageNotFoundComponent } from '../layout/404page/not-found.component';
+import { ColumnSelectorComponent } from '../components/column-selector/column-selector.component';
+import { MapComponent } from '../components/map/map.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +61,8 @@ import { PageNotFoundComponent } from '../layout/404page/not-found.component';
     SearchPipe,
     PagerPipe,
     TimeElapsedAsTextPipe,
+
+    MapComponent,
 
     StepComponent,
     StepsComponent,
@@ -87,8 +94,10 @@ import { PageNotFoundComponent } from '../layout/404page/not-found.component';
     DataTableComponent,
     EmptyTableComponent,
     ContextMenuComponent,
+    ColumnSelectorComponent,
 
     SidebarConfigurationComponent,
+    OptionComponent,
 
     PagerComponent,
     PageNotFoundComponent,
@@ -124,6 +133,8 @@ import { PageNotFoundComponent } from '../layout/404page/not-found.component';
     TabsComponent,
     ModalComponent,
 
+    MapComponent,
+
     StepComponent,
     StepsComponent,
     StepperComponent,
@@ -149,10 +160,13 @@ import { PageNotFoundComponent } from '../layout/404page/not-found.component';
     DataTableComponent,
     EmptyTableComponent,
     ContextMenuComponent,
+    ColumnSelectorComponent,
+
     CalendarModule,
     TextMaskModule,
 
     SidebarConfigurationComponent,
+    OptionComponent,
     PagerComponent,
 
     SpinnerComponent,

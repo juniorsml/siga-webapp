@@ -14,7 +14,9 @@ import {
   ElementRef,
   Output,
   EventEmitter,
-  HostListener
+  HostListener,
+  SimpleChanges,
+  OnInit
 } from '@angular/core';
 import { SearchPipe } from '../../filters/search.pipe';
 
@@ -27,7 +29,8 @@ import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class DataTableComponent implements DoCheck, OnChanges, AfterViewInit {
+export class DataTableComponent
+  implements OnInit, OnChanges, DoCheck, AfterViewInit {
   @Input() data: Array<any>;
   @Input() bodyTop;
   @Input() bodyBottom;
@@ -41,10 +44,13 @@ export class DataTableComponent implements DoCheck, OnChanges, AfterViewInit {
   @Input() styleFooter: string = 'ui-datatable-footer';
   @Input() stylePager: string = 'ui-table-pager';
   @Input() contextMenuMode: string = 'click';
+  @Input() filterHeaders = new Array<string>();
   @Output() onRowClick: EventEmitter<any> = new EventEmitter();
   @Output() onRowRightClick: EventEmitter<any> = new EventEmitter();
   @Output() onCellClick: EventEmitter<TableClickEvent> = new EventEmitter();
   @Output() onCellRightClick: EventEmitter<any> = new EventEmitter();
+  @Output() whenHeaderReady = new EventEmitter<any>();
+
   @ViewChild('headerElement') headerElement: ElementRef;
   @ViewChild('bodyElement') bodyElement: ElementRef;
   @ViewChild('bodyRowElement') bodyRowElement: ElementRef;
@@ -55,7 +61,8 @@ export class DataTableComponent implements DoCheck, OnChanges, AfterViewInit {
   emptyView: EmptyTableComponent;
   filteredData: Array<any>;
   emptyTable: boolean;
-  columns = new Array<ColumnComponent>();
+  private _columns = new Array<ColumnComponent>();
+  private _originalColumns = new Array<ColumnComponent>();
   currentPage: number = 1;
   pageQuantity: number = 10;
   search: SearchPipe;
@@ -64,6 +71,13 @@ export class DataTableComponent implements DoCheck, OnChanges, AfterViewInit {
   //Scroll Component
   opts: ISlimScrollOptions;
   scrollEvents: EventEmitter<SlimScrollEvent>;
+
+  constructor(
+    private changeDetector: ChangeDetectorRef,
+    public domhandler: DomHandler
+  ) {
+    this.search = new SearchPipe();
+  }
 
   ngOnInit() {
     this.scrollEvents = new EventEmitter<SlimScrollEvent>();
@@ -78,13 +92,64 @@ export class DataTableComponent implements DoCheck, OnChanges, AfterViewInit {
       barWidth: '5px',
       barMargin: '2px 2px'
     };
+    this.filteredData = new SearchPipe().transform(this.data, [
+      this.searchText,
+      this.searchColumns
+    ]);
+
+    this._originalColumns = Object.assign([], this.columns);
   }
 
-  constructor(
-    private changeDetector: ChangeDetectorRef,
-    public domhandler: DomHandler
-  ) {
-    this.search = new SearchPipe();
+  ngDoCheck() {
+    if (this.bodyRowElement != null) {
+      this.setHeaderColumnWidth();
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.filterHeaders && !changes.filterHeaders.isFirstChange()) {
+      this.filteredColumns = changes.filterHeaders.currentValue;
+      this.columns = this._originalColumns;
+    }
+
+    if (changes.searchText && !changes.searchText.isFirstChange()) {
+      this.filteredData = new SearchPipe().transform(this.data, [
+        this.searchText,
+        this.searchColumns
+      ]);
+      this.emptyTable = this.filteredData.length === 0;
+    }
+
+    // if (this.bodyRowElement !== null)
+    // this.setHeaderColumnWidth();
+
+    this.changeDetector.detectChanges();
+  }
+
+  ngAfterContentInit(): void {
+    const headers = this.columns.map(c => c.header);
+    setTimeout(() => this.whenHeaderReady.emit(headers), 500);
+  }
+
+  private get filteredColumns() {
+    return this.filterHeaders;
+  }
+
+  private set filteredColumns(value: Array<any>) {
+    this.filterHeaders = value;
+  }
+
+  public get columns() {
+    return this._columns;
+  }
+
+  public set columns(value: Array<any>) {
+    const result = value.filter(c => {
+      const item = this.filteredColumns.find(f => c.header === f);
+      return item !== undefined;
+    });
+
+    this._columns = result;
   }
 
   public isASC(header: string): boolean {
@@ -114,13 +179,23 @@ export class DataTableComponent implements DoCheck, OnChanges, AfterViewInit {
 
   sortBy(index: number, key: string): void {
     this.columns[index].dataTable.data.sort(
-      (a, b) => (a[key].toLowerCase() > b[key].toLowerCase() ? 1 : a[key].toLowerCase() < b[key].toLowerCase() ? -1 : 0)
+      (a, b) =>
+        a[key].toLowerCase() > b[key].toLowerCase()
+          ? 1
+          : a[key].toLowerCase() < b[key].toLowerCase()
+            ? -1
+            : 0
     );
   }
 
   reverseBy(index: number, key: string): void {
     this.columns[index].dataTable.data.sort(
-      (a, b) => (a[key].toLowerCase() < b[key].toLowerCase() ? 1 : a[key].toLowerCase() > b[key].toLowerCase() ? -1 : 0)
+      (a, b) =>
+        a[key].toLowerCase() < b[key].toLowerCase()
+          ? 1
+          : a[key].toLowerCase() > b[key].toLowerCase()
+            ? -1
+            : 0
     );
   }
 
@@ -270,34 +345,6 @@ export class DataTableComponent implements DoCheck, OnChanges, AfterViewInit {
   ngAfterViewInit() {
     this.populateSearchFields();
   }
-
-  ngDoCheck() {
-    if (this.bodyRowElement != null) {
-      this.setHeaderColumnWidth();
-    }
-  }
-
-  ngOnChanges() {
-    // set header width
-    if (this.bodyRowElement != null) {
-      this.setHeaderColumnWidth();
-    } else if (this.data != null && this.data.length > 0) {
-      this.changeDetector.detectChanges();
-    }
-
-    // filterData
-    this.filteredData = new SearchPipe().transform(this.data, [
-      this.searchText,
-      this.searchColumns
-    ]);
-    if (this.filteredData.length == 0) {
-      this.emptyTable = true;
-      this.changeDetector.detectChanges();
-    } else {
-      this.emptyTable = false;
-      this.changeDetector.detectChanges();
-    }
-  }
 }
 
 export class TableClickEvent {
@@ -340,9 +387,7 @@ export class ColumnComponent {
 export class EmptyTableComponent {
   @ContentChild(TemplateRef) public template: TemplateRef<any>;
 
-  constructor(
-    public dataTable: DataTableComponent
-  ) {
+  constructor(public dataTable: DataTableComponent) {
     dataTable.setEmptyView(this);
   }
 }
@@ -386,9 +431,7 @@ export class MenuItemComponent {
   @Input() enabled: boolean = true;
   @ContentChild(TemplateRef) public template: TemplateRef<any>;
 
-  constructor(
-    public contextMenu: ContextMenuComponent
-  ) {
+  constructor(public contextMenu: ContextMenuComponent) {
     contextMenu.addMenuItem(this);
   }
 }

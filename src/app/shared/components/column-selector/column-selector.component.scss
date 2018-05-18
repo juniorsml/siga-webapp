@@ -1,0 +1,21 @@
+.cnt-dialog{
+    background:rgba(0,0,0,0.15)
+}
+ .box {
+    z-index: 99999 !important;
+    position: absolute;
+    padding: 20px;
+    left: 22px;
+    margin: auto;
+    width: 327px;
+    top: 150px;
+    right: 0;
+    background-color: #FFF;
+    
+    li{
+        margin: 4px 2px;
+        &:first-child{
+            display: none;
+        }
+    }
+  }

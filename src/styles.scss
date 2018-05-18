@@ -84,7 +84,6 @@ $bg-titles: #4d5675;
   }
 
 //Radio Map Select
-
 .cnt-select-map{
   background:#FFF;
   position: absolute;
@@ -110,13 +109,62 @@ $bg-titles: #4d5675;
   user-select: none;
 }
 
-/* Hide the browser's default radio button */
 .container input {
   position: absolute;
   opacity: 0;
 }
 
-/* Create a custom radio button */
+// Create Custom CheckBox
+.styled-checkbox {
+  position: absolute;
+  opacity: 0;
+
+  & + label {
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+    font-size: 14px;
+  }
+
+  // Box.
+  & + label:before {
+    content: '';
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 1px solid #ccc;
+    transition: all 100ms ease;
+  }
+
+  // Box checked
+  &:checked + label:before {
+    background: #ff4141;
+  }
+  // Checked
+  &:checked + label:after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 9px;
+    background: white;
+    width: 2px;
+    height: 2px;
+    box-shadow: 
+      2px 0 0 white,
+      4px 0 0 white,
+      4px -2px 0 white,
+      4px -4px 0 white,
+      4px -6px 0 white,
+      4px -8px 0 white;
+    transform: rotate(45deg);
+  }
+}
+
+
+/* Create Custom Radio */
 .checkmark {
   position: absolute;
   top: 0;
@@ -153,13 +201,15 @@ $bg-titles: #4d5675;
 }
 
 
-
+// HEADER by CONTEXT
+.header-content{
+  width: 78%;
+}
 .breadcrumb{
   position:relative;
   z-index:12;
   flex-wrap:wrap;
   z-index:999;
-  margin-top: 8px;
   margin-bottom:0 !important;
   margin-left: 21px;
   width: 77%;
@@ -187,12 +237,11 @@ $bg-titles: #4d5675;
   }
 /* GRID **************************************************************************/
   .main-content{
-    background-color: #f5f7fa;
-    position: absolute; 
-    top: 44px; 
-    bottom: 0px; 
-    left: 52px; 
-    right: 0px
+    position: absolute;
+    top: 11px;
+    bottom: 0px;
+    left: 50px;
+    right: 0px;
   }
   .box-shadow{
     background-color: #FFF;
@@ -202,16 +251,14 @@ $bg-titles: #4d5675;
     box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
   }
   .content-wrapper {
-    
     position: absolute;
-    left: 20px;
-    right: 20px;
-    bottom: 20px;
-    top: 66px;
+    left: 0;
+    right: 16px;
+    bottom: 5px;
+    top: 43px;
   }
 
   /* Trip **************************************************************************/
-
   .content-trip{
     position: absolute;
     left: 33px;
