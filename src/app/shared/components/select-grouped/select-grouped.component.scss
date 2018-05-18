@@ -1,0 +1,19 @@
+.content-items {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 0 0 1em 1em;
+
+  ul {
+    list-style-type: none;
+  }
+
+  .label {
+    color: #444;
+    display: block;
+    font-size: .8rem;
+    font-weight: 800;
+    padding-bottom: 0.2375rem;
+    padding-top: .2375rem;
+    width: 100%;
+  }
+}
