@@ -11,32 +11,7 @@
     bottom: 20px;
 }
 
-.header-content-right{
-    text-align: right;
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 27px;
-    position: relative;
 
-    &:after{
-        position: absolute;
-        content:"";
-        width:1px;
-        height: 34px;
-        right: 14px;
-        top: 20px;
-        background:#cecece;
-    }
-}
-
-.map-open{
-    color: #8d8e9e;
-    font-size: 14px;
-
-    span{
-        padding-left:6px;
-    }
-}
 
 /* Inputs Motorist SCSS ************************************************/
 

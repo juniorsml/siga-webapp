@@ -202,6 +202,14 @@ $bg-titles: #4d5675;
 
 
 // HEADER by CONTEXT
+.map-open{
+    color: #8d8e9e;
+    font-size: 14px;
+
+    span{
+        padding-left:6px;
+    }
+}
 .header-content{
   width: 78%;
 }
@@ -235,6 +243,27 @@ $bg-titles: #4d5675;
     line-height: 13px;
     text-transform: uppercase;
   }
+
+
+.header-content-right{
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 27px;
+    position: relative;
+
+    &:after{
+        position: absolute;
+        content:"";
+        width:1px;
+        height: 34px;
+        right: 14px;
+        top: 20px;
+        background:#cecece;
+    }
+}
+
+
 /* GRID **************************************************************************/
   .main-content{
     position: absolute;

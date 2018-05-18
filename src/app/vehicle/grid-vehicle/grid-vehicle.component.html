@@ -1,18 +1,30 @@
-<div class="columns">
-  <nav class="breadcrumb column is-8" aria-label="breadcrumbs">
+<div class="columns header-content">
+  <nav  class="breadcrumb column is-8" aria-label="breadcrumbs">
     <ul>
       <li><a href="#">Home</a></li>
-      <li class="is-active"><a>Veículos</a></li>
+      <li class="is-active"><a>Motoristas</a></li>
       <li class="is-active"><a href="#" aria-current="page">Grid</a></li>
     </ul>
-    <h5>Grid</h5>
   </nav>
-  <sga-sidebar-configuration class="column is-4"></sga-sidebar-configuration>
+  <div class="columns column is-4 header-content-right">
+    <a class="column is-4 map-open" href=""><i class="fal fa-map"></i><span>Mapa</span></a>
+    <sga-sidebar-configuration (onSelectOption)="onSelectOption($event)" class="column is-6">
+      <sga-option header="Seleção de Colunas"></sga-option>
+    </sga-sidebar-configuration>
+  </div>  
 </div>
+
+<sga-modal  *ngIf="showColumnSelector">
+  <sga-column-selector   
+    [columns]="headers"
+    (onToggleItem)="onToggleItem($event)"
+    (onClose)="closeColumnSelector()">
+  </sga-column-selector>
+</sga-modal>
 
 
    
-<div class="content-wrapper box-shadow content-grid-vehicle">
+<div class="content-wrapper  content-grid-vehicle">
  
   <div [ngClass]="styleClass" class="columns level-left">
     <div class="column is-3">     
