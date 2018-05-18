@@ -53,7 +53,8 @@
       [bodyBottom]="'42px'" 
       [bodyTop]="'26px'"
       (onCellClick)="onCellClick($event)"
-
+      [filterHeaders]="filterHeaders"
+      (whenHeaderReady)="whenHeaderReady($event)"
       (onCellRightClick)="onCellRightClick($event)">
       <table-empty>
         <ng-template>

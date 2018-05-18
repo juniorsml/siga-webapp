@@ -40,6 +40,10 @@ export class GridVehicleComponent implements OnInit {
       }
     }
 
+  public headers = new Array<string>();
+  public filterHeaders = new Array<string>();
+
+
   constructor(private router: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -78,4 +82,8 @@ export class GridVehicleComponent implements OnInit {
   public onPlacesKeyUp() {}
 
   public onDistanceKeyUp() {}
+
+  public whenHeaderReady = headers => this.headers = headers;
+
+  public onToggleItem = itemsSelected => this.filterHeaders = itemsSelected;
 }
