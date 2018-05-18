@@ -1,14 +1,27 @@
-<nav class="breadcrumb" aria-label="breadcrumbs">
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li class="is-active"><a href="#">Gerenciamento de Risco</a></li>
-    <li class="is-active"><a href="#">Monitoramento</a></li>
-    <li class="is-active"><a href="#" aria-current="page">RATC</a></li>
-  </ul>
-  <h5>RATC</h5>
-</nav>
+<div class="columns header-content">
+  <nav  class="breadcrumb column is-8" aria-label="breadcrumbs">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li class="is-active"><a href="#">Gerenciamento de Risco</a></li>
+      <li class="is-active"><a href="#">Monitoramento</a></li>
+      <li class="is-active"><a href="#" aria-current="page">RATC</a></li>
+    </ul>
+  </nav>
+  <div class="columns column is-4 header-content-right">    
+    <sga-sidebar-configuration  (onSelectOption)="onSelectOption($event)" class="column is-6">
+      <sga-option header="Seleção de Colunas"></sga-option>
+    </sga-sidebar-configuration>
+  </div>  
+</div>
+<sga-modal  *ngIf="showColumnSelector">
+  <sga-column-selector   
+    [columns]="headers"
+    (onToggleItem)="onToggleItem($event)"
+    (onClose)="closeColumnSelector()">
+  </sga-column-selector>
+</sga-modal>
    
-<div class="content-wrapper box-shadow content-grid-motorist grid-spacing-search">
+<div class="content-wrapper content-grid-motorist grid-spacing-search">
  
   <div [ngClass]="styleClass" class="columns level-left">
     <div class="column is-3">     
@@ -34,20 +47,22 @@
       [searchColumns]="['id','motorists.documentId','currentState.Status','motorists.documentId','motorists.documentId']"
       [emptySearchText]="'nenhuma viagem foi encontrado'" 
       [bodyBottom]="'42px'" 
-      [bodyTop]="'26px'">
+      [bodyTop]="'26px'"
+      [filterHeaders]="filterHeaders"
+      (whenHeaderReady)="whenHeaderReady($event)">
           <table-empty>
-		        <ng-template>
-		            <!-- <div *ngIf="dataLoading"
-		                 style="position: absolute; top: -40px; bottom: 0px; left: 0px; right: 0px">
-		                <spinner></spinner>
-		            </div> -->
-		            <div *ngIf="!dataLoading" style="position: absolute; top: 50%; left: 0px; right: 0px; margin-top: -20px;">
-		            <i class="glyphicons glyphicons-group" style="color: #e9eaed; width: 100%; text-align: center; font-size: 20px; margin-bottom: 12px;"></i>
-		            <span style="width: 100%; text-align: center; display: block; color: #a5abb3; font-size: 12px;">Nenhuma Viagem foi encontrado</span>
-		          </div>
-		        </ng-template>
-    	</table-empty>  
-      <column [key]="'motorist.DocumentId'" [header]="'Tempo de RATC'" [minWidth]="'82'">
+            <ng-template>
+                <!-- <div *ngIf="dataLoading"
+                     style="position: absolute; top: -40px; bottom: 0px; left: 0px; right: 0px">
+                    <spinner></spinner>
+                </div> -->
+                <div *ngIf="!dataLoading" style="position: absolute; top: 50%; left: 0px; right: 0px; margin-top: -20px;">
+                <i class="glyphicons glyphicons-group" style="color: #e9eaed; width: 100%; text-align: center; font-size: 20px; margin-bottom: 12px;"></i>
+                <span style="width: 100%; text-align: center; display: block; color: #a5abb3; font-size: 12px;">Nenhuma Viagem foi encontrado</span>
+              </div>
+            </ng-template>
+      </table-empty>  
+      <column [key]="'motorist.DocumentId'" [header]="'Tempo de CTO'" [minWidth]="'82'">
           <ng-template let-item="item">
               {{item}}
           </ng-template>
@@ -182,7 +197,7 @@
           </menu-item>
       </context-menu>
 
-  	</data-table>
+    </data-table>
   </div>
 
 </div>

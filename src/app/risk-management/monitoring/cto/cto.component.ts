@@ -1,6 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { OptionClickEvent } from '../../shared/events/OptionClickEvent';
+import { OptionClickEvent } from '../../../shared/events/OptionClickEvent';
 
 
 @Component({
