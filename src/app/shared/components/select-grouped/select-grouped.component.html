@@ -1,0 +1,18 @@
+<div class="autocomplete">
+  <input #input 
+  class="input" 
+  (focus)="onFocus()" 
+  (keyup)="onKeyUp($event)" 
+  [placeholder]="placeholder" />
+  
+  <div *ngIf="hasFocus" class="content-items">
+    <ul *ngFor="let group of groupedItems">
+      <li>
+        <span class="label">{{group.label}}</span>
+        <ul *ngFor="let item of group.data">
+          <li (click)="onSelect(item)">{{item}}</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
