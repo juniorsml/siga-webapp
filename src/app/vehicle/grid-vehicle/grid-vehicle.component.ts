@@ -32,6 +32,13 @@ export class GridVehicleComponent implements OnInit {
     this.showColumnSelector = false;
   }
 
+  onSelectOption(event: OptionClickEvent) {
+    switch (event.data.header) {      
+      case 'Seleção de Colunas': 
+        this.showColumnSelector = true;
+        break;
+      }
+    }
 
   constructor(private router: ActivatedRoute) { }
 
