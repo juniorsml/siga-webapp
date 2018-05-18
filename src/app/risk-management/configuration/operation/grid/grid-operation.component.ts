@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TableClickEvent } from '../../../../shared/components/table/table.component';
 import { ActivatedRoute } from '@angular/router';
+import { OptionClickEvent } from '../../../../shared/events/OptionClickEvent';
+
 
 @Component({
   selector: 'sga-grid-operation',
@@ -17,6 +19,24 @@ export class GridOperationComponent implements OnInit {
   public onDeviceSelected: any;
    
   public showFormRegister = false;
+
+  showColumnSelector = false;
+
+
+  closeColumnSelector() {
+    this.showColumnSelector = false;
+  }
+
+  onSelectOption(event: OptionClickEvent) {
+    switch (event.data.header) {      
+      case 'Seleção de Colunas': 
+        this.showColumnSelector = true;
+        break;
+      }
+    }
+
+  public headers = new Array<string>();
+  public filterHeaders = new Array<string>();
 
    @Input()
   public hasHeight = false;
@@ -38,7 +58,7 @@ export class GridOperationComponent implements OnInit {
     this.showFormRegister = !this.showFormRegister;
   }
 
-  closeFormRegister() {
+  closeFormRegister() { 
     this.showFormRegister = false;
   }
 
@@ -62,4 +82,9 @@ export class GridOperationComponent implements OnInit {
     this.selectedDevice = event.data;
     this.onDeviceSelected.emit(this.selectedDevice);
   }
+
+
+  public whenHeaderReady = headers => this.headers = headers;
+
+  public onToggleItem = itemsSelected => this.filterHeaders = itemsSelected;
 }
