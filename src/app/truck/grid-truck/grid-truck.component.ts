@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TableClickEvent } from '../../shared/components/table/table.component';
 import { ActivatedRoute } from '@angular/router';
+import { OptionClickEvent } from '../../shared/events/OptionClickEvent'; 
 
 @Component({
   selector: 'sga-grid-truck',
