@@ -45,6 +45,13 @@
           (onRegisterClick)="openRegister('place')">
         </sga-grid-control> 
       </sga-tab>
+
+      <sga-tab heading="Itinerário">
+        <sga-select-grouped 
+          [groupedItems]="groupedItems"
+          placeholder="Pesquise um lugar ou rota">
+        </sga-select-grouped>
+      </sga-tab>
       
       <sga-tab heading="Grupos">
         <sga-register-group 

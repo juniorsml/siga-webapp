@@ -8,6 +8,7 @@ import { Map } from '../../shared/models/Map';
 import { groups } from '../../shared/mocks/group';
 import { places } from '../../shared/mocks/place';
 import { areas } from '../../shared/mocks/area';
+import { GroupedItems } from '../../shared/components/select-grouped/Grouped';
 
 @Component({
   selector: 'sga-places',
@@ -32,13 +33,26 @@ export class RegisterPlaceComponent implements OnInit {
   public showSelectGroup = false;
   public showRegisterGroup = false;
 
+  public groupedItems = new Array<GroupedItems>();
+  
   constructor(private map: Map) {}
-
+  
   ngOnInit() {
     this.places = places;
     this.groups = groups;
     this.areas = areas;
     this.setupMap();
+    
+    const grouped = new GroupedItems();
+    grouped.data = ['item A', 'item B', 'item C'];
+    grouped.label = 'Title';
+  
+    const grouped2 = new GroupedItems();
+    grouped2.data = ['item A', 'item B', 'item C'];
+    grouped2.label = 'Sub';
+  
+    this.groupedItems.push(grouped);
+    this.groupedItems.push(grouped2);
   }
 
   private setupMap(): void {
@@ -74,6 +88,8 @@ export class RegisterPlaceComponent implements OnInit {
       latitude: location.lat(),
       longitude: location.lng()
     };
+
+    console.log(this.location);
 
     this.map.clearAll();
     this.moveMap(location.lat(), location.lng(), 18);
