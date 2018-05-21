@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, Output, EventEmitter, HostListener } from '@angular/core';
 import { GroupedItems } from './Grouped';
 
 @Component({
@@ -14,11 +14,16 @@ export class SelectGroupedComponent {
   
   @Output() public onSelected = new EventEmitter<any>();
   @Output() public onFiltered = new EventEmitter<string>();
-
+  
   @ViewChild('input') private inputElement: ElementRef;
   
   public hasFocus = false;
-
+  
+  constructor(private elementRef: ElementRef) {}
+  
+  @HostListener('document:click', ['$event.target'])
+  public onClick = targetElement => this.hasFocus = this.elementRef.nativeElement.contains(targetElement);
+  
   public onFocus = () => this.hasFocus = true;
 
   public onKeyUp = event => this.onFiltered.emit(event);
@@ -28,6 +33,4 @@ export class SelectGroupedComponent {
     this.inputElement.nativeElement.value = value; 
     this.hasFocus = false;
   }
-
-  private 
 }
