@@ -9,6 +9,9 @@ import { Component, Input } from '@angular/core';
     </div>
   `,
   styles: [`
+    #map{
+      z-index: 0;
+    }
     #calculation-box {
       height: 100px;
       width: 200px;
