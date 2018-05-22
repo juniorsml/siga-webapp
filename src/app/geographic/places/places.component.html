@@ -49,8 +49,15 @@
       <sga-tab heading="Itinerário">
         <sga-select-grouped 
           [groupedItems]="groupedItems"
-          placeholder="Pesquise um lugar ou rota">
+          placeholder="Pesquise um lugar ou rota"
+          (onSelected)="selectItineraryPlace($event)">
         </sga-select-grouped>
+        <hr>
+        <div>
+          <div *ngFor="let item of itineraryPlaces">
+            {{item}}
+          </div>
+        </div>
       </sga-tab>
       
       <sga-tab heading="Grupos">
