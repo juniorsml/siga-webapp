@@ -21,6 +21,7 @@ export class RegisterPlaceComponent implements OnInit {
   public areas:  Array<any>;
   public places: Array<any>;
   public groups: Array<any>;
+  public itineraryPlaces = new Array<any>();
   
   public selectedArea: any;
   public selectedGroup: any;
@@ -75,13 +76,9 @@ export class RegisterPlaceComponent implements OnInit {
     };
   }
 
-  private addMarker(geometry) {
-    this.map.addGeoMarker(geometry);
-  }
+  private addMarker = geometry => this.map.addGeoMarker(geometry);
 
-  private resetGroupMapView() {
-    this.onSelected(this.selectedGroup); 
-  }
+  private resetGroupMapView = () => this.onSelected(this.selectedGroup);
 
   public onPlaceSelected(location) {
     this.location = {
@@ -111,9 +108,7 @@ export class RegisterPlaceComponent implements OnInit {
     this.selectedTabIndex = tabIndex;
   }
 
-  public onTabSelected(tab: TabComponent) {
-    this.selectedTabIndex = tab.index;
-  }
+  public onTabSelected = (tab: TabComponent) => this.selectedTabIndex = tab.index;
 
   public onContextMenu(event: any) {
     switch (this.selectedTabIndex)
@@ -134,9 +129,7 @@ export class RegisterPlaceComponent implements OnInit {
     }
   }
 
-  public closeRegisterGroup() {
-    this.showRegisterGroup = false;
-  }
+  public closeRegisterGroup = () => this.showRegisterGroup = false;
 
   public onSelected(place) {
     this.map.clearAll();
@@ -161,23 +154,20 @@ export class RegisterPlaceComponent implements OnInit {
     this.showSelectGroup = false;
   }
 
-  public onSelectedArea(area) {
-    this.selectedArea = area;
-  }
+  public onSelectedArea = area => this.selectedArea = area;
 
-  public onSelectedPlace(place) {
-    this.selectedPlace = place;
-  }
+  public onSelectedPlace = place => this.selectedPlace = place;
 
-  public onSelectedGroup(event) {
-    this.selectedGroup.location.push(event.item);
-  }
+  public onSelectedGroup = event => this.selectedGroup.location.push(event.item);
 
   public registerNewGroupItem(event) {
-    debugger
     this.selectedGroup.location.push(event.item);
     this.resetGroupMapView();
   }
+
+  public selectItineraryPlace = place => this.itineraryPlaces.push(place);
+
+  public closeModalGroup = () => this.showSelectGroup = false;
 
   public create(item) {
     this.showRegister = false;
@@ -195,9 +185,5 @@ export class RegisterPlaceComponent implements OnInit {
         this.groups.push({...item, location: []});
         break;
     } 
-  }
-
-  public closeModalGroup() {
-    this.showSelectGroup = false;
   }
 }
