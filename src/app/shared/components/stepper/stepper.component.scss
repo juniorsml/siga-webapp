@@ -1,4 +1,7 @@
 @media screen and (min-width: 769px), print {
+  .steps{
+    border-bottom: 1px solid #dddfe2;
+  }
   .steps:not(.is-vertical).is-narrow.is-centered {
     justify-content: center;
   }
