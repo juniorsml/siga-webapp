@@ -30,6 +30,7 @@
 @media screen and (min-width: 769px), print {
   .steps:not(.is-vertical).is-narrow.is-centered {
     justify-content: center;
+     border-bottom: 1px solid #dddfe2;
   }
   
   .steps:not(.is-vertical).has-content-centered {
@@ -77,8 +78,8 @@
 
   .steps.is-medium:not(.is-vertical) .steps-segment:not(:last-child):after {
     height: .2em;
-    left: 2.26rem;
-    right: -.24rem;
+    left: 38px;
+    right: 0;
     top: calc(1.25rem - (.2em));
   }
 
@@ -139,6 +140,7 @@
 
 .steps.is-medium {
   font-size: 1.25rem;
+  border-bottom: 1px solid #d6d6d6;
 }
   .has-text-dark {
     color: #363636 !important;

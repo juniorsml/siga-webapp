@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterTripComponent {
   constructor(private router: Router) { }
-  
+ 
   onSelectStep(event: StepClickEvent) {
     switch (event.data.header) {
       

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -11,6 +11,9 @@ export class DeviceComponent implements OnInit {
   public associateDevice = new Array<any>();
 
   public showRegisterForm = false;
+  
+  @Input()
+  public showBreadcrumb = false;
 
   constructor(private router: ActivatedRoute) {}
 
