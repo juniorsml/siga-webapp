@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'sga-associate-vehicle',
   templateUrl: './associate-vehicle.component.html',
-  styleUrls: ['./associate-vehicle.component.scss']
+  styleUrls: ['../../motorist/associate-dialog/motorist-associate-dialog.component.scss']
 })
 export class AssociateVehicleComponent implements OnInit {
   @Input() 
