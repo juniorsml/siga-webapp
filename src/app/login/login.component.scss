@@ -74,15 +74,30 @@
         .form-login .checkbox{
             margin-top: 20px; display: inline-block;
             label{
-                min-height: 20px;
-                font-size: 14px;
                 margin-bottom: 0;
                 font-weight: 400;
                 cursor: pointer;
                 color: rgba(255, 255, 255, 0.71) !important;
-                font-size: 14px;text-decoration: none;
+                text-decoration: none;
                 text-shadow: 1px 1px 1px #000;
+                font-size: 12px;
             }
+        }
+       .check-login:checked + label:after {
+            
+            left: 3px;
+            top: 7px;
+        }
+       .check-login  + label:before {           
+           margin-right: 6px;          
+           width: 16px;
+           height: 16px;
+           background: none;
+           border: 1px solid #a59d9d;         
+       }
+        .check-login:checked + label:before {
+            background: #ed2828;
+            border: 1px solid #ed2828;  
         }
         .login-button {
             width: 100%;
@@ -95,7 +110,7 @@
             -webkit-transition: all 200ms ease;
             transition: all 200ms ease;
             position: relative;
-            background-color: #b31111;
+            background-color: #ed2828;
             
             &:hover {
                 background-color: #ff0000 !important;
