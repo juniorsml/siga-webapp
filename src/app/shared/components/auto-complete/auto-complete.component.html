@@ -13,9 +13,10 @@
         <span>{{noSuggestionsText}}</span>
       </li>
       <li>
-        <p (click)="create()" style="cursor: pointer;">
-          <i class="fa fa-plus"></i> Criar
-          <b>"{{input.value}}"</b>
+        <p (click)="create()" class="button create is-light">
+          <i class="fal fa-plus"></i> 
+          <span> Criar</span>
+          <b> "{{input.value}}"</b>
         </p>
       </li>
     </ul>
