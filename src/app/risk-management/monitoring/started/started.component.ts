@@ -1,5 +1,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { OptionClickEvent } from '../../../shared/events/OptionClickEvent';
+
 
 
 @Component({
@@ -22,6 +24,25 @@ export class StartedTripsComponent implements OnInit {
   public filterDistance: any;
   public showTripDialog = false;
   public showSummaryDialog = false;
+
+  showColumnSelector = false;
+
+
+  closeColumnSelector() {
+    this.showColumnSelector = false;
+  }
+
+  onSelectOption(event: OptionClickEvent) {
+    switch (event.data.header) {      
+      case 'Seleção de Colunas': 
+        this.showColumnSelector = true;
+        break;
+      }
+    }
+
+  public headers = new Array<string>();
+  public filterHeaders = new Array<string>();
+
 
   constructor(private route: ActivatedRoute) { }
 
@@ -55,5 +76,9 @@ export class StartedTripsComponent implements OnInit {
   public summaryDialogClose(){
     this.showSummaryDialog = false;
   }
+
+    public whenHeaderReady = headers => this.headers = headers;
+
+  public onToggleItem = itemsSelected => this.filterHeaders = itemsSelected;
 
 }

@@ -1,17 +1,30 @@
-<div class="columns" *ngIf="showBreadcrumb">
-  <nav class="breadcrumb column is-8" aria-label="breadcrumbs">
+<div class="columns header-content" *ngIf="showBreadcrumb">
+  <nav  class="breadcrumb column is-8" aria-label="breadcrumbs">
     <ul>
       <li><a href="#">Home</a></li>
-      <li class="is-active"><a>Dispostivos</a></li>
+      <li class="is-active"><a>Dispositivos</a></li>
       <li class="is-active"><a href="#" aria-current="page">Grid</a></li>
     </ul>
-    <h5>Grid</h5>
   </nav>
-  <sga-sidebar-configuration *ngIf="showFilterBar" class="column is-4"></sga-sidebar-configuration>
+  <div class="columns column is-4 header-content-right">    
+    <sga-sidebar-configuration  *ngIf="showFilterBar"  (onSelectOption)="onSelectOption($event)" class="column is-6">
+      <sga-option header="Seleção de Colunas"></sga-option>
+    </sga-sidebar-configuration>
+  </div>  
 </div>
 
+<sga-modal  *ngIf="showColumnSelector">
+  <sga-column-selector   
+    [columns]="headers"
+    (onToggleItem)="onToggleItem($event)"
+    (onClose)="closeColumnSelector()">
+  </sga-column-selector>
+</sga-modal>
+
+
+
    
-<div [ngClass]="{'has-height' : hasHeight}"  class="content-wrapper box-shadow content-grid-device" [ngStyle]="{'top': showFilterBar ? '66px' : '0'}">
+<div [ngClass]="{'has-height' : hasHeight}"  class="content-wrapper content-grid-device" [ngStyle]="{'top': showFilterBar ? '43px' : '0'}">
  
   <div *ngIf="showFilterBar" [ngClass]="styleClass" class="columns level-left">
     <div class="column is-3">     
@@ -40,7 +53,10 @@
       [bodyTop]="'26px'"
       (onCellClick)="onCellClick($event)"
 
-      (onCellRightClick)="onCellRightClick($event)">
+      (onCellRightClick)="onCellRightClick($event)"
+      [filterHeaders]="filterHeaders"
+      (whenHeaderReady)="whenHeaderReady($event)">
+
       <table-empty>
         <ng-template>
           <!-- <div *ngIf="dataLoading" style="position: absolute; top: -40px; bottom: 0px; left: 0px; right: 0px">

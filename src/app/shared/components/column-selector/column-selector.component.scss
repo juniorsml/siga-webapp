@@ -7,15 +7,14 @@
     padding: 20px;
     left: 22px;
     margin: auto;
+    max-height: 70%;
+    overflow-y: scroll;
     width: 327px;
-    top: 150px;
+    top: 155px;
     right: 0;
     background-color: #FFF;
     
     li{
         margin: 4px 2px;
-        &:first-child{
-            display: none;
-        }
     }
   }

@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { TableClickEvent } from '../../shared/components/table/table.component';
 import { ActivatedRoute } from '@angular/router';
-import { StepClickEvent } from '../../shared/events/StepClickEvent';
+import { OptionClickEvent } from '../../shared/events/OptionClickEvent';
 
 @Component({
   selector: 'sga-grid-motorist',
@@ -32,7 +32,7 @@ export class GridMotoristComponent implements OnInit {
     this.showColumnSelector = false;
   }
 
-  onSelectOption(event: StepClickEvent) {
+  onSelectOption(event: OptionClickEvent) {
     switch (event.data.header) {      
       case 'Seleção de Colunas': 
         this.showColumnSelector = true;
