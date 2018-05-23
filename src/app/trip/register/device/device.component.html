@@ -2,7 +2,7 @@
 
   <div class="sidebar">
     <div class="header">
-      <h3>Dispositivos</h3>
+      <h3>Adicionar / Remover</h3>
       <i class="fa fa-question-circle ui-icon-info"></i>
     </div>
     
@@ -48,12 +48,19 @@
   </div>
 
   <div class="detail">
-    <sga-grid-device 
-      hasHeight="true"
-      [showFilterBar]="false"
-      [devices]="devices"
-      [showBreadcrumb]="false">
-    </sga-grid-device>
+    <div class="header">
+      <h3>Dispositivos</h3>
+      <i class="fa fa-question-circle ui-icon-info"></i>
+    </div>
+    <div class="grid">
+       <sga-grid-device 
+          hasHeight="true"
+          [showFilterBar]="false"
+          [devices]="devices"
+          [showBreadcrumb]="false">
+        </sga-grid-device>
+    </div>
+   
   </div>
 
   <sga-modal *ngIf="showRegisterForm">

@@ -1,9 +1,4 @@
 .cnt-trip-vehicles{
-	// position: absolute;
- //    left: 22px;
- //    right: 22px;
- //    bottom: 22px;
- //    top: 79px;
 	.vehicles-sidebar,.vehicle-detail{
 		height: 100%; 
 		
@@ -58,7 +53,9 @@
 	    }
 	}
 }
-
+.cnt-autocomplete{
+	position:relative;
+}
 .img-autocomplete{
 	width:30px;
 }

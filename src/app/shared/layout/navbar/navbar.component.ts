@@ -1,18 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ElementRef } from '@angular/core';
 
 @Component({
   selector: 'sga-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: [ './navbar.component.scss' ]
+  styleUrls: [ './navbar.component.scss' ],
+  host: {
+    '(document:click)': 'outClick($event)',
+  
 })
 export class NavbarComponent implements OnInit {
   logout: any;
+  
+  constructor(private _eref: ElementRef) { }
 
   public status: boolean = false;
 
   toggleProfileUser() {
     this.status = !this.status;
   }
+
+  // Close When Click outSide of Component
+   outClick(event) {
+       if (!this._eref.nativeElement.contains(event.target)){// or some similar check
+        if (this.status != false) {
+          this.status = false;
+        }
+      }
+    }
 	
   toggleFullScreen() {
         var doc: any = document;
@@ -49,7 +63,6 @@ export class NavbarComponent implements OnInit {
         }
     };
 
-  constructor() { }
 
   ngOnInit() {
   }
