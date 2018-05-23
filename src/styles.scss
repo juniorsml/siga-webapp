@@ -56,17 +56,24 @@ $bg-titles: #4d5675;
     width: 100%;
   }
 }
-
+.back-button{
+  position: absolute;
+  top: -4px;
+  left: 9px;
+   background: rgba(255,255,255,0.95);
+  padding: 16px 10px;
+  font-size: 13px;
+  color: #727188;
+}
 .map-center-bar {
   position: absolute;
   width: 90%;
   max-width: 750px;
   margin: auto;
-  left: 0;
-  right: 0;
+  left: 89px;
   padding-left: 9px;
-  top: 83px;
-  background: #fff;
+  top: -4px;
+  background: rgba(255,255,255,0.95);
   z-index:1188;
 }
 
@@ -211,7 +218,9 @@ $bg-titles: #4d5675;
     }
 }
 .header-content{
-  width: 78%;
+  width: 80%;
+  position: relative;
+  top: 9px;
 }
 .breadcrumb{
   position:relative;

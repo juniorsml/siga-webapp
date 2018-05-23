@@ -1,12 +1,15 @@
 nav {
   position: absolute;
-  right: 0;
-  z-index: 3;
+  right: 6px;
+  z-index: 999999;
+  background: rgba(255,255,255,0.95);
+  top: 7px;
+  padding: 1px 0 0;
 }
     .nav-header-menu {
-        display: flex;
-        align-items: center;
-       padding: 0px 34px;
+      display: flex;
+      align-items: center;
+      padding: 0px 12px;
      
       li {
          margin: 0 11px;
@@ -128,6 +131,16 @@ nav {
         margin-left: 13px;
       }
     }
+  }
+
+  // NAV MAP
+  .nav-map {
+    position: absolute;
+    right: 14px;
+    
+    background: white;
+    top: 12px;
+    padding: 1px 0 0 0;
   }
 
   
