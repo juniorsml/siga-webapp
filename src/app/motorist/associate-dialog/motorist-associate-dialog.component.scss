@@ -98,15 +98,14 @@
   
 }
 .motorist-admin-add-item-valid {
-  border: 1px solid #00a500;
   font-size: 12px;
-  border-radius: 3px;
-  background: #f5fff5;
-  margin: 3px 3px 1px 0px;
-  height: 30px;
-  line-height: 30px;
-  padding-left: 12px;
-  color: #006300;
+    border-radius: 2px;
+    background: #e0ffe0;
+    margin: 3px 0px 5px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 12px;
+    color: #006300;
 }
 
 .motorist-admin-add-item-validating {
@@ -123,13 +122,12 @@
 
 .motorist-admin-add-item-invalid {
   font-size: 12px;
-  border-radius: 3px;
-  margin: 3px 3px 1px 0px;
+  border-radius: 2px;
+   margin: 3px 3px 1px 0px;
   height: 30px;
   line-height: 30px;
   padding-left: 12px;
-  border: 1px solid #a50000;
-  background: #fff5f5;
+  background: #ffc0c0;
   color: #920000;
 }
 
