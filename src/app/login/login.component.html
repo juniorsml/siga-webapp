@@ -10,7 +10,7 @@
             </div>
             <form class="form-login" #formLogin="ngForm" (ngSubmit)="login(formLogin)">
                 <input class="material-form-control" id="email" name="email" type="email" placeholder="Usuário" #email ngModel/>
-                <input class="material-form-control" style="margin-top: 40px" id="password" name="password" type="password" placeholder="Senha" #password ngModel/>
+                <input class="material-form-control input-password" id="password" name="password" type="password" placeholder="Senha" #password ngModel/>
                 <div class="checkbox">               
                     <input class="styled-checkbox check-login" id="rememberUser" type="checkbox">
                     <label for="rememberUser">Lembrar meu usuário</label>
