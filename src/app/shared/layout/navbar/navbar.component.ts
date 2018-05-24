@@ -9,6 +9,9 @@ import { Component, OnInit,ElementRef } from '@angular/core';
   }
 })
 export class NavbarComponent implements OnInit {
+
+
+
   logout: any;
   
   constructor(private _eref: ElementRef) { }
@@ -65,6 +68,22 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit() {
+
+     var loc = window.location.href; // returns the full URL
+         console.log(loc);
+
+    if (/map/.test(loc)) {
+         let elm = document.getElementById('nav');
+         if(elm.className === 'nav nav-map'){
+             elm.className = 'nav';
+         } else {
+             elm.className = 'nav nav-map';
+         }
+       }
+       else{
+         alert("Don't Works!")
+       }
+
   }
 
 }
