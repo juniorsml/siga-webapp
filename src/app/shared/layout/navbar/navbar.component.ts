@@ -5,8 +5,8 @@ import { Component, OnInit,ElementRef } from '@angular/core';
   templateUrl: './navbar.component.html',
   styleUrls: [ './navbar.component.scss' ],
   host: {
-    '(document:click)': 'outClick($event)',
-  
+    '(document:click)': 'outClick($event)'
+  }
 })
 export class NavbarComponent implements OnInit {
   logout: any;

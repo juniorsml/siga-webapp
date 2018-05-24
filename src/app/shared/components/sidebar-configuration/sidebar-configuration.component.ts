@@ -28,6 +28,9 @@ export class SidebarConfigurationComponent {
 
   public onClick(event: Event, option: OptionComponent, index: number): void {
     this.onSelectOption.emit(new OptionClickEvent(event, option, index));
+    if (this.status != false) {
+          this.status = false;
+        }
   }
 
   public status: boolean = false;
