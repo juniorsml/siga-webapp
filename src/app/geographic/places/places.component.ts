@@ -9,6 +9,7 @@ import { groups } from '../../shared/mocks/group';
 import { places } from '../../shared/mocks/place';
 import { areas } from '../../shared/mocks/area';
 import { GroupedItems } from '../../shared/components/select-grouped/Grouped';
+import { HttpService } from '../../shared/services/http.service';
 
 @Component({
   selector: 'sga-places',
@@ -36,7 +37,8 @@ export class RegisterPlaceComponent implements OnInit {
 
   public groupedItems = new Array<GroupedItems>();
   
-  constructor(private map: Map) {}
+  constructor(private map: Map, 
+              private http: HttpService) {}
   
   ngOnInit() {
     this.places = places;
@@ -165,7 +167,70 @@ export class RegisterPlaceComponent implements OnInit {
     this.resetGroupMapView();
   }
 
-  public selectItineraryPlace = place => this.itineraryPlaces.push(place);
+  public selectItineraryPlace = place => {
+    const location = {
+      name: place.formatted_address,
+      lat: place.geometry.location.lat(),
+      lng: place.geometry.location.lng()
+    };
+
+    this.itineraryPlaces.push(location);
+    this.plotRoute();
+  };
+
+  private plotRoute = () => {
+    if (this.itineraryPlaces.length > 1) {
+      const locations = this.formatLocationArray();
+      this.itineraryPlaces.map(place => this.addPoint(place));
+      const route = `https://api.mapbox.com/directions/v5/mapbox/driving/${locations.toString().replace(/;,/g,';')}?geometries=geojson&access_token=${environment.mapbox.accessToken}`;
+      this.http
+        .get(route)
+        .map(response => response.json())
+        .subscribe(
+          data => this.onSuccessRoute(data),
+          error => console.log(error));
+    }  
+  }
+
+  private addPoint = place => 
+    this.map.addLayer({
+      id: this.uuid(),
+      type: 'circle',
+      source: {
+        type: 'geojson',
+        data: {
+          type: 'Feature',
+          geometry: {
+            type: 'Point',
+            coordinates: [place.lng, place.lat]
+          }
+        }
+      }
+    });
+
+  private onSuccessRoute = data => {
+    this.map.addLayer({
+      id: this.uuid(),
+      type: 'line',
+      source: {
+        type: 'geojson',
+        data: {
+          type: 'Feature',
+          geometry: data.routes[0].geometry
+        }
+      },
+      paint: {
+        'line-width': 5,
+        "line-color": "#ea5f5e"
+      }
+    });
+  }
+
+  private uuid = () => Date.now().toString();
+
+  private formatLocationArray = () => 
+    this.itineraryPlaces.map((loc, i) => 
+      i === (this.itineraryPlaces.length - 1) ? `${loc.lng},${loc.lat}` : `${loc.lng},${loc.lat};`)
 
   public closeModalGroup = () => this.showSelectGroup = false;
 
