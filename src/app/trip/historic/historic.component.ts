@@ -1,5 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { OptionClickEvent } from '../../shared/events/OptionClickEvent';
 
 
 @Component({
@@ -18,6 +19,23 @@ export class HistoricTripsComponent implements OnInit {
   filterLocation: any;
   filterDistance: any;
   contextMenuSelected: any;
+  showColumnSelector = false;
+
+
+  closeColumnSelector() {
+    this.showColumnSelector = false;
+  }
+
+  onSelectOption(event: OptionClickEvent) {
+    switch (event.data.header) {      
+      case 'Seleção de Colunas': 
+        this.showColumnSelector = true;
+        break;
+      }
+    }
+
+  public headers = new Array<string>();
+  public filterHeaders = new Array<string>();
 
   constructor(private router: ActivatedRoute) { }
 
@@ -39,4 +57,8 @@ export class HistoricTripsComponent implements OnInit {
   public onPlacesKeyUp() {}
 
   public onDistanceKeyUp() {}
+
+  public whenHeaderReady = headers => this.headers = headers;
+
+  public onToggleItem = itemsSelected => this.filterHeaders = itemsSelected;
 }

@@ -1,14 +1,27 @@
-<nav class="breadcrumb" aria-label="breadcrumbs">
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li class="is-active"><a href="#">Gerenciamento de Risco</a></li>
-    <li class="is-active"><a href="#">Monitoramento</a></li>
-    <li class="is-active"><a href="#" aria-current="page">Radar</a></li>
-  </ul>
-  <h5>Radar</h5>
-</nav>
+<div class="columns header-content">
+  <nav  class="breadcrumb column is-8" aria-label="breadcrumbs">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li class="is-active"><a href="#">Gerenciamento de Risco</a></li>
+      <li class="is-active"><a href="#">Monitoramento</a></li>
+      <li class="is-active"><a href="#" aria-current="page">Radar</a></li>
+    </ul>
+  </nav>
+  <div class="columns column is-4 header-content-right">    
+    <sga-sidebar-configuration  (onSelectOption)="onSelectOption($event)" class="column is-6">
+      <sga-option header="Seleção de Colunas"></sga-option>
+    </sga-sidebar-configuration>
+  </div>  
+</div>
+<sga-modal  *ngIf="showColumnSelector">
+  <sga-column-selector   
+    [columns]="headers"
+    (onToggleItem)="onToggleItem($event)"
+    (onClose)="closeColumnSelector()">
+  </sga-column-selector>
+</sga-modal>
    
-<div class="content-wrapper box-shadow content-grid-motorist grid-spacing-search">
+<div class="content-wrapper content-grid-motorist grid-spacing-search">
   <div [ngClass]="styleClass" class="columns level-left">
     <div class="column is-3">     
       <p class="control has-icons-left"> 
@@ -34,7 +47,9 @@
       [emptySearchText]="'nenhuma viagem foi encontrado'" 
       [bodyBottom]="'42px'" 
       [bodyTop]="'26px'"
-      (onCellClick)="updateSelectedTrip($event)">
+      (onCellClick)="updateSelectedTrip($event)"
+       [filterHeaders]="filterHeaders"
+      (whenHeaderReady)="whenHeaderReady($event)">
       <table-empty>
         <ng-template>
             <!-- <div *ngIf="dataLoading"

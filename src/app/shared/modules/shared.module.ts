@@ -48,6 +48,9 @@ import { StepperComponent } from '../components/stepper/stepper.component';
 import { PagerComponent } from '../components/pager/pager.component';
 
 import { SidebarConfigurationComponent } from '../components/sidebar-configuration/sidebar-configuration.component';
+import { OptionComponent } from '../components/sidebar-configuration/option/option.component';
+
+
 import { PageNotFoundComponent } from '../layout/404page/not-found.component';
 import { ColumnSelectorComponent } from '../components/column-selector/column-selector.component';
 import { MapComponent } from '../components/map/map.component';
@@ -97,6 +100,7 @@ import { SelectGroupedComponent } from '../components/select-grouped/select-grou
     ColumnSelectorComponent,
 
     SidebarConfigurationComponent,
+    OptionComponent,
 
     PagerComponent,
     PageNotFoundComponent,
@@ -167,6 +171,7 @@ import { SelectGroupedComponent } from '../components/select-grouped/select-grou
     TextMaskModule,
 
     SidebarConfigurationComponent,
+    OptionComponent,
     PagerComponent,
 
     SpinnerComponent,

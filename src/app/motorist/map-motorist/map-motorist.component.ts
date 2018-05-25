@@ -21,6 +21,8 @@ export class MapMotoristComponent implements OnInit {
   public hideMotoristModal: boolean;
   public text: any;
 
+  
+
   @ViewChild('mapSelector') mapSelector: ElementRef;
   @Input()
   get motorists(): Array<any> {

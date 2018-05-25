@@ -1,14 +1,20 @@
-<nav class="breadcrumb" aria-label="breadcrumbs">
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Viagens</a></li>
-    <li class="is-active"><a href="#" aria-current="page">Cadastrar</a></li>
-  </ul>
-  <h5>Cadastrar Viagem</h5>
-</nav>
+<div class="columns header-content">
+  <nav  class="breadcrumb column is-8" aria-label="breadcrumbs">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li class="is-active"><a href="#">Viagens</a></li>
+      <li class="is-active"><a href="#" aria-current="page">Cadastrar</a></li>
+    </ul>
+  </nav>
+ <!--  <div class="columns column is-4 header-content-right">    
+    <sga-sidebar-configuration  (onSelectOption)="onSelectOption($event)" class="column is-6">
+      <sga-option header="Seleção de Colunas"></sga-option>
+    </sga-sidebar-configuration>
+  </div>  --> 
+</div>
 
 <div class="columns is-multiline content-trip">
-	<div class="column is-12 trip-header box-shadow">
+	<div class="column is-12 trip-header">
 	  <sga-steps [width]="'90%'" (onSelectStep)="onSelectStep($event)">
 	    <sga-step [header]="'Geral'" [icon]="'fal fa-home'"></sga-step>
 	    <sga-step [header]="'Itinerário'" [icon]="'fal fa-map'"></sga-step>
