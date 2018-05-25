@@ -10,7 +10,9 @@
     font-size: 14px;
     z-index: 9999;
     top: 0px;
-    padding: 0px;    
+    padding: 0px;   
+     display: inline-flex;
+    align-items: center; 
 
 		&:hover,
 		&:focus{
@@ -28,9 +30,11 @@
     opacity: 1;    
     top: 31px;
     z-index: 99999;
+    visibility: visible;
 	}
 	.cnt-configuration-menu{
 		position: absolute;
+		visibility: hidden;
 		top: 14px;	 
 		right: 2px;
 	  opacity: 0;

@@ -90,6 +90,7 @@ nav {
   opacity:1;
   visibility:visible;
   z-index: 99999;
+
 }
 .cnt-menu-profile{
     position: absolute;   
@@ -97,7 +98,8 @@ nav {
     opacity: 0;
     visibility:hidden;
     right:27px;
-    height: 74px;
+    padding-top: 2px;
+    height: 72px;
     background:#FFF; 
     z-index: 0;
     width: 140px;
@@ -137,11 +139,46 @@ nav {
 
   // NAV MAP
   .nav-map {
-    position: absolute;
-    right: 14px;    
-    background: white;
-    top: 12px;
-    padding: 1px 0 0 0;
+    background: none;
+    
+    .nav-header-menu{
+      .user{
+        width: 46px;
+        height: 46px;
+        background:none;
+        display: block;
+        padding: 0;
+        margin: 0;
+
+        .user-name, i{
+          display: none;
+        }
+        span{
+          width:100%;
+          top:0;
+          height:100%;
+        }
+
+        }
+      a.main-links{
+        background: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+
+        i{
+
+        }
+        span{
+          top: -6px;
+        }
+      }
+
+    }
+
   }
 
   

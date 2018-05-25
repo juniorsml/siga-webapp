@@ -1,4 +1,5 @@
 import { Component, OnInit,ElementRef } from '@angular/core';
+import { Router,NavigationStart } from '@angular/router';
 
 @Component({
   selector: 'sga-navbar',
@@ -10,11 +11,19 @@ import { Component, OnInit,ElementRef } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-
-
   logout: any;
-  
-  constructor(private _eref: ElementRef) { }
+  public isMap: boolean;
+
+  constructor(private _eref: ElementRef,public router: Router) { 
+    this.router
+      .events
+      .filter(event => event instanceof NavigationStart)
+      .subscribe((e: NavigationStart) => {
+        this.isMap = e.url.indexOf('map') > -1
+        console.log(`IsMap: ${this.isMap}`)
+      });
+
+  }
 
   public status: boolean = false;
 
@@ -65,25 +74,9 @@ export class NavbarComponent implements OnInit {
             }
         }
     };
-
-
   ngOnInit() {
 
-     var loc = window.location.href; // returns the full URL
-         console.log(loc);
-
-    if (/map/.test(loc)) {
-         let elm = document.getElementById('nav');
-         if(elm.className === 'nav nav-map'){
-             elm.className = 'nav';
-         } else {
-             elm.className = 'nav nav-map';
-         }
-       }
-       else{
-         alert("Don't Works!")
-       }
-
+     
   }
 
 }

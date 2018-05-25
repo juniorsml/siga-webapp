@@ -1,5 +1,4 @@
 import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
-
 import {} from 'leaflet-marker-cluster';
 
 import { Map } from '../../shared/models/Map';
@@ -20,6 +19,8 @@ export class MapMotoristComponent implements OnInit {
 
   public hideMotoristModal: boolean;
   public text: any;
+
+  public isMap: boolean;
 
   
 
@@ -124,6 +125,9 @@ export class MapMotoristComponent implements OnInit {
     this.router.data.subscribe(data => this.motorists = data.motorists);
     this.injectMap();
   }
+
+  
+ 
 
   mapTableCellClick(event: TableClickEvent) {
     this.selectedMotorist = event.data;

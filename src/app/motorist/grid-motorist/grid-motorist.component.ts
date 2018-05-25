@@ -27,6 +27,8 @@ export class GridMotoristComponent implements OnInit {
   showMotoristDialog: boolean;
   showColumnSelector = false;
 
+  public isMap: boolean;
+
 
   closeColumnSelector() {
     this.showColumnSelector = false;

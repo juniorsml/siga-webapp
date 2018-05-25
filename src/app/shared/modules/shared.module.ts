@@ -113,6 +113,7 @@ import { MapComponent } from '../components/map/map.component';
   ],
   providers: [
     AuthService,
+
     {
       provide: SLIMSCROLL_DEFAULTS,
       useValue: {
