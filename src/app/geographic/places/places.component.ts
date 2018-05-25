@@ -176,10 +176,12 @@ export class RegisterPlaceComponent implements OnInit {
 
     this.itineraryPlaces.push(location);
     this.plotRoute();
+    this.moveMap(location.lat, location.lng, 12);
   };
 
   private plotRoute = () => {
     if (this.itineraryPlaces.length > 1) {
+      this.map.clearAll();
       const locations = this.formatLocationArray();
       this.itineraryPlaces.map(place => this.addPoint(place));
       const route = `https://api.mapbox.com/directions/v5/mapbox/driving/${locations.toString().replace(/;,/g,';')}?geometries=geojson&access_token=${environment.mapbox.accessToken}`;
@@ -220,8 +222,8 @@ export class RegisterPlaceComponent implements OnInit {
         }
       },
       paint: {
-        'line-width': 5,
-        "line-color": "#ea5f5e"
+        'line-width': 6,
+        'line-color': '#008cff'
       }
     });
   }
