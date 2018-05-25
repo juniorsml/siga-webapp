@@ -59,8 +59,14 @@
         
         <hr>
         <div>
-          <div *ngFor="let item of itineraryPlaces">
-            {{item.name}}
+          <div *ngFor="let item of itineraryPlaces; let i = index">
+            <p>
+              <span class="number-radius">
+                {{i + 1}}
+              </span>
+
+              {{item.name}}
+            </p>
           </div>
         </div>
       </sga-tab>
