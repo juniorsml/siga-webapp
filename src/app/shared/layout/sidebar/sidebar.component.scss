@@ -13,7 +13,6 @@
     width: 52px;
     overflow: hidden;
     left:0;/*background: #303a4e;*/
-    background: #565d6d; 
     bottom: 0px;
     top: 0;
      @include transition(0.5s, ease);
@@ -129,7 +128,7 @@
            transition: all 200ms ease-out;        
 
             &:hover {
-              background-color: #404756;
+              background-color: #4f5564;
             }
 
             a {
@@ -177,15 +176,18 @@
          transition: all 200ms ease-out;   
 
         &:hover {
-          background-color: #454b59;
+          background-color: #4f5564;
           cursor: pointer;
         }
     }
 
     .sidebar-submenu {
-        background-color: #313642;
-        list-style-type: none;   
-       
+        background-color: #424754;
+        list-style-type: none;    
+
+        .sidebar-menu-item:hover {
+            background-color: #3a3f4c;
+        }      
 
         li > a {
             text-decoration: none;
