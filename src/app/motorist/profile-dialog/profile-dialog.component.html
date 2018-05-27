@@ -1,5 +1,5 @@
-<div *ngIf="showDialog" class="cnt-dialog">
-  <div class="container-dialog-modal columns is-12 is-multiline">
+<div class="modal-box" [ngClass]="showDialog ? 'opened-modal' : ''">
+  <div class="content-modal columns is-12 is-multiline">
       <div class="container-dialog-header columns column is-12 is-marginless">
         <h3 class="area column is-narrow">Motorista</h3>        
       </div>
