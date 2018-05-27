@@ -62,8 +62,12 @@
     background:#565d6d;
     @include transition(0.5s, ease);
         &:hover {
-          width: 250px;        
+          width: 250px;    
+          .sidebar-list-text {
+            opacity: 1;
+          }    
         }
+
 }
 
   .sidebar-header {
@@ -156,8 +160,9 @@
           }
 
     .sidebar-list-text {
-      margin-left: 14px;
+      margin-left: 0px;
       float: left;      
+          opacity: 0;
       color: #ffffff;
         margin-top: 13px;
       display: block;   
