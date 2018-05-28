@@ -122,12 +122,14 @@ export class MapService extends Map {
   }
 
   removePolyLines(): void {
-    this.polyLines.forEach(polyline => {
-      this.map.removeLayer(polyline);
-    });
+    this.polyLines.map(this.map.removeLayer);
   }
 
-  private removeLayers = () => this.layers.map(l => this.map.removeLayer(l));
+  private removeLayers = () => {
+    try {
+      this.layers.map(this.map.removeLayer);
+    } catch { }
+  }
 
   resize() {
     // setTimeout(() => {
