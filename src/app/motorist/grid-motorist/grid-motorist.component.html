@@ -77,12 +77,12 @@
           </div>
         </ng-template>
       </column>
-      <column [key]="'documentId'" [header]="'Documento'" [minWidth]="'82'" [isSortable]="true">
+      <column [key]="'documentId'" [header]="'Documento'" [width]="'112'" [isSortable]="true">
         <ng-template let-item="item">
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'firstName'" [header]="'Nome'" [minWidth]="'43'" [isSortable]="true"> 
+      <column [key]="'firstName'" [header]="'Nome'" headerWidth="'43'"  [minWidth]="'43'" [isSortable]="true"> 
         <ng-template let-item="item">
           {{item}}
         </ng-template>
@@ -97,12 +97,12 @@
           {{item != null ? (item.driverStatus) : '-'}}
         </ng-template>
       </column>
-      <column [key]="'location'" [header]="'Velocidade'" [minWidth]="'80'" [isSortable]="false">
+      <column [key]="'location'" [header]="'Velocidade'" headerWidth="'110'" [width]="'110'" [isSortable]="false">
         <ng-template let-item="item">
           {{item != null ? (item.speed | number:'1.1-1') : '- '}} km/h
         </ng-template>
       </column>
-      <column [key]="'location'" [header]="'Altitude'" [minWidth]="'56'" [isSortable]="false">
+      <column [key]="'location'" [header]="'Altitude'" headerWidth="'110'" [width]="'110'" [isSortable]="false">
         <ng-template let-item="item">
           {{item != null ? (item.altitude | number:'1.1-1') : '- '}} m
         </ng-template>
