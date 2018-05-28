@@ -176,15 +176,15 @@ export class RegisterPlaceComponent implements OnInit {
 
     this.itineraryPlaces.push(location);
     this.plotRoute();
-    this.moveMap(location.lat, location.lng, 12);
+    this.moveMap(location.lat, location.lng, 15);
   };
 
   private plotRoute = () => {
     if (this.itineraryPlaces.length > 1) {
       this.map.clearAll();
       const locations = this.formatLocationArray();
-      this.itineraryPlaces.map(place => this.addPoint(place));
-      const route = `https://api.mapbox.com/directions/v5/mapbox/driving/${locations.toString().replace(/;,/g,';')}?geometries=geojson&access_token=${environment.mapbox.accessToken}`;
+      this.itineraryPlaces.map(this.addPoint);
+      const route = this.getDirectionsUri(locations);
       this.http
         .get(route)
         .map(response => response.json())
@@ -194,7 +194,12 @@ export class RegisterPlaceComponent implements OnInit {
     }  
   }
 
-  private addPoint = place => 
+  private getDirectionsUri = locations => {
+    const { directionsApi, accessToken } = environment.mapbox;
+    return `${directionsApi}/${locations.toString().replace(/;,/g, ';')}?geometries=geojson&access_token=${accessToken}`;
+  }
+
+  private addPoint = place =>
     this.map.addLayer({
       id: this.uuid(),
       type: 'circle',
@@ -202,11 +207,18 @@ export class RegisterPlaceComponent implements OnInit {
         type: 'geojson',
         data: {
           type: 'Feature',
+          properties: {},
           geometry: {
             type: 'Point',
             coordinates: [place.lng, place.lat]
           }
         }
+      },
+      paint: {
+        "circle-color": "#008cff",
+        "circle-radius": 13,
+        "circle-stroke-width": 2,
+        "circle-stroke-color": "#fff"
       }
     });
 
