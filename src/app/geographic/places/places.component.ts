@@ -8,6 +8,8 @@ import { Map } from '../../shared/models/Map';
 import { groups } from '../../shared/mocks/group';
 import { places } from '../../shared/mocks/place';
 import { areas } from '../../shared/mocks/area';
+import { GroupedItems } from '../../shared/components/select-grouped/Grouped';
+import { HttpService } from '../../shared/services/http.service';
 
 @Component({
   selector: 'sga-places',
@@ -20,6 +22,7 @@ export class RegisterPlaceComponent implements OnInit {
   public areas:  Array<any>;
   public places: Array<any>;
   public groups: Array<any>;
+  public itineraryPlaces = new Array<any>();
   
   public selectedArea: any;
   public selectedGroup: any;
@@ -32,13 +35,27 @@ export class RegisterPlaceComponent implements OnInit {
   public showSelectGroup = false;
   public showRegisterGroup = false;
 
-  constructor(private map: Map) {}
-
+  public groupedItems = new Array<GroupedItems>();
+  
+  constructor(private map: Map, 
+              private http: HttpService) {}
+  
   ngOnInit() {
     this.places = places;
     this.groups = groups;
     this.areas = areas;
     this.setupMap();
+    
+    const grouped = new GroupedItems();
+    grouped.data = ['item A', 'item B', 'item C'];
+    grouped.label = 'Title';
+  
+    const grouped2 = new GroupedItems();
+    grouped2.data = ['item A', 'item B', 'item C'];
+    grouped2.label = 'Sub';
+  
+    this.groupedItems.push(grouped);
+    this.groupedItems.push(grouped2);
   }
 
   private setupMap(): void {
@@ -61,19 +78,17 @@ export class RegisterPlaceComponent implements OnInit {
     };
   }
 
-  private addMarker(geometry) {
-    this.map.addGeoMarker(geometry);
-  }
+  private addMarker = geometry => this.map.addGeoMarker(geometry);
 
-  private resetGroupMapView() {
-    this.onSelected(this.selectedGroup); 
-  }
+  private resetGroupMapView = () => this.onSelected(this.selectedGroup);
 
   public onPlaceSelected(location) {
     this.location = {
       latitude: location.lat(),
       longitude: location.lng()
     };
+
+    console.log(this.location);
 
     this.map.clearAll();
     this.moveMap(location.lat(), location.lng(), 18);
@@ -95,9 +110,7 @@ export class RegisterPlaceComponent implements OnInit {
     this.selectedTabIndex = tabIndex;
   }
 
-  public onTabSelected(tab: TabComponent) {
-    this.selectedTabIndex = tab.index;
-  }
+  public onTabSelected = (tab: TabComponent) => this.selectedTabIndex = tab.index;
 
   public onContextMenu(event: any) {
     switch (this.selectedTabIndex)
@@ -118,9 +131,7 @@ export class RegisterPlaceComponent implements OnInit {
     }
   }
 
-  public closeRegisterGroup() {
-    this.showRegisterGroup = false;
-  }
+  public closeRegisterGroup = () => this.showRegisterGroup = false;
 
   public onSelected(place) {
     this.map.clearAll();
@@ -145,23 +156,85 @@ export class RegisterPlaceComponent implements OnInit {
     this.showSelectGroup = false;
   }
 
-  public onSelectedArea(area) {
-    this.selectedArea = area;
-  }
+  public onSelectedArea = area => this.selectedArea = area;
 
-  public onSelectedPlace(place) {
-    this.selectedPlace = place;
-  }
+  public onSelectedPlace = place => this.selectedPlace = place;
 
-  public onSelectedGroup(event) {
-    this.selectedGroup.location.push(event.item);
-  }
+  public onSelectedGroup = event => this.selectedGroup.location.push(event.item);
 
   public registerNewGroupItem(event) {
-    debugger
     this.selectedGroup.location.push(event.item);
     this.resetGroupMapView();
   }
+
+  public selectItineraryPlace = place => {
+    const location = {
+      name: place.formatted_address,
+      lat: place.geometry.location.lat(),
+      lng: place.geometry.location.lng()
+    };
+
+    this.itineraryPlaces.push(location);
+    this.plotRoute();
+    this.moveMap(location.lat, location.lng, 12);
+  };
+
+  private plotRoute = () => {
+    if (this.itineraryPlaces.length > 1) {
+      this.map.clearAll();
+      const locations = this.formatLocationArray();
+      this.itineraryPlaces.map(place => this.addPoint(place));
+      const route = `https://api.mapbox.com/directions/v5/mapbox/driving/${locations.toString().replace(/;,/g,';')}?geometries=geojson&access_token=${environment.mapbox.accessToken}`;
+      this.http
+        .get(route)
+        .map(response => response.json())
+        .subscribe(
+          data => this.onSuccessRoute(data),
+          error => console.log(error));
+    }  
+  }
+
+  private addPoint = place => 
+    this.map.addLayer({
+      id: this.uuid(),
+      type: 'circle',
+      source: {
+        type: 'geojson',
+        data: {
+          type: 'Feature',
+          geometry: {
+            type: 'Point',
+            coordinates: [place.lng, place.lat]
+          }
+        }
+      }
+    });
+
+  private onSuccessRoute = data => {
+    this.map.addLayer({
+      id: this.uuid(),
+      type: 'line',
+      source: {
+        type: 'geojson',
+        data: {
+          type: 'Feature',
+          geometry: data.routes[0].geometry
+        }
+      },
+      paint: {
+        'line-width': 6,
+        'line-color': '#008cff'
+      }
+    });
+  }
+
+  private uuid = () => Date.now().toString();
+
+  private formatLocationArray = () => 
+    this.itineraryPlaces.map((loc, i) => 
+      i === (this.itineraryPlaces.length - 1) ? `${loc.lng},${loc.lat}` : `${loc.lng},${loc.lat};`)
+
+  public closeModalGroup = () => this.showSelectGroup = false;
 
   public create(item) {
     this.showRegister = false;
@@ -179,9 +252,5 @@ export class RegisterPlaceComponent implements OnInit {
         this.groups.push({...item, location: []});
         break;
     } 
-  }
-
-  public closeModalGroup() {
-    this.showSelectGroup = false;
   }
 }

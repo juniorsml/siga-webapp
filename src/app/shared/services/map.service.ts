@@ -17,10 +17,12 @@ export class MapService extends Map {
 
   private polyLines: Array<Polyline> = [];
   private clusters: Array<any> = [];
+  private layers = new Array<any>()
   private map: any;
 
   public clearAll(): void {
     this.clearMarkers();
+    this.removeLayers();
     this.removeClusters();
     this.removePolyLines();
   }
@@ -125,6 +127,8 @@ export class MapService extends Map {
     });
   }
 
+  private removeLayers = () => this.layers.map(l => this.map.removeLayer(l));
+
   resize() {
     // setTimeout(() => {
     //   this.map.invalidateSize();
@@ -190,7 +194,7 @@ export class MapService extends Map {
     });
 
     this.map.addControl(draw);
-
+      
     const updateArea = () => {
       const data = draw.getAll();
 
@@ -224,6 +228,11 @@ export class MapService extends Map {
     this.map.on('draw.create', updateArea);
     this.map.on('draw.delete', updateArea);
     this.map.on('draw.update', updateArea);
+  }
+  
+  public addLayer(feature: any): void {
+    this.layers.push(feature);
+    this.map.addLayer(feature);
   }
 
   addMarkerPopUp(marker: Marker, text: string) {

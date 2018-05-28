@@ -17,4 +17,12 @@
     padding: 0;
     right: 0;
   }
+  .number-radius {
+    border-radius: 1em;
+    border: solid 1px;
+    padding: 1px 4px;
+    text-align: center;
+    margin-right: 5px;
+    -webkit-padding-start: 7px;
+  }
 }

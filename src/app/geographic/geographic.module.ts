@@ -19,16 +19,30 @@ import { RegisterComponent } from './places/register/register.component';
 import { GridControlComponent } from './places/grid-control/grid-control.component';
 import { RegisterGroupComponent } from './places/register-group/register-group.component';
 import { ModalGroupComponent } from './places/modal-group/modal-group.component';
+import { HttpService } from '../shared/services/http.service';
+import { httpFactory } from '../shared/factory/http.factory';
+import { XHRBackend, RequestOptions, HttpModule } from '@angular/http';
+import { Router } from '@angular/router';
 
 
 @NgModule({
   imports: [
+    HttpModule,
     FormsModule,
     CommonModule,
     SharedModule,
     GeographicRoutingModule
   ],
   providers: [
+    {
+      provide: HttpService,
+      useFactory: httpFactory,
+      deps: [
+        XHRBackend, 
+        RequestOptions, 
+        Router
+      ]
+    },
     {
       provide: Map,
       useClass: MapService

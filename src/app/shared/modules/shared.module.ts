@@ -54,6 +54,7 @@ import { OptionComponent } from '../components/sidebar-configuration/option/opti
 import { PageNotFoundComponent } from '../layout/404page/not-found.component';
 import { ColumnSelectorComponent } from '../components/column-selector/column-selector.component';
 import { MapComponent } from '../components/map/map.component';
+import { SelectGroupedComponent } from '../components/select-grouped/select-grouped.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,8 @@ import { MapComponent } from '../components/map/map.component';
     GridComponent,
     TabsComponent,
     ModalComponent,
+
+    SelectGroupedComponent,
 
     DropdownComponent,
     MapFilterComponent,
@@ -138,6 +141,8 @@ import { MapComponent } from '../components/map/map.component';
     StepComponent,
     StepsComponent,
     StepperComponent,
+
+    SelectGroupedComponent,
 
     DropdownComponent,
     MapFilterComponent,

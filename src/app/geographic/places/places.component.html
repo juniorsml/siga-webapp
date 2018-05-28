@@ -45,6 +45,31 @@
           (onRegisterClick)="openRegister('place')">
         </sga-grid-control> 
       </sga-tab>
+
+      <sga-tab heading="Itinerário">
+        <!-- <sga-select-grouped 
+          [groupedItems]="groupedItems"
+          placeholder="Pesquise um lugar ou rota"
+          (onSelected)="selectItineraryPlace($event)">
+        </sga-select-grouped> -->
+        <sga-places-auto-complete
+          (onPlacesFilteredEvent)="selectItineraryPlace($event)">
+
+        </sga-places-auto-complete>
+        
+        <hr>
+        <div>
+          <div *ngFor="let item of itineraryPlaces; let i = index">
+            <p>
+              <span class="number-radius">
+                {{i + 1}}
+              </span>
+
+              {{item.name}}
+            </p>
+          </div>
+        </div>
+      </sga-tab>
       
       <sga-tab heading="Grupos">
         <sga-register-group 
