@@ -1,5 +1,10 @@
 <div [class]="styleClass">
-  <input class="input" #input (keyup)="onKeyUp($event)" (focus)="onFocus()" (keydown)="onKeyDown($event)" [placeholder]="placeholder">
+  <p class="control has-icons-left">
+    <input class="input" #input (keyup)="onKeyUp($event)" (focus)="onFocus()" (keydown)="onKeyDown($event)" [placeholder]="placeholder">
+    <span class="icon is-left">
+      <i class="fal fa-search"></i>
+    </span>       
+  </p>
   <div *ngIf="hasFocus && suggestions !== null">
     <ul *ngFor="let suggestion of suggestions; let i = index">
       <li (click)="onSelect(suggestion)" [class.focus]="suggestionIndex == i">
@@ -13,9 +18,10 @@
         <span>{{noSuggestionsText}}</span>
       </li>
       <li>
-        <p (click)="create()" style="cursor: pointer;">
-          <i class="fa fa-plus"></i> Criar
-          <b>"{{input.value}}"</b>
+        <p (click)="create()" class="button create is-light">
+          <i class="fal fa-plus"></i> 
+          <span> Criar</span>
+          <b> "{{input.value}}"</b>
         </p>
       </li>
     </ul>

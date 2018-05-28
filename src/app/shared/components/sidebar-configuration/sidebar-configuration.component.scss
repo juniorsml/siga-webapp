@@ -10,7 +10,9 @@
     font-size: 14px;
     z-index: 9999;
     top: 0px;
-    padding: 0px;    
+    padding: 0px;   
+     display: inline-flex;
+    align-items: center; 
 
 		&:hover,
 		&:focus{
@@ -28,20 +30,21 @@
     opacity: 1;    
     top: 31px;
     z-index: 99999;
+    visibility: visible;
 	}
 	.cnt-configuration-menu{
 		position: absolute;
-		border: 1px solid #8d8e9e;
+		visibility: hidden;
 		top: 14px;	 
-		right: 5px;
+		right: 2px;
 	  opacity: 0;
 	  background:#FFF; 
 	  z-index: 0;
-	  min-width: 158px;
+	  min-width: 179px;
 	  border-radius:3px;
-	  transition:all 250ms ease;
-	  -webkit-box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.1);
-    box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.1);
+    transition:all 250ms ease;
+    -webkit-box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.3);
 
 	  span{
 	  	font-size: 14px;
@@ -54,12 +57,17 @@
 		ul{
 			padding: 3px 0px;
 		  li{
+		  	 margin:3px 0;
+		  	 text-align: left;
 		  	a{
-		  		color:#8d8e9e;
-		  		font-size: 12.5px;
-    			    padding: 7px 14px;
+		  		color:#5a6a84;
+		  		font-size: 13px;
+    		   padding: 5px 0;
 		  		display: block;
 		  		transition:all 250ms ease;
+					i{
+						margin: 0 6px 0px 9px;
+					}
 
 		  		&:hover{
 		  			background: #8d8e9e;

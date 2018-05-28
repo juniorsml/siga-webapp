@@ -13,7 +13,6 @@
     width: 52px;
     overflow: hidden;
     left:0;/*background: #303a4e;*/
-    background: #565d6d; 
     bottom: 0px;
     top: 0;
      @include transition(0.5s, ease);
@@ -62,8 +61,12 @@
     background:#565d6d;
     @include transition(0.5s, ease);
         &:hover {
-          width: 250px;        
+          width: 250px;    
+          .sidebar-list-text {
+            opacity: 1;
+          }    
         }
+
 }
 
   .sidebar-header {
@@ -125,7 +128,7 @@
            transition: all 200ms ease-out;        
 
             &:hover {
-              background-color: #404756;
+              background-color: #4f5564;
             }
 
             a {
@@ -137,8 +140,8 @@
           }
 
         .sidebar-list-icon {
-            font-size: 14px;
-            width: 52px;
+            font-size: 17.5px;
+            width: 48px;
             float: left;
             height: 40px;
             line-height: 40px!important;
@@ -156,8 +159,9 @@
           }
 
     .sidebar-list-text {
-      margin-left: 14px;
+      margin-left: 0px;
       float: left;      
+          opacity: 0;
       color: #ffffff;
         margin-top: 13px;
       display: block;   
@@ -172,15 +176,18 @@
          transition: all 200ms ease-out;   
 
         &:hover {
-          background-color: #454b59;
+          background-color: #4f5564;
           cursor: pointer;
         }
     }
 
     .sidebar-submenu {
-        background-color: #313642;
-        list-style-type: none;   
-       
+        background-color: #424754;
+        list-style-type: none;    
+
+        .sidebar-menu-item:hover {
+            background-color: #3a3f4c;
+        }      
 
         li > a {
             text-decoration: none;

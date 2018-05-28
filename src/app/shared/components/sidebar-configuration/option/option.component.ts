@@ -7,6 +7,7 @@ import { SidebarConfigurationComponent } from '../sidebar-configuration.componen
 })
 export class OptionComponent {
   @Input() public header: string;
+  @Input() public icon: string;
 
   constructor(public SidebarConfigurationComponent: SidebarConfigurationComponent) {
     SidebarConfigurationComponent.addOption(this);

@@ -1,18 +1,44 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ElementRef } from '@angular/core';
+import { Router,NavigationStart } from '@angular/router';
 
 @Component({
   selector: 'sga-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: [ './navbar.component.scss' ]
+  styleUrls: [ './navbar.component.scss' ],
+  host: {
+    '(document:click)': 'outClick($event)'
+  }
 })
 export class NavbarComponent implements OnInit {
+
   logout: any;
+  public isMap: boolean;
+
+  constructor(private _eref: ElementRef,public router: Router) { 
+    this.router
+      .events
+      .filter(event => event instanceof NavigationStart)
+      .subscribe((e: NavigationStart) => {
+        this.isMap = e.url.indexOf('map') > -1
+        console.log(`IsMap: ${this.isMap}`)
+      });
+
+  }
 
   public status: boolean = false;
 
   toggleProfileUser() {
     this.status = !this.status;
   }
+
+  // Close When Click outSide of Component
+   outClick(event) {
+       if (!this._eref.nativeElement.contains(event.target)){// or some similar check
+        if (this.status != false) {
+          this.status = false;
+        }
+      }
+    }
 	
   toggleFullScreen() {
         var doc: any = document;
@@ -48,10 +74,9 @@ export class NavbarComponent implements OnInit {
             }
         }
     };
-
-  constructor() { }
-
   ngOnInit() {
+
+     
   }
 
 }

@@ -2,6 +2,9 @@
   width: 97.7%;
     height: 100%;
 }
+.cnt-autocomplete{
+  position: relative;
+}
 
 .wrapper {
  
@@ -15,16 +18,7 @@
   .sidebar {
     position: absolute;
     width: 377px;
-
-    .header {
-      color: #38425b;
-      padding: 0 0 6px 0;
-      font-size: 14px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 7%;
-    }
+    border-right: 1px solid #e0e0e0;  
 
     .content {
       height: 11%;
@@ -35,5 +29,30 @@
     position: absolute;
     left: 369px;
     right: 0;
+    .header{
+      padding: 0 23px;
+    }
+
+    .grid{
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      bottom: -1px;
+      top: 25px;
+    }
+  }
+}
+
+.header{     
+  display: flex;
+  justify-content: space-between;     
+  align-items: center;
+  height: 7%;
+
+  h3{
+    font-weight:bold;
+    color: #38425b;
+    padding: 0 0 6px 0;
+    font-size: 13px;
   }
 }

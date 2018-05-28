@@ -3,14 +3,14 @@
 		<i class="fal fa-cog"></i> 
 		<span>Configuração</span>
 	</a>
-	<div class="cnt-configuration-menu"  [ngClass]="status ? 'opened' : 'closed'">		
+	<div class="cnt-configuration-menu"  [ngClass]="status ? 'opened' : 'closed'" >		
 		<ul>
 			<li 
 			 *ngFor="let option of options; let itemIndex = index"
       (click)="onClick($event, option, itemIndex)">
-				<a>{{option.header}}</a>
+				<a><i class="fal {{option.icon}}"></i>{{option.header}}</a>
 			</li>
 		</ul>
 	</div>
-	
+	 
 </div>

@@ -19,6 +19,22 @@ $bg-titles: #4d5675;
 .label {
   color: #737373 !important;
 }
+
+// Our Components | Buttons
+.button.is-first {
+    background-color: #f94545;    
+    border-color: transparent;
+    color: #ffffff;
+    transition:all 150ms ease;
+
+    &:hover{
+      background-color: #f62e2e;          
+    }
+
+
+}
+
+
 /* You can add global styles to this file, and also import other style files */
 
 .autocomplete-suggestion {
@@ -45,23 +61,12 @@ $bg-titles: #4d5675;
     height: 100%;
     top:-10px;
 }
-.material-content-container {
-  padding: 0;
-  margin: 0;
-
-  div {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-  }
-}
 .back-button{
   position: absolute;
-  top: -4px;
-  left: 9px;
+  top: 0px;
+  left: 10px;
    background: rgba(255,255,255,0.95);
-  padding: 16px 10px;
+  padding: 10px;
   font-size: 13px;
   color: #727188;
 }
@@ -70,40 +75,57 @@ $bg-titles: #4d5675;
   width: 90%;
   max-width: 750px;
   margin: auto;
-  left: 89px;
-  padding-left: 9px;
-  top: -4px;
-  background: rgba(255,255,255,0.95);
-  z-index:1188;
-}
+  right: 0;
+  left: 0;
+  top: 0;
+  background: rgba(255, 255, 255, 0.95);
+  z-index: 998;
+  padding: 6px 1px 6px 10px;
+  
+  .icon{
+    color: #a59a9a !important;
+    font-size: 13.5px !important;
+  }
 
+  input{
+    border:none;
+    box-shadow:none;
+    &:focus{
+      border:none;
+      outline:none;
+      box-shadow: none;
+    }
+  }
+}
 .menu-map-center {
   align-items: center;
+  margin-right: 12px;
   display: flex;
   a {
-    font-size: 19px;
+    font-size: 22px;
     color: #cecece;
   }
 }
-
-.leaflet-container .leaflet-control-attribution {
-    background: none !important;
-  }
 
 //Radio Map Select
 .cnt-select-map{
   background:#FFF;
   position: absolute;
-  top: 46px;
+  top: 36px;
   opacity: 0;
   padding: 7px 12px;
   left: 0px;
   transition: all 200ms ease;
 }
 .cnt-select-map.opened{
-  top: 53px;
+  top: 41px;
   opacity: 1;
 
+}
+
+
+.leaflet-container .leaflet-control-attribution {
+    background: none !important;
 }
 .container {
   position: relative;
@@ -212,15 +234,17 @@ $bg-titles: #4d5675;
 .map-open{
     color: #8d8e9e;
     font-size: 14px;
-
+    display: inline-flex;
+    align-items: center;
     span{
         padding-left:6px;
     }
 }
 .header-content{
-  width: 80%;
+  width: calc(100% - 278px);
   position: relative;
   top: 9px;
+  justify-content: space-between;
 }
 .breadcrumb{
   position:relative;
@@ -260,7 +284,9 @@ $bg-titles: #4d5675;
     justify-content: flex-end;
     padding-right: 27px;
     position: relative;
-
+    > div{
+      margin: 10px 13px;
+    }
     &:after{
         position: absolute;
         content:"";
@@ -291,7 +317,7 @@ $bg-titles: #4d5675;
   .content-wrapper {
     position: absolute;
     left: 0;
-    right: 16px;
+    right: 0;
     bottom: 5px;
     top: 43px;
   }
@@ -299,10 +325,10 @@ $bg-titles: #4d5675;
   /* Trip **************************************************************************/
   .content-trip{
     position: absolute;
-    left: 33px;
-    right: 33px;
+    left: 23px;
+    right: 12px;
     bottom: 33px;
-    top: 71px;
+    top: 47px;
     
   }
     .trip-header{
@@ -324,16 +350,42 @@ $bg-titles: #4d5675;
 
 /* DIALOGS ********************************************************************/
 
-.cnt-dialog{
-    width: 100%; 
-    height: 100%; 
-    background-color: rgba(0, 0, 0, 0.4); 
-    position: fixed; 
-    z-index: 999; 
-    left: 0px; 
-    top: 0px;
+
+.modal-box{
+    position: fixed;
+    z-index:99999;
+    background-color: rgba(0,0,0,.3);
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transition:
+      opacity .3s  .3s ease,
+      width   .01s .6s, 
+      height  .01s .6s;
     
 }
+.opened-modal{
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  transition: opacity .3s ease;
+}
+.modal-box.opened-modal .content-modal {
+    opacity: 1;
+    transition: all .3s .3s ease;
+    transform: translateY(0);
+  }
+.content-modal{
+  opacity:0;
+  transition: all .3s ease;
+  transform: translateY(-25px);
+}
+
+
+
 .grid-spacing-search{
   padding:20px;
 }

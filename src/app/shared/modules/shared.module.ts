@@ -116,6 +116,7 @@ import { SelectGroupedComponent } from '../components/select-grouped/select-grou
   ],
   providers: [
     AuthService,
+
     {
       provide: SLIMSCROLL_DEFAULTS,
       useValue: {

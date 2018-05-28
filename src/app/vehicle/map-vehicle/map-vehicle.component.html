@@ -2,9 +2,9 @@
 <div class="material-content-container cnt-map">
   <sga-map></sga-map>
 </div>
-<a class="back-button" href="" routerLink="/vehicle/grid"><i class="fal fa-long-arrow-left"></i> Voltar</a>
+<a class="back-button" href="" routerLink="/vehicle/grid"><i class="fal fa-long-arrow-left"></i></a>
 <div class="map-center-bar columns">
-  <div class="column menu-map-center">
+  <div class="column menu-map-center is-paddingless">
      <a class="fal" [ngClass]="status ? 'fa-times' : 'fa-bars'" (click)="toggleMapType()"></a>
       <div class="cnt-select-map" [ngClass]="status ? 'opened' : 'closed'">
       <label class="container" (click)="toggleMapStyle(map)">Mapa        
@@ -18,17 +18,17 @@
 
     </div>
   </div>
-  <div class="column is-4">     
+  <div class="column is-4 is-paddingless">     
     <p class="control has-icons-left"> 
       <input [(ngModel)]="text" class="input is-small"  placeholder="Buscar" type="text"/>
       <span class="icon is-small is-left">
-        <i class="fa fa-search"></i>
+        <i class="fal fa-search"></i>
       </span>       
     </p>
   </div>
   <sga-map-filter 
     (placesFiltered)="onPlacesFiltered($event)" 
     (filterRemoved)="onPlacesFilterRemoved()"
-    class="column is-11">
+    class="column is-11 is-paddingless">
   </sga-map-filter>
 </div>

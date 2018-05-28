@@ -1,14 +1,18 @@
-<nav class="breadcrumb" aria-label="breadcrumbs">
-  <ul>
+<div class="columns header-content">
+  <nav  class="breadcrumb column is-8" aria-label="breadcrumbs">
+   <ul>
     <li><a href="#">Home</a></li>
-    <li><a href="#">Dispositivos</a></li>
+    <li class="is-active"><a href="#">Dispositivos</a></li>
     <li class="is-active"><a href="#" aria-current="page">Cadastro</a></li>
   </ul>
-  <h5>Cadastro</h5>
-</nav>
+  </nav>
+  <div class="columns column">    
+  
+  </div>  
+</div>
 <div class="wrapper">
   <div class="register-area">
-    <button class="button is-link" (click)="openFormRegister()">Novo</button>
+    <button class="button is-first" (click)="openFormRegister()">Novo Dispositivo</button>
   </div>
   <div class="grid-area">
     <sga-grid-device

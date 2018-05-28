@@ -169,7 +169,7 @@
               </a>
             </li> -->
             <li class="sidebar-menu-item"  [class.selected]="router.url == '/trip/register'">
-              <a routerLink="/trip/register">
+              <a routerLink="/trip/register/detail">
                 <span class="sidebar-list-icon fal fa-plus"></span>
                 <span class="sidebar-list-text">Cadastrar</span>
               </a>
@@ -247,7 +247,7 @@
           <accordion-header>
             <ng-template>
               <div class="sidebar-menu-accordion">
-                <span [class.selected]="router.url == '/truck'" class="sidebar-list-icon fal fa-truck-container"></span>
+                <span [class.selected]="router.url == '/truck'" class="sidebar-list-icon fal fa-truck-loading"></span>
                 <span class="sidebar-list-text">Reboques</span>
               </div>
             </ng-template>
@@ -279,7 +279,7 @@
         <accordion-header>
           <ng-template>
             <div class="sidebar-menu-accordion">
-              <span [class.selected]="router.url == '/'" class="sidebar-list-icon fal fa-wrench"></span>
+              <span [class.selected]="router.url == '/'" class="sidebar-list-icon fal fa-broadcast-tower"></span>
               <span class="sidebar-list-text">Dispositivos</span>
             </div>
           </ng-template>

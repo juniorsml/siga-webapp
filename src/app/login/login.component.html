@@ -1,6 +1,6 @@
 <div class="overlay"></div>
-<div class="container">  
-    <div class="container-login">
+
+  <div class="container-login">
         <div class="login-logo">
             <img alt="Siga" src="/assets/login/logo-siga.png" />
         </div>
@@ -10,10 +10,10 @@
             </div>
             <form class="form-login" #formLogin="ngForm" (ngSubmit)="login(formLogin)">
                 <input class="material-form-control" id="email" name="email" type="email" placeholder="Usuário" #email ngModel/>
-                <input class="material-form-control" style="margin-top: 40px" id="password" name="password" type="password" placeholder="Senha" #password ngModel/>
-                <div class="checkbox">
-                  <label>
-                    <input id="rememberUser" type="checkbox" value="" />Lembrar meu usuário</label>
+                <input class="material-form-control input-password" id="password" name="password" type="password" placeholder="Senha" #password ngModel/>
+                <div class="checkbox">               
+                    <input class="styled-checkbox check-login" id="rememberUser" type="checkbox">
+                    <label for="rememberUser">Lembrar meu usuário</label>
                 </div>
                 <button type="submit" [disabled]="isLoggingIn" [class.disabled]="isLoggingIn" class="login-button">
                     <span *ngIf="!isLoggingIn">Log in</span>
@@ -30,6 +30,5 @@
         </div>
     </div>
     <div class="footer-login">
-      <span>® 2016 Condusit Systems</span>
+      <span>® 2018 Condusit Systems</span>
     </div>
-</div>

@@ -8,13 +8,14 @@
   .motorist-admin-summary-wrapper{     
       position: relative;
       color: #4a5879;
-      height:20%;
+      height:14%;
       padding-top: 6px;
 
       .admin-section-header {
-        color: rgb(56, 66, 91);
-        padding: 0 0 6px 0;
-        font-size: 14px;
+        color: #38425b;
+        padding: 0 0 7px 0;
+        font-size: 12.5px;
+        font-weight: 600;
       }
   }
       
@@ -41,8 +42,10 @@
     position: relative;
 
     .wrapper-header{
-        height: 16%;         
-        font-size: 14px;     
+        height: 12%;
+        color: #38425b;
+        font-size: 12.5px;
+        font-weight: 600; 
     }
     .cnt-list-view{
         position: relative;
@@ -58,18 +61,14 @@
     }
 }
 
-
-
-
-
 .motorist-admin-right-container {
-  position: absolute;
-  top: 0px;
-  left: 416px;
-  right: 0px;
-  bottom: 0px;
-  border: 1px solid #ececec;
-  background-color: #fff;
+     position: absolute;
+    top: 19px;
+    left: 431px;
+    right: 4px;
+    bottom: 20px;
+    border: 1px solid #ececec;
+    background-color: #fff;
 }
 .motorist-admin-table {
   position: absolute;
@@ -88,23 +87,21 @@
 .motorist-admin-right-container  {
   .title{
     color: #38425b;
-    padding:10px;
-    font-weight: 400;
-    font-size: 14px;
+    font-size: 12.5px;
+    font-weight: 600;
   }
 
   
 }
 .motorist-admin-add-item-valid {
-  border: 1px solid #00a500;
   font-size: 12px;
-  border-radius: 3px;
-  background: #f5fff5;
-  margin: 3px 3px 1px 0px;
-  height: 30px;
-  line-height: 30px;
-  padding-left: 12px;
-  color: #006300;
+    border-radius: 2px;
+    background: #e0ffe0;
+    margin: 3px 0px 5px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 12px;
+    color: #006300;
 }
 
 .motorist-admin-add-item-validating {
@@ -121,13 +118,12 @@
 
 .motorist-admin-add-item-invalid {
   font-size: 12px;
-  border-radius: 3px;
-  margin: 3px 3px 1px 0px;
+  border-radius: 2px;
+   margin: 3px 3px 1px 0px;
   height: 30px;
   line-height: 30px;
   padding-left: 12px;
-  border: 1px solid #a50000;
-  background: #fff5f5;
+  background: #ffc0c0;
   color: #920000;
 }
 

@@ -1,18 +1,18 @@
-<nav class="nav">
+<nav id="nav" class="nav" [ngClass]="isMap ? 'nav-map' : ''">
     <ul class="nav-header-menu">
       <li>
-        <a title="Tela Cheia" (click)="toggleFullScreen()">
+        <a  class="main-links" title="Tela Cheia" (click)="toggleFullScreen()">
           <i class="fal fa-window-maximize"></i>
         </a>
       </li>
       <li>
-        <a title="Notificações">
+        <a class="main-links" title="Notificações">
           <i class="fal fa-bell"></i>
           <span class="amount notifications">10</span>
         </a>              
       </li>
       <li>
-        <a title="Mensagens">
+        <a class="main-links" title="Mensagens">
           <i class="fal fa-comments" aria-hidden="true"></i>
            <span class="amount messages">5</span>
         </a>

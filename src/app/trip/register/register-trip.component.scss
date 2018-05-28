@@ -7,11 +7,9 @@
   bottom: 0;
 }
 .trip-title{
-	background:$bg-titles;
-	color:#FFF;
-	padding: 10px 17px;
-  display: inline-block;
-  margin: 0px 22px;
+ font-size:14px;
+ font-weight:bold;
+ color:$bg-titles;
 }
 .cnt-detail .select,
 .cnt-detail .select select {
