@@ -30,8 +30,6 @@ $bg-titles: #4d5675;
     &:hover{
       background-color: #f62e2e;          
     }
-
-
 }
 
 
@@ -302,17 +300,10 @@ $bg-titles: #4d5675;
 /* GRID **************************************************************************/
   .main-content{
     position: absolute;
-    top: 11px;
+    top: 0px;
     bottom: 0px;
     left: 50px;
     right: 0px;
-  }
-  .box-shadow{
-    background-color: #FFF;
-    border: none;
-    border-radius: 0;
-    -webkit-box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
-    box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
   }
   .content-wrapper {
     position: absolute;
@@ -321,6 +312,8 @@ $bg-titles: #4d5675;
     bottom: 5px;
     top: 43px;
   }
+
+  
 
   /* Trip **************************************************************************/
   .content-trip{

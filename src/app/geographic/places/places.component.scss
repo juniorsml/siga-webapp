@@ -1,4 +1,8 @@
-.cnt-trip-places {
+.content-trip-places {
+  position: absolute;
+  width:100%;
+  top: 0;
+  height:100vh;
   .places-sidebar,
   .places-detail {
     height: 100%;
@@ -7,12 +11,12 @@
 
   .places-sidebar {
     position: absolute;
-    margin-top: 1em;
+ 
     width: 378px;
   }
   .places-detail {
     position: absolute;
-    margin-top: 1em;
+    
     left: 389px;
     padding: 0;
     right: 0;
