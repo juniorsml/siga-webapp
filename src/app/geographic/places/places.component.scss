@@ -16,6 +16,28 @@
     width: 389px;
     padding-top: 30px;
   }
+  @import '../geographic.scss';
+
+  .cnt-places-header{
+    @include header();
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    &::before{
+       @include pseudo($height: 164px);
+    }
+    i{
+      position: relative;
+      z-index: 3;
+      color: white;
+      font-size: 21px;
+      cursor:pointer;
+    }
+    h1{
+      @include font-title();
+      padding: 12px;
+    }
+  }
   .places-detail {
     position: absolute;
     left: 389px;

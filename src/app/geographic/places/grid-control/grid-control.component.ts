@@ -18,6 +18,7 @@ export class GridControlComponent {
   @Output() public onCellRightClick = new EventEmitter<any>();
 
   public selectedItem: any;
+  public text: any;
 
   public openRegister() {
     this.onRegisterClick.emit();
