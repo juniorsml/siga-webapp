@@ -9,9 +9,9 @@
       (tabSelected)="onTabSelected($event)"
       [tabIndex]="selectedTabIndex"
       *ngIf="!showRegister"
-      styleClass="tabs no-margin">
+      styleClass="tabs no-margin tabs-white">
 
-      <sga-tab heading="Áreas">
+      <!-- <sga-tab heading="Áreas">
         <sga-grid-control 
           [data]="areas"
           [useContext]="false"
@@ -21,7 +21,7 @@
           (onItemSelected)="onSelected($event)"
           (onRegisterClick)="openRegister('area')">
         </sga-grid-control>
-      </sga-tab>
+      </sga-tab> -->
 
       <sga-modal *ngIf="showSelectGroup">
         <sga-modal-group 

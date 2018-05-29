@@ -3,12 +3,13 @@
     li {       
         line-height: 23px;        
         text-align: center;
-        font-size: 16px;       
+        font-size: 15px;       
         cursor: pointer;
+         font-weight:300;
         
         a{
             border:none;
-
+            transition:all 200ms ease;
             &:hover{
               color: #d6d6d6;
             }
@@ -22,14 +23,28 @@
 
 .ui-tabview-tab-title {
     color: #d6d6d6;
-    font-size: 12px;
     letter-spacing: 1px;
 }
-  
-  .tabs > li.active > .ui-tabview-tab-title {
-      color: #e63e3e;
-      font-size: 12px;
+.tabs.tabs-white{
+  .ui-tabview-tab-title {
+     color: #ffffff;
+     font-size:15px;
   }
+  li{
+    transition:all 250ms ease;
+  }
+  li.active{
+      border-bottom: 4px solid #ffffff;
+      cursor: default;
+    }
+}
+.tabs.tabs-white > li.active > .ui-tabview-tab-title {
+  color: #ffffff; 
+}
+
+.tabs > li.active > .ui-tabview-tab-title {
+  color: #e63e3e;
+}
   
   /********************************** Tabs (Flat) **********************************/
   

@@ -6,7 +6,7 @@
   .places-sidebar,
   .places-detail {
     height: 100%;
-    padding: 4px 10px 0 10px;
+    
   }
 
   .places-sidebar {
@@ -15,14 +15,14 @@
     width: 378px;
 
     h1{
-      font-family: 'Sunflower', sans-serif;
-      font-size:18.5px;
+      font: 300 18.5px 'Sunflower', sans-serif;
       color:white;
+      padding: 9px 3px 0;
+      text-transform: uppercase;
     }
   }
   .places-detail {
     position: absolute;
- 
     left: 389px;
     padding: 0;
     right: 0;
