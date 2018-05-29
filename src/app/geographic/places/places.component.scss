@@ -11,12 +11,18 @@
 
   .places-sidebar {
     position: absolute;
- 
+       background:#454855;
     width: 378px;
+
+    h1{
+      font-family: 'Sunflower', sans-serif;
+      font-size:18.5px;
+      color:white;
+    }
   }
   .places-detail {
     position: absolute;
-    
+ 
     left: 389px;
     padding: 0;
     right: 0;
