@@ -1,18 +1,48 @@
-.cnt-grid-control{
-  background:#FFF;
+.cnt-places-autocomplete{
+  padding: 18px 0;
 }
-.trip-places-header {
-  color: #38425b;
-  padding: 0 0 6px 0;
-  font-size: 14px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 7%;
-}
-
 .container-grid {
   margin-top: 6em;
   right: 0px;
   left: 0px;
+  bottom: 0;
+  background:#FFF;
+}
+.cnt-grid-places{
+
+}
+
+.places-autocomplete{
+  input{
+    background: none;
+    border: none;
+    color:#FFF;
+    border-bottom: 1px solid #858594;
+    box-shadow:none;
+    font-size: 14px;
+    font-weight:300;
+
+    &::-webkit-input-placeholder{
+         color: rgba(206,209,220,0.8) !important;
+    }
+  }
+}
+
+.btn-places-add{
+    border-radius: 50%;
+    color: #FFF;
+    background: #858594;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-size: 38px;
+    font-weight: 300;
+    position: absolute;
+    padding: 18px 14px;
+    line-height: 15px;
+    bottom: 30px;
+    right: 36px;
+    
+    &:hover{
+
+    }
 }

@@ -36,7 +36,10 @@
   li.active{
       border-bottom: 4px solid #ffffff;
       cursor: default;
-    }
+  }
+  .ui-tabview{
+    padding:0 !important;
+  }
 }
 .tabs.tabs-white > li.active > .ui-tabview-tab-title {
   color: #ffffff; 

@@ -18,7 +18,7 @@ import { HttpService } from '../../shared/services/http.service';
 })
 export class RegisterPlaceComponent implements OnInit {
   private location: any;
-  
+  text: any;
   public areas:  Array<any>;
   public places: Array<any>;
   public groups: Array<any>;
