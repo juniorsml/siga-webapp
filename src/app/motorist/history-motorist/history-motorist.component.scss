@@ -1,0 +1,31 @@
+.content-history {
+  position: absolute;
+  width:100%;
+  top: 0;
+  height:100vh;
+  .history-sidebar,
+  .history-detail {
+    height: 100%;
+  }
+  .history-sidebar {
+    position: absolute;
+    padding: 13px 11px 0;
+    background:white;
+    width: 389px;
+    padding-top: 30px;
+  }
+  .history-detail {
+    position: absolute;
+    left: 389px;
+    padding: 0;
+    right: 0;
+  }
+  .number-radius {
+    border-radius: 1em;
+    border: solid 1px;
+    padding: 1px 4px;
+    text-align: center;
+    margin-right: 5px;
+    -webkit-padding-start: 7px;
+  }
+}
