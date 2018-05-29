@@ -26,6 +26,8 @@
     letter-spacing: 1px;
 }
 .tabs.tabs-white{
+  position: relative;
+  z-index: 1;
   .ui-tabview-tab-title {
      color: #ffffff;
      font-size:15px;
