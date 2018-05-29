@@ -2,14 +2,7 @@
 
   <div class="places-sidebar">
     Lugares
-    <sga-register 
-      *ngIf="showRegister"
-      [formType]="formType"
-      [backParam]="selectedTabIndex"
-      (onBackButton)="closeRegister($event)"
-      (onPlaceSelected)="onPlaceSelected($event)"
-      (onSubmitForm)="create($event)">
-    </sga-register>
+    
 
     <sga-tabs 
       (tabSelected)="onTabSelected($event)"
@@ -93,6 +86,15 @@
         </sga-grid-control>
       </sga-tab>
     </sga-tabs>
+    
+    <sga-register 
+      *ngIf="showRegister"
+      [formType]="formType"
+      [backParam]="selectedTabIndex"
+      (onBackButton)="closeRegister($event)"
+      (onPlaceSelected)="onPlaceSelected($event)"
+      (onSubmitForm)="create($event)">
+    </sga-register>
   </div>
 
   <div class="places-detail box-shadow">

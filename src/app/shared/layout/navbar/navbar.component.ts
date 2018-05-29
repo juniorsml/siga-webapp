@@ -19,10 +19,17 @@ export class NavbarComponent implements OnInit {
       .events
       .filter(event => event instanceof NavigationStart)
       .subscribe((e: NavigationStart) => {
-        this.isMap = e.url.indexOf('map') > -1
-        this.isMap = e.url.indexOf('geographic/places') > -1
+        if(this.isMap = e.url.indexOf('map') > -1){
+            this.isMap = true;
+        }
+        else if(this.isMap = e.url.indexOf('places') > -1){
+            this.isMap = true;
+        }
+        
+        
         // console.log(`IsMap: ${this.isMap}`)
       });
+
 
   }
 
