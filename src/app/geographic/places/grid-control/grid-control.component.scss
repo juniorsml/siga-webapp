@@ -21,7 +21,9 @@
     box-shadow:none;
     font-size: 14px;
     font-weight:300;
-
+    &:focus .icon{
+       color:#858594;
+    }
     &::-webkit-input-placeholder{
          color: rgba(206,209,220,0.8) !important;
     }
@@ -41,7 +43,7 @@
     line-height: 15px;
     bottom: 30px;
     right: 36px;
-    
+
     &:hover{
 
     }

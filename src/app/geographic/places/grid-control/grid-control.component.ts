@@ -10,6 +10,7 @@ export class GridControlComponent {
   @Input() public data: Array<any>;
   @Input() public marginTop: string;
   @Input() public useContext: boolean;
+  @Input() haveFooter: boolean = false;
 
   @Output() public onRegisterClick = new EventEmitter();
   @Output() public onItemSelected = new EventEmitter<any>();

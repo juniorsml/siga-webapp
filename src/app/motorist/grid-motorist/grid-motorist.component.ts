@@ -11,6 +11,7 @@ import { OptionClickEvent } from '../../shared/events/OptionClickEvent';
 export class GridMotoristComponent implements OnInit {
   @Input() motorists = new Array();
   @Input() dataLoading: boolean = true;
+
   @Output() onMotoristSelected: EventEmitter<any> = new EventEmitter();
 
   text: any;

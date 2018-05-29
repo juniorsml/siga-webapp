@@ -34,6 +34,7 @@
     emptySearchText="nenhum item foi encontrado" 
     bodyBottom="42px" 
     bodyTop="26px"
+    [haveFooter]="haveFooter"
     (onCellClick)="onSelected($event.data)"
     (onCellRightClick)="onCellRightSelected($event)">
     <table-empty>
