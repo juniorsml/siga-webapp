@@ -1,20 +1,19 @@
 @mixin pseudo($height: false){
-    content: "";
-    background: #4f5564;
-    width: 100%;
-    @if $height { height: $height; }
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 0;
+  content: "";
+  background: #4f5564;
+  width: 100%;
+  @if $height { height: $height; }
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
 }
-
 @mixin header(){   
-    position: absolute;
-	  top: 0;
-	  z-index: 0;
-	  width: 100%;
-	  left: 0;
+  position: absolute;
+  top: 0;
+  z-index: 0;
+  width: 100%;
+  left: 0;
 }
 @mixin font-title(){
 	font: 300 18.5px 'Sunflower', sans-serif;
