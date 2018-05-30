@@ -240,6 +240,11 @@ export class RegisterPlaceComponent implements OnInit {
     this.moveMap(location.lat, location.lng, 15);
   };
 
+  public removeItineraryPlace(item: any): void {
+    const index = this.itineraryPlaces.findIndex(a => a === item);
+    this.itineraryPlaces.splice(index, 1);
+  }
+
   private plotRoute = () => {
     if (this.itineraryPlaces.length > 1) {
       this.map.clearAll();

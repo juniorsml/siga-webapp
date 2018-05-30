@@ -58,7 +58,10 @@
               <span class="number-radius">
                 {{i + 1}}
               </span>
-              <h5 title="{{item.name}}" class="title-place-added"> {{(item.name.length>50)? (item.name | slice:0:50)+'...':(item.name)}} </h5>         
+              <h5 title="{{item.name}}" class="title-place-added"> 
+                {{(item.name.length>40)? (item.name | slice:0:40)+'...':(item.name)}}
+              </h5>  
+              <i (click)="removeItineraryPlace(item)" class="remove-place fal fa-times-circle"></i>       
           </div>
         </div>
       </sga-tab>

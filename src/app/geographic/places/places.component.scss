@@ -51,18 +51,35 @@
       position:relative;
       display: flex;
       align-items:center;
+      transition:all 150ms ease;
 
-      &:not(:last-child):after{
+      &:hover{
+        background: #8b939d;
+        .remove-place{
+          visibility:visible;
+          opacity:1;
+        }
+      }
+
+      &:not(:last-child):after{ 
         content: "";
         position: absolute;
         z-index: 9;
         width: 2px;
         border-left-style: dotted;
-        border-left-width: 4px;
+        border-left-width: 3.5px;
         border-left-color: white;
         height: 20px;
-        bottom: -7px;
+        bottom: -10px;
         left: 22px;
+      }
+
+      .remove-place{
+         margin-left: auto;
+         cursor: pointer;
+         visibility:hidden;
+         opacity:0;
+         transition:all 150ms ease;
       }
       
       .title-place-added{
