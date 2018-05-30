@@ -15,6 +15,13 @@ export class NavbarComponent implements OnInit {
   public isMap: boolean;
 
   constructor(private _eref: ElementRef,public router: Router) { 
+    let currentUrl = this.router.url;
+    if(this.isMap = currentUrl.indexOf('map') > -1){
+        this.isMap = true;
+    }
+    else if(this.isMap = currentUrl.indexOf('places') > -1){
+        this.isMap = true;
+    }
     this.router
       .events
       .filter(event => event instanceof NavigationStart)
@@ -25,12 +32,8 @@ export class NavbarComponent implements OnInit {
         else if(this.isMap = e.url.indexOf('places') > -1){
             this.isMap = true;
         }
-        
-        
-        // console.log(`IsMap: ${this.isMap}`)
-      });
-
-
+     });
+    
   }
 
   public status: boolean = false;
