@@ -46,10 +46,12 @@
         <div class="cnt-places-header">
           <h1>Lugares</h1>
         </div>
-        <sga-places-auto-complete
-          (onPlacesFilteredEvent)="selectItineraryPlace($event)">
-
-        </sga-places-auto-complete>
+        <div class="cnt-places-autocomplete">
+          <sga-places-auto-complete
+            (onPlacesFilteredEvent)="selectItineraryPlace($event)"
+            styleClass="places-autocomplete">
+          </sga-places-auto-complete>
+        </div>
         
         <hr>
         <div>

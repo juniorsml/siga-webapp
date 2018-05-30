@@ -1,8 +1,5 @@
 @import '../../geographic.scss';
 
-.cnt-places-autocomplete{
-  padding: 18px 0;
-}
 .container-grid {
   margin-top: 6em;
   right: 0px;
@@ -13,32 +10,15 @@
 
 .cnt-places-header{
   @include header();
-
   &::before{
-     @include pseudo($height: 164px);
+     @include pseudo($height: 161px);
   }
   h1{
     @include font-title();
     padding: 12px;
   }
 }
-.places-autocomplete{
-  input{
-    background: none;
-    border: none;
-    color:#FFF;
-    border-bottom: 1px solid #858594;
-    box-shadow:none;
-    font-size: 14px;
-    font-weight:300;
-    &:focus .icon{
-       color:#858594;
-    }
-    &::-webkit-input-placeholder{
-         color: rgba(206,209,220,0.8) !important;
-    }
-  }
-}
+
 
 .btn-places-add{
     border-radius: 50%;

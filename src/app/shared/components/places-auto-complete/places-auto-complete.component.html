@@ -1,6 +1,9 @@
-<p class="control has-icons-left">
-  <input #input [(ngModel)]="placeText" class="input places-ac" (keyup)="onPlacesKeyUp()" type="text" placeholder="Endereço / Região">
-  <span class="icon is-small is-left">
-    <i class="fal fa-map-marker"></i> 
-  </span>
-</p>
+
+<div [class]="styleClass">	
+	<p class="control has-icons-left">
+	  <input #input [(ngModel)]="placeText" class="input is-small" (keyup)="onPlacesKeyUp()" type="text" placeholder="Endereço / Região">
+	  <span class="icon is-small is-left">
+	    <i class="fal fa-map-marker"></i> 
+	  </span>
+	</p>
+</div>

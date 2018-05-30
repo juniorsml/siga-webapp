@@ -33,8 +33,7 @@ $bg-titles: #4d5675;
 }
 
 
-/* You can add global styles to this file, and also import other style files */
-
+/* AUTO COMPLETE*/
 .autocomplete-suggestion {
     width: 100%;
     border-bottom: 1px solid #eee;
@@ -47,10 +46,41 @@ $bg-titles: #4d5675;
         
     }
 }
-
 .autocomplete-suggestion.focus {
   background-color: #eee;
   cursor: pointer;
+}
+.cnt-places-autocomplete{
+  padding: 18px 0;
+}
+.places-autocomplete{
+  input{
+    background: none;
+    border: none;
+    color:#FFF;
+    border-bottom: 1px solid #858594;
+    box-shadow:none;
+    font-size: 14px;
+    font-weight:300;
+    &:hover{
+      border-color: #858594;
+    }
+    &:focus {
+      outline: none;
+      border-color: #858594;
+      box-shadow: none;
+      
+    ~ span i{
+        color: rgba(206,209,220,0.8) !important;
+      }
+    }
+    &::-webkit-input-placeholder{
+         color: rgba(206,209,220,0.8) !important;
+    }
+  }
+  span{
+     color: rgba(206,209,220,0.8) !important;
+  }
 }
 
 // MAP SEARCH

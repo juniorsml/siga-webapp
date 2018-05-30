@@ -7,21 +7,6 @@
   font-size:14px;
 }
 
-.places-autocomplete{
-  input{
-    background: none;
-    border: none;
-    color:#FFF;
-    border-bottom: 1px solid #858594;
-    box-shadow:none;
-    font-size: 14px;
-    font-weight:300;
-
-    &::-webkit-input-placeholder{
-         color: rgba(206,209,220,0.8) !important;
-    }
-  }
-}
 
 .autocomplete > div {
   background: white;
