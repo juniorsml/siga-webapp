@@ -232,9 +232,18 @@ export class MapService extends Map {
     this.map.on('draw.update', updateArea);
   }
   
-  public addLayer(feature: any): void {
-    this.layers.push(feature);
-    this.map.addLayer(feature);
+  public addCircle(lat, lng) {
+    L.circle([lng, lat], 200).addTo(this.map);
+  }
+
+  public addLayer(feature: any, isLeaflet = false): void {
+    if(isLeaflet) {
+      L.geoJson(feature)
+       .addTo(this.map);
+    } else {
+      this.layers.push(feature);
+      this.map.addLayer(feature);
+    }
   }
 
   addMarkerPopUp(marker: Marker, text: string) {

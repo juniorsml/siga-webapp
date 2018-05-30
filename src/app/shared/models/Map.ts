@@ -30,11 +30,13 @@ export abstract class Map {
   public abstract createMapBoxMapInstance(showControls: boolean): void;
 
   /** Shared **/
-  public abstract addLayer(feature: any):  void;
+  public abstract addLayer(feature: any, isLeaflet?: boolean):  void;
 
   public abstract clearAll(): void;
 
   /** Marker **/
+
+  public abstract addCircle(latitude:number, longitude:number);
 
   public abstract createMarker(feature: Feature<any>): any;
 
