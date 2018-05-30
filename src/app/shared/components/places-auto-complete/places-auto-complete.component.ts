@@ -1,6 +1,7 @@
 import {
   Component,
   Output,
+  Input,
   EventEmitter,
   NgZone,
   AfterViewInit,
@@ -14,6 +15,9 @@ import {
   styles: []
 })
 export class PlacesAutoCompleteComponent implements AfterViewInit {
+
+  @Input() public styleClass: string;
+
   @Output('onFilterRemovedEvent')
   public onFilterRemovedEvent = new EventEmitter<any>();
 

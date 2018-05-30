@@ -20,9 +20,6 @@
 
   .cnt-places-header{
     @include header();
-    display: flex;
-    align-items: center;
-    padding: 0 16px;
     &::before{
        @include pseudo($height: 164px);
     }
