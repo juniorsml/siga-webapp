@@ -23,14 +23,17 @@ export const motorists = [
     tripId: null,
     history: [
       {
+        name: 'Location A',
         latitude: -23.5076046,
         longitude: -46.5665882
       },
       {
+        name: 'Location B',
         latitude: -19.4832173,
         longitude: -44.2523411
       },
       {
+        name: 'Location C',
         latitude: -23.4441777,
         longitude: -46.5447041
       } 
