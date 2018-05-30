@@ -43,27 +43,7 @@ export class HistoryMotoristComponent implements OnInit {
     this.map.addLayer(data.routes[0].geometry, true);
     const { latitude, longitude } = this.motorist.history[0];
 
-    this.map.addLayer({
-      "type": "FeatureCollection",
-      "features": [
-        {
-          "type": "Feature",
-          "properties": {
-            "marker-color": "#7e0038",
-            "marker-size": "medium",
-            "marker-symbol": ""
-          },
-          "geometry": {
-            "type": "Point",
-            "coordinates": [
-              -47.8125,
-              -20.632784250388013
-            ]
-          }
-        }
-      ]
-    } , true)
-    this.moveMap(latitude, longitude, 5);
+    this.moveMap(latitude, longitude, 14);
   };
 
   private getLocations = () =>
@@ -83,7 +63,7 @@ export class HistoryMotoristComponent implements OnInit {
   }
 
   private moveMap(lat: number, lng: number, zoom = 7) {
-    this.map.setZoom(zoom);
     this.map.setCenter(lat, lng);
+    this.map.setZoom(zoom);
   }
 }
