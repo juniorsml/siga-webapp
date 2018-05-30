@@ -13,6 +13,35 @@
     background:white;
     width: 389px;
     padding-top: 30px;
+    .history-head {
+      height: 5em;
+      padding: .5em;
+    }
+    .history-content {
+      .columns {
+        border-bottom: solid 1px #c1c1;
+
+        .marker-icon {
+          background: #00d1b2;
+          height: 100%;
+          display: flex;
+          border-radius: 2em;
+          i {
+            padding: 9px 12px;
+            color: #fff;
+            font-weight: 500;
+            font-size: 25px;
+          }
+        }
+      }
+    }
+    .subtitle {
+      font-size: 10px;
+      p {
+        font-size: 13px;
+        text-transform: capitalize;
+      }
+    }
   }
   .history-detail {
     position: absolute;

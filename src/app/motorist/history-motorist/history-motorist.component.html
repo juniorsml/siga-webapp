@@ -1,11 +1,35 @@
 <div class="content-history">
   <div class="history-sidebar">
     <div class="history-head">
-      {{motorist?.firstName}}
+      <span class="subtitle">
+        <p>{{motorist?.firstName}} {{motorist?.lastName}}</p>
+        {{motorist?.email}}
+      </span>
     </div>
     <div class="history-content">
-      <div *ngFor="let history of motorist?.history">
-        {{history.name}}
+      <div *ngFor="let history of motorist?.history" class="columns">
+        <div class="column is-narrow">
+          <span class="marker-icon">
+            <i class="fal fa-map-marker"></i>
+          </span>
+        </div>
+        <div class="column is-narrow">
+          <span class="subtitle">
+            <p>lat/lon</p>
+            {{history.latitude}}, {{history.longitude}} 
+          </span>
+        </div>
+        <div class="column"> 
+          <span class="subtitle">
+            <p>Velocidade</p>
+            {{history.speed}} km/h 
+          </span>
+        </div>
+        <div class="column"> 
+          <span class="subtitle">
+            {{history.date | date: 'dd/MM/yyyy'}}
+          </span>
+        </div>
       </div>
     </div>
   </div>
