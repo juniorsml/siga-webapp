@@ -23,19 +23,25 @@ export const motorists = [
     tripId: null,
     history: [
       {
-        name: 'Location A',
-        latitude: -23.5076046,
-        longitude: -46.5665882
+        name: 'Ibirapuera',
+        speed: 32,
+        latitude: -23.580567,
+        longitude: -46.663747,
+        date: new Date('2018-10-29')
       },
       {
-        name: 'Location B',
-        latitude: -19.4832173,
-        longitude: -44.2523411
+        name: 'Fiap',
+        speed: 32,
+        latitude: -23.5725823,
+        longitude: -46.6621268,
+        date: new Date('2018-10-29')
       },
       {
-        name: 'Location C',
-        latitude: -23.4441777,
-        longitude: -46.5447041
+        name: 'Ludus',
+        speed: 32,
+        latitude: -23.561806,
+        longitude: -46.646318,
+        date: new Date('2018-10-29')
       } 
     ],
     subscribers: [
