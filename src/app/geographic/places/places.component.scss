@@ -21,7 +21,7 @@
   .cnt-places-header{
     @include header();
     &::before{
-       @include pseudo($height: 164px);
+       @include pseudo($height: 161px);
     }
     i{
       position: relative;
@@ -41,12 +41,44 @@
     padding: 0;
     right: 0;
   }
-  .number-radius {
-    border-radius: 1em;
-    border: solid 1px;
-    padding: 1px 4px;
-    text-align: center;
-    margin-right: 5px;
-    -webkit-padding-start: 7px;
+  .cnt-places-added{
+    margin-top:36px;
+
+    .place-added{
+      padding: 12px;
+      background: #a6adb7;
+      color: #FFF;
+      position:relative;
+      display: flex;
+      align-items:center;
+
+      &:not(:last-child):after{
+        content: "";
+        position: absolute;
+        z-index: 9;
+        width: 2px;
+        border-left-style: dotted;
+        border-left-width: 4px;
+        border-left-color: white;
+        height: 20px;
+        bottom: -7px;
+        left: 22px;
+      }
+      
+      .title-place-added{
+        font-size: 13.5px;
+      }
+
+      .number-radius {
+        border-radius: 50%;
+        border: solid 1px;
+        padding: 0px 7px;
+        vertical-align: middle;
+        text-align: center;
+        margin-right: 5px;
+      }
+    }
+   
   }
+  
 }

@@ -52,17 +52,13 @@
             styleClass="places-autocomplete">
           </sga-places-auto-complete>
         </div>
-        
-        <hr>
-        <div>
-          <div *ngFor="let item of itineraryPlaces; let i = index">
-            <p>
+
+        <div class="cnt-places-added">
+          <div class="place-added" *ngFor="let item of itineraryPlaces; let i = index">            
               <span class="number-radius">
                 {{i + 1}}
               </span>
-
-              {{item.name}}
-            </p>
+              <h5 title="{{item.name}}" class="title-place-added"> {{(item.name.length>50)? (item.name | slice:0:50)+'...':(item.name)}} </h5>         
           </div>
         </div>
       </sga-tab>
