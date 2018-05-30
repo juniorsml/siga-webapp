@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
-import { environment } from '../../../environments/environment';
-import { Map } from '../../shared/models/Map';
 import { ActivatedRoute } from '@angular/router';
+
+import { Map } from '../../shared/models/Map';
 import { motorists } from '../../shared/mocks/motorist';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'sga-history-motorist',

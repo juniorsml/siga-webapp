@@ -1,6 +1,13 @@
 <div class="content-history">
   <div class="history-sidebar">
-    {{motorist?.firstName}}
+    <div class="history-head">
+      {{motorist?.firstName}}
+    </div>
+    <div class="history-content">
+      <div *ngFor="let history of motorist?.history">
+        {{history.name}}
+      </div>
+    </div>
   </div>
   <div class="history-detail">
     <sga-map [showPolygonSquare]="false"></sga-map>
