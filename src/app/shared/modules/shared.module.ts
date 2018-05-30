@@ -11,8 +11,8 @@ import { AccordionComponent } from '../layout/sidebar/accordion/accordion.compon
 import { AccordionHeaderComponent } from '../layout/sidebar/accordion/accordion.component';
 import { SpinnerComponent } from '../components/spinner/spinner.component';
 
-
 import { AuthService } from '../services/auth.service';
+
 import { GridComponent } from '../components/grid/grid.component';
 import { MapFilterComponent } from '../components/map-filter/map-filter.component';
 import { FormsModule } from '@angular/forms';
@@ -55,6 +55,12 @@ import { PageNotFoundComponent } from '../layout/404page/not-found.component';
 import { ColumnSelectorComponent } from '../components/column-selector/column-selector.component';
 import { MapComponent } from '../components/map/map.component';
 import { SelectGroupedComponent } from '../components/select-grouped/select-grouped.component';
+import { DirectionService } from '../services/direction.service';
+import { HttpService } from '../services/http.service';
+import { XHRBackend, RequestOptions, HttpModule } from '@angular/http';
+import { Router } from '@angular/router';
+import { MapService } from '../services/map.service';
+import { httpFactory } from '../factory/http.factory';
 
 @NgModule({
   declarations: [
@@ -108,6 +114,7 @@ import { SelectGroupedComponent } from '../components/select-grouped/select-grou
     SpinnerComponent
   ],
   imports: [
+    HttpModule,
     FormsModule,
     CommonModule,
     NgSlimScrollModule,
@@ -116,12 +123,26 @@ import { SelectGroupedComponent } from '../components/select-grouped/select-grou
   ],
   providers: [
     AuthService,
+    DirectionService,
 
     {
       provide: SLIMSCROLL_DEFAULTS,
       useValue: {
         alwaysVisible: false
       }
+    },
+    {
+      provide: HttpService,
+      useFactory: httpFactory,
+      deps: [
+        XHRBackend, 
+        RequestOptions, 
+        Router
+      ]
+    },
+    {
+      provide: Map,
+      useClass: MapService
     }
   ],
   exports: [
@@ -177,7 +198,6 @@ import { SelectGroupedComponent } from '../components/select-grouped/select-grou
 
     SpinnerComponent,
     NgSlimScrollModule
-
   ]
 })
 export class SharedModule {}
