@@ -21,6 +21,20 @@ export const motorists = [
     cellPhone: '11947418497',
     state: null,
     tripId: null,
+    history: [
+      {
+        latitude: -23.5076046,
+        longitude: -46.5665882
+      },
+      {
+        latitude: -19.4832173,
+        longitude: -44.2523411
+      },
+      {
+        latitude: -23.4441777,
+        longitude: -46.5447041
+      } 
+    ],
     subscribers: [
       { id: '5900d959f5e17b63799d4990', joined: 1519413465608, admin: true }
     ],
