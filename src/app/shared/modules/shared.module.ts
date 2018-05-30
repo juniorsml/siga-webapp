@@ -56,11 +56,7 @@ import { ColumnSelectorComponent } from '../components/column-selector/column-se
 import { MapComponent } from '../components/map/map.component';
 import { SelectGroupedComponent } from '../components/select-grouped/select-grouped.component';
 import { DirectionService } from '../services/direction.service';
-import { HttpService } from '../services/http.service';
-import { XHRBackend, RequestOptions, HttpModule } from '@angular/http';
-import { Router } from '@angular/router';
-import { MapService } from '../services/map.service';
-import { httpFactory } from '../factory/http.factory';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -124,25 +120,11 @@ import { httpFactory } from '../factory/http.factory';
   providers: [
     AuthService,
     DirectionService,
-
     {
       provide: SLIMSCROLL_DEFAULTS,
       useValue: {
         alwaysVisible: false
       }
-    },
-    {
-      provide: HttpService,
-      useFactory: httpFactory,
-      deps: [
-        XHRBackend, 
-        RequestOptions, 
-        Router
-      ]
-    },
-    {
-      provide: Map,
-      useClass: MapService
     }
   ],
   exports: [
