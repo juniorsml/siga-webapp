@@ -56,6 +56,8 @@ export class PlacesAutoCompleteComponent implements AfterViewInit {
         this.propagatePlace();
       }
     });
+    this.placeText = " ";
+
   }
 
   private propagatePlace() {
