@@ -194,7 +194,6 @@
 .ui-datatable-contextmenu {
     position: fixed;
     z-index: 1;
-    background-color: #333;
     min-width: 160px;
     padding: 5px 0;
     margin: 2px 0 0;
@@ -204,11 +203,8 @@
     background-color: #fff;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    border: 1px solid #ccc;
-    border: 1px solid rgba(0, 0, 0, .15);
-    border-radius: 4px;
-    -webkit-box-shadow: 1px 1px 12px rgba(51, 51, 51, 0.5);
-    box-shadow: 1px 1px 12px rgba(51, 51, 51, 0.5);
+    -webkit-box-shadow: 1px 1px 6px rgba(51, 51, 51, 0.5);
+    box-shadow: 1px 1px 6px rgba(51, 51, 51, 0.5);
 }
 
 .ui-datatable-contextmenu-list {
@@ -221,53 +217,34 @@
     padding-left: 16px;
     /* border-bottom: 1px solid #efefef; */
     width: 182px;
-    font-size: 16px;
-    color: #757b8a;
-}
-.ui-datatable-contextmenu-item span{
-    
-    transition:all 300ms ease;
-}
-
-.ui-datatable-contextmenu-item:hover span{
-    color: #FFFFFF !important; 
+    color: #5a6a84;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    transition:all 151ms ease;
+    &:hover{
+        background: #8d8e9e;
+        color: #fff;
+        cursor: pointer;
+        span{
+            color: #FFFFFF !important; 
+        }
+    }
+    span{    
+        transition:all 151ms ease;
+    }
 }
 .ui-datatable-contextmenu-item.disabled {
     background-color: #fff;
     color: #000000 !important;
-}
-
-.ui-datatable-contextmenu-item.disabled:hover {
-    cursor: not-allowed;
-    background-color: #eee;
-}
-
-.ui-datatable-contextmenu-item.disabled:hover > span {
-    color: #aaaaaa
-}
-
-.ui-datatable-contextmenu-item.disabled > span {
-    color: #aaaaaa
-}
-.ui-datatable-contextmenu-item:hover {
-    background: #2196F3;
-    color: #fff;
-    cursor: pointer;
-}
-.ui-datatable-contextmenu-item:hover > span {
-    color: #fff;
-}
-
-.ui-datatable-contextmenu-icon.glyphicons {
-    width: 28px;
-    color: #757b8a;
-    font-size: 14px;
-    line-height: 42px;
-}
-
-.ui-datatable-contextmenu-icon.fa {
-  width: 28px;
-  color: #757b8a;
-  font-size: 18px;
-  line-height: 42px;
+    &:hover {
+        cursor: not-allowed;
+        background-color: #eee;
+        > span {
+            color: #aaaaaa
+        }
+    }
+    > span{
+         color: #aaaaaa
+    }
 }
