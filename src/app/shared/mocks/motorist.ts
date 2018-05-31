@@ -21,6 +21,29 @@ export const motorists = [
     cellPhone: '11947418497',
     state: null,
     tripId: null,
+    history: [
+      {
+        name: 'Ibirapuera',
+        speed: 32,
+        latitude: -23.580567,
+        longitude: -46.663747,
+        date: new Date('2018-10-29')
+      },
+      {
+        name: 'Fiap',
+        speed: 32,
+        latitude: -23.5725823,
+        longitude: -46.6621268,
+        date: new Date('2018-10-29')
+      },
+      {
+        name: 'Ludus',
+        speed: 32,
+        latitude: -23.561806,
+        longitude: -46.646318,
+        date: new Date('2018-10-29')
+      } 
+    ],
     subscribers: [
       { id: '5900d959f5e17b63799d4990', joined: 1519413465608, admin: true }
     ],

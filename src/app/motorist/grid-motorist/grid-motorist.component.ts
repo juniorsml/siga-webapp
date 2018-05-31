@@ -1,6 +1,6 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TableClickEvent } from '../../shared/components/table/table.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OptionClickEvent } from '../../shared/events/OptionClickEvent';
 
 @Component({
@@ -11,7 +11,6 @@ import { OptionClickEvent } from '../../shared/events/OptionClickEvent';
 export class GridMotoristComponent implements OnInit {
   @Input() motorists = new Array();
   @Input() dataLoading: boolean = true;
-  @Output() onMotoristSelected: EventEmitter<any> = new EventEmitter();
 
   text: any;
   distance: any;
@@ -21,14 +20,20 @@ export class GridMotoristComponent implements OnInit {
   filterLocation: any;
   filterDistance: any;
   selectedMotorist: any;
-  contextMenuSelected: any;
 
   showDialog = false;
   showMotoristDialog: boolean;
   showColumnSelector = false;
 
-  public isMap: boolean;
+  public headers = new Array<string>();
+  public filterHeaders = new Array<string>();
 
+  constructor(private route: ActivatedRoute,
+              private router: Router) { }
+
+  ngOnInit(): void {
+    this.route.data.subscribe(data => this.motorists = data.motorists);
+  }
 
   closeColumnSelector() {
     this.showColumnSelector = false;
@@ -39,27 +44,16 @@ export class GridMotoristComponent implements OnInit {
       case 'Seleção de Colunas': 
         this.showColumnSelector = true;
         break;
-      }
     }
-
-  public headers = new Array<string>();
-  public filterHeaders = new Array<string>();
-
-  constructor(private router: ActivatedRoute) { }
-
-  ngOnInit(): void {
-    this.router.data.subscribe(data => this.motorists = data.motorists);
   }
 
   public onCellClick(event) {
     this.selectedMotorist = event.data;
-    this.onMotoristSelected.emit(this.selectedMotorist);
     if (event.cellIndex === 0) this.showMotoristDialog = true;
   }
 
   public onCellRightClick(event: TableClickEvent) {
     this.selectedMotorist = event.data;
-    this.onMotoristSelected.emit(this.selectedMotorist);
   }
 
   public onPlacesFiltered(event) {
@@ -70,6 +64,13 @@ export class GridMotoristComponent implements OnInit {
   public onPlacesFilterRemoved() {
     this.filterDistance = null;
     this.filterLocation = null;
+  }
+
+  public contextMenuSelected = event => {
+    switch (event) {
+      case 1: 
+        this.router.navigateByUrl(`motorist/history/${this.selectedMotorist.id}`);
+    }
   }
 
   public showMotoristModal = () => this.showMotoristDialog = true;

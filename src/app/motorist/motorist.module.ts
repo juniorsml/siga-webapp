@@ -17,6 +17,7 @@ import { ProfileDialogComponent } from './profile-dialog/profile-dialog.componen
 import { MotoristAssociateDialogComponent } from './associate-dialog/motorist-associate-dialog.component';
 import { RegisterMotoristComponent } from './register-motorist/register-motorist.component';
 import { NgSlimScrollModule } from 'ngx-slimscroll';
+import { HistoryMotoristComponent } from './history-motorist/history-motorist.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { NgSlimScrollModule } from 'ngx-slimscroll';
     GridMotoristComponent,
     ProfileDialogComponent,
     MotoristAssociateDialogComponent,
-    RegisterMotoristComponent
+    RegisterMotoristComponent,
+    HistoryMotoristComponent
   ],
   exports: [
     MotoristAssociateDialogComponent,
