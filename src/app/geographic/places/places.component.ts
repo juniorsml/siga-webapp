@@ -10,7 +10,7 @@ import { groups } from '../../shared/mocks/group';
 import { places } from '../../shared/mocks/place';
 import { areas } from '../../shared/mocks/area';
 import { GroupedItems } from '../../shared/components/select-grouped/Grouped';
-import { HttpService } from '../../shared/services/http.service';
+import { DirectionService } from '../../shared/services/direction.service';
 
 @Component({
   selector: 'sga-places',
@@ -94,7 +94,7 @@ export class RegisterPlaceComponent implements OnInit {
 
   
   constructor(private map: Map, 
-              private http: HttpService) {}
+              private directionService: DirectionService) {}
   
   ngOnInit() {
     this.places = places;
@@ -248,21 +248,13 @@ export class RegisterPlaceComponent implements OnInit {
   private plotRoute = () => {
     if (this.itineraryPlaces.length > 1) {
       this.map.clearAll();
-      const locations = this.formatLocationArray();
       this.itineraryPlaces.map(this.addPoint);
-      const route = this.getDirectionsUri(locations);
-      this.http
-        .get(route)
-        .map(response => response.json())
+      this.directionService
+        .getCoordinates(this.itineraryPlaces)
         .subscribe(
           data => this.onSuccessRoute(data),
           error => console.log(error));
     }  
-  }
-
-  private getDirectionsUri = locations => {
-    const { directionsApi, accessToken } = environment.mapbox;
-    return `${directionsApi}/${locations.toString().replace(/;,/g, ';')}?geometries=geojson&access_token=${accessToken}`;
   }
 
   private addPoint = place =>
@@ -307,10 +299,6 @@ export class RegisterPlaceComponent implements OnInit {
   }
 
   private uuid = () => Date.now().toString();
-
-  private formatLocationArray = () => 
-    this.itineraryPlaces.map((loc, i) => 
-      i === (this.itineraryPlaces.length - 1) ? `${loc.lng},${loc.lat}` : `${loc.lng},${loc.lat};`)
 
   public closeModalGroup = () => this.showSelectGroup = false;
 
