@@ -19,6 +19,9 @@ export class NavbarComponent implements OnInit {
     if(this.isMap = currentUrl.indexOf('map') > -1){
         this.isMap = true;
     }
+    else if(this.isMap = currentUrl.indexOf('history') > -1){
+        this.isMap = true;
+    }
     else if(this.isMap = currentUrl.indexOf('places') > -1){
         this.isMap = true;
     }
@@ -27,6 +30,9 @@ export class NavbarComponent implements OnInit {
       .filter(event => event instanceof NavigationStart)
       .subscribe((e: NavigationStart) => {
         if(this.isMap = e.url.indexOf('map') > -1){
+            this.isMap = true;
+        }
+        else if(this.isMap = currentUrl.indexOf('history') > -1){
             this.isMap = true;
         }
         else if(this.isMap = e.url.indexOf('places') > -1){
