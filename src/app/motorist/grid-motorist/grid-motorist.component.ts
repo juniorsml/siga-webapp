@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input,Output, OnInit,EventEmitter } from '@angular/core';
 import { TableClickEvent } from '../../shared/components/table/table.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OptionClickEvent } from '../../shared/events/OptionClickEvent';
@@ -11,6 +11,8 @@ import { OptionClickEvent } from '../../shared/events/OptionClickEvent';
 export class GridMotoristComponent implements OnInit {
   @Input() motorists = new Array();
   @Input() dataLoading: boolean = true;
+  @Output() onMotoristSelected: EventEmitter<any> = new EventEmitter();
+
 
   text: any;
   distance: any;

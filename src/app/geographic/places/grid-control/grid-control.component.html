@@ -1,15 +1,24 @@
-<section>
-  <div class="trip-places-header">
-    <h3>{{title}}</h3>
-    <i class="fa fa-question-circle ui-icon-info"></i>
+<section class="cnt-places-grid">
+  <div class="cnt-places-header">
+    <h1>Lugares</h1>
   </div>
-  <div class="trip-places-ac">
-    <sga-auto-complete
+  
+  <div class="cnt-places-autocomplete">
+    <div class="places-autocomplete">
+      <p class="control has-icons-left"> 
+        <input [(ngModel)]="text" class="input is-small"  placeholder="Buscar" type="text"/>
+        <span class="icon is-left">
+          <i class="fal fa-search"></i>
+        </span>       
+      </p>
+    </div>
+   
+    <!-- <sga-auto-complete
       [data]="data"
       propToFilter="name"
       placeholder="Pesquise um item"
       minLength="3"
-      styleClass="autocomplete"
+      styleClass="autocomplete places-autocomplete"
       noSuggestionsText="Nenhuma item encontrado"
       (onCreateNew)="openRegister()"
       (itemSelected)="onSelected($event)">
@@ -19,15 +28,17 @@
           <span style="font-size: 14px; margin-left: 10px;">{{item.name}}</span>
         </div>
       </ng-template>
-    </sga-auto-complete>
+    </sga-auto-complete> -->
   </div>
-
+  
   <data-table class="container-grid container-grid-wrapper" [ngStyle]="{ 'margin-top.em': marginTop }"
     [data]="data"
     [dataLength]="data.length"
+    [searchText]="text" 
     emptySearchText="nenhum item foi encontrado" 
     bodyBottom="42px" 
     bodyTop="26px"
+    [haveFooter]="haveFooter"
     (onCellClick)="onSelected($event.data)"
     (onCellRightClick)="onCellRightSelected($event)">
     <table-empty>
@@ -81,4 +92,6 @@
       </menu-item>
     </context-menu>
   </data-table>
+
+  <a class="btn-places-add" (click)="openRegister()">+</a>
 </section>

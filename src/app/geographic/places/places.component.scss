@@ -1,28 +1,101 @@
-.cnt-trip-places {
+.content-trip-places {
+  position: absolute;
+  width:100%;
+  top: 0;
+  height:100vh;
   .places-sidebar,
   .places-detail {
     height: 100%;
-    padding: 4px 10px 0 10px;
+    
   }
 
   .places-sidebar {
     position: absolute;
-    margin-top: 1em;
-    width: 378px;
+    padding: 13px 11px 0;
+    background:white;
+    width: 389px;
+    padding-top: 30px;
+  }
+  @import '../geographic.scss';
+
+  .cnt-places-header{
+    @include header();
+    &::before{
+       @include pseudo($height: 161px);
+    }
+    i{
+      position: relative;
+      z-index: 3;
+      color: white;
+      font-size: 21px;
+      cursor:pointer;
+    }
+    h1{
+      @include font-title();
+      padding: 12px;
+    }
   }
   .places-detail {
     position: absolute;
-    margin-top: 1em;
     left: 389px;
     padding: 0;
     right: 0;
   }
-  .number-radius {
-    border-radius: 1em;
-    border: solid 1px;
-    padding: 1px 4px;
-    text-align: center;
-    margin-right: 5px;
-    -webkit-padding-start: 7px;
+  .cnt-places-added{
+    margin-top:36px;
+
+    .place-added{
+      padding: 12px;
+      background: #a6adb7;
+      color: #FFF;
+      position:relative;
+      display: flex;
+      align-items:center;
+      transition:all 150ms ease;
+
+      &:hover{
+        background: #8b939d;
+        .remove-place{
+          visibility:visible;
+          opacity:1;
+        }
+      }
+
+      &:not(:last-child):after{ 
+        content: "";
+        position: absolute;
+        z-index: 9;
+        width: 2px;
+        border-left-style: dotted;
+        border-left-width: 3.5px;
+        border-left-color: white;
+        height: 20px;
+        bottom: -10px;
+        left: 22px;
+      }
+
+      .remove-place{
+         margin-left: auto;
+         cursor: pointer;
+         visibility:hidden;
+         opacity:0;
+         transition:all 150ms ease;
+      }
+      
+      .title-place-added{
+        font-size: 13.5px;
+      }
+
+      .number-radius {
+        border-radius: 50%;
+        border: solid 1px;
+        padding: 0px 7px;
+        vertical-align: middle;
+        text-align: center;
+        margin-right: 5px;
+      }
+    }
+   
   }
+  
 }

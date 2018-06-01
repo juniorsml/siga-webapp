@@ -1,15 +1,40 @@
-.trip-places-header {
-  color: #38425b;
-  padding: 0 0 6px 0;
-  font-size: 14px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 7%;
-}
+@import '../../geographic.scss';
 
 .container-grid {
   margin-top: 6em;
   right: 0px;
   left: 0px;
+  bottom: 0;
+  background:#FFF;
+}
+
+.cnt-places-header{
+  @include header();
+  &::before{
+     @include pseudo($height: 161px);
+  }
+  h1{
+    @include font-title();
+    padding: 12px;
+  }
+}
+
+
+.btn-places-add{
+    border-radius: 50%;
+    color: #FFF;
+    background: #858594;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-size: 38px;
+    font-weight: 300;
+    position: absolute;
+    padding: 18px 14px;
+    line-height: 15px;
+    bottom: 30px;
+    right: 36px;
+
+    &:hover{
+
+    }
 }

@@ -44,6 +44,7 @@ export class DataTableComponent
   @Input() styleFooter: string = 'ui-datatable-footer';
   @Input() stylePager: string = 'ui-table-pager';
   @Input() contextMenuMode: string = 'click';
+  @Input() haveFooter: true;
   @Input() filterHeaders = new Array<string>();
   @Output() onRowClick: EventEmitter<any> = new EventEmitter();
   @Output() onRowRightClick: EventEmitter<any> = new EventEmitter();
@@ -61,6 +62,7 @@ export class DataTableComponent
   emptyView: EmptyTableComponent;
   filteredData: Array<any>;
   emptyTable: boolean;
+
   private _columns = new Array<ColumnComponent>();
   private _originalColumns = new Array<ColumnComponent>();
   currentPage: number = 1;

@@ -30,13 +30,10 @@ $bg-titles: #4d5675;
     &:hover{
       background-color: #f62e2e;          
     }
-
-
 }
 
 
-/* You can add global styles to this file, and also import other style files */
-
+/* AUTO COMPLETE*/
 .autocomplete-suggestion {
     width: 100%;
     border-bottom: 1px solid #eee;
@@ -49,10 +46,41 @@ $bg-titles: #4d5675;
         
     }
 }
-
 .autocomplete-suggestion.focus {
   background-color: #eee;
   cursor: pointer;
+}
+.cnt-places-autocomplete{
+  padding: 18px 0;
+}
+.places-autocomplete{
+  input{
+    background: none;
+    border: none;
+    color:#FFF;
+    border-bottom: 1px solid #858594;
+    box-shadow:none;
+    font-size: 14px;
+    font-weight:300;
+    &:hover{
+      border-color: #858594;
+    }
+    &:focus {
+      outline: none;
+      border-color: #858594;
+      box-shadow: none;
+      
+    ~ span i{
+        color: rgba(206,209,220,0.8) !important;
+      }
+    }
+    &::-webkit-input-placeholder{
+         color: rgba(206,209,220,0.8) !important;
+    }
+  }
+  span{
+     color: rgba(206,209,220,0.8) !important;
+  }
 }
 
 // MAP SEARCH
@@ -63,9 +91,9 @@ $bg-titles: #4d5675;
 }
 .back-button{
   position: absolute;
-  top: 0px;
+  top: 12px;
   left: 10px;
-   background: rgba(255,255,255,0.95);
+  background: rgba(255,255,255,0.95);
   padding: 10px;
   font-size: 13px;
   color: #727188;
@@ -77,7 +105,7 @@ $bg-titles: #4d5675;
   margin: auto;
   right: 0;
   left: 0;
-  top: 0;
+  top: 12px;
   background: rgba(255, 255, 255, 0.95);
   z-index: 998;
   padding: 6px 1px 6px 10px;
@@ -243,7 +271,7 @@ $bg-titles: #4d5675;
 .header-content{
   width: calc(100% - 278px);
   position: relative;
-  top: 9px;
+  top: 19px;
   justify-content: space-between;
 }
 .breadcrumb{
@@ -302,17 +330,10 @@ $bg-titles: #4d5675;
 /* GRID **************************************************************************/
   .main-content{
     position: absolute;
-    top: 11px;
+    top: 0px;
     bottom: 0px;
     left: 50px;
     right: 0px;
-  }
-  .box-shadow{
-    background-color: #FFF;
-    border: none;
-    border-radius: 0;
-    -webkit-box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
-    box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
   }
   .content-wrapper {
     position: absolute;
@@ -321,6 +342,8 @@ $bg-titles: #4d5675;
     bottom: 5px;
     top: 43px;
   }
+
+
 
   /* Trip **************************************************************************/
   .content-trip{
