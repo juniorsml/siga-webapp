@@ -1,34 +1,22 @@
-import { Component, OnInit,EventEmitter } from '@angular/core';
+import { Component, OnInit,EventEmitter, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Map } from '../../shared/models/Map';
-import { motorists } from '../../shared/mocks/motorist';
-import { environment } from '../../../environments/environment';
-import { DirectionService } from '../../shared/services/direction.service';
+import { Map } from '../../../shared/models/Map';
+import { motorists } from '../../../shared/mocks/motorist';
+import { environment } from '../../../../environments/environment';
+import { DirectionService } from '../../../shared/services/direction.service';
 import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
 
 @Component({
-  selector: 'sga-history-motorist',
-  templateUrl: './history-motorist.component.html',
-  styleUrls: ['./history-motorist.component.scss']
+  selector: 'sga-history-detail',
+  templateUrl: './history-detail.component.html',
+  styleUrls: ['./history-detail.component.scss']
 })
-export class HistoryMotoristComponent implements OnInit {
- 
-  public motoristsList: Array<any> = motorists;
-  selectedMotorist:any;
-  currentPage: number = 1;
-  public pageQuantity: number = 6;
+export class HistoryDetailComponent implements OnInit {
+  @Input() showHistoryDetail:boolean;
+  public motorist: any;
 
-  
-  public showHistoryDetail = false;
-  @Output() openDetailHistory(event);
-
-
-  public openDetailHistory(event) {
-     this.showHistoryDetail = true;
-     this.selectedMotorist = event.data;
-   }
- 
+   @Input() showHistoryDetail:boolean;
 
   constructor(
     private map: Map,
@@ -38,7 +26,7 @@ export class HistoryMotoristComponent implements OnInit {
   opts: ISlimScrollOptions;
   scrollEvents: EventEmitter<SlimScrollEvent>;
   ngOnInit() {
-    this.setupMap();
+   
     this.router.params.subscribe(data => this.plotRoute(data.id));
 
     this.scrollEvents = new EventEmitter<SlimScrollEvent>();
@@ -57,9 +45,6 @@ export class HistoryMotoristComponent implements OnInit {
 
   }
 
-   getMoreMotorists(){    
-     this.pageQuantity = this.pageQuantity + 6;
-  }
 
   private getMotorist = id => motorists.filter(m => m.id === id)[0];
 
