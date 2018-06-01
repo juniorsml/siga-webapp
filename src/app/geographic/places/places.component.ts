@@ -85,13 +85,10 @@ export class RegisterPlaceComponent implements OnInit {
         marker.properties['marker'] = customMarker;
         this.mapMarkers.push(marker);
       }
-
     });
 
     this.map.addCluster(this.mapMarkers);
   }
-  
-
   
   constructor(private map: Map, 
               private directionService: DirectionService) {}
@@ -138,7 +135,7 @@ export class RegisterPlaceComponent implements OnInit {
     };
   }
 
-  private addMarker = geometry => this.map.addGeoMarker(geometry);
+  private addMarker = geometry => this.map.addGeoJSON(geometry);
 
   private resetGroupMapView = () => this.onSelected(this.selectedGroup);
 
@@ -153,7 +150,7 @@ export class RegisterPlaceComponent implements OnInit {
     this.map.clearAll();
     this.moveMap(location.lat(), location.lng(), 18);
     const geometry = this.createPoint(location.lat(), location.lng());
-    this.map.addGeoMarker(geometry);
+    this.map.addGeoJSON(geometry);
   }
   
   public onCellRightClick(event) {
@@ -192,7 +189,6 @@ export class RegisterPlaceComponent implements OnInit {
   }
 
   public closeRegisterGroup = () => this.showRegisterGroup = false;
-  
   
   public onSelected(place) {
     this.map.clearAll();
@@ -257,48 +253,12 @@ export class RegisterPlaceComponent implements OnInit {
     }  
   }
 
-  private addPoint = place =>
-    this.map.addLayer({
-      id: this.uuid(),
-      type: 'circle',
-      source: {
-        type: 'geojson',
-        data: {
-          type: 'Feature',
-          properties: {},
-          geometry: {
-            type: 'Point',
-            coordinates: [place.lng, place.lat]
-          }
-        }
-      },
-      paint: {
-        "circle-color": "#008cff",
-        "circle-radius": 13,
-        "circle-stroke-width": 2,
-        "circle-stroke-color": "#fff"
-      }
-    });
+  private addPoint = place => this.map.addCircle(L.latLng(place.lat, place.lng));
 
   private onSuccessRoute = data => {
-    this.map.addLayer({
-      id: this.uuid(),
-      type: 'line',
-      source: {
-        type: 'geojson',
-        data: {
-          type: 'Feature',
-          geometry: data.routes[0].geometry
-        }
-      },
-      paint: {
-        'line-width': 6,
-        'line-color': '#008cff'
-      }
-    });
+    const latLngs = data.routes[0].geometry.coordinates.map(geo => L.latLng(geo[1], geo[0]));
+    this.map.drawPolyline(latLngs);
   }
-
-  private uuid = () => Date.now().toString();
 
   public closeModalGroup = () => this.showSelectGroup = false;
 
