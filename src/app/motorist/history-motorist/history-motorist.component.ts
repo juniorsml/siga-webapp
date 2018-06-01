@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Map } from '../../shared/models/Map';
@@ -13,6 +13,8 @@ import { DirectionService } from '../../shared/services/direction.service';
 })
 export class HistoryMotoristComponent implements OnInit {
   public motorist: any;
+  public motoristsList = new Array();
+  motoristsList = motorists;
 
   constructor(
     private map: Map,

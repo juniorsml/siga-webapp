@@ -54,7 +54,6 @@
       [emptySearchText]="'nenhuma motorista foi encontrado'" 
       [bodyBottom]="'42px'" 
       [bodyTop]="'26px'"
-      [haveFooter]=true
       [filterHeaders]="filterHeaders"
       (onCellClick)="onCellClick($event)"
       (whenHeaderReady)="whenHeaderReady($event)"
@@ -135,28 +134,28 @@
       <context-menu [mode]="'click'" [ignoreCells]="[0]" (onItemSelected)="contextMenuSelected($event)">
         <menu-item [enabled]="selectedMotorist?.location != null">
           <ng-template>
-            <span class="table-menu-icon fal fa-map-marker-alt" aria-hidden="true">
+            <span class="table-menu-icon fa fa-location-arrow" aria-hidden="true">
             </span>
             <span>Localização</span>
           </ng-template>
         </menu-item>
         <menu-item [enabled]="selectedMotorist?.location != null">
           <ng-template>
-            <span class="table-menu-icon fal fa-history" aria-hidden="true">
+            <span class="table-menu-icon fa fa-calendar" aria-hidden="true">
             </span>
             <span>Histórico</span>
           </ng-template> 
         </menu-item>
         <menu-item [enabled]="true">
           <ng-template>
-            <span class="table-menu-icon fal fa-comment-alt" aria-hidden="true">
+            <span class="table-menu-icon fa fa-comments" aria-hidden="true">
             </span>
             <span>Mensagem</span>
           </ng-template>
         </menu-item>
         <menu-item [enabled]="true">
           <ng-template>
-            <span class="table-menu-icon fal fa-video" aria-hidden="true">
+            <span class="table-menu-icon fa fa-film" aria-hidden="true">
             </span>
             <span>Vídeo</span>
           </ng-template>

@@ -1,5 +1,22 @@
 <div class="content-history">
   <div class="history-sidebar">
+
+    <div class="list-motorists">
+      <div class="list-motorists-header">
+        MOTORISTAS
+      </div>
+       <div *ngFor="let motorist of motoristsList" class="motorist">
+        <div class="cnt-img">
+          <img (click)="showMotoristModal(item)" style="width: 40px; height: 40px; border-radius: 50%;" src="{{'api/motorist/public/profileImage?id=' + item}}"
+            alt="">
+        </div> 
+        <div class="cnt-text">
+          <h4>{{motorist?.firstName}} {{motorist?.lastName}}</h4>
+          <p>{{motorist?.documentId}}</p>  
+        </div>  
+       </div>      
+    </div>
+
     <div class="history-head">
       <span class="subtitle">
         <p>{{motorist?.firstName}} {{motorist?.lastName}}</p>
