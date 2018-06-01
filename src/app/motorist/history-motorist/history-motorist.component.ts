@@ -30,6 +30,7 @@ export class HistoryMotoristComponent implements OnInit {
   private plotRoute = id => {
     this.motorist = this.getMotorist(id);
     if (this.motorist.history !== null && this.motorist.history.length > 1) {
+      this.motorist.history.map(this.addPoint);
       this.directionService
         .getCoordinates(this.getLocations())
         .subscribe(
@@ -39,12 +40,10 @@ export class HistoryMotoristComponent implements OnInit {
     }
   };
 
-  private onSuccessRoute = data => {
-    this.map.addLayer(data.routes[0].geometry, true);
-    const { latitude, longitude } = this.motorist.history[0];
+  private onSuccessRoute = data => 
+    this.map.drawPolyline(data.routes[0].geometry.coordinates.map(geo => L.latLng(geo[1], geo[0])));
 
-    this.moveMap(latitude, longitude, 14);
-  };
+  private addPoint = place => this.map.addCircle(L.latLng(place.latitude, place.longitude));
 
   private getLocations = () =>
     this.motorist.history.map(obj =>
