@@ -22,8 +22,6 @@ export class MapMotoristComponent implements OnInit {
 
   public isMap: boolean;
 
-  
-
   @ViewChild('mapSelector') mapSelector: ElementRef;
   @Input()
   get motorists(): Array<any> {
@@ -42,9 +40,6 @@ export class MapMotoristComponent implements OnInit {
   toggleMapType() {
     this.status = !this.status;
   }
-
-
-
 
   plotMotoristLocations(): void {
     this.map.clearAll();
@@ -126,9 +121,6 @@ export class MapMotoristComponent implements OnInit {
     this.injectMap();
   }
 
-  
- 
-
   mapTableCellClick(event: TableClickEvent) {
     this.selectedMotorist = event.data;
 
@@ -142,7 +134,6 @@ export class MapMotoristComponent implements OnInit {
   centerOnMotorist(motorist) {
     if (motorist.location) {
       this.map.setZoom(12);
-      this.map.resize();
       this.map.setCenter(
         motorist.location.latitude,
         motorist.location.longitude

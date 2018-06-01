@@ -100,7 +100,7 @@ export class MapDeviceComponent implements OnInit {
       features.push(feature);
     });
     if (features.length > 0) {
-      this.map.drawPolyline(features);
+      // this.map.drawPolyline(features);
       this.map.addMarker(this.createMotoristMarker(this.selectedMotorist));
     }
   }
@@ -170,7 +170,7 @@ export class MapDeviceComponent implements OnInit {
   centerOnMotorist(motorist) {
     if (motorist.location) {
       this.map.setZoom(12);
-      this.map.resize();
+      // this.map.resize();
       this.map.setCenter(
         motorist.location.latitude,
         motorist.location.longitude
