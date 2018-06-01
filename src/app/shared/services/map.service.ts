@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 
 import { Feature, GeometryObject } from 'geojson';
-import LatLngBounds = L.LatLngBounds;
-import LatLng = L.LatLng;
-import Marker = L.Marker;
-import Polyline = L.Polyline;
 
 import { Map } from '../models/Map';
 import { environment } from '../../../environments/environment';
@@ -12,24 +8,86 @@ import { MapStyle } from '../models/MapStyle';
 
 @Injectable()
 export class MapService extends Map {
-  private markers: Array<Marker> = [];
-  private markersGl: Array<mapboxgl.Marker> = [];
 
-  private polyLines: Array<Polyline> = [];
-  private clusters: Array<any> = [];
-  private layers = new Array<any>()
-  private map: any;
+  private map: L.Map;
+  private featureGroup: L.LayerGroup<any>;
+
+  private markers = new Array<L.Marker>();
+  private circles = new Array<any>();
+  private clusters = new Array<L.LayerGroup<any>>();
+  private polyLines = new Array<any>();
+
+  public createMapBoxMapInstance(showControls = false) {
+    L.mapbox.accessToken = environment.mapbox.accessToken; 
+
+    this.map = L.mapbox
+      .map('map', 'mapbox.streets', this.mapboxOptions())
+      .setView([-14.9034, -43.1917], 5);
+    
+    if (showControls) {
+      this.addControls();
+      this.setStyle(MapStyle.Street);
+      this.addListeners();
+    } else {
+      this.setStyle(MapStyle.Outdoor);
+    }
+  }
+
+  public moveTo(latitude: number, longitude: number, options?: any): void {
+    this.map['flyTo']({ lat: latitude, lng: longitude }, options);
+  }
+
+  public setZoom(level: number): void {
+    this.map.setZoom(level);
+  }
+
+  public setCenter(latitude: number, longitude: number): void {
+    this.map.panTo(new L.LatLng(latitude, longitude));
+  }
+
+  public setStyle(style: MapStyle): void {
+    L.mapbox['styleLayer'](`mapbox://styles/mapbox/${style}`).addTo(this.map);
+  }
+  
+  public addGeoJSON(geojson) { 
+    L.mapbox.featureLayer().setGeoJSON(geojson).addTo(this.map);
+  }
+
+  public createMarker(feature: Feature<any>): L.Marker {
+    const icon = L.divIcon({
+      html: feature.properties['icon'].outerHTML,
+      className: null,
+      iconAnchor: [25, 50]
+    });
+
+    const marker = L.marker(
+      new L.LatLng(
+          feature.geometry['coordinates'][1],
+          feature.geometry['coordinates'][0]
+      ), { icon });
+
+    return marker;
+  }
+
+  public addMarker(feature: Feature<any>): L.Marker {
+    const marker = this.createMarker(feature);
+    marker.addTo(this.map);
+    this.markers.push(marker);
+
+    return marker;
+  }
 
   public clearAll(): void {
     this.clearMarkers();
-    this.removeLayers();
-    this.removeClusters();
-    this.removePolyLines();
+    this.circles.map(e => e.remove());
+    this.polyLines.map(e => e.remove());
   }
 
   public clearMarkers(): void {
-    this.markersGl.map(marker => marker.remove());
-    // this.markers.forEach(marker => marker.remove());
+    this.clusters.map(cluster => {
+      cluster.clearLayers();
+      this.map.removeLayer(cluster);
+    });
   }
 
   public addCluster(markers: Array<Feature<GeometryObject>>): void {
@@ -40,226 +98,54 @@ export class MapService extends Map {
     this.clusters.push(cluster);
   }
 
-  public removeClusters() {
-    this.clusters.forEach(cluster => {
-      cluster.clearLayers();
-      this.map.removeLayer(cluster);
-    });
+  public addCircle(latLng: L.LatLng): void {
+    const circle = L.circleMarker(latLng, {
+      color: '#ff0000',
+      weight: 5
+    }).addTo(this.map);
+
+    this.circles.push(circle);
   }
 
-  public removeCluster() {
-    //todo
+  public drawPolyline(latLngs: Array<L.LatLng>) {
+    if (latLngs !== null && latLngs.length > 0) {
+      const polyline = L.polyline(latLngs, {
+        color: '#ff0000',
+        weight: 6,
+        opacity: 0.6
+      }).addTo(this.map);
+      this.polyLines.push(polyline);
+      this.map.fitBounds(polyline.getBounds());
+    }
   }
 
-  public createMapBoxMapInstance(showControls?: boolean) {
-    this.map = L.map('map', {
+  private mapboxOptions = () => 
+    Object.assign({
       maxZoom: 20,
       zoomControl: false,
       worldCopyJump: true
-    }).setView([-14.9034, -43.1917], 5);
-
-    if (showControls) {
-      this.addDraw(MapStyle.Street);
-    } else {
-      this.setStyle(MapStyle.Outdoor);
-    }
-  }
-
-  public addSource(): void {}
-
-  public setBounds(markers: Array<Feature<any>>): void {
-    let lat: number = markers[0].geometry.coordinates[1];
-    let lng: number = markers[0].geometry.coordinates[0];
-
-    var bounds = new LatLngBounds(new LatLng(lat, lng), new LatLng(lat, lng));
-
-    setTimeout(() => {
-      markers.forEach(function(feature) {
-        bounds.extend(
-          new LatLng(
-            feature.geometry.coordinates[1],
-            feature.geometry.coordinates[0]
-          )
-        );
-      });
-      this.map.fitBounds(bounds);
-    }, 1);
-  }
-
-  public moveTo(latitude: number, longitude: number, options?: any): void {
-    this.map.flyTo({ lat: latitude, lng: longitude }, options);
-  }
-
-  setZoom(level: number): void {
-    this.map.setZoom(level);
-  }
-
-  setCenter(latitude: number, longitude: number): void {
-    this.map.panTo(new LatLng(latitude, longitude));
-  }
-
-  drawPolyline(points: Array<Feature<any>>): void {
-    var latLngs: Array<LatLng> = [];
-    points.forEach(point => {
-      let latLng: LatLng = L.latLng(
-        point.geometry.coordinates[1],
-        point.geometry.coordinates[0]
-      );
-      latLngs.push(latLng);
-      point;
-    });
-    if (points != null && points.length > 0) {
-      // const polyline = L.polyline(latLngs, {
-      //   color: '#ff0000',
-      //   weight: 6,
-      //   opacity: 0.7
-      // }).addTo(this.map);
-
-      // this.polyLines.push(polyline);
-
-      this.setBounds(points);
-    }
-  }
-
-  removePolyLines(): void {
-    this.polyLines.map(this.map.removeLayer);
-  }
-
-  private removeLayers = () => {
-    try {
-      this.layers.map(this.map.removeLayer);
-    } catch { }
-  }
-
-  resize() {
-    // setTimeout(() => {
-    //   this.map.invalidateSize();
-    // }, 1);
-  }
-
-  addGeoMarker(geometry: any): void {
-    const el = document.createElement('div');
-    el.className = 'motorist-marker';
-
-    const marker = new mapboxgl.Marker(el)
-      .setLngLat(geometry.coordinates)
-      .addTo(this.map);
-
-    this.markersGl.push(marker);
-  }
-
-  createMarker(feature: Feature<any>): Marker {
-    // const myIcon = L.divIcon({
-    //   html: feature.properties['icon'].outerHTML,
-    //   className: null,
-    //   iconAnchor: [25, 50]
-    // });
-    const marker = L.marker(
-      new LatLng(
-        feature.geometry['coordinates'][1],
-        feature.geometry['coordinates'][0]
-      )
-    );
-    this.markers.push(marker);
-    return marker;
-  }
-
-  public addMarker(feature: Feature<any>): any {
-    const marker: Marker = this.createMarker(feature);
-    marker.addTo(this.map);
-    this.markers.push(marker);
-
-    return marker;
-    //this.markers.push(this.createMarker(feature).addTo(this.map));
-  }
-
-  public setStyle(style: MapStyle): void {
-    L['mapboxGL']({
-      accessToken: environment.mapbox.accessToken,
-      style: `mapbox://styles/mapbox/${style}`
-    }).addTo(this.map);
-  }
-
-  private addDraw(style: MapStyle): void {
-    mapboxgl.accessToken = environment.mapbox.accessToken;
-    this.map = new mapboxgl.Map({
-      container: 'map',
-      style: `mapbox://styles/mapbox/${style}`
     });
 
-    const draw = new window['MapboxDraw']({
-      displayControlsDefault: false,
-      controls: {
-        polygon: true,
-        trash: true
-      }
-    });
+  private addListeners = () => 
+    this.map.on('draw:created', (e: any) => {
+      this.featureGroup.addLayer(e.layer)
+      const geojson = e.layer.toGeoJSON();
+      console.log(geojson);
+    }); 
 
-    this.map.addControl(draw);
-      
-    const updateArea = () => {
-      const data = draw.getAll();
+  private addControls(): void {
+    this.featureGroup = new L.FeatureGroup<any>().addTo(this.map);
 
-      if (data.features.length > 0) {
-        const src = {
-          id: `${new Date().getTime()}`,
-          type: 'fill',
-          source: {
-            type: 'geojson',
-            data: data.features[0]
-          },
-          layout: {},
-          paint: {
-            'fill-color': '#c23329',
-            'fill-opacity': 0.8
-          }
-        };
-
-        this.map.addLayer(src);
-        const polygonBox = document.getElementById('calculated-area');
-
-        if (polygonBox !== null) {
-          document.getElementById('calculation-box').style.opacity = '1';
-          const area = window['turf'].area(data);
-          const rounded_area = Math.round(area * 100) / 100;
-          polygonBox.innerHTML = '<p><strong>' + rounded_area + '</strong></p><p>Metros quadrados</p>';
+    new L.Control['Draw']({
+      position: 'topright',
+      edit: { 
+        featureGroup: this.featureGroup
+      },
+      draw: {
+        marker: {
+          icon: L.mapbox.marker.icon({})
         }
       }
-    };
-
-    this.map.on('draw.create', updateArea);
-    this.map.on('draw.delete', updateArea);
-    this.map.on('draw.update', updateArea);
-  }
-  
-  public addCircle(lat, lng) {
-    L.circle([lng, lat], 200).addTo(this.map);
-  }
-
-  public addLayer(feature: any, isLeaflet = false): void {
-    if(isLeaflet) {
-      L.geoJson(feature)
-       .addTo(this.map);
-    } else {
-      this.layers.push(feature);
-      this.map.addLayer(feature);
-    }
-  }
-
-  addMarkerPopUp(marker: Marker, text: string) {
-    marker.bindPopup(text);
-  }
-
-  setBoundsByMarkers() {
-    if (this.markers != null && this.markers.length > 0) {
-      let latLng: LatLng = this.markers[0].getLatLng();
-      var bounds = new LatLngBounds(latLng, latLng);
-      this.markers.forEach(marker => {
-        bounds.extend(marker.getLatLng());
-      });
-      setTimeout(() => {
-        this.map.fitBounds(bounds);
-      }, 1);
-    }
+    }).addTo(this.map);
   }
 }
