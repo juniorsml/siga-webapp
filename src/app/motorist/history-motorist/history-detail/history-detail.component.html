@@ -1,11 +1,17 @@
 <div class="history-head">
+  <div class="back">
+     <i class="fal fa-long-arrow-left" (click)="onBack()";"></i>
+  </div>
   <span class="subtitle">
-    <p>{{motorist?.firstName}} {{motorist?.lastName}}</p>
-    {{motorist?.email}}
+    <p>{{selectedMotorist?.firstName}} {{selectedMotorist?.lastName}}</p>
+    {{selectedMotorist?.email}}
   </span>
+  <div class="back-grid">
+    <a href="" class="fal fa-window-close"  (click)="onBackGrid()"></a>
+  </div>
 </div>
 <div class="history-content">
-  <div *ngFor="let history of motorist?.history" class="columns">
+  <div *ngFor="let history of selectedMotorist?.history" class="columns">
     <div class="column is-narrow">
       <span class="marker-icon">
         <i class="fal fa-map-marker"></i>

@@ -122,14 +122,7 @@ export const motorists = [
         latitude: -23.580567,
         longitude: -46.663747,
         date: new Date('2018-10-29')
-      },
-      {
-        name: 'Ludus',
-        speed: 32,
-        latitude: -23.561806,
-        longitude: -46.646318,
-        date: new Date('2018-10-29')
-      } 
+      }
     ],
     subscribers: [
       { id: '5900d959f5e17b63799d4990', joined: 1506364923158, admin: true }

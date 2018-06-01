@@ -6,7 +6,7 @@
         MOTORISTAS
       </div>
       <div slimScroll  [options]="opts" [scrollEvents]="scrollEvents" class="cnt-list-motorists">
-         <div (click)="openDetailHistory($event)" *ngFor="let motorist of motoristsList | pager: {page:currentPage, quantity: pageQuantity}; let rowIndex = index;" class="motorist">
+         <div (click)="openDetailHistory(motorist)" *ngFor="let motorist of motoristsList | pager: {page:currentPage, quantity: pageQuantity}; let rowIndex = index;" class="motorist">
           <div class="cnt-img">
             <img (click)="showMotoristModal(item)" style="width: 40px; height: 40px; border-radius: 50%;" src="{{'api/motorist/public/profileImage?id=' + item}}"
               alt="">
@@ -24,7 +24,8 @@
 
     <sga-history-detail 
       *ngIf="showHistoryDetail"
-      (onBackButton)="closeRegister($event)">    
+      [selectedMotorist]="selectedMotorist"
+      (onBackButton)="closeDetail($event)">    
     </sga-history-detail >   
    
   </div>

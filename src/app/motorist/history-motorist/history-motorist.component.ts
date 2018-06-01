@@ -1,5 +1,5 @@
 import { Component, OnInit,EventEmitter } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 
 import { Map } from '../../shared/models/Map';
 import { motorists } from '../../shared/mocks/motorist';
@@ -15,24 +15,29 @@ import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
 export class HistoryMotoristComponent implements OnInit {
  
   public motoristsList: Array<any> = motorists;
-  selectedMotorist:any;
+  public motorist:any;
   currentPage: number = 1;
   public pageQuantity: number = 6;
 
+  selectedMotorist:any;
   
   public showHistoryDetail = false;
-  @Output() openDetailHistory(event);
 
-
-  public openDetailHistory(event) {
+  public openDetailHistory(event) {  
      this.showHistoryDetail = true;
-     this.selectedMotorist = event.data;
+     this.selectedMotorist = event;
+     this._router.navigateByUrl(`motorist/history/${this.selectedMotorist.id}`);
    }
+
+  public closeDetail() {
+    this.showHistoryDetail = false;
+  }
  
 
   constructor(
     private map: Map,
     private router: ActivatedRoute,
+    private _router: Router,
     private directionService: DirectionService
   ) {}
   opts: ISlimScrollOptions;
@@ -54,6 +59,11 @@ export class HistoryMotoristComponent implements OnInit {
       barMargin: '2px 2px'
     };
 
+    if(this.selectedMotorist == null){  
+
+        this.showHistoryDetail = false; 
+    }  
+
 
   }
 
@@ -63,17 +73,34 @@ export class HistoryMotoristComponent implements OnInit {
 
   private getMotorist = id => motorists.filter(m => m.id === id)[0];
 
+
   private plotRoute = id => {
-    this.motorist = this.getMotorist(id);
-    if (this.motorist.history !== null && this.motorist.history.length > 1) {
-      this.directionService
-        .getCoordinates(this.getLocations())
-        .subscribe(
-          success => this.onSuccessRoute(success),
-          error => console.log(error)
-        );
-    }
-  };
+      this.map.clearAll();
+      if(this.selectedMotorist != null){      
+       
+        if (this.selectedMotorist.history !== null && this.selectedMotorist.history.length > 1) {
+          this.directionService
+            .getCoordinates(this.getLocations())
+            .subscribe(
+              success => this.onSuccessRoute(success),
+              error => console.log(error)
+            );
+        }
+      }
+      else{
+          this.motorist = this.getMotorist(id);
+          if (this.motorist.history !== null && this.motorist.history.length > 1) {
+            this.directionService
+              .getCoordinates(this.getLocations())
+              .subscribe(
+                success => this.onSuccessRoute(success),
+                error => console.log(error)
+              );
+          }
+
+      }
+     
+    };
 
   private onSuccessRoute = data => {
     this.map.addLayer(data.routes[0].geometry, true);
@@ -91,6 +118,7 @@ export class HistoryMotoristComponent implements OnInit {
     );
 
   private setupMap(): void {
+    
     this.map.createMapBoxMapInstance(false);
     this.moveMap(
       environment.mapbox.location.latitude,
