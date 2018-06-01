@@ -1,10 +1,11 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Map } from '../../shared/models/Map';
 import { motorists } from '../../shared/mocks/motorist';
 import { environment } from '../../../environments/environment';
 import { DirectionService } from '../../shared/services/direction.service';
+import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
 
 @Component({
   selector: 'sga-history-motorist',
@@ -15,16 +16,38 @@ export class HistoryMotoristComponent implements OnInit {
   public motorist: any;
   public motoristsList = new Array();
   motoristsList = motorists;
+  currentPage: number = 1;
+  public pageQuantity: number = 6;
 
   constructor(
     private map: Map,
     private router: ActivatedRoute,
     private directionService: DirectionService
   ) {}
-
+  opts: ISlimScrollOptions;
+  scrollEvents: EventEmitter<SlimScrollEvent>;
   ngOnInit() {
     this.setupMap();
     this.router.params.subscribe(data => this.plotRoute(data.id));
+
+    this.scrollEvents = new EventEmitter<SlimScrollEvent>();
+    this.opts = {
+      alwaysVisible: false,
+      gridOpacity: '0.2',
+      barOpacity: '0.5',
+      gridBackground: '#ccc',
+      gridWidth: '5',
+      gridMargin: '2px 2px',
+      barBackground: 'rgba(55, 56, 58, 0.6)',
+      barWidth: '4',
+      barMargin: '2px 2px'
+    };
+
+
+  }
+
+   getMoreMotorists(){    
+     this.pageQuantity = this.pageQuantity + 6;
   }
 
   private getMotorist = id => motorists.filter(m => m.id === id)[0];
