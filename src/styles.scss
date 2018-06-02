@@ -31,6 +31,19 @@ $bg-titles: #4d5675;
       background-color: #f62e2e;          
     }
 }
+.button.is-dark-blue{
+    background-color: #4f5564;    
+    border-color: transparent;
+    color: #ffffff;
+    transition:all 150ms ease;
+
+    &:hover{
+      background-color: #636a7d;          
+    }
+}
+
+
+
 
 
 /* AUTO COMPLETE*/

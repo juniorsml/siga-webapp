@@ -9,10 +9,78 @@
   }
   .history-sidebar {
     position: absolute;
-    padding: 13px 11px 0;
     background:white;
     width: 389px;
-    padding-top: 30px;
+    .slimscroll-grid,.slimscroll-bar{
+      transition:all 150ms ease;
+    }
+  .slimscroll-wrapper{
+    div.slimscroll-grid{
+      width: 5px !important;
+    }
+    div.slimscroll-bar {
+      right: 2px !important;
+      width: 5px !important;
+    }
+    &:hover div.slimscroll-grid{
+    background: #ccc !important;
+   
+
+    }
+    &:hover div.slimscroll-bar {
+      background: rgba(55, 56, 58, 0.35) !important;
+      
+    }
+  }
+  .cnt-list-motorists{
+    height:85vh;
+  }
+    .list-motorists{
+      .list-motorists-header{
+        background: #4f5564;
+        font: 300 18.5px 'Sunflower', sans-serif;
+        color:white;
+        text-transform: uppercase;     
+        padding: 13px;
+        margin-bottom: 10px;
+
+      }
+      .motorist{
+        display:flex;
+        align-items:center;
+        cursor: pointer;
+        padding: 4px 8px;
+        transition:all 180ms ease;
+
+        &:hover{
+          background: #f3f3f5
+          ;
+        }
+        .cnt-img{
+          width: 45px;
+          height: 45px;
+          margin-right: 5px;
+        }
+        .cnt-text{
+          h4{
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #4f5564;
+          }
+          p{
+            font-size: 12px;
+            color: #616776;
+          }
+        }
+      }
+
+    }
+  .footer-list-motorist{
+    display: flex;
+    justify-content:center;
+  }
+
     .history-head {
       height: 5em;
       padding: .5em;
