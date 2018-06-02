@@ -214,7 +214,7 @@
         <accordion-header>
           <ng-template>
             <div class="sidebar-menu-accordion">
-              <span [class.selected]="router.url == '/'" class="sidebar-list-icon fal fa-user"></span>
+              <span [class.selected]="router.url == '/motorist'" class="sidebar-list-icon fal fa-user"></span>
               <span class="sidebar-list-text">Motoristas</span>
             </div>
           </ng-template>
@@ -279,7 +279,7 @@
         <accordion-header>
           <ng-template>
             <div class="sidebar-menu-accordion">
-              <span [class.selected]="router.url == '/'" class="sidebar-list-icon fal fa-broadcast-tower"></span>
+              <span [class.selected]="router.url == '/device''" class="sidebar-list-icon fal fa-broadcast-tower"></span>
               <span class="sidebar-list-text">Dispositivos</span>
             </div>
           </ng-template>
@@ -310,7 +310,6 @@
 
     <li class="sidebar-menu-item" [class.selected]="router.url == '/geographic/places'">
       <a  routerLink="/geographic/places" >
-
         <span class="sidebar-list-icon fal fa-map-marker-alt"></span>
         <span class="sidebar-list-text">Lugares</span>
       </a>
