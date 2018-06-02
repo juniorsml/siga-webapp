@@ -1,7 +1,4 @@
-import { 
-  Component, 
-  Input 
-} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { TabsComponent } from '../tabs.component';
 
@@ -10,18 +7,16 @@ import { TabsComponent } from '../tabs.component';
   templateUrl: './tab.component.html'
 })
 export class TabComponent {
-  @Input('iconClass')
-  iconClass: string;
-  @Input('styleClass')
-  styleClass: string;
   @Input() heading: string;
+  @Input() iconClass: string;
+  @Input() styleClass: string;
   index: number;
   active = this.active || false;
 
   constructor(public tabsComponent: TabsComponent) {
-      tabsComponent.addTab(this);
-      if (this.styleClass == null) {
-          this.styleClass = "tab";
-      }
+    tabsComponent.addTab(this);
+    if (this.styleClass == null) {
+      this.styleClass = 'tab';
+    }
   }
 }

@@ -109,7 +109,7 @@ private _vehicles: Array<any>;
       features.push(feature);
     });
     if (features.length > 0) {
-      this.map.drawPolyline(features);
+      // this.map.drawPolyline(features);
       this.map.addMarker(this.createVehicleMarker(this.selectedVehicle));
     }
   }
@@ -177,7 +177,7 @@ private _vehicles: Array<any>;
   centerOnVehicle(vehicle) {
     if (vehicle.location) {
       this.map.setZoom(12);
-      this.map.resize();
+      // this.map.resize();
       this.map.setCenter(
         vehicle.location.latitude,
         vehicle.location.longitude

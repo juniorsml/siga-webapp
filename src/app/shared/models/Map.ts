@@ -8,55 +8,37 @@ import { MapStyle } from './MapStyle';
 
 @Injectable()
 export abstract class Map {
-  
+  /* Start */
+  public abstract createMapBoxMapInstance(showControls?: boolean): void;
+
+  public abstract setStyle(style: MapStyle, handle?: Function): void;
+
   public abstract moveTo(
     latitude: number,
     longitude: number,
     options?: any
   ): void;
-  
-  public abstract setStyle(style: MapStyle, handle?: Function): void;
 
   public abstract setCenter(latitude: number, longitude: number): void;
-  
-  public abstract resize(): void;
 
   public abstract setZoom(level: number): void;
 
-  public abstract setBounds(bounds: any): void;
-
-  public abstract setBoundsByMarkers(): void;
-
-  public abstract createMapBoxMapInstance(showControls: boolean): void;
-
   /** Shared **/
-  public abstract addLayer(feature: any, isLeaflet?: boolean):  void;
+  public abstract addGeoJSON(geojson: any): void;
 
   public abstract clearAll(): void;
 
   /** Marker **/
+  public abstract createMarker(feature: Feature<any>): L.Marker;
 
-  public abstract addCircle(latitude:number, longitude:number);
-
-  public abstract createMarker(feature: Feature<any>): any;
-
-  public abstract addGeoMarker(geometry: any): void;
-
-  public abstract addMarker(feature: Feature<any>): any;
-
-  public abstract addMarkerPopUp(marker: any, text: string): any;
-
-  public abstract addSource(id?: any, source?: any): void;
+  public abstract addMarker(feature: Feature<any>): L.Marker;
 
   public abstract addCluster(markers: Array<any>): void;
 
-  public abstract removeCluster(): void;
-
-  public abstract removeClusters(): void;
+  public abstract addCircle(latLng: L.LatLng): void;
 
   public abstract clearMarkers(): void;
 
   /** Drawing **/
-
-  public abstract drawPolyline(features: Array<Feature<any>>): void;
+  public abstract drawPolyline(points: Array<L.LatLng>): void;
 }

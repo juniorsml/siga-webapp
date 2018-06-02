@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { environment } from '../../../environments/environment.prod';
 
 import { TabComponent } from '../../shared/components/tabs/tab/tab.component';
@@ -21,17 +21,13 @@ export class RegisterPlaceComponent implements OnInit {
   private location: any;
   text: any;
   public areas:  Array<any>;
-  
   public groups: Array<any>;
   public itineraryPlaces = new Array<any>();
-  
   public selectedArea: any;
   public selectedGroup: any;
   public selectedPlace: any;
-
   public formType: string;
   public selectedTabIndex = 0;
-  
   public showRegister = false;
   public showSelectGroup = false;
   public showRegisterGroup = false;
@@ -47,11 +43,11 @@ export class RegisterPlaceComponent implements OnInit {
 
   set places(value: Array<any>) {
     this._places = value;
-    if (this.selectedTabIndex && this.selectedTabIndex != 1) {
+    if (this.selectedTabIndex && this.selectedTabIndex !== 1) {
       this.allPlaces();
     }
   }
-  public allPlaces(){
+  public allPlaces() {
     this.map.clearAll();
     this.mapMarkers = [];
     this._places.forEach(place => {
@@ -85,31 +81,27 @@ export class RegisterPlaceComponent implements OnInit {
         marker.properties['marker'] = customMarker;
         this.mapMarkers.push(marker);
       }
-
     });
 
     this.map.addCluster(this.mapMarkers);
   }
-  
 
-  
-  constructor(private map: Map, 
+  constructor(private map: Map,
               private directionService: DirectionService) {}
-  
+
   ngOnInit() {
     this.places = places;
     this.groups = groups;
     this.areas = areas;
-   
-    
+
     const grouped = new GroupedItems();
     grouped.data = ['item A', 'item B', 'item C'];
     grouped.label = 'Title';
-  
+
     const grouped2 = new GroupedItems();
     grouped2.data = ['item A', 'item B', 'item C'];
     grouped2.label = 'Sub';
-  
+
     this.groupedItems.push(grouped);
     this.groupedItems.push(grouped2);
 
@@ -118,7 +110,7 @@ export class RegisterPlaceComponent implements OnInit {
 
   private setupMap(): void {
     this.map.createMapBoxMapInstance(true);
-    
+
     this.moveMap(
       environment.mapbox.location.latitude,
       environment.mapbox.location.longitude
@@ -138,7 +130,7 @@ export class RegisterPlaceComponent implements OnInit {
     };
   }
 
-  private addMarker = geometry => this.map.addGeoMarker(geometry);
+  private addMarker = geometry => this.map.addGeoJSON(geometry);
 
   private resetGroupMapView = () => this.onSelected(this.selectedGroup);
 
@@ -153,11 +145,7 @@ export class RegisterPlaceComponent implements OnInit {
     this.map.clearAll();
     this.moveMap(location.lat(), location.lng(), 18);
     const geometry = this.createPoint(location.lat(), location.lng());
-    this.map.addGeoMarker(geometry);
-  }
-  
-  public onCellRightClick(event) {
-    event;
+    this.map.addGeoJSON(geometry);
   }
 
   public openRegister(type) {
@@ -173,8 +161,7 @@ export class RegisterPlaceComponent implements OnInit {
   public onTabSelected = (tab: TabComponent) => this.selectedTabIndex = tab.index;
 
   public onContextMenu(event: any) {
-    switch (this.selectedTabIndex)
-    {
+    switch (this.selectedTabIndex) {
       case 0:
         this.showSelectGroup = true;
         break;
@@ -192,8 +179,7 @@ export class RegisterPlaceComponent implements OnInit {
   }
 
   public closeRegisterGroup = () => this.showRegisterGroup = false;
-  
-  
+
   public onSelected(place) {
     this.map.clearAll();
     if (Array.isArray(place.location)) {
@@ -201,7 +187,7 @@ export class RegisterPlaceComponent implements OnInit {
       this.moveMap(place.location[0].latitude, place.location[0].longitude, 3);
     } else if (place.location) {
       this.addMarker(this.createPoint(place.location.latitude, place.location.longitude));
-      this.moveMap(place.location.latitude, place.location.longitude, 14); 
+      this.moveMap(place.location.latitude, place.location.longitude, 14);
     } else {
       this.addMarker(this.createPoint(place.latitude, place.longitude));
       this.moveMap(place.latitude, place.longitude, 14);
@@ -209,10 +195,11 @@ export class RegisterPlaceComponent implements OnInit {
   }
 
   public onSelectedGroupByPlace(group) {
-    if (this.selectedTabIndex === 0)
+    if (this.selectedTabIndex === 0) {
       group.location.push(this.selectedArea.data);
-    else 
+    } else {
       group.location.push(this.selectedPlace.data);
+    }
 
     this.showSelectGroup = false;
   }
@@ -238,7 +225,7 @@ export class RegisterPlaceComponent implements OnInit {
     this.itineraryPlaces.push(location);
     this.plotRoute();
     this.moveMap(location.lat, location.lng, 15);
-  };
+  }
 
   public removeItineraryPlace(item: any): void {
     const index = this.itineraryPlaces.findIndex(a => a === item);
@@ -254,58 +241,21 @@ export class RegisterPlaceComponent implements OnInit {
         .subscribe(
           data => this.onSuccessRoute(data),
           error => console.log(error));
-    }  
+    }
   }
 
-  private addPoint = place =>
-    this.map.addLayer({
-      id: this.uuid(),
-      type: 'circle',
-      source: {
-        type: 'geojson',
-        data: {
-          type: 'Feature',
-          properties: {},
-          geometry: {
-            type: 'Point',
-            coordinates: [place.lng, place.lat]
-          }
-        }
-      },
-      paint: {
-        "circle-color": "#008cff",
-        "circle-radius": 13,
-        "circle-stroke-width": 2,
-        "circle-stroke-color": "#fff"
-      }
-    });
+  private addPoint = place => this.map.addCircle(L.latLng(place.lat, place.lng));
 
   private onSuccessRoute = data => {
-    this.map.addLayer({
-      id: this.uuid(),
-      type: 'line',
-      source: {
-        type: 'geojson',
-        data: {
-          type: 'Feature',
-          geometry: data.routes[0].geometry
-        }
-      },
-      paint: {
-        'line-width': 6,
-        'line-color': '#008cff'
-      }
-    });
+    const latLngs = data.routes[0].geometry.coordinates.map(geo => L.latLng(geo[1], geo[0]));
+    this.map.drawPolyline(latLngs);
   }
-
-  private uuid = () => Date.now().toString();
 
   public closeModalGroup = () => this.showSelectGroup = false;
 
   public create(item) {
     this.showRegister = false;
-    switch (this.selectedTabIndex)
-    {
+    switch (this.selectedTabIndex) {
       case 0:
         this.areas.push(item);
         break;
@@ -317,6 +267,6 @@ export class RegisterPlaceComponent implements OnInit {
       case 2:
         this.groups.push({...item, location: []});
         break;
-    } 
+    }
   }
 }

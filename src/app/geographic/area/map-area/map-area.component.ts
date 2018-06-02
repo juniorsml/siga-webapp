@@ -95,7 +95,7 @@ export class MapAreaComponent implements OnInit {
       features.push(feature);
     });
     if (features.length > 0) {
-      this.map.drawPolyline(features);
+      // this.map.drawPolyline(features);
       this.map.addMarker(this.createMarker(this.selectedData));
     }
   }
