@@ -1,41 +1,54 @@
 <div class="history-head">
   <div class="back">
-     <i class="fal fa-long-arrow-left" (click)="onBack()";"></i>
+     <i class="fal fa-long-arrow-left" (click)="onBack();"></i>
   </div>
-  <span class="subtitle">
-    <p>{{selectedMotorist?.firstName}} {{selectedMotorist?.lastName}}</p>
-    {{selectedMotorist?.email}}
-  </span>
+  <div class="name">
+    <h4>
+      {{selectedMotorist == null ? motorist.firstName : selectedMotorist?.firstName}}
+      {{selectedMotorist == null ? motorist.lastName : selectedMotorist?.lastName}}    
+    </h4>    
+    <p>{{selectedMotorist == null ? motorist.email : selectedMotorist?.email}}</p>
+  </div>
   <div class="back-grid">
-    <a href="" class="fal fa-window-close"  (click)="onBackGrid()"></a>
+    <a  routerLink="/motorist/grid" class="fal fa-window-close"  (click)="onBackGrid()"></a>
   </div>
 </div>
 <div class="history-content">
-  <div *ngFor="let history of selectedMotorist?.history" class="columns">
-    <div class="column is-narrow">
+  <div *ngFor="let history of selectedMotorist?.history" class="columns cnt-history is-marginless">
+    <div class="column is-narrow is-paddingless">
       <span class="marker-icon">
         <i class="fal fa-map-marker"></i>
       </span>
     </div>
     <div class="column is-narrow">
-      <span class="subtitle">
+      <span class="info-history">
         <p>lat/lon</p>
         {{history.latitude}}, {{history.longitude}} 
       </span>
     </div>
     <div class="column"> 
-      <span class="subtitle">
+      <span class="info-history">
         <p>Velocidade</p>
         {{history.speed}} km/h 
       </span>
     </div>
-    <div class="column"> 
-      <span class="subtitle">
+    <div class="column is-pulled-right"> 
+      <span class="info-history date-history">
         {{history.date | date: 'dd/MM/yyyy'}}
       </span>
     </div>
   </div>
 </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><!-- Document --></title>
+</head>
+<body>
+  
+</body>
+</html>
 
    
  

@@ -44,6 +44,8 @@ export class HistoryMotoristComponent implements OnInit {
   scrollEvents: EventEmitter<SlimScrollEvent>;
   ngOnInit() {
     this.setupMap();
+
+
     this.router.params.subscribe(data => this.plotRoute(data.id));
 
     this.scrollEvents = new EventEmitter<SlimScrollEvent>();
@@ -58,10 +60,10 @@ export class HistoryMotoristComponent implements OnInit {
       barWidth: '4',
       barMargin: '2px 2px'
     };
-
+    
     if(this.selectedMotorist == null){  
 
-        this.showHistoryDetail = false; 
+        this.showHistoryDetail = true; 
     }  
 
 
@@ -76,20 +78,8 @@ export class HistoryMotoristComponent implements OnInit {
 
   private plotRoute = id => {
       this.map.clearAll();
-      if(this.selectedMotorist != null){      
-       
-        if (this.selectedMotorist.history !== null && this.selectedMotorist.history.length > 1) {
-          this.directionService
-            .getCoordinates(this.getLocations())
-            .subscribe(
-              success => this.onSuccessRoute(success),
-              error => console.log(error)
-            );
-        }
-      }
-      else{
-          this.motorist = this.getMotorist(id);
-          if (this.motorist.history !== null && this.motorist.history.length > 1) {
+      this.selectedMotorist = this.getMotorist(id);
+          if (this.selectedMotorist.history !== null && this.selectedMotorist.history.length > 1) {
             this.directionService
               .getCoordinates(this.getLocations())
               .subscribe(
@@ -97,8 +87,6 @@ export class HistoryMotoristComponent implements OnInit {
                 error => console.log(error)
               );
           }
-
-      }
      
     };
 
