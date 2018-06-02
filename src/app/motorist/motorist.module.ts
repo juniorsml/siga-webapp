@@ -18,6 +18,8 @@ import { MotoristAssociateDialogComponent } from './associate-dialog/motorist-as
 import { RegisterMotoristComponent } from './register-motorist/register-motorist.component';
 import { NgSlimScrollModule } from 'ngx-slimscroll';
 import { HistoryMotoristComponent } from './history-motorist/history-motorist.component';
+import { HistoryDetailComponent } from './history-motorist/history-detail/history-detail.component';
+
 
 
 @NgModule({
@@ -35,7 +37,8 @@ import { HistoryMotoristComponent } from './history-motorist/history-motorist.co
     ProfileDialogComponent,
     MotoristAssociateDialogComponent,
     RegisterMotoristComponent,
-    HistoryMotoristComponent
+    HistoryMotoristComponent,
+    HistoryDetailComponent
   ],
   exports: [
     MotoristAssociateDialogComponent,

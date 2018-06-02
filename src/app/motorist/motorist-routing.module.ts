@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'map', component: MapMotoristComponent, data: { motorists: motorists } },
   { path: 'grid', component: GridMotoristComponent, data: { motorists } },
   { path: 'account', component: MotoristAssociateDialogComponent, data: { motorists } },
+  { path: 'history', component: HistoryMotoristComponent },
   { path: 'history/:id', component: HistoryMotoristComponent }
 ];
 
