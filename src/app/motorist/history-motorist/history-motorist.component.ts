@@ -13,11 +13,10 @@ import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
   styleUrls: ['./history-motorist.component.scss']
 })
 export class HistoryMotoristComponent implements OnInit {
-
   public motoristsList: Array<any> = motorists;
 
-  public currentPage: number = 1;
-  public pageQuantity: number = 6;
+  public currentPage = 1;
+  public pageQuantity = 6;
 
   public selectedMotorist: any;
 
@@ -48,8 +47,9 @@ export class HistoryMotoristComponent implements OnInit {
       barMargin: '2px 2px'
     };
 
-    if (this.selectedMotorist !== undefined)
+    if (this.selectedMotorist !== undefined) {
       this.showHistoryDetail = true;
+    }
   }
 
   public openDetailHistory(event) {
@@ -58,7 +58,7 @@ export class HistoryMotoristComponent implements OnInit {
     this._router.navigateByUrl(`motorist/history/${this.selectedMotorist.id}`);
   }
 
-  public closeDetail = () => this.showHistoryDetail = false;
+  public closeDetail = () => (this.showHistoryDetail = false);
 
   public getMoreMotorists = () => (this.pageQuantity = this.pageQuantity + 6);
 
@@ -67,7 +67,9 @@ export class HistoryMotoristComponent implements OnInit {
   private plotRoute = id => {
     this.map.clearAll();
     this.selectedMotorist = this.getMotorist(id);
-    if (this.selectedMotorist === undefined) return;
+    if (this.selectedMotorist === undefined) {
+      return;
+    }
 
     if (
       this.selectedMotorist.history !== null &&
@@ -81,15 +83,15 @@ export class HistoryMotoristComponent implements OnInit {
           error => console.log(error)
         );
     }
-  };
+  }
 
   private onSuccessRoute = data =>
     this.map.drawPolyline(
       data.routes[0].geometry.coordinates.map(geo => L.latLng(geo[1], geo[0]))
-    );
+    )
 
   private addPoint = place =>
-    this.map.addCircle(L.latLng(place.latitude, place.longitude));
+    this.map.addCircle(L.latLng(place.latitude, place.longitude))
 
   private getLocations = () =>
     this.selectedMotorist.history.map(obj =>
@@ -97,7 +99,7 @@ export class HistoryMotoristComponent implements OnInit {
         lat: obj.latitude,
         lng: obj.longitude
       })
-    );
+    )
 
   private setupMap(): void {
     this.map.createMapBoxMapInstance(false);

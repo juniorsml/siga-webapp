@@ -14,4 +14,4 @@ export const places = [
     latitude: -23.5746673,
     longitude: -46.647702
   }
-]
+];
