@@ -115,7 +115,8 @@ export class MapService extends Map {
         opacity: 0.6
       }).addTo(this.map);
       this.polyLines.push(polyline);
-      this.map.fitBounds(polyline.getBounds());
+
+      setTimeout(() => this.map.fitBounds(polyline.getBounds()), 400);
     }
   }
 
