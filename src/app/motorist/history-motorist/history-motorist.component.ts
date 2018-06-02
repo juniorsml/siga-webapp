@@ -40,8 +40,6 @@ export class HistoryMotoristComponent implements OnInit {
     private _router: Router,
     private directionService: DirectionService
   ) {}
-
-  
   opts: ISlimScrollOptions;
   scrollEvents: EventEmitter<SlimScrollEvent>;
   ngOnInit() {

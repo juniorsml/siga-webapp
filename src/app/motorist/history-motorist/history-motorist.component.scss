@@ -17,9 +17,14 @@
   .slimscroll-wrapper{
     &:hover div.slimscroll-grid{
     background: #ccc !important;
+    width: 5px;
+
     }
-     &:hover div.slimscroll-bar {
+    &:hover div.slimscroll-bar {
       background:rgba(55, 56, 58, 0.6) !important;
+      background: rgba(55, 56, 58, 0.35) !important;
+      right: 2px;
+      width: 5px;
     }
   }
   .cnt-list-motorists{

@@ -4,10 +4,10 @@
   </div>
   <div class="name">
     <h4>
-      {{selectedMotorist == null ? motorist.firstName : selectedMotorist?.firstName}}
-      {{selectedMotorist == null ? motorist.lastName : selectedMotorist?.lastName}}    
+      {{selectedMotorist?.firstName}}
+      {{selectedMotorist?.lastName}}    
     </h4>    
-    <p>{{selectedMotorist == null ? motorist.email : selectedMotorist?.email}}</p>
+    <p>{{selectedMotorist?.email}}</p>
   </div>
   <div class="back-grid">
     <a  routerLink="/motorist/grid" class="fal fa-window-close"  (click)="onBackGrid()"></a>
