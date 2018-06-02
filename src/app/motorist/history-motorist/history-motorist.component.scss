@@ -15,20 +15,25 @@
       transition:all 150ms ease;
     }
   .slimscroll-wrapper{
+    div.slimscroll-grid{
+      width: 5px !important;
+    }
+    div.slimscroll-bar {
+      right: 2px !important;
+      width: 5px !important;
+    }
     &:hover div.slimscroll-grid{
     background: #ccc !important;
-    width: 5px;
+   
 
     }
     &:hover div.slimscroll-bar {
-      background:rgba(55, 56, 58, 0.6) !important;
       background: rgba(55, 56, 58, 0.35) !important;
-      right: 2px;
-      width: 5px;
+      
     }
   }
   .cnt-list-motorists{
-    height:80vh;
+    height:85vh;
   }
     .list-motorists{
       .list-motorists-header{
