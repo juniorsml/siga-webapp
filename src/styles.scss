@@ -390,10 +390,13 @@ $bg-titles: #4d5675;
 .modal-box{
     position: fixed;
     z-index:99999;
-    background-color: rgba(0,0,0,.3);
+    background-color: rgba(0,0,0,.6);
     left: 0;
     top: 0;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 0;
     height: 0;
     opacity: 0;
