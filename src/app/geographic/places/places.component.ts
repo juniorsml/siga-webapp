@@ -11,6 +11,7 @@ import { places } from '../../shared/mocks/place';
 import { areas } from '../../shared/mocks/area';
 import { GroupedItems } from '../../shared/components/select-grouped/Grouped';
 import { DirectionService } from '../../shared/services/direction.service';
+import { MapStyle } from '../../shared/models/MapStyle';
 
 @Component({
   selector: 'sga-places',
@@ -108,8 +109,8 @@ export class RegisterPlaceComponent implements OnInit {
     this.setupMap();
   }
 
-  private setupMap(): void {
-    this.map.createMapBoxMapInstance(true);
+  private setupMap(draw = false): void {
+    this.map.createMapBoxMapInstance(draw);
 
     this.moveMap(
       environment.mapbox.location.latitude,
@@ -158,22 +159,40 @@ export class RegisterPlaceComponent implements OnInit {
     this.selectedTabIndex = tabIndex;
   }
 
-  public onTabSelected = (tab: TabComponent) => this.selectedTabIndex = tab.index;
+  public onTabSelected = (tab: TabComponent) => {
+    this.selectedTabIndex = tab.index;
+    this.filterByTab(
+      () => this.changeMap(false, MapStyle.Outdoor),
+      () => this.changeMap(true, MapStyle.Street),
+      () => this.changeMap(false, MapStyle.Outdoor));
+  }
 
   public onContextMenu(event: any) {
-    switch (this.selectedTabIndex) {
-      case 0:
-        this.showSelectGroup = true;
-        break;
-
-      case 1:
-        this.showSelectGroup = true;
-        break;
-
-      case 2:
+    this.filterByTab(
+      () => this.showSelectGroup = true,
+      () => this.showSelectGroup = true,
+      () => {
         this.showRegisterGroup = true;
         this.selectedGroup = event.item.data;
         this.resetGroupMapView();
+      });
+  }
+
+  private changeMap = (showControls: boolean, mapStyle: MapStyle) => {
+    this.map.addControl(showControls);
+    this.map.setStyle(mapStyle);
+  }
+
+  private filterByTab = (whenPlaces, whenItinerary, whenGroup) => {
+    switch (this.selectedTabIndex) {
+      case 0:
+        whenPlaces();
+        break;
+      case 1:
+        whenItinerary();
+        break;
+      case 2:
+        whenGroup();
         break;
     }
   }
