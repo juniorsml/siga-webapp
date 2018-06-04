@@ -227,9 +227,10 @@ export class RegisterPlaceComponent implements OnInit {
     this.moveMap(location.lat, location.lng, 15);
   }
 
-  public removeItineraryPlace(item: any): void {
+  public removeItineraryPlace = item => {
     const index = this.itineraryPlaces.findIndex(a => a === item);
     this.itineraryPlaces.splice(index, 1);
+    this.plotRoute();
   }
 
   private plotRoute = () => {
@@ -249,6 +250,11 @@ export class RegisterPlaceComponent implements OnInit {
   private onSuccessRoute = data => {
     const latLngs = data.routes[0].geometry.coordinates.map(geo => L.latLng(geo[1], geo[0]));
     this.map.drawPolyline(latLngs);
+  }
+
+  public revertPlaces = () => {
+    this.itineraryPlaces = this.itineraryPlaces.reverse();
+    this.plotRoute();
   }
 
   public closeModalGroup = () => this.showSelectGroup = false;
