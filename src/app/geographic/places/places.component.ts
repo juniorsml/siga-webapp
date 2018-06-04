@@ -193,6 +193,7 @@ export class RegisterPlaceComponent implements OnInit {
   }
 
   private changeMap = (showControls: boolean, mapStyle: MapStyle) => {
+    this.map.clearAll();
     this.map.addControl(showControls);
     this.map.setStyle(mapStyle);
   }
