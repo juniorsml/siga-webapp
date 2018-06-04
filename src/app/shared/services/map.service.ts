@@ -8,9 +8,9 @@ import { MapStyle } from '../models/MapStyle';
 
 @Injectable()
 export class MapService extends Map {
-
   private map: L.Map;
   private featureGroup: L.LayerGroup<any>;
+  private control: L.Control;
 
   private markers = new Array<L.Marker>();
   private circles = new Array<any>();
@@ -18,12 +18,12 @@ export class MapService extends Map {
   private polyLines = new Array<any>();
 
   public createMapBoxMapInstance(showControls = false) {
-    L.mapbox.accessToken = environment.mapbox.accessToken; 
+    L.mapbox.accessToken = environment.mapbox.accessToken;
 
     this.map = L.mapbox
       .map('map', 'mapbox.streets', this.mapboxOptions())
       .setView([-14.9034, -43.1917], 5);
-    
+
     if (showControls) {
       this.addControls();
       this.setStyle(MapStyle.Street);
@@ -48,9 +48,12 @@ export class MapService extends Map {
   public setStyle(style: MapStyle): void {
     L.mapbox['styleLayer'](`mapbox://styles/mapbox/${style}`).addTo(this.map);
   }
-  
-  public addGeoJSON(geojson) { 
-    L.mapbox.featureLayer().setGeoJSON(geojson).addTo(this.map);
+
+  public addGeoJSON(geojson) {
+    L.mapbox
+      .featureLayer()
+      .setGeoJSON(geojson)
+      .addTo(this.map);
   }
 
   public createMarker(feature: Feature<any>): L.Marker {
@@ -62,9 +65,11 @@ export class MapService extends Map {
 
     const marker = L.marker(
       new L.LatLng(
-          feature.geometry['coordinates'][1],
-          feature.geometry['coordinates'][0]
-      ), { icon });
+        feature.geometry['coordinates'][1],
+        feature.geometry['coordinates'][0]
+      ),
+      { icon }
+    );
 
     return marker;
   }
@@ -75,6 +80,14 @@ export class MapService extends Map {
     this.markers.push(marker);
 
     return marker;
+  }
+
+  public addControl(showControls = true): void {
+    if (showControls === true) {
+      this.addControls();
+    } else if (this.control !== undefined) {
+      this.control['remove']();
+    }
   }
 
   public clearAll(): void {
@@ -120,26 +133,26 @@ export class MapService extends Map {
     }
   }
 
-  private mapboxOptions = () => 
+  private mapboxOptions = () =>
     Object.assign({
       maxZoom: 20,
       zoomControl: false,
       worldCopyJump: true
-    });
+    })
 
-  private addListeners = () => 
+  private addListeners = () =>
     this.map.on('draw:created', (e: any) => {
-      this.featureGroup.addLayer(e.layer)
+      this.featureGroup.addLayer(e.layer);
       const geojson = e.layer.toGeoJSON();
       console.log(geojson);
-    }); 
+    })
 
   private addControls(): void {
     this.featureGroup = new L.FeatureGroup<any>().addTo(this.map);
 
-    new L.Control['Draw']({
+    this.control = new L.Control['Draw']({
       position: 'topright',
-      edit: { 
+      edit: {
         featureGroup: this.featureGroup
       },
       draw: {
