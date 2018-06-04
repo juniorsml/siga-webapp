@@ -159,14 +159,6 @@ export class RegisterPlaceComponent implements OnInit {
     this.selectedTabIndex = tabIndex;
   }
 
-  public onTabSelected = (tab: TabComponent) => {
-    this.selectedTabIndex = tab.index;
-    this.filterByTab(
-      () => this.changeMap(false, MapStyle.Outdoor),
-      () => this.changeMap(true, MapStyle.Street),
-      () => this.changeMap(false, MapStyle.Outdoor));
-  }
-
   public onContextMenu(event: any) {
     this.filterByTab(
       () => this.showSelectGroup = true,
@@ -178,9 +170,12 @@ export class RegisterPlaceComponent implements OnInit {
       });
   }
 
-  private changeMap = (showControls: boolean, mapStyle: MapStyle) => {
-    this.map.addControl(showControls);
-    this.map.setStyle(mapStyle);
+  public onTabSelected = (tab: TabComponent) => {
+    this.selectedTabIndex = tab.index;
+    this.filterByTab(
+      () => this.changeMap(false, MapStyle.Outdoor),
+      () => this.changeMap(true, MapStyle.Street),
+      () => this.changeMap(false, MapStyle.Outdoor));
   }
 
   private filterByTab = (whenPlaces, whenItinerary, whenGroup) => {
@@ -195,6 +190,11 @@ export class RegisterPlaceComponent implements OnInit {
         whenGroup();
         break;
     }
+  }
+
+  private changeMap = (showControls: boolean, mapStyle: MapStyle) => {
+    this.map.addControl(showControls);
+    this.map.setStyle(mapStyle);
   }
 
   public closeRegisterGroup = () => this.showRegisterGroup = false;
