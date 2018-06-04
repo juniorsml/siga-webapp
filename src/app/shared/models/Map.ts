@@ -11,15 +11,13 @@ export abstract class Map {
   /* Start */
   public abstract createMapBoxMapInstance(showControls?: boolean): void;
 
-  public abstract setStyle(style: MapStyle, handle?: Function): void;
+  public abstract moveTo(latitude: number, longitude: number, options?: any): void;
 
-  public abstract moveTo(
-    latitude: number,
-    longitude: number,
-    options?: any
-  ): void;
+  public abstract addControl(showControls: boolean): void;
 
   public abstract setCenter(latitude: number, longitude: number): void;
+
+  public abstract setStyle(style: MapStyle, handle?: Function): void;
 
   public abstract setZoom(level: number): void;
 
