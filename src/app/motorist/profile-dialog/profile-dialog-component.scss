@@ -2,7 +2,7 @@
 .content-modal{
     background-color: #FFF;
     width: 100%;
-    max-width: 1024px;
+    max-width:800px;
     max-height: 91%;
     background: #ffffff;
     -webkit-box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.1);
@@ -95,6 +95,19 @@
     background: #aaaaaa url(/assets/layout/unknown_user.png) no-repeat center center;
     background-size: contain;
 
+    img{
+      width: 196px; 
+      height: 196px;
+    }
+}
+.vehicle-photo{
+    width: 100%;
+    max-width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    display: block;
+    background: #aaaaaa url(/assets/layout/unknown_truck.png) no-repeat center center;
+    background-size: contain;
     img{
       width: 196px; 
       height: 196px;
