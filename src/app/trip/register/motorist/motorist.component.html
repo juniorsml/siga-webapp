@@ -85,7 +85,9 @@
         <hr>
 
         <ul>
-          <li *ngFor="let motorist of associateMotorist" class="motorist"  [ngClass]="selectedMotorist != null ? 'selected' : ''">            
+          <li *ngFor="let motorist of associateMotorist" 
+              class="motorist"  
+              [ngClass]="selectedMotorist?.id == motorist.id ? 'selected' : ''">            
             <div class="icon">
               <i class="fal fa-user"></i>
               <div class="motorist-photo" *ngIf="selectedMotorist?.id != null">
@@ -109,237 +111,129 @@
       
     </div>
 
-    <div class="detail">      
-      <div class="cnt-data cnt-personal-data columns is-multiline">        
-        <h4>Dados pessoais</h4>           
-        <div class="columns column is-12">
-            <div class="column is-narrow cnt-profile">
-              <div class="profile-photo">
-                <img *ngIf="selectedMotorist != null" src="{{'api/motorist/public/profileImage?id=' + selectedMotorist?.id}}"
-                alt="">
-              </div>                
-            </div>
-            <div class="column is-three-quarters">
-                <div class="field-body field">
-                  <div class="field">
-                    <label class="label is-small">Nome</label>
-                    <span class="personal-info">
-                      {{selectedMotorist == null ? '-' : selectedMotorist?.firstName}} 
-                      {{selectedMotorist == null ? '-' : selectedMotorist?.lastName}}
-                    </span>
+    <div class="detail">    
+      <div *ngIf="associateMotorist.length > 0">
+        <div class="cnt-data cnt-personal-data columns is-multiline">        
+          <h4>Dados pessoais</h4>           
+          <div class="columns column is-12">
+              <div class="column is-narrow cnt-profile">
+                <div class="profile-photo">
+                  <img *ngIf="selectedMotorist != null" src="{{'api/motorist/public/profileImage?id=' + selectedMotorist?.id}}"
+                  alt="">
+                </div>                
+              </div>
+              <div class="column is-three-quarters">
+                  <div class="field-body field">
+                    <div class="field">
+                      <label class="label is-small">Nome</label>
+                      <span class="personal-info">
+                        {{selectedMotorist == null ? '-' : selectedMotorist?.firstName}} 
+                        {{selectedMotorist == null ? '-' : selectedMotorist?.lastName}}
+                      </span>
+                    </div>
+                    <div class="field">
+                      <label class="label is-small">Documento</label>
+                      <span class="personal-info">{{selectedMotorist == null ? '-' : selectedMotorist?.documentId}}</span>
+                    </div>
+                    <div class="field">
+                      <label class="label is-small">Data de nascimento</label>
+                      <span class="personal-info">{{selectedMotorist?.dateOfBirth | date}}</span>
+                    </div>
+                    <div class="field">
+                      <label class="label is-small">Endereço</label>
+                      <span class="personal-info">{{selectedMotorist?.address}}</span>
+                    </div>
                   </div>
-                  <div class="field">
-                    <label class="label is-small">Documento</label>
-                    <span class="personal-info">{{selectedMotorist == null ? '-' : selectedMotorist?.documentId}}</span>
+                  <div class="field-body field">
+                    
+                    <div class="field">
+                      <label class="label is-small">Telefone</label>
+                      <span class="personal-info">{{selectedMotorist == null ? '-' : selectedMotorist?.cellPhone}}</span>
+                    </div>      
+                    <div class="field">
+                      <label class="label is-small">Email</label>
+                      <span class="personal-info">{{selectedMotorist?.email}}</span>
+                    </div>
+                    <div class="field">
+                      <label class="label is-small">Aplicativo</label>
+                      <span class="personal-info">
+                        {{selectedMotorist?.device?.appVersion == null ? '-' : 'Siga v.' + selectedMotorist?.device?.appVersion}} | {{selectedMotorist?.device?.platform
+                        == null ? '-' : selectedMotorist?.device?.platform}}
+                      </span>
+                    </div>               
                   </div>
-                  <div class="field">
-                    <label class="label is-small">Data de nascimento</label>
-                    <span class="personal-info">{{selectedMotorist?.dateOfBirth | date}}</span>
-                  </div>
-                  <div class="field">
-                    <label class="label is-small">Endereço</label>
-                    <span class="personal-info">{{selectedMotorist?.address}}</span>
-                  </div>
-                </div>
-                <div class="field-body field">
-                  
-                  <div class="field">
-                    <label class="label is-small">Telefone</label>
-                    <span class="personal-info">{{selectedMotorist == null ? '-' : selectedMotorist?.cellPhone}}</span>
-                  </div>      
-                  <div class="field">
-                    <label class="label is-small">Email</label>
-                    <span class="personal-info">{{selectedMotorist?.email}}</span>
-                  </div>
-                  <div class="field">
-                    <label class="label is-small">Aplicativo</label>
-                    <span class="personal-info">
-                      {{selectedMotorist?.device?.appVersion == null ? '-' : 'Siga v.' + selectedMotorist?.device?.appVersion}} | {{selectedMotorist?.device?.platform
-                      == null ? '-' : selectedMotorist?.device?.platform}}
-                    </span>
-                  </div>               
-                </div>
-            </div>
+              </div>
+          </div>
         </div>
-      </div>
 
-      <div class="cnt-data columns column is-12 is-multiline">
-        <h4>Perfil</h4>
-        <div class="column is-12 is-multiline is-paddingless">
-          <div class="field-body field">            
-            <div class="field column">
-              <label class="label is-small">Ranking</label>
-               <span class="personal-info">
-                 <i class="stars fa fa-star" aria-hidden="true"></i>
-                 <i class="stars fa fa-star" aria-hidden="true"></i>
-                 <i class="stars fa fa-star" aria-hidden="true"></i>
-                 <i class="stars fa fa-star" aria-hidden="true"></i>
-                 <i class="stars fa fa-star" aria-hidden="true"></i>               
-               </span>
-            </div>      
-            <div class="field column">
-              <label class="label is-small">GR</label>
-               <span class="personal-info">
-                 <i class="stars fa fa-star" aria-hidden="true"></i>
-                 <i class="stars fa fa-star" aria-hidden="true"></i>
-                 <i class="stars fa fa-star" aria-hidden="true"></i>
-                 <i class="stars fa fa-star" aria-hidden="true"></i>
-                 <i class="stars fa fa-star" aria-hidden="true"></i>
-                 
-               </span>
-            </div> 
-            <div class="field column">
-              <label class="label is-small">Logística</label>
+        <div class="cnt-data columns column is-12 is-multiline">
+          <h4>Perfil</h4>
+          <div class="column is-12 is-multiline is-paddingless">
+            <div class="field-body field">            
+              <div class="field column">
+                <label class="label is-small">Ranking</label>
+                 <span class="personal-info">
+                   <i class="stars fa fa-star" aria-hidden="true"></i>
+                   <i class="stars fa fa-star" aria-hidden="true"></i>
+                   <i class="stars fa fa-star" aria-hidden="true"></i>
+                   <i class="stars fa fa-star" aria-hidden="true"></i>
+                   <i class="stars fa fa-star" aria-hidden="true"></i>               
+                 </span>
+              </div>      
+              <div class="field column">
+                <label class="label is-small">GR</label>
+                 <span class="personal-info">
+                   <i class="stars fa fa-star" aria-hidden="true"></i>
+                   <i class="stars fa fa-star" aria-hidden="true"></i>
+                   <i class="stars fa fa-star" aria-hidden="true"></i>
+                   <i class="stars fa fa-star" aria-hidden="true"></i>
+                   <i class="stars fa fa-star" aria-hidden="true"></i>
+                   
+                 </span>
+              </div> 
+              <div class="field column">
+                <label class="label is-small">Logística</label>
+                
+                 <span class="personal-info">
+                   <i class="stars fa fa-star" aria-hidden="true"></i>
+                   <i class="stars fa fa-star" aria-hidden="true"></i>
+                   <i class="stars fa fa-star" aria-hidden="true"></i>
+                   <i class="stars fa fa-star" aria-hidden="true"></i>
+                   <i class="stars fa fa-star" aria-hidden="true"></i>
+                 </span>
               
-               <span class="personal-info">
-                 <i class="stars fa fa-star" aria-hidden="true"></i>
-                 <i class="stars fa fa-star" aria-hidden="true"></i>
-                 <i class="stars fa fa-star" aria-hidden="true"></i>
-                 <i class="stars fa fa-star" aria-hidden="true"></i>
-                 <i class="stars fa fa-star" aria-hidden="true"></i>
-               </span>
-            
+              </div>
+              <div class="field column">
+                <label class="label is-small">Viagens</label>
+                <span class="personal-info"> 44 </span>
+              </div>                       
             </div>
-            <div class="field column">
-              <label class="label is-small">Viagens</label>
-              <span class="personal-info"> 44 </span>
-            </div>                       
-          </div>
-          <div class="field-body field">            
-            <div class="field column">
-              <label class="label is-small">Quilômetros</label>
-              <span class="personal-info"> 11987 </span>
-            </div>      
-            <div class="field column">
-              <label class="label is-small">Horas</label>
-              <span class="personal-info"> 387 </span>
-            </div>   
-            <div class="field column">
-              <label class="label is-small">Vídeos</label>
-              <span class="personal-info"> 19 </span>
-            </div>   
-            <div class="field column">
-              <label class="label is-small">Restrições</label>
-              <span class="personal-info"> 0 </span>
-            </div>                    
-          </div>
+            <div class="field-body field">            
+              <div class="field column">
+                <label class="label is-small">Quilômetros</label>
+                <span class="personal-info"> 11987 </span>
+              </div>      
+              <div class="field column">
+                <label class="label is-small">Horas</label>
+                <span class="personal-info"> 387 </span>
+              </div>   
+              <div class="field column">
+                <label class="label is-small">Vídeos</label>
+                <span class="personal-info"> 19 </span>
+              </div>   
+              <div class="field column">
+                <label class="label is-small">Restrições</label>
+                <span class="personal-info"> 0 </span>
+              </div>                    
+            </div>
+          </div> 
         </div> 
-      </div>       
-        <!-- <div class=" columns cnt-details">
-        	<div class="columns is-multiline is-marginless column is-12" *ngIf="selectedMotorist == null">
-        		<div class="column is-12 vehicle-detail-header is-paddingless">
-        		    <h4>Dados Pessoais</h4>
-        		    <i class="fa fa-question-circle ui-icon-info"></i>
-        		</div>
-        		<div  class="columns is-multiline column is-12 ">         		    
-    		         <ul class="motorist-profile-info column is-3">
-    		            <li class="motorist-profile-info-item">
-  		                 <div style="width: 140px;height:140px;background:#aaaaaa;display: block;border: 5px solid #fff; box-shadow: 0px 0px 3px #333; background-image: url('/assets/layout/unknown_user.png');background-size: contain;">
-                              <img *ngIf="selectedMotorist !=null"
-                                   style="width: 192px; height: 192px;"
-                                   src="{{'api/motorist/public/profileImage?id=' + selectedMotorist?.id}}"
-                                   alt="">
-                          </div>
-  		              </li>
-  		            </ul>
-  		            <ul class="columns is-multiline  motorist-profile-info column is-9">
-    		            <li class="column is-4 vehicle-profile-info-item">
-    		                <h6 class="vehicle-info-title">Nome</h6>
-    		                <span class="vehicle-info">{{selectedMotorist == null ? '-' : selectedMotorist?.firstName}}</span>
-    		            </li>
-    		            <li class="column is-4 vehicle-profile-info-item">
-    		                <h6 class="vehicle-info-title">Documento</h6>
-    		                <span class="vehicle-info">{{selectedMotorist == null ? '-' : selectedMotorist?.documentId}}</span>
-    		            </li>
-    		            <li class="column is-4 vehicle-profile-info-item">
-    		                <h6 class="vehicle-info-title">Endereço</h6>
-    		                <span class="vehicle-info">{{selectedMotorist == null ? '-' : selectedMotorist?.address}}</span>
-    		            </li>
-    		            <li class="column is-6 vehicle-profile-info-item">
-    		                <h6 class="vehicle-info-title">Email</h6>
-    		                <span class="vehicle-info">{{selectedMotorist == null ? '-' : selectedMotorist?.email}}</span>
-    		            </li>
-    		            <li class="column is-4 vehicle-profile-info-item">
-    		                <h6 class="vehicle-info-title">Sobrenome</h6>
-    		                <span class="vehicle-info">{{selectedMotorist == null ? '-' : selectedMotorist?.lastName}}</span>
-    		            </li>
-    		        </ul>
-        		    
-        		</div>
-        	</div>
-        </div>
-
-        <div class=" columns cnt-details">
-        	<div class="columns is-multiline is-marginless column is-12 is-paddingless">
-        		<div class="column is-12 vehicle-detail-header is-paddingless">
-        		    <h4>Perfil</h4>
-        		    <i class="fa fa-question-circle ui-icon-info"></i>
-        		</div>
-        		<div  class="column is-12">         		    
-    		        <ul class="columns is-multiline  motorist-profile-info ">
-  		            <li class="column is-4 vehicle-profile-info-item">
-		                <h6 class="vehicle-info-title">Ranking</h6>
-                    <span class="vehicle-info">
-                      <i class="stars fa fa-star" aria-hidden="true"></i>
-                      <i class="stars fa fa-star" aria-hidden="true"></i>
-                      <i class="stars fa fa-star" aria-hidden="true"></i>
-                      <i class="stars fa fa-star" aria-hidden="true"></i>
-                      <i class="stars fa fa-star" aria-hidden="true"></i>
-                      <span style="padding-left: 8px">0%</span>
-                 		</span>
-  		            </li>
-    		           <li class="column is-4 motorist-profile-metrics">
-    		               <h6 class="vehicle-info-title">GR</h6>
-    		               <span class="vehicle-info">
-    		                       <span class="vehicle-info">
-    		                       <i class="stars fa fa-star" aria-hidden="true"></i>
-    		                       <i class="stars fa fa-star" aria-hidden="true"></i>
-    		                       <i class="stars fa fa-star" aria-hidden="true"></i>
-    		                       <i class="stars fa fa-star" aria-hidden="true"></i>
-    		                       <i class="stars fa fa-star" aria-hidden="true"></i>
-    		                       <span style="padding-left: 8px">0%</span>
-    		                   </span>
-    		                   </span>
-    		           </li>
-    		           <li class="column is-4 motorist-profile-metrics">
-    		               <h6 class="vehicle-info-title">Logística</h6>
-    		               <span class="vehicle-info">
-    		                       <span class="vehicle-info">
-    		                       <i class="stars fa fa-star" aria-hidden="true"></i>
-    		                       <i class="stars fa fa-star" aria-hidden="true"></i>
-    		                       <i class="stars fa fa-star" aria-hidden="true"></i>
-    		                       <i class="stars fa fa-star" aria-hidden="true"></i>
-    		                       <i class="stars fa fa-star" aria-hidden="true"></i>
-    		                       <span style="padding-left: 8px">0%</span>
-    		                   </span>
-    		                   </span>
-    		           </li>
-    		           <li class="column is-4 motorist-profile-metrics">
-    		               <h6 class="vehicle-info-title">Viagens</h6>
-    		               <span class="vehicle-info">-</span>
-    		           </li>
-    		           <li class="column is-4 motorist-profile-metrics">
-    		               <h6 class="vehicle-info-title">Quilômetros</h6>
-    		               <span class="vehicle-info">-</span>
-    		           </li>
-    		           <li class="column is-4 motorist-profile-metrics">
-    		               <h6 class="vehicle-info-title">Horas</h6>
-    		               <span class="vehicle-info">-</span>
-    		           </li>
-    		           <li class="column is-4 motorist-profile-metrics">
-    		               <h6 class="vehicle-info-title">Vídeos</h6>
-    		               <span class="vehicle-info">-</span>
-    		           </li>
-    		           <li class="column is-4 motorist-profile-metrics">
-    		               <h6 class="vehicle-info-title">Restrições</h6>
-    		               <span class="vehicle-info">-</span>
-    		           </li>
-    		            
-    		        </ul>
-        		    
-        		</div>
-        	</div>
-        </div> -->
+      </div>
+      <div *ngIf="associateMotorist.length == 0">
+        Não há motoristas associados a esta viagem
+      </div>  
+           
+       
     </div>
 </div>
   
