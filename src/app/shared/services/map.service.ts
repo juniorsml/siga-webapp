@@ -150,6 +150,10 @@ export class MapService extends Map {
   private addControls(): void {
     this.featureGroup = new L.FeatureGroup<any>().addTo(this.map);
 
+    if (this.control !== undefined) {
+      this.control['remove']();
+    }
+
     this.control = new L.Control['Draw']({
       position: 'topright',
       edit: {
@@ -161,5 +165,7 @@ export class MapService extends Map {
         }
       }
     }).addTo(this.map);
+
+    this.addListeners();
   }
 }
