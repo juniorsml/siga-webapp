@@ -76,11 +76,15 @@
 	   	}
    }
 }
+.detail{
 
+}
 .sidebar,
   .detail {
     height: 100%;
     padding: 4px 10px 0 10px;
+    
+    border: 1px solid #e0e0e0;
   }
 
  .header{     
@@ -97,12 +101,10 @@
    }
 
  }
-
-
  .detail {
    position: absolute;
-   left: 369px;
-   right: 0;
+   left: 388px;
+	right: 26px;
    .header{
      padding: 0 23px;
    }
