@@ -10,6 +10,9 @@ export class MotoristAssociateDialogComponent implements OnInit {
   @Input() 
   public showDialog: boolean;
 
+  
+  public haveFooter: boolean = true;
+
   @Input()
   get motorists(): Array<any> {
     return this._motorists;
