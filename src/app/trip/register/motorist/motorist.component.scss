@@ -30,7 +30,7 @@
   	}
   	
   }
-  .motorist{
+  .item{
 	   	padding: 6px 7px;
 	   	display: flex;
 	   	justify-content: flex-start;
@@ -77,6 +77,8 @@
    }
 }
 .detail{
+	overflow: hidden;
+	overflow-y: visible;
 
 }
 .sidebar,
@@ -111,7 +113,7 @@
  }
 
 .cnt-data {
-	padding: 14px 35px 0;
+	padding: 16px 22px 0;
 
 	h4{
 			font-size: 13px;
