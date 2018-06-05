@@ -14,6 +14,8 @@ export class GridTruckComponent implements OnInit {
   @Input() dataLoading: boolean = true;
   @Output() onVehicleSelected: EventEmitter<any> = new EventEmitter();
 
+  public haveFooter: boolean = true;
+
   text: any;
   distance: any;
   vehicle: any;
