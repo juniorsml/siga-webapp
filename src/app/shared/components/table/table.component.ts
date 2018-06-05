@@ -88,10 +88,10 @@ export class DataTableComponent
       gridOpacity: '0.2',
       barOpacity: '0.5',
       gridBackground: '#ccc',
-      gridWidth: '6px',
+      gridWidth: '6',
       gridMargin: '2px 2px',
       barBackground: 'rgba(55, 56, 58, 0.6)',
-      barWidth: '5px',
+      barWidth: '5',
       barMargin: '2px 2px'
     };
     this.filteredData = new SearchPipe().transform(this.data, [

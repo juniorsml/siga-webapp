@@ -1,29 +1,25 @@
 /*********************************** UI ************************************/
-/* Slim Scroll *********************************/
-.container-grid-map .slimscroll-wrapper{
-    height:92% !important;
-}
-.container-grid-wrapper .slimscroll-wrapper{
-    height:82% !important;
-}
-.slimscroll-bar{
-    background:rgba(55, 56, 58, 0.4) !important;
-    height: 161px;
-}
-.slimscroll-grid{
-     background:transparent !important;
+.ui-datatable-header{
+    position: absolute;
+    top: 0;
+    z-index: 99;
+    background: white;
 }
 .ui-datatable-wrapper{
   height:100%;
+  position: relative;
 }
 .ui-datatable-body {
-    position: relative;   
-    left: 0px;
-    height: 100% !important;
-    right: 0px;
     overflow-x: hidden;
     overflow-y:auto;
-    top: 0px !important;
+   
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    height: 86% !important;
+    bottom: 42px;
+    top: 34px;
+    border-bottom: 1px solid #e2e6ec;
 }
 
 .no-header-table{
