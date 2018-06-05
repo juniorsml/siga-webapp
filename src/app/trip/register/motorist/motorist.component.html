@@ -1,5 +1,5 @@
-<div class="cnt-trip-vehicles">
-    <div class="vehicles-sidebar">
+<div class="wrapper">
+   <!--  <div class="sidebar">
         <div class="trip-vehicles-header">
             <h3>MOTORISTAS</h3>
             <i class="fa fa-question-circle ui-icon-info"></i>
@@ -50,10 +50,182 @@
                   </div>
                 </li>
               </ul>
-          </div>
+        </div>
+    </div> -->
+    <div class="sidebar">
+      <div class="header">
+        <h3>Adicionar / Remover</h3>
+        <i class="fa fa-question-circle ui-icon-info"></i>
       </div>
-    <div class="vehicle-detail">       
-        <div class=" columns cnt-details">
+      
+                
+        <div class="cnt-autocomplete">
+        <sga-auto-complete 
+          [data]="motorists"
+          [propToFilter]="'documentId'"
+          minLength="3"
+          styleClass = "autocomplete"
+          noSuggestionsText="Nenhum motorista encontrado"
+          placeholder="Digite um documento"
+          style="width: 100%;"
+          type="text"
+          (onCreateNew)="showMotoristForm()"
+          (itemSelected)="MotoristSelected($event)">
+          <ng-template let-item="item">
+            <div class="autocomplete-suggestion">
+              <span>
+                <span style="font-size: 16px; font-weight: 500; color: #324263; margin-left: 4px;">{{item.name}}</span>
+                <span style="font-size: 14px; margin-left: 10px;">{{item.id}}</span>
+              </span>
+            </div>
+          </ng-template>
+        </sga-auto-complete>
+        </div> 
+
+        <hr>
+
+        <ul>
+          <li *ngFor="let motorist of associateMotorist" class="motorist"  [ngClass]="selectedMotorist != null ? 'selected' : ''">            
+            <div class="icon">
+              <i class="fal fa-user"></i>
+              <div class="motorist-photo" *ngIf="selectedMotorist?.id != null">
+                <img  src="{{'api/motorist/public/profileImage?id=' + selectedMotorist?.id}}"
+                alt="">
+              </div>   
+            </div>
+            <div class="data" (click)="showMotoristData(motorist)">
+              <h5>{{motorist.firstName}} <span>{{motorist.lastName}}</span></h5>
+              <h6>{{motorist.documentId}}</h6>
+              <!-- <span (click)="showMotoristData(motorist)"  style="cursor: pointer; color: blue;">
+                  {{motorist.documentId}} 
+              </span>  -->               
+            </div>
+            <div class="remove" (click)="removeAssociate(motorist)">
+              <span  class="fal fa-times"></span>
+            </div>
+            
+          </li>
+        </ul>
+      
+    </div>
+
+    <div class="detail">      
+      <div class="cnt-data cnt-personal-data columns is-multiline">        
+        <h4>Dados pessoais</h4>           
+        <div class="columns column is-12">
+            <div class="column is-narrow cnt-profile">
+              <div class="profile-photo">
+                <img *ngIf="selectedMotorist != null" src="{{'api/motorist/public/profileImage?id=' + selectedMotorist?.id}}"
+                alt="">
+              </div>                
+            </div>
+            <div class="column is-three-quarters">
+                <div class="field-body field">
+                  <div class="field">
+                    <label class="label is-small">Nome</label>
+                    <span class="personal-info">
+                      {{selectedMotorist == null ? '-' : selectedMotorist?.firstName}} 
+                      {{selectedMotorist == null ? '-' : selectedMotorist?.lastName}}
+                    </span>
+                  </div>
+                  <div class="field">
+                    <label class="label is-small">Documento</label>
+                    <span class="personal-info">{{selectedMotorist == null ? '-' : selectedMotorist?.documentId}}</span>
+                  </div>
+                  <div class="field">
+                    <label class="label is-small">Data de nascimento</label>
+                    <span class="personal-info">{{selectedMotorist?.dateOfBirth | date}}</span>
+                  </div>
+                  <div class="field">
+                    <label class="label is-small">Endereço</label>
+                    <span class="personal-info">{{selectedMotorist?.address}}</span>
+                  </div>
+                </div>
+                <div class="field-body field">
+                  
+                  <div class="field">
+                    <label class="label is-small">Telefone</label>
+                    <span class="personal-info">{{selectedMotorist == null ? '-' : selectedMotorist?.cellPhone}}</span>
+                  </div>      
+                  <div class="field">
+                    <label class="label is-small">Email</label>
+                    <span class="personal-info">{{selectedMotorist?.email}}</span>
+                  </div>
+                  <div class="field">
+                    <label class="label is-small">Aplicativo</label>
+                    <span class="personal-info">
+                      {{selectedMotorist?.device?.appVersion == null ? '-' : 'Siga v.' + selectedMotorist?.device?.appVersion}} | {{selectedMotorist?.device?.platform
+                      == null ? '-' : selectedMotorist?.device?.platform}}
+                    </span>
+                  </div>               
+                </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="cnt-data columns column is-12 is-multiline">
+        <h4>Perfil</h4>
+        <div class="column is-12 is-multiline is-paddingless">
+          <div class="field-body field">            
+            <div class="field column">
+              <label class="label is-small">Ranking</label>
+               <span class="personal-info">
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>               
+               </span>
+            </div>      
+            <div class="field column">
+              <label class="label is-small">GR</label>
+               <span class="personal-info">
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 
+               </span>
+            </div> 
+            <div class="field column">
+              <label class="label is-small">Logística</label>
+              
+               <span class="personal-info">
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+               </span>
+            
+            </div>
+            <div class="field column">
+              <label class="label is-small">Viagens</label>
+              <span class="personal-info"> 44 </span>
+            </div>                       
+          </div>
+          <div class="field-body field">            
+            <div class="field column">
+              <label class="label is-small">Quilômetros</label>
+              <span class="personal-info"> 11987 </span>
+            </div>      
+            <div class="field column">
+              <label class="label is-small">Horas</label>
+              <span class="personal-info"> 387 </span>
+            </div>   
+            <div class="field column">
+              <label class="label is-small">Vídeos</label>
+              <span class="personal-info"> 19 </span>
+            </div>   
+            <div class="field column">
+              <label class="label is-small">Restrições</label>
+              <span class="personal-info"> 0 </span>
+            </div>                    
+          </div>
+        </div> 
+      </div>       
+        <!-- <div class=" columns cnt-details">
         	<div class="columns is-multiline is-marginless column is-12" *ngIf="selectedMotorist == null">
         		<div class="column is-12 vehicle-detail-header is-paddingless">
         		    <h4>Dados Pessoais</h4>
@@ -167,16 +339,16 @@
         		    
         		</div>
         	</div>
-        </div>
+        </div> -->
     </div>
 </div>
   
 
-    <sga-modal>
-      <sga-register-motorist
-        [showForm]="showMotoristRegister"
-        (onFormClose)="motoristFormClose()">
-      </sga-register-motorist>
-    </sga-modal>
+<sga-modal>
+  <sga-register-motorist
+    [showForm]="showMotoristRegister"
+    (onFormClose)="motoristFormClose()">
+  </sga-register-motorist>
+</sga-modal>
 
 

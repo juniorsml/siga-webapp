@@ -1,58 +1,142 @@
-.cnt-trip-vehicles{
-	.vehicles-sidebar,.vehicle-detail{
-		height: 100%; 
-		
-		padding: 4px 10px 0 10px;
+.sidebar {
+  position: absolute;
+  width: 377px;
+  border-right: 1px solid #e0e0e0;  
+  .selected{
+  	border-left: 3px solid #ee0c09 !important;
+  	h5,h6, .icon{
+  		color:#ee0c09 !important;
+  	}
+  	
+  }
+  .motorist{
+	   	padding: 6px 7px;
+	   	display: flex;
+	   	justify-content: flex-start;
+	   	border-left: 3px solid #ccc;
+	   	background: #f7f7f7;
+	   	align-items: center;
+	   	.data{
+	   		cursor: pointer;
+	   		h5{
+	   			color:#6e778a;
+	   			font-weight: bold;
+	   			line-height: 1;
+	   			display: inline-block;
+	   			span{
+	   				display: inline-block;
+	   				&:first-letter{
+	   					text-transform: uppercase;
+	   				}
+	   			}
+	   			
+	   			&:first-letter{
+	   				text-transform: uppercase;
+	   			}
+	   		}
+	   		h6{
+	   			color:#6e778a;
+	   			font-size: 14px;	   			
+	   		}
+	   	}
+			.icon{
+				font-size: 19px;
+		    margin-right: 10px;
+		    color: #9e9e9e;
+		    
+			}
+	   	.remove{
+	   		margin-left: auto;
+	   		color: #9e9e9e;
+		    border:1px solid #9e9e9e;
+		    border-radius: 2px;
+		    padding: 0 7px;
+		    cursor: pointer;
+	   	}
+   }
+}
+
+.sidebar,
+  .detail {
+    height: 100%;
+    padding: 4px 10px 0 10px;
+  }
+
+ .header{     
+   display: flex;
+   justify-content: space-between;     
+   align-items: center;
+   height: 7%;
+
+   h3{
+     font-weight:bold;
+     color: #38425b;
+     padding: 0 0 6px 0;
+     font-size: 13px;
+   }
+
+ }
+
+
+ .detail {
+   position: absolute;
+   left: 369px;
+   right: 0;
+   .header{
+     padding: 0 23px;
+   }
+ }
+
+.cnt-data {
+	padding: 14px 35px 0;
+
+	h4{
+			font-size: 13px;
+			margin-bottom: 13px;
+
 	}
-	.trip-vehicles-header{
-		  color: #38425b;
-	    padding: 0 0 6px 0;
-	    font-size: 14px;
-	    display: flex;
-	    justify-content: space-between;
-	    align-items: center;
-	    height: 7%;
-	  
+	.cnt-profile{
+	  width: 143px;
 	}
-    .vehicles-sidebar{
-			position: absolute;
-	    width: 377px;
-	   
-	    .trip-vehicles-ac{
- 			height: 11%;
+	.profile-photo{
+	    width: 100%;
+	    max-width: 125px;
+	    height: 125px;
+	    border-radius: 50%;
+	    display: block;
+	    background: #aaaaaa url(/assets/layout/unknown_user.png) no-repeat center center;
+	    background-size: contain;
+
+	    img{
+	      width: 196px; 
+	      height: 196px;
 	    }
-	    .trip-vehicles-lv{
- 			height: 79.5%;
- 			border-radius:3px;
-	    }
-	    
 	}
-	.vehicle-detail{
-		position: absolute;
-	    left:389px; 
-	    right:0;
-		.cnt-details{
-			padding: 12px;
-		}
-	    .vehicle-detail-header{
-			color: #38425b;		   
-		    font-size: 13px;
-		    display: flex;
-		    justify-content: space-between;
-		    align-items: center;		    
-		    border-bottom:1px solid #e7e9ef;
-	    }
-	    .vehicle-info-title{
-				color: #8d96ad;		   
-		    font-size: 12px;
-		    line-height: 1;
-	    }
-	    .vehicle-info{
-	    	color: #38425b;		   
-		    font-size: 13px;
+	.vehicle-photo{
+	    width: 100%;
+	    max-width: 125px;
+	    height: 125px;
+	    border-radius: 50%;
+	    display: block;
+	    background: #aaaaaa url(/assets/layout/unknown_truck.png) no-repeat center center;
+	    background-size: contain;
+	    img{
+	      width: 196px; 
+	      height: 196px;
 	    }
 	}
 }
+.cnt-personal-data{
+	label{
+		margin:0;
+	}
+	.personal-info {
+	  font-size: 14px;
+	  color: #76787d;
+	}
+
+}
+
 .cnt-autocomplete{
 	position:relative;
 }
