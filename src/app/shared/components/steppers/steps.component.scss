@@ -30,7 +30,6 @@
 @media screen and (min-width: 769px), print {
   .steps:not(.is-vertical).is-narrow.is-centered {
     justify-content: center;
-     border-bottom: 1px solid #dddfe2;
   }
   
   .steps:not(.is-vertical).has-content-centered {
@@ -140,7 +139,6 @@
 
 .steps.is-medium {
   font-size: 1.25rem;
-  border-bottom: 1px solid #d6d6d6;
 }
   .has-text-dark {
     color: #363636 !important;
@@ -155,12 +153,25 @@
 .steps:not(.is-hollow) .steps-marker:not(.is-hollow) {
   border:2px solid #00d1b2;
   color: #00d1b2;
+
 }
 
 .steps.is-medium .steps-marker {
   height: 2.5rem;
   width: 2.5rem;
   color:#dbdbdb;
+  &:before{
+    content: attr(title);
+    font-size: 14px;
+    right: 0;
+    left: -17px;
+    margin: auto;
+    position: absolute;
+    width: 196%;
+    text-align: center;
+    bottom: -23px;
+
+  }
 }
 
 .steps .steps-marker {
