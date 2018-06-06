@@ -61,6 +61,7 @@
             <h5 title="{{item.name}}" class="title-place-added">
               {{(item.name.length>40)? (item.name | slice:0:40)+'...':(item.name)}}
             </h5>
+            <i (click)="addNewPlace(item)" class="add-place fal fa-times-circle"></i>
             <i (click)="removeItineraryPlace(item)" class="remove-place fal fa-times-circle"></i>
             <i *ngIf="i === 1 && itineraryPlaces.length === 2"
                (click)="revertPlaces()" 

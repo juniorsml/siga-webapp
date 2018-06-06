@@ -253,6 +253,8 @@ export class RegisterPlaceComponent implements OnInit {
     this.plotRoute();
   }
 
+  public addNewPlace = item => console.log(item);
+
   private plotRoute = () => {
     if (this.itineraryPlaces.length > 1) {
       this.map.clearAll();

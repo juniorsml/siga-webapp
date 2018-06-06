@@ -55,7 +55,7 @@
 
       &:hover{
         background: #8b939d;
-        .remove-place{
+        .remove-place, .add-place {
           visibility:visible;
           opacity:1;
         }
@@ -75,11 +75,20 @@
       }
 
       .remove-place{
-         margin-left: auto;
-         cursor: pointer;
-         visibility:hidden;
-         opacity:0;
-         transition:all 150ms ease;
+        margin-left: auto;
+        cursor: pointer;
+        visibility:hidden;
+        opacity:0;
+        transition:all 150ms ease;
+      }
+        
+      .add-place {
+        transform: rotate(45deg);
+        transition: all 150ms ease;
+        margin-left: auto;
+        cursor: pointer;
+        visibility:hidden;
+        opacity:0;
       }
       
       .title-place-added{
