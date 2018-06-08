@@ -82,6 +82,15 @@ export class MapService extends Map {
     return marker;
   }
 
+  public addCustomMarker(lat: number, lng: number, color: string, draggable: boolean): void {
+    L.marker(new L.LatLng(lat, lng), {
+      icon: L.mapbox.marker.icon({
+        'marker-color': color
+      }),
+      draggable
+    }).addTo(this.map);
+  }
+
   public addControl(showControls = true): void {
     if (showControls === true) {
       this.addControls();
