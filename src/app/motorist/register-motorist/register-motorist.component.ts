@@ -30,7 +30,7 @@ export class RegisterMotoristComponent implements  OnInit {
   public mobilephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/,/\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/];
   public messagephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/,/\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
-   
+  public selectedTabIndex = 0;
 
   //Slim Scroll options
   opts: ISlimScrollOptions;
