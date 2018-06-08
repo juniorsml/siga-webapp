@@ -141,12 +141,11 @@ export class RegisterPlaceComponent implements OnInit {
       longitude: location.lng()
     };
 
-    console.log(this.location);
+    location = { ...location, ...this.location };
 
     this.map.clearAll();
-    this.moveMap(location.lat(), location.lng(), 18);
-    const geometry = this.createPoint(location.lat(), location.lng());
-    this.map.addGeoJSON(geometry);
+    this.moveMap(location.latitude, location.longitude, 18);
+    this.map.addCustomMarker(location.latitude, location.longitude, '#0049ff', true);
   }
 
   public openRegister(type) {
