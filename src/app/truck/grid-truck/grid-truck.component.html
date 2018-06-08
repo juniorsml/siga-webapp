@@ -54,12 +54,11 @@
       [searchText]="text" 
       [searchColumns]="['vehiclePlate', 'renavan', 'brand', 'model', 'color', 'year', 'type', 'capacity']"
       [emptySearchText]="'nenhum veículo foi encontrado'" 
-      [bodyBottom]="'42px'" 
-      [bodyTop]="'26px'"
       (onCellClick)="onCellClick($event)"
       [filterHeaders]="filterHeaders"
       (whenHeaderReady)="whenHeaderReady($event)"
-      (onCellRightClick)="onCellRightClick($event)">
+      (onCellRightClick)="onCellRightClick($event)"
+      [haveFooter]="haveFooter">
       <table-empty>
         <ng-template>
           <!-- <div *ngIf="dataLoading" style="position: absolute; top: -40px; bottom: 0px; left: 0px; right: 0px">

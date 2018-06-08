@@ -390,10 +390,13 @@ $bg-titles: #4d5675;
 .modal-box{
     position: fixed;
     z-index:99999;
-    background-color: rgba(0,0,0,.3);
+    background-color: rgba(0,0,0,.6);
     left: 0;
     top: 0;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 0;
     height: 0;
     opacity: 0;
@@ -546,30 +549,30 @@ $bg-titles: #4d5675;
 }
 
 
-/* SLIM SCROLL ************************/
-.container-grid-vehicle .slimscroll-wrapper{
-    height:94% !important;
+// SLIM SCROLL ************************/
+.container-grid .slimscroll-wrapper{
+    height:86% !important;
 }
-.container-grid .slimscroll-bar.slimscroll-bar.slimscroll-bar,
-.grid-associate .slimscroll-bar.slimscroll-bar.slimscroll-bar{
-  right: 1px !important;
-  width: 6px !important;
-  background: rgba(156, 159, 165, 0.4) !important;
-}
-.container-grid .slimscroll-grid.slimscroll-grid.slimscroll-grid,
-.grid-associate .slimscroll-bar.slimscroll-bar.slimscroll-bar{
-  width: 6px !important;
-  right: -1px !important;
-  background:#e6e2e2  !important;
-}
-.container-grid-map .slimscroll-wrapper{
-    height:92% !important;
-}
-.container-grid-wrapper .slimscroll-wrapper,
-.grid-associate .slimscroll-wrapper {
-    height: 84% !important;
-    border-bottom: 1px solid #e2e6ec;
-}
+// .container-grid .slimscroll-bar.slimscroll-bar.slimscroll-bar,
+// .grid-associate .slimscroll-bar.slimscroll-bar.slimscroll-bar{
+//   right: 1px !important;
+//   width: 6px !important;
+//   background: rgba(156, 159, 165, 0.4) !important;
+// }
+// .container-grid .slimscroll-grid.slimscroll-grid.slimscroll-grid,
+// .grid-associate .slimscroll-bar.slimscroll-bar.slimscroll-bar{
+//   width: 6px !important;
+//   right: -1px !important;
+//   background:#e6e2e2  !important;
+// }
+// .container-grid-map .slimscroll-wrapper{
+//     height:92% !important;
+// }
+// .container-grid-wrapper .slimscroll-wrapper,
+// .grid-associate .slimscroll-wrapper {
+//     height: 84% !important;
+//     border-bottom: 1px solid #e2e6ec;
+// }
 
 
 

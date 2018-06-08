@@ -24,6 +24,7 @@ export class RadarComponent implements OnInit {
   public filterDistance: any;
   public showTripDialog = false;
   public showSummaryDialog = false;
+  haveFooter: boolean = true;
 
   showColumnSelector = false;
 

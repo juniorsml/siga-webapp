@@ -25,6 +25,8 @@ export class StartedTripsComponent implements OnInit {
   public showSummaryDialog = false;
   showColumnSelector = false;
 
+  haveFooter: boolean = true;
+
 
   closeColumnSelector() {
     this.showColumnSelector = false;

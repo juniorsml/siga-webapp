@@ -132,8 +132,7 @@
            [searchText]="searchText"
            [searchColumns]="['vehiclePlate', 'renavan', 'brand', 'model']"
            [emptySearchText]="'nenhuma veículo foi encontrado'"
-           [bodyBottom]="'42px'"
-           [bodyTop]="'24px'"
+           [haveFooter]="haveFooter"
            (onCellClick)="onAdminVehicleCellClick($event)">
 
            <column [key]="'id'" [header]="''" [minWidth]="'60'" [fixedWidth]="'60'">

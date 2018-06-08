@@ -43,15 +43,53 @@
     padding:0 !important;
   }
 }
-.tabs.tabs-white > li.active > .ui-tabview-tab-title {
-  color: #ffffff; 
-}
+  .tabs.tabs-white > li.active > .ui-tabview-tab-title {
+    color: #ffffff; 
+  }
 
 .tabs > li.active > .ui-tabview-tab-title {
   color: #e63e3e;
 }
+
+//********************************* Tabs (Register) **********************************/
+
+.tabs-register{
+  position: relative;
+  width: 53%;
+  height: 45px;
+  z-index: 1;
+  border-bottom: 0.5px solid #b7bccb;
+
+  li{
+    transition:all 250ms ease;
+    padding: 5px !important;
+
+    .ui-tabview-tab-title {   
+       font-size:15px;
+       color: #81889e;
+      
+       &:hover{
+         color:#f9211f;
+       }
+    }
+  }
+  li.active{
+      border-bottom: 4px solid #f9211f;
+      cursor: default;
+      
+  }
+  .ui-tabview{
+    padding:0 !important;
+  }
+  .ui-tabview-container{
+    margin-left: -.75rem;
+    margin-right: -.75rem;
+    margin-top: -.75rem;
+    display: flex;
+  }
+}
   
-  /********************************** Tabs (Flat) **********************************/
+//********************************* Tabs (Flat) **********************************/
   
   .ui-tabview-flat {
       height: 48px;
@@ -97,7 +135,7 @@
       text-decoration: none !important;
   }
   
-  /********************************** Tabs (Green) **********************************/
+  //********************************** Tabs (Green) **********************************/
   
   .ui-tabview-green {
       height: 48px;

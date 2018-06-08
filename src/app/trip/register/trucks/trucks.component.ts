@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'sga-trucks',
   templateUrl: './trucks.component.html',
-  styleUrls: ['./trucks.component.scss']
+  styleUrls: ['../motorist/motorist.component.scss']
 })
 export class TrucksComponent implements OnInit {
 
@@ -25,12 +25,12 @@ export class TrucksComponent implements OnInit {
     );
   }
 
-  public showVehicleData(truck) {
+  public showTruckData(truck) {
     this.selectedTruck = truck;
   }
 
 
-  public showVehicleForm() {  
+  public showTruckForm() {  
     this.showRegisterForm = true;
   }
 
@@ -38,8 +38,9 @@ export class TrucksComponent implements OnInit {
     this.showRegisterForm = false;
   }
 
-  public VehicleSelected(truck: any): void {
+  public TruckSelected(truck: any): void {
     this.associateTruck.push(truck);
+    this.selectedTruck = truck;
   }
 
   public removeAssociate(truck: any): void {

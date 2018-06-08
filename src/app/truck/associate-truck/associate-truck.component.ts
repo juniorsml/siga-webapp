@@ -13,6 +13,8 @@ export class AssociateTruckComponent implements OnInit {
   @Input() 
   public showDialog: boolean;
 
+  public haveFooter: boolean = true;
+
   @Input()
   get vehicles(): Array<any> {
     return this._vehicles;

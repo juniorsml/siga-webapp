@@ -33,33 +33,103 @@
       <hr>
 
       <ul>
-        <li *ngFor="let device of associateDevice">
-          <div class="columns">
-            <div class="column is-10">
-              {{device.name}} - {{device.id}}
+        <li *ngFor="let device of associateDevice" 
+            class="item" 
+            [ngClass]="selectedDevice?.id == device.id ? 'selected' : ''">            
+            <div class="icon">
+              <i class="fal fa-broadcast-tower"></i>
+              <div class="motorist-photo" *ngIf="selectedDevice?.id != null">
+                <img  src="{{'api/motorist/public/profileImage?id=' + selectedDevice?.id}}"
+                alt="">
+              </div>   
             </div>
-            <div class="column">
-              <span (click)="removeAssociate(device)" class="fal fa-trash" style="cursor: pointer; color: red;"></span>
+            <div class="data" (click)="showDeviceData(device)">
+              <h5> {{device.name}} </h5>
+              <h6> {{device.id}}</h6>                          
             </div>
-          </div>
+            <div class="remove" (click)="removeAssociate(device)">
+              <span  class="fal fa-times"></span>
+            </div>
+          
         </li>
       </ul>
+        
+  
     
   </div>
-
+  
+  
   <div class="detail">
-    <div class="header">
-      <h3>Dispositivos</h3>
-      <i class="fa fa-question-circle ui-icon-info"></i>
-    </div>
-    <div class="grid">
-       <sga-grid-device 
-          hasHeight="true"
-          [showFilterBar]="false"
-          [devices]="devices"
-          [showBreadcrumb]="false">
-        </sga-grid-device>
-    </div>
+     <div class="cnt-data" *ngIf="associateDevice.length > 0">
+      <h4>Dados</h4>
+      <div class="columns column is-12">        
+          <div class="column">
+            <div class="field-body field">
+              <div class="field">
+                <label class="label is-small">ID</label>
+                <span class="personal-info">
+                  {{selectedDevice == null ? '-' : selectedDevice?.id}} 
+                </span>
+              </div>
+              <div class="field">
+                <label class="label is-small">Nome</label>
+                <span class="personal-info">{{selectedDevice == null ? '-' : selectedDevice?.name}}</span>
+              </div>
+              <div class="field">
+                <label class="label is-small">Tecnologia</label>
+                <span class="personal-info">{{selectedDevice?.tech}}</span>
+              </div>
+              <div class="field">
+                <label class="label is-small">Modelo</label>
+                <span class="personal-info">{{selectedDevice?.model}}</span>
+              </div>
+            </div>  
+            <div class="field-body field">
+              <div class="field">
+                <label class="label is-small">Localização</label>
+                <span class="personal-info">
+                  {{selectedDevice == null ? '-' : selectedDevice?.distance}} 
+
+
+
+
+                </span>
+              </div>
+              <div class="field">
+                <label class="label is-small">Velocidade</label>
+                <span class="personal-info">{{selectedDevice == null ? '-' : selectedDevice?.speed}} km</span>
+              </div>
+              <div class="field">
+                <label class="label is-small">Bateria</label>
+
+
+                <span class="battery-level">
+                  <span class="battery-level-body">
+                    <span class="battery-level-charge" [style.background-color]="'hsl('+ (selectedDevice?.battery?.charge * 100) +', 100%, 40%)'" [style.width]="(selectedDevice?.battery?.charge * 100)+'%'">
+                    </span>
+                    <span class="battery-level-text">
+                      <span *ngIf="selectedDevice?.battery?.chargeMode !== null" class="fa fa-bolt" aria-hidden="true"></span>
+                      <span>{{ (selectedDevice?.battery?.charge * 100) | number: '2.0-0'}}%</span>
+                    </span>
+                  </span>
+                </span>
+              </div>
+              <div class="field">
+                <label class="label is-small">Atualizado</label>
+                <span class="personal-info">{{selectedDevice?.updated}}</span>
+              </div>
+            </div>            
+          </div>
+      </div>
+      </div>
+
+      <div class="no-associate" *ngIf="associateDevice.length == 0">
+        <div>
+          <i class="fal fa-broadcast-tower"></i>
+          <h1> Não há dispositivos associados a esta viagem</h1>
+        </div>       
+      </div>  
+    
    
   </div>
 
