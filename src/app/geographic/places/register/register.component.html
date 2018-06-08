@@ -12,6 +12,19 @@
 
   <form class="form" [class.load]="placeSelected" #formPlace="ngForm" (ngSubmit)="onSubmit(formPlace)">
     <hr>
+    <label class="label is-small">Tipo</label>    
+
+    <div class="cnt-select-type">
+      <label class="container"  (click)="toggleMapStyle(map)">Localização
+        <input type="radio" name="type" value="Localização" checked>
+        <span class="checkmark"></span>
+      </label>
+      <label class="container" >Área        
+        <input type="radio" name="type"  value="Área" >
+        <span class="checkmark"></span>
+      </label>
+
+    </div>
     <div class="control">
       <input class="input" type="text" placeholder="Nome" name="name" 
         #name="ngModel" ngModel required [class.is-danger]="name.touched && !name.valid"/>
