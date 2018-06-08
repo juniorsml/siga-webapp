@@ -6,14 +6,13 @@
 		    <h3 >Cadastro de Motorista</h3>  
 		  </div>
 		  <div class="column btn-close"> 
-		     <i  (click)="onClose()" class="fal fa-times is-pulled-right"></i>
+		     <i  (click)="cancel()" class="fal fa-times is-pulled-right"></i>
 		  </div>      
 		</div>
 		<div class="container-scroll">		
 			
 			<form novalidate  (ngSubmit)="onSubmit()"   class="cnt-form" #formMotorist="ngForm">
 					<sga-tabs 
-					  (tabSelected)="onTabSelected($event)"
 					  [tabIndex]="selectedTabIndex"
 					  styleClass="tabs no-margin tabs-register">
 
