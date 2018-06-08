@@ -47,8 +47,7 @@
       [searchText]="text" 
       [searchColumns]="['id','motorists.documentId','currentState.Status','motorists.documentId','motorists.documentId']"
       [emptySearchText]="'nenhuma viagem foi encontrado'" 
-      [bodyBottom]="'42px'" 
-      [bodyTop]="'26px'"
+      [haveFooter]="haveFooter"
       [filterHeaders]="filterHeaders"
       (whenHeaderReady)="whenHeaderReady($event)">
           <table-empty>

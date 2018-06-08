@@ -4,14 +4,11 @@
       (click)="onClick($event, step, itemIndex)"
       [ngClass]="{ 'is-active has-gaps': step.hasGap }">
     <a class="has-text-dark">
-      <span class="steps-marker" [ngClass]="{ 'is-hollow': step.isHollow }">
+      <span title="{{step.header}}" class="steps-marker" [ngClass]="{ 'is-hollow': step.isHollow }">
         <span class="icon">
           <i [ngClass]="step.icon"></i>
         </span>
-      </span>
-      <div class="steps-content">
-        <p class="heading">{{step.header}}</p>
-      </div>
+      </span>     
     </a>
   </li>
 </ul>

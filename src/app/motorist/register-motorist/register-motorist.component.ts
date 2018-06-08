@@ -7,6 +7,35 @@ import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
 
 class RegisterForm {
   
+  // Personal Info
+  firstName: string;
+  lastName: string;
+  dateOfBirth: Date;
+  motherName: string;
+  document: string;
+  documentId: string;
+  maritalStatus: string;
+  wifeName: string;
+  haveChildren: string;
+  howManyChildren: number;
+  educationalLevel: string;
+  cnhNumber: string;
+  cnhCategory: string;
+  dueDate: string;
+
+  //Address
+  landlinePhone:string;
+  mobilePhone:string;
+  messagePhone:string;
+  
+  nextelPhone:string;
+
+  //Profile
+  bond:string;  
+  dueDateMopp: Date;
+  dueDateAso: Date;
+  dueDateCdd: Date;
+
 }
 
 
@@ -20,17 +49,16 @@ export class RegisterMotoristComponent implements  OnInit {
 
   model: RegisterForm = new RegisterForm();
   @ViewChild('formMotorist') formMotorist: any;
-  dateOfBirth: Date;
-  dueDate: Date;
-  dueDateMopp: Date;
-  dueDateAso: Date;
-  dueDateCdd: Date;
-  pt:any;
-  public landlinephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/];
-  public mobilephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/,/\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/];
-  public messagephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/,/\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
-   
+
+  
+  pt:any;
+  landlinephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  mobilephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/,/\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  messagephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/,/\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/];
+
+
+  public selectedTabIndex = 0;
 
   //Slim Scroll options
   opts: ISlimScrollOptions;

@@ -20,6 +20,7 @@ export class RATCTripsComponent implements OnInit {
   filterDistance: any;
   contextMenuSelected: any;
   showColumnSelector = false;
+  haveFooter: boolean = true;
 
 
   closeColumnSelector() {

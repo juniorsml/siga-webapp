@@ -3,7 +3,7 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
 @Component({
   selector: 'sga-dialog-truck',
   templateUrl: './dialog-truck.component.html',
-  styleUrls: ['../../vehicle/dialog-vehicle/dialog-vehicle.component.scss']
+  styleUrls: ['../../motorist/profile-dialog/profile-dialog-component.scss']
 })
 export class DialogTruckComponent {
   @Input() showDialog: boolean;

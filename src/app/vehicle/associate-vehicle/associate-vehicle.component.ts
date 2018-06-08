@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 export class AssociateVehicleComponent implements OnInit {
   @Input() 
   public showDialog: boolean;
+  @Input() haveFooter: boolean = true;
 
   @Input()
   get vehicles(): Array<any> {

@@ -21,7 +21,7 @@
       </table>
     </div>
 
-    <div slimScroll [options]="opts" [scrollEvents]="scrollEvents" [class]="styleBody" [style.bottom]="bodyBottom" [style.top]="bodyTop">
+    <div [class]="styleBody" [style.bottom]="bodyBottom" [style.top]="bodyTop">
       <table class="ui-datatable-body-table">
         <tbody #bodyElement class="ui-datatable-body-tbody">
           <tr #bodyRowElement *ngFor="let row of filteredData | pager: {page:currentPage, quantity: pageQuantity}; let rowIndex = index;"

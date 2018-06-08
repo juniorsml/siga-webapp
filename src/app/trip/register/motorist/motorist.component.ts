@@ -24,7 +24,7 @@ export class MotoristComponent implements OnInit {
   }
 
   public showMotoristData(motorist) {
-    this.selectedMotorist = motorist
+    this.selectedMotorist = motorist;
   }
 
 
@@ -38,6 +38,8 @@ export class MotoristComponent implements OnInit {
 
   public MotoristSelected(motorist: any): void {
     this.associateMotorist.push(motorist);
+    this.selectedMotorist = motorist;
+
   }
 
   public removeAssociate(motorist: any): void {

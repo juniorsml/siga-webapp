@@ -12,6 +12,7 @@ export class GridVehicleComponent implements OnInit {
 
   @Input() vehicles = new Array();
   @Input() dataLoading: boolean = true;
+  @Input() haveFooter: boolean = true;
   @Output() onVehicleSelected: EventEmitter<any> = new EventEmitter();
 
   text: any;

@@ -17,6 +17,9 @@ export class GridDeviceComponent implements OnInit {
   public filterDistance: any;
   public selectedDevice: any;
   public onDeviceSelected: any;
+
+  public haveFooter: boolean = true;
+  
   showColumnSelector = false;
 
 

@@ -4,7 +4,8 @@ import { TabsComponent } from '../tabs.component';
 
 @Component({
   selector: 'sga-tab',
-  templateUrl: './tab.component.html'
+  templateUrl: './tab.component.html',
+  styleUrls: [ '../tabs.component.scss' ]
 })
 export class TabComponent {
   @Input() heading: string;

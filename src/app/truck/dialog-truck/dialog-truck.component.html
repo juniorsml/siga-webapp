@@ -1,128 +1,128 @@
-<div *ngIf="showDialog" class="cnt-dialog">
-  <div class="content-body columns is-12 is-multiline">
-      <div class="header-modal columns column is-12">
-          <h3 class="title-modal column is-11">Reboque</h3>
-          <i class="fa fa-question-circle ui-icon-info column is-1" ></i>
+<div class="modal-box" [ngClass]="showDialog ? 'opened-modal' : ''">
+  <div class="content-modal columns is-12 is-multiline">
+      <div class="container-dialog-header columns column is-12 is-marginless">
+        <div class="area column is-narrow">
+          <h3>Reboque</h3>  
+        </div>
+        <div class="column btn-close"> 
+           <i  (click)="onClose()" class="fal fa-times is-pulled-right"></i>
+        </div>      
       </div>
-      <div class="columns column is-12 is-multiline">
-          <div class="header-modal-title columns column is-12">
+      <div class="cnt-personal-data columns column is-12 is-multiline is-marginless">
+          <div class="header-modal-title">
               <h4 class="ttl-profile column is-11">Dados</h4>
               <i class="fa fa-question-circle ui-icon-info column is-1"></i>
           </div>
-          <div class="columns column is-12" style="padding: 0 28px;">
-              <div class="column">
+          <div class="columns column is-12">
+              <div class="column is-narrow cnt-profile">
                 <div class="vehicle-photo">
                   <img *ngIf="selectedVehicle != null" src="{{'api/motorist/public/profileImage?id=' + selectedVehicle?.id}}"
                   alt="">
-                </div>
-                
+                </div>                
               </div>
-              <div class="columns column is-three-quarters">
-                  <ul class="motorist-profile-info column is-half">
-                    <li class="motorist-profile-info-item">
-                      <h6 class="personal-info-title">Placa</h6>
-                      <span class="personal-info">{{selectedVehicle == null ? '-' : selectedVehicle?.vehiclePlate}}</span>
-                    </li>
-                    <li class="motorist-profile-info-item">
-                      <h6 class="personal-info-title">Renavan</h6>
+              <div class="column is-three-quarters">
+                  <div class="field-body field">
+                    <div class="field">
+                      <label class="label is-small">Placa</label>
+                      <span class="personal-info">
+                        {{selectedVehicle == null ? '-' : selectedVehicle?.vehiclePlate}} 
+                      </span>
+                    </div>
+                    <div class="field">
+                      <label class="label is-small">Renavan</label>
                       <span class="personal-info">{{selectedVehicle == null ? '-' : selectedVehicle?.renavan}}</span>
-                    </li>
-
-                    <li class="motorist-profile-info-item">
-                      <h6 class="personal-info-title">Marca</h6>
+                    </div>
+                    <div class="field">
+                      <label class="label is-small">Marca</label>
                       <span class="personal-info">{{selectedVehicle?.brand}}</span>
-                    </li>
-
-                    <li class="motorist-profile-info-item">
-                      <h6 class="personal-info-title">Modelo</h6>
+                    </div>
+                   
+                  </div>
+                  <div class="field-body field">
+                    <div class="field">
+                      <label class="label is-small">Modelo</label>
                       <span class="personal-info">{{selectedVehicle?.model}}</span>
-                    </li>
-                  </ul>
-                  <ul  class="motorist-profile-info  column is-half">
-                      <li class="motorist-profile-info-item">
-                        <h6 class="personal-info-title">Cor</h6>
-                        <span class="personal-info">{{selectedVehicle == null ? '-' : selectedVehicle?.color}}</span>
-                      </li>
-                      <li class="motorist-profile-info-item">
-                        <h6 class="personal-info-title">Ano</h6>
-                        <span class="personal-info">{{selectedVehicle?.ano | date}}</span>
-                      </li>
-                      <li class="motorist-profile-info-item">
-                        <h6 class="personal-info-title">Tipo</h6>
-                        <span class="personal-info">{{selectedVehicle?.type}}</span>
-                      </li>
-                      
-                  </ul>
+                    </div>
+                    <div class="field">
+                      <label class="label is-small">Cor</label>
+                      <span class="personal-info">{{selectedVehicle == null ? '-' : selectedVehicle?.color}}</span>
+                    </div>      
+                    <div class="field">
+                      <label class="label is-small">Ano</label>
+                      <span class="personal-info">{{selectedVehicle?.year}}</span>
+                    </div>
+                                
+                  </div>
               </div>
           </div>
       </div>
 
-      <div class=" columns column is-12 is-multiline">
-          <div class="columns header-modal-title  column is-12 ">
-            <h4 class="ttl-profile column is-11 ">Perfil</h4>
-            <i class="fa fa-question-circle ui-icon-info column is-1 "></i>
+      <div class="columns column is-12 is-multiline is-marginless">
+        <div class="header-modal-title">
+           <h4 class="ttl-profile column is-11">Perfil</h4>
+           <i class="fa fa-question-circle ui-icon-info column is-1"></i>
+        </div>
+        <div class="column is-12 is-multiline is-paddingless">
+          <div class="field-body field">            
+            <div class="field column">
+              <label class="label is-small">Ranking</label>
+               <span class="personal-info">
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>               
+               </span>
+            </div>      
+            <div class="field column">
+              <label class="label is-small">GR</label>
+               <span class="personal-info">
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 
+               </span>
+            </div> 
+            <div class="field column">
+              <label class="label is-small">Logística</label>
+              
+               <span class="personal-info">
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+               </span>
+            
+            </div>
+            <div class="field column">
+              <label class="label is-small">Viagens</label>
+              <span class="personal-info"> 44 </span>
+            </div>                       
           </div>
-          <ul class="columns column is-12 is-multiline" style="padding: 0 28px;">
-              <li class="motorist-profile-metrics column is-3">
-                <h6 class="personal-info-title">Ranking</h6>
-                <span class="personal-info">
-                  <i class="stars fa fa-star" aria-hidden="true"></i>
-                  <i class="stars fa fa-star" aria-hidden="true"></i>
-                  <i class="stars fa fa-star" aria-hidden="true"></i>
-                  <i class="stars fa fa-star" aria-hidden="true"></i>
-                  <i class="stars fa fa-star" aria-hidden="true"></i>
-                  <span style="padding-left: 8px">0%</span>
-                </span>
-              </li>
-              <li class="motorist-profile-metrics column is-3">
-                <h6 class="personal-info-title">GR</h6>
-                <span class="personal-info">
-                  <span class="personal-info">
-                    <i class="stars fa fa-star" aria-hidden="true"></i>
-                    <i class="stars fa fa-star" aria-hidden="true"></i>
-                    <i class="stars fa fa-star" aria-hidden="true"></i>
-                    <i class="stars fa fa-star" aria-hidden="true"></i>
-                    <i class="stars fa fa-star" aria-hidden="true"></i>
-                    <span style="padding-left: 8px">0%</span>
-                  </span>
-                </span>
-              </li>
-              <li class="motorist-profile-metrics column is-3">
-                <h6 class="personal-info-title">Logística</h6>
-                <span class="personal-info">
-                  <span class="personal-info">
-                    <i class="stars fa fa-star" aria-hidden="true"></i>
-                    <i class="stars fa fa-star" aria-hidden="true"></i>
-                    <i class="stars fa fa-star" aria-hidden="true"></i>
-                    <i class="stars fa fa-star" aria-hidden="true"></i>
-                    <i class="stars fa fa-star" aria-hidden="true"></i>
-                    <span style="padding-left: 8px">0%</span>
-                  </span>
-                </span>
-              </li>
-              <li class="motorist-profile-metrics column is-3">
-                <h6 class="personal-info-title">Viagens</h6>
-                <span class="personal-info">-</span>
-              </li>
-              <li class="motorist-profile-metrics column is-3">
-                <h6 class="personal-info-title">Quilômetros</h6>
-                <span class="personal-info">-</span>
-              </li>
-              <li class="motorist-profile-metrics column is-3">
-                <h6 class="personal-info-title">Horas</h6>
-                <span class="personal-info">-</span>
-              </li>
-              <li class="motorist-profile-metrics column is-3">
-                <h6 class="personal-info-title">Vídeos</h6>
-                <span class="personal-info">-</span>
-              </li>
-              <li class="motorist-profile-metrics column is-3">
-                <h6 class="personal-info-title">Restrições</h6>
-                <span class="personal-info">-</span>
-              </li>
-          </ul>
+          <div class="field-body field">            
+            <div class="field column">
+              <label class="label is-small">Quilômetros</label>
+              <span class="personal-info"> 11987 </span>
+            </div>      
+            <div class="field column">
+              <label class="label is-small">Horas</label>
+              <span class="personal-info"> 387 </span>
+            </div>   
+            <div class="field column">
+              <label class="label is-small">Vídeos</label>
+              <span class="personal-info"> 19 </span>
+            </div>   
+            <div class="field column">
+              <label class="label is-small">Restrições</label>
+              <span class="personal-info"> 0 </span>
+            </div>                    
+          </div>
+        </div> 
       </div>
 
-    <span (click)="onClose()" class="ui-button-close" aria-hidden="true">fechar</span>
+      
   </div>
 </div>

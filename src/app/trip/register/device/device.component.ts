@@ -4,9 +4,11 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'sga-device',
   templateUrl: './device.component.html',
-  styleUrls: ['device.component.scss']
+  styleUrls: ['../motorist/motorist.component.scss']
 })
 export class DeviceComponent implements OnInit {
+
+  selectedDevice: any;
   public devices: Array<any>;
   public associateDevice = new Array<any>();
 
@@ -32,8 +34,13 @@ export class DeviceComponent implements OnInit {
     this.showRegisterForm = false;
   }
 
+  public showDeviceData(device) {
+    this.selectedDevice = device;
+  }
+
   public onDeviceSelected(device: any): void {
     this.associateDevice.push(device);
+    this.selectedDevice = device;
   }
 
   public removeAssociate(device: any): void {
