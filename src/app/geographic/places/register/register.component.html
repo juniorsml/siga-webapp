@@ -3,19 +3,12 @@
     <i class="fal fa-long-arrow-left" (click)="backButton();"></i>
     <h1>Adicionar Lugar</h1>
   </div>
-  <div class="wrapper-flex">   
-    <sga-places-auto-complete *ngIf="formType !== 'group'"
-      (onPlacesFilteredEvent)="onPlacesFiltered($event)" 
-      (onFilterRemovedEvent)="onPlacesFilterRemoved()">
-    </sga-places-auto-complete>
-  </div>
+ 
 
   <form class="form" [class.load]="placeSelected" #formPlace="ngForm" (ngSubmit)="onSubmit(formPlace)">
-    <hr>
-    <label class="label is-small">Tipo</label>    
-
-    <div class="cnt-select-type">
-      <label class="container"  (click)="toggleMapStyle(map)">Localização
+    <div class="field">
+      <label class="label is-small">Tipo</label>   
+      <label class="container">Localização
         <input type="radio" name="type" value="Localização" checked>
         <span class="checkmark"></span>
       </label>
@@ -25,74 +18,221 @@
       </label>
 
     </div>
-    <div class="control">
-      <input class="input" type="text" placeholder="Nome" name="name" 
+    <div class="field">
+      <label class="label is-small">Endereço</label>  
+      <div class="wrapper-flex">   
+        <sga-places-auto-complete *ngIf="formType !== 'group'"
+          (onPlacesFilteredEvent)="onPlacesFiltered($event)" 
+          (onFilterRemovedEvent)="onPlacesFilterRemoved()">
+        </sga-places-auto-complete>
+      </div>
+    </div>
+   
+
+    <div class="field">
+      <label class="label is-small">Nome</label>  
+      <div class="control">     
+      <input class="input  is-small" type="text" placeholder="Nome" name="name" 
         #name="ngModel" ngModel required [class.is-danger]="name.touched && !name.valid"/>
     </div>
-    <div class="control" *ngIf="formType !== 'group'">
+    </div>
+   <!--  <div class="control" *ngIf="formType !== 'group'">
+       <label class="label is-small">Nome</label>  
       <input class="input" type="text" placeholder="Tipo" name="type" 
         #type="ngModel" ngModel required [class.is-danger]="type.touched && !type.valid"/>
-    </div>
+    </div> -->
 
-    <div *ngIf="formType === 'place'">
-      <div class="control">
-        <select class="input" name="docType" [(ngModel)]="docType" required>
-          <option value="0">Selecione um documento</option>
-          <option>CNPJ</option>
-          <option>CPF</option>
-          <option>DOC Externo</option>
-        </select>
+   <!--  <div class="field" *ngIf="formType === 'place'">
+      <div class="field">
+        <label class="label is-small">Selecione um documento</label>  
+        <div class="control">      
+           <div class="select">
+              <select name="docType" [(ngModel)]="docType" required>
+               <option value="0">Selecione um documento</option>
+               <option>CNPJ</option>
+               <option>CPF</option>
+               <option>DOC Externo</option>
+           </select>
+           </div>
+          
       </div>
-      
-      <div [ngSwitch]="docType">
-        <div *ngSwitchCase="'CNPJ'">
+       
+    </div> -->
+        
+    <div class="field-body" [ngSwitch]="docType">
+      <div *ngSwitchCase="'CNPJ'">
+        <div class="field">  
+          <label class="label is-small">CNPJ Número</label>  
           <div class="control">
             <input type="text" class="input" placeholder="CNPJ Número" name="cnpjNumber" 
             #cnpjNumber="ngModel" ngModel required [class.is-danger]="cnpjNumber.touched && !cnpjNumber.valid"/>
           </div>
+        </div>
+        <div class="field">  
+          <label class="label is-small">Razão Social</label> 
           <div class="control">
             <input type="text" class="input" placeholder="Razão Social" name="socialReason" 
             #socialReason="ngModel" ngModel required [class.is-danger]="socialReason.touched && !socialReason.valid"/>
           </div>
+        </div>
+        <div class="field">  
+          <label class="label is-small">Nome Fantasia</label> 
           <div class="control">
             <input type="text" class="input" placeholder="Nome Fantasia" name="fantasyName"
             #fantasyName="ngModel" ngModel required [class.is-danger]="fantasyName.touched && !fantasyName.valid"/>
           </div>
         </div>
-        <div *ngSwitchCase="'CPF'">
+      </div>
+      <div *ngSwitchCase="'CPF'">
+        <div class="field">  
+          <label class="label is-small">CPF Número</label> 
           <div class="control">
             <input type="text" class="input" placeholder="CPF Número" name="cpfNumber"
             #cpfNumber="ngModel" ngModel required [class.is-danger]="cpfNumber.touched && !cpfNumber.valid"/>
           </div>
         </div>
-        <div *ngSwitchCase="'DOC Externo'">
+      </div>
+      <div *ngSwitchCase="'DOC Externo'">
+        <div class="field"> 
+            <label class="label is-small">DOC Número</label> 
           <div class="control">
             <input type="text" class="input" placeholder="DOC Número" name="docNumber"
             #docNumber="ngModel" ngModel required [class.is-danger]="docNumber.touched && !docNumber.valid"/>
           </div> 
         </div>
       </div>
+    </div>
+      
+    <div class="field">
+      <label class="label is-small">Descrição</label>
       <div class="control">
-        <input type="text" class="input" placeholder="Website" name="website" ngModel />
+        <input type="text" class="input is-small" placeholder="Descrição" name="website" ngModel />
       </div> 
+    </div>
+    <div class="field">
+      <label class="label is-small">Tags</label>
       <div class="control">
-        <input type="text" class="input" placeholder="Responsável" name="docNumber" ngModel />
+        <input type="text" class="input is-small" placeholder="Tags" name="tag" ngModel />
       </div> 
-      <div class="control">
-        <input type="text" class="input" placeholder="E-mail" name="email" ngModel />
-      </div> 
-      <div class="control">
-        <input type="text" class="input" placeholder="Celular" name="mobileNumber" ngModel />
-      </div> 
-      <div class="control">
-        <input type="text" class="input" placeholder="Telefone" name="phoneNumber" ngModel />
-      </div> 
+    </div>
+    <div class="field-body field">     
+      <div class="field"> 
+        <label class="label is-small">ID Cliente</label>      
+        <div class="field-body">
+          <div class="field">
+            <input type="text" class="input is-small" placeholder="Chave" name="email" ngModel />
+          </div>
+          <div class="field">
+            <input type="text" class="input is-small" placeholder="ID" name="email" ngModel />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field-body field">     
+      <div class="field"> 
+        <label class="label is-small">Estilo</label>      
+        <div class="field-body seletors">
+          <div class="field">
+             <div class="icon-picker" (click)="toggleChooseIcon()" [style.color]="colorIcon.value">
+                <span class="icon-label">Ícone</span>
+                <div class="preview" [style.background-color]="backgroundColor.value">
+                  
+                  <i class="fal "  [ngClass]="icon == '' ? 'fa-map-marker-alt' : icon "></i> 
+                  
+
+
+                </div>
+             </div>
+             <div class="choose-icon"  [ngClass]="status ? 'opened' : 'closed'">
+                <div class="icon" data-icon="fa-map-marker-alt" (click)="changeIcon($event)" >  
+                   <i class="fal fa-map-marker-alt"></i>
+                </div>
+                <div class="icon" data-icon="fa-building"  (click)="changeIcon($event)" >
+                  <i class="fal fa-building"></i>
+                </div>
+                <div class="icon" data-icon="fa-industry-alt" (click)="changeIcon($event)" >  
+                   <i class="fal fa-industry-alt"></i>
+                </div>
+              
+                              
+             </div>
+          </div>
+          <div class="field">
+              <span class="icon-label">Cor</span>
+             <input type="color" class="color-picker"  #colorIcon value="#ffffff">
+          </div>
+          <div class="field">
+             <span class="icon-label">Func</span>
+             <input type="color" class="color-picker" #backgroundColor value="#506693">
+          </div>
+          <div class="field">
+            <span class="icon-label">Área</span>
+             <input type="color" class="color-picker" value="#21b87d">
+          </div>
+          <div class="field">
+             <span class="icon-label">Borda</span>
+             <input type="color" class="color-picker" value="#ee2e2e">
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label is-small">Classificação</label>
+
+       <label class="container">Comercial
+         <input type="radio"  name="kindOf" [(ngModel)]="kindOf"  value="Comercial" [checked]="true">
+         <span class="checkmark"></span>
+       </label>
+       <label class="container" >Residencial        
+         <input type="radio"  name="kindOf" [(ngModel)]="kindOf"   value="Residencial" >
+         <span class="checkmark"></span>
+       </label>
+       <label class="container" >Outro        
+         <input type="radio"   name="kindOf" [(ngModel)]="kindOf"  value="Outro" >
+         <span class="checkmark"></span>
+       </label>
+
+     
+      
+   
+    </div>
+
+    <div class="field-body field" [ngSwitch]="kindOf">
+      <div class="field" *ngSwitchDefault>
+        <div class="field">  
+          <label class="label is-small">CNPJ</label>  
+          <div class="control">
+            <input type="text" class="input is-small" placeholder="CNPJ" name="cnpjNumber" 
+            #cnpjNumber="ngModel" ngModel required [class.is-danger]="cnpjNumber.touched && !cnpjNumber.valid"/>
+          </div>
+        </div>
+      </div>
+       <div class="field" *ngSwitchCase="'Residencial'">
+        <div class="field">  
+          <label class="label is-small">RG</label>  
+          <div class="control">
+            <input type="text" class="input is-small" placeholder="RG " name="rgNumber" 
+            #rgNumber="ngModel" ngModel required [class.is-danger]="rgNumber.touched && !rgNumber.valid"/>
+          </div>
+        </div>
+      </div>
+      <div class="field"  *ngSwitchCase="'Outro'">
+        <div class="field">  
+          <label class="label is-small">Outro</label>  
+          <div class="control">
+            <input type="text" class="input is-small" placeholder="Outro" name="otherDoc" 
+            #otherDoc="ngModel" ngModel required [class.is-danger]="otherDoc.touched && !otherDoc.valid"/>
+          </div>
+        </div>
+      </div>
     </div>
       
     <div class="control">
       <input 
       [disabled]="!formPlace.valid"
-      class="button is-info"
+      class="button is-first"
       value="Enviar"
       type="submit">
     </div>
