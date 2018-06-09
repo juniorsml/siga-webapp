@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
 
   public docType = 0;
   public colorIcon = '';
-  public placeSelected = true;
+  public placeSelected = false;
 
   
  

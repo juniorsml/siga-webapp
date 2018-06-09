@@ -6,7 +6,7 @@
  
 
   <form class="form" [class.load]="placeSelected" #formPlace="ngForm" (ngSubmit)="onSubmit(formPlace)">
-    <div class="field">
+    <div class="field" *ngIf="formType === 'place'">
       <label class="label is-small">Tipo</label>   
       <label class="container">Localização
         <input type="radio" name="type" value="Localização" checked>
@@ -18,7 +18,7 @@
       </label>
 
     </div>
-    <div class="field">
+    <div class="field" *ngIf="formType === 'place'">
       <label class="label is-small">Endereço</label>  
       <div class="wrapper-flex">   
         <sga-places-auto-complete *ngIf="formType !== 'group'"
@@ -59,7 +59,7 @@
        
     </div> -->
         
-    <div class="field-body" [ngSwitch]="docType">
+  <!--   <div class="field-body" [ngSwitch]="docType">
       <div *ngSwitchCase="'CNPJ'">
         <div class="field">  
           <label class="label is-small">CNPJ Número</label>  
@@ -101,21 +101,22 @@
           </div> 
         </div>
       </div>
-    </div>
+    </div> -->
       
-    <div class="field">
+    <div class="field" >
       <label class="label is-small">Descrição</label>
       <div class="control">
         <input type="text" class="input is-small" placeholder="Descrição" name="website" ngModel />
       </div> 
     </div>
+
     <div class="field">
       <label class="label is-small">Tags</label>
       <div class="control">
         <input type="text" class="input is-small" placeholder="Tags" name="tag" ngModel />
       </div> 
     </div>
-    <div class="field-body field">     
+    <div class="field-body field" *ngIf="formType === 'place'">     
       <div class="field"> 
         <label class="label is-small">ID Cliente</label>      
         <div class="field-body">
@@ -128,7 +129,7 @@
         </div>
       </div>
     </div>
-    <div class="field-body field">     
+    <div class="field-body field" *ngIf="formType === 'place'">     
       <div class="field"> 
         <label class="label is-small">Estilo</label>      
         <div class="field-body seletors">
@@ -178,7 +179,7 @@
       </div>
     </div>
 
-    <div class="field">
+    <div class="field" *ngIf="formType === 'place'">
       <label class="label is-small">Classificação</label>
 
        <label class="container">Comercial
@@ -199,8 +200,8 @@
    
     </div>
 
-    <div class="field-body field" [ngSwitch]="kindOf">
-      <div class="field" *ngSwitchDefault>
+    <div class="field-body field" [ngSwitch]="kindOf" *ngIf="formType === 'place'" >
+      <div class="field" *ngSwitchDefault >
         <div class="field">  
           <label class="label is-small">CNPJ</label>  
           <div class="control">

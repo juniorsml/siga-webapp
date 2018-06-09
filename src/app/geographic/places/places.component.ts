@@ -27,7 +27,7 @@ export class RegisterPlaceComponent implements OnInit {
   public selectedArea: any;
   public selectedGroup: any;
   public selectedPlace: any;
-  public formType: string = 'place';
+  public formType: string = '';
   public selectedTabIndex = 0;
   public showRegister = false;
   public showSelectGroup = false;
