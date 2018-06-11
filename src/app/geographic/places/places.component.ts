@@ -110,6 +110,7 @@ export class RegisterPlaceComponent implements OnInit {
   }
 
   private setupMap(draw = false): void {
+
     this.map.createMapBoxMapInstance(draw);
 
     this.moveMap(
@@ -269,7 +270,8 @@ export class RegisterPlaceComponent implements OnInit {
   private addPoint = place => this.map.addCircle(L.latLng(place.lat, place.lng));
 
   private onSuccessRoute = data => {
-    const latLngs = data.routes[0].geometry.coordinates.map(geo => L.latLng(geo[1], geo[0]));
+    const featureList = this.directionService.decode(data.routes[0].geometry);
+    const latLngs = featureList.map(feat => L.latLng(feat.geometry.coordinates[1], feat.geometry.coordinates[0]));
     this.map.drawPolyline(latLngs);
   }
 
