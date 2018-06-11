@@ -25,17 +25,25 @@
 
 .wrapper-flex {
   display: flex;
-  margin-top:40px;
 
-  i {
-    flex: 1;
+
+  i {    flex: 1;
     cursor: pointer;
     margin-top: .2em;
     font-size: 1.5em;
   }
   sga-places-auto-complete {
-    width: 90%;
+    width: 100%;
   }
+}
+.cnt-form{
+  position: relative;
+
+  height: 86vh;
+}
+.slimscroll-grid,.slimscroll-bar{
+  transition:all 150ms ease;
+  position: relative;
 }
 .form {
   -webkit-transition: opacity .5s ease-in;
@@ -45,14 +53,24 @@
   transition: opacity .5s ease-in;
   overflow-y: auto;
   opacity: 0;
-  height: 28em;
+  padding: 0 20px;
 
-  hr {
-    margin: .5em;
+ 
+
+  .field{
+    position: relative;
+  }
+  .maxCount{
+    font-size: 11px;
+    position: absolute;
+    right: 0;
   }
 
   .control {
-    margin-top: .7em;
+    
+    .select, select{
+      width: 100%;
+    }
   }
 
   .control:last-child {
@@ -62,4 +80,93 @@
 
 .load {
   opacity: 1;
+}
+
+.seletors{
+  .field,.icon-picker{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .icon-label{
+    color:#8a96af;
+    font-size: 12px;
+  }
+  .icon-picker{
+    width: 55px;
+    height: 55px;
+    display: flex;
+    border-radius: 3px;
+    font-size: 23px;
+    color:#b9b3b3;
+    cursor: pointer;
+    
+    .preview{
+      margin:auto;
+      width: 85%;
+      height: 85%;
+      border-radius: 50%;
+      display: flex;
+      i{
+        margin:auto;
+      }
+    }
+  }
+  .choose-icon.opened{
+     opacity:1;
+     visibility: visible;
+     top: 4px; 
+     left: 55px;
+  }
+  .choose-icon{
+    position: absolute;
+    visibility: hidden;
+    width: 152px;
+    height: 63px;
+    background: white;
+    border-radius: 3px;
+    border: 1px solid #FFF;
+    z-index: 9;
+        top: 4px;
+    left: 50px;
+    opacity:0;
+    display: flex;
+    box-shadow: 0px 0px 10px #c5bfbf;  
+    transition:all 350ms ease;
+
+    .icon{
+      cursor: pointer;
+      margin: auto;
+      font-size: 24px;
+      color: #c4c4c4;
+      border-radius: 50%;
+      width: 41px;
+      height: 41px;
+       transition:all 250ms ease;
+      &:hover{
+        background-color: #f1f1f1;
+      }
+    }
+  }
+  .color-picker{    
+    cursor: pointer;
+    background: white;
+    border-radius: 3px;
+    width: 43px;
+    height: 43px;
+    padding: 4px;
+    border: 1px solid #d4d4d4;
+  }
+  .choose-icon{
+
+    .building{
+
+    }
+    .industry{
+      
+    }
+
+  }
+
+  
 }
