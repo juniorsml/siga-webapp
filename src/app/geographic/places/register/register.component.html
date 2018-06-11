@@ -34,7 +34,7 @@
     <div class="field">
       <label class="label is-small">Nome</label>  
       <div class="control">     
-      <input class="input is-small" [attr.maxlength]="nameMaxLenght"type="text" placeholder="Nome" name="name" 
+      <input class="input is-small" [attr.maxlength]="nameMaxLenght" type="text" placeholder="Nome" name="name" 
         #name="ngModel" ngModel required [class.is-danger]="name.touched && !name.valid"/>
         <p class="maxCount">{{name.value.length}} / {{nameMaxLenght}}</p>
     </div>
@@ -109,7 +109,8 @@
     <div class="field" >
       <label class="label is-small">Descrição</label>
       <div class="control">
-        <input type="text" class="input is-small" placeholder="Descrição" name="website" ngModel />
+        <input type="text" class="input is-small" [attr.maxlength]="descriptionMaxLenght"  placeholder="Descrição" #description name="description" ngModel />
+         <p class="maxCount">{{description.value.length}} / {{descriptionMaxLenght}}</p>
       </div> 
     </div>
 
@@ -124,10 +125,12 @@
         <label class="label is-small">ID Cliente</label>      
         <div class="field-body">
           <div class="field">
-            <input type="text" class="input is-small" placeholder="Chave" name="email" ngModel />
+            <input type="text" class="input is-small" [attr.maxlength]="key_customerMaxLenght" placeholder="Chave" name="key_customer" #key_customer ngModel />
+             <p class="maxCount">{{key_customer.value.length}} / {{key_customerMaxLenght}}</p>
           </div>
           <div class="field">
-            <input type="text" class="input is-small" placeholder="ID" name="email" ngModel />
+            <input type="text" class="input is-small" [attr.maxlength]="id_customerMaxLenght" placeholder="ID" name="id_customer" #id_customer ngModel />
+             <p class="maxCount">{{id_customer.value.length}} / {{id_customerMaxLenght}}</p>
           </div>
         </div>
       </div>
@@ -210,6 +213,7 @@
           <div class="control">
             <input type="text" class="input is-small" placeholder="CNPJ" name="cnpjNumber" 
             #cnpjNumber="ngModel" ngModel required [class.is-danger]="cnpjNumber.touched && !cnpjNumber.valid"/>
+
           </div>
         </div>
       </div>

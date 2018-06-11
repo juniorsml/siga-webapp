@@ -29,6 +29,9 @@ export class RegisterComponent implements OnInit {
   public icon: string = '';
 
   public nameMaxLenght = 110;
+  public descriptionMaxLenght = 100;
+  public id_customerMaxLenght = 30;
+  public key_customerMaxLenght = 30;
 
   public name:string;
 
