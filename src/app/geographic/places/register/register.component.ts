@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Output, Input, OnInit,ElementRef } from '@angular/core';
 
+import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
+
 @Component({
   selector: 'sga-register',
   templateUrl: './register.component.html',
@@ -22,17 +24,15 @@ export class RegisterComponent implements OnInit {
   public docType = 0;
   public colorIcon = '';
   public placeSelected = false;
-
-  
- 
-
   public data: string;
-
   public status: boolean = false;
-
-
-
   public icon: string = '';
+
+  public nameMaxLenght = 110;
+
+  public name:string;
+
+
 
  public changeIcon(event){
        // console.log(event.ToElement.dataset.icon);
@@ -48,7 +48,6 @@ export class RegisterComponent implements OnInit {
 
 
   toggleChooseIcon() {
-
     this.status = !this.status;
   }
 
@@ -61,10 +60,23 @@ export class RegisterComponent implements OnInit {
       }
     }
 
-
+  opts: ISlimScrollOptions;
+  scrollEvents: EventEmitter<SlimScrollEvent>;
   ngOnInit(): void {
     // debugger
     this.placeSelected = this.formType === 'area' || this.formType === 'group' || this.formType === 'place';
+     this.scrollEvents = new EventEmitter<SlimScrollEvent>();
+    this.opts = {
+      alwaysVisible: false,
+      gridOpacity: '0.2',
+      barOpacity: '0.5',
+      gridBackground: '#ccc',
+      gridWidth: '5',
+      gridMargin: '2px 2px',
+      barBackground: 'rgba(55, 56, 58, 0.6)',
+      barWidth: '4',
+      barMargin: '2px 2px'
+    };
   }
 
   public backButton() {

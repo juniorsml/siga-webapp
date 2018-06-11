@@ -1,11 +1,13 @@
-<section>
+<section style="padding-top: 39px;">
   <div class="cnt-places-header">
     <i class="fal fa-long-arrow-left" (click)="backButton();"></i>
     <h1>Adicionar Lugar</h1>
   </div>
  
-
-  <form class="form" [class.load]="placeSelected" #formPlace="ngForm" (ngSubmit)="onSubmit(formPlace)">
+  <div slimScroll  [options]="opts" [scrollEvents]="scrollEvents" class="cnt-form">
+    
+ 
+  <form  class="form" [class.load]="placeSelected" #formPlace="ngForm" (ngSubmit)="onSubmit(formPlace)">
     <div class="field" *ngIf="formType === 'place'">
       <label class="label is-small">Tipo</label>   
       <label class="container">Localização
@@ -32,8 +34,9 @@
     <div class="field">
       <label class="label is-small">Nome</label>  
       <div class="control">     
-      <input class="input  is-small" type="text" placeholder="Nome" name="name" 
+      <input class="input is-small" [attr.maxlength]="nameMaxLenght"type="text" placeholder="Nome" name="name" 
         #name="ngModel" ngModel required [class.is-danger]="name.touched && !name.valid"/>
+        <p class="maxCount">{{name.value.length}} / {{nameMaxLenght}}</p>
     </div>
     </div>
    <!--  <div class="control" *ngIf="formType !== 'group'">
@@ -59,7 +62,7 @@
        
     </div> -->
         
-  <!--   <div class="field-body" [ngSwitch]="docType">
+   <!--   <div class="field-body" [ngSwitch]="docType">
       <div *ngSwitchCase="'CNPJ'">
         <div class="field">  
           <label class="label is-small">CNPJ Número</label>  
@@ -238,5 +241,5 @@
       type="submit">
     </div>
   </form>
-
+ </div>
 </section>
