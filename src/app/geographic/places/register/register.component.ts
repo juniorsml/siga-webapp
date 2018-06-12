@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, Input, OnInit,ElementRef } from '@angular/core';
+import { Component, EventEmitter, Output, Input, OnInit, ElementRef } from '@angular/core';
 
 import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
 
@@ -14,61 +14,38 @@ export class RegisterComponent implements OnInit {
 
   @Input() public formType: string;
   @Input() public backParam: string;
-  
+
   @Output() public onSubmitForm = new EventEmitter<any>();
   @Output() public onBackButton = new EventEmitter<string>();
   @Output() public onPlaceSelected = new EventEmitter<any>();
-  
+  @Output() public onPreviewClicked = new EventEmitter<any>();
+
   private location: any;
 
   public docType = 0;
   public colorIcon = '';
   public placeSelected = false;
   public data: string;
-  public status: boolean = false;
-  public icon: string = '';
+  public status = false;
+  public icon = '';
 
   public nameMaxLenght = 110;
   public descriptionMaxLenght = 100;
   public id_customerMaxLenght = 30;
   public key_customerMaxLenght = 30;
 
-  public name:string;
+  public opts: ISlimScrollOptions;
+  public scrollEvents: EventEmitter<SlimScrollEvent>;
 
+  public name: string;
 
-
- public changeIcon(event){
-       // console.log(event.ToElement.dataset.icon);
-       // debugger
-       let target = event.currentTarget;
-       this.icon = target.dataset.icon;
-       console.log(target.dataset.icon);
-       this.status = !this.status;
-  }
-  
+  public inputValue: string;
 
   constructor(private _eref: ElementRef) { }
 
-
-  toggleChooseIcon() {
-    this.status = !this.status;
-  }
-
-  // Close When Click outSide of Component
-   outClick(event) {
-       if (!this._eref.nativeElement.contains(event.target)){// or some similar check
-        if (this.status != false) {
-          this.status = false;
-        }
-      }
-    }
-
-  opts: ISlimScrollOptions;
-  scrollEvents: EventEmitter<SlimScrollEvent>;
   ngOnInit(): void {
-    // debugger
     this.placeSelected = this.formType === 'area' || this.formType === 'group' || this.formType === 'place';
-     this.scrollEvents = new EventEmitter<SlimScrollEvent>();
+    this.scrollEvents = new EventEmitter<SlimScrollEvent>();
     this.opts = {
       alwaysVisible: false,
       gridOpacity: '0.2',
@@ -82,21 +59,58 @@ export class RegisterComponent implements OnInit {
     };
   }
 
+  public changeIcon(event) {
+    const target = event.currentTarget;
+    this.icon = target.dataset.icon;
+    this.status = !this.status;
+  }
+
+  public onColorChange(item) {
+    console.log(item);
+  }
+
+  public toggleChooseIcon() {
+    this.status = !this.status;
+  }
+
+  // Close When Click outSide of Component
+  outClick(event) {
+    if (!this._eref.nativeElement.contains(event.target)) {// or some similar check
+      if (this.status !== false) {
+        this.status = false;
+      }
+    }
+  }
+
+  public redrawPoint(color, { value }) {
+    const font = color.value;
+    const bgColor = value;
+    const icon = this.icon === '' ? 'fa-map-marker-alt' : this.icon;
+    this.onPreviewClicked.emit({ font, bgColor, icon });
+  }
+
   public backButton() {
     this.onBackButton.emit(this.backParam);
   }
 
   public onPlacesFiltered(event) {
-    
+
     const { location } = event.geometry;
-    if (location === undefined) return;
-    this.location = location;
+    if (location === undefined) { return; }
+    const options = {
+      icon: 'fa-map-marker-alt',
+      font: '#fff',
+      bgColor: '#506693'
+    };
+    this.location = {
+      ...location,
+      options
+    };
     this.onPlaceSelected.emit(this.location);
   }
-  
+
   public onPlacesFilterRemoved() {
     this.location = null;
-    
   }
 
   public isValidForm(form) {
