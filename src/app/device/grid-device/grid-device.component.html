@@ -12,8 +12,9 @@
     </div>
     <div>
       <sga-sidebar-configuration  *ngIf="showFilterBar"  (onSelectOption)="onSelectOption($event)">
-      <sga-option header="Seleção de Colunas"></sga-option>
-    </sga-sidebar-configuration>
+         <sga-option icon="fa-table" header="Seleção de Colunas"></sga-option>
+        <sga-option icon="fa-user-plus" header="Configuração"></sga-option>
+      </sga-sidebar-configuration>
     </div>  
   </div>  
 </div>
