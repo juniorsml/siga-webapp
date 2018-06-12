@@ -29,11 +29,14 @@ export abstract class Map {
   /** Marker **/
   public abstract createMarker(feature: Feature<any>): L.Marker;
 
+  public abstract addCustomMarker(lat: number, lng: number, color: string, isDraggable: boolean): void;
+
   public abstract addMarker(feature: Feature<any>): L.Marker;
 
   public abstract addCluster(markers: Array<any>): void;
 
   public abstract addCircle(latLng: L.LatLng): void;
+
 
   public abstract clearMarkers(): void;
 

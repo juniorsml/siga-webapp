@@ -5,7 +5,6 @@
   </div>
  
   <div slimScroll  [options]="opts" [scrollEvents]="scrollEvents" class="cnt-form">
-    
  
   <form  class="form" [class.load]="placeSelected" #formPlace="ngForm" (ngSubmit)="onSubmit(formPlace)">
     <div class="field" *ngIf="formType === 'place'">
@@ -36,7 +35,7 @@
       <div class="control">     
       <input class="input is-small" [attr.maxlength]="nameMaxLenght" type="text" placeholder="Nome" name="name" 
         #name="ngModel" ngModel required [class.is-danger]="name.touched && !name.valid"/>
-        <p class="maxCount">{{name.value.length}} / {{nameMaxLenght}}</p>
+        <p class="maxCount">{{name?.value?.length}} / {{nameMaxLenght}}</p>
     </div>
     </div>
    <!--  <div class="control" *ngIf="formType !== 'group'">
@@ -143,16 +142,12 @@
              <div class="icon-picker" (click)="toggleChooseIcon()" [style.color]="colorIcon.value">
                 <span class="icon-label">Ícone</span>
                 <div class="preview" [style.background-color]="backgroundColor.value">
-                  
                   <i class="fal "  [ngClass]="icon == '' ? 'fa-map-marker-alt' : icon "></i> 
-                  
-
-
                 </div>
              </div>
              <div class="choose-icon"  [ngClass]="status ? 'opened' : 'closed'">
                 <div class="icon" data-icon="fa-map-marker-alt" (click)="changeIcon($event)" >  
-                   <i class="fal fa-map-marker-alt"></i>
+                  <i class="fal fa-map-marker-alt"></i>
                 </div>
                 <div class="icon" data-icon="fa-building"  (click)="changeIcon($event)" >
                   <i class="fal fa-building"></i>
@@ -160,50 +155,45 @@
                 <div class="icon" data-icon="fa-industry-alt" (click)="changeIcon($event)" >  
                    <i class="fal fa-industry-alt"></i>
                 </div>
-              
-                              
              </div>
           </div>
           <div class="field">
-              <span class="icon-label">Cor</span>
-             <input type="color" class="color-picker"  #colorIcon value="#ffffff">
+            <span class="icon-label">Cor</span>
+            <input type="color" class="color-picker" #colorIcon value="#ffffff">
           </div>
           <div class="field">
-             <span class="icon-label">Func</span>
-             <input type="color" class="color-picker" #backgroundColor value="#506693">
+            <span class="icon-label">Func</span>
+            <input type="color" class="color-picker" #backgroundColor value="#506693">
           </div>
           <div class="field">
             <span class="icon-label">Área</span>
-             <input type="color" class="color-picker" value="#21b87d">
+            <input type="color" class="color-picker"  value="#21b87d">
           </div>
           <div class="field">
-             <span class="icon-label">Borda</span>
-             <input type="color" class="color-picker" value="#ee2e2e">
+            <span class="icon-label">Borda</span>
+            <input type="color" class="color-picker" value="#ee2e2e">
           </div>
 
         </div>
+        <a class="button" (click)="redrawPoint(colorIcon, backgroundColor)">Preview</a>
       </div>
     </div>
 
     <div class="field" *ngIf="formType === 'place'">
       <label class="label is-small">Classificação</label>
 
-       <label class="container">Comercial
-         <input type="radio"  name="kindOf" [(ngModel)]="kindOf"  value="Comercial" [checked]="true">
-         <span class="checkmark"></span>
-       </label>
-       <label class="container" >Residencial        
-         <input type="radio"  name="kindOf" [(ngModel)]="kindOf"   value="Residencial" >
-         <span class="checkmark"></span>
-       </label>
-       <label class="container" >Outro        
-         <input type="radio"   name="kindOf" [(ngModel)]="kindOf"  value="Outro" >
-         <span class="checkmark"></span>
-       </label>
-
-     
-      
-   
+      <label class="container">Comercial
+        <input type="radio"  name="kindOf" [(ngModel)]="kindOf"  value="Comercial" [checked]="true">
+        <span class="checkmark"></span>
+      </label>
+      <label class="container" >Residencial        
+        <input type="radio"  name="kindOf" [(ngModel)]="kindOf"   value="Residencial" >
+        <span class="checkmark"></span>
+      </label>
+      <label class="container" >Outro        
+        <input type="radio"   name="kindOf" [(ngModel)]="kindOf"  value="Outro" >
+        <span class="checkmark"></span>
+      </label>
     </div>
 
     <div class="field-body field" [ngSwitch]="kindOf" *ngIf="formType === 'place'" >

@@ -663,6 +663,25 @@ $bg-titles: #4d5675;
 
 /******************************************** MAPBOX ************************************************/
 
+.icon-marker {
+  width: 4em;
+  text-align: center;
+  position: absolute;
+  animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  
+  .icon-body {
+    vertical-align: middle;
+    font-size: 2em;
+    margin-top: .666em;
+    padding: .55em;
+    border-radius: 1em;
+    width: 100%;
+  }
+}
 .mapboxgl-map {
   position: absolute;
   width: 100%;

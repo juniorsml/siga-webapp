@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'sga-motorist',
   templateUrl: './motorist.component.html',
-   styleUrls: ['./motorist.component.scss',]
+  styleUrls: ['./motorist.component.scss']
 })
 
 export class MotoristComponent implements OnInit {
@@ -15,7 +15,7 @@ export class MotoristComponent implements OnInit {
 
   public showMotoristRegister = false;
 
-  constructor(private router: ActivatedRoute) {}
+  constructor(private router: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.router.data.subscribe(
@@ -27,8 +27,7 @@ export class MotoristComponent implements OnInit {
     this.selectedMotorist = motorist;
   }
 
-
-  public showMotoristForm() {  
+  public showMotoristForm() {
     this.showMotoristRegister = true;
   }
 
@@ -39,7 +38,6 @@ export class MotoristComponent implements OnInit {
   public MotoristSelected(motorist: any): void {
     this.associateMotorist.push(motorist);
     this.selectedMotorist = motorist;
-
   }
 
   public removeAssociate(motorist: any): void {
