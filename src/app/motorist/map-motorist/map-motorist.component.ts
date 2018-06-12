@@ -30,12 +30,12 @@ export class MapMotoristComponent implements OnInit {
 
   set motorists(value: Array<any>) {
     this._motorists = value;
-    if (this.mapSelectedTabIndex && this.mapSelectedTabIndex != 1) {
+    if (this.mapSelectedTabIndex && this.mapSelectedTabIndex !== 1) {
       this.plotMotoristLocations();
     }
   }
 
-  public status: boolean = false;
+  public status = false;
 
   toggleMapType() {
     this.status = !this.status;
