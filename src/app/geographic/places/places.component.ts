@@ -21,13 +21,13 @@ import { MapStyle } from '../../shared/models/MapStyle';
 export class RegisterPlaceComponent implements OnInit {
   private location: any;
   text: any;
-  public areas:  Array<any>;
+  public areas: Array<any>;
   public groups: Array<any>;
   public itineraryPlaces = new Array<any>();
   public selectedArea: any;
   public selectedGroup: any;
   public selectedPlace: any;
-  public formType: string = '';
+  public formType = '';
   public selectedTabIndex = 0;
   public showRegister = false;
   public showSelectGroup = false;
@@ -35,8 +35,10 @@ export class RegisterPlaceComponent implements OnInit {
 
   public groupedItems = new Array<GroupedItems>();
 
+  private iconOptions = null;
   private _places: Array<any>;
   private mapMarkers: Array<Feature<GeometryObject>> = [];
+
   @Input()
   get places(): Array<any> {
     return this._places;
@@ -88,7 +90,7 @@ export class RegisterPlaceComponent implements OnInit {
   }
 
   constructor(private map: Map,
-              private directionService: DirectionService) {}
+    private directionService: DirectionService) { }
 
   ngOnInit() {
     this.places = places;
@@ -146,7 +148,9 @@ export class RegisterPlaceComponent implements OnInit {
 
     this.map.clearAll();
     this.moveMap(location.latitude, location.longitude, 18);
-    this.map.addCustomMarker(location.latitude, location.longitude, '#0049ff', true);
+    const options = this.iconOptions ? this.iconOptions : location.options;
+    this.marker(location.latitude, location.longitude, options);
+    // this.map.addCustomMarker(location.latitude, location.longitude, '#0049ff', true);
   }
 
   public openRegister(type) {
@@ -280,7 +284,45 @@ export class RegisterPlaceComponent implements OnInit {
     this.plotRoute();
   }
 
+  public marker = (lat, lng, options = null) => {
+    this.map.clearAll();
+    const markerBody: HTMLElement = document.createElement('div');
+    const markerElement: HTMLElement = document.createElement('div');
+    const iconElement: HTMLSpanElement = document.createElement('i');
+
+    if (options) {
+      iconElement.className = `icon-body fal ${options ? options.icon : ''}`;
+      iconElement.style.color = options.font;
+      iconElement.style.background = options.bgColor;
+      this.iconOptions = options;
+    }
+
+    markerElement.appendChild(markerBody);
+    markerBody.appendChild(iconElement);
+    markerBody.className = 'icon-marker bounce';
+
+    markerBody.addEventListener('click', () => alert('op'));
+
+    const marker: Feature<GeometryObject> = <Feature<any>>{
+      type: 'Feature',
+      properties: { iconSize: [50, 50], icon: markerElement },
+      geometry: {
+        type: 'Point',
+        coordinates: [
+          lng,
+          lat
+        ]
+      }
+    };
+    this.map.addMarker(marker);
+    // const customMarker = this.map.createMarker(marker);
+    // marker.properties['marker'] = customMarker;
+  }
+
   public closeModalGroup = () => this.showSelectGroup = false;
+
+
+  public drawPin = obj => this.marker(this.location.latitude, this.location.longitude, obj);
 
   public create(item) {
     this.showRegister = false;
@@ -294,7 +336,7 @@ export class RegisterPlaceComponent implements OnInit {
         break;
 
       case 2:
-        this.groups.push({...item, location: []});
+        this.groups.push({ ...item, location: [] });
         break;
     }
   }
