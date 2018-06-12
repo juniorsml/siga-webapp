@@ -41,6 +41,8 @@ export class RegisterComponent implements OnInit {
 
   public inputValue: string;
 
+  public typeSelected = 'location';
+
   constructor(private _eref: ElementRef) { }
 
   ngOnInit(): void {
@@ -92,6 +94,8 @@ export class RegisterComponent implements OnInit {
   public backButton() {
     this.onBackButton.emit(this.backParam);
   }
+
+  public setTypeSelected = param => this.typeSelected = param;
 
   public onPlacesFiltered(event) {
 
