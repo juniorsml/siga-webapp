@@ -14,9 +14,7 @@
       <sga-sidebar-configuration  *ngIf="showFilterBar"  (onSelectOption)="onSelectOption($event)">
       <sga-option header="Seleção de Colunas"></sga-option>
     </sga-sidebar-configuration>
-    </div>
-   
-    
+    </div>  
   </div>  
 </div>
 
@@ -27,14 +25,11 @@
     (onClose)="closeColumnSelector()">
   </sga-column-selector>
 </sga-modal>
-
-
-
    
 <div [ngClass]="{'has-height' : hasHeight}"  class="content-wrapper content-grid-device" [ngStyle]="{'top': showFilterBar ? '43px' : '0'}">
  
   <div *ngIf="showFilterBar" [ngClass]="styleClass" class="columns level-left">
-    <div class="column is-3">     
+    <div class="column is-2">     
       <p class="control has-icons-left"> 
         <input [(ngModel)]="text" class="input is-small"  placeholder="Buscar" type="text"/>
         <span class="icon is-small is-left">
@@ -45,7 +40,7 @@
     <sga-map-filter 
       (placesFiltered)="onPlacesFiltered($event)" 
       (filterRemoved)="onPlacesFilterRemoved()"
-      class="column is-12">
+      class="column is-10">
     </sga-map-filter>
   </div>
 
@@ -94,7 +89,7 @@
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'updated'" [header]="'Atualizado'" [minWidth]="'43'" [isSortable]="true"> 
+      <column [key]="'updated'" [header]="'Atualizado'" [width]="'233'" [isSortable]="true"> 
         <ng-template let-item="item">
           {{item}}
         </ng-template>

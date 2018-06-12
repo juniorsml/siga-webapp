@@ -33,7 +33,7 @@
 <div class="content-wrapper  content-grid-vehicle">
  
   <div [ngClass]="styleClass" class="columns level-left">
-    <div class="column is-3">     
+    <div class="column is-2">     
       <p class="control has-icons-left"> 
         <input [(ngModel)]="text" class="input is-small"  placeholder="Buscar" type="text"/>
         <span class="icon is-small is-left">
@@ -44,7 +44,7 @@
     <sga-map-filter 
       (placesFiltered)="onPlacesFiltered($event)" 
       (filterRemoved)="onPlacesFilterRemoved()"
-      class="column is-12">
+      class="column is-10">
     </sga-map-filter>
   </div>
 
