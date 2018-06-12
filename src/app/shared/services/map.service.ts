@@ -46,8 +46,15 @@ export class MapService extends Map {
   }
 
   public setStyle(style: MapStyle): void {
-    L.mapbox['styleLayer'](`mapbox://styles/mapbox/${style}`).addTo(this.map);
+    L.tileLayer(
+    `https://api.mapbox.com/styles/v1/mapbox/${style}/tiles/{z}/{x}/{y}?access_token=${L.mapbox.accessToken}`, {
+      tileSize: 512,
+      zoomOffset: -1
+    })
+    .redraw()
+    .addTo(this.map);
   }
+
 
   public addGeoJSON(geojson) {
     L.mapbox
@@ -101,9 +108,12 @@ export class MapService extends Map {
 
   public clearAll(): void {
     this.clearMarkers();
-    this.circles.map(e => e.remove());
-    this.polyLines.map(e => e.remove());
+    this.circles.map(this.remove);
+    this.markers.map(this.remove);
+    this.polyLines.map(this.remove);
   }
+
+  private remove = item => item.remove();
 
   public clearMarkers(): void {
     this.clusters.map(cluster => {
