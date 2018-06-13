@@ -13,6 +13,7 @@
     <div>
       <sga-sidebar-configuration (onSelectOption)="onSelectOption($event)">
         <sga-option icon="fa-table" header="Seleção de Colunas"></sga-option>
+        <sga-option icon="fa-user-plus" header="Configuração"></sga-option>
       </sga-sidebar-configuration>
     </div>
    
@@ -30,7 +31,7 @@
 <div class="content-wrapper content-grid-motorist">
  
   <div [ngClass]="styleClass" class="columns level-left">
-    <div class="column is-3">     
+    <div class="column is-2">     
       <p class="control has-icons-left"> 
         <input [(ngModel)]="text" class="input is-small"  placeholder="Buscar" type="text"/>
         <span class="icon is-small is-left">
@@ -41,7 +42,7 @@
     <sga-map-filter 
       (placesFiltered)="onPlacesFiltered($event)" 
       (filterRemoved)="onPlacesFilterRemoved()"
-      class="column is-12">
+      class="column is-10">
     </sga-map-filter>
   </div>
 

@@ -46,8 +46,11 @@ export class GridMotoristComponent implements OnInit {
     switch (event.data.header) {      
       case 'Seleção de Colunas': 
         this.showColumnSelector = true;
+        break;     
+      case 'Configuração': 
+        this.router.navigateByUrl('motorist/account');
         break;
-    }
+     }
   }
 
   public onCellClick(event) {
