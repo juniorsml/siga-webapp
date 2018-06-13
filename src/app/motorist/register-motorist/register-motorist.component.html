@@ -20,7 +20,6 @@
 
 					    		<!-- Dados pessoais -->
 					    		<div class="cnt-info columns">
-
 					    			<div class="column input-profile-photo">
 					    				<div class="control">
 					    					<div class="file">
@@ -52,7 +51,7 @@
 
 					    				<div class="field-body field">	
 
-					    				  <div class="field">
+					    				  <div class="field is-4 column is-marginless" >
 					    				   	<label class="label is-small">Nome</label>					    				  					    				  
 	    				  					<div class="control">
 	    				  						<input 	type="text" 
@@ -69,7 +68,7 @@
 	    				  		                </div>
 	    				  					</div>
 	    				  				</div>
-					    				  <div class="field">
+					    				  <div class="field is-4 column is-marginless" >
 					    				   	<label class="label is-small">Sobrenome</label>					    				  					    				  
 	    				  					<div class="control">
 	    				  						<input 	type="text" 
@@ -86,7 +85,7 @@
 	    				  		                </div>
 	    				  					</div>
 	    				  				</div>
-					    				  <div class="field">
+					    				  <div class="field is-4 column is-marginless" >
 					    				   	<label class="label is-small">Data de Nasc.</label>
 					    				  					    				  
 					    				  	<div class="control">					    				     
@@ -110,7 +109,7 @@
 
 					    				<div class="field-body field">		
 
-					    				  <div class="field">
+					    				  <div class="field is-4 column is-marginless" >
 					    				    <label class="label is-small">Nome da Mãe</label>
 					    				    <div class="control">					    				     
 					    				     		<input  type="text" 
@@ -128,7 +127,7 @@
 					    				    </div>
 					    				  </div>
 
-					    				  <div class="field">
+					    				  <div class="field is-4 column is-marginless" >
 					    				   	<label class="label is-small">Documento</label>					    				  					    				  
 	    				  					<div class="control"> 	                          
 				                    <div class="select">                      
@@ -150,7 +149,7 @@
 			                  	</div>
 	    				  				</div>
 
-					    				  <div class="field">
+					    				  <div class="field is-4 column is-marginless" >
 					    				   	<label class="label is-small">Nº</label>					    				  					    				  
 					    				  	<div class="control">                 
 						                  <input [disabled]="document.invalid"  
@@ -170,30 +169,7 @@
 	                        </div>
 					    				  </div> 
 
-					    				  <div class="field">					    				   
-					    				    <label class="label is-small">Estado Civil</label>				
-					    				    <div class="control">
-					    				      <div class="select">                            
-					    				        <select name="maritalStatus"
-					    				                [(ngModel)]="model.maritalStatus" 
-					    				                #maritalStatus="ngModel"
-					    				                placeholder="Selecione"
-					    				             		[ngClass]="{'is-danger': maritalStatus.invalid && (maritalStatus.dirty || maritalStatus.touched)}"
-					    				             		required>
-
-					    				          <option value="Casado">Casado</option>
-					    				          <option value="Divorciado ">Divorciado </option>
-					    				          <option value="Solteiro ">Solteiro </option>
-					    				          <option value="União estável">União estável</option>
-					    				          <option value="Viúvo">Viúvo</option>
-					    				        </select>
-					    				      </div>
-					    				    </div>
-					    				    <div class="form-control-feedback"
-	    				                  *ngIf="maritalStatus.errors && (maritalStatus.dirty || maritalStatus.touched)">
-	    				                <p class="help is-danger" *ngIf="maritalStatus.errors.required">Estado civil é obrigatório</p>  
-	    				            </div>
-					    				  </div>
+					    				 
 
 
 
@@ -201,7 +177,31 @@
 					    				</div>
 
 					    				<div class="field-body field">		
-					    				  <div class="field"> 
+                         <div class="field  is-4 column is-marginless">                         
+                          <label class="label is-small">Estado Civil</label>        
+                          <div class="control">
+                            <div class="select">                            
+                              <select name="maritalStatus"
+                                      [(ngModel)]="model.maritalStatus" 
+                                      #maritalStatus="ngModel"
+                                      placeholder="Selecione"
+                                      [ngClass]="{'is-danger': maritalStatus.invalid && (maritalStatus.dirty || maritalStatus.touched)}"
+                                      required>
+
+                                <option value="Casado">Casado</option>
+                                <option value="Divorciado ">Divorciado </option>
+                                <option value="Solteiro ">Solteiro </option>
+                                <option value="União estável">União estável</option>
+                                <option value="Viúvo">Viúvo</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-control-feedback"
+                                *ngIf="maritalStatus.errors && (maritalStatus.dirty || maritalStatus.touched)">
+                              <p class="help is-danger" *ngIf="maritalStatus.errors.required">Estado civil é obrigatório</p>  
+                          </div>
+                        </div>
+					    				  <div class="field  is-4 column is-marginless"> 
 					    				  	<label class="label is-small">Nome da Esposa</label>		
 				                  <div class="control">                    
 				                    <input  type="text" 
@@ -219,7 +219,7 @@
                               <p class="help is-danger" *ngIf="wifeName.errors.required">Nome da Esposa é obrigatório</p>
                           </div>
 				                </div>
-					    				  <div class="field">
+					    				  <div class="field  is-4 column is-marginless">
 					    				  	<label class="label is-small">Tem Filhos?</label>					    				     
 					    				    <div class="control">
 					    				      <div class="select">                      
@@ -231,19 +231,20 @@
 					    				    </div>
 					    				  </div>  
 
-					    				  <div class="field">
-					    				  	<label class="label is-small">Quantos</label>		
-					    				    <div class="control">
-					    				      <input [(ngModel)]="model.howManyChildren"  #howManyChildren="ngModel" class="input" type="text" placeholder="Quantos?">
-					    				    </div>
-					    				  </div>
+					    				 
 
 					    				</div>
 
 
 					    				<div class="field-body field">
+                        <div class="field  is-4 column is-marginless">
+                          <label class="label is-small">Quantos</label>   
+                          <div class="control">
+                            <input [(ngModel)]="model.howManyChildren"  #howManyChildren="ngModel" class="input" type="text" placeholder="Quantos?">
+                          </div>
+                        </div>
 
-					    					<div class="field">
+					    					<div class="field  is-4 column is-marginless">
 					    						<label class="label is-small">Escolaridade</label>	
 					    					  <div class="control">
 					    					    <input  type="text" 
@@ -262,7 +263,7 @@
 					    					          </div>
 					    					</div>
 
-					    					<div class="field">
+					    					<div class="field  is-4 column is-marginless">
 					    						<label class="label is-small">Nº CNH</label>	
 				                  <div class="control">
 				                    <input  type="text" 
@@ -279,49 +280,53 @@
                             <p class="help is-danger" *ngIf="cnhNumber.errors.required">Nº CNH é obrigatório</p>
                         	</div>
                 				</div>
-				                <div class="field">
-				                  <label class="label is-small">Categoria CNH</label>	
-				                  <div class="control">
-				                    <div class="select">
-				                      <select [(ngModel)]="model.cnhCategory" 
-				                      				#cnhCategory="ngModel"
-				                          	  [ngClass]="{'is-danger': cnhCategory.invalid && (cnhCategory.dirty || cnhCategory.touched)}"
-				                           	  required>
-				                        <option value="A">A</option>
-				                        <option value="AB">AB</option>
-				                        <option value="AC">AC</option>
-				                        <option value="AD">AD</option>
-				                        <option value="AE">AE</option>
-				                        <option value="B">B</option>
-				                        <option value="C">C</option>
-				                        <option value="D">D</option>
-				                        <option value="E">E</option>
-				                      </select>
-				                    </div>
-				                  </div>
-				                  <div class="form-control-feedback"
-				                                *ngIf="cnhCategory.errors && (cnhCategory.dirty || cnhCategory.touched)">
-				                              <p class="help is-danger" *ngIf="cnhCategory.errors.required">Categoria da CNH é obrigatório</p>
-				                          </div>
-				                </div>
-				                <div class="field">
-												  <label class="label is-small">Vencimento CNH</label>					                 
-				                  <div class="control">				                  
-				                      <input  type="date" 
-				                       				class="input"
-				                       				placeholder="Vencimento CNH"  
-				                       				name="dueDate"
-				                       				[(ngModel)]="model.dueDate" 
-				                       				#dueDate="ngModel"
-				                          	  [ngClass]="{'is-danger': dueDate.invalid && (dueDate.dirty || dueDate.touched)}"
-				                          	  required>				                  
-				                  </div>
-				                  <div class="form-control-feedback"
+				                
+				               
+					    				</div>
+                      <div class="field-body field">
+                        <div class="field  is-4 column is-marginless">
+                          <label class="label is-small">Categoria CNH</label> 
+                          <div class="control">
+                            <div class="select">
+                              <select [(ngModel)]="model.cnhCategory" 
+                                      #cnhCategory="ngModel"
+                                      [ngClass]="{'is-danger': cnhCategory.invalid && (cnhCategory.dirty || cnhCategory.touched)}"
+                                      required>
+                                <option value="A">A</option>
+                                <option value="AB">AB</option>
+                                <option value="AC">AC</option>
+                                <option value="AD">AD</option>
+                                <option value="AE">AE</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-control-feedback"
+                                        *ngIf="cnhCategory.errors && (cnhCategory.dirty || cnhCategory.touched)">
+                                      <p class="help is-danger" *ngIf="cnhCategory.errors.required">Categoria da CNH é obrigatório</p>
+                                  </div>
+                        </div>
+                         <div class="field  is-4 column is-marginless">
+                          <label class="label is-small">Vencimento CNH</label>                           
+                          <div class="control">                         
+                              <input  type="date" 
+                                      class="input"
+                                      placeholder="Vencimento CNH"  
+                                      name="dueDate"
+                                      [(ngModel)]="model.dueDate" 
+                                      #dueDate="ngModel"
+                                      [ngClass]="{'is-danger': dueDate.invalid && (dueDate.dirty || dueDate.touched)}"
+                                      required>                         
+                          </div>
+                          <div class="form-control-feedback"
                                 *ngIf="dueDate.errors && (dueDate.dirty || dueDate.touched)">
                               <p class="help is-danger" *ngIf="dueDate.errors.required">Vencimento da CNH é obrigatório</p>
                           </div>
-				                </div>
-					    				</div>
+                        </div>
+                      </div>
 
 					    			</div>
 
@@ -333,22 +338,22 @@
 		    			<!-- Endereço -->
 		    					<div class="cnt-info columns" style="align-items: flex-start;">
 		    						
-		    							<div class="columns column  is-multiline">
-		    								<sga-places-auto-complete class="column is-12" (onPlacesFilteredEvent)="placesFiltered($event)" (onFilterRemovedEvent)="filterRemoved()">
-		    								</sga-places-auto-complete>
-		    								<div class="column is-12"> 
-		    									<iframe [src]="mapUrl" width="100%">
-		    									</iframe>
-		    								</div>
-		    							</div>
+	    						
 		    						<div class="columns column is-multiline">
+                      <label class="label is-small" style="margin:12px 0 -5px 12px;">Endereço/Região</label>  
+                      <sga-places-auto-complete class="column is-12" (onPlacesFilteredEvent)="placesFiltered($event)" (onFilterRemovedEvent)="filterRemoved()">
+                      </sga-places-auto-complete>
+
 		    							<div class="column is-12">
 		    								<div class="control">
-		    									<input type="text" [textMask]="{mask: landlinephone}" class="input" placeholder="Telefone Fixo"  name="landlinePhone"
-		    									 [(ngModel)]="model.landlinePhone" required #landlinePhone="ngModel"
-		    								       [ngClass]="{    
-		    							           'is-danger': landlinePhone.invalid && (landlinePhone.dirty || landlinePhone.touched)
-		    							          }">
+                          <label class="label is-small">Telefone Fixo</label>  
+		    									<input  type="text" 
+                                  [textMask]="{mask: landlinephone}" 
+                                  class="input" 
+                                  placeholder="Telefone Fixo"  
+                                  name="landlinePhone"
+		    									        [(ngModel)]="model.landlinePhone" required #landlinePhone="ngModel"
+		    								          [ngClass]="{'is-danger': landlinePhone.invalid && (landlinePhone.dirty || landlinePhone.touched)}">
 		    								</div>
 		    								<div class="form-control-feedback"
 		    			                        *ngIf="landlinePhone.errors && (landlinePhone.dirty || landlinePhone.touched)">
@@ -358,10 +363,15 @@
 
 		    							<div class="column is-12">
 		    								<div class="control">
-		    									<input type="text" [textMask]="{mask: mobilephone}" class="input" placeholder="Telefone Celular"  name="mobilePhone"
-		    									 [(ngModel)]="model.mobilePhone" required #mobilePhone="ngModel"
-		    								       [ngClass]="{    
-		    							           'is-danger': mobilePhone.invalid && (mobilePhone.dirty || mobilePhone.touched)
+                          <label class="label is-small">Telefone Celular</label>  
+		    									<input type="text" 
+                          [textMask]="{mask: mobilephone}" 
+                          class="input" 
+                          placeholder="Telefone Celular"  
+                          name="mobilePhone"
+		    									[(ngModel)]="model.mobilePhone"
+                          #mobilePhone="ngModel"
+		    								  [ngClass]="{'is-danger': mobilePhone.invalid && (mobilePhone.dirty || mobilePhone.touched)
 		    							          }">
 		    								</div>
 		    								<div class="form-control-feedback"
@@ -369,10 +379,18 @@
 		    				                    <p class="help is-danger" *ngIf="mobilePhone.errors.required">Telefone Celular é obrigatório</p>
 		    				                </div>
 		    							</div>
+
 		    							<div class="column is-12">
 		    								<div class="control">
-		    									<input type="text" [textMask]="{mask: mobilephone}" class="input" placeholder="Telefone para recado"  name="messagePhone"
-		    									 [(ngModel)]="model.messagePhone" required #messagePhone="ngModel"
+                          <label class="label is-small">Telefone para recado</label>  
+		    									<input type="text" 
+                          [textMask]="{mask: mobilephone}" 
+                          class="input" 
+                          placeholder="Telefone para recado"  
+                          name="messagePhone"
+		    									 [(ngModel)]="model.messagePhone" 
+                           required 
+                           #messagePhone="ngModel"
 		    								       [ngClass]="{    
 		    							           'is-danger': messagePhone.invalid && (messagePhone.dirty || messagePhone.touched)
 		    							          }">
@@ -385,6 +403,7 @@
 
 		    							<div class="column is-12">
 		    								<div class="control">
+                           <label class="label is-small">Nextel</label>  
 		    									<input type="text" class="input" placeholder="Nextel"  name="nextelPhone"
 		    									 [(ngModel)]="model.nextelPhone" required #nextelPhone="ngModel"
 		    								       [ngClass]="{    
@@ -396,7 +415,15 @@
 		    				                    <p class="help is-danger" *ngIf="nextelPhone.errors.required">Nextel é obrigatório</p>
 		    				                </div>
 		    							</div>
+
 		    						</div>
+                    <div class="columns column  is-multiline">
+                              
+                       <div class="column is-12"> 
+                        <iframe [src]="mapUrl" width="100%">
+                        </iframe>
+                      </div>            
+                    </div>
 		    						
 
 		    						
@@ -405,99 +432,99 @@
 
 						<sga-tab heading="Perfil">
 						    <!-- Perfil -->
-		    						<div class="cnt-info columns ">
-		    							<div class="column">
-		    								<div class="field-body field">
-		    								<div class="field">
-		    									
-		    									<label class="label is-small">Vínculo</label>		
-		    									<div class="control">
-		    										<div class="select">
-		    											<select [(ngModel)]="model.bond" 
-		    															#bond="ngModel"
-		    											       	[ngClass]="{'is-danger': bond.invalid && (bond.dirty || bond.touched)}"
-		    											       	required>		    												
-		    												<option value="Frota">Frota</option>
-		    												<option value="Agregado">Agregado</option>
-		    												<option value="Terceiro">Terceiro</option>
-		    											</select>
-		    										</div>
-		    									</div>
-		    									<div class="form-control-feedback"
-				                        *ngIf="bond.errors && (bond.dirty || bond.touched)">
-					                    <p class="help is-danger" *ngIf="bond.errors.required">Vínculo é obrigatório</p>
-					                </div>
-		    								</div>
-												<div class="field">		    									
-		    									<label class="label is-small">Vencimento Mopp</label>		
-			    								<div class="control">					    								
-			    										<input  type="date" 
-			    														class="input" 
-			    														placeholder="Vencimento Mopp"  
-			    														name="dueDateMopp"
-			    									 					[(ngModel)]="model.dueDateMopp" 
-			    									 					#dueDateMopp="ngModel"
-			    								       			[ngClass]="{'is-danger': dueDateMopp.invalid && (dueDateMopp.dirty || dueDateMopp.touched)}"
-			    								       			required>			    															
-			    								</div>
-			    								<div class="form-control-feedback"
-  			                       *ngIf="dueDateMopp.errors && (dueDateMopp.dirty || dueDateMopp.touched)">
-  				                    <p class="help is-danger" *ngIf="dueDateMopp.errors.required">Vencimento Mopp é obrigatório</p>
-  				                </div>
-		    								</div>
-		    								<div class="field">		    									
-		    									<label class="label is-small">Vencimento ASO</label>		
-		    									<div class="control">		    								
-		    										<input  type="date"  
-		    														class="input" 
-		    														placeholder="Vencimento ASO"  
-		    														name="dueDateAso"
-		    										 				[(ngModel)]="model.dueDateAso" 
-		    										 				#dueDateAso="ngModel"
-		    									       		[ngClass]="{'is-danger': dueDateAso.invalid && (dueDateAso.dirty || dueDateAso.touched)}"
-		    									       		required>
-		    									</div>
-		    									<div class="form-control-feedback"
-  			                        *ngIf="dueDateAso.errors && (dueDateAso.dirty || dueDateAso.touched)">
-  				                    <p class="help is-danger" *ngIf="dueDateAso.errors.required">Vencimento Aso é obrigatório</p>
-  				                </div>
-		    								</div>
-			    							<div class="field">		    								
-			    								<label class="label is-small">Vencimento CDD</label>	
-			    								<div class="control">	
-			    									<input  type="date"
-			    												  class="input" 
-			    												  placeholder="Vencimento Cdd"  
-			    												  name="dueDateCdd"
-			    										 			[(ngModel)]="model.dueDateCdd" 
-			    										 			#dueDateCdd="ngModel"
-			    									        [ngClass]="{'is-danger': dueDateCdd.invalid && (dueDateCdd.dirty || dueDateCdd.touched)}"
-			    									        required>		
-			    								</div>
-			    								<div class="form-control-feedback"
-				                        *ngIf="dueDateCdd.errors && (dueDateCdd.dirty || dueDateCdd.touched)">
-					                    <p class="help is-danger" *ngIf="dueDateCdd.errors.required">Vencimento CDD é obrigatório</p>
-					                </div>
-			    							</div>
-		    							</div>
+		    						<div class="cnt-info columns " style="min-height: auto; margin-bottom: 30px;">
+		    							
+		    								<div class="columns column is-multiline">
+  		    								<div class="is-6 column is-marginless">
+  		    									
+  		    									<label class="label is-small">Vínculo</label>		
+  		    									<div class="control">
+  		    										<div class="select">
+  		    											<select [(ngModel)]="model.bond" 
+  		    															#bond="ngModel"
+  		    											       	[ngClass]="{'is-danger': bond.invalid && (bond.dirty || bond.touched)}"
+  		    											       	required>		    												
+  		    												<option value="Frota">Frota</option>
+  		    												<option value="Agregado">Agregado</option>
+  		    												<option value="Terceiro">Terceiro</option>
+  		    											</select>
+  		    										</div>
+  		    									</div>
+  		    									<div class="form-control-feedback"
+  				                        *ngIf="bond.errors && (bond.dirty || bond.touched)">
+  					                    <p class="help is-danger" *ngIf="bond.errors.required">Vínculo é obrigatório</p>
+  					                </div>
+  		    								</div>
+  												<div class="is-6 column is-marginless">		    									
+  		    									<label class="label is-small">Vencimento Mopp</label>		
+  			    								<div class="control">					    								
+  			    										<input  type="date" 
+  			    														class="input" 
+  			    														placeholder="Vencimento Mopp"  
+  			    														name="dueDateMopp"
+  			    									 					[(ngModel)]="model.dueDateMopp" 
+  			    									 				#dueDateMopp="ngModel"
+  			    								       			[ngClass]="{'is-danger': dueDateMopp.invalid && (dueDateMopp.dirty || dueDateMopp.touched)}"
+  			    								       			required>			    															
+  			    								</div>
+  			    								<div class="form-control-feedback"
+    			                       *ngIf="dueDateMopp.errors && (dueDateMopp.dirty || dueDateMopp.touched)">
+    				                    <p class="help is-danger" *ngIf="dueDateMopp.errors.required">Vencimento Mopp é obrigatório</p>
+    				                </div>
+  		    								</div>
+  		    								<div class="is-6 column is-marginless">		    									
+  		    									<label class="label is-small">Vencimento ASO</label>		
+  		    									<div class="control">		    								
+  		    										<input  type="date"  
+  		    														class="input" 
+  		    														placeholder="Vencimento ASO"  
+  		    														name="dueDateAso"
+  		    										 				[(ngModel)]="model.dueDateAso" 
+  		    										 				#dueDateAso="ngModel"
+  		    									       		[ngClass]="{'is-danger': dueDateAso.invalid && (dueDateAso.dirty || dueDateAso.touched)}"
+  		    									       		required>
+  		    									</div>
+  		    									<div class="form-control-feedback"
+    			                        *ngIf="dueDateAso.errors && (dueDateAso.dirty || dueDateAso.touched)">
+    				                    <p class="help is-danger" *ngIf="dueDateAso.errors.required">Vencimento Aso é obrigatório</p>
+    				                </div>
+  		    								</div>
+  			    							<div class="is-6 column is-marginless">		    								
+  			    								<label class="label is-small">Vencimento CDD</label>	
+  			    								<div class="control">	
+  			    									<input  type="date"
+  			    												  class="input" 
+  			    												  placeholder="Vencimento Cdd"  
+  			    												  name="dueDateCdd"
+  			    										 			[(ngModel)]="model.dueDateCdd" 
+  			    										 			#dueDateCdd="ngModel"
+  			    									        [ngClass]="{'is-danger': dueDateCdd.invalid && (dueDateCdd.dirty || dueDateCdd.touched)}"
+  			    									        required>		
+  			    								</div>
+  			    								<div class="form-control-feedback"
+  				                        *ngIf="dueDateCdd.errors && (dueDateCdd.dirty || dueDateCdd.touched)">
+  					                    <p class="help is-danger" *ngIf="dueDateCdd.errors.required">Vencimento CDD é obrigatório</p>
+  					                </div>
+  			    							</div>
+  		    							</div>
 
-		    							</div>
+		    						
 		    						</div>
 						</sga-tab>
 				</sga-tabs>
 						<!-- Botões de Ação -->
-				<div class="block column columns is-12 is-multiline">
-					<div class="columns column is-3 is-offset-9">
-						<div class="control column  is-6 ">
+				<div class="cnt-buttons">
+				
+						
 							<button class="button" (click)="cancel()">Cancelar</button>
-						</div>
-						<div class="control column  is-6 ">									
+						
+									
 							<button type="submit"
 							        class="button is-first"
 							        [disabled]="formMotorist.invalid">Cadastrar
 							</button>
-						</div>
-					</div>
+						
+					
 				</div>
 			</form>
 	
