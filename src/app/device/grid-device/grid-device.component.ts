@@ -1,6 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { TableClickEvent } from '../../shared/components/table/table.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { OptionClickEvent } from '../../shared/events/OptionClickEvent';
 
 
@@ -32,6 +32,9 @@ export class GridDeviceComponent implements OnInit {
       case 'Seleção de Colunas': 
         this.showColumnSelector = true;
         break;
+        case 'Configuração': 
+         this.route.navigateByUrl('device/config');
+         break;
       }
     }
 
@@ -51,7 +54,7 @@ export class GridDeviceComponent implements OnInit {
   @Input()
   public devices = new Array<any>();
   
-  constructor(private router: ActivatedRoute) { }
+  constructor(private router: ActivatedRoute, private route: Router) { }
 
   ngOnInit(): void {
     this.router.data.subscribe(data => this.devices = data.devices);

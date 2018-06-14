@@ -42,17 +42,23 @@ $main-blue:#4d5675;
   background-color: #FFF;
   width: 100%;
   max-width:1000px;
-  height: 80%;
+  height: 90%;
   background: #ffffff;
   -webkit-box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.1);
   box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.1); 
 }
 .cnt-form {
 	height: 100%;
+  position: relative;
 	padding: 0 23px 15px;
-	
+  iframe{
+    height: 345px;
+  }
+	.field:not(:last-child){
+    margin-bottom: 0 !important;
+  }
 	.cnt-info{
-		 margin-top: 22px;
+		 margin-top: 5px;
 		 min-height: 404px;
 	}
 	.file-cta, .places-ac, select, input {
@@ -150,5 +156,10 @@ $main-blue:#4d5675;
 	}
 	
 
+}
+.cnt-buttons{
+  position: absolute !important;
+  bottom: -15px;
+  right: 34px;
 }
 
