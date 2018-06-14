@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 
-import {} from 'leaflet-marker-cluster';
+import { } from 'leaflet-marker-cluster';
 
 import { Map } from '../../shared/models/Map';
 import { TabComponent } from '../../shared/components/tabs/tab/tab.component';
@@ -16,7 +16,7 @@ import { MapStyle } from '../../shared/models/MapStyle';
   styleUrls: ['./map-vehicle.component.scss']
 })
 export class MapVehicleComponent implements OnInit {
-	private _vehicles: Array<any>;
+  private _vehicles: Array<any>;
   private mapMarkers: Array<Feature<GeometryObject>> = [];
 
   public hideVehicleModal: boolean;
@@ -27,7 +27,6 @@ export class MapVehicleComponent implements OnInit {
     this.status = !this.status;
   }
   toggleMapStyle(mapStyle) {
-    debugger
     if (mapStyle.value === "1") {
       this.map.setStyle(MapStyle.Outdoor);
     } else {
@@ -35,12 +34,10 @@ export class MapVehicleComponent implements OnInit {
     }
   }
 
-
-
   @ViewChild('mapSelector') mapSelector: ElementRef;
   @Input()
   get vehicles(): Array<any> {
-   
+
     return this._vehicles;
 
   }
@@ -148,7 +145,7 @@ export class MapVehicleComponent implements OnInit {
 
   selectedVehicle: any;
 
-  constructor(private map: Map, private router: ActivatedRoute) {}
+  constructor(private map: Map, private router: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.router.data.subscribe(data => this.vehicles = data.vehicles);
