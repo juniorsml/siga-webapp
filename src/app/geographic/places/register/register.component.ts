@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output, Input, OnInit, ElementRef } from '@angular/core';
 
 import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
+import { MapStyle } from '../../../shared/models/MapStyle';
 
 @Component({
   selector: 'sga-register',
@@ -14,6 +15,7 @@ export class RegisterComponent implements OnInit {
 
   @Input() public formType: string;
   @Input() public backParam: string;
+  @Input() private changeMapStyle: Function;
 
   @Output() public onSubmitForm = new EventEmitter<any>();
   @Output() public onBackButton = new EventEmitter<string>();
@@ -40,6 +42,8 @@ export class RegisterComponent implements OnInit {
   public name: string;
 
   public inputValue: string;
+
+  public typeSelected = 'location';
 
   constructor(private _eref: ElementRef) { }
 
@@ -82,25 +86,33 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  public redrawPoint(color, { value }) {
-    const font = color.value;
-    const bgColor = value;
-    const icon = this.icon === '' ? 'fa-map-marker-alt' : this.icon;
-    this.onPreviewClicked.emit({ font, bgColor, icon });
+  public redrawPoint(iconColor, backgroundColor, fillColor, strokeColor) {
+    if (this.typeSelected === 'area') {
+      this.onPreviewClicked.emit({ fillColor: fillColor.value, strokeColor: strokeColor.value });
+    } else {
+      const icon = this.icon === '' ? 'fa-map-marker-alt' : this.icon;
+      this.onPreviewClicked.emit({ iconColor: iconColor.value, backgroundColor: backgroundColor.value, icon });
+    }
   }
 
   public backButton() {
     this.onBackButton.emit(this.backParam);
   }
 
-  public onPlacesFiltered(event) {
+  public setTypeSelected = param => {
+    this.typeSelected = param;
+    param === 'area' ?
+      this.changeMapStyle(true, MapStyle.Street) :
+      this.changeMapStyle(false, MapStyle.Outdoor);
+  }
 
+  public onPlacesFiltered(event) {
     const { location } = event.geometry;
     if (location === undefined) { return; }
     const options = {
       icon: 'fa-map-marker-alt',
-      font: '#fff',
-      bgColor: '#506693'
+      iconColor: '#fff',
+      backgroundColor: '#506693'
     };
     this.location = {
       ...location,

@@ -36,6 +36,8 @@ export class RegisterPlaceComponent implements OnInit {
   public groupedItems = new Array<GroupedItems>();
 
   private iconOptions = null;
+  private lineOptions = null;
+
   private _places: Array<any>;
   private mapMarkers: Array<Feature<GeometryObject>> = [];
 
@@ -108,12 +110,14 @@ export class RegisterPlaceComponent implements OnInit {
     this.groupedItems.push(grouped);
     this.groupedItems.push(grouped2);
 
+    this.lineOptions = this.getLineOptions('#ff5e5e', '#ff5e5e');
+    this.map.setLineStyle(this.lineOptions);
+
     this.setupMap();
   }
 
   private setupMap(draw = false): void {
-
-    this.map.createMapBoxMapInstance(draw);
+    this.map.createMapBoxMapInstance(draw, () => this.map.setLineStyle(this.lineOptions));
 
     this.moveMap(
       environment.mapbox.location.latitude,
@@ -196,7 +200,7 @@ export class RegisterPlaceComponent implements OnInit {
     }
   }
 
-  private changeMap = (showControls: boolean, mapStyle: MapStyle) => {
+  public changeMap = (showControls: boolean, mapStyle: MapStyle) => {
     this.map.clearAll();
     this.map.addControl(showControls);
     this.map.setStyle(mapStyle);
@@ -292,8 +296,8 @@ export class RegisterPlaceComponent implements OnInit {
 
     if (options) {
       iconElement.className = `icon-body fal ${options ? options.icon : ''}`;
-      iconElement.style.color = options.font;
-      iconElement.style.background = options.bgColor;
+      iconElement.style.color = options.iconColor;
+      iconElement.style.background = options.backgroundColor;
       this.iconOptions = options;
     }
 
@@ -321,8 +325,14 @@ export class RegisterPlaceComponent implements OnInit {
 
   public closeModalGroup = () => this.showSelectGroup = false;
 
-
-  public drawPin = obj => this.marker(this.location.latitude, this.location.longitude, obj);
+  public draw = options => {
+    if (options.icon) {
+      this.marker(this.location.latitude, this.location.longitude, options);
+    } else {
+      this.lineOptions = this.getLineOptions(options.strokeColor, options.fillColor);
+      this.map.setLineStyle(this.lineOptions);
+    }
+  }
 
   public create(item) {
     this.showRegister = false;
@@ -340,4 +350,11 @@ export class RegisterPlaceComponent implements OnInit {
         break;
     }
   }
+
+  private getLineOptions = (stroke, fill) => Object.assign({
+    fill: true,
+    stroke: true,
+    color: stroke,
+    fillColor: fill
+  })
 }

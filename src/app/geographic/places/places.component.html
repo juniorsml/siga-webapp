@@ -96,9 +96,10 @@
       *ngIf="showRegister"
       [formType]="formType"
       [backParam]="selectedTabIndex"
+      [changeMapStyle]="changeMap"
       (onBackButton)="closeRegister($event)"
       (onPlaceSelected)="onPlaceSelected($event)"
-      (onPreviewClicked)="drawPin($event)"
+      (onPreviewClicked)="draw($event)"
       (onSubmitForm)="create($event)">
     </sga-register>
   </div>

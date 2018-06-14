@@ -15,7 +15,7 @@ describe('LoginComponent', () => {
         imports: [FormsModule],
         declarations: [LoginComponent],
         providers: [
-          { provide: AuthService, useValue: new AuthService() }, 
+          { provide: AuthService, useValue: new AuthService() },
           { provide: Router }]
       });
       fixture = TestBed.createComponent(LoginComponent);
@@ -37,7 +37,7 @@ describe('LoginComponent', () => {
         password: '12345'
       }
     };
-    
+
     expect(component.login(form));
   });
 });
