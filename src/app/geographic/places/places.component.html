@@ -59,7 +59,7 @@
               {{i + 1}}
             </span>
             <h5 title="{{item.name}}" class="title-place-added">
-              {{(item.name.length>40)? (item.name | slice:0:40)+'...':(item.name)}}
+              {{(item.name.length > 40)? (item.name | slice:0:40)+'...':(item.name)}}
             </h5>
             <i (click)="addNewPlace(item)" class="add-place fal fa-times-circle"></i>
             <i (click)="removeItineraryPlace(item)" class="remove-place fal fa-times-circle"></i>
@@ -67,6 +67,7 @@
                (click)="revertPlaces()" 
                class="fal fa-exchange-alt">
             </i>
+            <input class="place-tag" type="text">
           </div>
         </div>
       </sga-tab>

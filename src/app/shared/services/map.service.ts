@@ -77,7 +77,7 @@ export class MapService extends Map {
         feature.geometry['coordinates'][1],
         feature.geometry['coordinates'][0]
       ),
-      { icon }
+      { icon, draggable: true }
     );
 
     return marker;
@@ -208,9 +208,8 @@ export class MapService extends Map {
         featureGroup: this.featureGroup
       },
       draw: {
-        marker: {
-          icon: L.mapbox.marker.icon({})
-        }
+        circle: false,
+        marker: false
       }
     }).addTo(this.map);
 
