@@ -44,14 +44,23 @@
   .cnt-places-added{
     margin-top:36px;
 
-    .place-added{
-      padding: 12px;
+    .place-added {
+      padding: 8px 10px 25px;
       background: #a6adb7;
       color: #FFF;
       position:relative;
       display: flex;
       align-items:center;
       transition:all 150ms ease;
+      
+      .place-tag {
+        position: fixed;
+        background: none;
+        border: none;
+        margin-top: 2.2em;
+        border-bottom: solid #4e5563 1px;
+        width: 20%;
+      }
 
       &:hover{
         background: #8b939d;
