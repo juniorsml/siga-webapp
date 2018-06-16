@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 
   public isLoggingIn: boolean;
-  public errorText: string = '';
+  public errorText = '';
   public error: boolean;
 
   constructor(
-    private authService: AuthService, 
+    private authService: AuthService,
     private router: Router
   ) {}
 

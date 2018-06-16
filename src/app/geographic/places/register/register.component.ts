@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, Input, OnInit,ElementRef } from '@angular/core';
+import { Component, EventEmitter, Output, Input, OnInit, ElementRef } from '@angular/core';
 
 import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
 
@@ -14,38 +14,38 @@ export class RegisterComponent implements OnInit {
 
   @Input() public formType: string;
   @Input() public backParam: string;
-  
+
   @Output() public onSubmitForm = new EventEmitter<any>();
   @Output() public onBackButton = new EventEmitter<string>();
   @Output() public onPlaceSelected = new EventEmitter<any>();
-  
+
   private location: any;
 
   public docType = 0;
   public colorIcon = '';
   public placeSelected = false;
   public data: string;
-  public status: boolean = false;
-  public icon: string = '';
+  public status = false;
+  public icon = '';
 
   public nameMaxLenght = 110;
   public descriptionMaxLenght = 100;
   public id_customerMaxLenght = 30;
   public key_customerMaxLenght = 30;
 
-  public name:string;
+  public name: string;
 
 
 
- public changeIcon(event){
+ public changeIcon(event) {
        // console.log(event.ToElement.dataset.icon);
        // debugger
-       let target = event.currentTarget;
+       const target = event.currentTarget;
        this.icon = target.dataset.icon;
        console.log(target.dataset.icon);
        this.status = !this.status;
   }
-  
+
 
   constructor(private _eref: ElementRef) { }
 
@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
 
   // Close When Click outSide of Component
    outClick(event) {
-       if (!this._eref.nativeElement.contains(event.target)){// or some similar check
+       if (!this._eref.nativeElement.contains(event.target)) {// or some similar check
         if (this.status != false) {
           this.status = false;
         }
@@ -87,16 +87,16 @@ export class RegisterComponent implements OnInit {
   }
 
   public onPlacesFiltered(event) {
-    
+
     const { location } = event.geometry;
-    if (location === undefined) return;
+    if (location === undefined) { return; }
     this.location = location;
     this.onPlaceSelected.emit(this.location);
   }
-  
+
   public onPlacesFilterRemoved() {
     this.location = null;
-    
+
   }
 
   public isValidForm(form) {

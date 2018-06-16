@@ -25,7 +25,7 @@ export class MotoristComponent implements OnInit {
     }
     this.selectedTabIndex = tab.index;
   }
-  
+
   ngOnInit() {
     this.motorists = [
       {

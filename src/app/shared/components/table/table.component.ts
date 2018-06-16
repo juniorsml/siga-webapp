@@ -38,12 +38,12 @@ export class DataTableComponent
   @Input() searchText: string;
   @Input() emptySearchText: string;
   @Input() searchColumns: Array<any>;
-  @Input() styleHeader: string = 'ui-datatable-header';
-  @Input() styleBody: string = 'ui-datatable-body';
-  @Input() styleRow: string = 'ui-datatable-body-row';
-  @Input() styleFooter: string = 'ui-datatable-footer';
-  @Input() stylePager: string = 'ui-table-pager';
-  @Input() contextMenuMode: string = 'click';
+  @Input() styleHeader = 'ui-datatable-header';
+  @Input() styleBody = 'ui-datatable-body';
+  @Input() styleRow = 'ui-datatable-body-row';
+  @Input() styleFooter = 'ui-datatable-footer';
+  @Input() stylePager = 'ui-table-pager';
+  @Input() contextMenuMode = 'click';
   @Input() haveFooter: true;
   @Input() filterHeaders = new Array<string>();
   @Output() onRowClick: EventEmitter<any> = new EventEmitter();
@@ -65,12 +65,12 @@ export class DataTableComponent
 
   private _columns = new Array<ColumnComponent>();
   private _originalColumns = new Array<ColumnComponent>();
-  currentPage: number = 1;
-  pageQuantity: number = 10;
+  currentPage = 1;
+  pageQuantity = 10;
   search: SearchPipe;
   sortableColumns = new Array<string>();
 
-  //Scroll Component
+  // Scroll Component
   opts: ISlimScrollOptions;
   scrollEvents: EventEmitter<SlimScrollEvent>;
 
@@ -170,7 +170,7 @@ export class DataTableComponent
   }
 
   order(header: string, key: string, isSortable: boolean): void {
-    if (!isSortable) return;
+    if (!isSortable) { return; }
     const headerIndex = this.columns.findIndex(a => a.header === header);
     if (this.existsInSortable(header)) {
       this.reverseBy(headerIndex, key);
@@ -202,8 +202,8 @@ export class DataTableComponent
   }
 
   showStyle(x, y, contextMenu) {
-    let contextWidth = contextMenu.offsetWidth;
-    let contextHeight = contextMenu.offsetHeight;
+    const contextWidth = contextMenu.offsetWidth;
+    const contextHeight = contextMenu.offsetHeight;
 
     if (
       y + contextHeight > window.innerHeight &&
@@ -223,7 +223,7 @@ export class DataTableComponent
     return { top: y - 8 + 'px', left: x - 8 + 'px' };
 
     // original measurements
-    //return {'top': (contextMenu.y - 8)  + 'px', 'left' : (contextMenu.x - 8) + 'px'};
+    // return {'top': (contextMenu.y - 8)  + 'px', 'left' : (contextMenu.x - 8) + 'px'};
   }
 
   @HostListener('window:resize', ['$event.target'])
@@ -252,7 +252,7 @@ export class DataTableComponent
   }
 
   cellClick(event) {
-    //fixme 6/6/17
+    // fixme 6/6/17
     event.event.stopPropagation();
     this.onClick();
     this.onCellClick.emit(
@@ -262,8 +262,8 @@ export class DataTableComponent
   }
 
   cellRightClick(event) {
-    //fixme 6/6/17
-    //event.event.stopPropagation();
+    // fixme 6/6/17
+    // event.event.stopPropagation();
     event.event.preventDefault();
     this.onCellRightClick.emit(
       new TableClickEvent(event, event.cellIndex, event.rowIndex, event.row)
@@ -283,7 +283,7 @@ export class DataTableComponent
   setHeaderColumnWidth() {
     for (let i = 0; i < this.columns.length; i++) {
       if (this.columns[i].fixedWidth == null && this.bodyRowElement != null) {
-        //Todo: Added && this.bodyElement != null due to null error potentially caused by *ngif on table element displaying
+        // Todo: Added && this.bodyElement != null due to null error potentially caused by *ngif on table element displaying
         this.columns[i].headerWidth = this.bodyRowElement.nativeElement.cells[
           i
         ].offsetWidth;
@@ -404,7 +404,7 @@ export class ContextMenuComponent {
   @Output() onItemSelected: EventEmitter<any> = new EventEmitter();
   @ContentChild(TemplateRef) public template: TemplateRef<any>;
   menuItems: Array<MenuItemComponent> = [];
-  hidden: boolean = true;
+  hidden = true;
   x: number;
   y: number;
 
@@ -430,7 +430,7 @@ export class ContextMenuComponent {
   template: ``
 })
 export class MenuItemComponent {
-  @Input() enabled: boolean = true;
+  @Input() enabled = true;
   @ContentChild(TemplateRef) public template: TemplateRef<any>;
 
   constructor(public contextMenu: ContextMenuComponent) {

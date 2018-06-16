@@ -3,27 +3,27 @@ import {Component, ContentChild, forwardRef, Inject, Input, TemplateRef} from '@
 @Component({
     selector: 'accordion',
     templateUrl: './accordion.component.html',
-    styleUrls:['./accordion.component.scss']
+    styleUrls: ['./accordion.component.scss']
 })
-export class AccordionComponent { 
+export class AccordionComponent {
 
     styleClass: any;
-    
+
     public header: AccordionHeaderComponent;
-    @Input() public isOpen:boolean = false;
+    @Input() public isOpen = false;
 
     setHeader(header: AccordionHeaderComponent) {
         this.header = header;
     }
     toggle() {
-        this.isOpen = !this.isOpen;  
+        this.isOpen = !this.isOpen;
     }
 }
 
 @Component({
     selector: 'accordion-header',
     template: '',
-    styleUrls:['./accordion.component.scss']
+    styleUrls: ['./accordion.component.scss']
 })
 export class AccordionHeaderComponent {
 

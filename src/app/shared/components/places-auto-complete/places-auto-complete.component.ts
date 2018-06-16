@@ -56,7 +56,7 @@ export class PlacesAutoCompleteComponent implements AfterViewInit {
         this.propagatePlace();
       }
     });
-    this.placeText = " ";
+    this.placeText = ' ';
 
   }
 

@@ -31,7 +31,7 @@ import { HistoryDetailComponent } from './history-motorist/history-detail/histor
     NgSlimScrollModule
   ],
   declarations: [
-    MotoristComponent, 
+    MotoristComponent,
     MapMotoristComponent,
     GridMotoristComponent,
     ProfileDialogComponent,

@@ -1,4 +1,4 @@
-import { Component, Output,OnInit, EventEmitter, Input,ViewChild  } from '@angular/core';
+import { Component, Output, OnInit, EventEmitter, Input, ViewChild  } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
@@ -6,7 +6,7 @@ import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
 
 
 class RegisterForm {
-  
+
   // Personal Info
   firstName: string;
   lastName: string;
@@ -23,15 +23,15 @@ class RegisterForm {
   cnhCategory: string;
   dueDate: string;
 
-  //Address
-  landlinePhone:string;
-  mobilePhone:string;
-  messagePhone:string;
-  
-  nextelPhone:string;
+  // Address
+  landlinePhone: string;
+  mobilePhone: string;
+  messagePhone: string;
 
-  //Profile
-  bond:string;  
+  nextelPhone: string;
+
+  // Profile
+  bond: string;
   dueDateMopp: Date;
   dueDateAso: Date;
   dueDateCdd: Date;
@@ -51,16 +51,16 @@ export class RegisterMotoristComponent implements  OnInit {
   @ViewChild('formMotorist') formMotorist: any;
 
 
-  
-  pt:any;
-  landlinephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/];
-  mobilephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/,/\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/];
-  messagephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/,/\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/];
+
+  pt: any;
+  landlinephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  mobilephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  messagephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
 
   public selectedTabIndex = 0;
 
-  //Slim Scroll options
+  // Slim Scroll options
   opts: ISlimScrollOptions;
   scrollEvents: EventEmitter<SlimScrollEvent>;
 
@@ -68,47 +68,47 @@ export class RegisterMotoristComponent implements  OnInit {
     this.scrollEvents = new EventEmitter<SlimScrollEvent>();
     this.opts = {
       alwaysVisible: true
-    }
+    };
     this.pt = {
         firstDayOfWeek: 1,
-        dayNames: [ "Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado" ],
-        dayNamesShort: [ "Dom","Seg","Ter","Qua","Qui","Sex","Sáb" ],
-        dayNamesMin: [ "D","S","T","Q","Q","S","S" ],
-        monthNames: [ "Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro" ],
-        monthNamesShort: [ "Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez" ],
+        dayNames: [ 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado' ],
+        dayNamesShort: [ 'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb' ],
+        dayNamesMin: [ 'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
+        monthNames: [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro' ],
+        monthNamesShort: [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
         today: 'Hoje',
         clear: 'Limpar'
-    }
+    };
 
   }
 
   onSubmit() {
       if (this.formMotorist.valid) {
-        console.log("Form Submitted!");
+        console.log('Form Submitted!');
         this.formMotorist.reset();
       }
     }
 
   // Show image profile
-  addProfilePhoto(event:any) {
+  addProfilePhoto(event: any) {
     if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-      reader.onload = (event:any) => {
-        var url = event.target.result;
-        var removeImage = document.querySelector('.remove-img-profile');
-        var containerImage = document.querySelector('.img-profile');
+      let reader = new FileReader();
+      reader.onload = (event: any) => {
+        let url = event.target.result;
+        let removeImage = document.querySelector('.remove-img-profile');
+        let containerImage = document.querySelector('.img-profile');
         (removeImage as HTMLElement).style.display = 'flex';
         (containerImage as HTMLElement).style.display = 'block';
-        (containerImage as HTMLElement).style.backgroundImage  = "url("+url+")";
-      }
+        (containerImage as HTMLElement).style.backgroundImage  = 'url(' + url + ')';
+      };
       reader.readAsDataURL(event.target.files[0]);
 
     }
   }
-  removeProfilePhoto(){
-     var containerImage = document.querySelector('.img-profile');
-     var removeImage = document.querySelector('.remove-img-profile');
-     (containerImage as HTMLElement).style.backgroundImage  = "url(' ')";
+  removeProfilePhoto() {
+     let containerImage = document.querySelector('.img-profile');
+     let removeImage = document.querySelector('.remove-img-profile');
+     (containerImage as HTMLElement).style.backgroundImage  = 'url(\' \')';
      (containerImage as HTMLElement).style.display = 'none';
      (removeImage as HTMLElement).style.display = 'none';
 
@@ -136,7 +136,7 @@ export class RegisterMotoristComponent implements  OnInit {
 
   public mapUrl: SafeResourceUrl;
 
-  constructor(private domSanitizer : DomSanitizer) {
+  constructor(private domSanitizer: DomSanitizer) {
     this.mapUrl = domSanitizer.bypassSecurityTrustResourceUrl(this.getMapUrlByLatLng(-23.53, -46.62));
   }
 
@@ -150,8 +150,8 @@ export class RegisterMotoristComponent implements  OnInit {
   filterRemoved() {
     this.place = null;
   }
-  
-  
+
+
 
   getMapUrlByLatLng(lat: number, lng: number) {
     return `https://maps.google.com/maps?q=${lat},${lng}&hl=es;z=14&amp&output=embed`;

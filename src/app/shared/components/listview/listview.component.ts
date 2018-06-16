@@ -18,8 +18,8 @@ import {
                 <ng-template [ngTemplateOutletContext]="{item: listItem, index: i}"
                              [ngTemplateOutlet]="item.template"></ng-template>
             </li>
-            <li class="list-view-empty" 
-                *ngIf="empty != null && empty.template != null && listItems == null 
+            <li class="list-view-empty"
+                *ngIf="empty != null && empty.template != null && listItems == null
                 || empty != null && empty.template != null && listItems != null && listItems.length == 0">
                 <ng-template [ngTemplateOutlet]="empty.template"></ng-template>
             </li>
@@ -30,7 +30,7 @@ export class ListViewComponent {
   @Input() styleClass: string;
   @Input() emptyMessage: string;
   @Input() listItems: Array<any> = [];
-  
+
   public item: ListViewItemComponent;
   public empty: ListViewEmptyComponent;
 

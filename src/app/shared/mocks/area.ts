@@ -14,7 +14,7 @@ export const areas = [
   {
     id: 3,
     name: 'Area Z',
-    latitude: -23.936890, 
+    latitude: -23.936890,
     longitude: -46.276543
   }
 ];

@@ -1,17 +1,17 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import {
   Http,
   ConnectionBackend,
   RequestOptions,
   RequestOptionsArgs,
   Headers
-} from "@angular/http";
+} from '@angular/http';
 
-import { Observable } from "rxjs/Observable";
-import { Router } from "@angular/router";
-import { environment } from "../../../environments/environment";
-import { ApiResponse } from "../models/ApiResponse";
-import "rxjs/Rx";
+import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
+import { ApiResponse } from '../models/ApiResponse';
+import 'rxjs/Rx';
 
 @Injectable()
 export class HttpService extends Http {
@@ -63,13 +63,13 @@ export class HttpService extends Http {
 
     if (options.headers == null) {
       options.headers = new Headers();
-      options.headers.append("Content-Type", "application/json");
+      options.headers.append('Content-Type', 'application/json');
     }
 
     const userAuthToken = localStorage.getItem(environment.authTokenName);
 
     if (userAuthToken) {
-      options.headers.append("Authorization", `Bearer ${userAuthToken}`);
+      options.headers.append('Authorization', `Bearer ${userAuthToken}`);
     }
     return options;
   }
@@ -82,9 +82,9 @@ export class HttpService extends Http {
   }
 
   private onCatch(error: any, caught: Observable<any>): Observable<any> {
-    caught
+    caught;
     let response: ApiResponse = {
-      errorMessage: "Ocorreu um erro inesperado",
+      errorMessage: 'Ocorreu um erro inesperado',
       isSuccess: false,
       result: null
     };
@@ -100,7 +100,7 @@ export class HttpService extends Http {
 
   private onError(error: any) {
     if (error.status === 401) {
-      this.router.navigate(["/login"]);
+      this.router.navigate(['/login']);
     }
   }
 

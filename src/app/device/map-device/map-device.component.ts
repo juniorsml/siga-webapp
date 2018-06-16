@@ -33,13 +33,13 @@ export class MapDeviceComponent implements OnInit {
     }
   }
 
-   public status: boolean = false;
+   public status = false;
   toggleMapType() {
     this.status = !this.status;
   }
   toggleMapStyle(mapStyle) {
-    debugger
-    if (mapStyle.value === "1") {
+    debugger;
+    if (mapStyle.value === '1') {
       this.map.setStyle(MapStyle.Outdoor);
     } else {
       this.map.setStyle(MapStyle.Street);
@@ -137,7 +137,7 @@ export class MapDeviceComponent implements OnInit {
 
   mapSearchText: any;
   mapSelectedTabIndex: number;
-  mapTabsSelectedIndex: number = 0;
+  mapTabsSelectedIndex = 0;
 
   selectedMotorist: any;
 

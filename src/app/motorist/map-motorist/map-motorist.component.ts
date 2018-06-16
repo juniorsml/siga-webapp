@@ -35,7 +35,7 @@ export class MapMotoristComponent implements OnInit {
     }
   }
 
-  public status: boolean = false;
+  public status = false;
 
   toggleMapType() {
     this.status = !this.status;
@@ -110,7 +110,7 @@ export class MapMotoristComponent implements OnInit {
 
   mapSearchText: any;
   mapSelectedTabIndex: number;
-  mapTabsSelectedIndex: number = 0;
+  mapTabsSelectedIndex = 0;
 
   selectedMotorist: any;
 
@@ -143,7 +143,7 @@ export class MapMotoristComponent implements OnInit {
   }
 
   toggleMapStyle(mapStyle) {
-    if (mapStyle.value === "1") {
+    if (mapStyle.value === '1') {
       this.map.setStyle(MapStyle.Outdoor);
     } else {
       this.map.setStyle(MapStyle.Street);
@@ -161,7 +161,7 @@ export class MapMotoristComponent implements OnInit {
   }
 
   onPlacesFiltered(event) {
-    event
+    event;
   }
 
   onPlacesFilterRemoved() {
@@ -178,6 +178,6 @@ export class MapMotoristComponent implements OnInit {
 
   private injectMap(): void {
     this.map.createMapBoxMapInstance(false);
-    this.plotMotoristLocations()
+    this.plotMotoristLocations();
   }
 }

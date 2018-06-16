@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OptionClickEvent } from '../../../shared/events/OptionClickEvent';
 
@@ -24,7 +24,7 @@ export class RadarComponent implements OnInit {
   public filterDistance: any;
   public showTripDialog = false;
   public showSummaryDialog = false;
-  haveFooter: boolean = true;
+  haveFooter = true;
 
   showColumnSelector = false;
 
@@ -34,8 +34,8 @@ export class RadarComponent implements OnInit {
   }
 
   onSelectOption(event: OptionClickEvent) {
-    switch (event.data.header) {      
-      case 'Seleção de Colunas': 
+    switch (event.data.header) {
+      case 'Seleção de Colunas':
         this.showColumnSelector = true;
         break;
       }
@@ -72,7 +72,7 @@ export class RadarComponent implements OnInit {
     this.showSummaryDialog = true;
   }
 
-  public summaryDialogClose(){
+  public summaryDialogClose() {
     this.showSummaryDialog = false;
   }
 

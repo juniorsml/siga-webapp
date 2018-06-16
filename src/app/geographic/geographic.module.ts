@@ -38,8 +38,8 @@ import { Router } from '@angular/router';
       provide: HttpService,
       useFactory: httpFactory,
       deps: [
-        XHRBackend, 
-        RequestOptions, 
+        XHRBackend,
+        RequestOptions,
         Router
       ]
     },

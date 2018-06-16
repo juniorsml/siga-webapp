@@ -18,20 +18,20 @@ import {
 export class AutoCompleteComponent {
 
   @Input() public data: Array<any>;
-  @Input() public url: string = '';
+  @Input() public url = '';
   @Input() public minLength: number;
   @Input() public keepSelect: boolean;
-  @Input() public placeholder: string = '';
-  @Input() public propToFilter: string = '';
-  @Input() public noSuggestionsText: string = '';
-  @Input() public suggestions = new Array<any>(); 
-  @Input() public styleClass: string = 'autocomplete';
+  @Input() public placeholder = '';
+  @Input() public propToFilter = '';
+  @Input() public noSuggestionsText = '';
+  @Input() public suggestions = new Array<any>();
+  @Input() public styleClass = 'autocomplete';
 
   @Output() public itemSelected = new EventEmitter();
   @Output() public onCreateNew = new EventEmitter<any>();
 
   @ViewChild('input') inputElement: ElementRef;
-  
+
   @ContentChild(TemplateRef) template: TemplateRef<any>;
 
   public hasFocus = false;
@@ -146,7 +146,7 @@ export class AutoCompleteComponent {
     //     console.log(ex);
     // });
   }
- 
+
   public noSuggestionClick(): void {
     this.suggestions = null;
   }

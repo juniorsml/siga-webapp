@@ -7,6 +7,6 @@ export class OptionClickEvent {
     this.index = index;
     this.event = event;
     this.data = data;
-  
+
   }
 }

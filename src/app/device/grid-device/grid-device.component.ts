@@ -1,6 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { TableClickEvent } from '../../shared/components/table/table.component';
-import { ActivatedRoute,Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OptionClickEvent } from '../../shared/events/OptionClickEvent';
 
 
@@ -18,8 +18,8 @@ export class GridDeviceComponent implements OnInit {
   public selectedDevice: any;
   public onDeviceSelected: any;
 
-  public haveFooter: boolean = true;
-  
+  public haveFooter = true;
+
   showColumnSelector = false;
 
 
@@ -28,11 +28,11 @@ export class GridDeviceComponent implements OnInit {
   }
 
   onSelectOption(event: OptionClickEvent) {
-    switch (event.data.header) {      
-      case 'Seleção de Colunas': 
+    switch (event.data.header) {
+      case 'Seleção de Colunas':
         this.showColumnSelector = true;
         break;
-        case 'Configuração': 
+        case 'Configuração':
          this.route.navigateByUrl('device/config');
          break;
       }
@@ -40,7 +40,7 @@ export class GridDeviceComponent implements OnInit {
 
   public headers = new Array<string>();
   public filterHeaders = new Array<string>();
- 
+
 
    @Input()
   public hasHeight = false;
@@ -53,7 +53,7 @@ export class GridDeviceComponent implements OnInit {
 
   @Input()
   public devices = new Array<any>();
-  
+
   constructor(private router: ActivatedRoute, private route: Router) { }
 
   ngOnInit(): void {
@@ -69,7 +69,7 @@ export class GridDeviceComponent implements OnInit {
     this.filterDistance = null;
     this.filterLocation = null;
   }
-  
+
   public onCellClick(event) {
     this.selectedDevice = event.data;
     this.onDeviceSelected.emit(this.selectedDevice);

@@ -8,10 +8,10 @@ import { StepClickEvent } from '../../events/StepClickEvent';
   styleUrls: ['./steps.component.scss']
 })
 export class StepsComponent {
-  @Input() 
+  @Input()
   public width: string;
 
-  @Input() 
+  @Input()
   public isVertical: boolean;
 
   @Output()
@@ -20,7 +20,7 @@ export class StepsComponent {
   public steps = new Array<StepComponent>();
 
   public addStep(step: StepComponent): void {
-    if (step) this.steps.push(step);
+    if (step) { this.steps.push(step); }
   }
 
   public onClick(event: Event, step: StepComponent, index: number): void {

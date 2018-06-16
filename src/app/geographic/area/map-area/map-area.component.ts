@@ -127,10 +127,10 @@ export class MapAreaComponent implements OnInit {
   }
 
   public redirectToRegister(event) {
-    event
+    event;
     this.route.navigateByUrl('geographic/area/register');
   }
-  
+
   public onDataSelected(event) {
     this.data = this.originalData.filter(d => d.id === event.id);
   }
@@ -143,10 +143,10 @@ export class MapAreaComponent implements OnInit {
 
   private filterDataByLocation() {
     const placesFilter = new PlacesPipe();
-    this.data = placesFilter.transform(this.originalData, 
+    this.data = placesFilter.transform(this.originalData,
       [this.filterLocation, Number(this.filterDistance), 'location.latitude', 'location.longitude']);
   }
-  
+
   onPlacesFilterRemoved() {
     this.filterDistance = null;
     this.filterLocation = null;

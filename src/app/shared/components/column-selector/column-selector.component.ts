@@ -2,38 +2,40 @@ import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, OnIni
 
 @Component({
   selector: 'sga-column-selector',
-  templateUrl:'./column-selector.component.html',
+  templateUrl: './column-selector.component.html',
   styleUrls: ['./column-selector.component.scss']
-   
+
 })
 export class ColumnSelectorComponent implements OnChanges, OnInit {
-  
+
   @Input() public columns = new Array<string>();
-  
+
   @Output() public onClose = new EventEmitter();
   @Output() public onToggleItem = new EventEmitter<Array<any>>();
-  
+
   private selectedItems = new Array<string>();
-  
+
   ngOnInit(): void {
-    if (Array.isArray(this.columns)) this.updateSelectedItems();
+    if (Array.isArray(this.columns)) { this.updateSelectedItems(); }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (!changes.columns.isFirstChange()) this.updateSelectedItems();
+    if (!changes.columns.isFirstChange()) { this.updateSelectedItems(); }
   }
-  
+
   public closeBox = (event) => {
-    if (event === 'hide') this.onClose.emit();
+    if (event === 'hide') { this.onClose.emit(); }
   }
 
   public exists = (column: string) => this.selectedItems.find(a => a === column);
 
   public onToggle(column: string): void {
-    if (this.selectedItems.find(c => c === column))
+    if (this.selectedItems.find(c => c === column)) {
       this.removeFromSelectedItems(column);
-    else
-      this.addToSelectedItems(column)
+    }
+    else {
+      this.addToSelectedItems(column);
+    }
 
     this.onToggleItem.emit(this.selectedItems);
   }

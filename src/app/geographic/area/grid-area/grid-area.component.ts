@@ -25,11 +25,11 @@ export class GridAreaComponent implements OnInit {
   }
 
   public onCellClick(event) {
-    event
+    event;
   }
 
   public onCellRightClick(event) {
-    event
+    event;
   }
 
   ngOnInit(): void {

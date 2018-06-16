@@ -7,11 +7,11 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./motorist-associate-dialog.component.scss']
 })
 export class MotoristAssociateDialogComponent implements OnInit {
-  @Input() 
+  @Input()
   public showDialog: boolean;
 
-  
-  public haveFooter: boolean = true;
+
+  public haveFooter = true;
 
   @Input()
   get motorists(): Array<any> {
@@ -37,14 +37,14 @@ export class MotoristAssociateDialogComponent implements OnInit {
 
   constructor(private router: ActivatedRoute) {}
 
-  ngOnInit() :void {
+  ngOnInit(): void {
     this.router.data.subscribe(data => this.motorists = data.motorists);
   }
 
   private setCurrentMotorists() {
     this.currentList = [];
     this.motorists.map(motorist => {
-      if (!this.motoristIsDuplicate(motorist.id)) this.currentList.push(motorist);
+      if (!this.motoristIsDuplicate(motorist.id)) { this.currentList.push(motorist); }
     });
   }
 
@@ -94,7 +94,7 @@ export class MotoristAssociateDialogComponent implements OnInit {
   }
 
   onAdminMotoristCellClick(event) {
-    if (event.cellIndex === 6) this.deleteMotorist(event.data);
+    if (event.cellIndex === 6) { this.deleteMotorist(event.data); }
   }
 
   applyChanges() {}

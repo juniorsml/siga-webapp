@@ -1,6 +1,6 @@
-<div *ngIf="showDialog" class="cnt-dialog">	
+<div *ngIf="showDialog" class="modal-box opened-modal">	
 	<div class="columns">
-		<div class="container-dialog is-multiline columns">
+		<div class="content-modal is-multiline columns">
 			<div class="column is-narrow" style="width: 130px;">
 				<sga-steps [isVertical]="true" [width]="'90%'" (onSelectStep)="onSelectStep($event)">
 			    <sga-step [header]="'Resumo'" [icon]="'fal fa-home'"></sga-step>

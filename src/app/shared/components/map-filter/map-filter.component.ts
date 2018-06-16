@@ -33,7 +33,7 @@ export class MapFilterComponent implements AfterViewInit {
 
   setLocation() {
     this.ngZone.run(() => {
-      if (this.placesInput.getPlace()){
+      if (this.placesInput.getPlace()) {
         this.location = this.placesInput.getPlace().geometry.location;
         this.setDistanceAndLocation();
       }
@@ -68,7 +68,7 @@ export class MapFilterComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     // Initialize places input
-    var nativeElement: HTMLInputElement = this.input.nativeElement;
+    let nativeElement: HTMLInputElement = this.input.nativeElement;
     this.placesInput = new google.maps.places.Autocomplete(nativeElement);
     this.placesInput.addListener('place_changed', () => this.setLocation());
   }

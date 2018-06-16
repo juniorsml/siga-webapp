@@ -1,4 +1,4 @@
-import { Component, OnInit,EventEmitter, Input,Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./history-detail.component.scss']
 })
 export class HistoryDetailComponent implements OnInit {
-  @Input() showHistoryDetail:boolean; 
+  @Input() showHistoryDetail: boolean;
   @Input() selectedMotorist: any;
 
   @Output() public onBackButton = new EventEmitter<string>();
@@ -23,7 +23,7 @@ export class HistoryDetailComponent implements OnInit {
     this.showHistoryDetail = false;
     this.onBackButton.emit();
     this._router.navigateByUrl('motorist/history');
-  }   
+  }
    ngOnInit() {
   }
 }
