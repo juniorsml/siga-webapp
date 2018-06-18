@@ -71,6 +71,7 @@ export class RegisterComponent implements OnInit {
     const target = event.currentTarget;
     this.icon = target.dataset.icon;
     this.status = !this.status;
+    this.redrawPoint(this.colorIcon, this.backgroundColor, this.fillColor, this.strokeColor);
   }
 
   public onColorChange(item) {
@@ -123,9 +124,9 @@ export class RegisterComponent implements OnInit {
     const { location } = event.geometry;
     if (location === undefined) { return; }
     const options = {
-      icon: 'fa-map-marker-alt',
-      iconColor: '#fff',
-      backgroundColor: '#ff5e5e'
+      icon: this.icon ? this.icon : 'fa-map-marker-alt',
+      iconColor: this.colorIcon ? this.colorIcon : '#fff',
+      backgroundColor: this.backgroundColor ? this.backgroundColor : '#ff5e5e'
     };
     this.location = {
       ...location,
