@@ -37,6 +37,7 @@ export class RegisterPlaceComponent implements OnInit {
 
   private iconOptions = null;
   private lineOptions = null;
+  private currentMarker: L.Marker;
 
   private _places: Array<any>;
   private mapMarkers: Array<Feature<GeometryObject>> = [];
@@ -123,7 +124,7 @@ export class RegisterPlaceComponent implements OnInit {
       environment.mapbox.location.latitude,
       environment.mapbox.location.longitude
     );
-    this.allPlaces();
+    // this.allPlaces();
   }
 
   private moveMap(lat: number, lng: number, zoom = 7) {
@@ -150,7 +151,6 @@ export class RegisterPlaceComponent implements OnInit {
 
     location = { ...location, ...this.location };
 
-    this.map.clearAll();
     this.moveMap(location.latitude, location.longitude, 18);
     const options = this.iconOptions ? this.iconOptions : location.options;
     this.marker(location.latitude, location.longitude, options);
@@ -209,7 +209,6 @@ export class RegisterPlaceComponent implements OnInit {
   public closeRegisterGroup = () => this.showRegisterGroup = false;
 
   public onSelected(place) {
-    this.map.clearAll();
     if (Array.isArray(place.location)) {
       place.location.map(loc => this.addMarker(this.createPoint(loc.latitude, loc.longitude)));
       this.moveMap(place.location[0].latitude, place.location[0].longitude, 3);
@@ -289,7 +288,8 @@ export class RegisterPlaceComponent implements OnInit {
   }
 
   public marker = (lat, lng, options = null) => {
-    this.map.clearAll();
+    debugger
+    if (this.currentMarker) { this.currentMarker['remove'](); }
     const markerBody: HTMLElement = document.createElement('div');
     const markerElement: HTMLElement = document.createElement('div');
     const iconElement: HTMLSpanElement = document.createElement('i');
@@ -318,7 +318,7 @@ export class RegisterPlaceComponent implements OnInit {
         ]
       }
     };
-    this.map.addMarker(marker);
+    this.currentMarker = this.map.addMarker(marker);
     // const customMarker = this.map.createMarker(marker);
     // marker.properties['marker'] = customMarker;
   }
@@ -326,11 +326,10 @@ export class RegisterPlaceComponent implements OnInit {
   public closeModalGroup = () => this.showSelectGroup = false;
 
   public draw = options => {
-    if (options.icon) {
+    this.lineOptions = this.getLineOptions(options.strokeColor, options.fillColor);
+    this.map.setLineStyle(this.lineOptions);
+    if (this.location) {
       this.marker(this.location.latitude, this.location.longitude, options);
-    } else {
-      this.lineOptions = this.getLineOptions(options.strokeColor, options.fillColor);
-      this.map.setLineStyle(this.lineOptions);
     }
   }
 
