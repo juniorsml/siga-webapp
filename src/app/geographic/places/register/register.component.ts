@@ -25,7 +25,6 @@ export class RegisterComponent implements OnInit {
   private location: any;
 
   public docType = 0;
-  public colorIcon = '';
   public placeSelected = false;
   public data: string;
   public status = false;
@@ -44,6 +43,11 @@ export class RegisterComponent implements OnInit {
   public inputValue: string;
 
   public typeSelected = 'location';
+
+  public colorIcon = '#ffffff';
+  public fillColor = '#ff5e5e';
+  public strokeColor = '#ff5e5e';
+  public backgroundColor = '#ff5e5e';
 
   constructor(private _eref: ElementRef) { }
 
@@ -77,6 +81,18 @@ export class RegisterComponent implements OnInit {
     this.status = !this.status;
   }
 
+  public iconSelected = color =>
+    this.redrawPoint(color, this.backgroundColor, this.fillColor, this.strokeColor, () => this.icon = color)
+
+  public backgroundSelected = color =>
+    this.redrawPoint(this.colorIcon, color, this.fillColor, this.strokeColor, () => this.backgroundColor = color)
+
+  public fillSelected = color =>
+    this.redrawPoint(this.colorIcon, this.backgroundColor, color, this.strokeColor, () => this.backgroundColor = color)
+
+  public strokeSelected = color =>
+    this.redrawPoint(this.colorIcon, this.backgroundColor, this.fillColor, color, () => this.strokeColor = color)
+
   // Close When Click outSide of Component
   outClick(event) {
     if (!this._eref.nativeElement.contains(event.target)) {// or some similar check
@@ -86,13 +102,10 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  public redrawPoint(iconColor, backgroundColor, fillColor, strokeColor) {
-    if (this.typeSelected === 'area') {
-      this.onPreviewClicked.emit({ fillColor: fillColor.value, strokeColor: strokeColor.value });
-    } else {
-      const icon = this.icon === '' ? 'fa-map-marker-alt' : this.icon;
-      this.onPreviewClicked.emit({ iconColor: iconColor.value, backgroundColor: backgroundColor.value, icon });
-    }
+  private redrawPoint(iconColor, backgroundColor, fillColor, strokeColor, after?) {
+    const icon = this.icon === '' ? 'fa-map-marker-alt' : this.icon;
+    this.onPreviewClicked.emit({ fillColor, strokeColor, iconColor, backgroundColor, icon });
+    if (after) { after(); }
   }
 
   public backButton() {
@@ -112,7 +125,7 @@ export class RegisterComponent implements OnInit {
     const options = {
       icon: 'fa-map-marker-alt',
       iconColor: '#fff',
-      backgroundColor: '#506693'
+      backgroundColor: '#ff5e5e'
     };
     this.location = {
       ...location,
