@@ -288,7 +288,6 @@ export class RegisterPlaceComponent implements OnInit {
   }
 
   public marker = (lat, lng, options = null) => {
-    debugger
     if (this.currentMarker) { this.currentMarker['remove'](); }
     const markerBody: HTMLElement = document.createElement('div');
     const markerElement: HTMLElement = document.createElement('div');
