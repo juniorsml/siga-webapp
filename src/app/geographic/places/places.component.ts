@@ -209,6 +209,7 @@ export class RegisterPlaceComponent implements OnInit {
   public closeRegisterGroup = () => this.showRegisterGroup = false;
 
   public onSelected(place) {
+    this.map.clearAll();
     if (Array.isArray(place.location)) {
       place.location.map(loc => this.addMarker(this.createPoint(loc.latitude, loc.longitude)));
       this.moveMap(place.location[0].latitude, place.location[0].longitude, 3);

@@ -9,13 +9,16 @@ import { MapStyle } from '../models/MapStyle';
 @Injectable()
 export class MapService extends Map {
   private map: L.Map;
-  private featureGroup: L.LayerGroup<any>;
   private control: L.Control;
+  private featureGroup: L.LayerGroup<any>;
 
+  private layers = new Array<any>();
   private markers = new Array<L.Marker>();
   private circles = new Array<any>();
   private clusters = new Array<L.LayerGroup<any>>();
   private polyLines = new Array<any>();
+
+  private tile: any;
   private lineStyle: any;
   private lastLayer: any;
 
@@ -23,7 +26,7 @@ export class MapService extends Map {
     L.mapbox.accessToken = environment.mapbox.accessToken;
 
     this.map = L.mapbox
-      .map('map', 'mapbox.streets', this.mapboxOptions())
+      .map('map', '', this.mapboxOptions())
       .setView([-14.9034, -43.1917], 5);
 
     if (showControls) {
@@ -48,7 +51,9 @@ export class MapService extends Map {
   }
 
   public setStyle(style: MapStyle): void {
-    L.tileLayer(
+    if (this.tile) { this.tile.removeFrom(this.map); }
+
+    this.tile = L.tileLayer(
       `https://api.mapbox.com/styles/v1/mapbox/${style}/tiles/{z}/{x}/{y}?access_token=${L.mapbox.accessToken}`, {
         tileSize: 512,
         zoomOffset: -1
@@ -59,10 +64,11 @@ export class MapService extends Map {
 
 
   public addGeoJSON(geojson) {
-    L.mapbox
+    const geo = L.mapbox
       .featureLayer()
       .setGeoJSON(geojson)
       .addTo(this.map);
+    this.layers.push(geo);
   }
 
   public createMarker(feature: Feature<any>): L.Marker {
@@ -110,6 +116,7 @@ export class MapService extends Map {
 
   public clearAll(): void {
     this.clearMarkers();
+    this.layers.map(this.remove);
     this.circles.map(this.remove);
     this.markers.map(this.remove);
     this.polyLines.map(this.remove);
