@@ -19,7 +19,9 @@ $bg-titles: #4d5675;
 .label {
   color: #737373 !important;
 }
-
+.leaflet-right .leaflet-control{
+  margin: 69px 37px 0px 0px;
+}
 // Our Components | Buttons
 .button.is-first {
     background-color: #4d5675;    
