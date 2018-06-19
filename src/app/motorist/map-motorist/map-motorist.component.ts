@@ -30,7 +30,7 @@ export class MapMotoristComponent implements OnInit {
 
   set motorists(value: Array<any>) {
     this._motorists = value;
-    if (this.mapSelectedTabIndex && this.mapSelectedTabIndex != 1) {
+    if (this.mapSelectedTabIndex && this.mapSelectedTabIndex !== 1) {
       this.plotMotoristLocations();
     }
   }

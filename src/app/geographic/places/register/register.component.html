@@ -3,247 +3,189 @@
     <i class="fal fa-long-arrow-left" (click)="backButton();"></i>
     <h1>Adicionar  <span *ngIf="formType === 'place'">Lugar</span> <span *ngIf="formType === 'group'">Grupo</span>   </h1>
   </div>
- 
-  <div slimScroll  [options]="opts" [scrollEvents]="scrollEvents" class="cnt-form">
-    
- 
-  <form  class="form" [class.load]="placeSelected" #formPlace="ngForm" (ngSubmit)="onSubmit(formPlace)">
-    <div class="field" *ngIf="formType === 'place'">
-      <label class="label is-small">Tipo</label>   
-      <label class="container">Localização
-        <input type="radio" name="type" value="Localização" checked>
-        <span class="checkmark"></span>
-      </label>
-      <label class="container" >Área        
-        <input type="radio" name="type"  value="Área" >
-        <span class="checkmark"></span>
-      </label>
 
-    </div>
-    <div class="field" *ngIf="formType === 'place'">
-      <label class="label is-small">Endereço</label>  
-      <div class="wrapper-flex">   
-        <sga-places-auto-complete *ngIf="formType !== 'group'"
-          (onPlacesFilteredEvent)="onPlacesFiltered($event)" 
-          (onFilterRemovedEvent)="onPlacesFilterRemoved()">
-        </sga-places-auto-complete>
+  <div slimScroll [options]="opts" [scrollEvents]="scrollEvents" class="cnt-form">
+
+    <form class="form" [class.load]="placeSelected" #formPlace="ngForm" (ngSubmit)="onSubmit(formPlace)">
+      <div class="field" *ngIf="formType === 'place'">
+        <label class="label is-small">Tipo</label>
+        <label class="container">Localização
+          <input type="radio" name="type" value="Localização" (click)="setTypeSelected('location')" checked>
+          <span class="checkmark"></span>
+        </label>
+        <label class="container">Área
+          <input type="radio" name="type" value="Área" (click)="setTypeSelected('area')">
+          <span class="checkmark"></span>
+        </label>
       </div>
-    </div>
-   
 
-    <div class="field">
-      <label class="label is-small">Nome</label>  
-      <div class="control">     
-      <input class="input is-small" [attr.maxlength]="nameMaxLenght" type="text" placeholder="Nome" name="name" 
-        #name="ngModel" ngModel required [class.is-danger]="name.touched && !name.valid"/>
-        <p class="maxCount">{{name.value.length}} / {{nameMaxLenght}}</p>
-    </div>
-    </div>
-   <!--  <div class="control" *ngIf="formType !== 'group'">
-       <label class="label is-small">Nome</label>  
-      <input class="input" type="text" placeholder="Tipo" name="type" 
-        #type="ngModel" ngModel required [class.is-danger]="type.touched && !type.valid"/>
-    </div> -->
+      <div class="field" *ngIf="formType === 'place'">
+        <label class="label is-small">Endereço</label>
+        <div class="wrapper-flex">
+          <sga-places-auto-complete *ngIf="formType !== 'group'" (onPlacesFilteredEvent)="onPlacesFiltered($event)" (onFilterRemovedEvent)="onPlacesFilterRemoved()">
+          </sga-places-auto-complete>
+        </div>
+      </div>
 
-   <!--  <div class="field" *ngIf="formType === 'place'">
       <div class="field">
-        <label class="label is-small">Selecione um documento</label>  
-        <div class="control">      
-           <div class="select">
-              <select name="docType" [(ngModel)]="docType" required>
-               <option value="0">Selecione um documento</option>
-               <option>CNPJ</option>
-               <option>CPF</option>
-               <option>DOC Externo</option>
-           </select>
-           </div>
-          
-      </div>
-       
-    </div> -->
-        
-   <!--   <div class="field-body" [ngSwitch]="docType">
-      <div *ngSwitchCase="'CNPJ'">
-        <div class="field">  
-          <label class="label is-small">CNPJ Número</label>  
-          <div class="control">
-            <input type="text" class="input" placeholder="CNPJ Número" name="cnpjNumber" 
-            #cnpjNumber="ngModel" ngModel required [class.is-danger]="cnpjNumber.touched && !cnpjNumber.valid"/>
-          </div>
-        </div>
-        <div class="field">  
-          <label class="label is-small">Razão Social</label> 
-          <div class="control">
-            <input type="text" class="input" placeholder="Razão Social" name="socialReason" 
-            #socialReason="ngModel" ngModel required [class.is-danger]="socialReason.touched && !socialReason.valid"/>
-          </div>
-        </div>
-        <div class="field">  
-          <label class="label is-small">Nome Fantasia</label> 
-          <div class="control">
-            <input type="text" class="input" placeholder="Nome Fantasia" name="fantasyName"
-            #fantasyName="ngModel" ngModel required [class.is-danger]="fantasyName.touched && !fantasyName.valid"/>
-          </div>
+        <label class="label is-small">Nome</label>
+        <div class="control">
+          <input class="input is-small" [attr.maxlength]="nameMaxLenght" type="text" placeholder="Nome" name="name" #name="ngModel"
+            ngModel required [class.is-danger]="name.touched && !name.valid" />
+          <p class="maxCount">{{name?.value?.length}} / {{nameMaxLenght}}</p>
         </div>
       </div>
-      <div *ngSwitchCase="'CPF'">
-        <div class="field">  
-          <label class="label is-small">CPF Número</label> 
-          <div class="control">
-            <input type="text" class="input" placeholder="CPF Número" name="cpfNumber"
-            #cpfNumber="ngModel" ngModel required [class.is-danger]="cpfNumber.touched && !cpfNumber.valid"/>
+
+      <div class="field">
+        <label class="label is-small">Descrição</label>
+        <div class="control">
+          <input type="text" class="input is-small" [attr.maxlength]="descriptionMaxLenght" placeholder="Descrição" #description name="description"
+            ngModel />
+          <p class="maxCount">{{description.value.length}} / {{descriptionMaxLenght}}</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label is-small">Tags</label>
+        <div class="control">
+          <input type="text" class="input is-small" placeholder="Tags" name="tag" ngModel />
+        </div>
+      </div>
+
+      <div class="field-body field" *ngIf="formType === 'place'">
+        <div class="field">
+          <label class="label is-small">ID Cliente</label>
+          <div class="field-body">
+            <div class="field">
+              <input type="text" class="input is-small" [attr.maxlength]="key_customerMaxLenght" placeholder="Chave" name="key_customer"
+                #key_customer ngModel />
+              <p class="maxCount">{{key_customer.value.length}} / {{key_customerMaxLenght}}</p>
+            </div>
+            <div class="field">
+              <input type="text" class="input is-small" [attr.maxlength]="id_customerMaxLenght" placeholder="ID" name="id_customer" #id_customer
+                ngModel />
+              <p class="maxCount">{{id_customer.value.length}} / {{id_customerMaxLenght}}</p>
+            </div>
           </div>
         </div>
       </div>
-      <div *ngSwitchCase="'DOC Externo'">
-        <div class="field"> 
-            <label class="label is-small">DOC Número</label> 
-          <div class="control">
-            <input type="text" class="input" placeholder="DOC Número" name="docNumber"
-            #docNumber="ngModel" ngModel required [class.is-danger]="docNumber.touched && !docNumber.valid"/>
-          </div> 
+
+      <div class="field-body field" *ngIf="formType === 'place'">
+        <div class="field">
+          <label class="label is-small">Estilo</label>
+          <div class="field-body seletors">
+            <div class="picker-container">
+              <div class="field">
+                <div class="icon-picker" (click)="toggleChooseIcon()" [style.color]="colorIcon">
+                  <span class="icon-label">Ícone</span>
+                  <div class="preview" [style.background-color]="backgroundColor">
+                    <i class="fal " [ngClass]="icon == '' ? 'fa-map-marker-alt' : icon "></i>
+                  </div>
+                </div>
+                <div class="choose-icon" [ngClass]="status ? 'opened' : 'closed'">
+                  <div class="icon" data-icon="fa-map-marker-alt" (click)="changeIcon($event)">
+                    <i class="fal fa-map-marker-alt"></i>
+                  </div>
+                  <div class="icon" data-icon="fa-building" (click)="changeIcon($event)">
+                    <i class="fal fa-building"></i>
+                  </div>
+                  <div class="icon" data-icon="fa-industry-alt" (click)="changeIcon($event)">
+                    <i class="fal fa-industry-alt"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <span class="icon-label">Cor</span>
+                <input 
+                  type="color" 
+                  name="colorIcon"
+                  class="color-picker"
+                  [(ngModel)]="colorIcon"
+                  (ngModelChange)="iconSelected($event)">
+              </div>
+              <div class="field">
+                <span class="icon-label">Func</span>
+                <input 
+                  type="color" 
+                  name="backgroundColor"
+                  class="color-picker"
+                  [(ngModel)]="backgroundColor"
+                  (ngModelChange)="backgroundSelected($event)">
+              </div>
+              <div class="field">
+                <span class="icon-label">Área</span>
+                <input 
+                  type="color" 
+                  name="fillColor"
+                  class="color-picker"
+                  [(ngModel)]="fillColor"
+                  (ngModelChange)="fillSelected($event)">
+              </div>
+              <div class="field">
+                <span class="icon-label">Borda</span>
+                <input 
+                  type="color" 
+                  name="strokeColor"
+                  class="color-picker"
+                  [(ngModel)]="strokeColor"
+                  (ngModelChange)="strokeSelected($event)">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div> -->
-      
-    <div class="field" >
-      <label class="label is-small">Descrição</label>
+
+      <div class="field" *ngIf="formType === 'place'">
+        <label class="label is-small">Classificação</label>
+
+        <label class="container">Comercial
+          <input type="radio" name="kindOf" [(ngModel)]="kindOf" value="Comercial" [checked]="true">
+          <span class="checkmark"></span>
+        </label>
+        <label class="container">Residencial
+          <input type="radio" name="kindOf" [(ngModel)]="kindOf" value="Residencial">
+          <span class="checkmark"></span>
+        </label>
+        <label class="container">Outro
+          <input type="radio" name="kindOf" [(ngModel)]="kindOf" value="Outro">
+          <span class="checkmark"></span>
+        </label>
+      </div>
+
+      <div class="field-body field" [ngSwitch]="kindOf" *ngIf="formType === 'place'">
+        <div class="field" *ngSwitchDefault>
+          <div class="field">
+            <label class="label is-small">CNPJ</label>
+            <div class="control">
+              <input type="text" class="input is-small" placeholder="CNPJ" name="cnpjNumber" #cnpjNumber="ngModel" ngModel required [class.is-danger]="cnpjNumber.touched && !cnpjNumber.valid"
+              />
+
+            </div>
+          </div>
+        </div>
+        <div class="field" *ngSwitchCase="'Residencial'">
+          <div class="field">
+            <label class="label is-small">RG</label>
+            <div class="control">
+              <input type="text" class="input is-small" placeholder="RG " name="rgNumber" #rgNumber="ngModel" ngModel required [class.is-danger]="rgNumber.touched && !rgNumber.valid"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="field" *ngSwitchCase="'Outro'">
+          <div class="field">
+            <label class="label is-small">Outro</label>
+            <div class="control">
+              <input type="text" class="input is-small" placeholder="Outro" name="otherDoc" #otherDoc="ngModel" ngModel required [class.is-danger]="otherDoc.touched && !otherDoc.valid"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="control">
-        <input type="text" class="input is-small" [attr.maxlength]="descriptionMaxLenght"  placeholder="Descrição" #description name="description" ngModel />
-         <p class="maxCount">{{description.value.length}} / {{descriptionMaxLenght}}</p>
-      </div> 
-    </div>
-
-    <div class="field">
-      <label class="label is-small">Tags</label>
-      <div class="control">
-        <input type="text" class="input is-small" placeholder="Tags" name="tag" ngModel />
-      </div> 
-    </div>
-    <div class="field-body field" *ngIf="formType === 'place'">     
-      <div class="field"> 
-        <label class="label is-small">ID Cliente</label>      
-        <div class="field-body">
-          <div class="field">
-            <input type="text" class="input is-small" [attr.maxlength]="key_customerMaxLenght" placeholder="Chave" name="key_customer" #key_customer ngModel />
-             <p class="maxCount">{{key_customer.value.length}} / {{key_customerMaxLenght}}</p>
-          </div>
-          <div class="field">
-            <input type="text" class="input is-small" [attr.maxlength]="id_customerMaxLenght" placeholder="ID" name="id_customer" #id_customer ngModel />
-             <p class="maxCount">{{id_customer.value.length}} / {{id_customerMaxLenght}}</p>
-          </div>
-        </div>
+        <input [disabled]="!formPlace.valid" class="button is-first" value="Enviar" type="submit">
       </div>
-    </div>
-    <div class="field-body field" *ngIf="formType === 'place'">     
-      <div class="field"> 
-        <label class="label is-small">Estilo</label>      
-        <div class="field-body seletors">
-          <div class="field">
-             <div class="icon-picker" (click)="toggleChooseIcon()" [style.color]="colorIcon.value">
-                <span class="icon-label">Ícone</span>
-                <div class="preview" [style.background-color]="backgroundColor.value">
-                  
-                  <i class="fal "  [ngClass]="icon == '' ? 'fa-map-marker-alt' : icon "></i> 
-                  
-
-
-                </div>
-             </div>
-             <div class="choose-icon"  [ngClass]="status ? 'opened' : 'closed'">
-                <div class="icon" data-icon="fa-map-marker-alt" (click)="changeIcon($event)" >  
-                   <i class="fal fa-map-marker-alt"></i>
-                </div>
-                <div class="icon" data-icon="fa-building"  (click)="changeIcon($event)" >
-                  <i class="fal fa-building"></i>
-                </div>
-                <div class="icon" data-icon="fa-industry-alt" (click)="changeIcon($event)" >  
-                   <i class="fal fa-industry-alt"></i>
-                </div>
-              
-                              
-             </div>
-          </div>
-          <div class="field">
-              <span class="icon-label">Cor</span>
-             <input type="color" class="color-picker"  #colorIcon value="#ffffff">
-          </div>
-          <div class="field">
-             <span class="icon-label">Func</span>
-             <input type="color" class="color-picker" #backgroundColor value="#506693">
-          </div>
-          <div class="field">
-            <span class="icon-label">Área</span>
-             <input type="color" class="color-picker" value="#21b87d">
-          </div>
-          <div class="field">
-             <span class="icon-label">Borda</span>
-             <input type="color" class="color-picker" value="#ee2e2e">
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="field" *ngIf="formType === 'place'">
-      <label class="label is-small">Classificação</label>
-
-       <label class="container">Comercial
-         <input type="radio"  name="kindOf" [(ngModel)]="kindOf"  value="Comercial" [checked]="true">
-         <span class="checkmark"></span>
-       </label>
-       <label class="container" >Residencial        
-         <input type="radio"  name="kindOf" [(ngModel)]="kindOf"   value="Residencial" >
-         <span class="checkmark"></span>
-       </label>
-       <label class="container" >Outro        
-         <input type="radio"   name="kindOf" [(ngModel)]="kindOf"  value="Outro" >
-         <span class="checkmark"></span>
-       </label>
-
-     
-      
-   
-    </div>
-
-    <div class="field-body field" [ngSwitch]="kindOf" *ngIf="formType === 'place'" >
-      <div class="field" *ngSwitchDefault >
-        <div class="field">  
-          <label class="label is-small">CNPJ</label>  
-          <div class="control">
-            <input type="text" class="input is-small" placeholder="CNPJ" name="cnpjNumber" 
-            #cnpjNumber="ngModel" ngModel required [class.is-danger]="cnpjNumber.touched && !cnpjNumber.valid"/>
-
-          </div>
-        </div>
-      </div>
-       <div class="field" *ngSwitchCase="'Residencial'">
-        <div class="field">  
-          <label class="label is-small">RG</label>  
-          <div class="control">
-            <input type="text" class="input is-small" placeholder="RG " name="rgNumber" 
-            #rgNumber="ngModel" ngModel required [class.is-danger]="rgNumber.touched && !rgNumber.valid"/>
-          </div>
-        </div>
-      </div>
-      <div class="field"  *ngSwitchCase="'Outro'">
-        <div class="field">  
-          <label class="label is-small">Outro</label>  
-          <div class="control">
-            <input type="text" class="input is-small" placeholder="Outro" name="otherDoc" 
-            #otherDoc="ngModel" ngModel required [class.is-danger]="otherDoc.touched && !otherDoc.valid"/>
-          </div>
-        </div>
-      </div>
-    </div>
-      
-    <div class="control">
-      <input 
-      [disabled]="!formPlace.valid"
-      class="button is-first"
-      value="Enviar"
-      type="submit">
-    </div>
-  </form>
- </div>
+    </form>
+  </div>
 </section>

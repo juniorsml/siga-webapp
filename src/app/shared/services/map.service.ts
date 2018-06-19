@@ -16,8 +16,10 @@ export class MapService extends Map {
   private circles = new Array<any>();
   private clusters = new Array<L.LayerGroup<any>>();
   private polyLines = new Array<any>();
+  private lineStyle: any;
+  private lastLayer: any;
 
-  public createMapBoxMapInstance(showControls = false) {
+  public createMapBoxMapInstance(showControls = false, onDraw = null) {
     L.mapbox.accessToken = environment.mapbox.accessToken;
 
     this.map = L.mapbox
@@ -27,7 +29,7 @@ export class MapService extends Map {
     if (showControls) {
       this.addControls();
       this.setStyle(MapStyle.Street);
-      this.addListeners();
+      this.addListeners(onDraw);
     } else {
       this.setStyle(MapStyle.Outdoor);
     }
@@ -46,8 +48,15 @@ export class MapService extends Map {
   }
 
   public setStyle(style: MapStyle): void {
-    L.mapbox['styleLayer'](`mapbox://styles/mapbox/${style}`).addTo(this.map);
+    L.tileLayer(
+      `https://api.mapbox.com/styles/v1/mapbox/${style}/tiles/{z}/{x}/{y}?access_token=${L.mapbox.accessToken}`, {
+        tileSize: 512,
+        zoomOffset: -1
+      })
+      .redraw()
+      .addTo(this.map);
   }
+
 
   public addGeoJSON(geojson) {
     L.mapbox
@@ -68,7 +77,7 @@ export class MapService extends Map {
         feature.geometry['coordinates'][1],
         feature.geometry['coordinates'][0]
       ),
-      { icon }
+      { icon, draggable: true }
     );
 
     return marker;
@@ -82,6 +91,15 @@ export class MapService extends Map {
     return marker;
   }
 
+  public addCustomMarker(lat: number, lng: number, color: string, draggable: boolean): void {
+    L.marker(new L.LatLng(lat, lng), {
+      icon: L.mapbox.marker.icon({
+        'marker-color': color
+      }),
+      draggable
+    }).addTo(this.map);
+  }
+
   public addControl(showControls = true): void {
     if (showControls === true) {
       this.addControls();
@@ -92,9 +110,16 @@ export class MapService extends Map {
 
   public clearAll(): void {
     this.clearMarkers();
-    this.circles.map(e => e.remove());
-    this.polyLines.map(e => e.remove());
+    this.circles.map(this.remove);
+    this.markers.map(this.remove);
+    this.polyLines.map(this.remove);
+
+    if (this.featureGroup !== undefined) {
+      this.featureGroup.clearLayers();
+    }
   }
+
+  private remove = item => item.remove();
 
   public clearMarkers(): void {
     this.clusters.map(cluster => {
@@ -133,6 +158,14 @@ export class MapService extends Map {
     }
   }
 
+  public setLineStyle(options: any) {
+    this.lineStyle = options;
+    if (this.featureGroup !== undefined && this.featureGroup.getLayers().length > 0) {
+      const geojson = this.featureGroup.toGeoJSON();
+      this.geojsonToLayer(geojson, this.lastLayer);
+    }
+  }
+
   private mapboxOptions = () =>
     Object.assign({
       maxZoom: 20,
@@ -140,15 +173,30 @@ export class MapService extends Map {
       worldCopyJump: true
     })
 
-  private addListeners = () =>
+  private addListeners = (onDraw = undefined) =>
     this.map.on('draw:created', (e: any) => {
-      this.featureGroup.addLayer(e.layer);
-      const geojson = e.layer.toGeoJSON();
+      onDraw === undefined ?
+        console.warn('onDraw is undefined') :
+        onDraw();
+      const layer = this.featureGroup.addLayer(e.layer);
+      this.lastLayer = layer;
+      const geojson = this.featureGroup.toGeoJSON();
+      this.geojsonToLayer(geojson, layer);
       console.log(geojson);
     })
 
+  private geojsonToLayer = (geojson, layer) => {
+    layer.clearLayers();
+    const add = l => l.addTo(layer);
+    L.geoJson(geojson, {
+      style: () => {
+        return { ...this.lineStyle };
+      }
+    }).eachLayer(add);
+  }
+
   private addControls(): void {
-    this.featureGroup = new L.FeatureGroup<any>().addTo(this.map);
+    this.featureGroup = new L.FeatureGroup().addTo(this.map);
 
     if (this.control !== undefined) {
       this.control['remove']();
@@ -160,9 +208,8 @@ export class MapService extends Map {
         featureGroup: this.featureGroup
       },
       draw: {
-        marker: {
-          icon: L.mapbox.marker.icon({})
-        }
+        circle: false,
+        marker: false
       }
     }).addTo(this.map);
 

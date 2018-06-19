@@ -33,13 +33,16 @@ export class MapDeviceComponent implements OnInit {
     }
   }
 
+
    public status = false;
+
   toggleMapType() {
     this.status = !this.status;
   }
   toggleMapStyle(mapStyle) {
-    debugger;
-    if (mapStyle.value === '1') {
+
+    if (mapStyle.value === "1") {
+
       this.map.setStyle(MapStyle.Outdoor);
     } else {
       this.map.setStyle(MapStyle.Street);
@@ -141,7 +144,7 @@ export class MapDeviceComponent implements OnInit {
 
   selectedMotorist: any;
 
-  constructor(private map: Map, private router: ActivatedRoute) {}
+  constructor(private map: Map, private router: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.router.data.subscribe(data => (this.devices = data.devices));
@@ -193,7 +196,7 @@ export class MapDeviceComponent implements OnInit {
     event;
   }
 
-  onPlacesFilterRemoved() {}
+  onPlacesFilterRemoved() { }
 
   onContextMenu(event: TableClickEvent) {
     console.log(event);

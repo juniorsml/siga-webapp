@@ -9,7 +9,7 @@ import { MapStyle } from './MapStyle';
 @Injectable()
 export abstract class Map {
   /* Start */
-  public abstract createMapBoxMapInstance(showControls?: boolean): void;
+  public abstract createMapBoxMapInstance(showControls?: boolean, onDraw?: Function): void;
 
   public abstract moveTo(latitude: number, longitude: number, options?: any): void;
 
@@ -29,14 +29,19 @@ export abstract class Map {
   /** Marker **/
   public abstract createMarker(feature: Feature<any>): L.Marker;
 
+  public abstract addCustomMarker(lat: number, lng: number, color: string, isDraggable: boolean): void;
+
   public abstract addMarker(feature: Feature<any>): L.Marker;
 
   public abstract addCluster(markers: Array<any>): void;
 
   public abstract addCircle(latLng: L.LatLng): void;
 
+
   public abstract clearMarkers(): void;
 
   /** Drawing **/
   public abstract drawPolyline(points: Array<L.LatLng>): void;
+
+  public abstract setLineStyle(options: any): void;
 }

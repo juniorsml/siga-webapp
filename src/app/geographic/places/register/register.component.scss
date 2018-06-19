@@ -59,7 +59,7 @@
 
   .field{
     position: relative;
-  }
+    }
   .maxCount{
     font-size: 11px;
     position: absolute;
@@ -168,5 +168,7 @@
 
   }
 
-  
+  .picker-container {
+    display: flex;
+  }
 }

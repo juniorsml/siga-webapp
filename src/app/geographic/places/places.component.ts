@@ -21,7 +21,7 @@ import { MapStyle } from '../../shared/models/MapStyle';
 export class RegisterPlaceComponent implements OnInit {
   private location: any;
   text: any;
-  public areas:  Array<any>;
+  public areas: Array<any>;
   public groups: Array<any>;
   public itineraryPlaces = new Array<any>();
   public selectedArea: any;
@@ -35,8 +35,13 @@ export class RegisterPlaceComponent implements OnInit {
 
   public groupedItems = new Array<GroupedItems>();
 
+  private iconOptions = null;
+  private lineOptions = null;
+  private currentMarker: L.Marker;
+
   private _places: Array<any>;
   private mapMarkers: Array<Feature<GeometryObject>> = [];
+
   @Input()
   get places(): Array<any> {
     return this._places;
@@ -88,7 +93,7 @@ export class RegisterPlaceComponent implements OnInit {
   }
 
   constructor(private map: Map,
-              private directionService: DirectionService) {}
+    private directionService: DirectionService) { }
 
   ngOnInit() {
     this.places = places;
@@ -106,17 +111,20 @@ export class RegisterPlaceComponent implements OnInit {
     this.groupedItems.push(grouped);
     this.groupedItems.push(grouped2);
 
+    this.lineOptions = this.getLineOptions('#ff5e5e', '#ff5e5e');
+    this.map.setLineStyle(this.lineOptions);
+
     this.setupMap();
   }
 
   private setupMap(draw = false): void {
-    this.map.createMapBoxMapInstance(draw);
+    this.map.createMapBoxMapInstance(draw, () => this.map.setLineStyle(this.lineOptions));
 
     this.moveMap(
       environment.mapbox.location.latitude,
       environment.mapbox.location.longitude
     );
-    this.allPlaces();
+    // this.allPlaces();
   }
 
   private moveMap(lat: number, lng: number, zoom = 7) {
@@ -141,12 +149,12 @@ export class RegisterPlaceComponent implements OnInit {
       longitude: location.lng()
     };
 
-    console.log(this.location);
+    location = { ...location, ...this.location };
 
-    this.map.clearAll();
-    this.moveMap(location.lat(), location.lng(), 18);
-    const geometry = this.createPoint(location.lat(), location.lng());
-    this.map.addGeoJSON(geometry);
+    this.moveMap(location.latitude, location.longitude, 18);
+    const options = this.iconOptions ? this.iconOptions : location.options;
+    this.marker(location.latitude, location.longitude, options);
+    // this.map.addCustomMarker(location.latitude, location.longitude, '#0049ff', true);
   }
 
   public openRegister(type) {
@@ -192,7 +200,7 @@ export class RegisterPlaceComponent implements OnInit {
     }
   }
 
-  private changeMap = (showControls: boolean, mapStyle: MapStyle) => {
+  public changeMap = (showControls: boolean, mapStyle: MapStyle) => {
     this.map.clearAll();
     this.map.addControl(showControls);
     this.map.setStyle(mapStyle);
@@ -201,7 +209,6 @@ export class RegisterPlaceComponent implements OnInit {
   public closeRegisterGroup = () => this.showRegisterGroup = false;
 
   public onSelected(place) {
-    this.map.clearAll();
     if (Array.isArray(place.location)) {
       place.location.map(loc => this.addMarker(this.createPoint(loc.latitude, loc.longitude)));
       this.moveMap(place.location[0].latitude, place.location[0].longitude, 3);
@@ -270,7 +277,8 @@ export class RegisterPlaceComponent implements OnInit {
   private addPoint = place => this.map.addCircle(L.latLng(place.lat, place.lng));
 
   private onSuccessRoute = data => {
-    const latLngs = data.routes[0].geometry.coordinates.map(geo => L.latLng(geo[1], geo[0]));
+    const featureList = this.directionService.decode(data.routes[0].geometry);
+    const latLngs = featureList.map(feat => L.latLng(feat.geometry.coordinates[1], feat.geometry.coordinates[0]));
     this.map.drawPolyline(latLngs);
   }
 
@@ -279,7 +287,50 @@ export class RegisterPlaceComponent implements OnInit {
     this.plotRoute();
   }
 
+  public marker = (lat, lng, options = null) => {
+    if (this.currentMarker) { this.currentMarker['remove'](); }
+    const markerBody: HTMLElement = document.createElement('div');
+    const markerElement: HTMLElement = document.createElement('div');
+    const iconElement: HTMLSpanElement = document.createElement('i');
+
+    if (options) {
+      iconElement.className = `icon-body fal ${options ? options.icon : ''}`;
+      iconElement.style.color = options.iconColor;
+      iconElement.style.background = options.backgroundColor;
+      this.iconOptions = options;
+    }
+
+    markerElement.appendChild(markerBody);
+    markerBody.appendChild(iconElement);
+    markerBody.className = 'icon-marker bounce';
+
+    markerBody.addEventListener('click', () => alert('op'));
+
+    const marker: Feature<GeometryObject> = <Feature<any>>{
+      type: 'Feature',
+      properties: { iconSize: [50, 50], icon: markerElement },
+      geometry: {
+        type: 'Point',
+        coordinates: [
+          lng,
+          lat
+        ]
+      }
+    };
+    this.currentMarker = this.map.addMarker(marker);
+    // const customMarker = this.map.createMarker(marker);
+    // marker.properties['marker'] = customMarker;
+  }
+
   public closeModalGroup = () => this.showSelectGroup = false;
+
+  public draw = options => {
+    this.lineOptions = this.getLineOptions(options.strokeColor, options.fillColor);
+    this.map.setLineStyle(this.lineOptions);
+    if (this.location) {
+      this.marker(this.location.latitude, this.location.longitude, options);
+    }
+  }
 
   public create(item) {
     this.showRegister = false;
@@ -293,8 +344,15 @@ export class RegisterPlaceComponent implements OnInit {
         break;
 
       case 2:
-        this.groups.push({...item, location: []});
+        this.groups.push({ ...item, location: [] });
         break;
     }
   }
+
+  private getLineOptions = (stroke, fill) => Object.assign({
+    fill: true,
+    stroke: true,
+    color: stroke,
+    fillColor: fill
+  })
 }

@@ -85,10 +85,11 @@ export class HistoryMotoristComponent implements OnInit {
     }
   }
 
-  private onSuccessRoute = data =>
-    this.map.drawPolyline(
-      data.routes[0].geometry.coordinates.map(geo => L.latLng(geo[1], geo[0]))
-    )
+  private onSuccessRoute = data => {
+    const featureList = this.directionService.decode(data.routes[0].geometry);
+    const latLngs = featureList.map(feat => L.latLng(feat.geometry.coordinates[1], feat.geometry.coordinates[0]));
+    this.map.drawPolyline(latLngs);
+  }
 
   private addPoint = place =>
     this.map.addCircle(L.latLng(place.latitude, place.longitude))

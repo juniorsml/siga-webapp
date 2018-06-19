@@ -59,6 +59,7 @@
               {{i + 1}}
             </span>
             <h5 title="{{item.name}}" class="title-place-added">
+
               {{(item.name.length>35)? (item.name | slice:0:35)+'...':(item.name)}}
             </h5>
             <div class="controls">
@@ -71,7 +72,7 @@
                <i class="fal fa-exchange-alt">
                </i>
             </div>
-           
+         
           </div>
         </div>
       </sga-tab>
@@ -101,9 +102,12 @@
       *ngIf="showRegister"
       [formType]="formType"
       [backParam]="selectedTabIndex"
+      [changeMapStyle]="changeMap"
+      (onSubmitForm)="create($event)"
       (onBackButton)="closeRegister($event)"
       (onPlaceSelected)="onPlaceSelected($event)"
-      (onSubmitForm)="create($event)">
+      (onPreviewClicked)="draw($event)"
+      >
     </sga-register>
   </div>
 

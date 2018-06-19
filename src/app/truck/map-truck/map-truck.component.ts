@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 
-import {} from 'leaflet-marker-cluster';
+import { } from 'leaflet-marker-cluster';
 
 import { Map } from '../../shared/models/Map';
 import { TabComponent } from '../../shared/components/tabs/tab/tab.component';
@@ -17,27 +17,34 @@ import { MapStyle } from '../../shared/models/MapStyle';
 })
 export class MapTruckComponent implements OnInit {
 
-private _vehicles: Array<any>;
+  private _vehicles: Array<any>;
   private mapMarkers: Array<Feature<GeometryObject>> = [];
 
   public hideVehicleModal: boolean;
   public text: any;
 
+  mapLocationHistory = new Array();
+
+  mapSearchText: any;
+  mapSelectedTabIndex: number;
+  mapTabsSelectedIndex = 0;
+
+  selectedVehicle: any;
+
   @ViewChild('mapSelector') mapSelector: ElementRef;
   @Input()
   get vehicles(): Array<any> {
-   
-    return this._vehicles;
 
+    return this._vehicles;
   }
-  public status: boolean = false;
+  public status = false;
   toggleMapType() {
     this.status = !this.status;
   }
 
   toggleMapStyle(mapStyle) {
-    debugger
-    if (mapStyle.value === "1") {
+
+    if (mapStyle.value === '1') {
       this.map.setStyle(MapStyle.Outdoor);
     } else {
       this.map.setStyle(MapStyle.Street);
@@ -47,7 +54,7 @@ private _vehicles: Array<any>;
 
   set vehicles(value: Array<any>) {
     this._vehicles = value;
-    if (this.mapSelectedTabIndex && this.mapSelectedTabIndex != 1) {
+    if (this.mapSelectedTabIndex && this.mapSelectedTabIndex !== 1) {
       this.plotVehicleLocations();
     }
   }
@@ -140,15 +147,7 @@ private _vehicles: Array<any>;
     return marker;
   }
 
-  mapLocationHistory = new Array();
-
-  mapSearchText: any;
-  mapSelectedTabIndex: number;
-  mapTabsSelectedIndex: number = 0;
-
-  selectedVehicle: any;
-
-  constructor(private map: Map, private router: ActivatedRoute) {}
+  constructor(private map: Map, private router: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.router.data.subscribe(data => this.vehicles = data.vehicles);
@@ -197,7 +196,7 @@ private _vehicles: Array<any>;
   }
 
   onPlacesFiltered(event) {
-    event
+    console.log(event);
   }
 
   onPlacesFilterRemoved() {
