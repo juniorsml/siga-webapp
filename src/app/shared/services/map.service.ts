@@ -9,17 +9,18 @@ import { MapStyle } from '../models/MapStyle';
 @Injectable()
 export class MapService extends Map {
   private map: L.Map;
-  private featureGroup: L.LayerGroup<any>;
   private control: L.Control;
+  private featureGroup: L.LayerGroup<any>;
 
   private layers = new Array<any>();
   private markers = new Array<L.Marker>();
   private circles = new Array<any>();
   private clusters = new Array<L.LayerGroup<any>>();
   private polyLines = new Array<any>();
+
+  private tile: any;
   private lineStyle: any;
   private lastLayer: any;
-  private tile: any;
 
   public createMapBoxMapInstance(showControls = false, onDraw = null) {
     L.mapbox.accessToken = environment.mapbox.accessToken;
