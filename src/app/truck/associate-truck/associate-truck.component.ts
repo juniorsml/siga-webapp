@@ -1,5 +1,3 @@
- 
-
 
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -10,31 +8,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['../../motorist/associate-dialog/motorist-associate-dialog.component.scss']
 })
 export class AssociateTruckComponent implements OnInit {
-  @Input() 
+  @Input()
   public showDialog: boolean;
 
-  public haveFooter: boolean = true;
-
-  @Input()
-  get vehicles(): Array<any> {
-    return this._vehicles;
-  }
-  set vehicles(vehicles: Array<any>) {
-    this._vehicles = vehicles;
-    this.setCurrentVehicles();
-  }
-
-
-  public showFormRegister = false;
-  
-  openFormRegister() {
-    this.showFormRegister = !this.showFormRegister;
-  }
-
-  closeFormRegister() {
-    this.showFormRegister = false;
-  }
-
+  public haveFooter = true;
   private _vehicles: Array<any> = [];
 
   public selectedVehicle: any;
@@ -48,21 +25,43 @@ export class AssociateTruckComponent implements OnInit {
   public searchText: any;
   public hideAdminErrorModal = true;
 
+  @Input()
+  get vehicles(): Array<any> {
+    return this._vehicles;
+  }
+  set vehicles(vehicles: Array<any>) {
+    this._vehicles = vehicles;
+    this.setCurrentVehicles();
+  }
+
+
+  public showFormRegister = false;
+
+  openFormRegister() {
+    this.showFormRegister = !this.showFormRegister;
+  }
+
+  closeFormRegister() {
+    this.showFormRegister = false;
+  }
+
   constructor(private router: ActivatedRoute) {}
 
-  ngOnInit() :void {
+  ngOnInit(): void {
     this.router.data.subscribe(data => this.vehicles = data.vehicles);
   }
 
   private setCurrentVehicles() {
     this.currentList = [];
     this.vehicles.map(vehicle => {
-      if (!this.vehicleIsDuplicate(vehicle.id)) this.currentList.push(vehicle);
+      if (!this.vehicleIsDuplicate(vehicle.id)) {
+          this.currentList.push(vehicle);
+      }
     });
   }
 
   private vehicleIsDuplicate(vehicleId): boolean {
-    return this.removeList.find(m => m.id == vehicleId);
+    return this.removeList.find(m => m.id === vehicleId);
   }
 
   public onVehicleSelected(vehicle) {
@@ -93,7 +92,7 @@ export class AssociateTruckComponent implements OnInit {
   }
 
   public showVehicleForm(suggestion) {
-    suggestion;
+    console.log(suggestion);
     this.showVehicleRegister = true;
   }
 
@@ -107,7 +106,9 @@ export class AssociateTruckComponent implements OnInit {
   }
 
   onAdminVehicleCellClick(event) {
-    if (event.cellIndex === 5) this.deleteVehicle(event.data);
+    if (event.cellIndex === 5) {
+      this.deleteVehicle(event.data);
+    }
   }
 
   applyChanges() {}
