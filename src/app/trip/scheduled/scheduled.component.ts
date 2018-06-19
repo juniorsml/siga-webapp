@@ -11,17 +11,20 @@ import { OptionClickEvent } from '../../shared/events/OptionClickEvent';
 })
 export class ScheduledTripsComponent implements OnInit {
 	@Input() trips = new Array();
-  @Input() dataLoading: boolean = true;
+  @Input() dataLoading = true;
 
-  text: any;
-  distance: any;
-  placeText: any;
-  styleClass: any;
-  filterLocation: any;
-  filterDistance: any;
-  contextMenuSelected: any;
-   showColumnSelector = false;
-   haveFooter: boolean = true;
+ public text: any;
+ public distance: any;
+ public motorist: any;
+ public placeText: any;
+ public styleClass: any;
+ public stepIndex: number;
+ public selectedTrip: any;
+ public filterLocation: any;
+ public filterDistance: any;
+ public showTripDialog = false;
+ public showSummaryDialog = false;
+ showColumnSelector = false;
 
 
   closeColumnSelector() {
@@ -44,6 +47,18 @@ export class ScheduledTripsComponent implements OnInit {
     this.router.data.subscribe(data => this.trips = data.trips);
   }
 
+  // SUMMARY EVENTS 
+  public summaryDialogClose() {
+    this.showSummaryDialog = false;
+  }
+  public updateSelectedTrip(event) {
+    this.selectedTrip = event.data;
+  }
+  public contextMenuSelected(index) {
+    this.stepIndex = index;
+    this.showSummaryDialog = true;
+  }
+
 
   public onPlacesFiltered(event) {
     this.filterDistance = event.distance;
@@ -54,6 +69,8 @@ export class ScheduledTripsComponent implements OnInit {
     this.filterDistance = null;
     this.filterLocation = null;
   }
+
+ 
 
   public onPlacesKeyUp() {}
 

@@ -47,6 +47,7 @@
       [searchColumns]="['id','motorists.documentId','currentState.Status','motorists.documentId','motorists.documentId']"
       [emptySearchText]="'nenhuma viagem foi encontrado'" 
       [haveFooter]="haveFooter"
+      (onCellClick)="updateSelectedTrip($event)"
       [filterHeaders]="filterHeaders"
       (whenHeaderReady)="whenHeaderReady($event)">
           <table-empty>
@@ -62,14 +63,14 @@
 		        </ng-template>
     	</table-empty>  
       
-      <column [key]="'motorist.DocumentId'" [header]="'Motorista'" [minWidth]="'82'">
+      <column [key]="'motorists'" [header]="'Motorista'" [minWidth]="'82'">
           <ng-template let-item="item">
-              {{item}}
+              {{item != null ? item[0]?.name: '-'}}
           </ng-template>
       </column>
       <column [key]="'documentId'" [header]="'Documento'" [minWidth]="'82'">
           <ng-template let-item="item">
-              {{item}}
+             {{item != null ? item[0]?.documentId: '-'}}
           </ng-template>
       </column>
       <column [key]="'created'" [header]="'Criado'" [minWidth]="'82'">
@@ -122,3 +123,12 @@
   </div>
 
 </div>
+  <sga-modal>
+    <sga-summary-dialog
+      [trip]="selectedTrip"
+      [stepIndex]="stepIndex"
+      [showDialog]="showSummaryDialog"
+      (onDialogClose)="summaryDialogClose()">
+    </sga-summary-dialog>
+  </sga-modal>
+
