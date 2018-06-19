@@ -15,16 +15,12 @@ export class RegisterComponent implements OnInit {
 
   @Input() public formType: string;
   @Input() public backParam: string;
-
   @Input() private changeMapStyle: Function;
-
 
   @Output() public onSubmitForm = new EventEmitter<any>();
   @Output() public onBackButton = new EventEmitter<string>();
   @Output() public onPlaceSelected = new EventEmitter<any>();
-
   @Output() public onPreviewClicked = new EventEmitter<any>();
-
 
   private location: any;
 
@@ -39,49 +35,21 @@ export class RegisterComponent implements OnInit {
   public id_customerMaxLenght = 30;
   public key_customerMaxLenght = 30;
 
-
-  public name: string;
-
   public opts: ISlimScrollOptions;
   public scrollEvents: EventEmitter<SlimScrollEvent>;
 
+  public name: string;
+
   public inputValue: string;
 
-
- public changeIcon(event) {
-       // console.log(event.ToElement.dataset.icon);
-       // debugger
-       const target = event.currentTarget;
-       this.icon = target.dataset.icon;
-       console.log(target.dataset.icon);
-       this.status = !this.status;
-  }
-
-
-  constructor(private _eref: ElementRef) { }
-
   public typeSelected = 'location';
-
 
   public colorIcon = '#ffffff';
   public fillColor = '#ff5e5e';
   public strokeColor = '#ff5e5e';
   public backgroundColor = '#ff5e5e';
 
-
-  toggleChooseIcon() {
-    this.status = !this.status;
-  }
-
-  // Close When Click outSide of Component
-   outClick(event) {
-       if (!this._eref.nativeElement.contains(event.target)) {// or some similar check
-        if (this.status != false) {
-          this.status = false;
-        }
-      }
-    }
-
+  constructor(private _eref: ElementRef) { }
 
   ngOnInit(): void {
     this.placeSelected = this.formType === 'area' || this.formType === 'group' || this.formType === 'place';
@@ -153,7 +121,6 @@ export class RegisterComponent implements OnInit {
   }
 
   public onPlacesFiltered(event) {
-
     const { location } = event.geometry;
     if (location === undefined) { return; }
     const options = {
@@ -165,7 +132,6 @@ export class RegisterComponent implements OnInit {
       ...location,
       options
     };
-
     this.onPlaceSelected.emit(this.location);
   }
 
