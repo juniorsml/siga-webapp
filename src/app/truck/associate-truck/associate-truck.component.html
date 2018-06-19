@@ -177,9 +177,10 @@
  <!-- <loading-spinner [isHidden]="!isUpdating" text="Aplicando mudanças...">
  </loading-spinner> -->
 
-<sga-modal *ngIf="showFormRegister">
+<sga-modal >
    <sga-register-truck
-     (onFinish)="closeFormRegister()">
+     [showForm]="showFormRegister"
+     (onFormClose)="closeFormRegister()">
    </sga-register-truck>
  </sga-modal>
 

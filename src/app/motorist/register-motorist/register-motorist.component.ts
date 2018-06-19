@@ -1,9 +1,6 @@
 import { Component, Output, OnInit, EventEmitter, Input, ViewChild  } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
-
-
 
 class RegisterForm {
 
