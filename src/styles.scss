@@ -10,7 +10,11 @@ div, *{
   margin:0;
   padding:O;
 }
-
+span.item-context-menu{    
+    transition:all 151ms ease;
+    margin-right: 15px;
+    display: block;
+}
 .input::-webkit-input-placeholder, .textarea::-webkit-input-placeholder {
     color: rgba(54,54,54,0.75) !important;
 }
