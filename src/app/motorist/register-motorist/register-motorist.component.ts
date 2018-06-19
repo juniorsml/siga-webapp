@@ -51,9 +51,11 @@ export class RegisterMotoristComponent implements  OnInit {
   @ViewChild('formMotorist') formMotorist: any;
 
   private place: any;
+  public mapUrl: SafeResourceUrl;
 
-  @Input('showForm')
+  @Input()
   public showForm: boolean;
+  @Output() onFormClose: EventEmitter<any> = new EventEmitter();
 
   pt: any;
   landlinephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
@@ -63,40 +65,7 @@ export class RegisterMotoristComponent implements  OnInit {
 
   public selectedTabIndex = 0;
 
-  // Slim Scroll options
-  opts: ISlimScrollOptions;
-  scrollEvents: EventEmitter<SlimScrollEvent>;
-
-  ngOnInit() {
-    this.scrollEvents = new EventEmitter<SlimScrollEvent>();
-    this.opts = {
-      alwaysVisible: true
-    };
-    this.pt = {
-        firstDayOfWeek: 1,
-        dayNames: [ 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado' ],
-        dayNamesShort: [ 'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb' ],
-        dayNamesMin: [ 'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
-        monthNames:
-        [
-          'Janeiro',
-          'Fevereiro',
-          'Março',
-          'Abril',
-          'Maio',
-          'Junho',
-          'Julho',
-          'Agosto',
-          'Setembro',
-          'Outubro',
-          'Novembro',
-          'Dezembro' ],
-        monthNamesShort: [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
-        today: 'Hoje',
-        clear: 'Limpar'
-    };
-
-  }
+  ngOnInit() { }
 
   onSubmit() {
       if (this.formMotorist.valid) {
@@ -122,18 +91,13 @@ export class RegisterMotoristComponent implements  OnInit {
     }
   }
   removeProfilePhoto() {
-     let containerImage = document.querySelector('.img-profile');
-     let removeImage = document.querySelector('.remove-img-profile');
+     const containerImage = document.querySelector('.img-profile');
+     const removeImage = document.querySelector('.remove-img-profile');
      (containerImage as HTMLElement).style.backgroundImage  = 'url(\' \')';
      (containerImage as HTMLElement).style.display = 'none';
      (removeImage as HTMLElement).style.display = 'none';
 
   }
-
- 
-
-  @Output('onFormClose')
-  public onFormClose = new EventEmitter();
     cancel() {
     this.onFormClose.emit();
   }
@@ -146,9 +110,6 @@ export class RegisterMotoristComponent implements  OnInit {
 
     console.log(motorist);
   }
-
-  public mapUrl: SafeResourceUrl;
-
   constructor(private domSanitizer: DomSanitizer) {
     this.mapUrl = domSanitizer.bypassSecurityTrustResourceUrl(this.getMapUrlByLatLng(-23.53, -46.62));
   }

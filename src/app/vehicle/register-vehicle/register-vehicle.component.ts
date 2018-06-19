@@ -72,6 +72,9 @@ export class RegisterVehicleComponent implements  OnInit {
      (containerImage as HTMLElement).style.display = 'none';
      (removeImage as HTMLElement).style.display = 'none';
    }
+
+
+   
   onSubmit() {
       if (this.formVehicle.valid) {
         console.log('Form Submitted!');
