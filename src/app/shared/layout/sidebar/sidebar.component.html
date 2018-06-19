@@ -19,7 +19,7 @@
     
 
   </div>  <!-- <div class="sidebar-accent"></div>-->
-  <ul class="sidebar-menu">
+  <ul class="sidebar-menu" slimScroll [options]="opts" [scrollEvents]="scrollEvents">
     <li class="sidebar-menu-item">
       <a routerLink="/home">
         <span [class.selected]="router.url == '/home'" class="sidebar-list-icon fal fa-home"></span>

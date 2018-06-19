@@ -217,6 +217,7 @@
     display: flex;
     align-items: center;
     transition:all 151ms ease;
+   
     &:hover{
         background: #8d8e9e;
         color: #fff;
@@ -225,9 +226,7 @@
             color: #FFFFFF !important; 
         }
     }
-    span{    
-        transition:all 151ms ease;
-    }
+
 }
 .ui-datatable-contextmenu-item.disabled {
     background-color: #fff;
