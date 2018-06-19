@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OptionClickEvent } from '../../shared/events/OptionClickEvent';
 
@@ -10,8 +10,8 @@ import { OptionClickEvent } from '../../shared/events/OptionClickEvent';
   styles: []
 })
 export class ScheduledTripsComponent implements OnInit {
-	@Input() trips = new Array();
-  @Input() dataLoading = true;
+@Input() trips = new Array();
+@Input() dataLoading = true;
 
  public text: any;
  public distance: any;
@@ -25,6 +25,10 @@ export class ScheduledTripsComponent implements OnInit {
  public showTripDialog = false;
  public showSummaryDialog = false;
  showColumnSelector = false;
+ haveFooter = true;
+
+ public headers = new Array<string>();
+ public filterHeaders = new Array<string>();
 
 
   closeColumnSelector() {
@@ -32,22 +36,20 @@ export class ScheduledTripsComponent implements OnInit {
   }
 
   onSelectOption(event: OptionClickEvent) {
-    switch (event.data.header) {      
-      case 'Seleção de Colunas': 
+    switch (event.data.header) {
+      case 'Seleção de Colunas':
         this.showColumnSelector = true;
         break;
       }
     }
 
-  public headers = new Array<string>();
-  public filterHeaders = new Array<string>();
   constructor(private router: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.router.data.subscribe(data => this.trips = data.trips);
   }
 
-  // SUMMARY EVENTS 
+  /* SUMMARY EVENTS */
   public summaryDialogClose() {
     this.showSummaryDialog = false;
   }
@@ -59,7 +61,6 @@ export class ScheduledTripsComponent implements OnInit {
     this.showSummaryDialog = true;
   }
 
-
   public onPlacesFiltered(event) {
     this.filterDistance = event.distance;
     this.filterLocation = { lat: event.lat, lng: event.lng };
@@ -69,8 +70,6 @@ export class ScheduledTripsComponent implements OnInit {
     this.filterDistance = null;
     this.filterLocation = null;
   }
-
- 
 
   public onPlacesKeyUp() {}
 
