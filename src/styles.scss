@@ -19,16 +19,18 @@ $bg-titles: #4d5675;
 .label {
   color: #737373 !important;
 }
-
+.leaflet-right .leaflet-control{
+  margin: 69px 37px 0px 0px;
+}
 // Our Components | Buttons
 .button.is-first {
-    background-color: #f94545;    
+    background-color: #4d5675;    
     border-color: transparent;
     color: #ffffff;
     transition:all 150ms ease;
 
     &:hover{
-      background-color: #f62e2e;          
+      background-color: #5c6587;          
     }
 }
 .button.is-dark-blue{

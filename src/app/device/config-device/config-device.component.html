@@ -22,8 +22,9 @@
     </sga-grid-device>
   </div>
 
-  <sga-modal *ngIf="showFormRegister">
+  <sga-modal>
     <sga-register-device
+      [showForm]="showFormRegister"
       (onFinish)="closeFormRegister()">
     </sga-register-device>
   </sga-modal>

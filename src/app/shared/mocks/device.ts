@@ -2,7 +2,7 @@ export const devices = [
   {
     id: '1ASFAAG977',
     tech: '3425HTR',
-    model: 'Fiat', 
+    model: 'Fiat',
     name: 'oldest',
     distance: 1,
     battery: {
@@ -19,7 +19,7 @@ export const devices = [
   {
     id: '9ASFBBG923',
     tech: '7775EBB',
-    model: 'Ford', 
+    model: 'Ford',
     name: 'newest',
     distance: 9.8,
     battery: {
@@ -36,7 +36,7 @@ export const devices = [
   {
     id: '9ASFBBG923',
     tech: '7775EBB',
-    model: 'Ford', 
+    model: 'Ford',
     name: 'newest',
     distance: 9.8,
     battery: {
@@ -53,7 +53,7 @@ export const devices = [
   {
     id: '9ASFBBG923',
     tech: '7775EBB',
-    model: 'Ford', 
+    model: 'Ford',
     name: 'newest',
     distance: 9.8,
     battery: {
@@ -70,7 +70,7 @@ export const devices = [
   {
     id: '9ASFBBG923',
     tech: '7775EBB',
-    model: 'Ford', 
+    model: 'Ford',
     name: 'newest',
     distance: 9.8,
     battery: {
@@ -87,7 +87,7 @@ export const devices = [
   {
     id: '9ASFBBG923',
     tech: '7775EBB',
-    model: 'Ford', 
+    model: 'Ford',
     name: 'newest',
     distance: 9.8,
     battery: {

@@ -26,7 +26,7 @@ import { Component, Input } from '@angular/core';
       transition: ease 1s;
       opacity: 0;
     }
-    
+
     p {
       font-family: 'Open Sans';
       margin: 0;

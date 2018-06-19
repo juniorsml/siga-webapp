@@ -1,185 +1,188 @@
-<nav  class="breadcrumb" aria-label="breadcrumbs">
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li class="is-active"><a href="#">Reboque</a></li>
-    <li class="is-active"><a href="#" aria-current="page">Configuração</a></li>
-  </ul>
-</nav>
- <div class="content-wrapper grid-spacing-search">
-   <div class="motorist-admin-left-container columns is-multiline is-marginless">
-     <div class="motorist-admin-summary-wrapper column is-12 is-marginless">
-       <div class="admin-section-header">Resumo</div>
-       <div class="motorist-admin-summary">
-         <div class="motorist-admin-summary-row columns is-marginless">
-           <span class="column is-3">Adicionando</span>
-           <span class="column is-narrow is-centered">{{addList.length}}</span>
-           <span class="column is-3">Removendo</span>
-           <span class="column is-3 is-narrow is-centered">{{removeList.length}}</span>
-         </div>
-         <div class="motorist-admin-summary-row columns is-marginless">
-           <span class=" column is-half">Total</span>
-           <span class="column is-half is-centered">{{ currentList.length + addList.length}}</span>
-         </div>
+<div class="columns header-content"> 
+  <nav  class="breadcrumb column is-8" aria-label="breadcrumbs">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li class="is-active"><a href="#">Reboque</a></li>
+      <li class="is-active"><a href="#" aria-current="page">Configuração</a></li>
+    </ul>
+  </nav>
+</div>
+<div class="content-wrapper grid-spacing-search">
+ <div class="motorist-admin-left-container columns is-multiline is-marginless">
+   <div class="motorist-admin-summary-wrapper column is-12 is-marginless">
+     <div class="admin-section-header">Resumo</div>
+     <div class="motorist-admin-summary">
+       <div class="motorist-admin-summary-row columns is-marginless">
+         <span class="column is-3">Adicionando</span>
+         <span class="column is-narrow is-centered">{{addList.length}}</span>
+         <span class="column is-3">Removendo</span>
+         <span class="column is-3 is-narrow is-centered">{{removeList.length}}</span>
+       </div>
+       <div class="motorist-admin-summary-row columns is-marginless">
+         <span class=" column is-half">Total</span>
+         <span class="column is-half is-centered">{{ currentList.length + addList.length}}</span>
        </div>
      </div>
+   </div>
 
-     <div class="motorist-admin-wrapper motorist-admin-add-wrapper column is-12 is-marginless">
-       <div class="wrapper-header">Adicionar Reboque</div>
-       <div class="cnt-autocomplete">
-         <sga-auto-complete 
-           [data]="vehicles"
-           [propToFilter]="'vehiclePlate'"
-           minLength="3"
-           styleClass = "autocomplete"
-           noSuggestionsText="Nenhum Reboque encontrado"
-           url="api/vehicle/search?query="
-           placeholder="Digite o número da Placa"
-           style="width: 100%;"
-           type="text"
-           (onCreateNew)="openFormRegister()"
-           (itemSelected)="onVehicleSelected($event)">
-           <ng-template let-item="item">
-             <div class="autocomplete-suggestion">
+   <div class="motorist-admin-wrapper motorist-admin-add-wrapper column is-12 is-marginless">
+     <div class="wrapper-header">Adicionar Reboque</div>
+     <div class="cnt-autocomplete">
+       <sga-auto-complete 
+         [data]="vehicles"
+         [propToFilter]="'vehiclePlate'"
+         minLength="3"
+         styleClass = "autocomplete"
+         noSuggestionsText="Nenhum Reboque encontrado"
+         url="api/vehicle/search?query="
+         placeholder="Digite o número da Placa"
+         style="width: 100%;"
+         type="text"
+         (onCreateNew)="openFormRegister()"
+         (itemSelected)="onVehicleSelected($event)">
+         <ng-template let-item="item">
+           <div class="autocomplete-suggestion">
+             <span>
+               <img class="img-autocomplete" src="{{'/assets/images/flags/' + item.country +'.png'}}"
+                 alt="">
+               <img>
                <span>
-                 <img class="img-autocomplete" src="{{'/assets/images/flags/' + item.country +'.png'}}"
-                   alt="">
-                 <img>
-                 <span>
-                   <span style="font-size: 16px; font-weight: 500; color: #324263; margin-left: 4px;">{{item.vehiclePlate}} </span>
-                   <span style="font-size: 14px; margin-left: 10px;">{{item.model}}</span>
-                 </span>
+                 <span style="font-size: 16px; font-weight: 500; color: #324263; margin-left: 4px;">{{item.vehiclePlate}} </span>
+                 <span style="font-size: 14px; margin-left: 10px;">{{item.model}}</span>
                </span>
+             </span>
+           </div>
+         </ng-template>
+       </sga-auto-complete>
+     </div>
+     <div class="cnt-list-view column is-12">
+       <list-view [listItems]="addList" styleClass="admin-list motorist-admin-add-list">
+         <list-view-item>
+           <ng-template let-item="item">
+             <div class="motorist-admin-add-item-valid">
+               <span>({{item.vehiclePlate}})</span>
+               <span style="font-weight: 500; margin-left: 8px">{{item.vehiclePlate}}</span>
+               <span (click)="undoAddVehicle(item)" class="fa fa-times motorist-admin-item-close" aria-hidden="true"></span>
              </div>
            </ng-template>
-         </sga-auto-complete>
-       </div>
-       <div class="cnt-list-view column is-12">
-         <list-view [listItems]="addList" styleClass="admin-list motorist-admin-add-list">
-           <list-view-item>
-             <ng-template let-item="item">
-               <div class="motorist-admin-add-item-valid">
-                 <span>({{item.vehiclePlate}})</span>
-                 <span style="font-weight: 500; margin-left: 8px">{{item.vehiclePlate}}</span>
-                 <span (click)="undoAddVehicle(item)" class="fa fa-times motorist-admin-item-close" aria-hidden="true"></span>
-               </div>
-             </ng-template>
-           </list-view-item>
-           <list-view-empty>
-             <ng-template>
-               <div class="list-view-empty">
-                 <i class="fal fa-truck-container"></i>
-                 <span>Não há Reboques para adicionar à sua conta</span>
-               </div>
-             </ng-template>
-           </list-view-empty>
-         </list-view>
-       </div>
+         </list-view-item>
+         <list-view-empty>
+           <ng-template>
+             <div class="list-view-empty">
+               <i class="fal fa-truck-container"></i>
+               <span>Não há Reboques para adicionar à sua conta</span>
+             </div>
+           </ng-template>
+         </list-view-empty>
+       </list-view>
      </div>
-
-     <div class="motorist-admin-wrapper motorist-admin-remove-wrapper column is-12 is-marginless">
-       <div class="wrapper-header">Remover Reboque</div>
-       <div class="cnt-list-view ">
-         <list-view [listItems]="removeList" styleClass="admin-list motorist-admin-add-list">
-           <list-view-item>
-             <ng-template let-item="item">
-               <div class="motorist-admin-add-item-invalid">
-                 <span>({{item.vehiclePlate}})</span>
-                 <span style="font-weight: 500; margin-left: 8px">{{item.vehiclePlate}}</span>
-                 <span (click)="undoRemoveVehicle(item)" class="fas fa-times motorist-admin-item-close" aria-hidden="true"></span>
-               </div>
-             </ng-template>
-           </list-view-item>
-           <list-view-empty>
-             <ng-template>
-               <div class="list-view-empty">
-                 <i class="fal fa-truck-container"></i>
-                 <span>Não há reboques para remover da sua conta</span>
-               </div>
-             </ng-template>
-           </list-view-empty>
-         </list-view>
-       </div>
-     </div>
-
-     <div class="cnt-custom-button column is-12 is-marginless">
-       <button 
-       (click)="applyChanges()" 
-       [disabled]="addList?.length == 0 && removeList?.length == 0" 
-       class="custom-button" >
-         aplicar mudanças
-       </button>
-     </div>
-
    </div>
-   <div class="motorist-admin-right-container columns is-multiline is-marginless">
-     <div class="title column">
-       Reboques Associados
-     </div>
-     <div class="cnt-btn-search">       
-        <p class="control has-icons-left"> 
-           <input  [(ngModel)]="searchText" class="input is-small"  placeholder="Buscar" type="text"/>
-           <span class="icon is-small is-left">
-             <i class="fal fa-search"></i>
-           </span>       
-         </p>
-     </div>
-     <div>
-       <div class="grid-associate">
-         <data-table 
-           [data]="currentList"
-           [dataLength]="currentList.length"
-           [searchText]="searchText"
-           [searchColumns]="['vehiclePlate', 'renavan', 'brand', 'model']"
-           [emptySearchText]="'nenhuma veículo foi encontrado'"
-           [haveFooter]="haveFooter"
-           (onCellClick)="onAdminVehicleCellClick($event)">
 
-           <column [key]="'id'" [header]="''" [minWidth]="'60'" [fixedWidth]="'60'">
-             <ng-template let-item="item">
-               <div class="cnt-img">
-                 <img *ngIf="item !== null" (click)="showVehicleModal(item)" style="width: 40px; height: 40px; border-radius: 50%;" src="{{'api/motorist/public/profileImage?id=' + item}}"
-                   alt="">
-               </div>
-             </ng-template>
-           </column>
-           <column [key]="'vehiclePlate'" [header]="'Placa'" [minWidth]="'82'" [isSortable]="true">
-             <ng-template let-item="item">
-               {{item}}
-             </ng-template>
-           </column>
-           <column [key]="'renavan'" [header]="'Renavan'" [minWidth]="'82'" [isSortable]="true">
-             <ng-template let-item="item">
-               {{item}}
-             </ng-template>
-           </column>
-           <column [key]="'brand'" [header]="'Marca'" [minWidth]="'82'" [isSortable]="true">
-             <ng-template let-item="item">
-               {{item}}
-             </ng-template>
-           </column>
-           <column [key]="'model'" [header]="'Modelo'" [minWidth]="'82'" [isSortable]="true">
-             <ng-template let-item="item">
-               {{item}}
-             </ng-template>
-           </column>
-           
-           <column [key]="''" [header]="''" [minWidth]="'40'" [fixedWidth]="'40'">
-             <ng-template let-item="item">
-               <span style="color: red; padding: 10px 0px; font-size: 18px;" class="fas fa-times" aria-hidden="true"></span>
-             </ng-template>
-           </column>
-         </data-table>
-       </div>
+   <div class="motorist-admin-wrapper motorist-admin-remove-wrapper column is-12 is-marginless">
+     <div class="wrapper-header">Remover Reboque</div>
+     <div class="cnt-list-view ">
+       <list-view [listItems]="removeList" styleClass="admin-list motorist-admin-add-list">
+         <list-view-item>
+           <ng-template let-item="item">
+             <div class="motorist-admin-add-item-invalid">
+               <span>({{item.vehiclePlate}})</span>
+               <span style="font-weight: 500; margin-left: 8px">{{item.vehiclePlate}}</span>
+               <span (click)="undoRemoveVehicle(item)" class="fas fa-times motorist-admin-item-close" aria-hidden="true"></span>
+             </div>
+           </ng-template>
+         </list-view-item>
+         <list-view-empty>
+           <ng-template>
+             <div class="list-view-empty">
+               <i class="fal fa-truck-container"></i>
+               <span>Não há reboques para remover da sua conta</span>
+             </div>
+           </ng-template>
+         </list-view-empty>
+       </list-view>
+     </div>
+   </div>
+
+   <div class="cnt-custom-button column is-12 is-marginless">
+     <button 
+     (click)="applyChanges()" 
+     [disabled]="addList?.length == 0 && removeList?.length == 0" 
+     class="custom-button" >
+       aplicar mudanças
+     </button>
+   </div>
+
+ </div>
+ <div class="motorist-admin-right-container columns is-multiline is-marginless">
+   <div class="title column">
+     Reboques Associados
+   </div>
+   <div class="cnt-btn-search">       
+      <p class="control has-icons-left"> 
+         <input  [(ngModel)]="searchText" class="input is-small"  placeholder="Buscar" type="text"/>
+         <span class="icon is-small is-left">
+           <i class="fal fa-search"></i>
+         </span>       
+       </p>
+   </div>
+   <div>
+     <div class="grid-associate">
+       <data-table 
+         [data]="currentList"
+         [dataLength]="currentList.length"
+         [searchText]="searchText"
+         [searchColumns]="['vehiclePlate', 'renavan', 'brand', 'model']"
+         [emptySearchText]="'nenhuma veículo foi encontrado'"
+         [haveFooter]="haveFooter"
+         (onCellClick)="onAdminVehicleCellClick($event)">
+
+         <column [key]="'id'" [header]="''" [minWidth]="'60'" [fixedWidth]="'60'">
+           <ng-template let-item="item">
+             <div class="cnt-img">
+               <img *ngIf="item !== null" (click)="showVehicleModal(item)" style="width: 40px; height: 40px; border-radius: 50%;" src="{{'api/motorist/public/profileImage?id=' + item}}"
+                 alt="">
+             </div>
+           </ng-template>
+         </column>
+         <column [key]="'vehiclePlate'" [header]="'Placa'" [minWidth]="'82'" [isSortable]="true">
+           <ng-template let-item="item">
+             {{item}}
+           </ng-template>
+         </column>
+         <column [key]="'renavan'" [header]="'Renavan'" [minWidth]="'82'" [isSortable]="true">
+           <ng-template let-item="item">
+             {{item}}
+           </ng-template>
+         </column>
+         <column [key]="'brand'" [header]="'Marca'" [minWidth]="'82'" [isSortable]="true">
+           <ng-template let-item="item">
+             {{item}}
+           </ng-template>
+         </column>
+         <column [key]="'model'" [header]="'Modelo'" [minWidth]="'82'" [isSortable]="true">
+           <ng-template let-item="item">
+             {{item}}
+           </ng-template>
+         </column>
+         
+         <column [key]="''" [header]="''" [minWidth]="'40'" [fixedWidth]="'40'">
+           <ng-template let-item="item">
+             <span style="color: red; padding: 10px 0px; font-size: 18px;" class="fas fa-times" aria-hidden="true"></span>
+           </ng-template>
+         </column>
+       </data-table>
      </div>
    </div>
  </div>
+</div>
 
  <!-- <loading-spinner [isHidden]="!isUpdating" text="Aplicando mudanças...">
  </loading-spinner> -->
 
-<sga-modal *ngIf="showFormRegister">
+<sga-modal >
    <sga-register-truck
-     (onFinish)="closeFormRegister()">
+     [showForm]="showFormRegister"
+     (onFormClose)="closeFormRegister()">
    </sga-register-truck>
  </sga-modal>
 

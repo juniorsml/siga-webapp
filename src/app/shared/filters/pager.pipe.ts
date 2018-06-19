@@ -8,15 +8,15 @@ import {Pipe, PipeTransform} from '@angular/core';
 })
 export class PagerPipe implements PipeTransform {
 
-    transform(object:any, args:any){
-        var index = args.page -1;
-        var quantity = args.quantity;
-        var page = [];
-        var pointer = (quantity * index);
+    transform(object: any, args: any) {
+        let index = args.page - 1;
+        let quantity = args.quantity;
+        let page = [];
+        let pointer = (quantity * index);
 
         if (object != null && object.length > 0) {
-            for (var i = 0; i < quantity; i++) {
-                if(object[i + pointer] != null){
+            for (let i = 0; i < quantity; i++) {
+                if (object[i + pointer] != null) {
                     page[i] = object[i + pointer];
                 }
             }

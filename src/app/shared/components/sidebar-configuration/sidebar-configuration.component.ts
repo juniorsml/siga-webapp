@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter,ElementRef } from '@angular/core';
+import { Component, Output, EventEmitter, ElementRef } from '@angular/core';
 import { OptionComponent } from './option/option.component';
 import { OptionClickEvent } from '../../events/OptionClickEvent';
 
@@ -14,7 +14,7 @@ import { OptionClickEvent } from '../../events/OptionClickEvent';
 export class SidebarConfigurationComponent {
 
 
-  
+
   constructor(private _eref: ElementRef) { }
 
   @Output()
@@ -23,7 +23,7 @@ export class SidebarConfigurationComponent {
   public options = new Array<OptionComponent>();
 
   public addOption(option: OptionComponent): void {
-    if (option) this.options.push(option);
+    if (option) { this.options.push(option); }
   }
 
   public onClick(event: Event, option: OptionComponent, index: number): void {
@@ -33,14 +33,14 @@ export class SidebarConfigurationComponent {
         }
   }
 
-  public status: boolean = false;
+  public status = false;
   toggleMenu() {
     this.status = !this.status;
   }
-  
+
    // Close When Click outSide of Component
    outClick(event) {
-       if (!this._eref.nativeElement.contains(event.target)){// or some similar check
+       if (!this._eref.nativeElement.contains(event.target)) {// or some similar check
         if (this.status != false) {
           this.status = false;
         }

@@ -15,7 +15,7 @@ export const groups = [
       },
       {
         name: 'Posto 3',
-        latitude: -23.936890, 
+        latitude: -23.936890,
         longitude: -46.276543
       }
     ]
@@ -37,9 +37,9 @@ export const groups = [
     location: [
       {
         name: 'Sr. Zé',
-        latitude: -23.936890, 
+        latitude: -23.936890,
         longitude: -46.276543
       }
-    ] 
+    ]
   }
 ];

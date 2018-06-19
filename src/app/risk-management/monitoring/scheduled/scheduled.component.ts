@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OptionClickEvent } from '../../../shared/events/OptionClickEvent';
 
@@ -11,7 +11,7 @@ import { OptionClickEvent } from '../../../shared/events/OptionClickEvent';
 })
 export class ScheduledTripsComponent implements OnInit {
 	@Input() trips = new Array();
-  @Input() dataLoading: boolean = true;
+  @Input() dataLoading = true;
 
   text: any;
   distance: any;
@@ -21,7 +21,7 @@ export class ScheduledTripsComponent implements OnInit {
   filterDistance: any;
   contextMenuSelected: any;
   showColumnSelector = false;
-  haveFooter: boolean = true;
+  haveFooter = true;
 
 
   closeColumnSelector() {
@@ -29,8 +29,8 @@ export class ScheduledTripsComponent implements OnInit {
   }
 
   onSelectOption(event: OptionClickEvent) {
-    switch (event.data.header) {      
-      case 'Seleção de Colunas': 
+    switch (event.data.header) {
+      case 'Seleção de Colunas':
         this.showColumnSelector = true;
         break;
       }

@@ -10,7 +10,7 @@ export class SearchPipe implements PipeTransform {
   transform(object: any, args: any) {
     if (object != null && args != null && args[0] != null) {
       return object.filter(item => {
-        let searchValues: Array<any> = this.getRootObjectValues(item, args[1]);
+        const searchValues: Array<any> = this.getRootObjectValues(item, args[1]);
         return this.find(searchValues, args[0]);
       });
     }
@@ -18,11 +18,11 @@ export class SearchPipe implements PipeTransform {
   }
 
   getRootObjectValues(item: Object, keys: Array<string>) {
-    var object: any = item;
-    var values = [];
+    let object: any = item;
+    const values = [];
 
     for (let i = 0; i < keys.length; i++) {
-      var nodes = keys[i].split('.');
+      const nodes = keys[i].split('.');
       object = item;
       for (let i = 0; i < nodes.length; i++) {
         if (nodes[i] != null && object != null) {

@@ -134,7 +134,7 @@ import { HttpModule } from '@angular/http';
     TimeElapsedAsTextPipe,
 
     PageNotFoundComponent,
-    
+
     TabComponent,
     GridComponent,
     TabsComponent,

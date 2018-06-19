@@ -1,5 +1,5 @@
-import { Component, OnInit,ElementRef } from '@angular/core';
-import { Router,NavigationStart } from '@angular/router';
+import { Component, OnInit, ElementRef } from '@angular/core';
+import { Router, NavigationStart } from '@angular/router';
 
 @Component({
   selector: 'sga-navbar',
@@ -14,35 +14,31 @@ export class NavbarComponent implements OnInit {
   logout: any;
   public isMap: boolean;
 
-  constructor(private _eref: ElementRef,public router: Router) { 
-    let currentUrl = this.router.url;
-    if(this.isMap = currentUrl.indexOf('map') > -1){
+  constructor(private _eref: ElementRef, public router: Router) {
+    const currentUrl = this.router.url;
+    if (this.isMap = currentUrl.indexOf('map') > -1) {
         this.isMap = true;
-    }
-    else if(this.isMap = currentUrl.indexOf('history') > -1){
+    } else if (this.isMap = currentUrl.indexOf('history') > -1) {
         this.isMap = true;
-    }
-    else if(this.isMap = currentUrl.indexOf('places') > -1){
+    } else if (this.isMap = currentUrl.indexOf('places') > -1) {
         this.isMap = true;
     }
     this.router
       .events
       .filter(event => event instanceof NavigationStart)
       .subscribe((e: NavigationStart) => {
-        if(this.isMap = e.url.indexOf('map') > -1){
+        if (this.isMap = e.url.indexOf('map') > -1) {
             this.isMap = true;
-        }
-        else if(this.isMap = currentUrl.indexOf('history') > -1){
+        } else if (this.isMap = currentUrl.indexOf('history') > -1) {
             this.isMap = true;
-        }
-        else if(this.isMap = e.url.indexOf('places') > -1){
+        } else if (this.isMap = e.url.indexOf('places') > -1) {
             this.isMap = true;
         }
      });
-    
+
   }
 
-  public status: boolean = false;
+  public status = false;
 
   toggleProfileUser() {
     this.status = !this.status;
@@ -50,16 +46,16 @@ export class NavbarComponent implements OnInit {
 
   // Close When Click outSide of Component
    outClick(event) {
-       if (!this._eref.nativeElement.contains(event.target)){// or some similar check
+       if (!this._eref.nativeElement.contains(event.target)) {// or some similar check
         if (this.status != false) {
           this.status = false;
         }
       }
     }
-	
+
   toggleFullScreen() {
-        var doc: any = document;
-        var docEl: any = doc.documentElement;
+        const doc: any = document;
+        const docEl: any = doc.documentElement;
 
         if (doc.fullscreenElement || doc.webkitFullscreenElement || doc.mozFullScreenElement || doc.msFullscreenElement) {
             if (doc.exitFullscreen) {
@@ -90,10 +86,10 @@ export class NavbarComponent implements OnInit {
                 docEl.requestFullscreen();
             }
         }
-    };
+    }
   ngOnInit() {
 
-     
+
   }
 
 }

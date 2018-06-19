@@ -1,4 +1,4 @@
-import { Component, Input,Output, OnInit,EventEmitter } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { TableClickEvent } from '../../shared/components/table/table.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OptionClickEvent } from '../../shared/events/OptionClickEvent';
@@ -10,8 +10,8 @@ import { OptionClickEvent } from '../../shared/events/OptionClickEvent';
 })
 export class GridMotoristComponent implements OnInit {
   @Input() motorists = new Array();
-  @Input() dataLoading: boolean = true;
-  @Input() haveFooter: boolean = true;
+  @Input() dataLoading = true;
+  @Input() haveFooter = true;
   @Output() onMotoristSelected: EventEmitter<any> = new EventEmitter();
 
 
@@ -43,11 +43,11 @@ export class GridMotoristComponent implements OnInit {
   }
 
   onSelectOption(event: OptionClickEvent) {
-    switch (event.data.header) {      
-      case 'Seleção de Colunas': 
+    switch (event.data.header) {
+      case 'Seleção de Colunas':
         this.showColumnSelector = true;
-        break;     
-      case 'Configuração': 
+        break;
+      case 'Configuração':
         this.router.navigateByUrl('motorist/account');
         break;
      }
@@ -55,7 +55,7 @@ export class GridMotoristComponent implements OnInit {
 
   public onCellClick(event) {
     this.selectedMotorist = event.data;
-    if (event.cellIndex === 0) this.showMotoristDialog = true;
+    if (event.cellIndex === 0) { this.showMotoristDialog = true; }
   }
 
   public onCellRightClick(event: TableClickEvent) {
@@ -74,7 +74,7 @@ export class GridMotoristComponent implements OnInit {
 
   public contextMenuSelected = event => {
     switch (event) {
-      case 1: 
+      case 1:
         this.router.navigateByUrl(`motorist/history/${this.selectedMotorist.id}`);
     }
   }

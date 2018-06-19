@@ -1,46 +1,74 @@
-$main-blue: #4d5675;
-.cnt-dialog {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  position: fixed;
-  z-index: 999;
-  left: 0px;
-  top: 0px;
 
-  .container-scroll {
-    position: relative;
-    height: 91%;
+$main-blue:#4d5675;
 
-    .input {
-      margin: .7em;
+.container-dialog-header {
+    padding: 0;
+    h3 {
+      color: #4d5675;
+      margin-left: 11px;
+      display: flex;
+      align-items: center;
+      font: 300 24.05px 'Sunflower', sans-serif;
+      position: relative;
+
+      &:after{
+        left: 2px;
+          bottom: -1px;
+          content: "";
+          position: absolute;
+          height: 1px;
+          background: #8c96b9;
+          width: 54%;
+        }
     }
-  }
-
-  .container-form {
-    background-color: #fff;
-    margin: 1.5rem auto 0 auto;
-    width: 100%;
-    max-width: 1024px;
-    max-height: 91%;
-    min-height: 400px;
-
-    .form-header {
-      padding-left: 20px;
-      padding-top: 0;
-
-      .area {
-        background: $main-blue;
-        color: #fff;
-        padding: 0 20px;
-        font: 300 17px 'Open Sans', sans-serif;
-        display: flex;
-        align-items: center;
+    .btn-close i{
+      color: #8a90a4;
+      border: 1px solid #b5b9c5;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 1px 6px;
+      border-radius: 2px;
+      transition:all 200ms ease;
+      &:hover{
+        color: #FFF;
+        background: #4d5675;
+        border: 1px solid #4d5675;
       }
-      .action {
-        color: $main-blue;
-        font: 300 24px 'Open Sans', sans-serif;
-      }
+
     }
-  }
 }
+.content-modal{
+  background-color: #FFF;
+  width: 100%;
+  max-width:800px;
+  height: 60%;
+  background: #ffffff;
+  -webkit-box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.1); 
+}
+.cnt-form {
+  height: 100%;
+  position: relative;
+  padding: 0 23px 15px;
+  iframe{
+    height: 345px;
+  }
+  .field:not(:last-child){
+    margin-bottom: 0 !important;
+  }
+
+  .columns:last-child {
+      margin-bottom: 0;
+  }
+
+
+ 
+  
+
+}
+.cnt-buttons{
+  position: absolute !important;
+  bottom: -15px;
+  right: 34px;
+}
+

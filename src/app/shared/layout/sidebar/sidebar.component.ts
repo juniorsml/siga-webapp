@@ -1,5 +1,5 @@
-  
-import { Component,EventEmitter } from '@angular/core';
+
+import { Component, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccordionComponent } from './accordion/accordion.component';
 import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
@@ -7,7 +7,7 @@ import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
 @Component({
   selector: 'sga-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: [ './sidebar.component.scss' ] 
+  styleUrls: [ './sidebar.component.scss' ]
 })
 export class SidebarComponent {
   public user: any;

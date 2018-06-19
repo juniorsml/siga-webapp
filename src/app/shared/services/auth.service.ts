@@ -17,9 +17,9 @@ export class AuthService {
           observer.next(tokenValue);
           return;
         }
-        observer.error({ errorMessage: 'Usuário ou senha incorretos' })
+        observer.error({ errorMessage: 'Usuário ou senha incorretos' });
       }, 1000);
-    })
+    });
   }
 
   public getToken(): any {

@@ -15,10 +15,12 @@ export class RegisterGroupComponent {
   public showRegister: boolean;
 
   public backButton() {
-    if (this.showRegister)
+    if (this.showRegister) {
       this.showRegister = false;
-    else
+    }
+    else {
       this.onBackButton.emit();
+    }
   }
 
   public onSelected(event) {

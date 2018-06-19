@@ -12,7 +12,7 @@ export class PagerComponent implements DoCheck, OnChanges {
     @Output('pageChange') public pageChanged: EventEmitter<any>;
     @Input('pageQuantity') public pageQuantity;
     @Input('data') public data;
-    @Input('styleClass') public styleClass: string = "ui-table-pager";
+    @Input('styleClass') public styleClass = 'ui-table-pager';
     public selectedPage;
     public pager;
     public previousPageQuantity;
@@ -33,8 +33,8 @@ export class PagerComponent implements DoCheck, OnChanges {
     setPager() {
 
         this.pager = [];
-        var length = this.data == null ? 0 : this.data.length;
-        var pages = Math.ceil(length / this.pageQuantity);
+        let length = this.data == null ? 0 : this.data.length;
+        let pages = Math.ceil(length / this.pageQuantity);
 
         if (pages <= 7) {
             for (var i = 0; i < pages; i++) {
@@ -45,11 +45,11 @@ export class PagerComponent implements DoCheck, OnChanges {
             for (var i = 0; i < 5; i++) {
                 this.pager[i] = i + 1;
             }
-            this.pager[i] = "...";
+            this.pager[i] = '...';
             this.pager[i + 1] = pages;
         } else {
             this.pager[0] = 1;
-            this.pager[1] = "...";
+            this.pager[1] = '...';
             this.pager[2] = pages - 4;
             this.pager[3] = pages - 3;
             this.pager[4] = pages - 2;
@@ -71,7 +71,7 @@ export class PagerComponent implements DoCheck, OnChanges {
     }
 
     nextPage() {
-        var length = this.data == null ? 0 : this.data.length;
+        let length = this.data == null ? 0 : this.data.length;
         if (length == 0) {
             return;
         } else if (this.selectedPage != Math.ceil(length / this.pageQuantity)) {
@@ -82,14 +82,14 @@ export class PagerComponent implements DoCheck, OnChanges {
     }
 
     onQuantityChange() {
-        var length = this.data == null ? 0 : this.data.length;
-        var pages = Math.ceil(length / this.pageQuantity);
+        let length = this.data == null ? 0 : this.data.length;
+        let pages = Math.ceil(length / this.pageQuantity);
 
         if (this.previousPageQuantity != null && this.previousPageQuantity != this.pageQuantity) {
 
 
-            var firstItem = (this.selectedPage) * this.previousPageQuantity;
-            var page = Math.ceil(firstItem / this.pageQuantity);
+            let firstItem = (this.selectedPage) * this.previousPageQuantity;
+            let page = Math.ceil(firstItem / this.pageQuantity);
 
             if (page > pages) {
                 this.selectedPage = pages;
@@ -100,7 +100,7 @@ export class PagerComponent implements DoCheck, OnChanges {
             this.previousPageQuantity = this.pageQuantity;
         }
         if (this.pageQuantity != null) {
-            this.previousPageQuantity = this.pageQuantity
+            this.previousPageQuantity = this.pageQuantity;
         }
 
 

@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input} from '@angular/core';
 
 @Component({
     selector: `spinner`,
@@ -44,5 +44,5 @@ import {Component, Input} from "@angular/core";
     `
 })
 export class SpinnerComponent {
-    @Input() isHidden: boolean = false;
+    @Input() isHidden = false;
 }

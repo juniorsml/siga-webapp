@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OptionClickEvent } from '../../shared/events/OptionClickEvent';
 
@@ -10,18 +10,25 @@ import { OptionClickEvent } from '../../shared/events/OptionClickEvent';
   styles: []
 })
 export class ScheduledTripsComponent implements OnInit {
-	@Input() trips = new Array();
-  @Input() dataLoading: boolean = true;
+@Input() trips = new Array();
+@Input() dataLoading = true;
 
-  text: any;
-  distance: any;
-  placeText: any;
-  styleClass: any;
-  filterLocation: any;
-  filterDistance: any;
-  contextMenuSelected: any;
-   showColumnSelector = false;
-   haveFooter: boolean = true;
+ public text: any;
+ public distance: any;
+ public motorist: any;
+ public placeText: any;
+ public styleClass: any;
+ public stepIndex: number;
+ public selectedTrip: any;
+ public filterLocation: any;
+ public filterDistance: any;
+ public showTripDialog = false;
+ public showSummaryDialog = false;
+ showColumnSelector = false;
+ haveFooter = true;
+
+ public headers = new Array<string>();
+ public filterHeaders = new Array<string>();
 
 
   closeColumnSelector() {
@@ -29,21 +36,30 @@ export class ScheduledTripsComponent implements OnInit {
   }
 
   onSelectOption(event: OptionClickEvent) {
-    switch (event.data.header) {      
-      case 'Seleção de Colunas': 
+    switch (event.data.header) {
+      case 'Seleção de Colunas':
         this.showColumnSelector = true;
         break;
       }
     }
 
-  public headers = new Array<string>();
-  public filterHeaders = new Array<string>();
   constructor(private router: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.router.data.subscribe(data => this.trips = data.trips);
   }
 
+  /* SUMMARY EVENTS */
+  public summaryDialogClose() {
+    this.showSummaryDialog = false;
+  }
+  public updateSelectedTrip(event) {
+    this.selectedTrip = event.data;
+  }
+  public contextMenuSelected(index) {
+    this.stepIndex = index;
+    this.showSummaryDialog = true;
+  }
 
   public onPlacesFiltered(event) {
     this.filterDistance = event.distance;

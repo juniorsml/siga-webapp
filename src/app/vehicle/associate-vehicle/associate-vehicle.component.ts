@@ -9,6 +9,10 @@ import { ActivatedRoute } from '@angular/router';
 export class AssociateVehicleComponent implements OnInit {
   @Input() 
   public showDialog: boolean;
+
+  @Input() 
+  public showForm: boolean;
+
   @Input() haveFooter: boolean = true;
 
   @Input()
@@ -24,6 +28,7 @@ export class AssociateVehicleComponent implements OnInit {
   public showFormRegister = false;
   
   openFormRegister() {
+    
     this.showFormRegister = !this.showFormRegister;
   }
 

@@ -17,7 +17,7 @@ export class GridOperationComponent implements OnInit {
   public filterDistance: any;
   public selectedDevice: any;
   public onDeviceSelected: any;
-   
+
   public showFormRegister = false;
 
   showColumnSelector = false;
@@ -28,8 +28,8 @@ export class GridOperationComponent implements OnInit {
   }
 
   onSelectOption(event: OptionClickEvent) {
-    switch (event.data.header) {      
-      case 'Seleção de Colunas': 
+    switch (event.data.header) {
+      case 'Seleção de Colunas':
         this.showColumnSelector = true;
         break;
       }
@@ -46,7 +46,7 @@ export class GridOperationComponent implements OnInit {
 
   @Input()
   public operations = new Array<any>();
-  
+
   constructor(private router: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -58,7 +58,7 @@ export class GridOperationComponent implements OnInit {
     this.showFormRegister = !this.showFormRegister;
   }
 
-  closeFormRegister() { 
+  closeFormRegister() {
     this.showFormRegister = false;
   }
 
@@ -71,7 +71,7 @@ export class GridOperationComponent implements OnInit {
     this.filterDistance = null;
     this.filterLocation = null;
   }
-  
+
   public onCellClick(event) {
     this.selectedDevice = event.data;
     this.onDeviceSelected.emit(this.selectedDevice);
