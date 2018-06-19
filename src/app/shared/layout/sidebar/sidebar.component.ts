@@ -1,5 +1,5 @@
 
-import { Component, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccordionComponent } from './accordion/accordion.component';
 import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
@@ -9,7 +9,7 @@ import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
   templateUrl: './sidebar.component.html',
   styleUrls: [ './sidebar.component.scss' ]
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
   public user: any;
 
   public accordion: AccordionComponent;
@@ -20,16 +20,17 @@ export class SidebarComponent {
   scrollEvents: EventEmitter<SlimScrollEvent>;
 
    ngOnInit() {
+
     this.scrollEvents = new EventEmitter<SlimScrollEvent>();
     this.opts = {
-      alwaysVisible: true,
+      alwaysVisible: false,
       gridOpacity: '0.2',
       barOpacity: '0.5',
       gridBackground: '#ccc',
-      gridWidth: '6px',
+      gridWidth: '6',
       gridMargin: '2px 2px',
       barBackground: 'rgba(55, 56, 58, 0.6)',
-      barWidth: '5px',
+      barWidth: '5',
       barMargin: '2px 2px'
     };
   }
