@@ -1,9 +1,9 @@
-import { Component, Output,OnInit, EventEmitter, ViewChild, Input } from '@angular/core';
+import { Component, Output, OnInit, EventEmitter, ViewChild, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 class RegisterForm {
-  
+
 }
 
 
@@ -19,8 +19,10 @@ export class RegisterTruckComponent implements  OnInit {
   @ViewChild('formTruck') formTruck: any;
   anttDueDate: Date;
   comunication: string;
- 
   pt:any;
+  private place: any;
+  public mapUrl: SafeResourceUrl;
+
 
   @Input()
   public showForm: boolean;
@@ -31,45 +33,40 @@ export class RegisterTruckComponent implements  OnInit {
 
   onSubmit() {
       if (this.formTruck.valid) {
-        console.log("Form Submitted!");
+        console.log('Form Submitted!');
         this.formTruck.reset();
       }
     }
 
   // Show image profile
-  addProfilePhoto(event:any) {
+  addProfilePhoto(event: any) {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
-      reader.onload = (element:any) => {
+      reader.onload = (element: any) => {
         const url = element.target.result;
         const removeImage = document.querySelector('.remove-img-profile');
         const containerImage = document.querySelector('.img-profile');
         (removeImage as HTMLElement).style.display = 'flex';
         (containerImage as HTMLElement).style.display = 'block';
-        (containerImage as HTMLElement).style.backgroundImage  = "url("+url+")";
-      }
+        (containerImage as HTMLElement).style.backgroundImage  = 'url( ' + url + ' )';
+      };
       reader.readAsDataURL(event.target.files[0]);
 
     }
   }
-  removeProfilePhoto(){
-     var containerImage = document.querySelector('.img-profile');
-     var removeImage = document.querySelector('.remove-img-profile');
-     (containerImage as HTMLElement).style.backgroundImage  = "url(' ')";
+  removeProfilePhoto() {
+     const containerImage = document.querySelector('.img-profile');
+     const removeImage = document.querySelector('.remove-img-profile');
+     (containerImage as HTMLElement).style.backgroundImage  = 'url()';
      (containerImage as HTMLElement).style.display = 'none';
      (removeImage as HTMLElement).style.display = 'none';
 
   }
 
-  private place: any;
-
-
-  public mapUrl: SafeResourceUrl;
-
-  constructor(private domSanitizer : DomSanitizer) {
+  constructor(private domSanitizer: DomSanitizer) {
     this.mapUrl = domSanitizer.bypassSecurityTrustResourceUrl(this.getMapUrlByLatLng(-23.53, -46.62));
   }
-  
+
   placesFiltered(place: any) {
     const urlValue = this.getMapUrlByLatLng(place.geometry.location.lat(), place.geometry.location.lng());
     this.mapUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(urlValue);
@@ -79,7 +76,7 @@ export class RegisterTruckComponent implements  OnInit {
   filterRemoved() {
     this.place = null;
   }
-  
+
   cancel() {
     this.onFormClose.emit();
   }
