@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter,Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -9,6 +9,9 @@ import { NgForm } from '@angular/forms';
 export class RegisterDeviceComponent {
   @Output()
   public onFinish = new EventEmitter();
+
+  @Input('showForm')
+  public showForm: boolean;
 
   public onSubmit(deviceForm: NgForm) {
     const {} = deviceForm.value;

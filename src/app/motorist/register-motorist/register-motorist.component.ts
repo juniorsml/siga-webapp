@@ -50,7 +50,10 @@ export class RegisterMotoristComponent implements  OnInit {
   model: RegisterForm = new RegisterForm();
   @ViewChild('formMotorist') formMotorist: any;
 
+  private place: any;
 
+  @Input('showForm')
+  public showForm: boolean;
 
   pt: any;
   landlinephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
@@ -74,7 +77,20 @@ export class RegisterMotoristComponent implements  OnInit {
         dayNames: [ 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado' ],
         dayNamesShort: [ 'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb' ],
         dayNamesMin: [ 'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
-        monthNames: [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro' ],
+        monthNames:
+        [
+          'Janeiro',
+          'Fevereiro',
+          'Março',
+          'Abril',
+          'Maio',
+          'Junho',
+          'Julho',
+          'Agosto',
+          'Setembro',
+          'Outubro',
+          'Novembro',
+          'Dezembro' ],
         monthNamesShort: [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
         today: 'Hoje',
         clear: 'Limpar'
@@ -92,11 +108,11 @@ export class RegisterMotoristComponent implements  OnInit {
   // Show image profile
   addProfilePhoto(event: any) {
     if (event.target.files && event.target.files[0]) {
-      let reader = new FileReader();
-      reader.onload = (event: any) => {
-        let url = event.target.result;
-        let removeImage = document.querySelector('.remove-img-profile');
-        let containerImage = document.querySelector('.img-profile');
+      const reader = new FileReader();
+      reader.onload = (element: any) => {
+        const url = element.target.result;
+        const removeImage = document.querySelector('.remove-img-profile');
+        const containerImage = document.querySelector('.img-profile');
         (removeImage as HTMLElement).style.display = 'flex';
         (containerImage as HTMLElement).style.display = 'block';
         (containerImage as HTMLElement).style.backgroundImage  = 'url(' + url + ')';
@@ -114,10 +130,7 @@ export class RegisterMotoristComponent implements  OnInit {
 
   }
 
-  private place: any;
-
-  @Input('showForm')
-  public showForm: boolean;
+ 
 
   @Output('onFormClose')
   public onFormClose = new EventEmitter();
