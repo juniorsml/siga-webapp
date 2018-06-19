@@ -59,10 +59,7 @@
 
   .field{
     position: relative;
-    a.button {
-      margin-top: 1em;
     }
-  }
   .maxCount{
     font-size: 11px;
     position: absolute;
@@ -94,7 +91,6 @@
   .icon-label{
     color:#8a96af;
     font-size: 12px;
-    margin: 0 1em;
   }
   .icon-picker{
     width: 55px;
@@ -173,6 +169,6 @@
   }
 
   .picker-container {
-    display: -webkit-inline-box;
+    display: flex;
   }
 }

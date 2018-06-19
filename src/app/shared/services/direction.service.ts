@@ -24,7 +24,7 @@ export class DirectionService {
     const { directionsApi, accessToken } = environment.mapbox;
     return `${directionsApi}/${locations
       .toString()
-      .replace(/;,/g, ';')}?&access_token=${accessToken}`;
+      .replace(/;,/g, ';')}?&access_token=${accessToken}&overview=full`;
   }
 
   public decode(str: string, precision?) {

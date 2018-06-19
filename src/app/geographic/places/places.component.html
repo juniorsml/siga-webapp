@@ -98,10 +98,11 @@
       [formType]="formType"
       [backParam]="selectedTabIndex"
       [changeMapStyle]="changeMap"
+      (onSubmitForm)="create($event)"
       (onBackButton)="closeRegister($event)"
       (onPlaceSelected)="onPlaceSelected($event)"
       (onPreviewClicked)="draw($event)"
-      (onSubmitForm)="create($event)">
+      >
     </sga-register>
   </div>
 
