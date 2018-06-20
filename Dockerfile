@@ -1,30 +1,24 @@
-FROM node:9 AS build
+#Build
+FROM node:9-alpine AS build
 
-MAINTAINER Condusit 
-
-# Create app directory
-WORKDIR /usr/src/app
+LABEL maintainer="Condusit <contact@condusit.com>" 
 
 ADD . /usr/src/app
 
-# install packages using Yarn
-ADD package.json /tmp/package.json
-RUN cd /tmp && yarn
-RUN rm -drf node_modules
-RUN cd /usr/src/app && ln -s /tmp/node_modules
+WORKDIR /usr/src/app
+
+RUN cd src && yarn
+
 RUN yarn build
 
-
-# Start from a new nginx image
+#NGinx
 FROM nginx:alpine
+
 COPY --from=build /usr/src/app/dist /usr/share/nginx/html/
+
+COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
 
 #Start Server
 CMD ["nginx", "-g", "daemon off;"]
 
-EXPOSE 80
-
 RUN echo "COWABUNGA! 😎"
-
-
-
