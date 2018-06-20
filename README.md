@@ -7,43 +7,38 @@ Install yarn:
 Install Packages
 
 ```
-yarn
+λ yarn
 ```
 
 Run project
 
 ```
-yarn start
+λ yarn start
 ```
 The application is running at `localhost:4200`
 
 Test project
 
 ```
-yarn test
+λ yarn test
 ```
 
 Build project
 
 ```
-yarn build
+λ yarn build
 ```
 Build Docker Container
 
 ```
-docker build -t siga-app:1.0.0  . 
+λ docker build -t siga-app:1.0.0  . 
 ```
+COWABUNGA! 😎
+
 Run Docker Container
 
 ```
-docker run -it -p 8080:4200 siga-app:1.0.0
+λ docker run -p 3000:80 siga-app:1.0.0
 ```
 
-
-
-
-
-
-
-
-
+The application is running at `localhost:3000`
