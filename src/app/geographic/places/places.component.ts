@@ -32,6 +32,7 @@ export class RegisterPlaceComponent implements OnInit {
   public showRegister = false;
   public showSelectGroup = false;
   public showRegisterGroup = false;
+  public toggleSidebarStatus = false;
 
   public groupedItems = new Array<GroupedItems>();
 
@@ -52,6 +53,10 @@ export class RegisterPlaceComponent implements OnInit {
     if (this.selectedTabIndex && this.selectedTabIndex !== 1) {
       this.allPlaces();
     }
+  }
+
+  toggleSidebar() {
+      this.toggleSidebarStatus = !this.toggleSidebarStatus;
   }
   public allPlaces() {
     this.map.clearAll();

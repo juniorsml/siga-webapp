@@ -12,10 +12,15 @@
   .places-sidebar {
     position: absolute;
     padding: 13px 0px 0;
-    background:white;
-    width: 389px;
+    background: white;
+    width:389px;
+    left: 0;
+    overflow: hidden;
     padding-top: 30px;
+    transition: all 400ms ease;
   }
+
+  
   @import '../geographic.scss';
 
   .cnt-places-header{
@@ -39,6 +44,7 @@
     position: absolute;
     left: 389px;
     padding: 0;
+    transition: all 400ms ease;
     right: 0;
   }
   .cnt-places-added{
