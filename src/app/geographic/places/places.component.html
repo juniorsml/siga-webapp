@@ -1,7 +1,9 @@
 <div class="content-trip-places">
-  <div class="places-sidebar">
+  <a class="toggle-sidebar" [ngClass]="toggleSidebarStatus ? 'toggleButtonSidebar' : ''"  (click)="toggleSidebar()"><i class="fal fa-angle-left"></i></a>
+  <div class="places-sidebar" [ngClass]="toggleSidebarStatus ? 'closeSidebar' : ''">
+    
     <sga-tabs 
-      (tabSelected)="onTabSelected($event)"
+      (tabSelected)="onTabSelected($event)" 
       [tabIndex]="selectedTabIndex"
       *ngIf="!showRegister"
       styleClass="tabs no-margin tabs-white">
@@ -111,7 +113,7 @@
     </sga-register>
   </div>
 
-  <div class="places-detail box-shadow">
+  <div class="places-detail box-shadow" [ngClass]="toggleSidebarStatus ? 'mapWide' : ''">
     <sga-map [showPolygonSquare]="true"></sga-map>
   </div>
 </div>

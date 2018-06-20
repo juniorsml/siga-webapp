@@ -9,6 +9,9 @@
   }
   .history-sidebar {
     position: absolute;
+    left: 0;
+    overflow: hidden;
+    transition: all 400ms ease;
     background:white;
     width: 389px;
     .slimscroll-grid,.slimscroll-bar{
@@ -116,6 +119,7 @@
     left: 389px;
     padding: 0;
     right: 0;
+    transition: all 400ms ease;
   }
   .number-radius {
     border-radius: 1em;

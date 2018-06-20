@@ -10,6 +10,40 @@ div, *{
   margin:0;
   padding:O;
 }
+.toggle-sidebar {
+    background: #737d96;
+    color: #FFF;
+    padding: 4px 12px;
+    position: absolute;
+    left: 389px;
+    z-index: 9;
+    top: 15px;
+    font-size: 32px;
+    -webkit-box-shadow: inset 2px -1px 12px 0px rgba(0,0,0,0.37);
+    -moz-box-shadow: inset 2px -1px 12px 0px rgba(0,0,0,0.37);
+    box-shadow: inset 2px -1px 12px 0px rgba(0,0,0,0.37);
+    transition: all 400ms ease;
+    &:hover{
+      background-color: #7d859b;
+      color:#FFF;
+    }
+
+}
+.toggleButtonSidebar {
+    left: 0;
+    i{
+    transform:rotate(180deg);
+  }
+}
+.closeSidebar{
+   left: -389px !important;
+}
+.mapWide{
+  left: 0 !important;
+}
+
+
+
 span.item-context-menu{    
     transition:all 151ms ease;
     margin-right: 15px;
@@ -23,9 +57,15 @@ $bg-titles: #4d5675;
 .label {
   color: #737373 !important;
 }
+
+//MAP ADJUSTMENTS
 .leaflet-right .leaflet-control{
   margin: 69px 37px 0px 0px;
 }
+.leaflet-pane.leaflet-map-pane{  
+  transform: translate3d(110px, -182px, 0px) !important;
+}
+
 // Our Components | Buttons
 .button.is-first {
     background-color: #4d5675;    

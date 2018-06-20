@@ -21,6 +21,7 @@ export class HistoryMotoristComponent implements OnInit {
   public selectedMotorist: any;
 
   public showHistoryDetail = false;
+  public toggleSidebarStatus = false;
 
   constructor(
     private map: Map,
@@ -51,7 +52,9 @@ export class HistoryMotoristComponent implements OnInit {
       this.showHistoryDetail = true;
     }
   }
-
+  toggleSidebar() {
+      this.toggleSidebarStatus = !this.toggleSidebarStatus;
+  }
   public openDetailHistory(event) {
     this.showHistoryDetail = true;
     this.selectedMotorist = event;
