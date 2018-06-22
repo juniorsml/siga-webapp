@@ -23,14 +23,11 @@ import { ScheduledTripsComponent } from './scheduled/scheduled.component';
 import { HistoricTripsComponent } from './historic/historic.component';
 
 import { SummaryDialogComponent } from './summary-dialog/summary-dialog.component';
-  import { SummaryComponent } from './summary-dialog/summary/summary.component';
-  import { SummaryMotoristComponent } from './summary-dialog/motorist/summary-motorist.component';
-  import { SummaryVehicleComponent } from './summary-dialog/vehicle/summary-vehicle.component';
-  import { SummaryItineraryComponent } from './summary-dialog/itinerary/summary-itinerary.component';
-
-
-
-
+import { SummaryComponent } from './summary-dialog/summary/summary.component';
+import { SummaryMotoristComponent } from './summary-dialog/motorist/summary-motorist.component';
+import { SummaryVehicleComponent } from './summary-dialog/vehicle/summary-vehicle.component';
+import { SummaryItineraryComponent } from './summary-dialog/itinerary/summary-itinerary.component';
+import { RouteInfoComponent } from './register/places/route-info/route-info.component';
 
 @NgModule({
   imports: [
@@ -46,22 +43,23 @@ import { SummaryDialogComponent } from './summary-dialog/summary-dialog.componen
     TripRoutingModule
   ],
   declarations: [
-      RegisterTripComponent, 
-      DetailComponent, 
-      PlacesComponent, 
-      MotoristComponent, 
-      VehiclesComponent, 
-      DeviceComponent,
-      TrucksComponent,
-      StartedTripsComponent,
-      ScheduledTripsComponent,
-      HistoricTripsComponent,
+    RegisterTripComponent,
+    DetailComponent,
+    PlacesComponent,
+    MotoristComponent,
+    VehiclesComponent,
+    DeviceComponent,
+    TrucksComponent,
+    StartedTripsComponent,
+    ScheduledTripsComponent,
+    HistoricTripsComponent,
 
-      SummaryDialogComponent,
-      SummaryComponent,
-      SummaryMotoristComponent,
-      SummaryVehicleComponent,
-      SummaryItineraryComponent
+    SummaryDialogComponent,
+    SummaryComponent,
+    SummaryMotoristComponent,
+    SummaryVehicleComponent,
+    SummaryItineraryComponent,
+    RouteInfoComponent
   ]
 })
 export class TripModule { }
