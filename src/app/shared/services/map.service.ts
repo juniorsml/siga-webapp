@@ -26,7 +26,7 @@ export class MapService extends Map {
     L.mapbox.accessToken = environment.mapbox.accessToken;
 
     this.map = L.mapbox
-      .map('map', '', this.mapboxOptions())
+      .map('map', 'mapbox.streets', this.mapboxOptions())
       .setView([-14.9034, -43.1917], 5);
 
     if (showControls) {
