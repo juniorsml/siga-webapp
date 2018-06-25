@@ -40,6 +40,8 @@ export abstract class Map {
 
   public abstract clearMarkers(): void;
 
+  public abstract clearLayers(): void;
+
   /** Drawing **/
   public abstract drawPolyline(points: Array<L.LatLng>): void;
 
