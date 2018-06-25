@@ -135,6 +135,7 @@
 
   <sga-modal *ngIf="showRegisterForm">
     <sga-register-device
+      [showForm]="showRegisterForm"
       (onFinish)="closeFormRegister()">
     </sga-register-device>
   </sga-modal>
