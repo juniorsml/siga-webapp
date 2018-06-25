@@ -26,7 +26,7 @@ export class RegisterTruckComponent implements  OnInit {
 
   @Input()
   public showForm: boolean;
-  @Output() onFormClose: EventEmitter<any> = new EventEmitter();
+  @Output() onFinish: EventEmitter<void> = new EventEmitter();
   public selectedTabIndex = 0;
 
   ngOnInit() { }
@@ -78,7 +78,7 @@ export class RegisterTruckComponent implements  OnInit {
   }
 
   cancel() {
-    this.onFormClose.emit();
+    this.onFinish.emit();
   }
 
   create(formTruck: NgForm) {

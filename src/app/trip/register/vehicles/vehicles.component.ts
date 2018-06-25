@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -16,7 +16,7 @@ export class VehiclesComponent implements OnInit {
 
   public showRegisterForm = false;
 
-  constructor(private router: ActivatedRoute) {}
+  constructor(private router: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.router.data.subscribe(
@@ -25,11 +25,11 @@ export class VehiclesComponent implements OnInit {
   }
 
   public showVehicleData(vehicle) {
-    this.selectedVehicle = vehicle
+    this.selectedVehicle = vehicle;
   }
 
 
-  public showVehicleForm() {  
+  public showVehicleForm() {
     this.showRegisterForm = true;
   }
 

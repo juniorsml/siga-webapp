@@ -1,4 +1,4 @@
-import { Component, Output, OnInit, EventEmitter, ViewChild, Input} from '@angular/core';
+import { Component, Output, EventEmitter, ViewChild, Input} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
@@ -34,7 +34,7 @@ class RegisterForm {
   styleUrls: ['./register-vehicle.component.scss']
 })
 
-export class RegisterVehicleComponent implements  OnInit {
+export class RegisterVehicleComponent {
 
   model: RegisterForm = new RegisterForm();
   @ViewChild('formVehicle') formVehicle: any;
@@ -45,10 +45,8 @@ export class RegisterVehicleComponent implements  OnInit {
 
   @Input()
   public showForm: boolean;
-  @Output() onFormClose: EventEmitter<any> = new EventEmitter();
+  @Output() onFinish: EventEmitter<void> = new EventEmitter();
   public selectedTabIndex = 0;
-
-  ngOnInit() {}
 
   // Show image profile
   addProfilePhoto(event: any) {
@@ -81,7 +79,7 @@ export class RegisterVehicleComponent implements  OnInit {
     }
 
   cancel() {
-    this.onFormClose.emit();
+    this.onFinish.emit();
   }
 
   create(formMotorist: NgForm) {
