@@ -165,6 +165,7 @@
 
 <sga-modal *ngIf="showRegisterForm">
     <sga-register-truck
+      [showForm]="showRegisterForm"
       (onFinish)="closeFormRegister()">
     </sga-register-truck>
 </sga-modal>
