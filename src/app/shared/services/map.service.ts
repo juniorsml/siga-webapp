@@ -135,6 +135,10 @@ export class MapService extends Map {
     });
   }
 
+  public clearLayers() {
+    this.layers.map(this.remove);
+  }
+
   public addCluster(markers: Array<Feature<GeometryObject>>): void {
     const cluster = new L['markerClusterGroup']();
     markers.map(m => cluster.addLayers(m.properties['marker']));

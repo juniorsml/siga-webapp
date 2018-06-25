@@ -70,7 +70,24 @@
         </div>
       </div>
 
-      <div class="field-body field" *ngIf="formType === 'place'">
+      <div class="field-body field" *ngIf="location">
+        <div class="field">
+          <label class="label is-small">Raio (km)</label>
+          <div class="field-body">
+            <div class="field">
+              <input type="number" 
+                    class="input is-small" 
+                    [(ngModel)]="ray"
+                    (ngModelChange)="rayChanged($event)"
+                    placeholder="Raio"
+                    name="ray" 
+                    ngModel />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-body field" *ngIf="location">
         <div class="field">
           <label class="label is-small">Estilo</label>
           <div class="field-body seletors">
