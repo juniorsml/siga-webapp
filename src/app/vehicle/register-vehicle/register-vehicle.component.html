@@ -11,7 +11,7 @@
     </div>
     <div class="container-scroll">    
       
-      <form novalidate  (ngSubmit)="onSubmit()"   class="cnt-form" #formMotorist="ngForm">
+      <form novalidate (ngSubmit)="onSubmit()" class="cnt-form" #formMotorist="ngForm">
           <sga-tabs 
             [tabIndex]="selectedTabIndex"
             styleClass="tabs no-margin tabs-register">
@@ -169,11 +169,6 @@
                           </div>
                         </div> 
 
-                       
-
-
-
-
                       </div>
 
                       <div class="field-body field">    
@@ -228,6 +223,7 @@
                                     placeholder="Nº Frota"  
                                     name="fleetNumber"
                                     [(ngModel)]="model.fleetNumber"
+                                    [ngModelOptions]="{standalone: true}"
                                     #fleetNumber="ngModel"
                                     [ngClass]="{'is-danger': fleetNumber.invalid && (fleetNumber.dirty || fleetNumber.touched) }"
                                     required>                        
@@ -240,7 +236,12 @@
                         <div class="field  is-4 column is-marginless">
                           <label class="label is-small">Nº  registro ANTT</label>   
                           <div class="control">
-                            <input [(ngModel)]="model.anttNumber"  #anttNumber="ngModel" class="input" type="text" placeholder="Nº  registro ANTT">
+                            <input [(ngModel)]="model.anttNumber"  
+                                  #anttNumber="ngModel" 
+                                  class="input" 
+                                  name="anttNumber"
+                                  type="text" 
+                                  placeholder="Nº  registro ANTT">
                           </div>
                         </div>
 
@@ -386,6 +387,7 @@
                               <div class="select">
                                 <select [(ngModel)]="model.tech" 
                                         #tech="ngModel"
+                                        name="tech"
                                         [ngClass]="{'is-danger': tech.invalid && (tech.dirty || tech.touched)}"
                                         required>                               
                                   <option value="1">1</option> 
@@ -407,6 +409,7 @@
                               <div class="select">
                                 <select [(ngModel)]="model.comunication" 
                                         #comunication="ngModel"
+                                        name="comunication"
                                         [ngClass]="{'is-danger': comunication.invalid && (comunication.dirty || comunication.touched)}"
                                         required>                               
                                   <option value="Frota">Frota</option>
@@ -431,7 +434,7 @@
         <div class="cnt-buttons">
         
             
-              <button class="button" (click)="cancel()">Cancelar</button>
+              <input type="button" class="button" (click)="cancel()" value="Cancelar"/>
             
                   
               <button type="submit"
