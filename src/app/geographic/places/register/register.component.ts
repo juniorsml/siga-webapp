@@ -19,6 +19,7 @@ export class RegisterComponent implements OnInit {
 
   @Output() public onSubmitForm = new EventEmitter<any>();
   @Output() public onBackButton = new EventEmitter<string>();
+  @Output() public onRayChanged = new EventEmitter<any>();
   @Output() public onPlaceSelected = new EventEmitter<any>();
   @Output() public onPreviewClicked = new EventEmitter<any>();
 
@@ -82,6 +83,9 @@ export class RegisterComponent implements OnInit {
     this.status = !this.status;
   }
 
+  public rayChanged = value =>
+    this.onRayChanged.emit(value)
+
   public iconSelected = color =>
     this.redrawPoint(color, this.backgroundColor, this.fillColor, this.strokeColor, () => this.colorIcon = color)
 
@@ -121,6 +125,7 @@ export class RegisterComponent implements OnInit {
   }
 
   public onPlacesFiltered(event) {
+    if (event === undefined) { return; }
     const { location } = event.geometry;
     if (location === undefined) { return; }
     const options = {
