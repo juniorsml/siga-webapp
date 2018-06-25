@@ -36,8 +36,10 @@ export class RegisterPlaceComponent implements OnInit {
 
   public groupedItems = new Array<GroupedItems>();
 
+  private currentRay: number;
   private iconOptions = null;
   private lineOptions = null;
+  private polygonOptions = null;
   private currentMarker: L.Marker;
 
   private _places: Array<any>;
@@ -159,7 +161,17 @@ export class RegisterPlaceComponent implements OnInit {
     this.moveMap(location.latitude, location.longitude, 18);
     const options = this.iconOptions ? this.iconOptions : location.options;
     this.marker(location.latitude, location.longitude, options);
+
+    // this.addRay(location);
     // this.map.addCustomMarker(location.latitude, location.longitude, '#0049ff', true);
+  }
+
+  private addRay(location: any, ray = 1, options = this.getPolygonOptions('#ff5e5e', '#ff5e5e')) {
+    const turf = window['turf'];
+    const point = turf.point([location.longitude, location.latitude]);
+    const buffered = turf.buffer(point, ray, { units: 'kilometers' });
+    buffered.properties = options;
+    this.map.addGeoJSON(buffered);
   }
 
   public openRegister(type) {
@@ -331,10 +343,26 @@ export class RegisterPlaceComponent implements OnInit {
   public closeModalGroup = () => this.showSelectGroup = false;
 
   public draw = options => {
-    this.lineOptions = this.getLineOptions(options.strokeColor, options.fillColor);
+    const { strokeColor, fillColor } = options;
+    this.lineOptions = this.getLineOptions(strokeColor, fillColor);
     this.map.setLineStyle(this.lineOptions);
     if (this.location) {
       this.marker(this.location.latitude, this.location.longitude, options);
+      if (this.currentRay > 0) {
+        this.map.clearLayers();
+        this.polygonOptions = this.getPolygonOptions(strokeColor, fillColor);
+        this.addRay(this.location, this.currentRay, this.polygonOptions);
+      }
+    }
+  }
+
+  public onRayChanged = event => {
+    if (event > 0) {
+      this.map.clearLayers();
+      this.polygonOptions !== null ?
+        this.addRay(this.location, event, this.polygonOptions) :
+        this.addRay(this.location, event);
+      this.currentRay = event;
     }
   }
 
@@ -360,5 +388,13 @@ export class RegisterPlaceComponent implements OnInit {
     stroke: true,
     color: stroke,
     fillColor: fill
+  })
+
+  private getPolygonOptions = (stroke, fill) => Object.assign({
+    fill, // line
+    stroke, // bg
+    'stroke-width': 2,
+    'fill-opacity': 0.5,
+    'stroke-opacity': 0.5
   })
 }

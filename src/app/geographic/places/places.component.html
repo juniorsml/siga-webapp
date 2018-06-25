@@ -104,6 +104,7 @@
       [backParam]="selectedTabIndex"
       [changeMapStyle]="changeMap"
       (onSubmitForm)="create($event)"
+      (onRayChanged)="onRayChanged($event)"
       (onBackButton)="closeRegister($event)"
       (onPlaceSelected)="onPlaceSelected($event)"
       (onPreviewClicked)="draw($event)"
