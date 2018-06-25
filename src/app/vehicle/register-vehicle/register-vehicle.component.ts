@@ -1,4 +1,4 @@
-import { Component, Output, OnInit, EventEmitter, ViewChild, Input} from '@angular/core';
+import { Component, Output, EventEmitter, ViewChild, Input} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
