@@ -93,7 +93,7 @@ export class RegisterComponent implements OnInit {
     this.redrawPoint(this.colorIcon, color, this.fillColor, this.strokeColor, () => this.backgroundColor = color)
 
   public fillSelected = color =>
-    this.redrawPoint(this.colorIcon, this.backgroundColor, color, this.strokeColor, () => this.backgroundColor = color)
+    this.redrawPoint(this.colorIcon, this.backgroundColor, color, this.strokeColor, () => this.fillColor = color)
 
   public strokeSelected = color =>
     this.redrawPoint(this.colorIcon, this.backgroundColor, this.fillColor, color, () => this.strokeColor = color)
