@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
   @Output() public onPlaceSelected = new EventEmitter<any>();
   @Output() public onPreviewClicked = new EventEmitter<any>();
 
-  private location: any;
+  public location: any;
 
   public docType = 0;
   public placeSelected = false;
