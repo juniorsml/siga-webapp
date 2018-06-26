@@ -11,7 +11,6 @@ import { places } from '../../shared/mocks/place';
 import { areas } from '../../shared/mocks/area';
 import { GroupedItems } from '../../shared/components/select-grouped/Grouped';
 import { DirectionService } from '../../shared/services/direction.service';
-import { MapStyle } from '../../shared/models/MapStyle';
 
 @Component({
   selector: 'sga-places',
@@ -60,6 +59,7 @@ export class RegisterPlaceComponent implements OnInit {
   toggleSidebar() {
       this.toggleSidebarStatus = !this.toggleSidebarStatus;
   }
+
   public allPlaces() {
     this.map.clearAll();
     this.mapMarkers = [];
@@ -177,10 +177,12 @@ export class RegisterPlaceComponent implements OnInit {
   public openRegister(type) {
     this.formType = type;
     this.showRegister = true;
+    this.map.addControl(true);
   }
 
   public closeRegister(tabIndex) {
     this.showRegister = false;
+    this.map.addControl(false);
     this.selectedTabIndex = tabIndex;
   }
 
@@ -198,9 +200,9 @@ export class RegisterPlaceComponent implements OnInit {
   public onTabSelected = (tab: TabComponent) => {
     this.selectedTabIndex = tab.index;
     this.filterByTab(
-      () => this.changeMap(false, MapStyle.Outdoor),
-      () => this.changeMap(true, MapStyle.Street),
-      () => this.changeMap(false, MapStyle.Outdoor));
+      () => this.changeMap(true),
+      () => this.changeMap(true),
+      () => this.changeMap(true));
   }
 
   private filterByTab = (whenPlaces, whenItinerary, whenGroup) => {
@@ -217,13 +219,15 @@ export class RegisterPlaceComponent implements OnInit {
     }
   }
 
-  public changeMap = (showControls: boolean, mapStyle: MapStyle) => {
+  public changeMap = (showControls: boolean) => {
     this.map.clearAll();
     this.map.addControl(showControls);
-    this.map.setStyle(mapStyle);
   }
 
-  public closeRegisterGroup = () => this.showRegisterGroup = false;
+  public closeRegisterGroup = () => {
+    this.showRegisterGroup = false;
+    this.map.addControl(false);
+  }
 
   public onSelected(place) {
     this.map.clearAll();
@@ -358,11 +362,12 @@ export class RegisterPlaceComponent implements OnInit {
 
   public onRayChanged = event => {
     if (event > 0) {
+      const ray = event / 1000;
       this.map.clearLayers();
       this.polygonOptions !== null ?
-        this.addRay(this.location, event, this.polygonOptions) :
-        this.addRay(this.location, event);
-      this.currentRay = event;
+        this.addRay(this.location, ray, this.polygonOptions) :
+        this.addRay(this.location, ray);
+      this.currentRay = ray;
     }
   }
 
@@ -392,7 +397,7 @@ export class RegisterPlaceComponent implements OnInit {
 
   private getPolygonOptions = (stroke, fill) => Object.assign({
     fill, // line
-    stroke, // bg
+    stroke, // back
     'stroke-width': 2,
     'fill-opacity': 0.5,
     'stroke-opacity': 0.5
