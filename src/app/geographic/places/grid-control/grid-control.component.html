@@ -31,13 +31,17 @@
     </sga-auto-complete> -->
   </div>
   
-  <data-table class="container-grid container-grid-wrapper" [ngStyle]="{ 'margin-top.em': marginTop }"
+  <data-table 
+    class="container-grid container-grid-wrapper" 
+    [ngStyle]="{ 'margin-top.em': marginTop }"
     [data]="data"
     [dataLength]="data.length"
     [searchText]="text" 
     emptySearchText="nenhum item foi encontrado" 
+    styleTableBody="ui-datatable-body-tbody-2"
+    styleHeader="ui-datatable-header-2"
     bodyBottom="42px" 
-    bodyTop="26px"
+    bodyTop="0"
     [haveFooter]="haveFooter"
     (onCellClick)="onSelected($event.data)"
     (onCellRightClick)="onCellRightSelected($event)">
@@ -52,7 +56,7 @@
     <column class="photo-profile" [key]="''" [header]="''" [width]="'60'" [isSortable]="false">
       <ng-template let-item="item">
         <div class="cnt-img">
-          <i class="fa fa-globe" style="font-size: 3em;"></i>
+          <i class="fal fa-map-marker" style="font-size: 1.6em; margin-top: 1.5vh; color: #fff;"></i>
         </div>
       </ng-template>
     </column>

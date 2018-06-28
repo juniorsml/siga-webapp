@@ -84,13 +84,15 @@
 
 .seletors{
   .field,.icon-picker{
-    display: flex;
+    display: grid;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 0 1.2vh;
   }
   .icon-label{
     color:#8a96af;
     font-size: 12px;
+    text-align: center;
   }
   .icon-picker{
     width: 55px;

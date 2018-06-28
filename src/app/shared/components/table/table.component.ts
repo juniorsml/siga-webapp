@@ -42,6 +42,7 @@ export class DataTableComponent
   @Input() styleBody = 'ui-datatable-body';
   @Input() styleRow = 'ui-datatable-body-row';
   @Input() styleFooter = 'ui-datatable-footer';
+  @Input() styleTableBody = 'ui-datatable-body-table';
   @Input() stylePager = 'ui-table-pager';
   @Input() contextMenuMode = 'click';
   @Input() haveFooter: true;

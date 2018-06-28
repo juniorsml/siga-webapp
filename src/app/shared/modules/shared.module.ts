@@ -17,9 +17,12 @@ import { GridComponent } from '../components/grid/grid.component';
 import { MapFilterComponent } from '../components/map-filter/map-filter.component';
 import { FormsModule } from '@angular/forms';
 
+
 import { SearchPipe } from '../filters/search.pipe';
 import { PagerPipe } from '../filters/pager.pipe';
 import { PlacesPipe } from '../filters/places.pipe';
+
+import { TagInputModule } from 'ngx-chips';
 import { NgSlimScrollModule, SLIMSCROLL_DEFAULTS } from 'ngx-slimscroll';
 import {
   ColumnComponent,
@@ -113,6 +116,7 @@ import { HttpModule } from '@angular/http';
     HttpModule,
     FormsModule,
     CommonModule,
+    TagInputModule,
     NgSlimScrollModule,
     CalendarModule,
     TextMaskModule
@@ -179,6 +183,8 @@ import { HttpModule } from '@angular/http';
     PagerComponent,
 
     SpinnerComponent,
+
+    TagInputModule,
     NgSlimScrollModule
   ]
 })
