@@ -39,6 +39,11 @@ export class PlacesComponent implements OnInit {
     this.plotRoute();
   }
 
+  public revertPlaces = () => {
+    this.places = this.places.reverse();
+    this.plotRoute();
+  }
+
   private moveMap = (lat: number, lng: number, zoom = 7) => {
     this.map.setZoom(zoom);
     this.map.setCenter(lat, lng);

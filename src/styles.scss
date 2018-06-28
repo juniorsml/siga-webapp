@@ -707,6 +707,26 @@ $bg-titles: #4d5675;
   height: 100%;
 }
 
+.leaflet-touch .leaflet-draw-toolbar .leaflet-draw-draw-polygon {
+  background-position: -31.5px -3px;
+}
+
+.leaflet-touch .leaflet-draw-toolbar .leaflet-draw-draw-rectangle {
+  background-position: -62px -2px;
+}
+
+.leaflet-touch .leaflet-draw-toolbar .leaflet-draw-draw-polyline {
+  background-position: -2px -2px;
+}
+
+.leaflet-touch .leaflet-draw-toolbar .leaflet-draw-edit-edit.leaflet-disabled {
+  background-position: -212px -3px;
+}
+
+.leaflet-touch .leaflet-draw-toolbar .leaflet-draw-edit-remove.leaflet-disabled {
+  background-position: -242px -3px;
+}
+
 /******************************************** MAPBOX ************************************************/
 
 .icon-marker {

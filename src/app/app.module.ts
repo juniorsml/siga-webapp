@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/modules/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 import { httpFactory } from './shared/factory/http.factory';
 import { HttpService } from './shared/services/http.service';
@@ -26,7 +28,7 @@ import { ContentComponent } from './shared/layout/content/content.component';
     SidebarComponent,
     ContentComponent
   ],
-  imports: [FormsModule, SharedModule, BrowserModule, AppRoutingModule],
+  imports: [FormsModule, SharedModule, BrowserModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [
     {
       provide: HttpService,

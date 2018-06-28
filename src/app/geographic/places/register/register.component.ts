@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Output, Input, OnInit, ElementRef } from '@angular/core';
 
 import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
-import { MapStyle } from '../../../shared/models/MapStyle';
 
 @Component({
   selector: 'sga-register',
@@ -15,7 +14,6 @@ export class RegisterComponent implements OnInit {
 
   @Input() public formType: string;
   @Input() public backParam: string;
-  @Input() private changeMapStyle: Function;
 
   @Output() public onSubmitForm = new EventEmitter<any>();
   @Output() public onBackButton = new EventEmitter<string>();
@@ -119,9 +117,6 @@ export class RegisterComponent implements OnInit {
 
   public setTypeSelected = param => {
     this.typeSelected = param;
-    param === 'area' ?
-      this.changeMapStyle(true, MapStyle.Street) :
-      this.changeMapStyle(false, MapStyle.Outdoor);
   }
 
   public onPlacesFiltered(event) {

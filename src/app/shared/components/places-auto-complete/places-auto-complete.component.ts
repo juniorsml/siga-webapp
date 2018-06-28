@@ -6,7 +6,8 @@ import {
   NgZone,
   AfterViewInit,
   ViewChild,
-  ElementRef
+  ElementRef,
+  OnInit
 } from '@angular/core';
 
 @Component({
@@ -14,7 +15,7 @@ import {
   templateUrl: './places-auto-complete.component.html',
   styles: []
 })
-export class PlacesAutoCompleteComponent implements AfterViewInit {
+export class PlacesAutoCompleteComponent implements AfterViewInit, OnInit {
 
   @Input() public styleClass: string;
 
@@ -31,9 +32,11 @@ export class PlacesAutoCompleteComponent implements AfterViewInit {
   private place: any;
   private placesInput: any;
 
-  constructor(private ngZone: NgZone) {
+  constructor(private ngZone: NgZone) { }
+
+  ngOnInit() {
     this.placesInput = new google.maps.places.Autocomplete(
-      <HTMLInputElement>document.getElementById('#mapFilter')
+      <HTMLInputElement>this.input.nativeElement
     );
     this.placesInput.addListener('place_changed', () => this.setPlace());
   }

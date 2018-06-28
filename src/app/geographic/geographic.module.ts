@@ -24,7 +24,6 @@ import { httpFactory } from '../shared/factory/http.factory';
 import { XHRBackend, RequestOptions, HttpModule } from '@angular/http';
 import { Router } from '@angular/router';
 
-
 @NgModule({
   imports: [
     HttpModule,
