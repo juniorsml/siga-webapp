@@ -171,3 +171,25 @@
    }
 
 
+   .no-associate{
+    height: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     div{
+      text-align: center;
+      i{
+        
+        font-size: 25px;
+        font-weight: 300;
+        color:#6e778a;
+
+      }
+      h1{
+        color:#6e778a;
+        font-size: 22px; 
+        font-weight: 300;
+      }
+     }
+   }
+

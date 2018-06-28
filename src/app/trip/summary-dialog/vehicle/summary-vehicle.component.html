@@ -34,21 +34,26 @@
               </sga-auto-complete>
           </div>
            </div>
-           <div class="trip-vehicles-lv">
+           <div class="trip-vehicles-lv">          
               <ul>
-              <li *ngFor="let vehicle of associateVehicle">
-                <div class="columns">
-                  <div class="column is-10">
-                    <span (click)="showVehicleData(vehicle)"  style="cursor: pointer; color: blue;">
-                        {{vehicle.vehiclePlate}} - {{vehicle.brand}}
-                    </span>
-                    
-                  </div>
-                  <div class="column">
-                    <span (click)="removeAssociate(vehicle)" class="fal fa-trash" style="cursor: pointer; color: red;"></span>
-                  </div>
-                </div>
-              </li>
+                <li *ngFor="let vehicle of associateVehicle"
+                    class="item"  
+                    [ngClass]="selectedMotorist?.id == motorist.id ? 'selected' : ''">
+                    <div class="icon">
+                      <i class="fal fa-truck"></i>
+                      <div class="motorist-photo" *ngIf="selectedMotorist?.id != null">
+                        <img  src="{{'api/motorist/public/profileImage?id=' + selectedMotorist?.id}}"
+                        alt="">
+                      </div>   
+                    </div>
+                    <div class="data" (click)="showMotoristData(motorist)">
+                      <h5>{{vehicle.vehiclePlate}} <span>{{vehicle.brand}}</span></h5>
+                      <h6>{{motorist.documentId}}</h6>                          
+                    </div>
+                    <div class="remove" (click)="removeAssociate(vehicle)">
+                      <span  class="fal fa-times"></span>
+                    </div>                
+                </li>
             </ul>
           </div>
           <div class="button-container">
@@ -58,90 +63,107 @@
       </div>
      
      <div class="column is-9">	 
-		    <div class="columns cnt-details cnt-summary">
-		    	<div class="columns is-multiline is-marginless column is-12">
-		    		<div class="column is-12">
-		    		    <h4 class="is-pulled-left">Dados do veículo</h4>
-		    		    <i class="fal fa-question-circle is-pulled-right"></i>
-		    		</div>
-		    		<div  class="column is-12">         		    
-				        <ul class="columns is-multiline  motorist-profile-info ">
-				            <li class="column is-4 info-item">
-				                <h6>Placa</h6>
-				                <span>{{selectedVehicle == null ? '-' : selectedVehicle?.vehiclePlate}}</span>
-				            </li>
-				            <li class="column is-4 info-item">
-				                <h6>Marca</h6>
-				                <span>{{selectedVehicle == null ? '-' : selectedVehicle?.brand}}</span>
-				            </li>
+		   <div *ngIf="associateVehicle.length > 0">
+         <div class="cnt-data cnt-personal-data columns is-multiline">        
+           <h4>Dados</h4>           
+           <div class="columns column is-12">
+               <div class="column is-narrow cnt-profile">
+                 <div class="vehicle-photo">
+                   <img *ngIf="selectedMotorist != null" src="{{'api/motorist/public/profileImage?id=' + selectedMotorist?.id}}"
+                   alt="">
+                 </div>                
+               </div>
+               <div class="column is-three-quarters">
+                   <div class="field-body field">
+                     <div class="field">
+                       <label class="label is-small">Placa</label>
+                       <span class="personal-info">
+                         {{selectedVehicle == null ? '-' : selectedVehicle?.vehiclePlate}} 
+                       </span>
+                     </div>
+                     <div class="field">
+                       <label class="label is-small">Marca</label>
+                       <span class="personal-info">{{selectedVehicle == null ? '-' : selectedVehicle?.brand}}</span>
+                     </div>
+                     <div class="field">
+                       <label class="label is-small">Modelo</label>
+                       <span class="personal-info">{{selectedVehicle?.model}}</span>
+                     </div>
+                     <div class="field">
+                       <label class="label is-small">Cor</label>
+                       <span class="personal-info">{{selectedVehicle?.color}}</span>
+                     </div>
+                   </div>
+                     <div class="field-body field">
+                         
+                         <div class="field">
+                           <label class="label is-small">Ano</label>
+                           <span class="personal-info">{{selectedVehicle == null ? '-' : selectedVehicle?.year}}</span>
+                         </div>      
+                         <div class="field">
+                           <label class="label is-small">Tipo</label>
+                           <span class="personal-info">{{selectedVehicle?.type}}</span>
+                         </div>
 
-				            <li class="column is-4 info-item">
-				                <h6>Modelo</h6>
-				                <span>{{selectedVehicle == null ? '-' : selectedVehicle?.model}}</span>
-				            </li>
+                         <div class="field">
+                           <label class="label is-small">Capacidade</label>
+                           <span class="personal-info">{{selectedVehicle?.capacity}}</span>
+                         </div>
 
-				            <li class="column is-4 info-item">
-				                <h6>Cor</h6>
-				                <span>{{selectedVehicle == null ? '-' : selectedVehicle?.color}}</span>
-				            </li>
 
-				            <li class="column is-4 info-item">
-				                <h6>Ano</h6>
-				                <span>{{selectedVehicle == null ? '-' : selectedVehicle?.year}}</span>
-				            </li>
-				            <li class="column is-4 info-item">
-				                <h6>Tipo</h6>
-				                <span>{{selectedVehicle == null ? '-' : selectedVehicle?.type}}</span>
-				            </li>
-				            <li class="column is-4 info-item">
-				                <h6>Capacidade</h6>
-				                <span>{{selectedVehicle == null ? '-' : selectedVehicle?.capacity}}</span>
-				            </li>
-				            <li class="column is-4 info-item">
-				                <h6>N. Frota</h6>
-				                <span>{{selectedVehicle == null ? '-' : selectedVehicle?.fleetNumber}}</span>
-				            </li>
-				            <li class="column is-4 info-item">
-				                <h6>Nº registro ANTT</h6>
-				                <span>{{selectedVehicle == null ? '-' : selectedVehicle?.anttNumber}}</span>
-				            </li>
-				            <li class="column is-4 info-item">
-				                <h6>Validade ANTT</h6>
-				                <span>{{selectedVehicle == null ? '-' : selectedVehicle?.anttDueDate}}</span>
-				            </li>
-				        </ul>
-		    		    
-		    		</div>
-		    	</div>
-		    </div>
+                                     
+                     </div>
+                     <div class="field-body field">
 
-		    <div class=" columns cnt-details cnt-summary">
-		    	<div class="columns is-multiline is-marginless column is-12">
-		    		<div class="column is-12">
-		    		    <h4 class="is-pulled-left">Rastreador</h4>
-		    		    <i class="fal fa-question-circle is-pulled-right"></i>
-		    		</div>
-		    		<div  class="column is-12" *ngFor="let device of selectedVehicle?.devices">         		    
-				        <ul class="columns is-multiline  motorist-profile-info ">
-				            <li class="column is-4 info-item">
-				                <h6>Tecnologia</h6>
-				                <span>{{device== null ? '-' : device?.tech}}</span>
-				            </li>
-				            <li class="column is-4 info-item">
-				                <h6>Comunicação</h6>
-				                <span>{{device== null ? '-' : device?.comunication}}</span>
-				            </li>
+                         <div class="field">
+                           <label class="label is-small">N. Frota</label>
+                           <span class="personal-info">{{selectedVehicle?.fleetNumber}}</span>
+                         </div>
 
-				            <li class="column is-4 info-item">
-				                <h6>Id</h6>
-				                <span>{{device== null ? '-' : device?.number}}</span>
-				            </li>
-				            
-				        </ul>
-		    		    
-		    		</div>
-		    	</div>
-		    </div>
+                         <div class="field">
+                           <label class="label is-small">Nº registro ANTT</label>
+                           <span class="personal-info">{{selectedVehicle?.anttNumber}}</span>
+                         </div>
+                         <div class="field">
+                           <label class="label is-small">Validade ANTT</label>
+                           <span class="personal-info">{{selectedVehicle?.anttDueDate}}</span>
+                         </div>
+                                     
+                     </div>
+               </div>
+           </div>
+         </div>
+
+         <div class="cnt-data columns column is-12 is-multiline" *ngIf="selectedVehicle?.devices">
+             <h4>Rastreadores</h4>
+             <div class="column is-12">
+                 <div class="field-body field" *ngFor="let device of selectedVehicle?.devices">
+                     <div class="field">
+                       <label class="label is-small">Tecnologia</label>
+                       <span class="personal-info">{{device== null ? '-' : device?.tech}}</span>
+                     </div>
+
+                     <div class="field">
+                       <label class="label is-small">Comunicação</label>
+                       <span class="personal-info">{{device== null ? '-' : device?.comunication}}</span>
+                     </div>
+                     <div class="field">
+                       <label class="label is-small">ID</label>
+                       <span class="personal-info">{{device== null ? '-' : device?.number}}</span>
+                     </div>                                
+                 </div>     
+             </div>          
+                
+                 
+         
+         </div> 
+       </div>
+       <div class="no-associate" *ngIf="associateVehicle.length == 0">
+         <div>
+           <i class="fal fa-truck"></i>
+           <h1> Não há veículos associados a esta viagem</h1>
+         </div>       
+       </div> 
 
      </div>
 
