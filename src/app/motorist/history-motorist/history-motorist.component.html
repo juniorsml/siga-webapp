@@ -1,5 +1,6 @@
 <div class="content-history">
-  <div class="history-sidebar" >
+  <a class="toggle-sidebar" [ngClass]="toggleSidebarStatus ? 'toggleButtonSidebar' : ''"  (click)="toggleSidebar()"><i class="fal fa-angle-left"></i></a>
+  <div class="history-sidebar" [ngClass]="toggleSidebarStatus ? 'closeSidebar' : ''" >
 
     <div class="list-motorists" *ngIf="!showHistoryDetail">
       <div class="list-motorists-header">
@@ -29,7 +30,7 @@
     </sga-history-detail >   
    
   </div>
-  <div class="history-detail">
+  <div class="history-detail" [ngClass]="toggleSidebarStatus ? 'mapWide' : ''">
     <sga-map [showPolygonSquare]="false"></sga-map>
   </div>
 </div>

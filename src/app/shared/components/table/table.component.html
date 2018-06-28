@@ -22,7 +22,7 @@
     </div>
 
     <div [class]="styleBody" [style.bottom]="bodyBottom" [style.top]="bodyTop">
-      <table class="ui-datatable-body-table">
+      <table [ngClass]="styleTableBody">
         <tbody #bodyElement class="ui-datatable-body-tbody">
           <tr #bodyRowElement *ngFor="let row of filteredData | pager: {page:currentPage, quantity: pageQuantity}; let rowIndex = index;"
             [class]="styleRow"

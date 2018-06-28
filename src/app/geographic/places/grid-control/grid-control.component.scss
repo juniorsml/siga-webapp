@@ -2,8 +2,16 @@
 .cnt-places-grid{
   padding: 0 10px;
 }
+
+.cnt-img {
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  background-color: #6397b5;
+}
+
 .container-grid {
-  margin-top: 6em;
+  margin-top: 13.5vh;
   right: 0px;
   left: 0px;
   bottom: 0;
@@ -21,22 +29,22 @@
   }
 }
 
-
 .btn-places-add{
-    border-radius: 50%;
-    color: #FFF;
-    background: #858594;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    font-size: 38px;
-    font-weight: 300;
-    position: absolute;
-    padding: 18px 14px;
-    line-height: 15px;
-    bottom: 30px;
-    right: 36px;
+  border-radius: 50%;
+  color: #FFF;
+  background: #858594;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  font-size: 38px;
+  font-weight: 300;
+  position: absolute;
+  padding: 18px 14px;
+  line-height: 15px;
+  bottom: 30px;
+  right: 36px;
 
-    &:hover{
+  &:hover{
 
-    }
+  }
 }
+

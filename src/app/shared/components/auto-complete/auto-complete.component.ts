@@ -40,7 +40,7 @@ export class AutoCompleteComponent {
   public searchRequested = false;
   public suggestionSelected = false;
 
-  constructor(private elementRef: ElementRef) {}
+  constructor(private elementRef: ElementRef) { }
 
   @HostListener('document:click', ['$event.target'])
   public onClick(targetElement): void {
@@ -56,14 +56,14 @@ export class AutoCompleteComponent {
 
   onKeyDown(event): boolean {
     // up
-    if (event.keyCode == 38 && this.suggestionIndex > 0) {
+    if (event.keyCode === 38 && this.suggestionIndex > 0) {
       event.preventDefault();
       return false;
     }
 
     // down
     if (
-      event.keyCode == 40 &&
+      event.keyCode === 40 &&
       this.suggestionIndex < this.suggestions.length - 1
     ) {
       event.preventDefault();
@@ -76,14 +76,14 @@ export class AutoCompleteComponent {
 
     if (this.hasFocus && this.suggestions != null) {
       // up
-      if (event.keyCode == 38 && this.suggestionIndex > 0) {
+      if (event.keyCode === 38 && this.suggestionIndex > 0) {
         --this.suggestionIndex;
         return;
       }
 
       // down
       if (
-        event.keyCode == 40 &&
+        event.keyCode === 40 &&
         this.suggestionIndex < this.suggestions.length - 1
       ) {
         ++this.suggestionIndex;
@@ -91,13 +91,13 @@ export class AutoCompleteComponent {
       }
 
       // enter
-      if (event.keyCode == 13) {
+      if (event.keyCode === 13) {
         this.onSelect(this.suggestions[this.suggestionIndex]);
         return;
       }
 
       // backspace
-      if (event.keyCode == 8) {
+      if (event.keyCode === 8) {
         this.suggestions = null;
       }
     }

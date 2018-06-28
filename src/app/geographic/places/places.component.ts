@@ -11,7 +11,6 @@ import { places } from '../../shared/mocks/place';
 import { areas } from '../../shared/mocks/area';
 import { GroupedItems } from '../../shared/components/select-grouped/Grouped';
 import { DirectionService } from '../../shared/services/direction.service';
-import { MapStyle } from '../../shared/models/MapStyle';
 
 @Component({
   selector: 'sga-places',
@@ -32,11 +31,14 @@ export class RegisterPlaceComponent implements OnInit {
   public showRegister = false;
   public showSelectGroup = false;
   public showRegisterGroup = false;
+  public toggleSidebarStatus = false;
 
   public groupedItems = new Array<GroupedItems>();
 
+  private currentRay: number;
   private iconOptions = null;
   private lineOptions = null;
+  private polygonOptions = null;
   private currentMarker: L.Marker;
 
   private _places: Array<any>;
@@ -53,6 +55,11 @@ export class RegisterPlaceComponent implements OnInit {
       this.allPlaces();
     }
   }
+
+  toggleSidebar() {
+      this.toggleSidebarStatus = !this.toggleSidebarStatus;
+  }
+
   public allPlaces() {
     this.map.clearAll();
     this.mapMarkers = [];
@@ -154,16 +161,28 @@ export class RegisterPlaceComponent implements OnInit {
     this.moveMap(location.latitude, location.longitude, 18);
     const options = this.iconOptions ? this.iconOptions : location.options;
     this.marker(location.latitude, location.longitude, options);
+
+    // this.addRay(location);
     // this.map.addCustomMarker(location.latitude, location.longitude, '#0049ff', true);
+  }
+
+  private addRay(location: any, ray = 1, options = this.getPolygonOptions('#ff5e5e', '#ff5e5e')) {
+    const turf = window['turf'];
+    const point = turf.point([location.longitude, location.latitude]);
+    const buffered = turf.buffer(point, ray, { units: 'kilometers' });
+    buffered.properties = options;
+    this.map.addGeoJSON(buffered);
   }
 
   public openRegister(type) {
     this.formType = type;
     this.showRegister = true;
+    this.map.addControl(true);
   }
 
   public closeRegister(tabIndex) {
     this.showRegister = false;
+    this.map.addControl(false);
     this.selectedTabIndex = tabIndex;
   }
 
@@ -181,9 +200,9 @@ export class RegisterPlaceComponent implements OnInit {
   public onTabSelected = (tab: TabComponent) => {
     this.selectedTabIndex = tab.index;
     this.filterByTab(
-      () => this.changeMap(false, MapStyle.Outdoor),
-      () => this.changeMap(true, MapStyle.Street),
-      () => this.changeMap(false, MapStyle.Outdoor));
+      () => this.changeMap(true),
+      () => this.changeMap(true),
+      () => this.changeMap(true));
   }
 
   private filterByTab = (whenPlaces, whenItinerary, whenGroup) => {
@@ -200,15 +219,18 @@ export class RegisterPlaceComponent implements OnInit {
     }
   }
 
-  public changeMap = (showControls: boolean, mapStyle: MapStyle) => {
+  public changeMap = (showControls: boolean) => {
     this.map.clearAll();
     this.map.addControl(showControls);
-    this.map.setStyle(mapStyle);
   }
 
-  public closeRegisterGroup = () => this.showRegisterGroup = false;
+  public closeRegisterGroup = () => {
+    this.showRegisterGroup = false;
+    this.map.addControl(false);
+  }
 
   public onSelected(place) {
+    this.map.clearAll();
     if (Array.isArray(place.location)) {
       place.location.map(loc => this.addMarker(this.createPoint(loc.latitude, loc.longitude)));
       this.moveMap(place.location[0].latitude, place.location[0].longitude, 3);
@@ -287,6 +309,8 @@ export class RegisterPlaceComponent implements OnInit {
     this.plotRoute();
   }
 
+  public onSelectedTag = event => console.log(event);
+
   public marker = (lat, lng, options = null) => {
     if (this.currentMarker) { this.currentMarker['remove'](); }
     const markerBody: HTMLElement = document.createElement('div');
@@ -325,10 +349,27 @@ export class RegisterPlaceComponent implements OnInit {
   public closeModalGroup = () => this.showSelectGroup = false;
 
   public draw = options => {
-    this.lineOptions = this.getLineOptions(options.strokeColor, options.fillColor);
+    const { strokeColor, fillColor } = options;
+    this.lineOptions = this.getLineOptions(strokeColor, fillColor);
     this.map.setLineStyle(this.lineOptions);
     if (this.location) {
       this.marker(this.location.latitude, this.location.longitude, options);
+      if (this.currentRay > 0) {
+        this.map.clearLayers();
+        this.polygonOptions = this.getPolygonOptions(strokeColor, fillColor);
+        this.addRay(this.location, this.currentRay, this.polygonOptions);
+      }
+    }
+  }
+
+  public onRayChanged = event => {
+    if (event > 0) {
+      const ray = event / 1000;
+      this.map.clearLayers();
+      this.polygonOptions !== null ?
+        this.addRay(this.location, ray, this.polygonOptions) :
+        this.addRay(this.location, ray);
+      this.currentRay = ray;
     }
   }
 
@@ -354,5 +395,13 @@ export class RegisterPlaceComponent implements OnInit {
     stroke: true,
     color: stroke,
     fillColor: fill
+  })
+
+  private getPolygonOptions = (stroke, fill) => Object.assign({
+    fill, // line
+    stroke, // back
+    'stroke-width': 2,
+    'fill-opacity': 0.5,
+    'stroke-opacity': 0.5
   })
 }

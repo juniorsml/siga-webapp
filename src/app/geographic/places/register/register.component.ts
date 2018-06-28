@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Output, Input, OnInit, ElementRef } from '@angular/core';
 
 import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
-import { MapStyle } from '../../../shared/models/MapStyle';
 
 @Component({
   selector: 'sga-register',
@@ -15,14 +14,14 @@ export class RegisterComponent implements OnInit {
 
   @Input() public formType: string;
   @Input() public backParam: string;
-  @Input() private changeMapStyle: Function;
 
   @Output() public onSubmitForm = new EventEmitter<any>();
   @Output() public onBackButton = new EventEmitter<string>();
+  @Output() public onRayChanged = new EventEmitter<any>();
   @Output() public onPlaceSelected = new EventEmitter<any>();
   @Output() public onPreviewClicked = new EventEmitter<any>();
 
-  private location: any;
+  public location: any;
 
   public docType = 0;
   public placeSelected = false;
@@ -82,6 +81,9 @@ export class RegisterComponent implements OnInit {
     this.status = !this.status;
   }
 
+  public rayChanged = value =>
+    this.onRayChanged.emit(value)
+
   public iconSelected = color =>
     this.redrawPoint(color, this.backgroundColor, this.fillColor, this.strokeColor, () => this.colorIcon = color)
 
@@ -89,7 +91,7 @@ export class RegisterComponent implements OnInit {
     this.redrawPoint(this.colorIcon, color, this.fillColor, this.strokeColor, () => this.backgroundColor = color)
 
   public fillSelected = color =>
-    this.redrawPoint(this.colorIcon, this.backgroundColor, color, this.strokeColor, () => this.backgroundColor = color)
+    this.redrawPoint(this.colorIcon, this.backgroundColor, color, this.strokeColor, () => this.fillColor = color)
 
   public strokeSelected = color =>
     this.redrawPoint(this.colorIcon, this.backgroundColor, this.fillColor, color, () => this.strokeColor = color)
@@ -115,12 +117,10 @@ export class RegisterComponent implements OnInit {
 
   public setTypeSelected = param => {
     this.typeSelected = param;
-    param === 'area' ?
-      this.changeMapStyle(true, MapStyle.Street) :
-      this.changeMapStyle(false, MapStyle.Outdoor);
   }
 
   public onPlacesFiltered(event) {
+    if (event === undefined) { return; }
     const { location } = event.geometry;
     if (location === undefined) { return; }
     const options = {
