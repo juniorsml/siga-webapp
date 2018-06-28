@@ -309,6 +309,8 @@ export class RegisterPlaceComponent implements OnInit {
     this.plotRoute();
   }
 
+  public onSelectedTag = event => console.log(event);
+
   public marker = (lat, lng, options = null) => {
     if (this.currentMarker) { this.currentMarker['remove'](); }
     const markerBody: HTMLElement = document.createElement('div');
