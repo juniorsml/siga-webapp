@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js start
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js build
 
 PATH: 
   C:\Users\ronaldo\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\ronaldo\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\Yarn\bin;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Program Files\dotnet;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\WINDOWS\System32\OpenSSH;C:\PostgreSQL\pg10\bin;C:\Users\ronaldo\AppData\Local\Microsoft\WindowsApps;C:\Users\ronaldo\AppData\Local\Yarn\bin;C:\Users\ronaldo\AppData\Roaming\npm;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
@@ -47,6 +47,7 @@ npm manifest:
       "core-js": "^2.4.1",
       "font-awesome": "^4.7.0",
       "googlemaps": "^1.12.0",
+      "ngx-chips": "^1.9.2",
       "ngx-slimscroll": "^3.7.0",
       "primeng": "^5.2.4",
       "rxjs": "^5.5.6",
@@ -4262,6 +4263,19 @@ Lockfile:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   
+  ng2-material-dropdown@0.10.0:
+    version "0.10.0"
+    resolved "https://registry.yarnpkg.com/ng2-material-dropdown/-/ng2-material-dropdown-0.10.0.tgz#c524937ac0e9ad833f5dcecd9c98f64aca0519cc"
+    dependencies:
+      tslib "^1.9.0"
+  
+  ngx-chips@^1.9.2:
+    version "1.9.2"
+    resolved "https://registry.yarnpkg.com/ngx-chips/-/ngx-chips-1.9.2.tgz#5082147d8db6f0b97f09e813590b80b7def0ab6a"
+    dependencies:
+      ng2-material-dropdown "0.10.0"
+      tslib "^1.9.0"
+  
   ngx-slimscroll@^3.7.0:
     version "3.7.0"
     resolved "https://registry.yarnpkg.com/ngx-slimscroll/-/ngx-slimscroll-3.7.0.tgz#a6bb93dee0c72654ee875c8eb704080e55e72f33"
@@ -6187,6 +6201,10 @@ Lockfile:
     version "1.9.2"
     resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.2.tgz#8be0cc9a1f6dc7727c38deb16c2ebd1a2892988e"
   
+  tslib@^1.9.0:
+    version "1.9.3"
+    resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
+  
   tslint@^5.10.0:
     version "5.10.0"
     resolved "https://registry.yarnpkg.com/tslint/-/tslint-5.10.0.tgz#11e26bccb88afa02dd0d9956cae3d4540b5f54c3"
@@ -6860,9 +6878,9 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 3221225786
+  Exit code: 1
   Command: C:\WINDOWS\system32\cmd.exe
-  Arguments: /d /s /c ng serve -H 0.0.0.0
+  Arguments: /d /s /c ng build --prod
   Directory: C:\Users\ronaldo\Documents\Projetos\siga
   Output:
   
