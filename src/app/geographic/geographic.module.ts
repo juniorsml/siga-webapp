@@ -47,6 +47,18 @@ import { Router } from '@angular/router';
       useClass: MapService
     }
   ],
-  declarations: [GridAreaComponent, RegisterAreaComponent, MapAreaComponent, GridPointComponent, RegisterPointComponent, MapPointComponent, RegisterPlaceComponent, RegisterComponent, GridControlComponent, RegisterGroupComponent, ModalGroupComponent]
+  declarations: [
+    GridAreaComponent,
+    RegisterAreaComponent,
+    MapAreaComponent,
+    GridPointComponent,
+    RegisterPointComponent,
+    MapPointComponent,
+    RegisterPlaceComponent,
+    RegisterComponent,
+    GridControlComponent,
+    RegisterGroupComponent,
+    ModalGroupComponent
+  ]
 })
 export class GeographicModule { }
