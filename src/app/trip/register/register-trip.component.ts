@@ -36,6 +36,8 @@ export class RegisterTripComponent {
         this.router.navigateByUrl('trip/register/device');
         break;
 
+      
+
       case 'Viagem':
         break; 
     }
