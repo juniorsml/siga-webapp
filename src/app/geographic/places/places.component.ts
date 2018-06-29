@@ -12,6 +12,8 @@ import { areas } from '../../shared/mocks/area';
 import { GroupedItems } from '../../shared/components/select-grouped/Grouped';
 import { DirectionService } from '../../shared/services/direction.service';
 
+import { MapStyle } from '../../shared/models/MapStyle';
+
 @Component({
   selector: 'sga-places',
   templateUrl: './places.component.html',
