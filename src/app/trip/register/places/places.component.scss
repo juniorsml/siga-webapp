@@ -5,10 +5,22 @@
   // right: 22px;
   // bottom: 22px;
   // top: 79px;
+  display: flex;
+  .slimscroll-wrapper{
+    width: 378px !important;
+
+  }
+  .slimscroll-bar{
+    display: block !important;
+    opacity:0.4 !important;
+  }
+  .places-sidebar{
+    height:70vh !important
+  }
   .places-sidebar,
   .places-detail {
-    height: 100%;
-    
+    height: 100%; 
+
     padding: 4px 10px 0 10px;
   }
   .trip-places-header {
@@ -146,7 +158,7 @@
   }
 
   .places-sidebar {
-    position: absolute;
+    position: relative;
     width: 378px;
 
     .trip-places-lv {

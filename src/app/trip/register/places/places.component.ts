@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 
 import { Map } from '../../../shared/models/Map';
 import { DirectionService } from '../../../shared/services/direction.service';
+import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
 
 @Component({
   selector: 'sga-places',
@@ -12,11 +13,25 @@ export class PlacesComponent implements OnInit {
 
   public places = new Array<any>();
   public route: any;
+  opts: ISlimScrollOptions;
+  scrollEvents: EventEmitter<SlimScrollEvent>;
 
   constructor(private map: Map, private directionService: DirectionService) { }
 
   ngOnInit(): void {
     this.injectMap();
+    this.scrollEvents = new EventEmitter<SlimScrollEvent>();
+    this.opts = {
+      alwaysVisible: false,
+      gridOpacity: '0.2',
+      barOpacity: '0.5',
+      gridBackground: '#ccc',
+      gridWidth: '5',
+      gridMargin: '2px 2px',
+      barBackground: 'rgba(55, 56, 58, 0.6)',
+      barWidth: '4',
+      barMargin: '2px 2px'
+    };
   }
 
   public selectPlace = place => {
