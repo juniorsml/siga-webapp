@@ -1,4 +1,6 @@
-
+.trip-info{
+      margin-top: 24px;
+}
 .cnt-trip-places {
   // position: absolute;
   // left: 22px;
@@ -54,7 +56,8 @@
     }
     
     .place-added{
-      padding: 11px 7px;
+      margin: 0px 15px;
+      padding: 24px 11px;
       background: #a6adb7;
       color: #FFF;
       position:relative;
@@ -62,13 +65,18 @@
       align-items:center;
       transition:all 150ms ease;
       
-      .place-tag {
-        position: fixed;
-        background: none;
-        border: none;
-        margin-top: 1.8em;
-        border-bottom: solid #8c929c 2px;
-        width: 20%;
+      .place-tags {        
+        width: 42vh;
+        position: absolute;
+        top: 46px;
+        right: 21px;
+        span{
+          background: #888b92;
+          padding: 1px 6px;
+          border-radius: 3px;
+          font-size: 12px;
+        }
+       
       }
 
       &:hover{
@@ -176,7 +184,7 @@
   }
   .places-detail {
     position: absolute;
-    left: 389px;
+    left: 399px;
     right: 0;
     padding: 0;
     .cnt-details {
