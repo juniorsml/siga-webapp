@@ -89,10 +89,12 @@ $bg-titles: #4d5675;
 }
 
 
-
-
-
 /* AUTO COMPLETE*/
+.pac-container {
+  z-index: 99999
+}
+
+
 .autocomplete-suggestion {
     width: 100%;
     border-bottom: 1px solid #eee;
