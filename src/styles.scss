@@ -420,6 +420,9 @@ $bg-titles: #4d5675;
       margin: 0;
       padding: 0px 0;
       height: 83px;
+      margin-top: 17px;
+      display: flex;
+      justify-content: center;
     }
   
   .container-grid .ui-datatable-wrapper .ui-datatable-header,
