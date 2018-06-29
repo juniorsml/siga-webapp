@@ -9,18 +9,18 @@ import { Router } from '@angular/router';
 })
 export class RegisterTripComponent {
   constructor(private router: Router) { }
- 
+
   onSelectStep(event: StepClickEvent) {
     switch (event.data.header) {
-      
-      case 'Geral': 
-        this.router.navigateByUrl('trip/register/detail');
+
+      case 'Geral':
+              this.router.navigateByUrl('trip/register/detail');
         break;
-        
+      
       case 'Itinerário':
         this.router.navigateByUrl('trip/register/places');
         break;
-      
+  
       case 'Motorista':
         this.router.navigateByUrl('trip/register/motorist');
         break;
@@ -36,10 +36,12 @@ export class RegisterTripComponent {
         this.router.navigateByUrl('trip/register/device');
         break;
 
-      
+      case 'Resumo':
+      this.router.navigateByUrl('trip/register/summary');
+      break;
 
       case 'Viagem':
-        break; 
+        break;
     }
   }
 }
