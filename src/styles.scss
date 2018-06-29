@@ -10,6 +10,31 @@ div, *{
   margin:0;
   padding:O;
 }
+.ng2-tag-input{
+  border-bottom: none !important;
+
+  div{
+    border-radius: 3px !important;
+  }
+}
+.tag-wrapper{
+  line-height: 30px !important;
+}
+.ng2-tags-container{
+  border: 1px solid #cbced4 !important;
+  border-radius: 3px !important;
+  padding: 6px 7px !important;
+}
+.ng2-tag-input__text-input{  
+    padding: 0 !important;
+    height: 26px !important;
+    font-size: 13px !important;
+    font-family: 'Open Sans',sans-serif !important;
+}
+.tag__text[_ngcontent-c15] {
+     font-size: 13px !important;
+    font-family: 'Open Sans',sans-serif !important;
+}
 .toggle-sidebar {
     background: #737d96;
     color: #FFF;
