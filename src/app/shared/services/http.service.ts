@@ -81,8 +81,7 @@ export class HttpService extends Http {
   private beforeRequest() {
   }
 
-  private onCatch(error: any, caught: Observable<any>): Observable<any> {
-    caught;
+  private onCatch(error: any): Observable<any> {
     let response: ApiResponse = {
       errorMessage: 'Ocorreu um erro inesperado',
       isSuccess: false,
