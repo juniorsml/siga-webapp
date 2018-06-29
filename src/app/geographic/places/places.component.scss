@@ -71,13 +71,18 @@
       align-items:center;
       transition:all 150ms ease;
       
-      .place-tag {
-        position: fixed;
-        background: none;
-        border: none;
-        margin-top: 2em;
-        border-bottom: solid #4e5563 1px;
+      .place-tags {        
         width: 47vh;
+        position: absolute;
+        top: 46px;
+        right: 21px;
+        span{
+          background: #888b92;
+          padding: 1px 6px;
+          border-radius: 3px;
+          font-size: 12px;
+        }
+       
       }
 
       &:hover{
