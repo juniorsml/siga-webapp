@@ -15,7 +15,10 @@
 
 <div class="columns is-multiline content-trip">
 	<div class="column is-12 trip-header">
-	  <sga-steps [width]="'98%'" (onSelectStep)="onSelectStep($event)">
+    <div class="prev-button">
+      <i class="icon fal fa-chevron-left"></i>
+    </div>
+	  <sga-steps [width]="'90%'" (onSelectStep)="onSelectStep($event)">
 	    <sga-step [header]="'Geral'" [icon]="'fal fa-home'"></sga-step>
 	    <sga-step [header]="'Itinerário'" [icon]="'fal fa-map'"></sga-step>
 	    <sga-step [header]="'Motorista'" [icon]="'fal fa-user'"></sga-step>
@@ -23,6 +26,9 @@
 	    <sga-step [header]="'Reboque'" [icon]="'fal fa-truck-loading'"  [hasGap]="true"></sga-step>
 	    <sga-step [header]="'Dispositivo'" [icon]="'fal fa-wrench'" [isHollow]="true"></sga-step>
 	  </sga-steps>
+    <div class="next-button">
+      <i class="icon fal fa-chevron-right"></i>
+    </div>
 	</div>
 	<div class="column is-12 is-paddingless cnt-trip">
 		<router-outlet></router-outlet>
