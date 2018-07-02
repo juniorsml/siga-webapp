@@ -25,28 +25,28 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterTripComponent,
-    children: [ 
+    children: [
       { path: 'detail', component: DetailComponent },
       { path: 'places', component: PlacesComponent },
-      { path: 'motorist', component: MotoristComponent, data: {motorists} },
-      { path: 'vehicles', component: VehiclesComponent,  data: { vehicles }  },
-      { path: 'trucks', component: TrucksComponent, data: { vehicles }  },
+      { path: 'motorist', component: MotoristComponent, data: { motorists } },
+      { path: 'vehicles', component: VehiclesComponent, data: { vehicles } },
+      { path: 'trucks', component: TrucksComponent, data: { vehicles } },
       { path: 'device', component: DeviceComponent, data: { devices } },
       { path: 'summary', component: SummaryComponent },
     ]
   },
-  { 
-    path: 'started', 
+  {
+    path: 'started',
     component: StartedTripsComponent,
     data: { trips }
   },
-  { 
-    path: 'scheduled', 
+  {
+    path: 'scheduled',
     component: ScheduledTripsComponent,
     data: { trips }
   },
-  { 
-    path: 'historic', 
+  {
+    path: 'historic',
     component: HistoricTripsComponent,
     data: { trips }
   }
@@ -56,4 +56,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TripRoutingModule {}
+export class TripRoutingModule { }
