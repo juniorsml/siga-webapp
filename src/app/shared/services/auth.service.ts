@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs/Observable';
 import { HttpService } from './http.service';
+import { User } from '../models/api/User';
+import { map } from 'rxjs/operators';
+import { RequestOptions, Headers } from '@angular/http';
 
 @Injectable()
 export class AuthService {
@@ -12,21 +15,14 @@ export class AuthService {
     localStorage.removeItem(environment.authTokenName);
   }
 
-  public login(username: string, password: string): Observable<any> {
+  public login(username: string, password: string): Observable<User> {
+    const headers: Headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    const options = new RequestOptions({headers: headers});
     return this
       .http
-      .post(`api/users/web/login`, {username, password});
-    // return Observable.create(observer => {
-    //   setTimeout(() => {
-    //     const tokenValue = 'tokenValue';
-    //     if (email && password) {
-    //       localStorage.setItem(environment.authTokenName, tokenValue);
-    //       observer.next(tokenValue);
-    //       return;
-    //     }
-    //     observer.error({ errorMessage: 'Usuário ou senha incorretos' });
-    //   }, 1000);
-    // });
+      .post(`api/users/web/login`, {username, password}, options)
+      .pipe(map(res => <User>res.json()));
   }
 
   public getToken(): any {

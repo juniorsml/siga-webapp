@@ -64,7 +64,6 @@ export class HttpService extends Http {
     if (options.headers == null) {
       options.headers = new Headers();
       options.headers.append('Content-Type', 'application/json');
-      options.headers.append('Access-Control-Allow-Origin', '*');
     }
 
     const userAuthToken = localStorage.getItem(environment.authTokenName);
@@ -82,8 +81,7 @@ export class HttpService extends Http {
   private beforeRequest() {
   }
 
-  private onCatch(error: any, caught: Observable<any>): Observable<any> {
-    caught;
+  private onCatch(error: any): Observable<any> {
     let response: ApiResponse = {
       errorMessage: 'Ocorreu um erro inesperado',
       isSuccess: false,
