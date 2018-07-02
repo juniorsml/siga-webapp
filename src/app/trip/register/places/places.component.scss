@@ -1,13 +1,28 @@
+.trip-info{
+      margin-top: 24px;
+}
 .cnt-trip-places {
   // position: absolute;
   // left: 22px;
   // right: 22px;
   // bottom: 22px;
   // top: 79px;
+  display: flex;
+  .slimscroll-wrapper{
+    width: 378px !important;
+
+  }
+  .slimscroll-bar{
+    display: block !important;
+    opacity:0.4 !important;
+  }
+  .places-sidebar{
+    height:70vh !important
+  }
   .places-sidebar,
   .places-detail {
-    height: 100%;
-    
+    height: 100%; 
+
     padding: 4px 10px 0 10px;
   }
   .trip-places-header {
@@ -41,7 +56,8 @@
     }
     
     .place-added{
-      padding: 8px 10px 25px;
+      margin: 0px 15px;
+      padding: 24px 11px;
       background: #a6adb7;
       color: #FFF;
       position:relative;
@@ -49,13 +65,18 @@
       align-items:center;
       transition:all 150ms ease;
       
-      .place-tag {
-        position: fixed;
-        background: none;
-        border: none;
-        margin-top: 1.8em;
-        border-bottom: solid #8c929c 2px;
-        width: 20%;
+      .place-tags {        
+        width: 42vh;
+        position: absolute;
+        top: 46px;
+        right: 21px;
+        span{
+          background: #888b92;
+          padding: 1px 6px;
+          border-radius: 3px;
+          font-size: 12px;
+        }
+       
       }
 
       &:hover{
@@ -76,7 +97,7 @@
         border-left-color: white;
         height: 20px;
         bottom: -10px;
-        left: 22px;
+        left: 17px;
       }
 
       .remove-place{
@@ -145,7 +166,7 @@
   }
 
   .places-sidebar {
-    position: absolute;
+    position: relative;
     width: 378px;
 
     .trip-places-lv {
@@ -163,7 +184,7 @@
   }
   .places-detail {
     position: absolute;
-    left: 389px;
+    left: 399px;
     right: 0;
     padding: 0;
     .cnt-details {

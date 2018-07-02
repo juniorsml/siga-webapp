@@ -10,5 +10,3 @@ import { Component, Input } from '@angular/core';
 export class SummaryComponent {
   @Input() public trip: any;
 }
-
- 

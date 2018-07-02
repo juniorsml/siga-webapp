@@ -1,7 +1,8 @@
 <div class="modal-box" [ngClass]="showDialog ? 'opened-modal' : ''">	
   
 		<div class="content-modal is-multiline columns">
-      <div class="container-dialog-header columns column is-12 is-marginless">
+
+      <div style="height:7%" class="container-dialog-header columns column is-12 is-marginless">
         <div class="area column is-narrow">
           <h3 >Resumo da Viagem</h3>  
         </div>
@@ -9,22 +10,25 @@
            <i  (click)="onClose()" class="fal fa-times is-pulled-right"></i>
         </div>      
       </div>
-			<div class="column is-narrow" style="width: 130px;">
-				<sga-steps [isVertical]="true" [width]="'90%'" (onSelectStep)="onSelectStep($event)">
-			    <sga-step [header]="'Resumo'" [icon]="'fal fa-home'"></sga-step>
-			    <sga-step [header]="'Motorista'" [icon]="'fal fa-user'"></sga-step>
-			    <sga-step [header]="'Veículo'" [icon]="'fal fa-truck'"></sga-step>	 
-			    <sga-step [header]="'Itinerário'" [icon]="'fal fa-map'"></sga-step>	    
-			  </sga-steps>
-			</div>
-		  <div class="column">
-				<div [ngSwitch]="selectedStepIndex">
-					<sga-summary *ngSwitchCase="0" [trip]="trip"></sga-summary>
-					<sga-summary-motorist *ngSwitchCase="1" [motorists]="trip.motorists"></sga-summary-motorist>
-					<sga-summary-vehicle *ngSwitchCase="2" [vehicles]="trip.vehicles"></sga-summary-vehicle>
-					<sga-summary-itinerary *ngSwitchCase="3"></sga-summary-itinerary>
-				</div>
-			</div>
+      <div style="height:93%" class="columns column is-12">
+          <div class="column is-narrow" style="width: 130px;">
+            <sga-steps [isVertical]="true" [width]="'90%'" (onSelectStep)="onSelectStep($event)">
+              <sga-step [header]="'Resumo'" [icon]="'fal fa-home'"></sga-step>
+              <sga-step [header]="'Motorista'" [icon]="'fal fa-user'"></sga-step>
+              <sga-step [header]="'Veículo'" [icon]="'fal fa-truck'"></sga-step>   
+              <sga-step [header]="'Itinerário'" [icon]="'fal fa-map'"></sga-step>     
+            </sga-steps>
+          </div>
+          <div class="column">
+            <div [ngSwitch]="selectedStepIndex">
+              <sga-summary *ngSwitchCase="0" [trip]="trip"></sga-summary>
+              <sga-summary-motorist *ngSwitchCase="1" [motorists]="trip.motorists"></sga-summary-motorist>
+              <sga-summary-vehicle *ngSwitchCase="2" [vehicles]="trip.vehicles"></sga-summary-vehicle>
+              <sga-summary-itinerary *ngSwitchCase="3"></sga-summary-itinerary>
+            </div>
+          </div>
+        
+      </div>
 		
 	 		
 		</div>
