@@ -119,6 +119,23 @@
           </span>
         </ng-template>
       </column>
+      <context-menu [mode]="'click'" [ignoreCells]="[0]" (onItemSelected)="contextMenuSelected($event)">
+        <menu-item [enabled]="true">
+          <ng-template>
+            <span class="table-menu-icon item-context-menu fal fa-map-marker-alt" aria-hidden="true">
+            </span>
+            <span>Localização</span>
+          </ng-template>
+        </menu-item>
+        <menu-item [enabled]="true">
+          <ng-template>
+            <span class="table-menu-icon item-context-menu fal fa-calendar" aria-hidden="true">
+            </span>
+            <span>Histórico</span>
+          </ng-template> 
+        </menu-item>
+       
+      </context-menu>
     </data-table>
   </div>
 </div>
