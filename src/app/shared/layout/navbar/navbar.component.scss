@@ -1,5 +1,5 @@
 nav {
-  position: absolute;
+  position: fixed;
   right: 6px;
   z-index: 999;
   background: rgba(255,255,255,0.95);
@@ -11,7 +11,7 @@ nav {
       align-items: center;
       padding: 0px 12px;
      
-      li {
+      li { 
          margin: 0 11px;
          display: flex;
 
