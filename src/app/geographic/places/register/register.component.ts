@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
   @Output() public onPlaceSelected = new EventEmitter<any>();
   @Output() public onPreviewClicked = new EventEmitter<any>();
 
-  public onSelectedTag = event => console.log(event);
+  public onSelectedTag = event => " Aqui é qualquer coisa ";
 
   public location: any;
 
