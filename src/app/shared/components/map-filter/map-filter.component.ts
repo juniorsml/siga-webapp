@@ -27,10 +27,15 @@ export class MapFilterComponent implements OnInit {
   constructor(private ngZone: NgZone) {  }
 
   ngOnInit() {
+
     // Initialize places input
     this.placesInput = new google.maps.places.Autocomplete(<HTMLInputElement> this.input.nativeElement);
     this.placesInput.addListener('place_changed', () => this.setLocation());
     this.location = null;
+
+     this.distance.isDisabled = true;
+
+
   }
 
   setLocation() {
@@ -49,6 +54,7 @@ export class MapFilterComponent implements OnInit {
   onPlacesKeyUp() {
     this.location = null;
     this.filterRemoved.emit();
+    
   }
 
   setDistanceAndLocation() {
