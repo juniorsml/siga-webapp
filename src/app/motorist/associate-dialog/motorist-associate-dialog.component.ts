@@ -1,19 +1,18 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { MotoristService } from '../motorist.service';
+import { forkJoin } from 'rxjs/observable/forkJoin';
 
 @Component({
   selector: 'sga-motorist-associate-dialog',
   templateUrl: './motorist-associate-dialog.component.html',
-  styleUrls: ['./motorist-associate-dialog.component.scss']
+  styleUrls: ['./motorist-associate-dialog.component.scss'],
+  providers: [MotoristService]
 })
 export class MotoristAssociateDialogComponent implements OnInit {
-  @Input()
   public showDialog: boolean;
-
 
   public haveFooter = true;
 
-  @Input()
   get motorists(): Array<any> {
     return this._motorists;
   }
@@ -35,10 +34,23 @@ export class MotoristAssociateDialogComponent implements OnInit {
   public searchText: any;
   public hideAdminErrorModal = true;
 
-  constructor(private router: ActivatedRoute) {}
+  constructor(private motoristService: MotoristService) { }
 
   ngOnInit(): void {
-    this.router.data.subscribe(data => this.motorists = data.motorists);
+    this.getMotorists();
+  }
+
+  private getMotorists() {
+    this
+      .motoristService
+      .getMotorists()
+      .subscribe(
+        data => this.onSuccess(data),
+        error => alert(error));
+  }
+
+  private onSuccess(data) {
+    this.motorists = data;
   }
 
   private setCurrentMotorists() {
@@ -49,7 +61,7 @@ export class MotoristAssociateDialogComponent implements OnInit {
   }
 
   private motoristIsDuplicate(motoristId): boolean {
-    return this.removeList.find(m => m.id == motoristId);
+    return this.removeList.find(m => m.id === motoristId);
   }
 
   public onMotoristSelected(motorist) {
@@ -79,8 +91,7 @@ export class MotoristAssociateDialogComponent implements OnInit {
     this.currentList.unshift(motorist);
   }
 
-  public showMotoristForm(suggestion) {
-    suggestion;
+  public showMotoristForm() {
     this.showMotoristRegister = true;
   }
 
@@ -97,5 +108,15 @@ export class MotoristAssociateDialogComponent implements OnInit {
     if (event.cellIndex === 6) { this.deleteMotorist(event.data); }
   }
 
-  applyChanges() {}
+  applyChanges() {
+    const addIds = this.addList.map(motorist => motorist.id);
+    const undoIds = this.removeList.map(motorist => motorist.id);
+
+    forkJoin([
+      this.motoristService.associateMotorist(addIds),
+      this.motoristService.disassociateMotorist(undoIds)
+    ]).subscribe(
+      success => console.log(success),
+      error => console.log(error));
+  }
 }
