@@ -9,7 +9,7 @@ import { RequestOptions, Headers } from '@angular/http';
 @Injectable()
 export class AuthService {
 
-  constructor(private http: HttpService) {}
+  constructor(private http: HttpService) { }
 
   public logout(): void {
     localStorage.removeItem(environment.authTokenName);
@@ -17,12 +17,16 @@ export class AuthService {
 
   public login(username: string, password: string): Observable<User> {
     const headers: Headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    const options = new RequestOptions({headers: headers});
+    headers.append('Content-Type', 'application/json; charset=utf-8');
+    const options = new RequestOptions({ headers: headers });
     return this
       .http
-      .post(`api/users/web/login`, {username, password}, options)
-      .pipe(map(res => <User>res.json()));
+      .post(`api/users/web/login`, { username, password }, options)
+      .pipe(map(res => {
+        const user = <User>res.json();
+        user.token = res.headers.get('x-auth-token');
+        return user;
+      }));
   }
 
   public getToken(): any {
