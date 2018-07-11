@@ -33,8 +33,6 @@ export class MapFilterComponent implements OnInit {
     this.placesInput.addListener('place_changed', () => this.setLocation());
     this.location = null;
 
-     this.distance.isDisabled = true;
-
 
   }
 
@@ -54,6 +52,9 @@ export class MapFilterComponent implements OnInit {
   onPlacesKeyUp() {
     this.location = null;
     this.filterRemoved.emit();
+    if(this.location == null){
+      this.distance = '';
+    }
     
   }
 
