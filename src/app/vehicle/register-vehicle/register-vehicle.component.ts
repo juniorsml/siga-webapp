@@ -45,7 +45,7 @@ export class RegisterVehicleComponent {
 
   @Input()
   public showForm: boolean;
-  @Output() onFinish: EventEmitter<void> = new EventEmitter();
+  @Output() onFormClose: EventEmitter<void> = new EventEmitter();
   public selectedTabIndex = 0;
 
   // Show image profile
@@ -79,7 +79,7 @@ export class RegisterVehicleComponent {
     }
 
   cancel() {
-    this.onFinish.emit();
+    this.onFormClose.emit();
   }
 
   create(formMotorist: NgForm) {

@@ -64,8 +64,8 @@
               {{(item.name.length>35)? (item.name | slice:0:35)+'...':(item.name)}}
             </h5>
             <div class="controls">
-              <i (click)="addNewPlace(item)" class="add-place fal fa-times-circle"></i>
-              <i (click)="removeItineraryPlace(item)" class="remove-place fal fa-times-circle"></i>
+              <i (click)="addNewPlace(item)" title="Salvar" class="add-place fal fa-bookmark"></i>
+              <i (click)="removeItineraryPlace(item)" title="Remover" class="remove-place fal fa-times-circle"></i>
             </div>
             
             <div class="reverse" *ngIf="i === 1 && itineraryPlaces.length === 2"

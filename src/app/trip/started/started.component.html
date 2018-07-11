@@ -23,7 +23,7 @@
    
 <div class="content-wrapper content-grid-motorist grid-spacing-search">
   <div [ngClass]="styleClass" class="columns level-left">
-    <div class="column is-3">     
+    <div class="column is-2">     
       <p class="control has-icons-left"> 
         <input [(ngModel)]="text" class="input is-small"  placeholder="Buscar" type="text"/>
         <span class="icon is-small is-left">
@@ -34,7 +34,7 @@
     <sga-map-filter 
       (placesFiltered)="onPlacesFiltered($event)" 
       (filterRemoved)="onPlacesFilterRemoved()"
-      class="column is-12">
+      class="column is-10">
     </sga-map-filter>
   </div>
 
@@ -43,7 +43,7 @@
       [data]="trips | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
       [dataLength]="trips.length"
       [searchText]="text" 
-      [searchColumns]="['id','motorists.documentId','currentState.Status','motorists.documentId','motorists.documentId']"
+      [searchColumns]="['currentState.status','geography','motorists.documentId','vehicles.numberPlate', 'created']"
       [emptySearchText]="'nenhuma viagem foi encontrado'" 
       [haveFooter]="haveFooter"
       (onCellClick)="updateSelectedTrip($event)"
