@@ -48,7 +48,14 @@
     <div *ngIf="haveFooter" #footerElement [class]="styleFooter">
       <div class="ui-datatable-footer-wrapper">      
         <div>
-            <span class="ui-datatable-footer-total">{{filteredData?.length}} | {{dataLength}}</span>
+            <span class="ui-datatable-footer-total">
+
+              <span *ngIf="filteredData?.length > dataLength || filteredData?.length < pageQuantity "> {{filteredData?.length}}</span>
+              <span *ngIf="filteredData?.length > pageQuantity ">{{pageQuantity}}</span>
+
+            | {{dataLength}}
+
+           </span>
         </div>
         <div class="ui-datatable-footer-right">
           <div class="select is-small">

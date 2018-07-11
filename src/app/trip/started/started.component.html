@@ -6,10 +6,16 @@
       <li class="is-active"><a href="#" aria-current="page">Em Viagem</a></li>
     </ul>
   </nav>
-  <div class="columns column is-4 header-content-right">    
-    <sga-sidebar-configuration (onSelectOption)="onSelectOption($event)" class="column is-6">
-      <sga-option header="Seleção de Colunas"></sga-option>
-    </sga-sidebar-configuration>
+  <div class="columns column is-4 header-content-right">   
+    <div>
+      <a class="map-open" href=""><i class="fal fa-map"></i><span>Mapa</span></a>
+    </div> 
+    <div>
+      <sga-sidebar-configuration (onSelectOption)="onSelectOption($event)" class="column is-6">
+        <sga-option header="Seleção de Colunas"></sga-option>
+      </sga-sidebar-configuration>
+    </div>
+ 
   </div>  
 </div>
 
@@ -66,7 +72,7 @@
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'currentState'" [header]="'Iniciado'" [minWidth]="'43'" [isSortable]="true"> 
+      <column [key]="'currentState'" [header]="'Iniciado'" [Width]="'83'" [isSortable]="true"> 
        	<ng-template let-item="item">
             <span *ngIf="item == null || item?.start == undefined">-</span>
             <span *ngIf="item != null && item.start != undefined">{{item?.start | date:'medium'}}</span>
