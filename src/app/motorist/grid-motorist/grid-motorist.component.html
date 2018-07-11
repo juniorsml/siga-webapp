@@ -49,7 +49,7 @@
   <div class="container-grid container-grid-wrapper">
     <data-table 
       [data]="motorists | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
-      [dataLength]="motorists.length"
+      [dataLength]="motorists?.length"
       [searchText]="text" 
       [searchColumns]="['documentId', 'firstName', 'lastName', 'location.driverStatus', 'location.speed', 'location.altitude', 'location.mode']"
       [emptySearchText]="'nenhuma motorista foi encontrado'" 
