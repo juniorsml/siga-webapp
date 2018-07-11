@@ -11,7 +11,7 @@
       <a class="map-open" href=""><i class="fal fa-map"></i><span>Mapa</span></a>
     </div> 
     <div>
-      <sga-sidebar-configuration (onSelectOption)="onSelectOption($event)" class="column is-6">
+      <sga-sidebar-configuration (onSelectOption)="onSelectOption($event)">
         <sga-option header="Seleção de Colunas"></sga-option>
       </sga-sidebar-configuration>
     </div>
@@ -49,7 +49,7 @@
       [data]="trips | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
       [dataLength]="trips.length"
       [searchText]="text" 
-      [searchColumns]="['currentState.status','geography','motorists.documentId','vehicles.numberPlate', 'created']"
+      [searchColumns]="['currentState.status','geography.destinations[].address.complete','motorists.documentId','vehicles.numberPlate', 'created']"
       [emptySearchText]="'nenhuma viagem foi encontrado'" 
       [haveFooter]="haveFooter"
       (onCellClick)="updateSelectedTrip($event)"
@@ -72,7 +72,7 @@
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'currentState'" [header]="'Iniciado'" [Width]="'83'" [isSortable]="true"> 
+      <column [key]="'currentState'" [header]="'Iniciado'" [width]="'83'" [isSortable]="true"> 
        	<ng-template let-item="item">
             <span *ngIf="item == null || item?.start == undefined">-</span>
             <span *ngIf="item != null && item.start != undefined">{{item?.start | date:'medium'}}</span>
