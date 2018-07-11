@@ -121,6 +121,8 @@ export class DataTableComponent
         this.searchColumns
       ]);
       this.emptyTable = this.filteredData.length === 0;
+    } else {
+      this.filteredData = this.data;
     }
 
     // if (this.bodyRowElement !== null)
