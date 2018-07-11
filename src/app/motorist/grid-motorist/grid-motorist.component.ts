@@ -1,45 +1,54 @@
-import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+
 import { TableClickEvent } from '../../shared/components/table/table.component';
-import { ActivatedRoute, Router } from '@angular/router';
 import { OptionClickEvent } from '../../shared/events/OptionClickEvent';
+import { MotoristService } from '../motorist.service';
+import { Motorist } from '../../shared/models/api/Motorist';
 
 @Component({
   selector: 'sga-grid-motorist',
   templateUrl: './grid-motorist.component.html',
-  styleUrls: ['./grid-motorist.component.scss']
+  styleUrls: ['./grid-motorist.component.scss'],
+  providers: [MotoristService]
 })
 export class GridMotoristComponent implements OnInit {
-  @Input() motorists = new Array();
-  @Input() dataLoading = true;
-  @Input() haveFooter = true;
-  @Output() onMotoristSelected: EventEmitter<any> = new EventEmitter();
+  public text: any;
+  public distance: any;
+  public motorist: any;
+  public placeText: any;
+  public styleClass: any;
+  public filterLocation: any;
+  public filterDistance: any;
+  public selectedMotorist: any;
 
-
-  text: any;
-  distance: any;
-  motorist: any;
-  placeText: any;
-  styleClass: any;
-  filterLocation: any;
-  filterDistance: any;
-  selectedMotorist: any;
-
-  showDialog = false;
-  showMotoristDialog: boolean;
-  showColumnSelector = false;
+  public showDialog = false;
+  public showMotoristDialog: boolean;
+  public showColumnSelector = false;
 
   public headers = new Array<string>();
+  public motorists = new Array<Motorist>();
   public filterHeaders = new Array<string>();
 
-  constructor(private route: ActivatedRoute,
-              private router: Router) { }
+  constructor(
+    private router: Router,
+    private motoristService: MotoristService) { }
 
   ngOnInit(): void {
-    this.route.data.subscribe(data => this.motorists = data.motorists);
+    this.getMotorists();
   }
 
-  closeColumnSelector() {
-    this.showColumnSelector = false;
+  private getMotorists() {
+    this
+      .motoristService
+      .getMotorists()
+      .subscribe(
+        data => this.onSuccess(data),
+        error => alert(error));
+  }
+
+  private onSuccess(data) {
+    this.motorists = data;
   }
 
   onSelectOption(event: OptionClickEvent) {
@@ -50,16 +59,12 @@ export class GridMotoristComponent implements OnInit {
       case 'Configuração':
         this.router.navigateByUrl('motorist/account');
         break;
-     }
+    }
   }
 
   public onCellClick(event) {
     this.selectedMotorist = event.data;
     if (event.cellIndex === 0) { this.showMotoristDialog = true; }
-  }
-
-  public onCellRightClick(event: TableClickEvent) {
-    this.selectedMotorist = event.data;
   }
 
   public onPlacesFiltered(event) {
@@ -78,6 +83,10 @@ export class GridMotoristComponent implements OnInit {
         this.router.navigateByUrl(`motorist/history/${this.selectedMotorist.id}`);
     }
   }
+
+  public onCellRightClick = (event: TableClickEvent) => this.selectedMotorist = event.data;
+
+  public closeColumnSelector = () => this.showColumnSelector = false;
 
   public showMotoristModal = () => this.showMotoristDialog = true;
 
