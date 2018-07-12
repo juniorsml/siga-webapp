@@ -17,10 +17,11 @@ export class MotoristService {
       .pipe(map(res => <Array<Motorist>>res.json()));
   }
 
-  public saveMotorist(motorist: Motorist): void {
-    this
+  public saveMotorist(motorist: Motorist): Observable<any> {
+    return this
       .http
-      .post('api/motorists', motorist);
+      .post('api/motorists', motorist)
+      .pipe(map(res => res.json()));
   }
 
   public associateMotorist(ids: Array<string>): Observable<any> {
