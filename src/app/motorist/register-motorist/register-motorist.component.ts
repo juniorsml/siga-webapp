@@ -1,6 +1,7 @@
 import { Component, Output, OnInit, EventEmitter, Input, ViewChild  } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { MotoristService } from '../motorist.service';
 
 class RegisterForm {
 
@@ -21,9 +22,9 @@ class RegisterForm {
   dueDate: string;
 
   // Address
-  landlinePhone: string;
-  mobilePhone: string;
+  cellPhone: string;
   messagePhone: string;
+  landlinePhone: string;
 
   nextelPhone: string;
 
@@ -32,14 +33,13 @@ class RegisterForm {
   dueDateMopp: Date;
   dueDateAso: Date;
   dueDateCdd: Date;
-
 }
-
 
 @Component({
   selector: 'sga-register-motorist',
   templateUrl: './register-motorist.component.html',
-  styleUrls: ['./register-motorist.component.scss']
+  styleUrls: ['./register-motorist.component.scss'],
+  providers: [MotoristService]
 })
 
 export class RegisterMotoristComponent implements  OnInit {
@@ -56,17 +56,22 @@ export class RegisterMotoristComponent implements  OnInit {
 
   pt: any;
   landlinephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
-  mobilephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  cellPhone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   messagephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
 
   public selectedTabIndex = 0;
 
+  constructor(private domSanitizer: DomSanitizer,
+              private motoristService: MotoristService) {
+    this.mapUrl = domSanitizer.bypassSecurityTrustResourceUrl(this.getMapUrlByLatLng(-23.53, -46.62));
+  }
+
   ngOnInit() { }
 
   onSubmit() {
       if (this.formMotorist.valid) {
-        console.log('Form Submitted!');
+        this.create(this.formMotorist);
         this.formMotorist.reset();
       }
     }
@@ -101,16 +106,25 @@ export class RegisterMotoristComponent implements  OnInit {
 
   create(formMotorist: NgForm) {
     const motorist = {
-      location: this.place.formatted_address,
-      ...formMotorist.value
+      // location: this.place.formatted_address,
+      ...formMotorist.value,
+      enabled: true
     };
 
-    console.log(motorist);
-  }
-  constructor(private domSanitizer: DomSanitizer) {
-    this.mapUrl = domSanitizer.bypassSecurityTrustResourceUrl(this.getMapUrlByLatLng(-23.53, -46.62));
+    this
+      .motoristService
+      .saveMotorist(motorist)
+      .subscribe(
+        success => this.onSuccessCreate(success),
+        error => this.onError(error));
   }
 
+  onSuccessCreate = success => {
+    console.log(success);
+    this.onFormClose.emit();
+  }
+
+  onError = error => console.log(error);
 
   placesFiltered(place: any) {
     const urlValue = this.getMapUrlByLatLng(place.geometry.location.lat(), place.geometry.location.lng());
@@ -122,11 +136,7 @@ export class RegisterMotoristComponent implements  OnInit {
     this.place = null;
   }
 
-
-
   getMapUrlByLatLng(lat: number, lng: number) {
     return `https://maps.google.com/maps?q=${lat},${lng}&hl=es;z=14&amp&output=embed`;
   }
-
-
 }
