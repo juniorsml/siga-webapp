@@ -131,10 +131,10 @@
 					    				   	<label class="label is-small">Documento</label>					    				  					    				  
 	    				  					<div class="control"> 	                          
 				                    <div class="select">                      
-				                      <select  name="document"
-				                       				 [(ngModel)]="model.document" 
-				                       				 #document="ngModel"
-				                               [ngClass]="{'is-danger': document.invalid && (document.dirty || document.touched)}"
+				                      <select  name="documentType"
+				                       				 [(ngModel)]="model.documentType" 
+				                       				 #documentType="ngModel"
+				                               [ngClass]="{'is-danger': documentType.invalid && (documentType.dirty || documentType.touched)}"
 				                               required>                       
 				                        <option value="RG">RG</option>
 				                        <option value="CPF">CPF</option>
@@ -144,15 +144,15 @@
 				                    </div>                   
 			                  	</div>
 			                  	<div class="form-control-feedback"
-			                  	      *ngIf="document.errors && (document.dirty || document.touched)">
-			                  	    <p class="help is-danger" *ngIf="document.errors.required">Escolha um documento</p>
+			                  	      *ngIf="documentType.errors && (documentType.dirty || documentType.touched)">
+			                  	    <p class="help is-danger" *ngIf="documentType.errors.required">Escolha um documento</p>
 			                  	</div>
 	    				  				</div>
 
 					    				  <div class="field is-4 column is-marginless" >
 					    				   	<label class="label is-small">Nº</label>					    				  					    				  
 					    				  	<div class="control">                 
-						                  <input [disabled]="document.invalid"  
+						                  <input [disabled]="documentType.invalid"  
 						                  			 type="text" 
 						                  			 class="input" 
 						                  			 placeholder="Nº"  
@@ -365,18 +365,17 @@
 		    								<div class="control">
                           <label class="label is-small">Telefone Celular</label>  
 		    									<input type="text" 
-                          [textMask]="{mask: mobilephone}" 
-                          class="input" 
-                          placeholder="Telefone Celular"  
-                          name="mobilePhone"
-		    									[(ngModel)]="model.mobilePhone"
-                          #mobilePhone="ngModel"
-		    								  [ngClass]="{'is-danger': mobilePhone.invalid && (mobilePhone.dirty || mobilePhone.touched)
-		    							          }">
+                                [textMask]="{mask: cellPhone}" 
+                                class="input" 
+                                placeholder="Telefone Celular"  
+                                name="cellPhone"
+                                [(ngModel)]="model.cellPhone"
+                                #cellPhone="ngModel"
+                                [ngClass]="{'is-danger': cellPhone.invalid && (cellPhone.dirty || cellPhone.touched)}">
 		    								</div>
 		    								<div class="form-control-feedback"
-		    			                        *ngIf="mobilePhone.errors && (mobilePhone.dirty || mobilePhone.touched)">
-		    				                    <p class="help is-danger" *ngIf="mobilePhone.errors.required">Telefone Celular é obrigatório</p>
+		    			                        *ngIf="cellPhone.errors && (cellPhone.dirty || cellPhone.touched)">
+		    				                    <p class="help is-danger" *ngIf="cellPhone.errors.required">Telefone Celular é obrigatório</p>
 		    				                </div>
 		    							</div>
 
@@ -384,7 +383,7 @@
 		    								<div class="control">
                           <label class="label is-small">Telefone para recado</label>  
 		    									<input type="text" 
-                          [textMask]="{mask: mobilephone}" 
+                          [textMask]="{mask: cellPhone}" 
                           class="input" 
                           placeholder="Telefone para recado"  
                           name="messagePhone"
