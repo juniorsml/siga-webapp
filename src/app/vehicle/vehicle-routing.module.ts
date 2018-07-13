@@ -19,8 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'account',
-    component: AssociateVehicleComponent,
-    data: { vehicles }
+    component: AssociateVehicleComponent
   }
 ];
 
