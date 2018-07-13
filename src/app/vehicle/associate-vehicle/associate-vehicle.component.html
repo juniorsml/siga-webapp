@@ -32,11 +32,11 @@
        <div class="cnt-autocomplete">
          <sga-auto-complete 
            [data]="vehicles"
-           [propToFilter]="'vehiclePlate'"
+           [propToFilter]="'numberPlate'"
+           url="api/vehicles/search?number_plate="
            minLength="3"
            styleClass = "autocomplete"
            noSuggestionsText="Nenhum Veículo encontrado"
-           url="api/vehicle/search?query="
            placeholder="Digite o número da Placa"
            style="width: 100%;"
            type="text"
@@ -49,7 +49,7 @@
                    alt="">
                  <img>
                  <span>
-                   <span style="font-size: 16px; font-weight: 500; color: #324263; margin-left: 4px;">{{item.vehiclePlate}} </span>
+                   <span style="font-size: 16px; font-weight: 500; color: #324263; margin-left: 4px;">{{item.numberPlate}} </span>
                    <span style="font-size: 14px; margin-left: 10px;">{{item.model}}</span>
                  </span>
                </span>
@@ -62,8 +62,8 @@
            <list-view-item>
              <ng-template let-item="item">
                <div class="motorist-admin-add-item-valid">
-                 <span>({{item.vehiclePlate}})</span>
-                 <span style="font-weight: 500; margin-left: 8px">{{item.vehiclePlate}}</span>
+                 <span>({{item.numberPlate}})</span>
+                 <span style="font-weight: 500; margin-left: 8px">{{item.numberPlate}}</span>
                  <span (click)="undoAddVehicle(item)" class="fa fa-times motorist-admin-item-close" aria-hidden="true"></span>
                </div>
              </ng-template>
@@ -87,8 +87,8 @@
            <list-view-item>
              <ng-template let-item="item">
                <div class="motorist-admin-add-item-invalid">
-                 <span>({{item.vehiclePlate}})</span>
-                 <span style="font-weight: 500; margin-left: 8px">{{item.vehiclePlate}}</span>
+                 <span>({{item.numberPlate}})</span>
+                 <span style="font-weight: 500; margin-left: 8px">{{item.numberPlate}}</span>
                  <span (click)="undoRemoveVehicle(item)" class="fas fa-times motorist-admin-item-close" aria-hidden="true"></span>
                </div>
              </ng-template>
@@ -133,7 +133,7 @@
            [data]="currentList"
            [dataLength]="currentList.length"
            [searchText]="searchText"
-           [searchColumns]="['vehiclePlate', 'renavan', 'brand', 'model']"
+           [searchColumns]="['numberPlate', 'renavan', 'brand', 'model']"
            [emptySearchText]="'nenhuma veículo foi encontrado'"
            [haveFooter]="haveFooter"
            (onCellClick)="onAdminVehicleCellClick($event)">
@@ -146,7 +146,7 @@
                </div>
              </ng-template>
            </column>
-           <column [key]="'vehiclePlate'" [header]="'Placa'" [minWidth]="'82'" [isSortable]="true">
+           <column [key]="'numberPlate'" [header]="'Placa'" [minWidth]="'82'" [isSortable]="true">
              <ng-template let-item="item">
                {{item}}
              </ng-template>
@@ -156,7 +156,7 @@
                {{item}}
              </ng-template>
            </column>
-           <column [key]="'brand'" [header]="'Marca'" [minWidth]="'82'" [isSortable]="true">
+           <column [key]="'make'" [header]="'Marca'" [minWidth]="'82'" [isSortable]="true">
              <ng-template let-item="item">
                {{item}}
              </ng-template>
@@ -184,7 +184,8 @@
 <sga-modal>
    <sga-register-vehicle 
      [showForm]="showFormRegister"
-     (onFormClose)="closeFormRegister()">       
+     (onFormClose)="closeFormRegister()"
+     (onSave)="getVehicles()">     
    </sga-register-vehicle>
  </sga-modal>
 
