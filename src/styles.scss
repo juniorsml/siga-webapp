@@ -4,6 +4,7 @@ html{
 
 body {
   font-family: 'Open Sans',sans-serif;
+  width: 100vw;
 }
 
 div, *{
@@ -420,6 +421,7 @@ $bg-titles: #4d5675;
     bottom: 0px;
     left: 50px;
     right: 0px;
+        z-index: -1;
   }
   .content-wrapper {
     position: absolute;
