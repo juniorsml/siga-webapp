@@ -14,36 +14,39 @@ import { VehiclesComponent } from './register/vehicles/vehicles.component';
 import { TrucksComponent } from './register/trucks/trucks.component';
 import { DeviceComponent } from './register/device/device.component';
 
+import { SummaryComponent } from './summary-dialog/summary/summary.component';
+
 import { motorists } from '../shared/mocks/motorist';
 import { vehicles } from '../shared/mocks/vehicles';
 import { devices } from '../shared/mocks/device';
 import { trips } from '../shared/mocks/trips';
 
 const routes: Routes = [
-  { 
-    path: 'register', 
+  {
+    path: 'register',
     component: RegisterTripComponent,
-    children: [  
+    children: [
       { path: 'detail', component: DetailComponent },
       { path: 'places', component: PlacesComponent },
-      { path: 'motorist', component: MotoristComponent, data: {motorists} },
-      { path: 'vehicles', component: VehiclesComponent,  data: { vehicles }  },
-      { path: 'trucks', component: TrucksComponent, data: { vehicles }  },
-      { path: 'device', component: DeviceComponent, data: { devices } }
+      { path: 'motorist', component: MotoristComponent, data: { motorists } },
+      { path: 'vehicles', component: VehiclesComponent, data: { vehicles } },
+      { path: 'trucks', component: TrucksComponent, data: { vehicles } },
+      { path: 'device', component: DeviceComponent, data: { devices } },
+      { path: 'summary', component: SummaryComponent },
     ]
   },
-  { 
-    path: 'started', 
+  {
+    path: 'started',
     component: StartedTripsComponent,
     data: { trips }
   },
-  { 
-    path: 'scheduled', 
+  {
+    path: 'scheduled',
     component: ScheduledTripsComponent,
     data: { trips }
   },
-  { 
-    path: 'historic', 
+  {
+    path: 'historic',
     component: HistoricTripsComponent,
     data: { trips }
   }
@@ -53,4 +56,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TripRoutingModule {}
+export class TripRoutingModule { }

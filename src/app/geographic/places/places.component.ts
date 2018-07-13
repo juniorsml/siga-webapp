@@ -12,6 +12,8 @@ import { areas } from '../../shared/mocks/area';
 import { GroupedItems } from '../../shared/components/select-grouped/Grouped';
 import { DirectionService } from '../../shared/services/direction.service';
 
+import { MapStyle } from '../../shared/models/MapStyle';
+
 @Component({
   selector: 'sga-places',
   templateUrl: './places.component.html',
@@ -40,6 +42,7 @@ export class RegisterPlaceComponent implements OnInit {
   private lineOptions = null;
   private polygonOptions = null;
   private currentMarker: L.Marker;
+  public status = false;
 
   private _places: Array<any>;
   private mapMarkers: Array<Feature<GeometryObject>> = [];
@@ -56,6 +59,15 @@ export class RegisterPlaceComponent implements OnInit {
     }
   }
 
+
+  
+  toggleMapStyle(mapStyle) {
+    if (mapStyle.value === '1') {
+      this.map.setStyle(MapStyle.Outdoor);
+    } else {
+      this.map.setStyle(MapStyle.Street);
+    }
+  }
   toggleSidebar() {
       this.toggleSidebarStatus = !this.toggleSidebarStatus;
   }

@@ -1,3 +1,13 @@
+
+.map-places-toggle{
+
+  opacity: 1 !important;
+      z-index: 9;
+      bottom: 33px;
+      top: initial;
+      left: initial;
+      right: 36px;
+}
 .content-trip-places {
   position: absolute;
   width:100%;
@@ -53,7 +63,7 @@
 
     .place-added{
       margin: 0px 15px;
-      padding: 12px 12px 45px 12px;
+      padding: 24px 11px;
       background: #a6adb7;
       color: #FFF;
       position:relative;
@@ -61,13 +71,19 @@
       align-items:center;
       transition:all 150ms ease;
       
-      .place-tag {
-        position: fixed;
-        background: none;
-        border: none;
-        margin-top: 2em;
-        border-bottom: solid #4e5563 1px;
-        width: 47vh;
+      .place-tags {        
+        
+        width: 39vh;
+        position: absolute;
+        top: 46px;
+        right: 21px;
+        span{
+          background: #888b92;
+          padding: 1px 6px;
+          border-radius: 3px;
+          font-size: 12px;
+        }
+       
       }
 
       &:hover{
@@ -100,7 +116,7 @@
       }
         
       .add-place {
-        transform: rotate(45deg);
+        
         transition: all 150ms ease;
         margin-left: auto;
         cursor: pointer;

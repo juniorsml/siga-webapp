@@ -46,8 +46,8 @@ export class RegisterVehicleComponent {
 
   @Input()
   public showForm: boolean;
-  @Output() onFinish: EventEmitter<void> = new EventEmitter();
   @Output() onSave = new EventEmitter();
+  @Output() onFormClose: EventEmitter<void> = new EventEmitter();
   public selectedTabIndex = 0;
 
   constructor(
@@ -89,7 +89,7 @@ export class RegisterVehicleComponent {
     }
 
   cancel() {
-    this.onFinish.emit();
+    this.onFormClose.emit();
   }
 
   create(formMotorist: NgForm) {
@@ -112,7 +112,7 @@ export class RegisterVehicleComponent {
   onSuccess(data) {
     console.log(data);
     this.onSave.emit();
-    this.onFinish.emit();
+    this.onFormClose.emit();
   }
 
   onError(error) {
