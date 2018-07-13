@@ -7,3 +7,17 @@
         margin-bottom: 0.4rem;
     }
 }
+.btns{
+  display: flex;
+  justify-content: flex-end;
+  a{
+    margin: 0 5px;
+  }
+}
+.summary-print {
+  span{
+    color:#888;
+    font-size: 14px;
+  } 
+}
+

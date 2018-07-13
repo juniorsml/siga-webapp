@@ -9,4 +9,8 @@ import { Component, Input } from '@angular/core';
 
 export class SummaryRegisterComponent {
   @Input() public trip: any;
+
+  public print(): void {
+     window.print();
+  }
 }

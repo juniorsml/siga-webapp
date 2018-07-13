@@ -1,189 +1,178 @@
-<div class="cnt-trip-data">
-  <h4>
-    Dados da viagem
-  </h4>
-  <div class="field-body field">
-    <div class="field">
-      <label class="label is-small">Número</label>
-      <div class="control">
-        <input class="input is-small" type="text" placeholder="Número" [ngModel]="trip?.id" disabled>
+<div id="print-section" class="summary-print">
+  <h3 class="print-title">Resumo viagem #123332</h3>
+  <div class="cnt-trip-data">
+    <h4>
+      Dados da viagem
+    </h4>
+    <div class="field-body field">
+      <div class="field">
+        <label class="label is-small">Número</label>
+        <div class="control">
+          <span></span>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label is-small">Status</label>
+        <div class="control">
+         
+          <span>Em viagem</span>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label is-small">Tipo</label>
+        <div class="select is-small">
+         <span>Transferência</span>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label is-small">Operação</label>
+        <div class="select is-small">
+          <span>PEPSICO</span>
+        
+        </div>
+      </div>
+      <div class="field">
+        <label class="label is-small">Percurso</label>
+        <div class="select is-small">
+            <span>Percurso</span>
+        </div>
+      </div>
+       <div class="field">
+        <label class="label is-small">Tipo de Cliete</label>
+        <div class="select is-small">
+          <span>Transportadora</span>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label is-small">Mercadoria/Produto</label>
+        <div class="select is-small">
+           <span>Outras</span>
+        </div>
       </div>
     </div>
-    <div class="field">
-      <label class="label is-small">Status</label>
-      <div class="control">
-        <input class="input is-small" type="text" placeholder="Status" value="Em viagem" disabled>
+    <div class="field-body field"> 
+      <div class="field">
+        <label class="label is-small">Valor total do embarque</label>
+        <div class="control">
+         <span>R$200.000,00</span>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label is-small">Cod. Liberação</label>
+        <div class="control">
+          <span>PL00987646</span>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label is-small">Prev. Inicio</label>
+        <div class="control">
+          <span>27/07/2018 08:00</span>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label is-small">Prev. Fim</label>
+        <div class="control">
+         <span>29/07/2018 08:00</span>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label is-small">Fim real</label>
+        <div class="control">
+          <span>30/07/2018 08:00</span>
+        </div>
       </div>
     </div>
-    <div class="field">
-      <label class="label is-small">Tipo</label>
-      <div class="select is-small">
-        <select disabled>
-          <option>Transferencia</option>
-          <option>With options</option>
-        </select>
+    <div class="field-body field"> 
+
+      <div class="field">
+        <label class="label is-small">Doc. Cliente</label>
+        <div class="control">
+          <span>18297518275</span>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label is-small">Rastreada</label>
+        <div class="select is-small">
+          <span>Sim</span>
+        </div>
+      </div>
+      <div class="is-paddingless is-7 column field control is-expanded">
+        <label class="label is-small">Observação</label>
+        <div class="control is-expanded">
+          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia consequatur repellendus quidem voluptates inventore alias debitis, dolorem porro doloremque .</span>
+        </div>
       </div>
     </div>
-    <div class="field">
-      <label class="label is-small">Operação</label>
-      <div class="select is-small">
-        <select disabled>
-          <option>PEPSICO</option>
-          <option>With options</option>
-        </select>
-      </div>
-    </div>
-    <div class="field">
-      <label class="label is-small">Percurso</label>
-      <div class="select is-small">
-        <select disabled>
-          <option>PEPSICO</option>
-          <option>With options</option>
-        </select>
-      </div>
-    </div>
-     <div class="field">
-      <label class="label is-small">Tipo de Cliete</label>
-      <div class="select is-small">
-        <select disabled>
-          <option>Tranportador</option>
-          <option>With options</option>
-        </select>
-      </div>
-    </div>
-    <div class="field">
-      <label class="label is-small">Mercadoria/Produto</label>
-      <div class="select is-small">
-        <select disabled>
-          <option>Outras não relacionadas</option>
-          <option>With options</option>
-        </select>
-      </div>
-    </div>
+
   </div>
-  <div class="field-body field"> 
-    <div class="field">
-      <label class="label is-small">Valor total do embarque</label>
-      <div class="control">
-        <input class="input is-small" type="text" placeholder="Valor total do embarque" value="200.000,00" disabled>
+  <div class="cnt-trip-data">
+    <h4>
+      Origem
+    </h4>
+    <div class="field-body field">
+      <div class="field">
+        <label class="label is-small">Nome Fantasia</label>
+        <div class="control">
+         <span>Raça Transportes </span>
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label is-small">Cod. Liberação</label>
-      <div class="control">
-        <input class="input is-small" type="text" placeholder="Cod. Liberação" value="PL00987646" disabled>
+      <div class="field">
+        <label class="label is-small">Unidade</label>
+        <div class="control">
+         <span>Anhaguera</span>
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label is-small">Prev. Inicio</label>
-      <div class="control">
-        <input class="input is-small" type="date" placeholder="Prev. Inicio" value="27/07/2018 08:00" disabled>
+      <div class="field">
+        <label class="label is-small">Doca</label>
+       <div class="control">
+         <span>01</span>
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label is-small">Prev. Fim</label>
-      <div class="control">
-        <input class="input is-small" type="date" placeholder="Prev. Fim" value="27/09/2018  18:00" disabled>
-      </div>
-    </div>
-    <div class="field">
-      <label class="label is-small">Fim real</label>
-      <div class="control">
-        <input class="input is-small" type="date" placeholder="Fim real" value="" disabled>
-      </div>
-    </div>
-  </div>
-  <div class="field-body field"> 
-
-    <div class="field">
-      <label class="label is-small">Doc. Cliente</label>
-      <div class="control">
-        <input class="input is-small" type="text" placeholder="" value="" disabled>
-      </div>
-    </div>
-    <div class="field">
-      <label class="label is-small">Rastreada</label>
-      <div class="select is-small">
-        <select disabled>
-          <option>Sim</option>
-          <option>Não</option>
-        </select>
-      </div>
-    </div>
-    <div class="is-paddingless is-7 column field control is-expanded">
-      <label class="label is-small">Observação</label>
-      <div class="control is-expanded">
-        <input class="input is-small" type="text" placeholder="Observação"  disabled>
-      </div>
-    </div>
-  </div>
-
-</div>
-<div class="cnt-trip-data">
-  <h4>
-    Origem
-  </h4>
-  <div class="field-body field">
-    <div class="field">
-      <label class="label is-small">Nome Fantasia</label>
-      <div class="control">
-        <input class="input is-small" type="text" placeholder="Nome Fantasia" value="Raça Transportes" disabled>
-      </div>
-    </div>
-    <div class="field">
-      <label class="label is-small">Unidade</label>
-      <div class="control">
-        <input class="input is-small" type="text" placeholder="Unidade" value="Anhaguera" disabled>
-      </div>
-    </div>
-    <div class="field">
-      <label class="label is-small">Doca</label>
-     <div class="control">
-        <input class="input is-small" type="text"  value="" disabled>
-      </div>
-    </div>
-    
-   </div>
-
-</div>
-<div class="cnt-trip-data">
-  <h4>
-    Transportador
-  </h4>
-  <div class="field-body field">
-    <div class="field">
-      <label class="label is-small">Nome Fantasia</label>
-      <div class="control">
-        <input class="input is-small" type="text" placeholder="Nome Fantasia" value="Raça Transportes" disabled>
-      </div>
-    </div>
-    <div class="field">
-      <label class="label is-small">Unidade</label>
-      <div class="control">
-        <input class="input is-small" type="text" placeholder="Unidade" value="Anhaguera" disabled>
-      </div>
-    </div>
-    
-   </div>
-
-</div>
-
-<div class="cnt-trip-data">
-  <h4>
-    Rota
-  </h4>
-  <div class="field-body field">
-    <div class="field">
       
-      <div class="control">
-        <input class="input is-small" type="text" placeholder="Nome Fantasia" value="SP X GYN X SZL X FOR" disabled>
-      </div>
-    </div>
-   
-    
-   </div>
+     </div>
 
+  </div>
+  <div class="cnt-trip-data">
+    <h4>
+      Transportador
+    </h4>
+    <div class="field-body field">
+      <div class="field">
+        <label class="label is-small">Nome Fantasia</label>
+        <div class="control">
+          <span>Raça</span>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label is-small">Unidade</label>
+        <div class="control">
+          <span>Anhaguera</span>
+        </div>
+      </div>
+      
+     </div>
+
+  </div>
+
+  <div class="cnt-trip-data">
+    <h4>
+      Rota
+    </h4>
+    <div class="field-body field">
+      <div class="field">
+        
+        <div class="control">
+          <span>SP X GYN X SZL X FOR</span>
+        </div>
+      </div>
+     
+      
+     </div>
+
+  </div>
 </div>
+
 <div class="btns">
-  
+  <a class="button is-light" (click)="print()">Imprimir</a>
+  <a class="button is-first" href="">Salvar</a>
 </div>
