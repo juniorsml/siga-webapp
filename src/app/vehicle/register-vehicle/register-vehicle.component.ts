@@ -1,6 +1,7 @@
-import { Component, Output, EventEmitter, ViewChild, Input} from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { VehicleService } from '../vehicle.service';
 
 class RegisterForm {
   // Vehicle Info
@@ -31,13 +32,13 @@ class RegisterForm {
 @Component({
   selector: 'sga-register-vehicle',
   templateUrl: './register-vehicle.component.html',
-  styleUrls: ['./register-vehicle.component.scss']
+  styleUrls: ['./register-vehicle.component.scss'],
+  providers: [VehicleService]
 })
 
 export class RegisterVehicleComponent {
 
   model: RegisterForm = new RegisterForm();
-  @ViewChild('formVehicle') formVehicle: any;
   anttDueDate: Date;
   comunication: string;
   private place: any;
@@ -46,7 +47,15 @@ export class RegisterVehicleComponent {
   @Input()
   public showForm: boolean;
   @Output() onFinish: EventEmitter<void> = new EventEmitter();
+  @Output() onSave = new EventEmitter();
   public selectedTabIndex = 0;
+
+  constructor(
+    private domSanitizer: DomSanitizer,
+    private vehicleService: VehicleService
+    ) {
+    this.mapUrl = domSanitizer.bypassSecurityTrustResourceUrl(this.getMapUrlByLatLng(-23.53, -46.62));
+  }
 
   // Show image profile
   addProfilePhoto(event: any) {
@@ -71,10 +80,11 @@ export class RegisterVehicleComponent {
      (removeImage as HTMLElement).style.display = 'none';
    }
 
-  onSubmit() {
-      if (this.formVehicle.valid) {
+  onSubmit(form: NgForm) {
+      if (form.valid) {
+        this.create(form);
         console.log('Form Submitted!');
-        this.formVehicle.reset();
+        form.reset();
       }
     }
 
@@ -84,13 +94,29 @@ export class RegisterVehicleComponent {
 
   create(formMotorist: NgForm) {
     const vehicle = {
-      location: this.place.formatted_address,
-      ...formMotorist.value
+      // location: this.place.formatted_address,
+      ...formMotorist.value,
+      ...this.model
     };
+
+    this
+      .vehicleService
+      .saveVehicle(vehicle)
+      .subscribe(
+        success => this.onSuccess(success),
+        error => this.onError(error));
+
     console.log(vehicle);
   }
-  constructor(private domSanitizer: DomSanitizer) {
-    this.mapUrl = domSanitizer.bypassSecurityTrustResourceUrl(this.getMapUrlByLatLng(-23.53, -46.62));
+
+  onSuccess(data) {
+    console.log(data);
+    this.onSave.emit();
+    this.onFinish.emit();
+  }
+
+  onError(error) {
+    console.error(error);
   }
 
   placesFiltered(place: any) {

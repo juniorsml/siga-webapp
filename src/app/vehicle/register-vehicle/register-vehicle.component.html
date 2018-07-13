@@ -11,7 +11,7 @@
     </div>
     <div class="container-scroll">    
       
-      <form novalidate (ngSubmit)="onSubmit()" class="cnt-form" #formMotorist="ngForm">
+      <form novalidate (ngSubmit)="onSubmit(formMotorist)" class="cnt-form" #formMotorist="ngForm">
           <sga-tabs 
             [tabIndex]="selectedTabIndex"
             styleClass="tabs no-margin tabs-register">
@@ -57,14 +57,14 @@
                             <input  type="text" 
                                     class="input" 
                                     placeholder="Placa" 
-                                    name="vehiclePlate"                   
-                                    [(ngModel)]="model.vehiclePlate"
-                                    #vehiclePlate="ngModel"
-                                    [ngClass]="{'is-danger': vehiclePlate.invalid && (vehiclePlate.dirty || vehiclePlate.touched)}"
+                                    name="numberPlate"                   
+                                    [(ngModel)]="model.numberPlate"
+                                    #numberPlate="ngModel"
+                                    [ngClass]="{'is-danger': numberPlate.invalid && (numberPlate.dirty || numberPlate.touched)}"
                                     required>
                                     <div class="form-control-feedback"
-                                          *ngIf="vehiclePlate.errors && (vehiclePlate.dirty || vehiclePlate.touched)">
-                                         <p class="help is-danger" *ngIf="vehiclePlate.errors.required">Placa é obrigatório</p>
+                                          *ngIf="numberPlate.errors && (numberPlate.dirty || numberPlate.touched)">
+                                         <p class="help is-danger" *ngIf="numberPlate.errors.required">Placa é obrigatório</p>
                                     </div>
                           </div>
                         </div>
@@ -91,15 +91,15 @@
                           <div class="control">                          
                               <input  type="text" 
                                       class="input" 
-                                      name="brand" 
+                                      name="make" 
                                       placeholder="Marca" 
-                                      [(ngModel)]="model.brand" 
-                                      #brand="ngModel"
-                                      [ngClass]="{'is-danger': brand.invalid && (brand.dirty || brand.touched)}"
+                                      [(ngModel)]="model.make" 
+                                      #make="ngModel"
+                                      [ngClass]="{'is-danger': make.invalid && (make.dirty || make.touched)}"
                                       required>
                               <div class="form-control-feedback"
-                                   *ngIf="brand.errors && (brand.dirty || brand.touched)">
-                                   <p class="help is-danger" *ngIf="brand.errors.required">Marca é obrigatória</p>
+                                   *ngIf="make.errors && (make.dirty || make.touched)">
+                                   <p class="help is-danger" *ngIf="make.errors.required">Marca é obrigatória</p>
                               </div>
                           </div>
                         </div>  
@@ -131,10 +131,10 @@
                           <label class="label is-small">Cor</label>                                               
                           <div class="control">                             
                             <div class="select">                      
-                              <select  name="color"
-                                       [(ngModel)]="model.color" 
-                                       #color="ngModel"
-                                       [ngClass]="{'is-danger': color.invalid && (color.dirty || color.touched)}"
+                              <select  name="colour"
+                                       [(ngModel)]="model.colour" 
+                                       #colour="ngModel"
+                                       [ngClass]="{'is-danger': colour.invalid && (colour.dirty || colour.touched)}"
                                        required>                       
                                 <option value="Azul">Azul</option>
                                 <option value="Vermelho">Vermelho</option>
@@ -144,8 +144,8 @@
                             </div>                   
                           </div>
                           <div class="form-control-feedback"
-                                *ngIf="color.errors && (color.dirty || color.touched)">
-                              <p class="help is-danger" *ngIf="color.errors.required">Escolha uma cor</p>
+                                *ngIf="colour.errors && (colour.dirty || colour.touched)">
+                              <p class="help is-danger" *ngIf="colour.errors.required">Escolha uma cor</p>
                           </div>
                         </div>
 
