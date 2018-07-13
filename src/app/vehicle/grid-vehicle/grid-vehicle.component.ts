@@ -1,19 +1,17 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TableClickEvent } from '../../shared/components/table/table.component';
-import { ActivatedRoute,Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { OptionClickEvent } from '../../shared/events/OptionClickEvent';
+import { Vehicle } from '../../shared/models/api/Vehicle';
+import { VehicleService } from '../vehicle.service';
 
 @Component({
   selector: 'sga-grid-vehicle',
   templateUrl: './grid-vehicle.component.html',
-  styleUrls: ['./grid-vehicle.component.scss']
+  styleUrls: ['./grid-vehicle.component.scss'],
+  providers: [VehicleService]
 })
 export class GridVehicleComponent implements OnInit {
-
-  @Input() vehicles = new Array();
-  @Input() dataLoading: boolean = true;
-  @Input() haveFooter: boolean = true;
-  @Output() onVehicleSelected: EventEmitter<any> = new EventEmitter();
 
   text: any;
   distance: any;
@@ -29,30 +27,45 @@ export class GridVehicleComponent implements OnInit {
   showVehicleDialog: boolean;
 
   showColumnSelector = false;
+
+  public headers = new Array<string>();
+  public vehicles = new Array<Vehicle>();
+  public filterHeaders = new Array<string>();
+
   closeColumnSelector() {
     this.showColumnSelector = false;
   }
 
   onSelectOption(event: OptionClickEvent) {
-    switch (event.data.header) {      
-      case 'Seleção de Colunas': 
+    switch (event.data.header) {
+      case 'Seleção de Colunas':
         this.showColumnSelector = true;
         break;
-       case 'Configuração': 
-         this.route.navigateByUrl('vehicle/account');
-         break;
-      }
+      case 'Configuração':
+        this.route.navigateByUrl('vehicle/account');
+        break;
     }
+  }
 
-  public headers = new Array<string>();
-  public filterHeaders = new Array<string>();
-
-
-  constructor(private router: ActivatedRoute,
-              private route: Router) { }
+  constructor(
+    private route: Router,
+    private vehicleService: VehicleService) { }
 
   ngOnInit(): void {
-    this.router.data.subscribe(data => this.vehicles = data.vehicles);
+    this.getMotorists();
+  }
+
+  private getMotorists() {
+    this
+      .vehicleService
+      .getVehicles()
+      .subscribe(
+        data => this.onSuccess(data),
+        error => alert(error));
+  }
+
+  private onSuccess(data) {
+    this.vehicles = data;
   }
 
   public showVehicleModal() {
@@ -65,13 +78,15 @@ export class GridVehicleComponent implements OnInit {
 
   public onCellClick(event) {
     this.selectedVehicle = event.data;
-    this.onVehicleSelected.emit(this.selectedVehicle);
-    if (event.cellIndex === 0) this.showVehicleDialog = true;
+    // this.onVehicleSelected.emit(this.selectedVehicle);
+    if (event.cellIndex === 0) {
+      this.showVehicleDialog = true;
+    }
   }
 
   onCellRightClick(event: TableClickEvent) {
     this.selectedVehicle = event.data;
-    this.onVehicleSelected.emit(this.selectedVehicle);
+    // this.onVehicleSelected.emit(this.selectedVehicle);
   }
 
   public onPlacesFiltered(event) {
@@ -84,9 +99,9 @@ export class GridVehicleComponent implements OnInit {
     this.filterLocation = null;
   }
 
-  public onPlacesKeyUp() {}
+  public onPlacesKeyUp() { }
 
-  public onDistanceKeyUp() {}
+  public onDistanceKeyUp() { }
 
   public whenHeaderReady = headers => this.headers = headers;
 
