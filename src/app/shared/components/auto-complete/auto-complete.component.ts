@@ -9,6 +9,9 @@ import {
   ContentChild,
   HostListener
 } from '@angular/core';
+import { HttpService } from '../../services/http.service';
+import { Vehicle } from '../../models/api/Vehicle';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'sga-auto-complete',
@@ -40,7 +43,8 @@ export class AutoCompleteComponent {
   public searchRequested = false;
   public suggestionSelected = false;
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef,
+    private http: HttpService) { }
 
   @HostListener('document:click', ['$event.target'])
   public onClick(targetElement): void {
@@ -130,21 +134,22 @@ export class AutoCompleteComponent {
   }
 
   private search(): void {
-    this.suggestions = this.data.filter(
-      m => m[this.propToFilter].toLowerCase().indexOf(this.inputElement.nativeElement.value.toLowerCase()) > -1
-
-    );
-    // this.dataService.get(this.url + this.inputElement.nativeElement.value)
-    //     .toPromise()
-    //     .then(data => {
-    //         console.log(data);
-    //         this.suggestions = data.json();
-    //         if (this.searchRequested) {
-    //             this.search();
-    //         }
-    //     }).catch((ex) => {
-    //     console.log(ex);
-    // });
+    if (this.url !== '') {
+      this.searching = true;
+      this.suggestions = [];
+      this
+        .http
+        .get(`${this.url}${this.inputElement.nativeElement.value}`)
+        .pipe(map(data => <Array<Vehicle>>data.json()))
+        .subscribe(
+          data => this.suggestions = data,
+          error => console.warn(error),
+          () => this.searching = false);
+    } else {
+      this.suggestions = this.data.filter(
+        m => m[this.propToFilter].toLowerCase().indexOf(this.inputElement.nativeElement.value.toLowerCase()) > -1
+      );
+    }
   }
 
   public noSuggestionClick(): void {
