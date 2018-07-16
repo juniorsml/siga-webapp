@@ -42,7 +42,9 @@ export class RegisterPlaceComponent implements OnInit {
   private lineOptions = null;
   private polygonOptions = null;
   private currentMarker: L.Marker;
+
   public status = false;
+  public route: any;
 
   private _places: Array<any>;
   private mapMarkers: Array<Feature<GeometryObject>> = [];
@@ -59,8 +61,6 @@ export class RegisterPlaceComponent implements OnInit {
     }
   }
 
-
-  
   toggleMapStyle(mapStyle) {
     if (mapStyle.value === '1') {
       this.map.setStyle(MapStyle.Outdoor);
@@ -310,10 +310,21 @@ export class RegisterPlaceComponent implements OnInit {
 
   private addPoint = place => this.map.addCircle(L.latLng(place.lat, place.lng));
 
-  private onSuccessRoute = data => {
-    const featureList = this.directionService.decode(data.routes[0].geometry);
+  private onSuccessRoute = ({ routes }) => {
+    const { geometry, distance, duration } = routes[0];
+    this.route = { distance: this.formatToKm(distance), duration: this.formatDate(duration) };
+
+    const featureList = this.directionService.decode(geometry);
     const latLngs = featureList.map(feat => L.latLng(feat.geometry.coordinates[1], feat.geometry.coordinates[0]));
     this.map.drawPolyline(latLngs);
+  }
+
+  private formatToKm = meters => (meters / 1000).toFixed(1);
+
+  private formatDate = seconds => {
+    const date = new Date(null);
+    date.setSeconds(seconds);
+    return date.toISOString().substr(11, 8);
   }
 
   public revertPlaces = () => {
