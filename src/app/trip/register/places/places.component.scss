@@ -66,10 +66,9 @@
       transition:all 150ms ease;
       
       .place-tags {        
-        width: 42vh;
-        position: absolute;
-        top: 46px;
-        right: 21px;
+          position: absolute;
+           top: 46px;
+           left: 40px;
         span{
           background: #888b92;
           padding: 1px 6px;
@@ -109,7 +108,7 @@
       }
         
       .add-place {
-        transform: rotate(45deg);
+       
         transition: all 150ms ease;
         margin-left: auto;
         cursor: pointer;
@@ -185,8 +184,9 @@
   }
   .places-detail {
     position: absolute;
-    left: 399px;
-    right: 0;
+    left: 425px;
+    right: 33px;
+
     padding: 0;
     .cnt-details {
       padding: 12px;
