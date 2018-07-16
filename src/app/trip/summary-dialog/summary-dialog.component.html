@@ -20,7 +20,7 @@
             </sga-steps>
           </div>
           <div class="column">
-            <div [ngSwitch]="selectedStepIndex">
+            <div [ngSwitch]="selectedStepIndex" style="height: 100%;">
               <sga-summary *ngSwitchCase="0" [trip]="trip"></sga-summary>
               <sga-summary-motorist *ngSwitchCase="1" [motorists]="trip.motorists"></sga-summary-motorist>
               <sga-summary-vehicle *ngSwitchCase="2" [vehicles]="trip.vehicles"></sga-summary-vehicle>

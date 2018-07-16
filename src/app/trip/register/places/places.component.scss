@@ -108,7 +108,7 @@
       }
         
       .add-place {
-        transform: rotate(45deg);
+       
         transition: all 150ms ease;
         margin-left: auto;
         cursor: pointer;
@@ -184,8 +184,9 @@
   }
   .places-detail {
     position: absolute;
-    left: 399px;
-    right: 0;
+    left: 425px;
+    right: 33px;
+
     padding: 0;
     .cnt-details {
       padding: 12px;

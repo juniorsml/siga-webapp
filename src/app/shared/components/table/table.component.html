@@ -49,11 +49,12 @@
       <div class="ui-datatable-footer-wrapper">      
         <div>
             <span class="ui-datatable-footer-total">
-
-              <span *ngIf="filteredData?.length > dataLength || filteredData?.length < pageQuantity "> {{filteredData?.length}}</span>
-              <span *ngIf="filteredData?.length > pageQuantity ">{{pageQuantity}}</span>
-
-            | {{dataLength}}
+               <span>{{numberShow}}</span>  | {{dataLength}}
+           <!--    <span *ngIf="searchText != null">{{filteredData?.length}}</span>
+              <span *ngIf="filteredData?.length > dataLength && filteredData?.length < pageQuantity "> {{filteredData?.length}}</span>
+              <span *ngIf="searchText == null || filteredData?.length < pageQuantity ">{{pageQuantity}}</span>
+ -->
+            
 
            </span>
         </div>
