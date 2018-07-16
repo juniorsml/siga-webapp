@@ -208,8 +208,8 @@
 				                    				class="input" 
 				                    				placeholder="Nome da Esposa"  
 				                    				name="wifeName"
-				                    				[(ngModel)]="model.wifeName"
-				                    				#wifeName="ngModel"
+                                    #wifeName="ngModel"
+                                    ngModel
 				                         		[ngClass]="{'is-danger': wifeName.invalid && (wifeName.dirty || wifeName.touched) }"
 				                         		required>
 
@@ -223,7 +223,7 @@
 					    				  	<label class="label is-small">Tem Filhos?</label>					    				     
 					    				    <div class="control">
 					    				      <div class="select">                      
-					    				        <select [(ngModel)]="model.haveChildren"  #haveChildren="ngModel">                  
+					    				        <select>
 					    				          <option value="Sim">Sim</option>
 					    				          <option value="Não">Não </option>
 					    				        </select>
@@ -240,7 +240,7 @@
                         <div class="field  is-4 column is-marginless">
                           <label class="label is-small">Quantos</label>   
                           <div class="control">
-                            <input [(ngModel)]="model.howManyChildren"  #howManyChildren="ngModel" class="input" type="text" placeholder="Quantos?">
+                            <input [(ngModel)]="model.howManyChildren" name="howManyChildren" #howManyChildren="ngModel" class="input" type="text" placeholder="Quantos?">
                           </div>
                         </div>
 

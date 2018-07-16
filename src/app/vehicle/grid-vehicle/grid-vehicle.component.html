@@ -120,28 +120,28 @@
       <context-menu [mode]="'click'" [ignoreCells]="[0]" (onItemSelected)="contextMenuSelected($event)">
         <menu-item [enabled]="selectedVehicle?.location != null">
           <ng-template>
-            <span class="table-menu-icon fa fa-location-arrow" aria-hidden="true">
+            <span class="table-menu-icon item-context-menu fal fa-map-marker-alt" aria-hidden="true">
             </span>
             <span>Localização</span>
           </ng-template>
         </menu-item>
         <menu-item [enabled]="selectedVehicle?.location != null">
           <ng-template>
-            <span class="table-menu-icon fa fa-calendar" aria-hidden="true">
+            <span class="table-menu-icon item-context-menu fal fa-calendar" aria-hidden="true">
             </span>
             <span>Histórico</span>
           </ng-template> 
         </menu-item>
         <menu-item [enabled]="true">
           <ng-template>
-            <span class="table-menu-icon fa fa-comments" aria-hidden="true">
+            <span class="table-menu-icon item-context-menu fal fa-comments" aria-hidden="true">
             </span>
             <span>Mensagem</span>
           </ng-template>
         </menu-item>
         <menu-item [enabled]="true">
           <ng-template>
-            <span class="table-menu-icon fa fa-film" aria-hidden="true">
+            <span class="table-menu-icon item-context-menu fal fa-film" aria-hidden="true">
             </span>
             <span>Vídeo</span>
           </ng-template>

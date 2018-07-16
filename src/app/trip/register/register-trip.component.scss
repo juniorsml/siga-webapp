@@ -2,9 +2,10 @@
 
 .cnt-trip{
 	position: absolute;
-  top:93px; 
+    top: 115px;
   // background: #FFF;
   bottom: 0;
+  padding:0 22px !important;
 }
 .trip-title{
  font-size:14px;
@@ -14,4 +15,25 @@
 .cnt-detail .select,
 .cnt-detail .select select {
 	width:100% !important;
+}
+
+.prev-button, .next-button{
+  position: absolute;
+  border: 1px solid #04d1b3;
+  padding: 7px;
+  border-radius: 50%;
+  color: #04d1b3;
+  top: 12px;
+  cursor:pointer;
+  transition:all 200ms ease;
+  &:hover{
+    color:#FFF;
+    background:#04d1b3;
+  }
+}
+.prev-button{
+  left: 0;       
+}
+.next-button{
+  right: 0;       
 }

@@ -7,9 +7,15 @@
     </ul>
   </nav>
   <div class="columns column is-4 header-content-right">    
-    <sga-sidebar-configuration (onSelectOption)="onSelectOption($event)" class="column is-6">
-      <sga-option header="Seleção de Colunas"></sga-option>
-    </sga-sidebar-configuration>
+    <div>
+      <a class="map-open" href=""><i class="fal fa-map"></i><span>Mapa</span></a>
+    </div> 
+    <div>
+      <sga-sidebar-configuration (onSelectOption)="onSelectOption($event)">
+        <sga-option header="Seleção de Colunas"></sga-option>
+      </sga-sidebar-configuration>
+    </div>
+   
   </div>  
 </div>
 
@@ -25,7 +31,7 @@
 <div class="content-wrapper content-grid-motorist grid-spacing-search">
  
   <div [ngClass]="styleClass" class="columns level-left">
-    <div class="column is-3">     
+    <div class="column is-2">     
       <p class="control has-icons-left"> 
         <input [(ngModel)]="text" class="input is-small"  placeholder="Buscar" type="text"/>
         <span class="icon is-small is-left">
@@ -36,7 +42,7 @@
     <sga-map-filter 
       (placesFiltered)="onPlacesFiltered($event)" 
       (filterRemoved)="onPlacesFilterRemoved()"
-      class="column is-12">
+      class="column is-10">
     </sga-map-filter>
   </div>
 

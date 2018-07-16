@@ -1,20 +1,22 @@
 <div class="cnt-trip-places">
-  <div class="places-sidebar box-shadow">
+  <div class="places-sidebar"  slimScroll [options]="opts" [scrollEvents]="scrollEvents">
     <section>
       <div class="trip-places-header">
         <i class="fa fa-question-circle ui-icon-info"></i>
         <div class="media-left">
           <h3>Rotas</h3>
         </div>
-        <div class="columns">
-          <div class="column">
+        <div class="columns field-body field" style="width: 100%;">
+          <div class="column is-6">
+            <label class="label is-small">Previsão Início</label>
             <div class="field">
-              <input class="input" placeholder="Previsão Inicio" type="text">
+              <input class="input" style="font-size:13px;" placeholder="Previsão Inicio" type="datetime-local">
             </div>
           </div>
-          <div class="column">
+          <div class="column is-6">
+            <label class="label is-small">Previsão Fim</label>
             <div class="field">
-              <input class="input" placeholder="Previsão Fim" type="text">
+              <input class="input" style="font-size:13px;" placeholder="Previsão Fim" type="datetime-local">
             </div>
           </div>
         </div>
@@ -32,15 +34,19 @@
             <h5 title="{{item.name}}" class="title-place-added">
               {{(item.name.length>35)? (item.name | slice:0:35)+'...':(item.name)}}
             </h5>
-            <input class="place-tag" type="text">
+          
             <div class="controls">
-              <i (click)="addPlace(item)" class="add-place fal fa-times-circle"></i>
+              <i (click)="addPlace(item)" class="add-place fal fa-bookmark"></i>
               <i (click)="removePlace(item)" class="remove-place fal fa-times-circle"></i>
             </div>
             <div class="reverse" *ngIf="i === 1 && places.length === 2"
                (click)="revertPlaces()" >
                <i class="fal fa-exchange-alt">
                </i>
+            </div>
+            <div class="place-tags">
+              <span>Item 1</span>
+              <span>Item 1</span>
             </div>
           </div>
         </div>

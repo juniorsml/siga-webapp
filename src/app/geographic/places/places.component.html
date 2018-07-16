@@ -64,8 +64,8 @@
               {{(item.name.length>35)? (item.name | slice:0:35)+'...':(item.name)}}
             </h5>
             <div class="controls">
-              <i (click)="addNewPlace(item)" class="add-place fal fa-times-circle"></i>
-              <i (click)="removeItineraryPlace(item)" class="remove-place fal fa-times-circle"></i>
+              <i (click)="addNewPlace(item)" title="Salvar" class="add-place fal fa-bookmark"></i>
+              <i (click)="removeItineraryPlace(item)" title="Remover" class="remove-place fal fa-times-circle"></i>
             </div>
             
             <div class="reverse" *ngIf="i === 1 && itineraryPlaces.length === 2"
@@ -74,16 +74,12 @@
                </i>
             </div>
 
-            <div class="place-tag">
-              <tag-input 
-                [ngModel]="['i']" 
-                placeholder="Adicione uma tag"
-                (onAdd)="onSelectedTag($event)">
-                <tag-input-dropdown [showDropdownIfEmpty]="true"
-                                    [autocompleteItems]="['iTem1', 'item2', 'item3']">
-                </tag-input-dropdown>
-              </tag-input>
+            <div class="place-tags">
+              <span>Item 1</span>
+              <span>Item 1</span>
             </div>
+
+          
           </div>
         </div>
       </sga-tab>
@@ -123,6 +119,18 @@
   </div>
 
   <div class="places-detail box-shadow" [ngClass]="toggleSidebarStatus ? 'mapWide' : ''">
+
+    <div class="cnt-select-map map-places-toggle">
+      <label class="container" (click)="toggleMapStyle(map)">Mapa        
+        <input type="radio" name="map" #map value="1" checked>
+        <span class="checkmark"></span>
+      </label>
+      <label class="container" (click)="toggleMapStyle(street)">Satélite        
+        <input type="radio" name="map" #street value="2" >
+        <span class="checkmark"></span>
+      </label>
+
+    </div>
     <sga-map [showPolygonSquare]="true"></sga-map>
   </div>
 </div>

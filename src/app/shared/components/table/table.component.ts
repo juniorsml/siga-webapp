@@ -35,6 +35,7 @@ export class DataTableComponent
   @Input() bodyTop;
   @Input() bodyBottom;
   @Input() dataLength: number;
+  @Input() numberShow: number;
   @Input() searchText: string;
   @Input() emptySearchText: string;
   @Input() searchColumns: Array<any>;
@@ -63,9 +64,13 @@ export class DataTableComponent
   emptyView: EmptyTableComponent;
   filteredData: Array<any>;
   emptyTable: boolean;
+  
+
 
   private _columns = new Array<ColumnComponent>();
   private _originalColumns = new Array<ColumnComponent>();
+
+
   currentPage = 1;
   pageQuantity = 10;
   search: SearchPipe;
@@ -93,12 +98,16 @@ export class DataTableComponent
       gridMargin: '2px 2px',
       barBackground: 'rgba(55, 56, 58, 0.6)',
       barWidth: '5',
-      barMargin: '2px 2px'
-    };
+      barMargin: '2px 2px' 
+    }; 
     this.filteredData = new SearchPipe().transform(this.data, [
       this.searchText,
       this.searchColumns
     ]);
+ 
+    if (this.searchText == null) { 
+        this.numberShow = 10;
+     }
 
     this._originalColumns = Object.assign([], this.columns);
   }
@@ -123,8 +132,21 @@ export class DataTableComponent
       this.emptyTable = this.filteredData.length === 0;
     }
 
-    // if (this.bodyRowElement !== null)
-    // this.setHeaderColumnWidth();
+    if (this.searchText !== '') {
+        this.numberShow = this.filteredData.length;
+     }
+     else if (this.searchText === '' && this.filteredData.length > this.pageQuantity) {
+        this.numberShow = this.filteredData.length;
+     }
+     else if (this.searchText !== '' && this.filteredData.length > this.pageQuantity ) {
+         this.numberShow = this.filteredData.length;
+      }
+     else{
+       this.numberShow = this.pageQuantity;
+     }
+
+    if (this.bodyRowElement !== null)
+    this.setHeaderColumnWidth();
 
     this.changeDetector.detectChanges();
   }

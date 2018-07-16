@@ -3,7 +3,7 @@ import { StepsComponent } from '../steps.component';
 
 @Component({
   selector: 'sga-step',
-  template: ``
+  template: ''
 })
 export class StepComponent {
   @Input() public header: string;

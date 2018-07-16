@@ -6,29 +6,34 @@ import {
   EventEmitter,
   ElementRef,
   NgZone,
-  AfterViewInit
+  OnInit
 } from '@angular/core';
 
 @Component({
   selector: 'sga-map-filter',
   templateUrl: './map-filter.component.html'
 })
-export class MapFilterComponent implements AfterViewInit {
+export class MapFilterComponent implements OnInit {
   @Input() styleClass: string;
-  @Output('placesFiltered') public placesFilteredEvent: EventEmitter<any>;
-  @Output('filterRemoved') public filterRemoved: EventEmitter<any>;
+
+  @Output() public placesFiltered: EventEmitter<any> = new EventEmitter();
+  @Output() public filterRemoved: EventEmitter<any> = new EventEmitter();
   @ViewChild('input') public input: ElementRef;
   placesInput: any;
   distance: any;
   location: any;
   placeText: string;
 
-  constructor(private ngZone: NgZone) {
-    this.placesFilteredEvent = new EventEmitter();
-    this.filterRemoved = new EventEmitter();
-    this.placesInput = new google.maps.places.Autocomplete(<HTMLInputElement> document.getElementById('#mapFilter'));
+  constructor(private ngZone: NgZone) {  }
+
+  ngOnInit() {
+
+    // Initialize places input
+    this.placesInput = new google.maps.places.Autocomplete(<HTMLInputElement> this.input.nativeElement);
     this.placesInput.addListener('place_changed', () => this.setLocation());
     this.location = null;
+
+
   }
 
   setLocation() {
@@ -47,6 +52,10 @@ export class MapFilterComponent implements AfterViewInit {
   onPlacesKeyUp() {
     this.location = null;
     this.filterRemoved.emit();
+    if(this.location == null){
+      this.distance = '';
+    }
+    
   }
 
   setDistanceAndLocation() {
@@ -56,7 +65,7 @@ export class MapFilterComponent implements AfterViewInit {
       this.location !== 'undefined' &&
       this.location !== null
     ) {
-      this.placesFilteredEvent.emit({
+      this.placesFiltered.emit({
         lat: this.location.lat(),
         lng: this.location.lng(),
         distance: this.distance
@@ -64,12 +73,5 @@ export class MapFilterComponent implements AfterViewInit {
     } else {
       this.filterRemoved.emit();
     }
-  }
-
-  ngAfterViewInit() {
-    // Initialize places input
-    let nativeElement: HTMLInputElement = this.input.nativeElement;
-    this.placesInput = new google.maps.places.Autocomplete(nativeElement);
-    this.placesInput.addListener('place_changed', () => this.setLocation());
   }
 }

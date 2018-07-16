@@ -47,9 +47,17 @@
 
       <div class="field">
         <label class="label is-small">Tags</label>
-        <div class="control">
-          <input type="text" class="input is-small" placeholder="Tags" name="tag" ngModel />
+        <div class="place-tag">
+          <tag-input 
+            [ngModel]="['i']" 
+            placeholder="Adicione uma tag"
+            (onAdd)="onSelectedTag($event)">
+            <tag-input-dropdown [showDropdownIfEmpty]="true"
+                                [autocompleteItems]="['iTem1', 'item2', 'item3']">
+            </tag-input-dropdown>
+          </tag-input>
         </div>
+       
       </div>
 
       <div class="field-body field" *ngIf="formType === 'place'">

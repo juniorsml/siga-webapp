@@ -1,34 +1,90 @@
-<div class="columns">
+<div class="columns cnt-trip-places">
 
-<div class="column is-4 places-sidebar">
+<div class="column is-4 places-sidebar " slimScroll >  
     <section>
-      <div class="trip-places-header">
-        <h3>Origem / Destinos</h3>
-        <i class="fa fa-question-circle ui-icon-info"></i>
-      </div>
+     <div class="trip-places-header">
+       <i class="fa fa-question-circle ui-icon-info"></i>
+       <div class="media-left">
+         <h3>Rotas</h3>
+       </div>
+       <div class="columns field-body field" style="width: 100%;margin: 0;">
+         <div class="column is-12 is-paddingless">
+           <label class="label is-small">Previsão Início</label>
+           <div class="field">
+             <input class="input" style="font-size:13px;" placeholder="Previsão Inicio" type="datetime-local">
+           </div>
+         </div>
+       
+       </div>
+       <div class="columns field-body field" style="width: 100%;margin: 5px 0 0 0;">        
+         <div class="column is-12 is-paddingless">
+           <label class="label is-small">Previsão Fim</label>
+           <div class="field">
+             <input class="input" style="font-size:13px;" placeholder="Previsão Fim" type="datetime-local">
+           </div>
+         </div>
+       </div>
+     </div>
+     
+
       <div class="trip-places-ac">
-        <input class="input" placeholder="Digite um endereço" type="text">
+        <sga-places-auto-complete
+          (onPlacesFilteredEvent)="selectPlace($event)"
+          styleClass="autocomplete">
+        </sga-places-auto-complete>
+        <div class="places">
+          <div class="place-added" *ngFor="let item of places; let i = index">
+            <span class="number-radius">
+              {{i + 1}}
+            </span>
+            <h5 title="{{item.name}}" class="title-place-added">
+              {{(item.name.length>35)? (item.name | slice:0:35)+'...':(item.name)}}
+            </h5>
+            <!-- <input class="place-tag" type="text"> -->
+            <div class="controls">
+              <i (click)="addPlace(item)" class="add-place fal fa-bookmark"></i>
+              <i (click)="removePlace(item)" class="remove-place fal fa-times-circle"></i>
+            </div>
+            <div class="reverse" *ngIf="i === 1 && places.length === 2"
+               (click)="revertPlaces()" >
+               <i class="fal fa-exchange-alt">
+               </i>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="trip-places-lv">
+
+      <div class="trip-info" *ngIf="places?.length > 1">
+        <sga-route-info 
+          [duration]="route?.duration"
+          [distance]="route?.distance"
+        >
+        </sga-route-info>
+      </div>
+      <div class="trip-places-lv" *ngIf="places?.length === 0">
         <i class="fal fa-map"></i>
       </div>
     </section>
     <hr>
+    <div class="trip-places-header ">
+      <h3>Rotas semelhantes</h3>
+      <i class="fa fa-question-circle ui-icon-info" style="position: inherit"></i>
+    </div>
     <section>
-      <div class="trip-places-header">
-        <h3>Rotas</h3>
-        <i class="fa fa-question-circle ui-icon-info"></i>
-      </div>
-      <!-- <div class="trip-places-ac">
-        <input class="input" placeholder="Digite uma rota" type="text">
-      </div> -->
-      <div class="trip-places-lv">
+      <sga-route-info *ngIf="route"
+        name="Rio - São Paulo"
+        [duration]="route?.duration"
+        [distance]="route?.distance"
+      >
+      </sga-route-info>
+      <div class="trip-places-lv" *ngIf="!route">
         <i class="fal fa-map"></i>
       </div>
     </section>
-  </div>
-<div class="column is-8  places-detail">
-  <sga-map></sga-map>
+   
+</div>
+<div class="column is-8">
+    <div id="map"></div>
 </div>
 
   
