@@ -416,12 +416,11 @@ $bg-titles: #4d5675;
 
 /* GRID **************************************************************************/
   .main-content{
-   position: fixed;
+   position: absolute;
     top: 0px;
     bottom: 0px;
     left: 50px;
     right: 0px;
-        z-index: -1;
   }
   .content-wrapper {
     position: absolute;
