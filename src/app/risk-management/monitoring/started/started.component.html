@@ -43,7 +43,7 @@
       [data]="trips | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
       [dataLength]="trips.length"
       [searchText]="text" 
-      [searchColumns]="['id','motorists.documentId','currentState.Status','motorists.documentId','motorists.documentId']"
+      [searchColumns]="['currentState.status']"
       [emptySearchText]="'nenhuma viagem foi encontrado'" 
       [haveFooter]="haveFooter"
       (onCellClick)="updateSelectedTrip($event)"
@@ -66,7 +66,7 @@
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'currentState'" [header]="'Iniciado'" [minWidth]="'43'" [isSortable]="true"> 
+      <column [key]="'currentState'" [header]="'Iniciado'" [width]="'83'" [isSortable]="true"> 
        	<ng-template let-item="item">
             <span *ngIf="item == null || item?.start == undefined">-</span>
             <span *ngIf="item != null && item.start != undefined">{{item?.start | date:'medium'}}</span>
