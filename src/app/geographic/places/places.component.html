@@ -78,10 +78,34 @@
               <span>Item 1</span>
               <span>Item 1</span>
             </div>
-
-          
           </div>
         </div>
+        
+        <section class="route-cnt">
+          <div class="trip-info" *ngIf="itineraryPlaces?.length > 1">
+            <sga-route-info 
+              [duration]="route?.duration"
+              [distance]="route?.distance"
+            >
+            </sga-route-info>
+          </div>
+          <div class="trip-places-lv" *ngIf="itineraryPlaces?.length === 0">
+            <i class="fal fa-map"></i>
+          </div>
+          <div class="trip-places-header">
+            <h3>Rotas semelhantes</h3>
+            <i class="fa fa-question-circle ui-icon-info" style="position: inherit"></i>
+          </div>
+          <sga-route-info *ngIf="route"
+            name="Rio - São Paulo"
+            [duration]="route?.duration"
+            [distance]="route?.distance"
+          >
+          </sga-route-info>
+          <div class="trip-places-lv" *ngIf="!route">
+            <i class="fal fa-map"></i>
+          </div>
+        </section>
       </sga-tab>
       
       <sga-tab heading="Grupos">
