@@ -15,7 +15,6 @@ import { GridAreaComponent } from './area/grid-area/grid-area.component';
 import { RegisterComponent } from './places/register/register.component';
 import { MapPointComponent } from './point/map-point/map-point.component';
 import { GridPointComponent } from './point/grid-point/grid-point.component';
-import { RouteInfoComponent } from '../trip/register/places/route-info/route-info.component';
 import { ModalGroupComponent } from './places/modal-group/modal-group.component';
 import { GridControlComponent } from './places/grid-control/grid-control.component';
 import { RegisterAreaComponent } from './area/register-area/register-area.component';
@@ -56,7 +55,6 @@ import { HttpService } from '../shared/services/http.service';
     RegisterAreaComponent,
     GridControlComponent,
     ModalGroupComponent,
-    RouteInfoComponent,
     GridPointComponent,
     GridAreaComponent,
     MapPointComponent,
