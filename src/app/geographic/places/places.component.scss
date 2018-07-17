@@ -216,33 +216,31 @@
     }
   }
 
+  .slimscroll-grid{
+    transition:all 200ms ease !important;
+    width:4px !important;
+    background: rgba(0,0,0,0.2) !important;
+    opacity:0 !important;
+        
+  }
+  .slimscroll-bar{
+    transition:all 200ms ease !important;
+    width:4px !important;
+    background: rgba(0,0,0,0.3) !important;
+    right: 2px !important; 
+    opacity:0 !important;
+  }
+  .slimscroll-wrapper:hover .slimscroll-bar{
+    transition:all 200ms ease !important;
+    width:4px !important;
+    opacity:1 !important;
 
-.slimscroll-grid{
-  transition:all 200ms ease !important;
-  width:4px !important;
-  background: rgba(0,0,0,0.2) !important;
-  opacity:0 !important;
-      
-}
-.slimscroll-bar{
-  transition:all 200ms ease !important;
-  width:4px !important;
-  background: rgba(0,0,0,0.3) !important;
-  right: 2px !important; 
-  opacity:0 !important;
-}
-.slimscroll-wrapper:hover .slimscroll-bar{
-  transition:all 200ms ease !important;
-  width:4px !important;
-  opacity:1 !important;
-
-  background: rgba(0,0,0,0.3) !important;
-  right: 2px !important;
-}
-.slimscroll-wrapper:hover  .slimscroll-grid{
-  transition:all 200ms ease !important;
-  width:4px !important;
-
-  background: rgba(0,0,0,0.2) !important;
-
+    background: rgba(0,0,0,0.3) !important;
+    right: 2px !important;
+  }
+  .slimscroll-wrapper:hover  .slimscroll-grid{
+    transition:all 200ms ease !important;
+    width:4px !important;
+    background: rgba(0,0,0,0.2) !important;
+  }
 }
