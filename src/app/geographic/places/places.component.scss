@@ -83,8 +83,11 @@
   }
 
   .cnt-places-added{
-    margin-top:36px;
-
+    
+    height: 72vh;
+    margin-top: 10px;
+        height: 72vh;
+        padding-bottom: 11px;
 
     .place-added{
       margin: 0px 15px;
@@ -197,7 +200,6 @@
   }
   
 }
-
 .route-cnt {
   margin: 15px;
 
@@ -213,4 +215,34 @@
       margin-top: .8em;
     }
   }
+
+
+.slimscroll-grid{
+  transition:all 200ms ease !important;
+  width:4px !important;
+  background: rgba(0,0,0,0.2) !important;
+  opacity:0 !important;
+      
+}
+.slimscroll-bar{
+  transition:all 200ms ease !important;
+  width:4px !important;
+  background: rgba(0,0,0,0.3) !important;
+  right: 2px !important; 
+  opacity:0 !important;
+}
+.slimscroll-wrapper:hover .slimscroll-bar{
+  transition:all 200ms ease !important;
+  width:4px !important;
+  opacity:1 !important;
+
+  background: rgba(0,0,0,0.3) !important;
+  right: 2px !important;
+}
+.slimscroll-wrapper:hover  .slimscroll-grid{
+  transition:all 200ms ease !important;
+  width:4px !important;
+
+  background: rgba(0,0,0,0.2) !important;
+
 }
