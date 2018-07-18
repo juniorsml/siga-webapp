@@ -51,7 +51,7 @@
       [data]="motorists | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
       [dataLength]="motorists.length"
       [searchText]="text" 
-      [searchColumns]="['documentId', 'firstName', 'lastName', 'location.driverStatus', 'location.speed', 'location.altitude', 'location.mode']"
+      [searchColumns]="['documentId', 'firstName', 'lastName', 'location.battery.charge', 'location.driverStatus', 'location.speed', 'location.altitude', 'location.mode', 'location.time']"
       [emptySearchText]="'nenhuma motorista foi encontrado'" 
       [haveFooter]="true"      
       [filterHeaders]="filterHeaders"
