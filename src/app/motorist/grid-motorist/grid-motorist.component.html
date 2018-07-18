@@ -126,7 +126,7 @@
           {{item != null ? (item?.mode) : '-'}}
         </ng-template>
       </column>
-      <column [key]="'location'" [header]="'Atualizado'" [minWidth]="'82'" [isSortable]="false">
+      <column [key]="'location'" [header]="'Atualizado'" [minWidth]="'82'" [isSortable]="true" sortField="location.time">
         <ng-template let-item="item">
           {{item != null ? (item?.time | date:'medium') : '-'}}
         </ng-template>

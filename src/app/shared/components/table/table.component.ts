@@ -64,7 +64,7 @@ export class DataTableComponent
   emptyView: EmptyTableComponent;
   filteredData: Array<any>;
   emptyTable: boolean;
-  
+
 
 
   private _columns = new Array<ColumnComponent>();
@@ -98,16 +98,16 @@ export class DataTableComponent
       gridMargin: '2px 2px',
       barBackground: 'rgba(55, 56, 58, 0.6)',
       barWidth: '5',
-      barMargin: '2px 2px' 
-    }; 
+      barMargin: '2px 2px'
+    };
     this.filteredData = new SearchPipe().transform(this.data, [
       this.searchText,
       this.searchColumns
     ]);
- 
-    if (this.searchText == null) { 
-        this.numberShow = 10;
-     }
+
+    if (this.searchText == null) {
+      this.numberShow = 10;
+    }
 
     this._originalColumns = Object.assign([], this.columns);
   }
@@ -133,20 +133,18 @@ export class DataTableComponent
     }
 
     if (this.searchText !== '') {
-        this.numberShow = this.filteredData.length;
-     }
-     else if (this.searchText === '' && this.filteredData.length > this.pageQuantity) {
-        this.numberShow = this.filteredData.length;
-     }
-     else if (this.searchText !== '' && this.filteredData.length > this.pageQuantity ) {
-         this.numberShow = this.filteredData.length;
-      }
-     else{
-       this.numberShow = this.pageQuantity;
-     }
+      this.numberShow = this.filteredData ? this.filteredData.length : 0;
+    } else if (this.searchText === '' && this.filteredData.length > this.pageQuantity) {
+      this.numberShow = this.filteredData.length;
+    } else if (this.searchText !== '' && this.filteredData.length > this.pageQuantity) {
+      this.numberShow = this.filteredData.length;
+    } else {
+      this.numberShow = this.pageQuantity;
+    }
 
-    if (this.bodyRowElement !== null)
-    this.setHeaderColumnWidth();
+    if (this.bodyRowElement !== null) {
+      this.setHeaderColumnWidth();
+    }
 
     this.changeDetector.detectChanges();
   }
@@ -192,9 +190,10 @@ export class DataTableComponent
     }
   }
 
-  order(header: string, key: string, isSortable: boolean): void {
+  order(header: string, key: string, isSortable: boolean, sortField: string): void {
     if (!isSortable) { return; }
     const headerIndex = this.columns.findIndex(a => a.header === header);
+    key = sortField ? sortField : key;
     if (this.existsInSortable(header)) {
       this.reverseBy(headerIndex, key);
     } else {
@@ -205,10 +204,10 @@ export class DataTableComponent
   sortBy(index: number, key: string): void {
     this.columns[index].dataTable.data.sort(
       (a, b) =>
-        a[key].toLowerCase() > b[key].toLowerCase()
+        this.getRowValue(a, key).toLowerCase() > this.getRowValue(b, key).toLowerCase()
           ? 1
-          : a[key].toLowerCase() < b[key].toLowerCase()
-            ? -1
+            : this.getRowValue(a, key).toLowerCase() < this.getRowValue(b, key).toLowerCase()
+          ? -1
             : 0
     );
   }
@@ -216,12 +215,16 @@ export class DataTableComponent
   reverseBy(index: number, key: string): void {
     this.columns[index].dataTable.data.sort(
       (a, b) =>
-        a[key].toLowerCase() < b[key].toLowerCase()
+        this.getRowValue(a, key).toLowerCase() < this.getRowValue(b, key).toLowerCase()
           ? 1
-          : a[key].toLowerCase() > b[key].toLowerCase()
+          : this.getRowValue(a, key).toLowerCase() > this.getRowValue(b, key).toLowerCase()
             ? -1
             : 0
     );
+  }
+
+  getRowValue(obj, prop) {
+    return prop.split('.').reduce((agg, current) => agg ? agg[current] : agg, obj).toString();
   }
 
   showStyle(x, y, contextMenu) {
@@ -326,7 +329,7 @@ export class DataTableComponent
   }
 
   populateSearchFields() {
-    if (this.searchColumns == null || this.searchColumns.length == 0) {
+    if (this.searchColumns == null || this.searchColumns.length === 0) {
       this.searchColumns = [];
       for (let i = 0; i < this.columns.length; i++) {
         this.searchColumns.push(this.columns[i].key);
@@ -395,6 +398,7 @@ export class ColumnComponent {
   @Input() public width;
   @Input() public header;
   @Input() public minWidth;
+  @Input() public sortField;
   @Input() public isSortable;
   @Input() public fixedWidth;
   @Input() public headerWidth;
