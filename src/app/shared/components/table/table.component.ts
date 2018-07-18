@@ -202,25 +202,23 @@ export class DataTableComponent
   }
 
   sortBy(index: number, key: string): void {
-    this.columns[index].dataTable.data.sort(
-      (a, b) =>
-        this.getRowValue(a, key).toLowerCase() > this.getRowValue(b, key).toLowerCase()
-          ? 1
-            : this.getRowValue(a, key).toLowerCase() < this.getRowValue(b, key).toLowerCase()
-          ? -1
-            : 0
-    );
+    const sort = (a, b) => {
+      const left = this.getRowValue(a, key).toLowerCase();
+      const right = this.getRowValue(b, key).toLowerCase();
+      return right > left ? 1 : -1;
+    };
+    this.columns[index].dataTable.data.sort(sort);
+    this.columns[index].dataTable.filteredData.sort(sort);
   }
 
   reverseBy(index: number, key: string): void {
-    this.columns[index].dataTable.data.sort(
-      (a, b) =>
-        this.getRowValue(a, key).toLowerCase() < this.getRowValue(b, key).toLowerCase()
-          ? 1
-          : this.getRowValue(a, key).toLowerCase() > this.getRowValue(b, key).toLowerCase()
-            ? -1
-            : 0
-    );
+    const reverse = (a, b) => {
+      const left = this.getRowValue(a, key).toLowerCase();
+      const right = this.getRowValue(b, key).toLowerCase();
+      return right < left ? 1 : -1;
+    };
+    this.columns[index].dataTable.data.sort(reverse);
+    this.columns[index].dataTable.filteredData.sort(reverse);
   }
 
   getRowValue(obj, prop) {
