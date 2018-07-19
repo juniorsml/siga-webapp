@@ -25,9 +25,9 @@ export class SearchPipe implements PipeTransform {
     for (let i = 0; i < keys.length; i++) {
       const nodes = keys[i].split('.');
       object = item;
-      for (let i = 0; i < nodes.length; i++) {
-        if (nodes[i] != null && object != null) {
-          object = object[nodes[i]];
+      for (let x = 0; x < nodes.length; x++) {
+        if (nodes[x] != null && object != null) {
+          object = object[nodes[x]];
         }
       }
       values.push(object);
