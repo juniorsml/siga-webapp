@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OptionClickEvent } from '../../shared/events/OptionClickEvent';
 
@@ -25,23 +25,23 @@ export class StartedTripsComponent implements OnInit {
   public showSummaryDialog = false;
   showColumnSelector = false;
 
-  haveFooter: boolean = true;
+  haveFooter = true;
 
+  public headers = new Array<string>();
+  public filterHeaders = new Array<string>();
 
   closeColumnSelector() {
     this.showColumnSelector = false;
   }
 
   onSelectOption(event: OptionClickEvent) {
-    switch (event.data.header) {      
-      case 'Seleção de Colunas': 
+    switch (event.data.header) {
+      case 'Seleção de Colunas':
         this.showColumnSelector = true;
         break;
-      }
     }
+  }
 
-  public headers = new Array<string>();
-  public filterHeaders = new Array<string>();
 
   constructor(private route: ActivatedRoute) { }
 
@@ -59,9 +59,9 @@ export class StartedTripsComponent implements OnInit {
     this.filterLocation = null;
   }
 
-  public onPlacesKeyUp() {}
+  public onPlacesKeyUp() { }
 
-  public onDistanceKeyUp() {}
+  public onDistanceKeyUp() { }
 
   public updateSelectedTrip(event) {
     this.selectedTrip = event.data;
@@ -72,7 +72,7 @@ export class StartedTripsComponent implements OnInit {
     this.showSummaryDialog = true;
   }
 
-  public summaryDialogClose(){
+  public summaryDialogClose() {
     this.showSummaryDialog = false;
   }
 

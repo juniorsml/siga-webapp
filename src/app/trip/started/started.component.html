@@ -49,7 +49,7 @@
       [data]="trips | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
       [dataLength]="trips.length"
       [searchText]="text" 
-      [searchColumns]="['currentState.status','geography.destinations[].address.complete','motorists.documentId','vehicles.numberPlate', 'created']"
+      [searchColumns]="['currentState.status','geography.destinations.0.address.complete', 'geography.destinations.1.address.complete', 'motorists.0.documentId','vehicles.numberPlate', 'created']"
       [emptySearchText]="'nenhuma viagem foi encontrado'" 
       [haveFooter]="haveFooter"
       (onCellClick)="updateSelectedTrip($event)"
