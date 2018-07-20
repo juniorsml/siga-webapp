@@ -50,7 +50,7 @@
       [data]="devices | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
       [dataLength]="devices.length" 
       [searchText]="text" 
-      [searchColumns]="['alias', 'model']"
+      [searchColumns]="['id', 'name', 'model', 'tech', 'alias', 'model', 'distance', 'speed', 'battery', 'updated']"
       [emptySearchText]="'Nenhum dispositivo encontrado'" 
       [haveFooter]="haveFooter"
       (onCellClick)="onCellClick($event)"
@@ -92,7 +92,7 @@
       </column>
       <column [key]="'updated'" [header]="'Atualizado'" [width]="'233'" [isSortable]="true"> 
         <ng-template let-item="item">
-          {{item}}
+          {{item | date:'medium'}}
         </ng-template>
       </column>
       <column [key]="'distance'" [header]="'Localização'" [minWidth]="'43'" [isSortable]="false"> 

@@ -14,7 +14,6 @@ export class GridMotoristComponent implements OnInit {
   @Input() haveFooter = true;
   @Output() onMotoristSelected: EventEmitter<any> = new EventEmitter();
 
-
   text: any;
   distance: any;
   motorist: any;

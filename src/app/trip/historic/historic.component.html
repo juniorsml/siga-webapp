@@ -51,7 +51,7 @@
       [data]="trips | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
       [dataLength]="trips.length"
       [searchText]="text" 
-      [searchColumns]="['id','motorists.documentId','currentState.Status','motorists.documentId','motorists.documentId']"
+      [searchColumns]="['id','motorists.0.documentId','currentState.Status','created']"
       [emptySearchText]="'nenhuma viagem foi encontrado'" 
       [haveFooter]="haveFooter"
       [filterHeaders]="filterHeaders"

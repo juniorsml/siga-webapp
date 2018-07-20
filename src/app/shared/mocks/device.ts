@@ -9,7 +9,7 @@ export const devices = [
       charge: 0.09,
       chargeMode: true
     },
-    updated: new Date(),
+    updated: 1818908781821,
     speed: 80,
     location: {
       latitude: -23.5076046,
@@ -25,7 +25,7 @@ export const devices = [
     battery: {
       charge: 0.5
     },
-    updated: new Date(),
+    updated: 1518906781821,
     speed: 90,
     location: {
       latitude: -23.5076046,
@@ -42,7 +42,7 @@ export const devices = [
     battery: {
       charge: 0.5
     },
-    updated: new Date(),
+    updated: 1518906781821,
     speed: 90,
     location: {
       latitude: -23.5076046,
@@ -59,7 +59,7 @@ export const devices = [
     battery: {
       charge: 0.5
     },
-    updated: new Date(),
+    updated: 1518906781821,
     speed: 90,
     location: {
       latitude: -23.5076046,
@@ -76,7 +76,7 @@ export const devices = [
     battery: {
       charge: 0.5
     },
-    updated: new Date(),
+    updated: 1518906781000,
     speed: 90,
     location: {
       latitude: -23.5076046,
@@ -93,7 +93,7 @@ export const devices = [
     battery: {
       charge: 0.5
     },
-    updated: new Date(),
+    updated: 1518906781000,
     speed: 90,
     location: {
       latitude: -23.5076046,
