@@ -6,7 +6,7 @@ export const devices = [
     name: 'oldest',
     distance: 1,
     battery: {
-      charge: 0.09,
+      charge: '0.0',
       chargeMode: true
     },
     updated: 1818908781821,
@@ -23,7 +23,7 @@ export const devices = [
     name: 'newest',
     distance: 9.8,
     battery: {
-      charge: 0.5
+      charge: '0.0'
     },
     updated: 1518906781821,
     speed: 90,
@@ -40,7 +40,7 @@ export const devices = [
     name: 'newest',
     distance: 9.8,
     battery: {
-      charge: 0.5
+      charge: '0.0'
     },
     updated: 1518906781821,
     speed: 90,
@@ -57,7 +57,7 @@ export const devices = [
     name: 'newest',
     distance: 9.8,
     battery: {
-      charge: 0.5
+      charge: '0.0'
     },
     updated: 1518906781821,
     speed: 90,
@@ -74,7 +74,7 @@ export const devices = [
     name: 'newest',
     distance: 9.8,
     battery: {
-      charge: 0.5
+      charge: '0.0'
     },
     updated: 1518906781000,
     speed: 90,
@@ -91,7 +91,7 @@ export const devices = [
     name: 'newest',
     distance: 9.8,
     battery: {
-      charge: 0.5
+      charge: '0.0'
     },
     updated: 1518906781000,
     speed: 90,

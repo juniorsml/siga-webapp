@@ -50,7 +50,7 @@
       [data]="devices | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
       [dataLength]="devices.length" 
       [searchText]="text" 
-      [searchColumns]="['id', 'name', 'model', 'tech', 'alias', 'model', 'distance', 'speed', 'battery', 'updated']"
+      [searchColumns]="['id', 'name', 'model', 'tech', 'alias', 'model', 'distance', 'speed', 'battery.charge', 'updated']"
       [emptySearchText]="'Nenhum dispositivo encontrado'" 
       [haveFooter]="haveFooter"
       (onCellClick)="onCellClick($event)"
