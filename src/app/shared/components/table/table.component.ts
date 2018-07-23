@@ -16,7 +16,8 @@ import {
   EventEmitter,
   HostListener,
   SimpleChanges,
-  OnInit
+  OnInit,
+  AfterContentInit
 } from '@angular/core';
 import { SearchPipe } from '../../filters/search.pipe';
 
@@ -30,7 +31,7 @@ import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
   styleUrls: ['./table.component.scss']
 })
 export class DataTableComponent
-  implements OnInit, OnChanges, DoCheck, AfterViewInit {
+  implements OnInit, OnChanges, DoCheck, AfterViewInit, AfterContentInit {
   @Input() data: Array<any>;
   @Input() bodyTop;
   @Input() bodyBottom;
