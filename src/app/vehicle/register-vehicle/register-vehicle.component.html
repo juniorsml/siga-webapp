@@ -339,15 +339,24 @@
                         </sga-places-auto-complete>
                       </div>
 
-
-                      
+                      <div class="column is-12">
+                        <div class="control">
+                          <label class="label is-small">Raio</label>
+                          <input 
+                            type="number" 
+                            class="input is-small" 
+                            [(ngModel)]="ray"
+                            (ngModelChange)="onRayChanged($event)"
+                            placeholder="Raio"
+                            name="ray" 
+                            ngModel />
+                        </div>
+                      </div>
 
                     </div>
                     <div class="columns column  is-multiline">
-                              
-                       <div class="column is-12"> 
-                        <iframe [src]="mapUrl" width="100%">
-                        </iframe>
+                       <div class="column is-12 map"> 
+                        <sga-map></sga-map>
                       </div>            
                     </div>
                     
