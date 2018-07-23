@@ -1,6 +1,6 @@
-import { Component, Output, OnInit, EventEmitter, Input, ViewChild  } from '@angular/core';
+import { Component, Output, OnInit, EventEmitter, Input, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Map } from '../../shared/models/Map';
 
 class RegisterForm {
 
@@ -19,6 +19,8 @@ class RegisterForm {
   cnhNumber: string;
   cnhCategory: string;
   dueDate: string;
+
+  ray: number;
 
   // Address
   landlinePhone: string;
@@ -42,34 +44,37 @@ class RegisterForm {
   styleUrls: ['./register-motorist.component.scss']
 })
 
-export class RegisterMotoristComponent implements  OnInit {
+export class RegisterMotoristComponent implements OnInit {
 
   model: RegisterForm = new RegisterForm();
+  @Input() public showForm: boolean;
+  @Output() onFormClose: EventEmitter<any> = new EventEmitter();
   @ViewChild('formMotorist') formMotorist: any;
 
-  private place: any;
-  public mapUrl: SafeResourceUrl;
+  public selectedTabIndex = 0;
+  public ray = 1000;
 
-  @Input()
-  public showForm: boolean;
-  @Output() onFormClose: EventEmitter<any> = new EventEmitter();
+  private place: any;
+  private location: any;
 
   pt: any;
-  landlinephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   mobilephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   messagephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  landlinephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
 
-  public selectedTabIndex = 0;
+  constructor(private map: Map) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.map.createMapBoxMapInstance();
+  }
 
   onSubmit() {
-      if (this.formMotorist.valid) {
-        console.log('Form Submitted!');
-        this.formMotorist.reset();
-      }
+    if (this.formMotorist.valid) {
+      console.log('Form Submitted!');
+      this.formMotorist.reset();
     }
+  }
 
   // Show image profile
   addProfilePhoto(event: any) {
@@ -81,21 +86,21 @@ export class RegisterMotoristComponent implements  OnInit {
         const containerImage = document.querySelector('.img-profile');
         (removeImage as HTMLElement).style.display = 'flex';
         (containerImage as HTMLElement).style.display = 'block';
-        (containerImage as HTMLElement).style.backgroundImage  = 'url(' + url + ')';
+        (containerImage as HTMLElement).style.backgroundImage = 'url(' + url + ')';
       };
       reader.readAsDataURL(event.target.files[0]);
 
     }
   }
   removeProfilePhoto() {
-     const containerImage = document.querySelector('.img-profile');
-     const removeImage = document.querySelector('.remove-img-profile');
-     (containerImage as HTMLElement).style.backgroundImage  = 'url(\' \')';
-     (containerImage as HTMLElement).style.display = 'none';
-     (removeImage as HTMLElement).style.display = 'none';
+    const containerImage = document.querySelector('.img-profile');
+    const removeImage = document.querySelector('.remove-img-profile');
+    (containerImage as HTMLElement).style.backgroundImage = 'url(\' \')';
+    (containerImage as HTMLElement).style.display = 'none';
+    (removeImage as HTMLElement).style.display = 'none';
 
   }
-    cancel() {
+  cancel() {
     this.onFormClose.emit();
   }
 
@@ -107,26 +112,63 @@ export class RegisterMotoristComponent implements  OnInit {
 
     console.log(motorist);
   }
-  constructor(private domSanitizer: DomSanitizer) {
-    this.mapUrl = domSanitizer.bypassSecurityTrustResourceUrl(this.getMapUrlByLatLng(-23.53, -46.62));
-  }
 
-
-  placesFiltered(place: any) {
-    const urlValue = this.getMapUrlByLatLng(place.geometry.location.lat(), place.geometry.location.lng());
-    this.mapUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(urlValue);
+  public placesFiltered(place: any) {
     this.place = place;
+    const { geometry: { location } } = place;
+    if (location) {
+      this.location = location;
+      this.map.setZoom(14);
+      this.map.moveTo(location.lat(), location.lng());
+      // this.map.setCenter(location.lat(), location.lng());
+      this.onRayChanged(1000);
+    }
   }
 
-  filterRemoved() {
+  public filterRemoved() {
     this.place = null;
   }
 
-
-
-  getMapUrlByLatLng(lat: number, lng: number) {
-    return `https://maps.google.com/maps?q=${lat},${lng}&hl=es;z=14&amp&output=embed`;
+  public onRayChanged = event => {
+    if (event > 0) {
+      const ray = event / 1000;
+      this.map.clearLayers();
+      this.addRay(this.location, ray);
+      this.addMarker();
+      window.dispatchEvent(new Event('resize'));
+    }
   }
 
+  private addRay(location: any, ray = 1, options = this.getPolygonOptions('#ff5e5e', '#ff5e5e')) {
+    const turf = window['turf'];
+    const point = turf.point([location.lng(), location.lat()]);
+    const buffered = turf.buffer(point, ray, { units: 'kilometers' });
+    buffered.properties = options;
+    this.map.addGeoJSON(buffered);
+  }
 
+  private createPoint = (lat: number, lng: number) => ({
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [lng, lat]
+    },
+    properties: {
+      'marker-color': '#ea3f33',
+      'marker-size': 'large',
+      'marker-symbol': 'bus'
+    }
+  })
+
+  private addMarker() {
+    this.map.addGeoJSON(this.createPoint(this.location.lat(), this.location.lng()));
+  }
+
+  private getPolygonOptions = (stroke, fill) => ({
+    fill, // line
+    stroke, // back
+    'stroke-width': 2,
+    'fill-opacity': 0.5,
+    'stroke-opacity': 0.5
+  })
 }

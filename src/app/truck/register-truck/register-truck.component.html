@@ -3,7 +3,7 @@
   <div class="container-form content-modal">
     <div class="container-dialog-header columns column is-12 is-marginless">
       <div class="area column is-narrow">
-        <h3 >Cadastro de Veículo</h3>  
+        <h3>Cadastro de Reboque</h3>  
       </div>
       <div class="column btn-close"> 
          <i  (click)="cancel()" class="fal fa-times is-pulled-right"></i>
@@ -338,15 +338,25 @@
                         </sga-places-auto-complete>
                       </div>
 
-
+                      <div class="column is-12">
+                        <div class="control">
+                          <label class="label is-small">Raio</label>
+                          <input 
+                            type="number" 
+                            class="input is-small" 
+                            [(ngModel)]="ray"
+                            (ngModelChange)="onRayChanged($event)"
+                            placeholder="Raio"
+                            name="ray" 
+                            ngModel />
+                        </div>
+                      </div>
                       
-
                     </div>
                     <div class="columns column  is-multiline">
                               
-                       <div class="column is-12"> 
-                        <iframe [src]="mapUrl" width="100%">
-                        </iframe>
+                       <div class="column is-12 map"> 
+                        <sga-map></sga-map>
                       </div>            
                     </div>
                     
