@@ -35,7 +35,10 @@ export class ColumnSelectorComponent implements OnChanges, OnInit, AfterViewInit
   ngAfterViewInit(): void {
     const cols = this.getSavedColumns();
     this.selectedItems = Object.assign([], cols ? cols : this.columns);
-    setTimeout(() => this.onToggleItem.emit(this.selectedItems), 100);
+    setTimeout(() => {
+      this.onToggleItem.emit(this.selectedItems);
+      setTimeout(() => window.dispatchEvent(new Event('resize')), 200);
+    }, 1000);
   }
 
   public closeBox = (event) => {
