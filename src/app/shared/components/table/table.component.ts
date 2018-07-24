@@ -66,11 +66,8 @@ export class DataTableComponent
   filteredData: Array<any>;
   emptyTable: boolean;
 
-
-
   private _columns = new Array<ColumnComponent>();
   private _originalColumns = new Array<ColumnComponent>();
-
 
   currentPage = 1;
   pageQuantity = 10;
