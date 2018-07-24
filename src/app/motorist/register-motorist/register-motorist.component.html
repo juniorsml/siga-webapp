@@ -265,7 +265,11 @@
 
               <div class="columns column is-multiline">
                 <label class="label is-small" style="margin:12px 0 -5px 12px;">Endereço/Região</label>
-                <sga-places-auto-complete class="column is-12" (onPlacesFilteredEvent)="placesFiltered($event)" (onFilterRemovedEvent)="filterRemoved()">
+                <sga-places-auto-complete 
+                  class="column is-12" 
+                  [keepTextAddress]="true"
+                  (onPlacesFilteredEvent)="placesFiltered($event)" 
+                  (onFilterRemovedEvent)="filterRemoved()">
                 </sga-places-auto-complete>
                 
                 <div class="column is-12">
