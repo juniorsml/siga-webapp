@@ -335,7 +335,10 @@
 
                       <div class="column is-12">
                         <label class="label is-small">Endereço/Região</label>  
-                        <sga-places-auto-complete  (onPlacesFilteredEvent)="placesFiltered($event)" (onFilterRemovedEvent)="filterRemoved()">
+                        <sga-places-auto-complete 
+                          [keepTextAddress]="true"
+                          (onPlacesFilteredEvent)="placesFiltered($event)" 
+                          (onFilterRemovedEvent)="filterRemoved()">
                         </sga-places-auto-complete>
                       </div>
 
