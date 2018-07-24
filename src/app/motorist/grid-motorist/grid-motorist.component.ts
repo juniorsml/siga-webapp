@@ -31,7 +31,7 @@ export class GridMotoristComponent implements OnInit {
   public filterHeaders = new Array<string>();
 
   constructor(private route: ActivatedRoute,
-              private router: Router) { }
+    private router: Router) { }
 
   ngOnInit(): void {
     this.route.data.subscribe(data => this.motorists = data.motorists);
@@ -49,7 +49,7 @@ export class GridMotoristComponent implements OnInit {
       case 'Configuração':
         this.router.navigateByUrl('motorist/account');
         break;
-     }
+    }
   }
 
   public onCellClick(event) {
