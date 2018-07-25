@@ -16,7 +16,8 @@ import {
   EventEmitter,
   HostListener,
   SimpleChanges,
-  OnInit
+  OnInit,
+  AfterContentInit
 } from '@angular/core';
 import { SearchPipe } from '../../filters/search.pipe';
 
@@ -30,7 +31,7 @@ import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
   styleUrls: ['./table.component.scss']
 })
 export class DataTableComponent
-  implements OnInit, OnChanges, DoCheck, AfterViewInit {
+  implements OnInit, OnChanges, DoCheck, AfterViewInit, AfterContentInit {
   @Input() data: Array<any>;
   @Input() bodyTop;
   @Input() bodyBottom;
@@ -65,11 +66,8 @@ export class DataTableComponent
   filteredData: Array<any>;
   emptyTable: boolean;
 
-
-
   private _columns = new Array<ColumnComponent>();
   private _originalColumns = new Array<ColumnComponent>();
-
 
   currentPage = 1;
   pageQuantity = 10;
@@ -308,9 +306,8 @@ export class DataTableComponent
     for (let i = 0; i < this.columns.length; i++) {
       if (this.columns[i].fixedWidth == null && this.bodyRowElement != null) {
         // Todo: Added && this.bodyElement != null due to null error potentially caused by *ngif on table element displaying
-        this.columns[i].headerWidth = this.bodyRowElement.nativeElement.cells[
-          i
-        ].offsetWidth;
+        const cell = this.bodyRowElement.nativeElement.cells[i];
+        this.columns[i].headerWidth = cell ? cell.offsetWidth : 0;
       } else {
         this.columns[i].headerWidth = this.columns[i].fixedWidth;
         this.columns[i].width = this.columns[i].fixedWidth;
