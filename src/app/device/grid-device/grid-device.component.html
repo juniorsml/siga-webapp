@@ -70,7 +70,7 @@
           </div>
         </ng-template>
       </table-empty>
-      <column [key]="'id'" [header]="'ID'" [minWidth]="'82'" [isSortable]="false">
+      <column [key]="'id'" [header]="'ID'" [minWidth]="'82'" [isSortable]="true">
         <ng-template let-item="item">
           {{item}}
         </ng-template>
@@ -95,17 +95,17 @@
           {{item | date:'medium'}}
         </ng-template>
       </column>
-      <column [key]="'distance'" [header]="'Localização'" [minWidth]="'43'" [isSortable]="false"> 
+      <column [key]="'distance'" [header]="'Localização'" [minWidth]="'43'" [isSortable]="true"> 
         <ng-template let-item="item">
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'speed'" [header]="'Velocidade'" [minWidth]="'43'" [isSortable]="false"> 
+      <column [key]="'speed'" [header]="'Velocidade'" [minWidth]="'43'" [isSortable]="true"> 
         <ng-template let-item="item">
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'battery'" [header]="'Bateria'" [minWidth]="'43'" [isSortable]="false"> 
+      <column [key]="'battery'" [header]="'Bateria'" [minWidth]="'43'" [isSortable]="true"> 
         <ng-template let-item="item">
           <span class="battery-level">
             <span class="battery-level-body">
