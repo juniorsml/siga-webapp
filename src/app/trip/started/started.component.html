@@ -72,13 +72,13 @@
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'currentState'" [header]="'Iniciado'" [width]="'83'" [isSortable]="true"> 
+      <column [key]="'currentState'" [header]="'Iniciado'" [width]="'83'" [isSortable]="true" sortField="currentState.start"> 
        	<ng-template let-item="item">
             <span *ngIf="item == null || item?.start == undefined">-</span>
             <span *ngIf="item != null && item.start != undefined">{{item?.start | date:'medium'}}</span>
         </ng-template>
       </column>
-      <column [key]="'currentState'" [header]="'Status'" [minWidth]="'82'" [isSortable]="true">
+      <column [key]="'currentState'" [header]="'Status'" [minWidth]="'82'" [isSortable]="true" sortField="currentState.status">
           <ng-template let-item="item">
               {{item?.status}}
           </ng-template>
@@ -98,7 +98,7 @@
               <span *ngIf="item != null && item.destinations[item?.destinations?.length -1]?.name == undefined">{{item?.destinations[item?.destinations?.length -1]?.address?.complete}}</span>
           </ng-template>
       </column>
-      <column [key]="'motorists'" [header]="'Motorista'" [minWidth]="'82'" [isSortable]="true">
+      <column [key]="'motorists'" [header]="'Motorista'" [minWidth]="'82'" [isSortable]="true" sortField="motorists.0.documentId">
           <ng-template let-item="item">
               {{item != null ? item[0]?.documentId: '-'}}
           </ng-template>
