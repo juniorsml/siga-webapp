@@ -60,6 +60,7 @@ export class DataTableComponent
   @ViewChild('bodyRowElement') bodyRowElement: ElementRef;
   @ViewChild('footerElement') footerElement: ElementRef;
   @ViewChild('contextMenuContainer') contextMenuContainer: ElementRef;
+
   selectedRowIndex: number;
   contextMenu: ContextMenuComponent;
   emptyView: EmptyTableComponent;
@@ -244,8 +245,6 @@ export class DataTableComponent
     }
     return { top: y - 8 + 'px', left: x - 8 + 'px' };
 
-    // original measurements
-    // return {'top': (contextMenu.y - 8)  + 'px', 'left' : (contextMenu.x - 8) + 'px'};
   }
 
   @HostListener('window:resize', ['$event.target'])

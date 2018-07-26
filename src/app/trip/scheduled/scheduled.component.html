@@ -69,22 +69,22 @@
 		        </ng-template>
     	</table-empty>  
       
-      <column [key]="'motorists'" [header]="'Motorista'" [minWidth]="'82'">
+      <column [key]="'motorists'" [header]="'Motorista'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item != null ? item[0]?.name: '-'}}
           </ng-template>
       </column>
-      <column [key]="'documentId'" [header]="'Documento'" [minWidth]="'82'">
+      <column [key]="'documentId'" [header]="'Documento'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
              {{item != null ? item[0]?.documentId: '-'}}
           </ng-template>
       </column>
-      <column [key]="'created'" [header]="'Criado'" [minWidth]="'82'">
+      <column [key]="'created'" [header]="'Criado'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item | date:'medium'}}
           </ng-template>
       </column>
-      <column [key]="'inserted'" [header]="'Recebido'" [minWidth]="'82'">
+      <column [key]="'inserted'" [header]="'Recebido'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item| date:'medium'}}
           </ng-template>
