@@ -29,7 +29,7 @@
     padding-top: 30px;
     transition: all 400ms ease;
   }
-
+}
   
   @import '../geographic.scss';
 
@@ -80,15 +80,14 @@
       position: absolute;
       top: 0;
     }
-  }
 
-  .cnt-places-added{
-    
-    height: 72vh;
-    margin-top: 10px;
-        height: 72vh;
+  .cnt-route-scroll{
+    height: 76vh;
+        margin-top: 17px;
         padding-bottom: 11px;
 
+  }
+  .cnt-places-added{
     .place-added{
       margin: 0px 15px;
       padding: 24px 11px;
@@ -242,7 +241,5 @@
 .slimscroll-wrapper:hover  .slimscroll-grid{
   transition:all 200ms ease !important;
   width:4px !important;
-
   background: rgba(0,0,0,0.2) !important;
-
 }
