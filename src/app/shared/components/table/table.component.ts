@@ -221,7 +221,8 @@ export class DataTableComponent
   }
 
   getRowValue(obj, prop) {
-    return prop.split('.').reduce((agg, current) => agg ? agg[current] : agg, obj).toString();
+    const value = prop.split('.').reduce((agg, current) => agg ? agg[current] : agg, obj);
+    return value ? value.toString() : '';
   }
 
   showStyle(x, y, contextMenu) {
