@@ -18,12 +18,10 @@ import {
 export class PlacesAutoCompleteComponent implements AfterViewInit, OnInit {
 
   @Input() public styleClass: string;
+  @Input() public keepTextAddress: boolean;
 
-  @Output('onFilterRemovedEvent')
-  public onFilterRemovedEvent = new EventEmitter<any>();
-
-  @Output('onPlacesFilteredEvent')
-  public onPlacesFilteredEvent = new EventEmitter<any>();
+  @Output() public onFilterRemovedEvent = new EventEmitter<any>();
+  @Output() public onPlacesFilteredEvent = new EventEmitter<any>();
 
   @ViewChild('input') private input: ElementRef;
 
@@ -59,8 +57,9 @@ export class PlacesAutoCompleteComponent implements AfterViewInit, OnInit {
         this.propagatePlace();
       }
     });
-    this.placeText = ' ';
-
+    if (!this.keepTextAddress) {
+      this.placeText = ' ';
+    }
   }
 
   private propagatePlace() {

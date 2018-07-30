@@ -3,10 +3,8 @@
     <h3>Selecione as colunas:</h3>
     <ul>
       <li *ngFor=" let column of columns; let i = index ">        
-
-         <input class="styled-checkbox" id="check_{{i}}" type="checkbox" checked="exists(column)" >
+         <input class="styled-checkbox" id="check_{{i}}" type="checkbox" [checked]="columnInPreferences(column)" >
          <label (click)="onToggle(column)" for="check_{{i}}"> {{column}} </label>
-       
       </li>
     </ul>
     <a (click)="closeBox('hide')" class="button is-pulled-right"> OK</a>

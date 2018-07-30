@@ -10,10 +10,9 @@ import { OptionClickEvent } from '../../shared/events/OptionClickEvent';
 })
 export class GridMotoristComponent implements OnInit {
   @Input() motorists = new Array();
-  @Input() dataLoading = true;
   @Input() haveFooter = true;
+  @Input() dataLoading = true;
   @Output() onMotoristSelected: EventEmitter<any> = new EventEmitter();
-
 
   text: any;
   distance: any;
@@ -32,7 +31,7 @@ export class GridMotoristComponent implements OnInit {
   public filterHeaders = new Array<string>();
 
   constructor(private route: ActivatedRoute,
-              private router: Router) { }
+    private router: Router) { }
 
   ngOnInit(): void {
     this.route.data.subscribe(data => this.motorists = data.motorists);
@@ -50,7 +49,7 @@ export class GridMotoristComponent implements OnInit {
       case 'Configuração':
         this.router.navigateByUrl('motorist/account');
         break;
-     }
+    }
   }
 
   public onCellClick(event) {

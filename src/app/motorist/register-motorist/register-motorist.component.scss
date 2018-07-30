@@ -51,7 +51,7 @@ $main-blue:#4d5675;
 	height: 100%;
   position: relative;
 	padding: 0 23px 15px;
-  iframe{
+  .column.is-12.map {
     height: 345px;
   }
 	.field:not(:last-child){

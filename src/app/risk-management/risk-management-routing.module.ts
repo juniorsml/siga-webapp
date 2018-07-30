@@ -17,34 +17,34 @@ import { trips } from '../shared/mocks/trips';
 import { operations } from '../shared/mocks/operations';
 
 const routes: Routes = [
-  { 
-    path: 'started', 
+  {
+    path: 'started',
     component: StartedTripsComponent,
     data: { trips }
   },
-  { 
-    path: 'scheduled', 
+  {
+    path: 'scheduled',
     component: ScheduledTripsComponent,
     data: { trips }
   },
-  { 
-    path: 'cto', 
+  {
+    path: 'cto',
     component: CTOTripsComponent,
     data: { trips }
   },
-  { 
-    path: 'ratc', 
+  {
+    path: 'ratc',
     component: RATCTripsComponent,
     data: { trips }
   },
-  { 
-    path: 'radar', 
+  {
+    path: 'radar',
     component: RadarComponent,
     data: { trips }
   }
   ,
-  { 
-    path: 'operation', 
+  {
+    path: 'operation',
     component: GridOperationComponent,
     data: { operations }
   }
@@ -54,4 +54,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class RiskManagementRoutingModule {}
+export class RiskManagementRoutingModule { }

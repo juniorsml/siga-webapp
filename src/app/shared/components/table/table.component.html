@@ -10,7 +10,7 @@
               *ngFor="let column of columns; let rowIndex = index;"
               [ngStyle]="{cursor: column.isSortable ? 'pointer': 'initial'}"
               [style.width]="column.headerWidth + 'px'"
-              (click)="order(column.header, column.key, column.isSortable)">
+              (click)="order(column.header, column.key, column.isSortable, column.sortField)">
               <span>
                 {{column.header}}
                 <i *ngIf="column.isSortable" class="fa fa-angle-down" [ngClass]="{'fal fa-angle-up': isASC(column.header) }"></i>

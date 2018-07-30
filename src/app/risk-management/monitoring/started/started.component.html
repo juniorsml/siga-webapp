@@ -13,7 +13,7 @@
     </sga-sidebar-configuration>
   </div>  
 </div>
-<sga-modal  *ngIf="showColumnSelector">
+<sga-modal [hidden]="!showColumnSelector">
   <sga-column-selector   
     [columns]="headers"
     (onToggleItem)="onToggleItem($event)"
@@ -66,48 +66,48 @@
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'currentState'" [header]="'Iniciado'" [width]="'83'" [isSortable]="true"> 
+      <column [key]="'currentState'" [header]="'Iniciado'" [width]="'83'" [isSortable]="true" sortField="currentState.start"> 
        	<ng-template let-item="item">
             <span *ngIf="item == null || item?.start == undefined">-</span>
             <span *ngIf="item != null && item.start != undefined">{{item?.start | date:'medium'}}</span>
         </ng-template>
       </column>
-      <column [key]="'currentState'" [header]="'Status'" [minWidth]="'82'">
+      <column [key]="'currentState'" [header]="'Status'" [minWidth]="'82'" [isSortable]="true" sortField="currentState.status">
           <ng-template let-item="item">
               {{item?.status}}
           </ng-template>
       </column>
 
-      <column [key]="'geography'" [header]="'Origem'" [minWidth]="'82'">
+      <column [key]="'geography'" [header]="'Origem'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               <span *ngIf="item == null">-</span>
               <span *ngIf="item != null && item.destinations[0]?.name != undefined">{{item?.destinations[0]?.name}}</span>
               <span *ngIf="item != null && item.destinations[0]?.name == undefined">{{item?.destinations[0]?.address?.complete}}</span>
           </ng-template>
       </column>
-      <column [key]="'geography'" [header]="'Destino'" [minWidth]="'82'">
+      <column [key]="'geography'" [header]="'Destino'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               <span *ngIf="item == null">-</span>
               <span *ngIf="item != null && item.destinations[item?.destinations?.length -1]?.name != undefined">{{item?.destinations[item?.destinations?.length -1]?.name}}</span>
               <span *ngIf="item != null && item.destinations[item?.destinations?.length -1]?.name == undefined">{{item?.destinations[item?.destinations?.length -1]?.address?.complete}}</span>
           </ng-template>
       </column>
-      <column [key]="'motorists'" [header]="'Motorista'" [minWidth]="'82'">
+      <column [key]="'motorists'" [header]="'Motorista'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item != null ? item[0]?.documentId: '-'}}
           </ng-template>
       </column>
-      <column [key]="'vehicles'" [header]="'Veículo'" [minWidth]="'40'">
+      <column [key]="'vehicles'" [header]="'Veículo'" [minWidth]="'40'" [isSortable]="true">
           <ng-template let-item="item">
               {{item != null ? item?.numberPlate: '-'}}
           </ng-template>
       </column>
-      <column [key]="''" [header]="'Rota'" [minWidth]="'40'">
+      <column [key]="''" [header]="'Rota'" [minWidth]="'40'" [isSortable]="true">
           <ng-template let-item="item">
               {{'-'}}
           </ng-template>
       </column>
-      <column [key]="'created'" [header]="'Criado'" [minWidth]="'82'">
+      <column [key]="'created'" [header]="'Criado'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               <span *ngIf="item == undefined">-</span>
               <span *ngIf="item != undefined">{{item | date:'medium'}}</span>
