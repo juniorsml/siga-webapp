@@ -74,9 +74,18 @@
                  </i>
               </div>
 
-              <div class="place-tags">
-                <span>Item 1</span>
-                <span>Item 1</span>
+              <div class="place-tag">
+                <tag-input 
+                  [ngModel]="['tag']" 
+                  placeholder="Adicione uma tag"
+                  (onAdd)="onSelectedTag($event)">
+                  <tag-input-dropdown 
+                    [showDropdownIfEmpty]="true"
+                    [autocompleteItems]="['tag1', 'tag2', 'tag3']"
+                  >
+
+                  </tag-input-dropdown>
+                </tag-input>
               </div>
             </div>
           </div>
@@ -107,7 +116,6 @@
             </div>
           </section>
         </div>
-       
 
       </sga-tab>
       
