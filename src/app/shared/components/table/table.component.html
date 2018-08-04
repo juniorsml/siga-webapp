@@ -10,7 +10,7 @@
               *ngFor="let column of columns; let rowIndex = index;"
               [ngStyle]="{cursor: column.isSortable ? 'pointer': 'initial'}"
               [style.width]="column.headerWidth + 'px'"
-              (click)="order(column.header, column.key, column.isSortable)">
+              (click)="order(column.header, column.key, column.isSortable, column.sortField)">
               <span>
                 {{column.header}}
                 <i *ngIf="column.isSortable" class="fa fa-angle-down" [ngClass]="{'fal fa-angle-up': isASC(column.header) }"></i>
@@ -48,7 +48,15 @@
     <div *ngIf="haveFooter" #footerElement [class]="styleFooter">
       <div class="ui-datatable-footer-wrapper">      
         <div>
-            <span class="ui-datatable-footer-total">{{filteredData?.length}} | {{dataLength}}</span>
+            <span class="ui-datatable-footer-total">
+               <span>{{numberShow}}</span>  | {{dataLength}}
+           <!--    <span *ngIf="searchText != null">{{filteredData?.length}}</span>
+              <span *ngIf="filteredData?.length > dataLength && filteredData?.length < pageQuantity "> {{filteredData?.length}}</span>
+              <span *ngIf="searchText == null || filteredData?.length < pageQuantity ">{{pageQuantity}}</span>
+ -->
+            
+
+           </span>
         </div>
         <div class="ui-datatable-footer-right">
           <div class="select is-small">

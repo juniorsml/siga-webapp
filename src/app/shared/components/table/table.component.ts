@@ -16,7 +16,8 @@ import {
   EventEmitter,
   HostListener,
   SimpleChanges,
-  OnInit
+  OnInit,
+  AfterContentInit
 } from '@angular/core';
 import { SearchPipe } from '../../filters/search.pipe';
 
@@ -30,11 +31,12 @@ import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
   styleUrls: ['./table.component.scss']
 })
 export class DataTableComponent
-  implements OnInit, OnChanges, DoCheck, AfterViewInit {
+  implements OnInit, OnChanges, DoCheck, AfterViewInit, AfterContentInit {
   @Input() data: Array<any>;
   @Input() bodyTop;
   @Input() bodyBottom;
   @Input() dataLength: number;
+  @Input() numberShow: number;
   @Input() searchText: string;
   @Input() emptySearchText: string;
   @Input() searchColumns: Array<any>;
@@ -58,6 +60,7 @@ export class DataTableComponent
   @ViewChild('bodyRowElement') bodyRowElement: ElementRef;
   @ViewChild('footerElement') footerElement: ElementRef;
   @ViewChild('contextMenuContainer') contextMenuContainer: ElementRef;
+
   selectedRowIndex: number;
   contextMenu: ContextMenuComponent;
   emptyView: EmptyTableComponent;
@@ -66,6 +69,7 @@ export class DataTableComponent
 
   private _columns = new Array<ColumnComponent>();
   private _originalColumns = new Array<ColumnComponent>();
+
   currentPage = 1;
   pageQuantity = 10;
   search: SearchPipe;
@@ -100,6 +104,10 @@ export class DataTableComponent
       this.searchColumns
     ]);
 
+    if (this.searchText == null) {
+      this.numberShow = 10;
+    }
+
     this._originalColumns = Object.assign([], this.columns);
   }
 
@@ -125,8 +133,19 @@ export class DataTableComponent
       this.filteredData = this.data;
     }
 
-    // if (this.bodyRowElement !== null)
-    // this.setHeaderColumnWidth();
+    if (this.searchText !== '') {
+      this.numberShow = this.filteredData ? this.filteredData.length : 0;
+    } else if (this.searchText === '' && this.filteredData.length > this.pageQuantity) {
+      this.numberShow = this.filteredData.length;
+    } else if (this.searchText !== '' && this.filteredData.length > this.pageQuantity) {
+      this.numberShow = this.filteredData.length;
+    } else {
+      this.numberShow = this.pageQuantity;
+    }
+
+    if (this.bodyRowElement !== null) {
+      this.setHeaderColumnWidth();
+    }
 
     this.changeDetector.detectChanges();
   }
@@ -172,9 +191,10 @@ export class DataTableComponent
     }
   }
 
-  order(header: string, key: string, isSortable: boolean): void {
+  order(header: string, key: string, isSortable: boolean, sortField: string): void {
     if (!isSortable) { return; }
     const headerIndex = this.columns.findIndex(a => a.header === header);
+    key = sortField ? sortField : key;
     if (this.existsInSortable(header)) {
       this.reverseBy(headerIndex, key);
     } else {
@@ -183,25 +203,28 @@ export class DataTableComponent
   }
 
   sortBy(index: number, key: string): void {
-    this.columns[index].dataTable.data.sort(
-      (a, b) =>
-        a[key].toLowerCase() > b[key].toLowerCase()
-          ? 1
-          : a[key].toLowerCase() < b[key].toLowerCase()
-            ? -1
-            : 0
-    );
+    const sort = (a, b) => {
+      const left = this.getRowValue(a, key).toLowerCase();
+      const right = this.getRowValue(b, key).toLowerCase();
+      return right > left ? 1 : -1;
+    };
+    this.columns[index].dataTable.data.sort(sort);
+    this.columns[index].dataTable.filteredData.sort(sort);
   }
 
   reverseBy(index: number, key: string): void {
-    this.columns[index].dataTable.data.sort(
-      (a, b) =>
-        a[key].toLowerCase() < b[key].toLowerCase()
-          ? 1
-          : a[key].toLowerCase() > b[key].toLowerCase()
-            ? -1
-            : 0
-    );
+    const reverse = (a, b) => {
+      const left = this.getRowValue(a, key).toLowerCase();
+      const right = this.getRowValue(b, key).toLowerCase();
+      return right < left ? 1 : -1;
+    };
+    this.columns[index].dataTable.data.sort(reverse);
+    this.columns[index].dataTable.filteredData.sort(reverse);
+  }
+
+  getRowValue(obj, prop) {
+    const value = prop.split('.').reduce((agg, current) => agg ? agg[current] : agg, obj);
+    return value ? value.toString() : '';
   }
 
   showStyle(x, y, contextMenu) {
@@ -225,8 +248,6 @@ export class DataTableComponent
     }
     return { top: y - 8 + 'px', left: x - 8 + 'px' };
 
-    // original measurements
-    // return {'top': (contextMenu.y - 8)  + 'px', 'left' : (contextMenu.x - 8) + 'px'};
   }
 
   @HostListener('window:resize', ['$event.target'])
@@ -287,9 +308,8 @@ export class DataTableComponent
     for (let i = 0; i < this.columns.length; i++) {
       if (this.columns[i].fixedWidth == null && this.bodyRowElement != null) {
         // Todo: Added && this.bodyElement != null due to null error potentially caused by *ngif on table element displaying
-        this.columns[i].headerWidth = this.bodyRowElement.nativeElement.cells[
-          i
-        ].offsetWidth;
+        const cell = this.bodyRowElement.nativeElement.cells[i];
+        this.columns[i].headerWidth = cell ? cell.offsetWidth : 0;
       } else {
         this.columns[i].headerWidth = this.columns[i].fixedWidth;
         this.columns[i].width = this.columns[i].fixedWidth;
@@ -306,7 +326,7 @@ export class DataTableComponent
   }
 
   populateSearchFields() {
-    if (this.searchColumns == null || this.searchColumns.length == 0) {
+    if (this.searchColumns == null || this.searchColumns.length === 0) {
       this.searchColumns = [];
       for (let i = 0; i < this.columns.length; i++) {
         this.searchColumns.push(this.columns[i].key);
@@ -375,6 +395,7 @@ export class ColumnComponent {
   @Input() public width;
   @Input() public header;
   @Input() public minWidth;
+  @Input() public sortField;
   @Input() public isSortable;
   @Input() public fixedWidth;
   @Input() public headerWidth;

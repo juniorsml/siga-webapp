@@ -14,7 +14,7 @@ import { VehiclesComponent } from './register/vehicles/vehicles.component';
 import { TrucksComponent } from './register/trucks/trucks.component';
 import { DeviceComponent } from './register/device/device.component';
 
-import { SummaryComponent } from './summary-dialog/summary/summary.component';
+import { SummaryRegisterComponent } from './register/summary/summary-register.component';
 
 import { motorists } from '../shared/mocks/motorist';
 import { vehicles } from '../shared/mocks/vehicles';
@@ -32,7 +32,7 @@ const routes: Routes = [
       { path: 'vehicles', component: VehiclesComponent, data: { vehicles } },
       { path: 'trucks', component: TrucksComponent, data: { vehicles } },
       { path: 'device', component: DeviceComponent, data: { devices } },
-      { path: 'summary', component: SummaryComponent },
+      { path: 'summary', component: SummaryRegisterComponent },
     ]
   },
   {

@@ -13,7 +13,7 @@
     </sga-sidebar-configuration>
   </div>  
 </div>
-<sga-modal  *ngIf="showColumnSelector">
+<sga-modal [hidden]="!showColumnSelector">
   <sga-column-selector   
     [columns]="headers"
     (onToggleItem)="onToggleItem($event)"
@@ -61,100 +61,100 @@
 		          </div>
 		        </ng-template>
     	</table-empty>  
-      <column [key]="'motorist.DocumentId'" [header]="'Tempo de CTO'" [minWidth]="'82'">
+      <column [key]="'motorist.DocumentId'" [header]="'Tempo de CTO'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item}}
           </ng-template>
       </column>
-      <column [key]="'documentId'" [header]="'Tipo de Mercadoria'" [minWidth]="'82'">
+      <column [key]="'documentId'" [header]="'Tipo de Mercadoria'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item}}
           </ng-template>
       </column>
-      <column [key]="'created'" [header]="'Valor'" [minWidth]="'82'">
+      <column [key]="'created'" [header]="'Valor'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item | date:'medium'}}
           </ng-template>
       </column>
-      <column [key]="'inserted'" [header]="'Placa'" [minWidth]="'82'">
+      <column [key]="'inserted'" [header]="'Placa'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item| date:'medium'}}
           </ng-template>
       </column>
-      <column [key]="'documentId'" [header]="'Rastreador Primário'" [minWidth]="'82'">
+      <column [key]="'documentId'" [header]="'Rastreador Primário'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item}}
           </ng-template>
       </column>
-       <column [key]="'documentId'" [header]="'ID Rastreador'" [minWidth]="'82'">
+       <column [key]="'documentId'" [header]="'ID Rastreador'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item}}
           </ng-template>
       </column>
-       <column [key]="'documentId'" [header]="'Rastreador Primário'" [minWidth]="'82'">
+       <column [key]="'documentId'" [header]="'Rastreador Primário'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item}}
           </ng-template>
       </column>
-       <column [key]="'documentId'" [header]="'Operação'" [minWidth]="'82'">
+       <column [key]="'documentId'" [header]="'Operação'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item}}
           </ng-template>
       </column>
-       <column [key]="'documentId'" [header]="'Origem'" [minWidth]="'82'">
+       <column [key]="'documentId'" [header]="'Origem'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item}}
           </ng-template>
       </column>
-       <column [key]="'documentId'" [header]="'Destino'" [minWidth]="'82'">
+       <column [key]="'documentId'" [header]="'Destino'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item}}
           </ng-template>
       </column>
-      <column [key]="'documentId'" [header]="'Ignição'" [minWidth]="'82'">
+      <column [key]="'documentId'" [header]="'Ignição'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item}}
           </ng-template>
       </column>
-      <column [key]="'documentId'" [header]="'Status do Veículo'" [minWidth]="'82'">
+      <column [key]="'documentId'" [header]="'Status do Veículo'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item}}
           </ng-template>
       </column>
-      <column [key]="'documentId'" [header]="'Ocorrência'" [minWidth]="'82'">
+      <column [key]="'documentId'" [header]="'Ocorrência'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item}}
           </ng-template>
       </column>
-      <column [key]="'documentId'" [header]="'Risco'" [minWidth]="'82'">
+      <column [key]="'documentId'" [header]="'Risco'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item}}
           </ng-template>
       </column>
-      <column [key]="'documentId'" [header]="'Último Evento'" [minWidth]="'82'">
+      <column [key]="'documentId'" [header]="'Último Evento'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item}}
           </ng-template>
       </column>
-      <column [key]="'documentId'" [header]="'Evento Data/Hora'" [minWidth]="'82'">
-          <ng-template let-item="item">
-              {{item}}
-          </ng-template>
-      </column>
-      
-      <column [key]="'documentId'" [header]="'Localização'" [minWidth]="'82'">
+      <column [key]="'documentId'" [header]="'Evento Data/Hora'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item}}
           </ng-template>
       </column>
       
-      <column [key]="'documentId'" [header]="'Nº viagem'" [minWidth]="'82'">
+      <column [key]="'documentId'" [header]="'Localização'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item}}
           </ng-template>
       </column>
       
-      <column [key]="'documentId'" [header]="'Usuário Criação'" [minWidth]="'82'">
+      <column [key]="'documentId'" [header]="'Nº viagem'" [minWidth]="'82'" [isSortable]="true">
+          <ng-template let-item="item">
+              {{item}}
+          </ng-template>
+      </column>
+      
+      <column [key]="'documentId'" [header]="'Usuário Criação'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item}}
           </ng-template>

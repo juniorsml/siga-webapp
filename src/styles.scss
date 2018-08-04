@@ -4,6 +4,7 @@ html{
 
 body {
   font-family: 'Open Sans',sans-serif;
+  width: 100vw;
 }
 
 div, *{
@@ -21,7 +22,6 @@ div, *{
   line-height: 30px !important;
 }
 .ng2-tags-container{
-  border: 1px solid #cbced4 !important;
   border-radius: 3px !important;
   padding: 6px 7px !important;
 }
@@ -415,7 +415,7 @@ $bg-titles: #4d5675;
 
 /* GRID **************************************************************************/
   .main-content{
-   position: fixed;
+   position: absolute;
     top: 0px;
     bottom: 0px;
     left: 50px;
@@ -1019,4 +1019,57 @@ $bg-titles: #4d5675;
 
 .no-margin {
   margin: 0 !important;
+}
+
+.print-title{
+  display: none;
+  margin-bottom: 30px;
+}
+@media print {
+  .trip-header,.sidebar{
+  display:none !important; 
+  }
+  nav, footer, object, embed,#nav { 
+  display:none !important; 
+  }
+  .summary-print {
+        background-color: white;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 15px;
+        font-size: 14px;
+        line-height: 18px;
+        span{
+          color:888;
+        }
+
+    }
+   
+    .print-title{
+      display: block;
+    }
+    .btns{
+      display: none !important;
+    }
+  * {  
+  background:transparent !important;
+  color:#000 !important;
+  text-shadow:none !important;
+  filter:none !important;
+  -ms-filter:none !important;
+  }
+
+  body {
+  margin:0;
+  padding:0;
+  line-height: 1.4em;
+  }
+  
+  @page {
+  margin: 0.5cm;
+  }
 }

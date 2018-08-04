@@ -60,6 +60,7 @@ import { MapComponent } from '../components/map/map.component';
 import { SelectGroupedComponent } from '../components/select-grouped/select-grouped.component';
 import { DirectionService } from '../services/direction.service';
 import { HttpModule } from '@angular/http';
+import { RouteInfoComponent } from '../components/route-info/route-info.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,8 @@ import { HttpModule } from '@angular/http';
     GridComponent,
     TabsComponent,
     ModalComponent,
+
+    RouteInfoComponent,
 
     SelectGroupedComponent,
 
@@ -149,6 +152,8 @@ import { HttpModule } from '@angular/http';
     StepComponent,
     StepsComponent,
     StepperComponent,
+
+    RouteInfoComponent,
 
     SelectGroupedComponent,
 

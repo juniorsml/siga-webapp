@@ -30,8 +30,11 @@
   </div>
 </div>
 
-<sga-modal *ngIf="showColumnSelector">
-  <sga-column-selector [columns]="headers" (onToggleItem)="onToggleItem($event)" (onClose)="closeColumnSelector()">
+<sga-modal [hidden]="!showColumnSelector">
+  <sga-column-selector   
+    [columns]="headers"
+    (onToggleItem)="onToggleItem($event)"
+    (onClose)="closeColumnSelector()">
   </sga-column-selector>
 </sga-modal>
 
