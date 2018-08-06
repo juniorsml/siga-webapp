@@ -27,12 +27,12 @@ export class MotoristService {
   public associateMotorist(ids: Array<string>): Observable<any> {
     return this
       .http
-      .patch('api/motorists/account/associate', JSON.stringify(ids));
+      .patch('api/motorists/account/associate', ids);
   }
 
   public disassociateMotorist(ids: Array<string>): Observable<any> {
     return this
       .http
-      .patch('api/motorists/account/disassociate', JSON.stringify(ids));
+      .patch('api/motorists/account/disassociate', ids);
   }
 }
