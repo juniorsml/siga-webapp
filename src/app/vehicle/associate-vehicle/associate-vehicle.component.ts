@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { VehicleService } from '../vehicle.service';
 import { forkJoin } from 'rxjs/observable/forkJoin';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'sga-associate-vehicle',
@@ -130,10 +131,34 @@ export class AssociateVehicleComponent implements OnInit {
     const undoIds = this.removeList.map(vehicle => vehicle.id);
 
     forkJoin([
-      this.vehicleService.associateVehicle(addIds),
-      this.vehicleService.disassociateVehicle(undoIds)
+      this.associateVehicle(addIds),
+      this.disassociateVehicle(undoIds)
     ]).subscribe(
-      success => console.log(success),
+      success => this.onSuccessRequest(success),
       error => console.log(error));
+  }
+
+  onSuccessRequest(data) {
+    console.log(data);
+    if (data.success) {
+      // todo: toast
+    }
+    this.getVehicles();
+    this.addList = new Array<any>();
+    this.removeList = new Array<any>();
+  }
+
+  associateVehicle(addIds: Array<any>): Observable<any> {
+    if (addIds.length === 0) {
+      return Observable.of([]);
+    }
+    return this.vehicleService.associateVehicle(addIds);
+  }
+
+  disassociateVehicle(undoIds: Array<any>): Observable<any> {
+    if (undoIds.length === 0) {
+      return Observable.of([]);
+    }
+    return this.vehicleService.disassociateVehicle(undoIds);
   }
 }
