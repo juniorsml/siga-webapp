@@ -90,6 +90,8 @@ export class GridMotoristComponent implements OnInit {
 
   public motoristDialogClose = () => this.showMotoristDialog = false;
 
+  public sendDialogClose = () => this.showSendDialog = false;
+
   public whenHeaderReady = headers => this.headers = headers;
 
   public onToggleItem = itemsSelected => this.filterHeaders = itemsSelected;
