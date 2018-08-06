@@ -137,7 +137,7 @@
           [haveFooter]="haveFooter"
           (onCellClick)="onAdminMotoristCellClick($event)">
 
-          <column [key]="'id'" [header]="''" [minWidth]="'60'" [fixedWidth]="'60'">
+          <column [key]="'id'" [header]="''" [minWidth]="'60'">
             <ng-template let-item="item">
               <div class="cnt-img">
                 <img (click)="showMotoristModal()" style="width: 40px; height: 40px; border-radius: 50%;" src="{{'api/motorist/public/profileImage?id=' + item}}"
@@ -145,7 +145,7 @@
               </div>
             </ng-template>
           </column>
-          <column [key]="'documentId'" [header]="'ID'" [width]="'100'" [isSortable]="true"> 
+          <column [key]="'documentId'" [header]="'ID'" [width]="'40'" [isSortable]="true"> 
             <ng-template let-item="item">
               {{item}}
             </ng-template>
@@ -155,7 +155,7 @@
               {{item}}
             </ng-template>
           </column>
-          <column [key]="'lastName'" [header]="'Sobrenome'" [width]="'150'" [isSortable]="true">
+          <column [key]="'lastName'" [header]="'Sobrenome'" [width]="'100'" [isSortable]="true">
             <ng-template let-item="item">
               {{item}}
             </ng-template>
@@ -170,7 +170,7 @@
               {{item}}
             </ng-template>
           </column>
-          <column [key]="''" [header]="''" [minWidth]="'60'" [fixedWidth]="'60'">
+          <column [key]="''" [header]="''" [minWidth]="'60'">
             <ng-template let-item="item">
               <span style="color: red; padding: 10px 0px; font-size: 18px;" class="fas fa-times" aria-hidden="true"></span>
             </ng-template>
