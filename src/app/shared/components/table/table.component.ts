@@ -306,13 +306,13 @@ export class DataTableComponent
 
   setHeaderColumnWidth() {
     for (let i = 0; i < this.columns.length; i++) {
-      if (this.columns[i].fixedWidth == null && this.bodyRowElement != null) {
+      if (this.bodyRowElement != null) {
         // Todo: Added && this.bodyElement != null due to null error potentially caused by *ngif on table element displaying
         const cell = this.bodyRowElement.nativeElement.cells[i];
         this.columns[i].headerWidth = cell ? cell.offsetWidth : 0;
       } else {
-        this.columns[i].headerWidth = this.columns[i].fixedWidth;
-        this.columns[i].width = this.columns[i].fixedWidth;
+        this.columns[i].headerWidth = this.columns[i].width ? this.columns[i].width : this.columns[i].minWidth;
+        this.columns[i].width = this.columns[i].headerWidth;
       }
     }
   }
@@ -397,7 +397,6 @@ export class ColumnComponent {
   @Input() public minWidth;
   @Input() public sortField;
   @Input() public isSortable;
-  @Input() public fixedWidth;
   @Input() public headerWidth;
   @ContentChild(TemplateRef) template: TemplateRef<any>;
 
