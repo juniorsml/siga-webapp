@@ -25,7 +25,7 @@ export class GridMotoristComponent implements OnInit {
   selectedMotorist: any;
 
   showDialog = false;
-  showModal = false;
+  showSendDialog = false;
   showMotoristDialog: boolean;
   showSendCommandDialog = false;
   showColumnSelector = false;
@@ -82,7 +82,7 @@ export class GridMotoristComponent implements OnInit {
       case 4:
         console.log("ClickCerto")
         this.showSendCommandDialog = true;
-        this.showModal = true;
+        this.showSendDialog = true;
      }
   }
 
