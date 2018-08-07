@@ -49,6 +49,6 @@
     "jest-preset-angular": "^5.0.0",
     "sinon": "^4.3.0",
     "tslint": "^5.10.0",
-    "typescript": "~2.5.3"
+    "typescript": "^3.0.1"
   }
 }
