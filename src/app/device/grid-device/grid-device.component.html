@@ -119,7 +119,7 @@
           </span>
         </ng-template>
       </column>
-      <context-menu [mode]="'click'" [ignoreCells]="[0]" >
+      <context-menu [mode]="'click'" [ignoreCells]="[0]" (onItemSelected)="contextMenuSelected($event)">
         <menu-item [enabled]="true">
           <ng-template>
             <span class="table-menu-icon item-context-menu fal fa-map-marker-alt" aria-hidden="true">
@@ -134,8 +134,22 @@
             <span>Histórico</span>
           </ng-template> 
         </menu-item>
+          <menu-item [enabled]="true">
+          <ng-template>
+            <span class="table-menu-icon item-context-menu fal fa-broadcast-tower" aria-hidden="true">
+            </span>
+            <span>Enviar comando</span>
+          </ng-template>
+        </menu-item>
        
       </context-menu>
     </data-table>
   </div>
 </div>
+
+<sga-modal>
+  <sga-send-command
+    [showModal]="showSendDialog"
+    (onDialogClose)="sendDialogClose()">
+  </sga-send-command>
+</sga-modal>

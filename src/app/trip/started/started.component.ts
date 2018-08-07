@@ -87,7 +87,7 @@ export class StartedTripsComponent implements OnInit {
         this.stepIndex = index;
         this.showSummaryDialog = true;
     break;
-      case 4:  
+      case 4: 
         this.showSendDialog = true;
      }
 

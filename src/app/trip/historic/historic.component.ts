@@ -25,7 +25,7 @@ export class HistoricTripsComponent implements OnInit {
  public showSummaryDialog = false;
  showColumnSelector = false;
  haveFooter = true;
-
+ showSendDialog = false;
  public headers = new Array<string>();
  public filterHeaders = new Array<string>();
 
@@ -55,10 +55,30 @@ export class HistoricTripsComponent implements OnInit {
   public updateSelectedTrip(event) {
     this.selectedTrip = event.data;
   }
-  public contextMenuSelected(index) {
-    this.stepIndex = index;
-    this.showSummaryDialog = true;
-  }
+   public contextMenuSelected(index) { 
+
+     switch (index) { 
+      case 0:      
+         this.stepIndex = index;
+         this.showSummaryDialog = true;
+       break;
+      case 1:      
+         this.stepIndex = index;
+         this.showSummaryDialog = true;
+     break;
+      case 2: 
+         this.stepIndex = index;
+         this.showSummaryDialog = true;
+     break;
+      case 3:    
+         this.stepIndex = index;
+         this.showSummaryDialog = true;
+     break;
+       case 4: 
+         this.showSendDialog = true;
+      }
+
+   }
 
   public onPlacesFiltered(event) {
     this.filterDistance = event.distance;
@@ -69,7 +89,7 @@ export class HistoricTripsComponent implements OnInit {
     this.filterDistance = null;
     this.filterLocation = null;
   }
-
+   public sendDialogClose = () => this.showSendDialog = false;
   public onPlacesKeyUp() {}
 
   public onDistanceKeyUp() {}

@@ -25,6 +25,8 @@ export class GridDeviceComponent implements OnInit {
   public headers = new Array<string>();
   public filterHeaders = new Array<string>();
 
+  showSendDialog = false;
+
   @Input()
   public hasHeight = false;
 
@@ -79,6 +81,14 @@ export class GridDeviceComponent implements OnInit {
     this.selectedDevice = event.data;
     this.onDeviceSelected.emit(this.selectedDevice);
   }
+  public contextMenuSelected = event => {
+    switch (event) {
+  
+      case 2:        
+        this.showSendDialog = true;
+     }
+  }
+  public sendDialogClose = () => this.showSendDialog = false;
 
   public whenHeaderReady = headers => this.headers = headers;
 
