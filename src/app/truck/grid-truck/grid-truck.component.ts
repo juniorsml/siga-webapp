@@ -24,12 +24,14 @@ export class GridTruckComponent implements OnInit {
   filterLocation: any;
   filterDistance: any;
   selectedVehicle: any;
-  contextMenuSelected: any;
+
 
   showDialog = false;
   showVehicleDialog: boolean;
 
   showColumnSelector = false;
+   showSendDialog = false;
+
 
   public headers = new Array<string>();
   public filterHeaders = new Array<string>();
@@ -88,6 +90,14 @@ export class GridTruckComponent implements OnInit {
     this.filterDistance = null;
     this.filterLocation = null;
   }
+  public contextMenuSelected = event => {
+    switch (event) {
+  
+      case 4:        
+        this.showSendDialog = true;
+     }
+  }
+  public sendDialogClose = () => this.showSendDialog = false;
 
   public onPlacesKeyUp() {}
 
