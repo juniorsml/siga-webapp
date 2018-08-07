@@ -22,7 +22,7 @@
       <div class="field" *ngIf="formType === 'place'">
         <label class="label is-small">Endereço</label>
         <div class="wrapper-flex">
-          <sga-places-auto-complete *ngIf="formType !== 'group'" (onPlacesFilteredEvent)="onPlacesFiltered($event)" (onFilterRemovedEvent)="onPlacesFilterRemoved()">
+          <sga-places-auto-complete *ngIf="formType !== 'group'" [keepTextAddress]=true (onPlacesFilteredEvent)="onPlacesFiltered($event)" (onFilterRemovedEvent)="onPlacesFilterRemoved()">
           </sga-places-auto-complete>
         </div>
       </div>
