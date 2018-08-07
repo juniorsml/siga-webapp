@@ -2,7 +2,7 @@
 .content-modal{
     background-color: #FFF;
     width: 100%;
-    max-width:800px;
+    max-width:600px;
     max-height: 91%;
     background: #ffffff;
     -webkit-box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.1);
@@ -83,5 +83,74 @@
 
     }
 }
+
+.all select,
+.selected select{
+  min-height: 244px;
+  margin-top: 7px;
+}
+
+.list-commands{
+  height: 253px;
+  width: 100%;
+ 
+  border-radius: 2px;
+  border: 1px solid #dbdbdb;
+  .item{
+    width: 100%;
+    
+  }
+  .item input[type="checkbox"] {
+    display: none; }
+
+  .item label {
+    display: inline-block;
+    background-color: white;
+    width: 100%;
+    padding-left: 5px;
+    font-size: 14px;
+    line-height: 31px;
+    height: 31px;    
+
+    cursor: pointer; }
+
+  .item input[type="checkbox"]:checked + label {
+    
+    background: #a7acbf;
+    color: #FFF;
+
+  }
+
+}
+
+.slimscroll-grid{
+  transition:all 200ms ease !important;
+  width:4px !important;
+  background: rgba(0,0,0,0.2) !important;
+  opacity:0 !important;
+      
+}
+.slimscroll-bar{
+  transition:all 200ms ease !important;
+  width:4px !important;
+  height: 160px !important;
+  background: rgba(0,0,0,0.3) !important;
+  right: 2px !important; 
+  opacity:0 !important;
+}
+.slimscroll-wrapper:hover .slimscroll-bar{
+  transition:all 200ms ease !important;
+  width:4px !important;
+  opacity:1 !important;
+
+  background: rgba(0,0,0,0.3) !important;
+  right: 2px !important;
+}
+.slimscroll-wrapper:hover  .slimscroll-grid{
+  transition:all 200ms ease !important;
+  width:4px !important;
+  background: rgba(0,0,0,0.2) !important;
+}
+
 
 
