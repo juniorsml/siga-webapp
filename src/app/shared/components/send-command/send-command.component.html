@@ -9,16 +9,50 @@
          <i  (click)="cancel()" class="fal fa-times is-pulled-right"></i>
       </div>      
     </div>
-    <div class="container-scroll">    
+    <div class="container-scroll columns column is-12 is-marginless">    
       
-      <form novalidate class="cnt-form" #formSendCommand="ngForm">
+      <form novalidate class="column is-12 is-marginless" #formSendCommand="ngForm">
       
-        teste
+    
+          <div class="field-body field">
+            <div class="field">
+              <label class="label is-small">Placa</label>
+              <div class="control">
+                <span>BBH-1332</span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label is-small">Tecnologia</label>
+              <div class="control">
+               
+                <span>AUTOTRAC</span>
+              </div>
+            </div>
+         
+            <div class="field">
+              <label class="label is-small">ID</label>
+              <div class="select is-small">
+                  <span>8026726737</span>
+              </div>
+            </div>
+         
+          </div>
+          <div class="field-body field">
+          
+          
+            <div class="field">
+              <label class="label is-small">ID</label>
+              <div class="select is-small">
+                  <span>8026726737</span>
+              </div>
+            </div>
+          
+          </div>
   
 
 
         <!-- Botões de Ação -->
-        <div class="cnt-buttons">       
+        <div class="cnt-buttons is-pulled-right">       
             
           <button class="button" (click)="cancel()">Cancelar</button>
         
