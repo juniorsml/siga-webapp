@@ -81,7 +81,9 @@
       top: 0;
     }
 
-  .cnt-route-scroll{
+
+ .cnt-route-scroll{
+
     height: 76vh;
         margin-top: 17px;
         padding-bottom: 11px;
@@ -90,7 +92,7 @@
   .cnt-places-added{
     .place-added{
       margin: 0px 15px;
-      padding: 24px 11px;
+      padding: 30px 11px;
       background: #a6adb7;
       color: #FFF;
       position:relative;
@@ -98,19 +100,29 @@
       align-items:center;
       transition:all 150ms ease;
       
-      .place-tags {        
-        
-       position: absolute;
-      top: 46px;
-      left: 40px;
-        span{
-          background: #888b92;
-          padding: 1px 6px;
-          border-radius: 3px;
-          font-size: 12px;
-        }
-       
+      .place-tag {
+        position: fixed;
+        background: none;
+        border: none;
+        margin-top: 4vh;
+        border-bottom: solid #4e5563 1px;
+        width: 47vh;
+        border: none !important;
       }
+
+      // .place-tags {        
+        
+      //  position: absolute;
+      // top: 46px;
+      // left: 40px;
+      //   span{
+      //     background: #888b92;
+      //     padding: 1px 6px;
+      //     border-radius: 3px;
+      //     font-size: 12px;
+      //   }
+       
+      // }
 
       &:hover{
         background: #8b939d;
@@ -198,7 +210,7 @@
    
   }
   
-}
+
 .route-cnt {
   margin: 15px;
 
@@ -242,4 +254,10 @@
   transition:all 200ms ease !important;
   width:4px !important;
   background: rgba(0,0,0,0.2) !important;
+
+}
+
+tag-input {
+  background: none;
+
 }

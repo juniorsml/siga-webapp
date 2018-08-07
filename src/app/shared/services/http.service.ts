@@ -32,6 +32,15 @@ export class HttpService extends Http {
       .finally(() => this.onFinally());
   }
 
+  patch(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
+    this.beforeRequest();
+    return super
+      .patch(this.getFullUrl(url), body, this.requestOptions(options))
+      .catch(this.onCatch)
+      .do(this.onSuccess, this.onError)
+      .finally(() => this.onFinally());
+  }
+
   post(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
     this.beforeRequest();
     return super
@@ -69,7 +78,7 @@ export class HttpService extends Http {
     const userAuthToken = localStorage.getItem(environment.authTokenName);
 
     if (userAuthToken) {
-      options.headers.append('Authorization', `Bearer ${userAuthToken}`);
+      options.headers.append('x-auth-token', userAuthToken);
     }
     return options;
   }

@@ -1,27 +1,36 @@
 <div class="columns header-content">
-  <nav  class="breadcrumb column is-8" aria-label="breadcrumbs">
+  <nav class="breadcrumb column is-8" aria-label="breadcrumbs">
     <ul>
-      <li><a href="#">Home</a></li>
-      <li class="is-active"><a>Veículos</a></li>
-      <li class="is-active"><a href="#" aria-current="page">Grid</a></li>
+      <li>
+        <a href="#">Home</a>
+      </li>
+      <li class="is-active">
+        <a>Veículos</a>
+      </li>
+      <li class="is-active">
+        <a href="#" aria-current="page">Grid</a>
+      </li>
     </ul>
   </nav>
   <div class="columns column is-4 header-content-right">
     <div>
-      <a class="map-open" href="" routerLink="/vehicle/map"><i class="fal fa-map"></i><span>Mapa</span></a>
+      <a class="map-open" href="" routerLink="/vehicle/map">
+        <i class="fal fa-map"></i>
+        <span>Mapa</span>
+      </a>
 
     </div>
     <div>
       <sga-sidebar-configuration (onSelectOption)="onSelectOption($event)">
         <sga-option icon="fa-table" header="Seleção de Colunas"></sga-option>
-        <sga-option icon="fa-user-plus" header="Configuração"></sga-option>        
+        <sga-option icon="fa-user-plus" header="Configuração"></sga-option>
       </sga-sidebar-configuration>
     </div>
-   
-  </div>  
+
+  </div>
 </div>
 
-<sga-modal  *ngIf="showColumnSelector">
+<sga-modal [hidden]="!showColumnSelector">
   <sga-column-selector   
     [columns]="headers"
     (onToggleItem)="onToggleItem($event)"
@@ -30,38 +39,27 @@
 </sga-modal>
 
 
-   
+
 <div class="content-wrapper  content-grid-vehicle">
- 
+
   <div [ngClass]="styleClass" class="columns level-left">
-    <div class="column is-2">     
-      <p class="control has-icons-left"> 
-        <input [(ngModel)]="text" class="input is-small"  placeholder="Buscar" type="text"/>
+    <div class="column is-2">
+      <p class="control has-icons-left">
+        <input [(ngModel)]="text" class="input is-small" placeholder="Buscar" type="text" />
         <span class="icon is-small is-left">
           <i class="fa fa-search"></i>
-        </span>       
+        </span>
       </p>
     </div>
-    <sga-map-filter 
-      (placesFiltered)="onPlacesFiltered($event)" 
-      (filterRemoved)="onPlacesFilterRemoved()"
-      class="column is-10">
+    <sga-map-filter (placesFiltered)="onPlacesFiltered($event)" (filterRemoved)="onPlacesFilterRemoved()" class="column is-10">
     </sga-map-filter>
   </div>
 
   <div class="container-grid container-grid-vehicle">
-    <data-table 
-     
-      [data]="vehicles | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
-      [dataLength]="vehicles.length" 
-      [searchText]="text" 
-      [searchColumns]="['vehiclePlate', 'renavan', 'brand', 'model', 'color', 'year', 'type', 'capacity']"
-      [emptySearchText]="'nenhum veículo foi encontrado'" 
-      (onCellClick)="onCellClick($event)"
-      [filterHeaders]="filterHeaders"
-      (whenHeaderReady)="whenHeaderReady($event)"
-      (onCellRightClick)="onCellRightClick($event)"
-      [haveFooter]="true">
+    <data-table [data]="vehicles | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
+      [dataLength]="vehicles.length" [searchText]="text" [searchColumns]="['vehiclePlate', 'renavan', 'brand', 'model', 'color', 'year', 'type', 'capacity']"
+      [emptySearchText]="'nenhum veículo foi encontrado'" (onCellClick)="onCellClick($event)" [filterHeaders]="filterHeaders"
+      (whenHeaderReady)="whenHeaderReady($event)" (onCellRightClick)="onCellRightClick($event)" [haveFooter]="true">
       <table-empty>
         <ng-template>
           <!-- <div *ngIf="dataLoading" style="position: absolute; top: -40px; bottom: 0px; left: 0px; right: 0px">
@@ -76,37 +74,37 @@
       <column class="photo-profile" [key]="'id'" [header]="''" [width]="'60'" [isSortable]="false">
         <ng-template let-item="item">
           <div class="cnt-img">
-         
+
             <img (click)="showVehicletModal(item)" style="width: 40px; height: 40px; border-radius: 50%;" src="{{'api/motorist/public/profileImage?id=' + item}}"
               alt="">
           </div>
         </ng-template>
       </column>
-      <column [key]="'vehiclePlate'" [header]="'Placa'" [minWidth]="'82'" [isSortable]="true">
+      <column [key]="'numberPlate'" [header]="'Placa'" [minWidth]="'82'" [isSortable]="true">
         <ng-template let-item="item">
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'renavan'" [header]="'Renavan'" [minWidth]="'43'" [isSortable]="true"> 
+      <column [key]="'id'" [header]="'Renavan'" [minWidth]="'43'" [isSortable]="true">
         <ng-template let-item="item">
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'brand'" [header]="'Marca'" [minWidth]="'90'" [isSortable]="true">
+      <column [key]="'make'" [header]="'Marca'" [minWidth]="'90'" [isSortable]="true">
         <ng-template let-item="item">
           {{item}}
         </ng-template>
       </column>
       <column [key]="'model'" [header]="'Modelo'" [minWidth]="'46'" [isSortable]="true">
         <ng-template let-item="item">
-         {{item}}
+          {{item}}
         </ng-template>
       </column>
       <column [key]="'color'" [header]="'Cor'" [minWidth]="'56'" [isSortable]="true">
         <ng-template let-item="item">
-           {{item}}
+          {{item ? item : '-'}}
         </ng-template>
-      </column>     
+      </column>
       <column [key]="'year'" [header]="'Ano'" [minWidth]="'46'" [isSortable]="true">
         <ng-template let-item="item">
           {{item}}
@@ -130,7 +128,7 @@
             <span class="table-menu-icon item-context-menu fal fa-calendar" aria-hidden="true">
             </span>
             <span>Histórico</span>
-          </ng-template> 
+          </ng-template>
         </menu-item>
         <menu-item [enabled]="true">
           <ng-template>
@@ -166,9 +164,6 @@
 </sga-modal>
 
 <sga-modal>
-  <sga-dialog-vehicle
-    [showDialog]="showVehicleDialog"
-    [selectedVehicle]="selectedVehicle"
-    (onDialogClose)="vehicleDialogClose()">
+  <sga-dialog-vehicle [showDialog]="showVehicleDialog" [selectedVehicle]="selectedVehicle" (onDialogClose)="vehicleDialogClose()">
   </sga-dialog-vehicle>
 </sga-modal>

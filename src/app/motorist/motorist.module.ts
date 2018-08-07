@@ -10,7 +10,6 @@ import { DomHandler } from './dom-handler/domhandler.service';
 
 import { Map } from '../shared/models/Map';
 
-import { MotoristComponent } from './motorist.component';
 import { MapMotoristComponent } from './map-motorist/map-motorist.component';
 import { GridMotoristComponent } from './grid-motorist/grid-motorist.component';
 import { ProfileDialogComponent } from './profile-dialog/profile-dialog.component';
@@ -31,7 +30,6 @@ import { HistoryDetailComponent } from './history-motorist/history-detail/histor
     NgSlimScrollModule
   ],
   declarations: [
-    MotoristComponent,
     MapMotoristComponent,
     GridMotoristComponent,
     ProfileDialogComponent,

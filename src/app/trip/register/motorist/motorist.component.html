@@ -10,6 +10,7 @@
         <sga-auto-complete 
           [data]="motorists"
           [propToFilter]="'documentId'"
+          url="api/motorists/search?document_id="
           minLength="3"
           styleClass = "autocomplete"
           noSuggestionsText="Nenhum motorista encontrado"

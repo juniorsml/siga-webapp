@@ -20,7 +20,7 @@
   </div>  
 </div>
 
-<sga-modal  *ngIf="showColumnSelector">
+<sga-modal [hidden]="!showColumnSelector">
   <sga-column-selector   
     [columns]="headers"
     (onToggleItem)="onToggleItem($event)"
@@ -49,9 +49,9 @@
   <div class="container-grid container-grid-wrapper">
     <data-table 
       [data]="motorists | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
-      [dataLength]="motorists.length"
+      [dataLength]="motorists?.length"
       [searchText]="text" 
-      [searchColumns]="['documentId', 'firstName', 'lastName', 'location.driverStatus', 'location.speed', 'location.altitude', 'location.mode']"
+      [searchColumns]="['documentId', 'firstName', 'lastName', 'location.battery.charge', 'location.driverStatus', 'location.speed', 'location.altitude', 'location.mode', 'location.time']"
       [emptySearchText]="'nenhuma motorista foi encontrado'" 
       [haveFooter]="true"      
       [filterHeaders]="filterHeaders"
@@ -69,7 +69,7 @@
           </div>
         </ng-template>
       </table-empty>
-      <column class="photo-profile" [key]="'id'" [header]="''" [width]="'60'" [isSortable]="false">
+      <column class="photo-profile" [key]="'id'" [header]="''" [width]="'60'" [isSortable]="true">
         <ng-template let-item="item">
           <div class="cnt-img">
             <img (click)="showMotoristModal(item)" style="width: 40px; height: 40px; border-radius: 50%;" src="{{'api/motorist/public/profileImage?id=' + item}}"
@@ -92,22 +92,22 @@
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'location'" [header]="'Status'" [minWidth]="'100'" [isSortable]="false">
+      <column [key]="'location'" [header]="'Status'" [minWidth]="'100'" [isSortable]="true">
         <ng-template let-item="item">
           {{item != null ? (item.driverStatus) : '-'}}
         </ng-template>
       </column>
-      <column [key]="'location'" [header]="'Velocidade'" headerWidth="'110'" [width]="'110'" [isSortable]="false">
+      <column [key]="'location'" [header]="'Velocidade'" headerWidth="'110'" [width]="'110'" [isSortable]="true">
         <ng-template let-item="item">
           {{item != null ? (item.speed | number:'1.1-1') : '- '}} km/h
         </ng-template>
       </column>
-      <column [key]="'location'" [header]="'Altitude'" headerWidth="'110'" [width]="'110'" [isSortable]="false">
+      <column [key]="'location'" [header]="'Altitude'" headerWidth="'110'" [width]="'110'" [isSortable]="true">
         <ng-template let-item="item">
           {{item != null ? (item.altitude | number:'1.1-1') : '- '}} m
         </ng-template>
       </column>
-      <column [key]="'location'" [header]="'Bateria'" [minWidth]="'52'" [isSortable]="false">
+      <column [key]="'location'" [header]="'Bateria'" [minWidth]="'52'" [isSortable]="true">
         <ng-template let-item="item">
           <span class="battery-level">
             <span class="battery-level-body">
@@ -121,12 +121,12 @@
           </span>
         </ng-template>
       </column>
-      <column [key]="'location'" [header]="'Modo'" [minWidth]="'46'" [isSortable]="false">
+      <column [key]="'location'" [header]="'Modo'" [minWidth]="'46'" [isSortable]="true">
         <ng-template let-item="item">
           {{item != null ? (item?.mode) : '-'}}
         </ng-template>
       </column>
-      <column [key]="'location'" [header]="'Atualizado'" [minWidth]="'82'" [isSortable]="false">
+      <column [key]="'location'" [header]="'Atualizado'" [minWidth]="'82'" [isSortable]="true" sortField="location.time">
         <ng-template let-item="item">
           {{item != null ? (item?.time | date:'medium') : '-'}}
         </ng-template>

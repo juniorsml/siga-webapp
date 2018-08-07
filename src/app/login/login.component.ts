@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../shared/services/auth.service';
 import { Router } from '@angular/router';
+import { User } from '../shared/models/api/User';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'sga-login',
@@ -24,13 +26,13 @@ export class LoginComponent {
     this.authService
       .login(email, password)
       .subscribe(
-        token => this.onSuccessLogin(token),
+        user => this.onSuccessLogin(user),
         error => this.onErrorLogin(error)
       );
   }
 
-  private onSuccessLogin(token: string): void {
-    console.log(token);
+  private onSuccessLogin(user: User): void {
+    localStorage.setItem(environment.authTokenName, user.token);
     this.router.navigateByUrl('/motorist');
   }
 

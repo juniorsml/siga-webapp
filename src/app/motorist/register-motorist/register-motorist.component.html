@@ -1,533 +1,509 @@
-
 <div class="modal-box" [ngClass]="showForm ? 'opened-modal' : ''">
-	<div class="container-form content-modal">
-		<div class="container-dialog-header columns column is-12 is-marginless">
-		  <div class="area column is-narrow">
-		    <h3 >Cadastro de Motorista</h3>  
-		  </div>
-		  <div class="column btn-close"> 
-		     <i  (click)="cancel()" class="fal fa-times is-pulled-right"></i>
-		  </div>      
-		</div>
-		<div class="container-scroll">		
-			
-			<form novalidate  (ngSubmit)="onSubmit()"   class="cnt-form" #formMotorist="ngForm">
-					<sga-tabs 
-					  [tabIndex]="selectedTabIndex"
-					  styleClass="tabs no-margin tabs-register">
+  <div class="container-form content-modal">
+    <div class="container-dialog-header columns column is-12 is-marginless">
+      <div class="area column is-narrow">
+        <h3>Cadastro de Motorista</h3>
+      </div>
+      <div class="column btn-close">
+        <i (click)="cancel()" class="fal fa-times is-pulled-right"></i>
+      </div>
+    </div>
+    <div class="container-scroll">
 
-					  <sga-tab heading="Dados Pessoais">
+      <form novalidate (ngSubmit)="onSubmit()" class="cnt-form" #formMotorist="ngForm">
+        <sga-tabs [tabIndex]="selectedTabIndex" styleClass="tabs no-margin tabs-register">
 
-					    		<!-- Dados pessoais -->
-					    		<div class="cnt-info columns">
-					    			<div class="column input-profile-photo">
-					    				<div class="control">
-					    					<div class="file">
-					    						<label class="file-label">
-					    							<input class="file-input" type="file" name="resume" (change)="addProfilePhoto($event)">
-					    							<span class="file-cta">
-					    								<div>
-					    									<span class="file-icon">
-					    										<i class="fas fa-upload"></i>
-					    									</span>
-					    									<span class="file-label">
-					    										Escolha uma <br>	 foto...
-					    									</span>
-					    								</div>					    								
-					    							</span>
-					    						</label>
-					    					</div>
-					    					<div class="img-profile"> </div>
-					    					<a class="remove-img-profile" (click)="removeProfilePhoto()">										
-					    						<span>Remover Foto</span>
-					    					</a>
-					    					
-					    				</div>
-					    			</div>
+          <sga-tab heading="Dados Pessoais">
 
-
-					    			<div class="column  is-10">
-
-
-					    				<div class="field-body field">	
-
-					    				  <div class="field is-4 column is-marginless" >
-					    				   	<label class="label is-small">Nome</label>					    				  					    				  
-	    				  					<div class="control">
-	    				  						<input 	type="text" 
-	    				  										class="input" 
-	    				  										placeholder="Nome" 
-	    				  										name="firstName"		  						 
-	    				  										[(ngModel)]="model.firstName"
-	    				  										#firstName="ngModel"
-	    				  					       		[ngClass]="{'is-danger': firstName.invalid && (firstName.dirty || firstName.touched)}"
-	    				  					       		required>
-	    				  		          	    <div class="form-control-feedback"
-	    				  	                        *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
-	    				  		                     <p class="help is-danger" *ngIf="firstName.errors.required">Nome é obrigatório</p>
-	    				  		                </div>
-	    				  					</div>
-	    				  				</div>
-					    				  <div class="field is-4 column is-marginless" >
-					    				   	<label class="label is-small">Sobrenome</label>					    				  					    				  
-	    				  					<div class="control">
-	    				  						<input 	type="text" 
-	    				  										class="input" 
-	    				  										placeholder="Sobrenome" 
-	    				  										name="lastName"		  						 
-	    				  										[(ngModel)]="model.lastName"
-	    				  										#lastName="ngModel"
-	    				  					       		[ngClass]="{'is-danger': lastName.invalid && (lastName.dirty || lastName.touched)}"
-	    				  					       		required>
-	    				  		          	    <div class="form-control-feedback"
-	    				  	                        *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
-	    				  		                     <p class="help is-danger" *ngIf="lastName.errors.required">Sobrenome é obrigatório</p>
-	    				  		                </div>
-	    				  					</div>
-	    				  				</div>
-					    				  <div class="field is-4 column is-marginless" >
-					    				   	<label class="label is-small">Data de Nasc.</label>
-					    				  					    				  
-					    				  	<div class="control">					    				     
-					    				     		<input 	type="text" 
-					    				     						class="input" 
-					    				     						name="dateOfBirth" 
-					    				     						placeholder="Data de Nasc." 
-					    				     		        [(ngModel)]="model.dateOfBirth" 
-					    				     		        #dateOfBirth="ngModel"
-					    				     		        [ngClass]="{'is-danger': dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched)}"
-					    				     	          required>
-			    				     	    	<div class="form-control-feedback"
-			    				                 *ngIf="dateOfBirth.errors && (dateOfBirth.dirty || dateOfBirth.touched)">
-			    				                 <p class="help is-danger" *ngIf="dateOfBirth.errors.required">Data de Nasc. é obrigatória</p>
-			    				            </div>
-					    				    </div>
-					    				  </div>  
-
-
-					    				</div>		
-
-					    				<div class="field-body field">		
-
-					    				  <div class="field is-4 column is-marginless" >
-					    				    <label class="label is-small">Nome da Mãe</label>
-					    				    <div class="control">					    				     
-					    				     		<input  type="text" 
-					    				     						class="input" 
-					    				     						name="motherName" 
-					    				     						placeholder="Nome da Mãe" 
-					    				     		        [(ngModel)]="model.motherName" 
-					    				     		        #motherName="ngModel"
-					    				     		        [ngClass]="{'is-danger': motherName.invalid && (motherName.dirty || motherName.touched)}"
-					    				     		        required>
-			    				     	    	<div class="form-control-feedback"
-			    				                 *ngIf="motherName.errors && (motherName.dirty || motherName.touched)">
-			    				                 <p class="help is-danger" *ngIf="motherName.errors.required">Nome da Mãe é obrigatório</p>
-			    				            </div>
-					    				    </div>
-					    				  </div>
-
-					    				  <div class="field is-4 column is-marginless" >
-					    				   	<label class="label is-small">Documento</label>					    				  					    				  
-	    				  					<div class="control"> 	                          
-				                    <div class="select">                      
-				                      <select  name="document"
-				                       				 [(ngModel)]="model.document" 
-				                       				 #document="ngModel"
-				                               [ngClass]="{'is-danger': document.invalid && (document.dirty || document.touched)}"
-				                               required>                       
-				                        <option value="RG">RG</option>
-				                        <option value="CPF">CPF</option>
-				                        <option value="RNA">RNA</option>
-				                        <option value="Passaporte">Passaporte</option>
-				                      </select>
-				                    </div>                   
-			                  	</div>
-			                  	<div class="form-control-feedback"
-			                  	      *ngIf="document.errors && (document.dirty || document.touched)">
-			                  	    <p class="help is-danger" *ngIf="document.errors.required">Escolha um documento</p>
-			                  	</div>
-	    				  				</div>
-
-					    				  <div class="field is-4 column is-marginless" >
-					    				   	<label class="label is-small">Nº</label>					    				  					    				  
-					    				  	<div class="control">                 
-						                  <input [disabled]="document.invalid"  
-						                  			 type="text" 
-						                  			 class="input" 
-						                  			 placeholder="Nº"  
-						                  			 name="documentId"
-						                         [(ngModel)]="model.documentId"
-						                         #documentId="ngModel"
-						                         [ngClass]="{'is-danger': documentId.invalid && (documentId.dirty || documentId.touched)}"
-						                         required>
-					                           
-						              </div>
-					    				   	<div class="form-control-feedback"
-	                              *ngIf="documentId.errors && (documentId.dirty || documentId.touched)">
-	                            <p class="help is-danger" *ngIf="documentId.errors.required">Nº é obrigatório</p>
-	                        </div>
-					    				  </div> 
-
-					    				 
-
-
-
-
-					    				</div>
-
-					    				<div class="field-body field">		
-                         <div class="field  is-4 column is-marginless">                         
-                          <label class="label is-small">Estado Civil</label>        
-                          <div class="control">
-                            <div class="select">                            
-                              <select name="maritalStatus"
-                                      [(ngModel)]="model.maritalStatus" 
-                                      #maritalStatus="ngModel"
-                                      placeholder="Selecione"
-                                      [ngClass]="{'is-danger': maritalStatus.invalid && (maritalStatus.dirty || maritalStatus.touched)}"
-                                      required>
-
-                                <option value="Casado">Casado</option>
-                                <option value="Divorciado ">Divorciado </option>
-                                <option value="Solteiro ">Solteiro </option>
-                                <option value="União estável">União estável</option>
-                                <option value="Viúvo">Viúvo</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="form-control-feedback"
-                                *ngIf="maritalStatus.errors && (maritalStatus.dirty || maritalStatus.touched)">
-                              <p class="help is-danger" *ngIf="maritalStatus.errors.required">Estado civil é obrigatório</p>  
-                          </div>
+            <!-- Dados pessoais -->
+            <div class="cnt-info columns">
+              <div class="column input-profile-photo">
+                <div class="control">
+                  <div class="file">
+                    <label class="file-label">
+                      <input class="file-input" type="file" name="resume" (change)="addProfilePhoto($event)">
+                      <span class="file-cta">
+                        <div>
+                          <span class="file-icon">
+                            <i class="fas fa-upload"></i>
+                          </span>
+                          <span class="file-label">
+                            Escolha uma
+                            <br> foto...
+                          </span>
                         </div>
-					    				  <div class="field  is-4 column is-marginless"> 
-					    				  	<label class="label is-small">Nome da Esposa</label>		
-				                  <div class="control">                    
-				                    <input  type="text" 
-				                    				class="input" 
-				                    				placeholder="Nome da Esposa"  
-				                    				name="wifeName"
-                                    #wifeName="ngModel"
-                                    ngModel
-				                         		[ngClass]="{'is-danger': wifeName.invalid && (wifeName.dirty || wifeName.touched) }"
-				                         		required>
+                      </span>
+                    </label>
+                  </div>
+                  <div class="img-profile"> </div>
+                  <a class="remove-img-profile" (click)="removeProfilePhoto()">
+                    <span>Remover Foto</span>
+                  </a>
 
-				                  </div>
-				                  <div class="form-control-feedback"
-                                *ngIf="wifeName.errors && (wifeName.dirty || wifeName.touched)">
-                              <p class="help is-danger" *ngIf="wifeName.errors.required">Nome da Esposa é obrigatório</p>
-                          </div>
-				                </div>
-					    				  <div class="field  is-4 column is-marginless">
-					    				  	<label class="label is-small">Tem Filhos?</label>					    				     
-					    				    <div class="control">
-					    				      <div class="select">                      
-					    				        <select>
-					    				          <option value="Sim">Sim</option>
-					    				          <option value="Não">Não </option>
-					    				        </select>
-					    				      </div>
-					    				    </div>
-					    				  </div>  
-
-					    				 
-
-					    				</div>
+                </div>
+              </div>
 
 
-					    				<div class="field-body field">
-                        <div class="field  is-4 column is-marginless">
-                          <label class="label is-small">Quantos</label>   
-                          <div class="control">
-                            <input [(ngModel)]="model.howManyChildren" name="howManyChildren" #howManyChildren="ngModel" class="input" type="text" placeholder="Quantos?">
-                          </div>
-                        </div>
+              <div class="column  is-10">
 
-					    					<div class="field  is-4 column is-marginless">
-					    						<label class="label is-small">Escolaridade</label>	
-					    					  <div class="control">
-					    					    <input  type="text" 
-					    					    				class="input" 
-					    					    				placeholder="Escolaridade" 
-					    					    				name="educationalLevel"
-					    					   				  [(ngModel)]=model.educationalLevel
-					    					   				  #educationalLevel="ngModel"
-					    					    				[ngClass]="{'is-danger': educationalLevel.invalid && (educationalLevel.dirty || educationalLevel.touched)}" 
-					    					    				required>
-					    					    
-					    					  </div>
-					    					  <div class="form-control-feedback"
-					    					                *ngIf="educationalLevel.errors && (educationalLevel.dirty || educationalLevel.touched)">
-					    					              <p class="help is-danger" *ngIf="educationalLevel.errors.required">Escolaridade é obrigatória</p>
-					    					          </div>
-					    					</div>
 
-					    					<div class="field  is-4 column is-marginless">
-					    						<label class="label is-small">Nº CNH</label>	
-				                  <div class="control">
-				                    <input  type="text" 
-				                    				class="input" 
-				                    				placeholder="Nº CNH" 
-				                    				name="cnhNumber"
-				                    				[(ngModel)]="model.cnhNumber"  
-				                    				#cnhNumber="ngModel"
-				                   					[ngClass]="{'is-danger': cnhNumber.invalid && (cnhNumber.dirty || cnhNumber.touched)}" 
-				                   					required>                    
-				                  </div>
-				                  <div class="form-control-feedback"
-                              *ngIf="cnhNumber.errors && (cnhNumber.dirty || cnhNumber.touched)">
-                            <p class="help is-danger" *ngIf="cnhNumber.errors.required">Nº CNH é obrigatório</p>
-                        	</div>
-                				</div>
-				                
-				               
-					    				</div>
-                      <div class="field-body field">
-                        <div class="field  is-4 column is-marginless">
-                          <label class="label is-small">Categoria CNH</label> 
-                          <div class="control">
-                            <div class="select">
-                              <select [(ngModel)]="model.cnhCategory" 
-                                      #cnhCategory="ngModel"
-                                      [ngClass]="{'is-danger': cnhCategory.invalid && (cnhCategory.dirty || cnhCategory.touched)}"
-                                      required>
-                                <option value="A">A</option>
-                                <option value="AB">AB</option>
-                                <option value="AC">AC</option>
-                                <option value="AD">AD</option>
-                                <option value="AE">AE</option>
-                                <option value="B">B</option>
-                                <option value="C">C</option>
-                                <option value="D">D</option>
-                                <option value="E">E</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="form-control-feedback"
-                                        *ngIf="cnhCategory.errors && (cnhCategory.dirty || cnhCategory.touched)">
-                                      <p class="help is-danger" *ngIf="cnhCategory.errors.required">Categoria da CNH é obrigatório</p>
-                                  </div>
-                        </div>
-                         <div class="field  is-4 column is-marginless">
-                          <label class="label is-small">Vencimento CNH</label>                           
-                          <div class="control">                         
-                              <input  type="date" 
-                                      class="input"
-                                      placeholder="Vencimento CNH"  
-                                      name="dueDate"
-                                      [(ngModel)]="model.dueDate" 
-                                      #dueDate="ngModel"
-                                      [ngClass]="{'is-danger': dueDate.invalid && (dueDate.dirty || dueDate.touched)}"
-                                      required>                         
-                          </div>
-                          <div class="form-control-feedback"
-                                *ngIf="dueDate.errors && (dueDate.dirty || dueDate.touched)">
-                              <p class="help is-danger" *ngIf="dueDate.errors.required">Vencimento da CNH é obrigatório</p>
-                          </div>
-                        </div>
+                <div class="field-body field">
+
+                  <div class="field is-4 column is-marginless">
+                    <label class="label is-small">Nome</label>
+                    <div class="control">
+                      <input type="text" class="input" placeholder="Nome" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" [ngClass]="{'is-danger': firstName.invalid && (firstName.dirty || firstName.touched)}"
+                        required>
+                      <div class="form-control-feedback" *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+                        <p class="help is-danger" *ngIf="firstName.errors.required">Nome é obrigatório</p>
                       </div>
+                    </div>
+                  </div>
+                  <div class="field is-4 column is-marginless">
+                    <label class="label is-small">Sobrenome</label>
+                    <div class="control">
+                      <input type="text" class="input" placeholder="Sobrenome" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel"
+                        [ngClass]="{'is-danger': lastName.invalid && (lastName.dirty || lastName.touched)}" required>
+                      <div class="form-control-feedback" *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
+                        <p class="help is-danger" *ngIf="lastName.errors.required">Sobrenome é obrigatório</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field is-4 column is-marginless">
+                    <label class="label is-small">Data de Nasc.</label>
 
-					    			</div>
+                    <div class="control">
+                      <input type="text" class="input" name="dateOfBirth" placeholder="Data de Nasc." [(ngModel)]="model.dateOfBirth" #dateOfBirth="ngModel"
+                        [ngClass]="{'is-danger': dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched)}" required>
+                      <div class="form-control-feedback" *ngIf="dateOfBirth.errors && (dateOfBirth.dirty || dateOfBirth.touched)">
+                        <p class="help is-danger" *ngIf="dateOfBirth.errors.required">Data de Nasc. é obrigatória</p>
+                      </div>
+                    </div>
+                  </div>
 
-					    		</div>
 
-						</sga-tab>
+                </div>
 
-					  <sga-tab heading="Endereço">
-		    			<!-- Endereço -->
-		    					<div class="cnt-info columns" style="align-items: flex-start;">
-		    						
-	    						
-		    						<div class="columns column is-multiline">
-                      <label class="label is-small" style="margin:12px 0 -5px 12px;">Endereço/Região</label>  
-                      <sga-places-auto-complete class="column is-12" (onPlacesFilteredEvent)="placesFiltered($event)" (onFilterRemovedEvent)="filterRemoved()">
-                      </sga-places-auto-complete>
+                <div class="field-body field">
 
-		    							<div class="column is-12">
-		    								<div class="control">
-                          <label class="label is-small">Telefone Fixo</label>  
-		    									<input  type="text" 
-                                  [textMask]="{mask: landlinephone}" 
-                                  class="input" 
-                                  placeholder="Telefone Fixo"  
-                                  name="landlinePhone"
-		    									        [(ngModel)]="model.landlinePhone" required #landlinePhone="ngModel"
-		    								          [ngClass]="{'is-danger': landlinePhone.invalid && (landlinePhone.dirty || landlinePhone.touched)}">
-		    								</div>
-		    								<div class="form-control-feedback"
-		    			                        *ngIf="landlinePhone.errors && (landlinePhone.dirty || landlinePhone.touched)">
-		    				                    <p class="help is-danger" *ngIf="landlinePhone.errors.required">Telefone fixo é obrigatório</p>
-		    				                </div>
-		    							</div>							
+                  <div class="field is-4 column is-marginless">
+                    <label class="label is-small">Nome da Mãe</label>
+                    <div class="control">
+                      <input type="text" class="input" name="motherName" placeholder="Nome da Mãe" [(ngModel)]="model.motherName" #motherName="ngModel"
+                        [ngClass]="{'is-danger': motherName.invalid && (motherName.dirty || motherName.touched)}" required>
+                      <div class="form-control-feedback" *ngIf="motherName.errors && (motherName.dirty || motherName.touched)">
+                        <p class="help is-danger" *ngIf="motherName.errors.required">Nome da Mãe é obrigatório</p>
+                      </div>
+                    </div>
+                  </div>
 
-		    							<div class="column is-12">
-		    								<div class="control">
-                          <label class="label is-small">Telefone Celular</label>  
-		    									<input type="text" 
-                          [textMask]="{mask: mobilephone}" 
-                          class="input" 
-                          placeholder="Telefone Celular"  
-                          name="mobilePhone"
-		    									[(ngModel)]="model.mobilePhone"
-                          #mobilePhone="ngModel"
-		    								  [ngClass]="{'is-danger': mobilePhone.invalid && (mobilePhone.dirty || mobilePhone.touched)
-		    							          }">
-		    								</div>
-		    								<div class="form-control-feedback"
-		    			                        *ngIf="mobilePhone.errors && (mobilePhone.dirty || mobilePhone.touched)">
-		    				                    <p class="help is-danger" *ngIf="mobilePhone.errors.required">Telefone Celular é obrigatório</p>
-		    				                </div>
-		    							</div>
+                  <!-- <div class="field is-4 column is-marginless">
+                    <label class="label is-small">Documento</label>
+                    <div class="control">
+                      <div class="select">
+                        <select name="documentType" [(ngModel)]="model.documentType" #documentType="ngModel" [ngClass]="{'is-danger': documentType.invalid && (documentType.dirty || documentType.touched)}"
+                          required>
+                          <option value="RG">RG</option>
+                          <option value="CPF">CPF</option>
+                          <option value="RNA">RNA</option>
+                          <option value="Passaporte">Passaporte</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-control-feedback" *ngIf="documentType.errors && (documentType.dirty || documentType.touched)">
+                      <p class="help is-danger" *ngIf="documentType.errors.required">Escolha um documento</p>
+                    </div>
+                  </div>
 
-		    							<div class="column is-12">
-		    								<div class="control">
-                          <label class="label is-small">Telefone para recado</label>  
-		    									<input type="text" 
-                          [textMask]="{mask: mobilephone}" 
-                          class="input" 
-                          placeholder="Telefone para recado"  
-                          name="messagePhone"
-		    									 [(ngModel)]="model.messagePhone" 
-                           required 
-                           #messagePhone="ngModel"
-		    								       [ngClass]="{    
+                  <div class="field is-4 column is-marginless">
+                    <label class="label is-small">Nº</label>
+                    <div class="control">
+                      <input [disabled]="documentType.invalid" type="text" class="input" placeholder="Nº" name="documentId" [(ngModel)]="model.documentId"
+                        #documentId="ngModel" [ngClass]="{'is-danger': documentId.invalid && (documentId.dirty || documentId.touched)}"
+                        required>
+
+                    </div>
+                    <div class="form-control-feedback" *ngIf="documentId.errors && (documentId.dirty || documentId.touched)">
+                      <p class="help is-danger" *ngIf="documentId.errors.required">Nº é obrigatório</p>
+                    </div>
+                  </div> -->
+
+
+
+
+
+
+                </div>
+
+                <div class="field-body field">
+                  <div class="field  is-4 column is-marginless">
+                    <label class="label is-small">Estado Civil</label>
+                    <div class="control">
+                      <div class="select">
+                        <select name="maritalStatus" [(ngModel)]="model.maritalStatus" #maritalStatus="ngModel" placeholder="Selecione" [ngClass]="{'is-danger': maritalStatus.invalid && (maritalStatus.dirty || maritalStatus.touched)}"
+                          required>
+
+                          <option value="Casado">Casado</option>
+                          <option value="Divorciado ">Divorciado </option>
+                          <option value="Solteiro ">Solteiro </option>
+                          <option value="União estável">União estável</option>
+                          <option value="Viúvo">Viúvo</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-control-feedback" *ngIf="maritalStatus.errors && (maritalStatus.dirty || maritalStatus.touched)">
+                      <p class="help is-danger" *ngIf="maritalStatus.errors.required">Estado civil é obrigatório</p>
+                    </div>
+                  </div>
+                  <div class="field  is-4 column is-marginless">
+                    <label class="label is-small">Nome da Esposa</label>
+                    <div class="control">
+                      <input type="text" class="input" placeholder="Nome da Esposa" name="wifeName" #wifeName="ngModel" ngModel [ngClass]="{'is-danger': wifeName.invalid && (wifeName.dirty || wifeName.touched) }"
+                        required>
+
+                    </div>
+                    <div class="form-control-feedback" *ngIf="wifeName.errors && (wifeName.dirty || wifeName.touched)">
+                      <p class="help is-danger" *ngIf="wifeName.errors.required">Nome da Esposa é obrigatório</p>
+                    </div>
+                  </div>
+                  <div class="field  is-4 column is-marginless">
+                    <label class="label is-small">Tem Filhos?</label>
+                    <div class="control">
+                      <div class="select">
+                        <select>
+                          <option value="Sim">Sim</option>
+                          <option value="Não">Não </option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="field-body field">
+                  <div class="field  is-4 column is-marginless">
+                    <label class="label is-small">Quantos</label>
+                    <div class="control">
+                      <input [(ngModel)]="model.howManyChildren" name="howManyChildren" #howManyChildren="ngModel" class="input" type="text" placeholder="Quantos?">
+                    </div>
+                  </div>
+                </div>
+                <div class="img-profile"> </div>
+                <a class="remove-img-profile" (click)="removeProfilePhoto()">
+                  <span>Remover Foto</span>
+                </a>
+
+              </div>
+            </div>
+
+
+            <div class="column  is-10">
+
+
+              <div class="field-body field">
+
+                <div class="field is-4 column is-marginless">
+                  <label class="label is-small">Nome</label>
+                  <div class="control">
+                    <input type="text" class="input" placeholder="Nome" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" [ngClass]="{'is-danger': firstName.invalid && (firstName.dirty || firstName.touched)}"
+                      required>
+                    <div class="form-control-feedback" *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+                      <p class="help is-danger" *ngIf="firstName.errors.required">Nome é obrigatório</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="field is-4 column is-marginless">
+                  <label class="label is-small">Sobrenome</label>
+                  <div class="control">
+                    <input type="text" class="input" placeholder="Sobrenome" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel"
+                      [ngClass]="{'is-danger': lastName.invalid && (lastName.dirty || lastName.touched)}" required>
+                    <div class="form-control-feedback" *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
+                      <p class="help is-danger" *ngIf="lastName.errors.required">Sobrenome é obrigatório</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="field is-4 column is-marginless">
+                  <label class="label is-small">Data de Nasc.</label>
+
+                  <div class="control">
+                    <input type="text" class="input" name="dateOfBirth" placeholder="Data de Nasc." [(ngModel)]="model.dateOfBirth" #dateOfBirth="ngModel"
+                      [ngClass]="{'is-danger': dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched)}" required>
+                    <div class="form-control-feedback" *ngIf="dateOfBirth.errors && (dateOfBirth.dirty || dateOfBirth.touched)">
+                      <p class="help is-danger" *ngIf="dateOfBirth.errors.required">Data de Nasc. é obrigatória</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field-body field">
+
+                <div class="field is-4 column is-marginless">
+                  <label class="label is-small">Nome da Mãe</label>
+                  <div class="control">
+                    <input type="text" class="input" name="motherName" placeholder="Nome da Mãe" [(ngModel)]="model.motherName" #motherName="ngModel"
+                      [ngClass]="{'is-danger': motherName.invalid && (motherName.dirty || motherName.touched)}" required>
+                    <div class="form-control-feedback" *ngIf="motherName.errors && (motherName.dirty || motherName.touched)">
+                      <p class="help is-danger" *ngIf="motherName.errors.required">Nome da Mãe é obrigatório</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="field is-4 column is-marginless">
+                  <label class="label is-small">Documento</label>
+                  <div class="control">
+                    <div class="select">
+                      <select name="document" [(ngModel)]="model.document" #document="ngModel" [ngClass]="{'is-danger': document.invalid && (document.dirty || document.touched)}"
+                        required>
+                        <option value="RG">RG</option>
+                        <option value="CPF">CPF</option>
+                        <option value="RNA">RNA</option>
+                        <option value="Passaporte">Passaporte</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-control-feedback" *ngIf="document.errors && (document.dirty || document.touched)">
+                    <p class="help is-danger" *ngIf="document.errors.required">Escolha um documento</p>
+                  </div>
+                </div>
+
+                <div class="field is-4 column is-marginless">
+                  <label class="label is-small">Nº</label>
+                  <div class="control">
+                    <input [disabled]="document.invalid" type="text" class="input" placeholder="Nº" name="documentId" [(ngModel)]="model.documentId"
+                      #documentId="ngModel" [ngClass]="{'is-danger': documentId.invalid && (documentId.dirty || documentId.touched)}"
+                      required>
+
+                  </div>
+                  <div class="form-control-feedback" *ngIf="documentId.errors && (documentId.dirty || documentId.touched)">
+                    <p class="help is-danger" *ngIf="documentId.errors.required">Nº é obrigatório</p>
+                  </div>
+                </div>
+
+
+
+
+
+
+              </div>
+
+              <div class="field-body field">
+                <div class="field  is-4 column is-marginless">
+                  <label class="label is-small">Estado Civil</label>
+                  <div class="control">
+                    <div class="select">
+                      <select name="maritalStatus" [(ngModel)]="model.maritalStatus" #maritalStatus="ngModel" placeholder="Selecione" [ngClass]="{'is-danger': maritalStatus.invalid && (maritalStatus.dirty || maritalStatus.touched)}"
+                        required>
+
+                        <option value="Casado">Casado</option>
+                        <option value="Divorciado ">Divorciado </option>
+                        <option value="Solteiro ">Solteiro </option>
+                        <option value="União estável">União estável</option>
+                        <option value="Viúvo">Viúvo</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-control-feedback" *ngIf="maritalStatus.errors && (maritalStatus.dirty || maritalStatus.touched)">
+                    <p class="help is-danger" *ngIf="maritalStatus.errors.required">Estado civil é obrigatório</p>
+                  </div>
+                </div>
+                <div class="field  is-4 column is-marginless">
+                  <label class="label is-small">Nome da Esposa</label>
+                  <div class="control">
+                    <input type="text" class="input" placeholder="Nome da Esposa" name="wifeName" #wifeName="ngModel" ngModel [ngClass]="{'is-danger': wifeName.invalid && (wifeName.dirty || wifeName.touched) }"
+                      required>
+
+                  </div>
+                  <div class="form-control-feedback" *ngIf="wifeName.errors && (wifeName.dirty || wifeName.touched)">
+                    <p class="help is-danger" *ngIf="wifeName.errors.required">Nome da Esposa é obrigatório</p>
+                  </div>
+                </div>
+                <div class="field  is-4 column is-marginless">
+                  <label class="label is-small">Tem Filhos?</label>
+                  <div class="control">
+                    <div class="select">
+                      <select>
+                        <option value="Sim">Sim</option>
+                        <option value="Não">Não </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+
+
+              </div>
+
+
+              <div class="field-body field">
+                <div class="field  is-4 column is-marginless">
+                  <label class="label is-small">Quantos</label>
+                  <div class="control">
+                    <input [(ngModel)]="model.howManyChildren" name="howManyChildren" #howManyChildren="ngModel" class="input" type="text" placeholder="Quantos?">
+                  </div>
+                </div>
+
+                <div class="field  is-4 column is-marginless">
+                  <label class="label is-small">Escolaridade</label>
+                  <div class="control">
+                    <input type="text" class="input" placeholder="Escolaridade" name="educationalLevel" [(ngModel)]=model.educationalLevel #educationalLevel="ngModel"
+                      [ngClass]="{'is-danger': educationalLevel.invalid && (educationalLevel.dirty || educationalLevel.touched)}"
+                      required>
+
+                  </div>
+                  <div class="form-control-feedback" *ngIf="educationalLevel.errors && (educationalLevel.dirty || educationalLevel.touched)">
+                    <p class="help is-danger" *ngIf="educationalLevel.errors.required">Escolaridade é obrigatória</p>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </sga-tab>
+
+          <sga-tab heading="Endereço">
+            <!-- Endereço -->
+            <div class="cnt-info columns" style="align-items: flex-start;">
+
+
+              <div class="columns column is-multiline">
+                <label class="label is-small" style="margin:12px 0 -5px 12px;">Endereço/Região</label>
+                <sga-places-auto-complete class="column is-12" (onPlacesFilteredEvent)="placesFiltered($event)" (onFilterRemovedEvent)="filterRemoved()">
+                </sga-places-auto-complete>
+
+                <div class="column is-12">
+                  <div class="control">
+                    <label class="label is-small">Telefone Fixo</label>
+                    <input type="text" [textMask]="{mask: landlinephone}" class="input" placeholder="Telefone Fixo" name="landlinePhone" [(ngModel)]="model.landlinePhone"
+                      required #landlinePhone="ngModel" [ngClass]="{'is-danger': landlinePhone.invalid && (landlinePhone.dirty || landlinePhone.touched)}">
+                  </div>
+                  <div class="form-control-feedback" *ngIf="landlinePhone.errors && (landlinePhone.dirty || landlinePhone.touched)">
+                    <p class="help is-danger" *ngIf="landlinePhone.errors.required">Telefone fixo é obrigatório</p>
+                  </div>
+                </div>
+
+                <div class="column is-12">
+                  <div class="control">
+                    <label class="label is-small">Telefone Celular</label>
+                    <input type="text" [textMask]="{mask: cellPhone}" class="input" placeholder="Telefone Celular" name="cellPhone" [(ngModel)]="model.cellPhone"
+                      #cellPhone="ngModel" [ngClass]="{'is-danger': cellPhone.invalid && (cellPhone.dirty || cellPhone.touched)}">
+                  </div>
+                  <div class="form-control-feedback" *ngIf="cellPhone.errors && (cellPhone.dirty || cellPhone.touched)">
+                    <p class="help is-danger" *ngIf="cellPhone.errors.required">Telefone Celular é obrigatório</p>
+                  </div>
+                </div>
+
+                <div class="column is-12">
+                  <div class="control">
+                    <label class="label is-small">Telefone para recado</label>
+                    <input type="text" [textMask]="{mask: cellPhone}" class="input" placeholder="Telefone para recado" name="messagePhone" [(ngModel)]="model.messagePhone"
+                      required #messagePhone="ngModel" [ngClass]="{    
 		    							           'is-danger': messagePhone.invalid && (messagePhone.dirty || messagePhone.touched)
 		    							          }">
-		    								</div>
-		    								<div class="form-control-feedback"
-		    			                        *ngIf="messagePhone.errors && (messagePhone.dirty || messagePhone.touched)">
-		    				                    <p class="help is-danger" *ngIf="messagePhone.errors.required">Telefone para recado é obrigatório</p>
-		    				                </div>
-		    							</div>
+                  </div>
+                  <div class="form-control-feedback" *ngIf="messagePhone.errors && (messagePhone.dirty || messagePhone.touched)">
+                    <p class="help is-danger" *ngIf="messagePhone.errors.required">Telefone para recado é obrigatório</p>
+                  </div>
+                </div>
 
-		    							<div class="column is-12">
-		    								<div class="control">
-                           <label class="label is-small">Nextel</label>  
-		    									<input type="text" class="input" placeholder="Nextel"  name="nextelPhone"
-		    									 [(ngModel)]="model.nextelPhone" required #nextelPhone="ngModel"
-		    								       [ngClass]="{    
+                <div class="column is-12">
+                  <div class="control">
+                    <label class="label is-small">Nextel</label>
+                    <input type="text" class="input" placeholder="Nextel" name="nextelPhone" [(ngModel)]="model.nextelPhone" required #nextelPhone="ngModel"
+                      [ngClass]="{    
 		    							           'is-danger': nextelPhone.invalid && (nextelPhone.dirty || nextelPhone.touched)
 		    							          }">
-		    								</div>
-		    								<div class="form-control-feedback"
-		    			                        *ngIf="nextelPhone.errors && (nextelPhone.dirty || nextelPhone.touched)">
-		    				                    <p class="help is-danger" *ngIf="nextelPhone.errors.required">Nextel é obrigatório</p>
-		    				                </div>
-		    							</div>
+                  </div>
+                  <div class="form-control-feedback" *ngIf="nextelPhone.errors && (nextelPhone.dirty || nextelPhone.touched)">
+                    <p class="help is-danger" *ngIf="nextelPhone.errors.required">Nextel é obrigatório</p>
+                  </div>
+                </div>
 
-		    						</div>
-                    <div class="columns column  is-multiline">
-                              
-                       <div class="column is-12"> 
-                        <iframe [src]="mapUrl" width="100%">
-                        </iframe>
-                      </div>            
+              </div>
+              <div class="columns column  is-multiline">
+
+                <div class="column is-12 map">
+                  <sga-map></sga-map>
+                </div>
+              </div>
+
+
+
+            </div>
+          </sga-tab>
+
+          <sga-tab heading="Perfil">
+            <!-- Perfil -->
+            <div class="cnt-info columns " style="min-height: auto; margin-bottom: 30px;">
+
+              <div class="columns column is-multiline">
+                <!-- <div class="is-6 column is-marginless">
+
+                  <label class="label is-small">Vínculo</label>
+                  <div class="control">
+                    <div class="select">
+                      <select [(ngModel)]="model.bond" #bond="ngModel" [ngClass]="{'is-danger': bond.invalid && (bond.dirty || bond.touched)}"
+                        required>
+                        <option value="Frota">Frota</option>
+                        <option value="Agregado">Agregado</option>
+                        <option value="Terceiro">Terceiro</option>
+                      </select>
                     </div>
-		    						
+                  </div>
+                  <div class="form-control-feedback" *ngIf="bond.errors && (bond.dirty || bond.touched)">
+                    <p class="help is-danger" *ngIf="bond.errors.required">Vínculo é obrigatório</p>
+                  </div>
+                </div> -->
+                <div class="is-6 column is-marginless">
+                  <label class="label is-small">Vencimento Mopp</label>
+                  <div class="control">
+                    <input type="date" class="input" placeholder="Vencimento Mopp" name="dueDateMopp" [(ngModel)]="model.dueDateMopp" #dueDateMopp="ngModel"
+                      [ngClass]="{'is-danger': dueDateMopp.invalid && (dueDateMopp.dirty || dueDateMopp.touched)}" required>
+                  </div>
+                  <div class="form-control-feedback" *ngIf="dueDateMopp.errors && (dueDateMopp.dirty || dueDateMopp.touched)">
+                    <p class="help is-danger" *ngIf="dueDateMopp.errors.required">Vencimento Mopp é obrigatório</p>
+                  </div>
+                </div>
+                <div class="is-6 column is-marginless">
+                  <label class="label is-small">Vencimento ASO</label>
+                  <div class="control">
+                    <input type="date" class="input" placeholder="Vencimento ASO" name="dueDateAso" [(ngModel)]="model.dueDateAso" #dueDateAso="ngModel"
+                      [ngClass]="{'is-danger': dueDateAso.invalid && (dueDateAso.dirty || dueDateAso.touched)}" required>
+                  </div>
+                  <div class="form-control-feedback" *ngIf="dueDateAso.errors && (dueDateAso.dirty || dueDateAso.touched)">
+                    <p class="help is-danger" *ngIf="dueDateAso.errors.required">Vencimento Aso é obrigatório</p>
+                  </div>
+                </div>
+                <div class="is-6 column is-marginless">
+                  <label class="label is-small">Vencimento CDD</label>
+                  <div class="control">
+                    <input type="date" class="input" placeholder="Vencimento Cdd" name="dueDateCdd" [(ngModel)]="model.dueDateCdd" #dueDateCdd="ngModel"
+                      [ngClass]="{'is-danger': dueDateCdd.invalid && (dueDateCdd.dirty || dueDateCdd.touched)}" required>
+                  </div>
+                  <div class="form-control-feedback" *ngIf="dueDateCdd.errors && (dueDateCdd.dirty || dueDateCdd.touched)">
+                    <p class="help is-danger" *ngIf="dueDateCdd.errors.required">Vencimento CDD é obrigatório</p>
+                  </div>
+                </div>
+              </div>
 
-		    						
-						    </div>
-						  </sga-tab>
 
-						<sga-tab heading="Perfil">
-						    <!-- Perfil -->
-		    						<div class="cnt-info columns " style="min-height: auto; margin-bottom: 30px;">
-		    							
-		    								<div class="columns column is-multiline">
-  		    								<div class="is-6 column is-marginless">
-  		    									
-  		    									<label class="label is-small">Vínculo</label>		
-  		    									<div class="control">
-  		    										<div class="select">
-  		    											<select [(ngModel)]="model.bond" 
-  		    															#bond="ngModel"
-  		    											       	[ngClass]="{'is-danger': bond.invalid && (bond.dirty || bond.touched)}"
-  		    											       	required>		    												
-  		    												<option value="Frota">Frota</option>
-  		    												<option value="Agregado">Agregado</option>
-  		    												<option value="Terceiro">Terceiro</option>
-  		    											</select>
-  		    										</div>
-  		    									</div>
-  		    									<div class="form-control-feedback"
-  				                        *ngIf="bond.errors && (bond.dirty || bond.touched)">
-  					                    <p class="help is-danger" *ngIf="bond.errors.required">Vínculo é obrigatório</p>
-  					                </div>
-  		    								</div>
-  												<div class="is-6 column is-marginless">		    									
-  		    									<label class="label is-small">Vencimento Mopp</label>		
-  			    								<div class="control">					    								
-  			    										<input  type="date" 
-  			    														class="input" 
-  			    														placeholder="Vencimento Mopp"  
-  			    														name="dueDateMopp"
-  			    									 					[(ngModel)]="model.dueDateMopp" 
-  			    									 				#dueDateMopp="ngModel"
-  			    								       			[ngClass]="{'is-danger': dueDateMopp.invalid && (dueDateMopp.dirty || dueDateMopp.touched)}"
-  			    								       			required>			    															
-  			    								</div>
-  			    								<div class="form-control-feedback"
-    			                       *ngIf="dueDateMopp.errors && (dueDateMopp.dirty || dueDateMopp.touched)">
-    				                    <p class="help is-danger" *ngIf="dueDateMopp.errors.required">Vencimento Mopp é obrigatório</p>
-    				                </div>
-  		    								</div>
-  		    								<div class="is-6 column is-marginless">		    									
-  		    									<label class="label is-small">Vencimento ASO</label>		
-  		    									<div class="control">		    								
-  		    										<input  type="date"  
-  		    														class="input" 
-  		    														placeholder="Vencimento ASO"  
-  		    														name="dueDateAso"
-  		    										 				[(ngModel)]="model.dueDateAso" 
-  		    										 				#dueDateAso="ngModel"
-  		    									       		[ngClass]="{'is-danger': dueDateAso.invalid && (dueDateAso.dirty || dueDateAso.touched)}"
-  		    									       		required>
-  		    									</div>
-  		    									<div class="form-control-feedback"
-    			                        *ngIf="dueDateAso.errors && (dueDateAso.dirty || dueDateAso.touched)">
-    				                    <p class="help is-danger" *ngIf="dueDateAso.errors.required">Vencimento Aso é obrigatório</p>
-    				                </div>
-  		    								</div>
-  			    							<div class="is-6 column is-marginless">		    								
-  			    								<label class="label is-small">Vencimento CDD</label>	
-  			    								<div class="control">	
-  			    									<input  type="date"
-  			    												  class="input" 
-  			    												  placeholder="Vencimento Cdd"  
-  			    												  name="dueDateCdd"
-  			    										 			[(ngModel)]="model.dueDateCdd" 
-  			    										 			#dueDateCdd="ngModel"
-  			    									        [ngClass]="{'is-danger': dueDateCdd.invalid && (dueDateCdd.dirty || dueDateCdd.touched)}"
-  			    									        required>		
-  			    								</div>
-  			    								<div class="form-control-feedback"
-  				                        *ngIf="dueDateCdd.errors && (dueDateCdd.dirty || dueDateCdd.touched)">
-  					                    <p class="help is-danger" *ngIf="dueDateCdd.errors.required">Vencimento CDD é obrigatório</p>
-  					                </div>
-  			    							</div>
-  		    							</div>
+            </div>
+          </sga-tab>
+        </sga-tabs>
+        <!-- Botões de Ação -->
+        <div class="cnt-buttons">
 
-		    						
-		    						</div>
-						</sga-tab>
-				</sga-tabs>
-						<!-- Botões de Ação -->
-				<div class="cnt-buttons">
-				
-						
-							<button class="button" (click)="cancel()">Cancelar</button>
-						
-									
-							<button type="submit"
-							        class="button is-first"
-							        [disabled]="formMotorist.invalid">Cadastrar
-							</button>
-						
-					
-				</div>
-			</form>
-	
-		</div>
-	</div>
+
+          <button class="button" (click)="cancel()">Cancelar</button>
+
+
+          <button type="submit" class="button is-first" [disabled]="formMotorist.invalid">Cadastrar
+          </button>
+
+
+        </div>
+      </form>
+
+    </div>
+  </div>
 </div>

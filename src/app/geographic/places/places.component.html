@@ -45,7 +45,7 @@
           placeholder="Pesquise um lugar ou rota"
           (onSelected)="selectItineraryPlace($event)">
         </sga-select-grouped> -->
-        <div class="cnt-places-header">
+        <div class="cnt-places-header"> 
           <h1>Lugares</h1>
         </div>
         <div class="cnt-places-autocomplete">
@@ -54,42 +54,69 @@
             styleClass="places-autocomplete">
           </sga-places-auto-complete>
         </div>
+        <div class="cnt-route-scroll" slimScroll>
+          <div class="cnt-places-added"  >
+            <div class="place-added" *ngFor="let item of itineraryPlaces; let i = index">
+              <span class="number-radius">
+                {{i + 1}}
+              </span>
+              <h5 title="{{item.name}}" class="title-place-added">
+                {{(item.name.length>35)? (item.name | slice:0:35)+'...':(item.name)}}
+              </h5>
+              <div class="controls">
+                <i (click)="addNewPlace(item)" title="Salvar" class="add-place fal fa-bookmark"></i>
+                <i (click)="removeItineraryPlace(item)" title="Remover" class="remove-place fal fa-times-circle"></i>
+              </div>
+              
+              <div class="reverse" *ngIf="i === 1 && itineraryPlaces.length === 2"
+                 (click)="revertPlaces()" >
+                 <i class="fal fa-exchange-alt">
+                 </i>
+              </div>
 
-        <div class="cnt-places-added"  slimScroll>
-          <div class="place-added" *ngFor="let item of itineraryPlaces; let i = index">
-            <span class="number-radius">
-              {{i + 1}}
-            </span>
-            <h5 title="{{item.name}}" class="title-place-added">
-              {{(item.name.length>35)? (item.name | slice:0:35)+'...':(item.name)}}
-            </h5>
-            <div class="controls">
-              <i (click)="addNewPlace(item)" title="Salvar" class="add-place fal fa-bookmark"></i>
-              <i (click)="removeItineraryPlace(item)" title="Remover" class="remove-place fal fa-times-circle"></i>
-            </div>
-            
-            <div class="reverse" *ngIf="i === 1 && itineraryPlaces.length === 2"
-               (click)="revertPlaces()" >
-               <i class="fal fa-exchange-alt">
-               </i>
-            </div>
+              <div class="place-tag">
+                <tag-input 
+                  [ngModel]="['tag']" 
+                  placeholder="Adicione uma tag"
+                  (onAdd)="onSelectedTag($event)">
+                  <tag-input-dropdown 
+                    [showDropdownIfEmpty]="true"
+                    [autocompleteItems]="['tag1', 'tag2', 'tag3']"
+                  >
+                  </tag-input-dropdown>
+                </tag-input>
+              </div>
 
-            <div class="place-tags">
-             <div class="place-tag">
-               <tag-input 
-                 [ngModel]="['i']" 
-                 placeholder="Adicione uma tag"
-                 (onAdd)="onSelectedTag($event)">
-                 <tag-input-dropdown [showDropdownIfEmpty]="true"
-                                     [autocompleteItems]="['iTem1', 'item2', 'item3']">
-                 </tag-input-dropdown>
-               </tag-input>
-             </div>
             </div>
-
-          
           </div>
+          
+          <section class="route-cnt">
+            <div class="trip-info" *ngIf="itineraryPlaces?.length > 1">
+              <sga-route-info 
+                [duration]="route?.duration"
+                [distance]="route?.distance"
+              >
+              </sga-route-info>
+            </div>
+            <div class="trip-places-lv" *ngIf="itineraryPlaces?.length === 0">
+              <i class="fal fa-map"></i>
+            </div>
+            <div class="trip-places-header">
+              <h3>Rotas semelhantes</h3>
+              <i class="fa fa-question-circle ui-icon-info" style="position: inherit"></i>
+            </div>
+            <sga-route-info *ngIf="route"
+              name="Rio - São Paulo"
+              [duration]="route?.duration"
+              [distance]="route?.distance"
+            >
+            </sga-route-info>
+            <div class="trip-places-lv" *ngIf="!route">
+              <i class="fal fa-map"></i>
+            </div>
+          </section>
         </div>
+
       </sga-tab>
       
       <sga-tab heading="Grupos">

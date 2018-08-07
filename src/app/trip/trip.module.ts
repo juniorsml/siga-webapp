@@ -28,7 +28,6 @@ import { SummaryRegisterComponent } from './register/summary/summary-register.co
 import { SummaryMotoristComponent } from './summary-dialog/motorist/summary-motorist.component';
 import { SummaryVehicleComponent } from './summary-dialog/vehicle/summary-vehicle.component';
 import { SummaryItineraryComponent } from './summary-dialog/itinerary/summary-itinerary.component';
-import { RouteInfoComponent } from './register/places/route-info/route-info.component';
 
 @NgModule({
   imports: [
@@ -61,7 +60,6 @@ import { RouteInfoComponent } from './register/places/route-info/route-info.comp
     SummaryMotoristComponent,
     SummaryVehicleComponent,
     SummaryItineraryComponent,
-    RouteInfoComponent
-  ]
+ ]
 })
 export class TripModule { }

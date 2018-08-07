@@ -1,19 +1,22 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { VehicleService } from '../vehicle.service';
+import { forkJoin } from 'rxjs/observable/forkJoin';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'sga-associate-vehicle',
   templateUrl: './associate-vehicle.component.html',
-  styleUrls: ['../../motorist/associate-dialog/motorist-associate-dialog.component.scss']
+  styleUrls: ['../../motorist/associate-dialog/motorist-associate-dialog.component.scss'],
+  providers: [VehicleService]
 })
 export class AssociateVehicleComponent implements OnInit {
-  @Input() 
+  @Input()
   public showDialog: boolean;
 
-  @Input() 
+  @Input()
   public showForm: boolean;
 
-  @Input() haveFooter: boolean = true;
+  @Input() haveFooter = true;
 
   @Input()
   get vehicles(): Array<any> {
@@ -22,18 +25,6 @@ export class AssociateVehicleComponent implements OnInit {
   set vehicles(vehicles: Array<any>) {
     this._vehicles = vehicles;
     this.setCurrentVehicles();
-  }
-
-
-  public showFormRegister = false;
-  
-  openFormRegister() {
-    
-    this.showFormRegister = !this.showFormRegister;
-  }
-
-  closeFormRegister() {
-    this.showFormRegister = false;
   }
 
   private _vehicles: Array<any> = [];
@@ -49,24 +40,46 @@ export class AssociateVehicleComponent implements OnInit {
   public searchText: any;
   public hideAdminErrorModal = true;
 
-  constructor(private router: ActivatedRoute) {}
+  public showFormRegister = false;
 
-  ngOnInit() :void {
-    this.router.data.subscribe(data => this.vehicles = data.vehicles);
+  openFormRegister() {
+    this.showFormRegister = !this.showFormRegister;
+  }
+
+  closeFormRegister() {
+    this.showFormRegister = false;
+  }
+
+  constructor(private vehicleService: VehicleService) { }
+
+  ngOnInit(): void {
+    this.getVehicles();
+  }
+
+  public getVehicles() {
+    this
+      .vehicleService
+      .getVehicles()
+      .subscribe(
+        data => this.vehicles = data,
+        error => console.warn(error));
   }
 
   private setCurrentVehicles() {
     this.currentList = [];
     this.vehicles.map(vehicle => {
-      if (!this.vehicleIsDuplicate(vehicle.id)) this.currentList.push(vehicle);
+      if (!this.vehicleIsDuplicate(vehicle.id)) {
+        this.currentList.push(vehicle);
+      }
     });
   }
 
   private vehicleIsDuplicate(vehicleId): boolean {
-    return this.removeList.find(m => m.id == vehicleId);
+    return this.removeList.find(m => m.id === vehicleId);
   }
 
   public onVehicleSelected(vehicle) {
+    debugger
     this.addList.push(vehicle);
   }
 
@@ -94,7 +107,7 @@ export class AssociateVehicleComponent implements OnInit {
   }
 
   public showVehicleForm(suggestion) {
-    suggestion;
+    console.log(suggestion);
     this.showVehicleRegister = true;
   }
 
@@ -108,8 +121,44 @@ export class AssociateVehicleComponent implements OnInit {
   }
 
   onAdminVehicleCellClick(event) {
-    if (event.cellIndex === 5) this.deleteVehicle(event.data);
+    if (event.cellIndex === 5) {
+      this.deleteVehicle(event.data);
+    }
   }
 
-  applyChanges() {}
+  applyChanges() {
+    const addIds = this.addList.map(vehicle => vehicle.id);
+    const undoIds = this.removeList.map(vehicle => vehicle.id);
+
+    forkJoin([
+      this.associateVehicle(addIds),
+      this.disassociateVehicle(undoIds)
+    ]).subscribe(
+      success => this.onSuccessRequest(success),
+      error => console.log(error));
+  }
+
+  onSuccessRequest(data) {
+    console.log(data);
+    if (data.success) {
+      // todo: toast
+    }
+    this.getVehicles();
+    this.addList = new Array<any>();
+    this.removeList = new Array<any>();
+  }
+
+  associateVehicle(addIds: Array<any>): Observable<any> {
+    if (addIds.length === 0) {
+      return Observable.of([]);
+    }
+    return this.vehicleService.associateVehicle(addIds);
+  }
+
+  disassociateVehicle(undoIds: Array<any>): Observable<any> {
+    if (undoIds.length === 0) {
+      return Observable.of([]);
+    }
+    return this.vehicleService.disassociateVehicle(undoIds);
+  }
 }

@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { DatePipe } from '@angular/common';
 /*
  * Filters out data based on string input
  */
@@ -24,9 +25,9 @@ export class SearchPipe implements PipeTransform {
     for (let i = 0; i < keys.length; i++) {
       const nodes = keys[i].split('.');
       object = item;
-      for (let i = 0; i < nodes.length; i++) {
-        if (nodes[i] != null && object != null) {
-          object = object[nodes[i]];
+      for (let x = 0; x < nodes.length; x++) {
+        if (nodes[x] != null && object != null) {
+          object = object[nodes[x]];
         }
       }
       values.push(object);
@@ -36,15 +37,39 @@ export class SearchPipe implements PipeTransform {
 
   find(searchValues: Array<any>, query: string) {
     for (let i = 0; i < searchValues.length; i++) {
-      if (
-        searchValues[i] != null &&
-        searchValues[i]
+      const value = searchValues[i];
+      if (value == null) {
+      } else if (value.toString().length === 13) {
+        const time = Number(value);
+        if (!isNaN(time)) {
+          const date = new Date(time);
+          const result = new DatePipe('en').transform(date, 'medium');
+          if (result
           .toString()
           .toUpperCase()
-          .includes(query.toUpperCase())
-      ) {
+          .includes(query.toUpperCase())) {
+            return true;
+          }
+        }
+      } else if (
+        value
+          .toString()
+          .toUpperCase()
+          .includes(query.toUpperCase())) {
         return true;
       }
     }
+
+    // for (let i = 0; i < searchValues.length; i++) {
+    //   if (
+    //     searchValues[i] != null &&
+    //     searchValues[i]
+    //       .toString()
+    //       .toUpperCase()
+    //       .includes(query.toUpperCase())
+    //   ) {
+    //     return true;
+    //   }
+    // }
   }
 }

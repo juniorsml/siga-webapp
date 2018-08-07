@@ -3,7 +3,7 @@
     <input class="input" #input (keyup)="onKeyUp($event)" (focus)="onFocus()" (keydown)="onKeyDown($event)" [placeholder]="placeholder">
     <span class="icon is-left">
       <i class="fal fa-search"></i>
-    </span>       
+    </span>
   </p>
   <div *ngIf="hasFocus && suggestions !== null">
     <ul *ngFor="let suggestion of suggestions; let i = index">
@@ -19,12 +19,15 @@
       </li>
       <li>
         <p (click)="create()" class="button create is-light">
-          <i class="fal fa-plus"></i> 
+          <i class="fal fa-plus"></i>
           <span> Criar</span>
           <b> "{{input.value}}"</b>
         </p>
       </li>
     </ul>
+  </div>
+  <div *ngIf="searching">
+    <span>Buscando...</span>
   </div>
 </div>
 <ng-content></ng-content>
