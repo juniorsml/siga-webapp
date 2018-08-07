@@ -24,9 +24,9 @@ export class StartedTripsComponent implements OnInit {
   public showTripDialog = false;
   public showSummaryDialog = false;
   showColumnSelector = false;
-    showSendDialog = false;
+  showSendDialog = false;
 
-  haveFooter: boolean = true;
+  haveFooter = true;
 
 
   closeColumnSelector() {
@@ -34,8 +34,8 @@ export class StartedTripsComponent implements OnInit {
   }
 
   onSelectOption(event: OptionClickEvent) {
-    switch (event.data.header) {      
-      case 'Seleção de Colunas': 
+    switch (event.data.header) {    
+      case 'Seleção de Colunas':
         this.showColumnSelector = true;
         break;
       }
@@ -68,26 +68,26 @@ export class StartedTripsComponent implements OnInit {
     this.selectedTrip = event.data;
   }
 
-  public contextMenuSelected(index) {   
+  public contextMenuSelected(index) { 
 
-    switch (index) {  
-     case 0:        
+    switch (index) { 
+     case 0:      
+        this.stepIndex = index;
+        this.showSummaryDialog = true;
+      break;
+     case 1:      
         this.stepIndex = index;
         this.showSummaryDialog = true;
     break;
-     case 1:        
+     case 2: 
         this.stepIndex = index;
         this.showSummaryDialog = true;
     break;
-     case 2:        
+     case 3:    
         this.stepIndex = index;
         this.showSummaryDialog = true;
     break;
-     case 3:        
-        this.stepIndex = index;
-        this.showSummaryDialog = true;
-    break; 
-      case 4:        
+      case 4:  
         this.showSendDialog = true;
      }
 
