@@ -23,10 +23,11 @@ export class GridVehicleComponent implements OnInit {
   filterLocation: any;
   filterDistance: any;
   selectedVehicle: any;
-  contextMenuSelected: any;
 
   showDialog = false;
   showVehicleDialog: boolean;
+
+   showSendDialog = false;
 
   showColumnSelector = false;
   closeColumnSelector() {
@@ -83,6 +84,16 @@ export class GridVehicleComponent implements OnInit {
     this.filterDistance = null;
     this.filterLocation = null;
   }
+
+
+  public contextMenuSelected = event => {
+    switch (event) {
+ 
+      case 4:        
+        this.showSendDialog = true;
+     }
+  }
+  public sendDialogClose = () => this.showSendDialog = false;
 
   public onPlacesKeyUp() {}
 
