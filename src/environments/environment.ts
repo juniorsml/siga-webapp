@@ -6,7 +6,7 @@
 export const environment = {
   authTokenName: 'S1G4',
   production: false,
-  api: 'http://dev.siga.io/',
+  api: 'https://dev.siga.io/',
 
   mapbox: {
     directionsApi: 'https://api.mapbox.com/directions/v5/mapbox/driving',
