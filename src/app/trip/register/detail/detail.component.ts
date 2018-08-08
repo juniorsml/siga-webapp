@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 
 @Component({
   selector: 'sga-detail',
   templateUrl: './detail.component.html',
-  styleUrls: ['../register-trip.component.scss']
+  styleUrls: ['detail.component.scss']
 })
 export class DetailComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
-  	
+
   }
 
 }

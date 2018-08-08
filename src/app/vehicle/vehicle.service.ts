@@ -24,15 +24,15 @@ export class VehicleService {
       .pipe(map(res => res.json()));
   }
 
-  public associateVehicle(ids: Array<string>): Observable<Vehicle> {
+  public associateVehicle(ids: Array<string>): Observable<any> {
     return this
       .http
-      .patch('api/vehicles/account/associate', JSON.stringify(ids));
+      .patch('api/vehicles/account/associate', ids);
   }
 
-  public disassociateVehicle(ids: Array<string>): Observable<Vehicle> {
+  public disassociateVehicle(ids: Array<string>): Observable<any> {
     return this
       .http
-      .patch('api/vehicles/account/disassociate', JSON.stringify(ids));
+      .patch('api/vehicles/account/disassociate', ids);
   }
 }

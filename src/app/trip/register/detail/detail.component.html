@@ -1,36 +1,84 @@
-<div class="column is-12 is-paddingless">
-  <h5 class="trip-title">Dados da Viagem</h5>
-  
-  <div class="block column columns is-12 is-multiline cnt-detail"> 
+<div style="margin: auto; max-width: 1200px;">
+  <h5 class="form-title">Dados da Viagem</h5>
+  <div class="block column columns is-12 is-multiline cnt-detail">
+    <!-- Identification-->
     <div class="column is-12">
+      <div class="form-section is-12">
+        <div class="form-heading-wrapper">
+          <h6 class="form-heading">Identificação</h6>
+          <i class="form-info fal fa-question-circle"></i>
+          <hr/>
+        </div>
+      </div>
+    </div>
+    <div class="column is-4">
       <div class="field-body field">
-
         <div class="field">
-          <label class="label is-small">Doc. Cliente</label>
+          <label class="label is-small">Chave Documento</label>
           <div class="control">
-            <input class="input" type="text" placeholder="Número" required>
+            <input class="input" type="text" placeholder="Chave" required>
           </div>
         </div>
-
+        <div class="field">
+          <label class="label is-small">Valor Documento</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Código" required>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Config-->
+    <div class="column is-12">
+      <div class="form-section is-12">
+        <div class="form-heading-wrapper">
+          <h6 class="form-heading">Configuração</h6>
+          <i class="form-info fal fa-question-circle"></i>
+          <hr/>
+        </div>
+      </div>
+    </div>
+    <div class="column is-4">
+      <div class="field">
+        <label class="label is-small">Operação</label>
+        <div class="select">
+          <select name="op">
+            <option>Operação</option>
+            <option value="Operação I">Operação I</option>
+            <option value="Operação II">Operação II</option>
+            <option value="Operação III">Operação III</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <!-- Cargo-->
+    <div class="column is-12">
+      <div class="form-section is-12">
+        <div class="form-heading-wrapper">
+          <h6 class="form-heading">Carga</h6>
+          <i class="form-info fal fa-question-circle"></i>
+          <hr/>
+        </div>
+      </div>
+    </div>
+    <div class="column is-12">
+      <div class="field-body field">
         <div class="field">
           <label class="label is-small">Mercadoria/Produto</label>
           <div class="select">
-             <select name="product">
-               <option>Mercadoria/Produto</option>
-               <option value="Mercadoria/Produto I">Mercadoria/Produto I</option>
-               <option value="Mercadoria/Produto II">Mercadoria/Produto II</option>
-               <option value="Mercadoria/Produto III">Mercadoria/Produto III</option>
-             </select>
+            <select name="product">
+              <option>Mercadoria/Produto</option>
+              <option value="Mercadoria/Produto I">Mercadoria/Produto I</option>
+              <option value="Mercadoria/Produto II">Mercadoria/Produto II</option>
+              <option value="Mercadoria/Produto III">Mercadoria/Produto III</option>
+            </select>
           </div>
         </div>
-
         <div class="field">
           <label class="label is-small">Valor total do embarque</label>
           <div class="control">
             <input class="input" type="text" placeholder="R$">
           </div>
         </div>
-
         <div class="field">
           <label class="label is-small">Peso total</label>
           <div class="control">
@@ -38,70 +86,76 @@
           </div>
         </div>
       </div>
-
-      <div class="field-body field">
-
-
-        <div class="field">
-          <label class="label is-small">Operação</label>
-          <div class="select">
-             <select name="op">
-               <option>Operação</option>
-               <option value="Operação I">Operação I</option>
-               <option value="Operação II">Operação II</option>
-               <option value="Operação III">Operação III</option>
-             </select>
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label is-small">Tipo</label>
-          <div class="select">
-             <select name="op">
-               <option value="Tipo I">Tipo I</option>
-               <option value="Tipo II">Tipo II</option>
-               <option value="Tipo III">Tipo III</option>
-             </select>
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label is-small">Percurso</label>
-          <div class="select">
-             <select name="op">
-               <option value="Rodoviário">RODOVIÁRIO</option>
-               <option value="Urbano">URBANO</option>
-               <option value="Rodoviário/Urbano">RODOVIÁRIO/URBANO</option>
-             </select>
-          </div>
-        </div>
-      </div>
-
-      <div class="field-body field">
-        <div class="field">
-          <label class="label is-small">Transportadora</label>
-            <div class="control">
-            <input class="input" type="text" placeholder="">
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label is-small">Código de liberação</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="">
-          </div>
-        </div>
-      </div>
-      <div class="field-body field">
-        <div class="field">
-          <label class="label is-small">Observação</label>
-          <div class="control">
-            <textarea name="" class="textarea" id="" rows="2"></textarea>
-          </div>
-        </div>
-      </div>
-      
-  
-
+    </div>
   </div>
 </div>
+
+<!--<div class="block column columns is-12 is-multiline cnt-detail">
+  <div class="column is-12">
+
+
+    <div class="field-body field">
+
+
+      <div class="field">
+        <label class="label is-small">Operação</label>
+        <div class="select">
+          <select name="op">
+            <option>Operação</option>
+            <option value="Operação I">Operação I</option>
+            <option value="Operação II">Operação II</option>
+            <option value="Operação III">Operação III</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label is-small">Tipo</label>
+        <div class="select">
+          <select name="op">
+            <option value="Tipo I">Tipo I</option>
+            <option value="Tipo II">Tipo II</option>
+            <option value="Tipo III">Tipo III</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label is-small">Percurso</label>
+        <div class="select">
+          <select name="op">
+            <option value="Rodoviário">RODOVIÁRIO</option>
+            <option value="Urbano">URBANO</option>
+            <option value="Rodoviário/Urbano">RODOVIÁRIO/URBANO</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-body field">
+      <div class="field">
+        <label class="label is-small">Transportadora</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label is-small">Código de liberação</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="">
+        </div>
+      </div>
+    </div>
+    <div class="field-body field">
+      <div class="field">
+        <label class="label is-small">Observação</label>
+        <div class="control">
+          <textarea name="" class="textarea" id="" rows="2"></textarea>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>-->
