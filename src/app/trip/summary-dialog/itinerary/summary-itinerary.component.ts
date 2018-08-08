@@ -21,7 +21,6 @@ export class SummaryItineraryComponent implements OnInit {
   }
 
   public selectPlace = place => {
-    debugger
     const location = {
       name: place.formatted_address,
       lat: place.geometry.location.lat(),

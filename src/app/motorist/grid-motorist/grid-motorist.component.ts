@@ -27,6 +27,7 @@ export class GridMotoristComponent implements OnInit {
   public showMotoristDialog: boolean;
   public showColumnSelector = false;
   public showSendDialog = false;
+  public showSendCommandDialog = false;
 
 
   public headers = new Array<string>();
@@ -86,7 +87,6 @@ export class GridMotoristComponent implements OnInit {
         this.router.navigateByUrl(`motorist/history/${this.selectedMotorist.id}`);
        break;
       case 4:
-        console.log("ClickCerto")
         this.showSendCommandDialog = true;
         this.showSendDialog = true;
      }
