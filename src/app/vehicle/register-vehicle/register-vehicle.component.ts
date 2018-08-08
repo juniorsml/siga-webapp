@@ -1,7 +1,7 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { VehicleService } from '../vehicle.service';
+import { Component, Output, EventEmitter, Input, OnInit} from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Map } from '../../shared/models/Map';
 
 class RegisterForm {
   // Vehicle Info
@@ -36,13 +36,16 @@ class RegisterForm {
   providers: [VehicleService]
 })
 
-export class RegisterVehicleComponent {
+export class RegisterVehicleComponent implements OnInit {
 
   model: RegisterForm = new RegisterForm();
   anttDueDate: Date;
   comunication: string;
+
   private place: any;
-  public mapUrl: SafeResourceUrl;
+  private location: any;
+
+  public ray = 1000;
 
   @Input()
   public showForm: boolean;
@@ -51,10 +54,11 @@ export class RegisterVehicleComponent {
   public selectedTabIndex = 0;
 
   constructor(
-    private domSanitizer: DomSanitizer,
-    private vehicleService: VehicleService
-    ) {
-    this.mapUrl = domSanitizer.bypassSecurityTrustResourceUrl(this.getMapUrlByLatLng(-23.53, -46.62));
+    private map: Map,
+    private vehicleService: VehicleService) { }
+
+  ngOnInit() {
+    this.map.createMapBoxMapInstance();
   }
 
   // Show image profile
@@ -119,16 +123,62 @@ export class RegisterVehicleComponent {
     console.error(error);
   }
 
-  placesFiltered(place: any) {
-    const urlValue = this.getMapUrlByLatLng(place.geometry.location.lat(), place.geometry.location.lng());
-    this.mapUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(urlValue);
+  public placesFiltered(place: any) {
     this.place = place;
+    const { geometry: { location } } = place;
+    if (location) {
+      this.location = location;
+      this.map.setZoom(14);
+      this.map.moveTo(location.lat(), location.lng());
+      this.onRayChanged(1000);
+    }
   }
 
-  filterRemoved() {
+  public filterRemoved() {
     this.place = null;
   }
-  getMapUrlByLatLng(lat: number, lng: number) {
-    return `https://maps.google.com/maps?q=${lat},${lng}&hl=es;z=14&amp&output=embed`;
+
+
+  public onRayChanged = event => {
+    if (event > 0) {
+      const ray = event / 1000;
+      this.map.clearLayers();
+      this.addRay(this.location, ray);
+      this.addMarker();
+      window.dispatchEvent(new Event('resize'));
+    }
   }
+
+  private addRay(location: any, ray = 1, options = this.getPolygonOptions('#ff5e5e', '#ff5e5e')) {
+    const turf = window['turf'];
+    const point = turf.point([location.lng(), location.lat()]);
+    const buffered = turf.buffer(point, ray, { units: 'kilometers' });
+    buffered.properties = options;
+    this.map.addGeoJSON(buffered);
+  }
+
+  private createPoint = (lat: number, lng: number) => ({
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [lng, lat]
+    },
+    properties: {
+      'marker-color': '#ea3f33',
+      'marker-size': 'large',
+      'marker-symbol': 'bus'
+    }
+  })
+
+  private addMarker() {
+    this.map.addGeoJSON(this.createPoint(this.location.lat(), this.location.lng()));
+  }
+
+  private getPolygonOptions = (stroke, fill) => ({
+    fill, // line
+    stroke, // back
+    'stroke-width': 2,
+    'fill-opacity': 0.5,
+    'stroke-opacity': 0.5
+  })
 }

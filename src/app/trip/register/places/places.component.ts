@@ -76,8 +76,8 @@ export class PlacesComponent implements OnInit {
     }
   }
 
-  private onSuccessRoute = data => {
-    const { geometry, distance, duration } = data.routes[0];
+  private onSuccessRoute = ({ routes }) => {
+    const { geometry, distance, duration } = routes[0];
     this.route = { distance: this.formatToKm(distance), duration: this.formatDate(duration) };
 
     const featureList = this.directionService.decode(geometry);

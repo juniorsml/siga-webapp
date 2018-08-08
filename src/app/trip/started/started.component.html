@@ -6,14 +6,20 @@
       <li class="is-active"><a href="#" aria-current="page">Em Viagem</a></li>
     </ul>
   </nav>
-  <div class="columns column is-4 header-content-right">    
-    <sga-sidebar-configuration (onSelectOption)="onSelectOption($event)" class="column is-6">
-      <sga-option header="Seleção de Colunas"></sga-option>
-    </sga-sidebar-configuration>
+  <div class="columns column is-4 header-content-right">   
+    <div>
+      <a class="map-open" href=""><i class="fal fa-map"></i><span>Mapa</span></a>
+    </div> 
+    <div>
+      <sga-sidebar-configuration (onSelectOption)="onSelectOption($event)">
+        <sga-option header="Seleção de Colunas"></sga-option>
+      </sga-sidebar-configuration>
+    </div>
+ 
   </div>  
 </div>
 
-<sga-modal  *ngIf="showColumnSelector">
+<sga-modal [hidden]="!showColumnSelector">
   <sga-column-selector   
     [columns]="headers"
     (onToggleItem)="onToggleItem($event)"
@@ -43,7 +49,7 @@
       [data]="trips | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
       [dataLength]="trips.length"
       [searchText]="text" 
-      [searchColumns]="['currentState.status','geography','motorists.documentId','vehicles.numberPlate', 'created']"
+      [searchColumns]="['currentState.status','geography.destinations.0.address.complete', 'geography.destinations.1.address.complete', 'motorists.0.documentId','vehicles.numberPlate', 'created']"
       [emptySearchText]="'nenhuma viagem foi encontrado'" 
       [haveFooter]="haveFooter"
       (onCellClick)="updateSelectedTrip($event)"
@@ -66,48 +72,48 @@
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'currentState'" [header]="'Iniciado'" [minWidth]="'43'" [isSortable]="true"> 
+      <column [key]="'currentState'" [header]="'Iniciado'" [width]="'83'" [isSortable]="true" sortField="currentState.start"> 
        	<ng-template let-item="item">
             <span *ngIf="item == null || item?.start == undefined">-</span>
             <span *ngIf="item != null && item.start != undefined">{{item?.start | date:'medium'}}</span>
         </ng-template>
       </column>
-      <column [key]="'currentState'" [header]="'Status'" [minWidth]="'82'">
+      <column [key]="'currentState'" [header]="'Status'" [minWidth]="'82'" [isSortable]="true" sortField="currentState.status">
           <ng-template let-item="item">
               {{item?.status}}
           </ng-template>
       </column>
 
-      <column [key]="'geography'" [header]="'Origem'" [minWidth]="'82'">
+      <column [key]="'geography'" [header]="'Origem'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               <span *ngIf="item == null">-</span>
               <span *ngIf="item != null && item.destinations[0]?.name != undefined">{{item?.destinations[0]?.name}}</span>
               <span *ngIf="item != null && item.destinations[0]?.name == undefined">{{item?.destinations[0]?.address?.complete}}</span>
           </ng-template>
       </column>
-      <column [key]="'geography'" [header]="'Destino'" [minWidth]="'82'">
+      <column [key]="'geography'" [header]="'Destino'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               <span *ngIf="item == null">-</span>
               <span *ngIf="item != null && item.destinations[item?.destinations?.length -1]?.name != undefined">{{item?.destinations[item?.destinations?.length -1]?.name}}</span>
               <span *ngIf="item != null && item.destinations[item?.destinations?.length -1]?.name == undefined">{{item?.destinations[item?.destinations?.length -1]?.address?.complete}}</span>
           </ng-template>
       </column>
-      <column [key]="'motorists'" [header]="'Motorista'" [minWidth]="'82'">
+      <column [key]="'motorists'" [header]="'Motorista'" [minWidth]="'82'" [isSortable]="true" sortField="motorists.0.documentId">
           <ng-template let-item="item">
               {{item != null ? item[0]?.documentId: '-'}}
           </ng-template>
       </column>
-      <column [key]="'vehicles'" [header]="'Veículo'" [minWidth]="'40'">
+      <column [key]="'vehicles'" [header]="'Veículo'" [minWidth]="'40'" [isSortable]="true">
           <ng-template let-item="item">
               {{item != null ? item?.numberPlate: '-'}}
           </ng-template>
       </column>
-      <column [key]="''" [header]="'Rota'" [minWidth]="'40'">
+      <column [key]="''" [header]="'Rota'" [minWidth]="'40'" [isSortable]="true">
           <ng-template let-item="item">
               {{'-'}}
           </ng-template>
       </column>
-      <column [key]="'created'" [header]="'Criado'" [minWidth]="'82'">
+      <column [key]="'created'" [header]="'Criado'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               <span *ngIf="item == undefined">-</span>
               <span *ngIf="item != undefined">{{item | date:'medium'}}</span>

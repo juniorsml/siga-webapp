@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MotoristService } from '../motorist.service';
 import { forkJoin } from 'rxjs/observable/forkJoin';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'sga-motorist-associate-dialog',
@@ -113,10 +114,34 @@ export class MotoristAssociateDialogComponent implements OnInit {
     const undoIds = this.removeList.map(motorist => motorist.id);
 
     forkJoin([
-      this.motoristService.associateMotorist(addIds),
-      this.motoristService.disassociateMotorist(undoIds)
+      this.associateMotorist(addIds),
+      this.disassociateMotorist(undoIds)
     ]).subscribe(
-      success => console.log(success),
+      success => this.onSuccessRequest(success),
       error => console.log(error));
+  }
+
+  onSuccessRequest(data) {
+    console.log(data);
+    if (data.success) {
+      // todo: toast
+    }
+    this.getMotorists();
+    this.addList = new Array<any>();
+    this.removeList = new Array<any>();
+  }
+
+  associateMotorist(addIds: Array<any>): Observable<any> {
+    if (addIds.length === 0) {
+      return Observable.of([]);
+    }
+    return this.motoristService.associateMotorist(addIds);
+  }
+
+  disassociateMotorist(undoIds: Array<any>): Observable<any> {
+    if (undoIds.length === 0) {
+      return Observable.of([]);
+    }
+    return this.motoristService.disassociateMotorist(undoIds);
   }
 }

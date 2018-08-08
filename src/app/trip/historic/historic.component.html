@@ -7,13 +7,19 @@
     </ul>
   </nav>
   <div class="columns column is-4 header-content-right">    
-    <sga-sidebar-configuration (onSelectOption)="onSelectOption($event)" class="column is-6">
-      <sga-option header="Seleção de Colunas"></sga-option>
-    </sga-sidebar-configuration>
+    <div>
+      <a class="map-open" href=""><i class="fal fa-map"></i><span>Mapa</span></a>
+    </div> 
+    <div>
+      <sga-sidebar-configuration (onSelectOption)="onSelectOption($event)">
+        <sga-option header="Seleção de Colunas"></sga-option>
+      </sga-sidebar-configuration>
+    </div>
+   
   </div>  
 </div>
 
-<sga-modal  *ngIf="showColumnSelector">
+<sga-modal [hidden]="!showColumnSelector">
   <sga-column-selector   
     [columns]="headers"
     (onToggleItem)="onToggleItem($event)"
@@ -45,7 +51,7 @@
       [data]="trips | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
       [dataLength]="trips.length"
       [searchText]="text" 
-      [searchColumns]="['id','motorists.documentId','currentState.Status','motorists.documentId','motorists.documentId']"
+      [searchColumns]="['id','motorists.0.documentId','currentState.Status','created']"
       [emptySearchText]="'nenhuma viagem foi encontrado'" 
       [haveFooter]="haveFooter"
       [filterHeaders]="filterHeaders"
@@ -64,22 +70,22 @@
 		        </ng-template>
     	</table-empty>  
       
-      <column [key]="'motorist.DocumentId'" [header]="'Motorista'" [minWidth]="'82'">
+      <column [key]="'motorist.DocumentId'" [header]="'Motorista'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item}}
           </ng-template>
       </column>
-      <column [key]="'documentId'" [header]="'Documento'" [minWidth]="'82'">
+      <column [key]="'documentId'" [header]="'Documento'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item}}
           </ng-template>
       </column>
-      <column [key]="'created'" [header]="'Criado'" [minWidth]="'82'">
+      <column [key]="'created'" [header]="'Criado'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item | date:'medium'}}
           </ng-template>
       </column>
-      <column [key]="'inserted'" [header]="'Recebido'" [minWidth]="'82'">
+      <column [key]="'inserted'" [header]="'Recebido'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item">
               {{item| date:'medium'}}
           </ng-template>

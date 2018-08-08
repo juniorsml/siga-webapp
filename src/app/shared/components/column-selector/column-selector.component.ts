@@ -1,4 +1,13 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  AfterViewInit,
+  SimpleChanges,
+  OnChanges,
+  OnInit
+} from '@angular/core';
 
 @Component({
   selector: 'sga-column-selector',
@@ -6,7 +15,7 @@ import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, OnIni
   styleUrls: ['./column-selector.component.scss']
 
 })
-export class ColumnSelectorComponent implements OnChanges, OnInit {
+export class ColumnSelectorComponent implements OnChanges, OnInit, AfterViewInit {
 
   @Input() public columns = new Array<string>();
 
@@ -23,24 +32,33 @@ export class ColumnSelectorComponent implements OnChanges, OnInit {
     if (!changes.columns.isFirstChange()) { this.updateSelectedItems(); }
   }
 
+  ngAfterViewInit(): void {
+    const cols = this.getSavedColumns();
+    this.selectedItems = Object.assign([], cols ? cols : this.columns);
+    setTimeout(() => {
+      this.onToggleItem.emit(this.selectedItems);
+      setTimeout(() => window.dispatchEvent(new Event('resize')), 200);
+    }, 1000);
+  }
+
   public closeBox = (event) => {
     if (event === 'hide') { this.onClose.emit(); }
   }
 
-  public exists = (column: string) => this.selectedItems.find(a => a === column);
-
   public onToggle(column: string): void {
     if (this.selectedItems.find(c => c === column)) {
       this.removeFromSelectedItems(column);
-    }
-    else {
+    } else {
       this.addToSelectedItems(column);
     }
-
     this.onToggleItem.emit(this.selectedItems);
+    setTimeout(() => this.saveColumns(this.selectedItems), 1000);
   }
 
-  private updateSelectedItems = () => this.selectedItems = Object.assign([], this.columns);
+  private updateSelectedItems = () => {
+    const cols = this.getSavedColumns();
+    this.selectedItems = Object.assign([], cols ? cols : this.columns);
+  }
 
   private removeFromSelectedItems(column: string) {
     const index = this.selectedItems.indexOf(column);
@@ -52,4 +70,22 @@ export class ColumnSelectorComponent implements OnChanges, OnInit {
     this.selectedItems.push(column);
     this.selectedItems = Object.assign([], this.selectedItems);
   }
+
+  public columnInPreferences = column => {
+    const key = this.getPageKey();
+    const savedColumns = JSON.parse(localStorage.getItem(key));
+    if (savedColumns == null) { return true; }
+    const colExists = savedColumns.findIndex(col => col === column);
+    return colExists >= 0;
+  }
+
+  private saveColumns = items => {
+    const key = this.getPageKey();
+    localStorage.setItem(key, JSON.stringify(items));
+    return false;
+  }
+
+  private getSavedColumns = () => JSON.parse(localStorage.getItem(this.getPageKey()));
+
+  private getPageKey = () => window.location.href.split('/')[4];
 }
