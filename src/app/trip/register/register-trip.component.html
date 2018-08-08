@@ -1,37 +1,26 @@
 <div class="columns header-content">
-  <nav  class="breadcrumb column is-8 is-paddingless" aria-label="breadcrumbs">
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li class="is-active"><a href="#">Viagens</a></li>
-      <li class="is-active"><a href="#" aria-current="page">Cadastrar</a></li>
-    </ul>
-  </nav>
- <!--  <div class="columns column is-4 header-content-right">    
-    <sga-sidebar-configuration  (onSelectOption)="onSelectOption($event)" class="column is-6">
-      <sga-option header="Seleção de Colunas"></sga-option>
-    </sga-sidebar-configuration>
-  </div>  --> 
+  <h1 class="section-heading">Cadastrar Viagem</h1>
 </div>
 
 <div class="columns is-multiline content-trip">
-	<div class="column is-12 trip-header">
+  <div class="column is-12 trip-header">
     <div class="prev-button">
       <i (click)="prev()" class="icon fal fa-chevron-left"></i>
     </div>
-	  <sga-steps [width]="'90%'" (onSelectStep)="onSelectStep($event)">
-	    <sga-step [isHollow]="currentStep < 0" [hasGap]="true" header="Geral" icon="fal fa-home"></sga-step>
-	    <sga-step [isHollow]="currentStep < 1" [hasGap]="true" header="Itinerário" icon="fal fa-map"></sga-step>
-	    <sga-step [isHollow]="currentStep < 2" [hasGap]="true" header="Motorista" icon="fal fa-user"></sga-step>
-	    <sga-step [isHollow]="currentStep < 3" [hasGap]="true" header="Veículos" icon="fal fa-truck"></sga-step>
-	    <sga-step [isHollow]="currentStep < 4" [hasGap]="true" header="Reboque" icon="fal fa-truck-loading" ></sga-step>
-	    <sga-step [isHollow]="currentStep < 5" [hasGap]="true" header="Dispositivo" icon="fal fa-wrench"></sga-step>
-      <sga-step [isHollow]="currentStep < 6" [hasGap]="true" header="Resumo" icon="fal fa-file-alt" ></sga-step>
-	  </sga-steps>
+    <sga-steps [width]="'90%'" (onSelectStep)="onSelectStep($event)">
+      <sga-step [isHollow]="currentStep < 0" [hasGap]="true" header="Geral" icon="fal fa-home"></sga-step>
+      <sga-step [isHollow]="currentStep < 1" [hasGap]="true" header="Itinerário" icon="fal fa-map"></sga-step>
+      <sga-step [isHollow]="currentStep < 2" [hasGap]="true" header="Motorista" icon="fal fa-user"></sga-step>
+      <sga-step [isHollow]="currentStep < 3" [hasGap]="true" header="Veículos" icon="fal fa-truck"></sga-step>
+      <sga-step [isHollow]="currentStep < 4" [hasGap]="true" header="Reboque" icon="fal fa-truck-loading"></sga-step>
+      <sga-step [isHollow]="currentStep < 5" [hasGap]="true" header="Dispositivo" icon="fal fa-wrench"></sga-step>
+      <sga-step [isHollow]="currentStep < 6" [hasGap]="true" header="Resumo" icon="fal fa-file-alt"></sga-step>
+    </sga-steps>
     <div class="next-button">
       <i (click)="next()" class="icon fal fa-chevron-right"></i>
     </div>
-	</div>
-	<div class="column is-12 is-paddingless cnt-trip">
-		<router-outlet></router-outlet>
-	</div>
+  </div>
+  <div class="column is-12 is-paddingless cnt-trip">
+    <router-outlet></router-outlet>
+  </div>
 </div>
