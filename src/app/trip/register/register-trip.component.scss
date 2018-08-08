@@ -19,16 +19,16 @@
 
 .prev-button, .next-button{
   position: absolute;
-  border: 1px solid #04d1b3;
+  border: 1px solid #4c5574;
   padding: 7px;
   border-radius: 50%;
-  color: #04d1b3;
+  color: #4c5574;
   top: 12px;
   cursor:pointer;
   transition:all 200ms ease;
   &:hover{
     color:#FFF;
-    background:#04d1b3;
+    background:#4c5574;
   }
 }
 .prev-button{
@@ -36,4 +36,9 @@
 }
 .next-button{
   right: 0;       
+}
+
+.section-heading {
+  font-size: 18px;
+  margin-left: 26px;
 }

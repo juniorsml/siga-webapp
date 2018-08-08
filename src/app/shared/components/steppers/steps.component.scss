@@ -7,7 +7,7 @@
   margin:auto;
 }
 .is-vertical {
-    border-right: 1px solid #7ae4d6;
+    border-right: 1px solid #4c5574;
 }
 .is-vertical .steps-segment{
  margin-bottom: 35px;
@@ -25,7 +25,7 @@
     background: transparent;
     border-top: 8px solid transparent;
     border-bottom: 7px solid transparent;
-    border-left: 6px solid #1ad5b9;
+    border-left: 6px solid #4c5574;
 }
 @media screen and (min-width: 769px), print {
   .steps:not(.is-vertical).is-narrow.is-centered {
@@ -147,14 +147,14 @@
   }
 
   a {
-    color: #00d1b2;
+    color: #4c5574;
     cursor: pointer;
     text-decoration: none;
   }
 
 .steps:not(.is-hollow) .steps-marker:not(.is-hollow) {
-  border:2px solid #00d1b2;
-  color: #00d1b2;
+  border:2px solid #4c5574;
+  color: #4c5574;
 
 }
 
@@ -225,7 +225,7 @@
 }
 
 .steps-segment:after {
-  background-color: #00d1b2;
+  background-color: #4c5574;
 }
 
 *:before, *:after {
@@ -233,7 +233,7 @@
 }
 
 .steps.is-hollow .steps-marker, .steps-marker.is-hollow {
-  border: 2px solid #00d1b2;
+  border: 2px solid #4c5574;
 }
 
 .steps.is-hollow .steps-segment.is-active ~ .steps-segment .steps-marker, .steps-segment.is-active ~ .steps-segment .steps-marker.is-hollow {
