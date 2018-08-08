@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
     this.placeSelected = this.formType === 'area' || this.formType === 'group' || this.formType === 'place';
     this.scrollEvents = new EventEmitter<SlimScrollEvent>();
     this.opts = {
-      alwaysVisible: false,
+      alwaysVisible: true,
       gridOpacity: '0.2',
       barOpacity: '0.5',
       gridBackground: '#ccc',
