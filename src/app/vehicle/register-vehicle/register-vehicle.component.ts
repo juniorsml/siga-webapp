@@ -136,6 +136,7 @@ export class RegisterVehicleComponent implements OnInit {
 
   public filterRemoved() {
     this.place = null;
+    console.log(this.place);
   }
 
 
