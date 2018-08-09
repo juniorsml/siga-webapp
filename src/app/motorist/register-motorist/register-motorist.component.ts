@@ -141,6 +141,7 @@ export class RegisterMotoristComponent implements OnInit {
 
   public filterRemoved() {
     this.place = null;
+    console.log(this.place);
   }
 
   public onRayChanged = event => {
