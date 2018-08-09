@@ -13,6 +13,7 @@ import { GroupedItems } from '../../shared/components/select-grouped/Grouped';
 import { DirectionService } from '../../shared/services/direction.service';
 
 import { MapStyle } from '../../shared/models/MapStyle';
+import { Place } from '../../shared/models/Place';
 
 @Component({
   selector: 'sga-places',
@@ -49,6 +50,9 @@ export class RegisterPlaceComponent implements OnInit {
   private _places: Array<any>;
   private mapMarkers: Array<Feature<GeometryObject>> = [];
 
+  private rayGeoJson: any;
+  private markerGeoJson: any;
+
   @Input()
   get places(): Array<any> {
     return this._places;
@@ -69,12 +73,13 @@ export class RegisterPlaceComponent implements OnInit {
     }
   }
   toggleSidebar() {
-      this.toggleSidebarStatus = !this.toggleSidebarStatus;
+    this.toggleSidebarStatus = !this.toggleSidebarStatus;
   }
 
   public allPlaces() {
     this.map.clearAll();
     this.mapMarkers = [];
+    debugger
     this._places.forEach(place => {
       if (place.name) {
         const markerBody: HTMLElement = document.createElement('div');
@@ -183,6 +188,7 @@ export class RegisterPlaceComponent implements OnInit {
     const point = turf.point([location.longitude, location.latitude]);
     const buffered = turf.buffer(point, ray, { units: 'kilometers' });
     buffered.properties = options;
+    this.rayGeoJson = buffered;
     this.map.addGeoJSON(buffered);
   }
 
@@ -364,6 +370,7 @@ export class RegisterPlaceComponent implements OnInit {
         ]
       }
     };
+    this.markerGeoJson = marker;
     this.currentMarker = this.map.addMarker(marker);
     // const customMarker = this.map.createMarker(marker);
     // marker.properties['marker'] = customMarker;
@@ -397,20 +404,55 @@ export class RegisterPlaceComponent implements OnInit {
   }
 
   public create(item) {
+    item.featureCollection = this.getFeatureCollection();
     this.showRegister = false;
-    switch (this.selectedTabIndex) {
-      case 0:
-        this.areas.push(item);
-        break;
 
-      case 1:
-        this.places.push(item);
-        break;
+    const { key_customer, id_customer, entityType } = item;
 
-      case 2:
-        this.groups.push({ ...item, location: [] });
-        break;
-    }
+    const clientIds = {};
+    clientIds[key_customer] = id_customer;
+
+    const featureStyle = {
+      colorIcon: item.colorIcon,
+      backgroundColor: item.backgroundColor,
+      fillColor: item.fillColor,
+      strokeColor: item.strokeColor
+    };
+
+    const place = Place.create(
+      item.name,
+      item.description,
+      clientIds,
+      featureStyle,
+      entityType,
+      item.documentId,
+      item.tags,
+      item.featureCollection);
+
+
+    // switch (this.selectedTabIndex) {
+    //   case 0:
+    //     this.areas.push(item);
+    //     break;
+
+    //   case 1:
+    //     this.places.push(item);
+    //     break;
+
+    //   case 2:
+    //     this.groups.push({ ...item, location: [] });
+    //     break;
+    // }
+  }
+
+  private getFeatureCollection() {
+    return {
+      type: 'FeatureCollection',
+      features: [
+        this.markerGeoJson,
+        this.rayGeoJson
+      ]
+    };
   }
 
   private getLineOptions = (stroke, fill) => Object.assign({
