@@ -79,7 +79,6 @@ export class RegisterPlaceComponent implements OnInit {
   public allPlaces() {
     this.map.clearAll();
     this.mapMarkers = [];
-    debugger
     this._places.forEach(place => {
       if (place.name) {
         const markerBody: HTMLElement = document.createElement('div');
@@ -429,6 +428,7 @@ export class RegisterPlaceComponent implements OnInit {
       item.tags,
       item.featureCollection);
 
+      console.warn(place);
 
     // switch (this.selectedTabIndex) {
     //   case 0:
