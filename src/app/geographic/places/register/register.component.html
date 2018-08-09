@@ -85,10 +85,10 @@
             <div class="field">
               <input type="number" 
                     class="input is-small" 
-                    [(ngModel)]="ray"
-                    (ngModelChange)="rayChanged($event)"
+                    [(ngModel)]="radius"
+                    (ngModelChange)="radiusChanged($event)"
                     placeholder="Raio"
-                    name="ray" 
+                    name="radius" 
                     ngModel />
             </div>
           </div>
@@ -164,44 +164,44 @@
         <label class="label is-small">Classificação</label>
 
         <label class="container">Comercial
-          <input type="radio" name="kindOf" [(ngModel)]="kindOf" value="Comercial" [checked]="true">
+          <input type="radio" name="entityType" [(ngModel)]="entityType" value="COMMERCIAL" [checked]="true">
           <span class="checkmark"></span>
         </label>
         <label class="container">Residencial
-          <input type="radio" name="kindOf" [(ngModel)]="kindOf" value="Residencial">
+          <input type="radio" name="entityType" [(ngModel)]="entityType" value="RESIDENTIAL">
           <span class="checkmark"></span>
         </label>
         <label class="container">Outro
-          <input type="radio" name="kindOf" [(ngModel)]="kindOf" value="Outro">
+          <input type="radio" name="entityType" [(ngModel)]="entityType" value="OTHER">
           <span class="checkmark"></span>
         </label>
       </div>
 
-      <div class="field-body field" [ngSwitch]="kindOf" *ngIf="formType === 'place'">
+      <div class="field-body field" [ngSwitch]="entityType" *ngIf="formType === 'place'">
         <div class="field" *ngSwitchDefault>
           <div class="field">
             <label class="label is-small">CNPJ</label>
             <div class="control">
-              <input type="text" class="input is-small" placeholder="CNPJ" name="cnpjNumber" #cnpjNumber="ngModel" ngModel required [class.is-danger]="cnpjNumber.touched && !cnpjNumber.valid"
+              <input type="text" class="input is-small" placeholder="CNPJ" name="documentId" #documentId="ngModel" ngModel required [class.is-danger]="documentId.touched && !documentId.valid"
               />
 
             </div>
           </div>
         </div>
-        <div class="field" *ngSwitchCase="'Residencial'">
+        <div class="field" *ngSwitchCase="'RESIDENTIAL'">
           <div class="field">
             <label class="label is-small">RG</label>
             <div class="control">
-              <input type="text" class="input is-small" placeholder="RG " name="rgNumber" #rgNumber="ngModel" ngModel required [class.is-danger]="rgNumber.touched && !rgNumber.valid"
+              <input type="text" class="input is-small" placeholder="RG " name="documentId" #documentId="ngModel" ngModel required [class.is-danger]="documentId.touched && !documentId.valid"
               />
             </div>
           </div>
         </div>
-        <div class="field" *ngSwitchCase="'Outro'">
+        <div class="field" *ngSwitchCase="'OTHER'">
           <div class="field">
             <label class="label is-small">Outro</label>
             <div class="control">
-              <input type="text" class="input is-small" placeholder="Outro" name="otherDoc" #otherDoc="ngModel" ngModel required [class.is-danger]="otherDoc.touched && !otherDoc.valid"
+              <input type="text" class="input is-small" placeholder="Outro" name="documentId" #documentId="ngModel" ngModel required [class.is-danger]="documentId.touched && !documentId.valid"
               />
             </div>
           </div>
