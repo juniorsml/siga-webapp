@@ -1,7 +1,5 @@
 import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 
-import { } from 'leaflet-marker-cluster';
-
 import { Map } from '../../shared/models/Map';
 import { TabComponent } from '../../shared/components/tabs/tab/tab.component';
 import { Feature, GeometryObject } from 'geojson';

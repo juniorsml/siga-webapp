@@ -79,7 +79,6 @@ export class AssociateVehicleComponent implements OnInit {
   }
 
   public onVehicleSelected(vehicle) {
-    debugger
     this.addList.push(vehicle);
   }
 

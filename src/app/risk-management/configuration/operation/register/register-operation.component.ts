@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -7,15 +7,21 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./register-operation.component.scss']
 })
 export class RegisterOperationComponent {
-  @Output()
-  public onFinish = new EventEmitter();
+
+
+  @Input()
+  public showForm: boolean;
+  @Output() onFormClose: EventEmitter<any> = new EventEmitter();
+
+
+  public selectedTabIndex = 0;
 
   public onSubmit(formOperation: NgForm) {
     const {} = formOperation.value;
-    this.onFinish.emit();
+    this.onFormClose.emit();
   }
 
-  onCancel() {
-    this.onFinish.emit();
+  cancel() {
+    this.onFormClose.emit();
   }
 }

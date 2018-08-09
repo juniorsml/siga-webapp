@@ -53,6 +53,8 @@ import { PagerComponent } from '../components/pager/pager.component';
 import { SidebarConfigurationComponent } from '../components/sidebar-configuration/sidebar-configuration.component';
 import { OptionComponent } from '../components/sidebar-configuration/option/option.component';
 
+import { SendCommandModalComponent } from '../components/send-command/send-command.component';
+
 
 import { PageNotFoundComponent } from '../layout/404page/not-found.component';
 import { ColumnSelectorComponent } from '../components/column-selector/column-selector.component';
@@ -113,7 +115,8 @@ import { RouteInfoComponent } from '../components/route-info/route-info.componen
     PagerComponent,
     PageNotFoundComponent,
 
-    SpinnerComponent
+    SpinnerComponent,
+    SendCommandModalComponent
   ],
   imports: [
     HttpModule,
@@ -190,7 +193,8 @@ import { RouteInfoComponent } from '../components/route-info/route-info.componen
     SpinnerComponent,
 
     TagInputModule,
-    NgSlimScrollModule
+    NgSlimScrollModule,
+    SendCommandModalComponent
   ]
 })
 export class SharedModule {}
