@@ -17,6 +17,7 @@
               <sga-step [header]="'Motorista'" [icon]="'fal fa-user'"></sga-step>
               <sga-step [header]="'Veículo'" [icon]="'fal fa-truck'"></sga-step>   
               <sga-step [header]="'Itinerário'" [icon]="'fal fa-map'"></sga-step>     
+              <sga-step [header]="'Histórico de Comandos'" [icon]="'fal fa-broadcasting'"></sga-step>   
             </sga-steps>
           </div>
           <div class="column">
@@ -25,6 +26,7 @@
               <sga-summary-motorist *ngSwitchCase="1" [motorists]="trip.motorists"></sga-summary-motorist>
               <sga-summary-vehicle *ngSwitchCase="2" [vehicles]="trip.vehicles"></sga-summary-vehicle>
               <sga-summary-itinerary *ngSwitchCase="3"></sga-summary-itinerary>
+              <sga-commands-historic *ngSwitchCase="4"></sga-commands-historic>
             </div>
           </div>
         
