@@ -29,6 +29,8 @@ import { SummaryMotoristComponent } from './summary-dialog/motorist/summary-moto
 import { SummaryVehicleComponent } from './summary-dialog/vehicle/summary-vehicle.component';
 import { SummaryItineraryComponent } from './summary-dialog/itinerary/summary-itinerary.component';
 
+import { CommandsHistoricComponent } from './summary-dialog/commands-historic/commands-historic.component';
+
 @NgModule({
   imports: [
     FormsModule,
@@ -60,6 +62,7 @@ import { SummaryItineraryComponent } from './summary-dialog/itinerary/summary-it
     SummaryMotoristComponent,
     SummaryVehicleComponent,
     SummaryItineraryComponent,
+    CommandsHistoricComponent
  ]
 })
 export class TripModule { }
