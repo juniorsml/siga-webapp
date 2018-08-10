@@ -13,21 +13,22 @@ import { VehicleService } from '../vehicle.service';
 })
 export class GridVehicleComponent implements OnInit {
 
-  text: any;
-  distance: any;
-  vehicle: any;
-  placeText: any;
-  styleClass: any;
-  filterLocation: any;
-  filterDistance: any;
-  selectedVehicle: any;
+  public text: any;
+  public distance: any;
+  public vehicle: any;
+  public placeText: any;
+  public styleClass: any;
+  public filterLocation: any;
+  public filterDistance: any;
+  public selectedVehicle: any;
 
-  showDialog = false;
-  showVehicleDialog: boolean;
+  public showDialog = false;
+  public showVehicleDialog: boolean;
 
-   showSendDialog = false;
+  public showSendDialog = false;
+  public showMessageDialog = false;
 
-  showColumnSelector = false;
+  public showColumnSelector = false;
 
   public headers = new Array<string>();
   public vehicles = new Array<Vehicle>();
@@ -104,12 +105,16 @@ export class GridVehicleComponent implements OnInit {
 
   public contextMenuSelected = event => {
     switch (event) {
- 
-      case 4:        
+       case 3:        
+         this.showMessageDialog = true;
+         break;
+       case 4:    
         this.showSendDialog = true;
      }
   }
   public sendDialogClose = () => this.showSendDialog = false;
+
+  public messageDialogClose = () => this.showMessageDialog = false;
 
   public onPlacesKeyUp() { }
 
