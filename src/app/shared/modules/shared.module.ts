@@ -64,6 +64,16 @@ import { DirectionService } from '../services/direction.service';
 import { HttpModule } from '@angular/http';
 import { RouteInfoComponent } from '../components/route-info/route-info.component';
 
+
+import { SummaryDialogComponent } from '../components/summary-dialog/summary-dialog.component';
+import { SummaryComponent } from '../components/summary-dialog/summary/summary.component';
+
+import { SummaryMotoristComponent } from '../components/summary-dialog/motorist/summary-motorist.component';
+import { SummaryVehicleComponent } from '../components/summary-dialog/vehicle/summary-vehicle.component';
+import { SummaryItineraryComponent } from '../components/summary-dialog/itinerary/summary-itinerary.component';
+
+import { CommandsHistoricComponent } from '../components/summary-dialog/commands-historic/commands-historic.component';
+
 @NgModule({
   declarations: [
     PlacesPipe,
@@ -116,7 +126,14 @@ import { RouteInfoComponent } from '../components/route-info/route-info.componen
     PageNotFoundComponent,
 
     SpinnerComponent,
-    SendCommandModalComponent
+    SendCommandModalComponent,
+    
+       SummaryDialogComponent,
+       SummaryComponent,
+       SummaryMotoristComponent,
+       SummaryVehicleComponent,
+       SummaryItineraryComponent,
+       CommandsHistoricComponent
   ],
   imports: [
     HttpModule,
@@ -194,7 +211,15 @@ import { RouteInfoComponent } from '../components/route-info/route-info.componen
 
     TagInputModule,
     NgSlimScrollModule,
-    SendCommandModalComponent
+    SendCommandModalComponent,
+
+
+       SummaryDialogComponent,
+       SummaryComponent,
+       SummaryMotoristComponent,
+       SummaryVehicleComponent,
+       SummaryItineraryComponent,
+       CommandsHistoricComponent
   ]
 })
 export class SharedModule {}
