@@ -23,10 +23,11 @@ export class StartedTripsComponent implements OnInit {
   public filterDistance: any;
   public showTripDialog = false;
   public showSummaryDialog = false;
-  showColumnSelector = false;
-  showSendDialog = false;
+  public showColumnSelector = false;
+  public showSendDialog = false;
+  public showMessageDialog = false;
 
-  haveFooter = true;
+  public haveFooter = true;
 
   public headers = new Array<string>();
   public filterHeaders = new Array<string>();
@@ -91,7 +92,11 @@ export class StartedTripsComponent implements OnInit {
     break;
       case 4: 
         this.showSendDialog = true;
-     }
+     
+     break;
+       case 5: 
+         this.showMessageDialog = true;
+      }
 
   }
 
@@ -100,7 +105,9 @@ export class StartedTripsComponent implements OnInit {
   }
 
 
-   public sendDialogClose = () => this.showSendDialog = false;
+  public sendDialogClose = () => this.showSendDialog = false;
+
+  public messageDialogClose = () => this.showMessageDialog = false;
 
   public whenHeaderReady = headers => this.headers = headers;
 
