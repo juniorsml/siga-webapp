@@ -24,25 +24,25 @@
             <div class="field">
               <label class="label is-small">Tecnologia</label>
               <div class="is-smal">               
-                <span>AUTOTRAC</span>
+                <span>OMNILINK</span>
               </div>
             </div>
          
             <div class="field">
               <label class="label is-small">ID</label>
               <div class="is-small">
-                  <span>8026726737</span>
+                  <span>6346456</span>
               </div>
             </div>
          
           </div>
           <div class="field-body field">
             <div class="field">
-              <label class="label is-small">Tipo de mensagem</label>           
+              <label class="label is-small" style="margin-bottom: 7px;">Tipo de mensagem</label>           
             
 
-               <div class="select">
-                 <select name="kindOfMessage">               
+               <div class="select is-small">
+                 <select [(ngModel)]="kindOfMessage" name="kindOfMessage">               
                    <option value="Mensagem Livre">Mensagem Livre</option>
                    <option value="Mensagem Predefinada">Mensagem Predefinada</option>
                   
@@ -58,64 +58,33 @@
             <div class="field">   
             <div class="field-body field" [ngSwitch]="kindOfMessage">
               <div class="field" *ngSwitchCase="'Mensagem Livre'">
-                <div class="field">
-                  <label class="label is-small">Mensagem Livre</label>
-                  <div class="control">
-                   <textarea name="" id="" cols="30" rows="10"></textarea>
-
+                <div class="field">             
+                  <div class="control">                
+                   <textarea class="textarea"></textarea>
                   </div>
                 </div>
               </div>
               <div class="field" *ngSwitchCase="'Mensagem Predefinada'">
                 <div class="field">
-                  <label class="label is-small">RG</label>
+                 
                   <div class="control">
                     <ul class="list-commands" slimScroll>
                       <li class="item">                  
-                        <input value="Ativar Porta" id="Ativar Porta" type="checkbox">
-                        <label for="Ativar Porta">Ativar Porta</label>
-                      </li>
-                      <li class="item">                 
-                         <input value="Última posição" id="Última posição" type="checkbox">
-                         <label for="Última posição">Última posição</label>
+                        <input value="COMO ESTÁ A VIAGEM? TUDO BEM?" id="COMO ESTÁ A VIAGEM? TUDO BEM?" type="checkbox">
+                        <label for="COMO ESTÁ A VIAGEM? TUDO BEM?">COMO ESTÁ A VIAGEM? TUDO BEM?</label>
+                      </li>  
+                      <li class="item">                  
+                        <input value="MENSAGEM PREDEFINIDA I" id="MENSAGEM PREDEFINIDA I" type="checkbox">
+                        <label for="MENSAGEM PREDEFINIDA I">MENSAGEM PREDEFINIDA I</label>
                       </li>
                       <li class="item">                  
-                        <input value="Ativar controle RPM" id="Ativar controle RPM" type="checkbox">
-                        <label for="Ativar controle RPM">Ativar controle RPM</label>
-                      </li>
-                      <li class="item">                 
-                         <input value="Desabilitar sensor de porta do Carona" id="Desabilitar sensor de porta do Carona" type="checkbox">
-                         <label for="Desabilitar sensor de porta do Carona">Desabilitar sensor de porta do Carona</label>
+                        <input value="MENSAGEM PREDEFINIDA II" id="MENSAGEM PREDEFINIDA II" type="checkbox">
+                        <label for="MENSAGEM PREDEFINIDA II">MENSAGEM PREDEFINIDA II</label>
                       </li>
                       <li class="item">                  
-                        <input value="Reinicializar Teclado" id="Reinicializar Teclado" type="checkbox">
-                        <label for="Reinicializar Teclado">Reinicializar Teclado</label>
-                      </li>
-                      <li class="item">                 
-                         <input value="Habilitar Botão de trava de Baú" id="Habilitar Botão de trava de Baú" type="checkbox">
-                         <label for="Habilitar Botão de trava de Baú">Habilitar Botão de trava de Baú</label>
-                      </li>
-                      <li class="item">                  
-                        <input value="Comando II" id="Comando II" type="checkbox">
-                        <label for="Comando II">Comando II</label>
-                      </li>
-                      <li class="item">                 
-                         <input value="Comando 3" id="Comando 3" type="checkbox">
-                         <label for="Comando 3">Comando 3</label>
-                      </li>
-                      <li class="item">                  
-                        <input value="Alarme" id="Alarme" type="checkbox">
-                        <label for="Alarme">Alarme</label>
-                      </li>
-                      <li class="item">                 
-                         <input value="Comando 4" id="Comando 4" type="checkbox">
-                         <label for="Comando 4">Comando 4</label>
-                      </li>
-                      <li class="item">                  
-                        <input value="Enviar locaçização" id="Enviar locaçização" type="checkbox">
-                        <label for="Enviar locaçização">Enviar locaçização</label>
-                      </li>
-                     
+                        <input value="MENSAGEM PREDEFINIDA III" id="MENSAGEM PREDEFINIDA III" type="checkbox">
+                        <label for="MENSAGEM PREDEFINIDA III">MENSAGEM PREDEFINIDA III</label>
+                      </li> 
                     </ul>
                   </div>
                 </div>
@@ -149,7 +118,7 @@
               
           <button type="submit"
                   class="button is-first"
-                  >Enviar Comando
+                  >Enviar mensagem
           </button>
           
           
