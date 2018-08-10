@@ -92,7 +92,6 @@ export class StartedTripsComponent implements OnInit {
     break;
       case 4: 
         this.showSendDialog = true;
-     
      break;
        case 5: 
          this.showMessageDialog = true;
