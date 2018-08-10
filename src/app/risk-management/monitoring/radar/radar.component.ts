@@ -10,23 +10,22 @@ import { OptionClickEvent } from '../../../shared/events/OptionClickEvent';
   styles: []
 })
 export class RadarComponent implements OnInit {
-  @Input() public trips = new Array();
-  @Input() public dataLoading = true;
+@Input() trips = new Array();
+  @Input() dataLoading = true;
 
-  public text: any;
-  public distance: any;
-  public motorist: any;
-  public placeText: any;
+  text: any;
+  distance: any;
+  placeText: any;
+  filterLocation: any;
+  filterDistance: any;
+  showColumnSelector = false;
+  haveFooter = true;
   public styleClass: any;
-  public stepIndex: number;
+  public stepIndex: number;     
   public selectedTrip: any;
-  public filterLocation: any;
-  public filterDistance: any;
   public showTripDialog = false;
   public showSummaryDialog = false;
-  haveFooter = true;
-
-  showColumnSelector = false;
+  showSendDialog = false;
 
 
   closeColumnSelector() {
@@ -43,11 +42,13 @@ export class RadarComponent implements OnInit {
 
   public headers = new Array<string>();
   public filterHeaders = new Array<string>();
-  constructor(private route: ActivatedRoute) { }
+
+  constructor(private router: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.data.subscribe(data => this.trips = data.trips);
+    this.router.data.subscribe(data => this.trips = data.trips);
   }
+
 
   public onPlacesFiltered(event) {
     this.filterDistance = event.distance;
@@ -58,26 +59,47 @@ export class RadarComponent implements OnInit {
     this.filterDistance = null;
     this.filterLocation = null;
   }
+  public contextMenuSelected(index) { 
+
+    switch (index) { 
+     case 0:      
+        this.stepIndex = index;
+        this.showSummaryDialog = true;
+      break;
+     case 1:      
+        this.stepIndex = index;
+        this.showSummaryDialog = true;
+    break;
+     case 2: 
+        this.stepIndex = index;
+        this.showSummaryDialog = true;
+    break;
+     case 3:    
+        this.stepIndex = index;
+        this.showSummaryDialog = true;
+    break;
+      case 4: 
+        this.showSendDialog = true;
+     }
+
+  }
+  public summaryDialogClose() {
+    this.showSummaryDialog = false;
+  }
+  
+  public updateSelectedTrip(event) {
+      this.selectedTrip = event.data;
+    }
+
+
+  public sendDialogClose = () => this.showSendDialog = false;
 
   public onPlacesKeyUp() {}
 
   public onDistanceKeyUp() {}
 
-  public updateSelectedTrip(event) {
-    this.selectedTrip = event.data;
-  }
 
-  public contextMenuSelected(index) {
-    this.stepIndex = index;
-    this.showSummaryDialog = true;
-  }
-
-  public summaryDialogClose() {
-    this.showSummaryDialog = false;
-  }
-
-    public whenHeaderReady = headers => this.headers = headers;
+  public whenHeaderReady = headers => this.headers = headers;
 
   public onToggleItem = itemsSelected => this.filterHeaders = itemsSelected;
-
 }

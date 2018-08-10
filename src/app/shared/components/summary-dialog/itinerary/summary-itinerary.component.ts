@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Map } from '../../../shared/models/Map';
+import { Map } from '../../../models/Map';
 
-import { DirectionService } from '../../../shared/services/direction.service';
+import { DirectionService } from '../../../services/direction.service';
 
 @Component({
   selector: 'sga-summary-itinerary',
