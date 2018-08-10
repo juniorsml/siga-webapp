@@ -7,18 +7,18 @@ import { OptionClickEvent } from '../../../shared/events/OptionClickEvent';
 @Component({
   selector: 'sga-started',
   templateUrl: './started.component.html',
-  styles: []
+  styles: [] 
 })
 export class StartedTripsComponent implements OnInit {
-  @Input() public trips = new Array();
+  @Input() public trips = new Array(); 
   @Input() public dataLoading = true;
 
-  public text: any;
+  public text: any;  
   public distance: any;
   public motorist: any;
   public placeText: any;
   public styleClass: any;
-  public stepIndex: number;
+  public stepIndex: number;     
   public selectedTrip: any;
   public filterLocation: any;
   public filterDistance: any;
@@ -27,6 +27,8 @@ export class StartedTripsComponent implements OnInit {
 
   showColumnSelector = false;
   haveFooter = true;
+
+   showSendDialog = false;
 
 
   closeColumnSelector() {
@@ -69,9 +71,29 @@ export class StartedTripsComponent implements OnInit {
     this.selectedTrip = event.data;
   }
 
-  public contextMenuSelected(index) {
-    this.stepIndex = index;
-    this.showSummaryDialog = true;
+  public contextMenuSelected(index) { 
+
+    switch (index) { 
+     case 0:      
+        this.stepIndex = index;
+        this.showSummaryDialog = true;
+      break;
+     case 1:      
+        this.stepIndex = index;
+        this.showSummaryDialog = true;
+    break;
+     case 2: 
+        this.stepIndex = index;
+        this.showSummaryDialog = true;
+    break;
+     case 3:    
+        this.stepIndex = index;
+        this.showSummaryDialog = true;
+    break;
+      case 4: 
+        this.showSendDialog = true;
+     }
+
   }
 
   public summaryDialogClose() {
