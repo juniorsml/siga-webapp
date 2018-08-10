@@ -86,6 +86,11 @@ export class RadarComponent implements OnInit {
   public summaryDialogClose() {
     this.showSummaryDialog = false;
   }
+  
+  public updateSelectedTrip(event) {
+      this.selectedTrip = event.data;
+    }
+
 
   public sendDialogClose = () => this.showSendDialog = false;
 
