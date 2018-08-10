@@ -26,6 +26,7 @@ export class ScheduledTripsComponent implements OnInit {
   public showTripDialog = false;
   public showSummaryDialog = false;
   showSendDialog = false;
+  public showMessageDialog = false;
 
 
   closeColumnSelector() {
@@ -65,21 +66,24 @@ export class ScheduledTripsComponent implements OnInit {
      case 0:      
         this.stepIndex = index;
         this.showSummaryDialog = true;
-      break;
+        break;
      case 1:      
         this.stepIndex = index;
         this.showSummaryDialog = true;
-    break;
+        break;
      case 2: 
         this.stepIndex = index;
         this.showSummaryDialog = true;
-    break;
+      break;
      case 3:    
         this.stepIndex = index;
         this.showSummaryDialog = true;
-    break;
+      break;
       case 4: 
         this.showSendDialog = true;
+      break;
+      case 5: 
+        this.showMessageDialog = true;
      }
 
   }
@@ -88,6 +92,8 @@ export class ScheduledTripsComponent implements OnInit {
   }
 
   public sendDialogClose = () => this.showSendDialog = false;
+  public messageDialogClose = () => this.showMessageDialog = false;
+
 
   public onPlacesKeyUp() {}
 

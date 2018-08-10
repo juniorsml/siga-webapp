@@ -22,14 +22,12 @@ export class StartedTripsComponent implements OnInit {
   public selectedTrip: any;
   public filterLocation: any;
   public filterDistance: any;
- 
-
-  showColumnSelector = false;
-  haveFooter = true;
-  
+  public showMessageDialog = false;
+  public showColumnSelector = false;
+  public haveFooter = true;
   public showTripDialog = false;
   public showSummaryDialog = false;
-  showSendDialog = false;
+  public showSendDialog = false;
 
 
   closeColumnSelector() {
@@ -45,7 +43,7 @@ export class StartedTripsComponent implements OnInit {
     }
 
   public headers = new Array<string>();
-  public filterHeaders = new Array<string>();
+  public filterHeaders = new Array<string>(); 
 
 
   constructor(private route: ActivatedRoute) { }
@@ -78,21 +76,24 @@ export class StartedTripsComponent implements OnInit {
      case 0:      
         this.stepIndex = index;
         this.showSummaryDialog = true;
-      break;
+        break;
      case 1:      
         this.stepIndex = index;
         this.showSummaryDialog = true;
-    break;
+        break;
      case 2: 
         this.stepIndex = index;
         this.showSummaryDialog = true;
-    break;
+        break;
      case 3:    
         this.stepIndex = index;
         this.showSummaryDialog = true;
-    break;
+        break;
       case 4: 
         this.showSendDialog = true;
+        break;
+      case 5: 
+        this.showMessageDialog = true;
      }
 
   }
@@ -102,6 +103,8 @@ export class StartedTripsComponent implements OnInit {
   }
 
   public sendDialogClose = () => this.showSendDialog = false;
+  public messageDialogClose = () => this.showMessageDialog = false;
+
 
   public whenHeaderReady = headers => this.headers = headers;
 
