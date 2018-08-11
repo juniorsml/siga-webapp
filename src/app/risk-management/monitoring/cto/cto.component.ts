@@ -12,19 +12,20 @@ export class CTOTripsComponent implements OnInit {
 @Input() trips = new Array();
   @Input() dataLoading = true;
 
-  text: any;
-  distance: any;
-  placeText: any;
-  filterLocation: any;
-  filterDistance: any;
-  showColumnSelector = false;
-  haveFooter = true;
+  public text: any;
+  public distance: any;
+  public placeText: any;
+  public filterLocation: any;
+  public filterDistance: any;
+  public showColumnSelector = false;
+  public haveFooter = true;
   public styleClass: any;
   public stepIndex: number;     
   public selectedTrip: any;
   public showTripDialog = false;
   public showSummaryDialog = false;
-  showSendDialog = false;
+  public showSendDialog = false;
+  public showMessageDialog = false;
 
 
   closeColumnSelector() {
@@ -79,7 +80,11 @@ export class CTOTripsComponent implements OnInit {
     break;
       case 4: 
         this.showSendDialog = true;
+        break;
+      case 5: 
+        this.showMessageDialog = true;
      }
+
 
   }
   public summaryDialogClose() {
@@ -87,6 +92,8 @@ export class CTOTripsComponent implements OnInit {
   }
 
   public sendDialogClose = () => this.showSendDialog = false;
+  public messageDialogClose = () => this.showMessageDialog = false;
+
 
   public onPlacesKeyUp() {}
 

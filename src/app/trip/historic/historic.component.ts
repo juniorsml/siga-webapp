@@ -23,9 +23,10 @@ export class HistoricTripsComponent implements OnInit {
  public filterDistance: any;
  public showTripDialog = false;
  public showSummaryDialog = false;
- showColumnSelector = false;
- haveFooter = true;
- showSendDialog = false;
+ public showColumnSelector = false;
+ public haveFooter = true;
+ public showSendDialog = false;
+ public showMessageDialog = false;
  public headers = new Array<string>();
  public filterHeaders = new Array<string>();
 
@@ -76,7 +77,11 @@ export class HistoricTripsComponent implements OnInit {
      break;
        case 4: 
          this.showSendDialog = true;
-      }
+        break;
+     case 5: 
+       this.showMessageDialog = true;
+    }
+
 
    }
 
@@ -89,7 +94,10 @@ export class HistoricTripsComponent implements OnInit {
     this.filterDistance = null;
     this.filterLocation = null;
   }
-   public sendDialogClose = () => this.showSendDialog = false;
+  
+  public sendDialogClose = () => this.showSendDialog = false;
+  public messageDialogClose = () => this.showMessageDialog = false;
+ 
   public onPlacesKeyUp() {}
 
   public onDistanceKeyUp() {}

@@ -20,12 +20,13 @@ export class GridDeviceComponent implements OnInit {
 
   public haveFooter = true;
 
-  showColumnSelector = false;
+  public showColumnSelector = false;
 
   public headers = new Array<string>();
   public filterHeaders = new Array<string>();
 
-  showSendDialog = false;
+  public showSendDialog = false;
+  public showMessageDialog = false;
 
   @Input()
   public hasHeight = false;
@@ -84,11 +85,18 @@ export class GridDeviceComponent implements OnInit {
   public contextMenuSelected = event => {
     switch (event) {
   
-      case 2:        
-        this.showSendDialog = true;
+       case 2: 
+         this.showSendDialog = true;
+         break;
+       case 3: 
+         this.showMessageDialog = true;
+       
      }
   }
   public sendDialogClose = () => this.showSendDialog = false;
+
+  public messageDialogClose = () => this.showMessageDialog = false;
+
 
   public whenHeaderReady = headers => this.headers = headers;
 

@@ -24,9 +24,10 @@ export class ScheduledTripsComponent implements OnInit {
  public filterDistance: any;
  public showTripDialog = false;
  public showSummaryDialog = false;
- showColumnSelector = false;
- haveFooter = true;
- showSendDialog = false;
+ public showColumnSelector = false;
+ public haveFooter = true;
+ public showSendDialog = false;
+ public showMessageDialog = false;
 
  public headers = new Array<string>();
  public filterHeaders = new Array<string>();
@@ -59,25 +60,28 @@ export class ScheduledTripsComponent implements OnInit {
   }
  public contextMenuSelected(index) { 
 
-   switch (index) { 
-    case 0:      
+   switch (index) {
+     case 0: 
        this.stepIndex = index;
        this.showSummaryDialog = true;
      break;
-    case 1:    
+     case 1: 
        this.stepIndex = index;
        this.showSummaryDialog = true;
-   break;
-    case 2: 
+     break;
+     case 2:
        this.stepIndex = index;
        this.showSummaryDialog = true;
-   break;
-    case 3:     
+     break;
+     case 3:   
        this.stepIndex = index;
        this.showSummaryDialog = true;
-   break;
-     case 4:   
+     break;
+     case 4: 
        this.showSendDialog = true;
+     break;
+     case 5:
+       this.showMessageDialog = true;
     }
 
  }
@@ -91,7 +95,9 @@ export class ScheduledTripsComponent implements OnInit {
     this.filterDistance = null;
     this.filterLocation = null;
   }
+  
   public sendDialogClose = () => this.showSendDialog = false;
+  public messageDialogClose = () => this.showMessageDialog = false;
 
   public onPlacesKeyUp() {}
 

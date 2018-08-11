@@ -25,6 +25,7 @@ export class RATCTripsComponent implements OnInit {
   public showTripDialog = false;
   public showSummaryDialog = false;
   showSendDialog = false;
+    public showMessageDialog = false;
 
 
   closeColumnSelector() {
@@ -79,6 +80,9 @@ export class RATCTripsComponent implements OnInit {
     break;
       case 4: 
         this.showSendDialog = true;
+      break;
+      case 5: 
+        this.showMessageDialog = true;
      }
 
   }
@@ -87,6 +91,7 @@ export class RATCTripsComponent implements OnInit {
   }
 
   public sendDialogClose = () => this.showSendDialog = false;
+  public messageDialogClose = () => this.showMessageDialog = false;
 
   public onPlacesKeyUp() {}
 
