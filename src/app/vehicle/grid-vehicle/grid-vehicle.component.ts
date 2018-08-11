@@ -105,11 +105,12 @@ export class GridVehicleComponent implements OnInit {
 
   public contextMenuSelected = event => {
     switch (event) {
-       case 3:        
-         this.showMessageDialog = true;
+       case 3: 
+         this.showSendDialog = true;
          break;
-       case 4:    
-        this.showSendDialog = true;
+       case 4: 
+         this.showMessageDialog = true;
+       
      }
   }
   public sendDialogClose = () => this.showSendDialog = false;
