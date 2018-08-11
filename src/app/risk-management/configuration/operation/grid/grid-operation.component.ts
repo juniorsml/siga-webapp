@@ -18,7 +18,7 @@ export class GridOperationComponent implements OnInit {
   public selectedDevice: any;
   public onDeviceSelected: any;
 
-  public showFormRegister = false;
+  public showOperationRegister = false;
 
   showColumnSelector = false;
 
@@ -55,11 +55,11 @@ export class GridOperationComponent implements OnInit {
 
 
   openFormRegister() {
-    this.showFormRegister = !this.showFormRegister;
+    this.showOperationRegister = !this.showOperationRegister;
   }
 
   closeFormRegister() {
-    this.showFormRegister = false;
+    this.showOperationRegister = false;
   }
 
   public onPlacesFiltered(event) {

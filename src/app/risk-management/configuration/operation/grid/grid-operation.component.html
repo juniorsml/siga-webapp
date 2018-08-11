@@ -79,8 +79,9 @@
   </div>
 </div>
 
-<sga-modal *ngIf="showFormRegister">
-    <sga-register-operation
-      (onFinish)="closeFormRegister()">
+<sga-modal>
+    <sga-register-operation   
+      [showForm]="showOperationRegister"
+      (onFormClose)="closeFormRegister()">
     </sga-register-operation>
   </sga-modal>

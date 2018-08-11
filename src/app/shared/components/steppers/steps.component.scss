@@ -163,15 +163,28 @@
   width: 2.5rem;
   color:#dbdbdb;
   &:before{
-    content: attr(title);
-    font-size: 14px;
-    right: 0;
-    left: -17px;
-    margin: auto;
-    position: absolute;
-    width: 196%;
-    text-align: center;
-    bottom: -23px;
+    // content: attr(title);
+    // font-size: 14px;
+    // right: 0;
+    // left: -17px;
+    // margin: auto;
+    // position: absolute;
+    // width: 196%;
+    // text-align: center;
+    // bottom: -23px;
+
+        content: attr(title);
+        font-size: 11px;
+        right: 0;
+        left: -17px;
+        margin: auto;
+        position: absolute;
+        width: 196%;
+        text-align: center;
+        line-height: 12px;
+        bottom: -23px;
+        top: 42px;
+    
 
   }
 }

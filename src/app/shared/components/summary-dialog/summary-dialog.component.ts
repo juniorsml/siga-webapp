@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { StepClickEvent } from '../../shared/events/StepClickEvent';
+import { StepClickEvent } from '../../events/StepClickEvent';
 
 @Component({
   selector: 'sga-summary-dialog',

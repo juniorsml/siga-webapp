@@ -53,6 +53,8 @@ import { PagerComponent } from '../components/pager/pager.component';
 import { SidebarConfigurationComponent } from '../components/sidebar-configuration/sidebar-configuration.component';
 import { OptionComponent } from '../components/sidebar-configuration/option/option.component';
 
+import { SendCommandModalComponent } from '../components/send-command/send-command.component';
+
 
 import { PageNotFoundComponent } from '../layout/404page/not-found.component';
 import { ColumnSelectorComponent } from '../components/column-selector/column-selector.component';
@@ -61,6 +63,16 @@ import { SelectGroupedComponent } from '../components/select-grouped/select-grou
 import { DirectionService } from '../services/direction.service';
 import { HttpModule } from '@angular/http';
 import { RouteInfoComponent } from '../components/route-info/route-info.component';
+
+
+import { SummaryDialogComponent } from '../components/summary-dialog/summary-dialog.component';
+import { SummaryComponent } from '../components/summary-dialog/summary/summary.component';
+
+import { SummaryMotoristComponent } from '../components/summary-dialog/motorist/summary-motorist.component';
+import { SummaryVehicleComponent } from '../components/summary-dialog/vehicle/summary-vehicle.component';
+import { SummaryItineraryComponent } from '../components/summary-dialog/itinerary/summary-itinerary.component';
+
+import { CommandsHistoricComponent } from '../components/summary-dialog/commands-historic/commands-historic.component';
 
 @NgModule({
   declarations: [
@@ -113,7 +125,15 @@ import { RouteInfoComponent } from '../components/route-info/route-info.componen
     PagerComponent,
     PageNotFoundComponent,
 
-    SpinnerComponent
+    SpinnerComponent,
+    SendCommandModalComponent,
+    
+       SummaryDialogComponent,
+       SummaryComponent,
+       SummaryMotoristComponent,
+       SummaryVehicleComponent,
+       SummaryItineraryComponent,
+       CommandsHistoricComponent
   ],
   imports: [
     HttpModule,
@@ -190,7 +210,16 @@ import { RouteInfoComponent } from '../components/route-info/route-info.componen
     SpinnerComponent,
 
     TagInputModule,
-    NgSlimScrollModule
+    NgSlimScrollModule,
+    SendCommandModalComponent,
+
+
+       SummaryDialogComponent,
+       SummaryComponent,
+       SummaryMotoristComponent,
+       SummaryVehicleComponent,
+       SummaryItineraryComponent,
+       CommandsHistoricComponent
   ]
 })
 export class SharedModule {}

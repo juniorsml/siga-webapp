@@ -15,12 +15,16 @@ export class RATCTripsComponent implements OnInit {
   text: any;
   distance: any;
   placeText: any;
-  styleClass: any;
   filterLocation: any;
   filterDistance: any;
-  contextMenuSelected: any;
   showColumnSelector = false;
   haveFooter = true;
+  public styleClass: any;
+  public stepIndex: number;     
+  public selectedTrip: any;
+  public showTripDialog = false;
+  public showSummaryDialog = false;
+  showSendDialog = false;
 
 
   closeColumnSelector() {
@@ -54,6 +58,35 @@ export class RATCTripsComponent implements OnInit {
     this.filterDistance = null;
     this.filterLocation = null;
   }
+  public contextMenuSelected(index) { 
+
+    switch (index) { 
+     case 0:      
+        this.stepIndex = index;
+        this.showSummaryDialog = true;
+      break;
+     case 1:      
+        this.stepIndex = index;
+        this.showSummaryDialog = true;
+    break;
+     case 2: 
+        this.stepIndex = index;
+        this.showSummaryDialog = true;
+    break;
+     case 3:    
+        this.stepIndex = index;
+        this.showSummaryDialog = true;
+    break;
+      case 4: 
+        this.showSendDialog = true;
+     }
+
+  }
+  public summaryDialogClose() {
+    this.showSummaryDialog = false;
+  }
+
+  public sendDialogClose = () => this.showSendDialog = false;
 
   public onPlacesKeyUp() {}
 

@@ -1,136 +1,175 @@
-<div class="cnt-dialog">
-  <div class="container-form">
-    <div class="form-header columns column is-12 is-marginless">
-      <h3 class="area column is-narrow">Operação</h3>
-      <h2 class="action column">Cadastro</h2>
+
+<div class="modal-box" [ngClass]="showForm ? 'opened-modal' : ''">
+  <div class="container-form content-modal">
+    <div class="container-dialog-header columns column is-12 is-marginless">
+      <div class="area column is-narrow">
+        <h3 >Cadastro de Operação</h3>  
+      </div>
+      <div class="column btn-close"> 
+         <i  (click)="cancel()" class="fal fa-times is-pulled-right"></i>
+      </div>      
     </div>
-    <div class="container-scroll">
-      <form #formOperation="ngForm" (ngSubmit)="onSubmit(formOperation)" class="form">
-        <div class="field-body field">
-          <div class="field is-3 column is-paddingless">
-            <label class="label is-small">Descrição da Operação</label>
-            <div class="control">
-              <input class="input is-small" type="text" placeholder="Descrição da Operação">
-            </div>
-          </div>
-          <div class="field is-3 column is-paddingless">
-            <label class="label is-small">Observação</label>
-            <div class="control">
-              <input class="input is-small" type="text" placeholder="Observação" value="Em viagem" >
-            </div>
-          </div>
-          <div class="field">
-            <label class="label is-small">Exige check-list:</label>
-            <div class="select is-small">
-              <select >
-                <option>Sim</option>
-                <option>Não</option>
-              </select>
-            </div>
-          </div>
-          <div class="field">
-            <label class="label is-small">Validade check-list(dias)</label>
-            <div class="select is-small">
-              <select >
-                <option>0</option>
-                <option>15</option>
-                 <option>25</option>
-                  <option>35</option>
-                   <option>45</option>
-              </select>
-            </div>
-          </div>
-          <div class="field">
-            <label class="label is-small">Aguarda sinal(horas)</label>
-            <div class="select is-small">
-              <select >                
-                <option value="">1</option>
-                <option value="">2</option>
-                <option value="">3</option>
-                <option value="">4</option>
-                <option value="">5</option>
-              </select>
-            </div>
-          </div>           
-        </div>
-        <div class="field-body field">
-          <div class="field is-3 column is-paddingless">
-            <label class="label is-small">Impressão de Viagem:</label>
-            <div class="select is-small">
-              <select >
-                <option>Sim</option>
-                <option>Não</option>
-              </select>
-            </div>
-          </div>
-          <div class="field is-3 column is-paddingless">
-            <label class="label is-small">Embarcar configuração no veículo:</label>
-            <div class="select is-small">
-              <select >
-                <option value="NÃO EMBARCAR">NÃO EMBARCAR</option>
-                <option value="">EMBARCAR CONF. PADRÃO</option>
-                <option value="">EMBARCAR CONF. POR VIAGEM</option>
-              </select>
-            </div>
-          </div>
-          <div class="field">
-            <label class="label is-small">Empresa de pesquisa:</label>
-            <div class="select is-small">
-              <select >
-                <option>NENHUM</option>
-                <option>MAXX</option>
-              </select>
-            </div>
-          </div>
-          <div class="field">
-            <label class="label is-small">Limite Máximo Garantia (LMG):</label>
-            <div class="control">
-              <input class="input is-small" type="text" placeholder="" value="" >
-            </div>
-          </div>
-          <div class="field">
-            <label class="label is-small">Aprovação Aut.:</label>
-            <div class="select is-small">
-              <select >                
-                <option value="">Sim</option>
-                <option value="">Não</option>            
-              </select>
-            </div>
-          </div>           
-        </div>
-         <div class="field-body field">
-            <div class="field is-3 column is-paddingless">
-              <label class="label is-small">Define Faixa de Horário</label>
-              <div class="control">
-                <input class="input is-small" type="text" placeholder="Define Faixa de Horário">
-              </div>
-            </div>
-            <div class="field is-2 column is-paddingless">
-              <label class="label is-small">Inicio</label>
-              <div class="control">
-                <input class="input is-small" type="time">
-              </div>
-            </div>
-             <div class="field is-2 column is-paddingless">
-              <label class="label is-small">Fim</label>
-              <div class="control">
-                <input class="input is-small" type="time">
-              </div>
-            </div>
-          </div>
-       
+    <div class="container-scroll">    
+      
+      <form novalidate class="cnt-form" #formMotorist="ngForm">
+          <sga-tabs 
+            [tabIndex]="selectedTabIndex"
+            styleClass="tabs no-margin tabs-register">
 
+            <sga-tab heading="Geral">
 
-        <div class="field-body field">
-          <div class="control">
-            <button class="button" (click)="onCancel()" >Cancelar</button>
-          </div>
-          <div class="control">
-            <button class="button is-info" [disabled]="!formOperation.valid">Cadastrar</button>
-          </div>
-       </div>
+                  <!-- Geral -->
+                  <div class="cnt-info columns">               
+
+                    <div class="column  is-12">
+                     <div class="field-body field">
+                       <div class="field is-3 column is-paddingless">
+                         <label class="label is-small">Descrição da Operação</label>
+                         <div class="control">
+                           <input class="input is-small" type="text" placeholder="Descrição da Operação">
+                         </div>
+                       </div>
+                       <div class="field is-3 column is-paddingless">
+                         <label class="label is-small">Observação</label>
+                         <div class="control">
+                           <input class="input is-small" type="text" placeholder="Observação" value="Em viagem" >
+                         </div>
+                       </div>
+                       <div class="field">
+                         <label class="label is-small">Exige check-list:</label>
+                         <div class="select is-small">
+                           <select>
+                             <option>Sim</option>
+                             <option>Não</option>
+                           </select>
+                         </div>
+                       </div>
+                       <div class="field">
+                         <label class="label is-small">Validade check-list</label>
+                          <div class="control">
+                           <input class="input is-small" type="number" placeholder="Dias">
+                         </div>
+                       </div>
+                       <div class="field">
+                         <label class="label is-small">Aguarda sinal(horas)</label>
+                         <div class="select is-small">
+                           <select>                
+                             <option value="">1</option>
+                             <option value="">2</option>
+                             <option value="">3</option>
+                             <option value="">4</option>
+                             <option value="">5</option>
+                           </select>
+                         </div>
+                       </div>           
+                     </div>  
+                     <div class="field-body field">
+                      
+                       <div class="field is-3 column is-paddingless">
+                         <label class="label is-small">Embarcar configuração no veículo:</label>
+                         <div class="select is-small">
+                           <select >
+                             <option value="NÃO EMBARCAR">NÃO EMBARCAR</option>
+                             <option value="">EMBARCAR CONF. PADRÃO</option>
+                             <option value="">EMBARCAR CONF. POR VIAGEM</option>
+                           </select>
+                         </div>
+                       </div>
+                       <div class="field">
+                         <label class="label is-small">Empresa de pesquisa:</label>
+                         <div class="select is-small">
+                           <select >
+                             <option>NENHUM</option>
+                             <option>MAXX</option>
+                           </select>
+                         </div>
+                       </div>
+                       <div class="field">
+                         <label class="label is-small">Limite Máximo Garantia (LMG):</label>
+                         <div class="control">
+                           <input class="input is-small" type="text" placeholder="" value="" >
+                         </div>
+                       </div>
+                       <div class="field">
+                         <label class="label is-small">Aprovação Aut.:</label>
+                         <div class="select is-small">
+                           <select >                
+                             <option value="">Sim</option>
+                             <option value="">Não</option>            
+                           </select>
+                         </div>
+                       </div>           
+                     </div>
+                      <div class="field-body field">
+                         <div class="field is-3 column is-paddingless">
+                           <label class="label is-small">Define Faixa de Horário</label>
+                           <div class="control">
+                             <input class="input is-small" type="text" placeholder="Define Faixa de Horário">
+                           </div>
+                         </div>
+                         <div class="field is-2 column is-paddingless">
+                           <label class="label is-small">Inicio</label>
+                           <div class="control">
+                             <input class="input is-small" type="time">
+                           </div>
+                         </div>
+                          <div class="field is-2 column is-paddingless">
+                           <label class="label is-small">Fim</label>
+                           <div class="control">
+                             <input class="input is-small" type="time">
+                           </div>
+                         </div>
+                       </div>                    
+
+                    </div>
+
+                  </div>
+
+            </sga-tab>
+
+            <sga-tab heading="Regras GR">
+              <!-- Regras GR -->
+                  <div class="cnt-info columns" style="align-items: flex-start;">
+              
+                    <div class="columns column is-multiline">                                
+          
+                  
+                    </div>  
+                  </div>
+            </sga-tab>
+            <sga-tab heading="Lugares">
+              <!-- Regras GR -->
+                  <div class="cnt-info columns" style="align-items: flex-start;">
+              
+                    <div class="columns column is-multiline">                                
+            
+                  
+                    </div>  
+                  </div>
+            </sga-tab>
+
+        </sga-tabs>
+            <!-- Botões de Ação -->
+        <div class="cnt-buttons">
         
+            
+              <button class="button" (click)="cancel()">Cancelar</button>
+            
+                  
+              <button type="submit"
+                      class="button is-first"
+                      [disabled]="formMotorist.invalid">Cadastrar
+              </button>
+            
+          
+        </div>
       </form>
+  
     </div>
   </div>
 </div>
+
+
+
+
+

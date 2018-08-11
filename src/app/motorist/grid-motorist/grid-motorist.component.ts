@@ -13,6 +13,7 @@ import { Motorist } from '../../shared/models/api/Motorist';
   providers: [MotoristService]
 })
 export class GridMotoristComponent implements OnInit {
+
   public text: any;
   public distance: any;
   public motorist: any;
@@ -25,6 +26,9 @@ export class GridMotoristComponent implements OnInit {
   public showDialog = false;
   public showMotoristDialog: boolean;
   public showColumnSelector = false;
+  public showSendDialog = false;
+  public showSendCommandDialog = false;
+
 
   public headers = new Array<string>();
   public motorists = new Array<Motorist>();
@@ -81,7 +85,11 @@ export class GridMotoristComponent implements OnInit {
     switch (event) {
       case 1:
         this.router.navigateByUrl(`motorist/history/${this.selectedMotorist.id}`);
-    }
+       break;
+      case 4:
+        this.showSendCommandDialog = true;
+        this.showSendDialog = true;
+     }
   }
 
   public onCellRightClick = (event: TableClickEvent) => this.selectedMotorist = event.data;
@@ -91,6 +99,8 @@ export class GridMotoristComponent implements OnInit {
   public showMotoristModal = () => this.showMotoristDialog = true;
 
   public motoristDialogClose = () => this.showMotoristDialog = false;
+
+  public sendDialogClose = () => this.showSendDialog = false;
 
   public whenHeaderReady = headers => this.headers = headers;
 
