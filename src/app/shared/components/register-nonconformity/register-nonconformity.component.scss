@@ -25,14 +25,14 @@
           bottom: -2px;
 
       }
-      .field{
-        margin-bottom: 13px;
-      }
+
     }
 
-   
+    form .column{
+      padding: 0 12px !important;
+    }
     label{
-      margin: 0;
+    
       line-height: 1;
     }
     .header-modal{
@@ -45,6 +45,12 @@
     .motorist-profile-info {        
         padding-left:25px;
     }
+    .field{
+      margin-bottom: 13px;
+      .select , select{
+        width: 100%;
+      }
+    }                                                                                                                                                                                                               
 }
 
 .container-dialog-header {
@@ -121,6 +127,10 @@
 
   }
 
+}
+.cnt-buttons{
+  margin-top: 33px;
+  text-align: right;
 }
 
 .slimscroll-grid{
