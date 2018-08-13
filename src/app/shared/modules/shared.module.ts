@@ -54,7 +54,7 @@ import { SidebarConfigurationComponent } from '../components/sidebar-configurati
 import { OptionComponent } from '../components/sidebar-configuration/option/option.component';
 
 import { SendCommandModalComponent } from '../components/send-command/send-command.component';
-
+import { SendMessageModalComponent } from '../components/send-message/send-message.component';
 
 import { PageNotFoundComponent } from '../layout/404page/not-found.component';
 import { ColumnSelectorComponent } from '../components/column-selector/column-selector.component';
@@ -127,13 +127,14 @@ import { CommandsHistoricComponent } from '../components/summary-dialog/commands
 
     SpinnerComponent,
     SendCommandModalComponent,
+    SendMessageModalComponent,
     
-       SummaryDialogComponent,
-       SummaryComponent,
-       SummaryMotoristComponent,
-       SummaryVehicleComponent,
-       SummaryItineraryComponent,
-       CommandsHistoricComponent
+    SummaryDialogComponent,
+    SummaryComponent,
+    SummaryMotoristComponent,
+    SummaryVehicleComponent,
+    SummaryItineraryComponent,
+    CommandsHistoricComponent
   ],
   imports: [
     HttpModule,
@@ -212,14 +213,14 @@ import { CommandsHistoricComponent } from '../components/summary-dialog/commands
     TagInputModule,
     NgSlimScrollModule,
     SendCommandModalComponent,
+    SendMessageModalComponent,
 
-
-       SummaryDialogComponent,
-       SummaryComponent,
-       SummaryMotoristComponent,
-       SummaryVehicleComponent,
-       SummaryItineraryComponent,
-       CommandsHistoricComponent
+    SummaryDialogComponent,
+    SummaryComponent,
+    SummaryMotoristComponent,
+    SummaryVehicleComponent,
+    SummaryItineraryComponent,
+    CommandsHistoricComponent
   ]
 })
 export class SharedModule {}

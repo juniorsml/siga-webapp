@@ -16,22 +16,23 @@ export class GridTruckComponent implements OnInit {
 
   public haveFooter: boolean = true;
 
-  text: any;
-  distance: any;
-  vehicle: any;
-  placeText: any;
-  styleClass: any;
-  filterLocation: any;
-  filterDistance: any;
-  selectedVehicle: any;
+  public text: any;
+  public distance: any;
+  public vehicle: any;
+  public placeText: any;
+  public styleClass: any;
+  public filterLocation: any;
+  public filterDistance: any;
+  public selectedVehicle: any;
 
 
-  showDialog = false;
-  showVehicleDialog: boolean;
+  public showDialog = false;
+  public showVehicleDialog: boolean;
 
-  showColumnSelector = false;
-   showSendDialog = false;
+  public showColumnSelector = false;
+  public showSendDialog = false;
 
+  public showMessageDialog = false;
 
   public headers = new Array<string>();
   public filterHeaders = new Array<string>();
@@ -93,17 +94,23 @@ export class GridTruckComponent implements OnInit {
   public contextMenuSelected = event => {
     switch (event) {
   
-      case 4:        
+      case 3: 
         this.showSendDialog = true;
-     }
+        break;
+      case 4: 
+        this.showMessageDialog = true;
+      
+    }
   }
   public sendDialogClose = () => this.showSendDialog = false;
+  public messageDialogClose = () => this.showMessageDialog = false;
+
 
   public onPlacesKeyUp() {}
 
   public onDistanceKeyUp() {}
 
-    public whenHeaderReady = headers => this.headers = headers;
+  public whenHeaderReady = headers => this.headers = headers;
 
   public onToggleItem = itemsSelected => this.filterHeaders = itemsSelected;
 }

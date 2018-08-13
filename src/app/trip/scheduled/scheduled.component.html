@@ -90,58 +90,65 @@
           </ng-template>
       </column>
       
-
       <context-menu
-          [mode]="'click'"
-          (onItemSelected)="contextMenuSelected($event)">
-          <menu-item>
-              <ng-template>
-                  <span class="table-menu-icon item-context-menu fal fa-list"
-                        aria-hidden="true"></span>
-                  <span>Resumo</span>
-              </ng-template>
-          </menu-item>
-          <menu-item>
-              <ng-template>
-                  <span class="table-menu-icon item-context-menu fal fa-user"
-                        aria-hidden="true"></span>
-                  <span>Motoristas</span>
-              </ng-template>
-          </menu-item>
-          <menu-item>
-              <ng-template>
-                  <span class="table-menu-icon item-context-menu fal fa-truck"
-                        aria-hidden="true"></span>
-                  <span>Veículos</span>
-              </ng-template>
-          </menu-item>
-          <menu-item>
-              <ng-template>
-                  <span
-                      class="table-menu-icon item-context-menu fal fa-map"
-                      aria-hidden="true"></span>
-                  <span>Geográfico</span>
-              </ng-template>
-          </menu-item>
-           <menu-item [enabled]="true">
-              <ng-template>
-                <span class="table-menu-icon item-context-menu fal fa-broadcast-tower" aria-hidden="true">
-                </span>
-                <span>Enviar comando</span>
-              </ng-template>
-            </menu-item>
+         [mode]="'click'"
+        (onItemSelected)="contextMenuSelected($event)">
+        <menu-item>
+          <ng-template>
+            <span class="table-menu-icon item-context-menu fal fa-list" aria-hidden="true"></span>
+            <span>Resumo</span>
+          </ng-template>
+        </menu-item>
+        <menu-item>
+          <ng-template>
+            <span class="table-menu-icon item-context-menu fal fa-user"  aria-hidden="true"></span>
+              <span>Motoristas</span>
+          </ng-template>
+        </menu-item>
+        <menu-item>
+          <ng-template>
+            <span class="table-menu-icon item-context-menu fal fa-truck" aria-hidden="true"></span>
+            <span>Veículos</span>
+          </ng-template>
+        </menu-item>
+        <menu-item>
+          <ng-template>
+            <span class="table-menu-icon item-context-menu fal fa-map" aria-hidden="true"></span>
+            <span>Geográfico</span>
+          </ng-template>
+        </menu-item>
+        <menu-item [enabled]="true">
+          <ng-template>
+            <span class="table-menu-icon item-context-menu fal fa-broadcast-tower" aria-hidden="true"></span>
+            <span>Enviar comando</span>
+          </ng-template>
+        </menu-item>
+        <menu-item [enabled]="true">
+          <ng-template>
+            <span class="table-menu-icon item-context-menu fal fa-envelope" aria-hidden="true"></span>
+            <span>Enviar mensagem</span>
+          </ng-template>
+        </menu-item>
       </context-menu>
 
-  	</data-table>
+    </data-table>
   </div>
 
-</div>
+
 <sga-modal>
   <sga-send-command
     [showModal]="showSendDialog"
     (onDialogClose)="sendDialogClose()">
   </sga-send-command>
 </sga-modal>
+
+<sga-modal>
+  <sga-send-message
+    [showModal]="showMessageDialog"
+    (onDialogClose)="messageDialogClose()">
+  </sga-send-message>
+</sga-modal>
+
   <sga-modal>
     <sga-summary-dialog
       [trip]="selectedTrip"
@@ -150,4 +157,4 @@
       (onDialogClose)="summaryDialogClose()">
     </sga-summary-dialog>
   </sga-modal>
-
+</div>

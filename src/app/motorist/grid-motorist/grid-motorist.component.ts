@@ -28,6 +28,7 @@ export class GridMotoristComponent implements OnInit {
   public showColumnSelector = false;
   public showSendDialog = false;
   public showSendCommandDialog = false;
+  public showMessageDialog = false;
 
 
   public headers = new Array<string>();
@@ -86,10 +87,13 @@ export class GridMotoristComponent implements OnInit {
       case 1:
         this.router.navigateByUrl(`motorist/history/${this.selectedMotorist.id}`);
        break;
-      case 4:
-        this.showSendCommandDialog = true;
+      case 3: 
         this.showSendDialog = true;
-     }
+        break;
+      case 4: 
+        this.showMessageDialog = true;
+      
+    }
   }
 
   public onCellRightClick = (event: TableClickEvent) => this.selectedMotorist = event.data;
@@ -101,6 +105,8 @@ export class GridMotoristComponent implements OnInit {
   public motoristDialogClose = () => this.showMotoristDialog = false;
 
   public sendDialogClose = () => this.showSendDialog = false;
+
+  public messageDialogClose = () => this.showMessageDialog = false;
 
   public whenHeaderReady = headers => this.headers = headers;
 

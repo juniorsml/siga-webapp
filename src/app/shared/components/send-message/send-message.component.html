@@ -1,0 +1,130 @@
+
+<div class="modal-box" [ngClass]="showModal ? 'opened-modal' : ''">
+  <div class="container-form content-modal">
+    <div class="container-dialog-header columns column is-12 is-marginless">
+      <div class="area column is-narrow">
+        <h3 >Enviar Mensagem</h3>  
+      </div>
+      <div class="column btn-close"> 
+         <i  (click)="cancel()" class="fal fa-times is-pulled-right"></i>
+      </div>      
+    </div>
+    <div class="container-scroll columns column is-12 is-marginless">    
+      
+      <form novalidate class="column is-12 is-marginless" #formSendCommand="ngForm">
+      
+    
+          <div class="field-body field">
+            <div class="field">
+              <label class="label is-small">Placa</label>
+              <div class="is-smal">
+                <span>BBH-1332</span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label is-small">Tecnologia</label>
+              <div class="is-smal">               
+                <span>OMNILINK</span>
+              </div>
+            </div>
+         
+            <div class="field">
+              <label class="label is-small">ID</label>
+              <div class="is-small">
+                  <span>6346456</span>
+              </div>
+            </div>
+         
+          </div>
+          <div class="field-body field">
+            <div class="field">
+              <label class="label is-small" style="margin-bottom: 7px;">Tipo de mensagem</label>           
+            
+
+               <div class="select is-small">
+                 <select [(ngModel)]="kindOfMessage" name="kindOfMessage">               
+                   <option value="Mensagem Livre">Mensagem Livre</option>
+                   <option value="Mensagem Predefinada">Mensagem Predefinada</option>
+                  
+                 </select>
+               </div>
+           
+
+     
+            </div>
+                  
+          </div>
+          <div class="field-body field">         
+            <div class="field">   
+            <div class="field-body field" [ngSwitch]="kindOfMessage">
+              <div class="field" *ngSwitchCase="'Mensagem Livre'">
+                <div class="field">             
+                  <div class="control">                
+                   <textarea class="textarea"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="field" *ngSwitchCase="'Mensagem Predefinada'">
+                <div class="field">
+                 
+                  <div class="control">
+                    <ul class="list-commands" slimScroll>
+                      <li class="item">                  
+                        <input value="COMO ESTÁ A VIAGEM? TUDO BEM?" id="COMO ESTÁ A VIAGEM? TUDO BEM?" type="checkbox">
+                        <label for="COMO ESTÁ A VIAGEM? TUDO BEM?">COMO ESTÁ A VIAGEM? TUDO BEM?</label>
+                      </li>  
+                      <li class="item">                  
+                        <input value="MENSAGEM PREDEFINIDA I" id="MENSAGEM PREDEFINIDA I" type="checkbox">
+                        <label for="MENSAGEM PREDEFINIDA I">MENSAGEM PREDEFINIDA I</label>
+                      </li>
+                      <li class="item">                  
+                        <input value="MENSAGEM PREDEFINIDA II" id="MENSAGEM PREDEFINIDA II" type="checkbox">
+                        <label for="MENSAGEM PREDEFINIDA II">MENSAGEM PREDEFINIDA II</label>
+                      </li>
+                      <li class="item">                  
+                        <input value="MENSAGEM PREDEFINIDA III" id="MENSAGEM PREDEFINIDA III" type="checkbox">
+                        <label for="MENSAGEM PREDEFINIDA III">MENSAGEM PREDEFINIDA III</label>
+                      </li> 
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="field" *ngSwitchCase="'Outro'">
+                <div class="field">
+                  <label class="label is-small">Outro</label>
+                  <div class="control">
+                    <input type="text" class="input is-small" placeholder="Outro" name="otherDoc" #otherDoc="ngModel" ngModel required [class.is-danger]="otherDoc.touched && !otherDoc.valid"
+                    />
+                  </div>
+                </div>
+              </div> -->
+            </div>          
+                  
+             
+              
+            
+            
+            </div>
+          
+          </div>
+  
+
+
+        <!-- Botões de Ação -->
+        <div class="cnt-buttons is-pulled-right">       
+            
+          <button class="button" (click)="cancel()">Cancelar</button>
+        
+              
+          <button type="submit"
+                  class="button is-first"
+                  >Enviar mensagem
+          </button>
+          
+          
+        </div>
+      </form>
+  
+    </div>
+  </div>
+</div>
