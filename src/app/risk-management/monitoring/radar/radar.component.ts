@@ -27,6 +27,7 @@ export class RadarComponent implements OnInit {
   public showSummaryDialog = false;
   public showSendDialog = false;
   public showMessageDialog = false;
+  public showNonConformityDialog = false;
 
 
   closeColumnSelector() {
@@ -84,6 +85,9 @@ export class RadarComponent implements OnInit {
      break;
       case 5: 
         this.showMessageDialog = true;
+        break;
+       case 5:
+         this.showNonConformityDialog = true;
      }
   }
   public summaryDialogClose() {
@@ -97,6 +101,8 @@ export class RadarComponent implements OnInit {
 
   public sendDialogClose = () => this.showSendDialog = false;
   public messageDialogClose = () => this.showMessageDialog = false;
+  public nonConformityDialogClose = () => this.showNonConformityDialog = false;
+
 
 
   public onPlacesKeyUp() {}
