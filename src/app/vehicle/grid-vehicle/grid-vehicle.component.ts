@@ -27,6 +27,8 @@ export class GridVehicleComponent implements OnInit {
 
   public showSendDialog = false;
   public showMessageDialog = false;
+  public showNonConformityDialog = false;
+
 
   public showColumnSelector = false;
 
@@ -110,12 +112,16 @@ export class GridVehicleComponent implements OnInit {
          break;
        case 4: 
          this.showMessageDialog = true;
-       
-     }
+         break;
+       case 5:
+        this.showNonConformityDialog = true;
+    }
   }
+  
   public sendDialogClose = () => this.showSendDialog = false;
-
   public messageDialogClose = () => this.showMessageDialog = false;
+  public nonConformityDialogClose = () => this.showNonConformityDialog = false;
+
 
   public onPlacesKeyUp() { }
 

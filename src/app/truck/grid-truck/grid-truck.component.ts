@@ -33,6 +33,8 @@ export class GridTruckComponent implements OnInit {
   public showSendDialog = false;
 
   public showMessageDialog = false;
+  public showNonConformityDialog = false;
+
 
   public headers = new Array<string>();
   public filterHeaders = new Array<string>();
@@ -99,11 +101,15 @@ export class GridTruckComponent implements OnInit {
         break;
       case 4: 
         this.showMessageDialog = true;
-      
+        break;
+       case 5:
+        this.showNonConformityDialog = true;
     }
   }
   public sendDialogClose = () => this.showSendDialog = false;
   public messageDialogClose = () => this.showMessageDialog = false;
+  public nonConformityDialogClose = () => this.showNonConformityDialog = false;
+
 
 
   public onPlacesKeyUp() {}
