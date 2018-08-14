@@ -27,6 +27,8 @@ export class GridDeviceComponent implements OnInit {
 
   public showSendDialog = false;
   public showMessageDialog = false;
+  public showNonConformityDialog = false;
+
 
   @Input()
   public hasHeight = false;
@@ -90,12 +92,15 @@ export class GridDeviceComponent implements OnInit {
          break;
        case 3: 
          this.showMessageDialog = true;
-       
-     }
+            break;
+      case 4:
+        this.showNonConformityDialog = true;
+    }
   }
   public sendDialogClose = () => this.showSendDialog = false;
 
   public messageDialogClose = () => this.showMessageDialog = false;
+  public nonConformityDialogClose = () => this.showNonConformityDialog = false;
 
 
   public whenHeaderReady = headers => this.headers = headers;

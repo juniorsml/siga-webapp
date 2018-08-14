@@ -31,10 +31,6 @@ export class GridMotoristComponent implements OnInit {
   public showMessageDialog = false;
   public showNonConformityDialog = false;
 
-
-
-
-
   public headers = new Array<string>();
   public motorists = new Array<Motorist>();
   public filterHeaders = new Array<string>();
