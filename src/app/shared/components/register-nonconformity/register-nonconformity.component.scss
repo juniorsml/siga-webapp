@@ -2,7 +2,7 @@
 .content-modal{
     background-color: #FFF;
     width: 100%;
-    max-width:800px;
+    max-width:680px;
     max-height: 91%;
     position: relative;
     background: #ffffff;
@@ -93,14 +93,6 @@
 
 
 
-@media screen and (max-width: 1390px){
-  .container-scroll{
-    height: 85% !important;
-    max-height: 504px !important;
-    position: relative !important;
-    
-  }
-}
 
 .all select,
 .selected select{
@@ -141,7 +133,7 @@
 
 }
 .cnt-buttons{
-  margin-top: 33px;
+  margin-top: 10px;
   text-align: right;
 }
 
