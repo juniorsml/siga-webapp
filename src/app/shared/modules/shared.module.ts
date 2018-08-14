@@ -56,6 +56,8 @@ import { OptionComponent } from '../components/sidebar-configuration/option/opti
 import { SendCommandModalComponent } from '../components/send-command/send-command.component';
 import { SendMessageModalComponent } from '../components/send-message/send-message.component';
 
+import { RegisterNonConformityComponent } from '../components/register-nonconformity/register-nonconformity.component';
+
 import { PageNotFoundComponent } from '../layout/404page/not-found.component';
 import { ColumnSelectorComponent } from '../components/column-selector/column-selector.component';
 import { MapComponent } from '../components/map/map.component';
@@ -128,6 +130,7 @@ import { CommandsHistoricComponent } from '../components/summary-dialog/commands
     SpinnerComponent,
     SendCommandModalComponent,
     SendMessageModalComponent,
+    RegisterNonConformityComponent,
     
     SummaryDialogComponent,
     SummaryComponent,
@@ -220,7 +223,9 @@ import { CommandsHistoricComponent } from '../components/summary-dialog/commands
     SummaryMotoristComponent,
     SummaryVehicleComponent,
     SummaryItineraryComponent,
-    CommandsHistoricComponent
+    CommandsHistoricComponent,
+
+    RegisterNonConformityComponent
   ]
 })
 export class SharedModule {}

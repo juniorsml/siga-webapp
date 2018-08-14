@@ -24,8 +24,9 @@ export class RATCTripsComponent implements OnInit {
   public selectedTrip: any;
   public showTripDialog = false;
   public showSummaryDialog = false;
-  showSendDialog = false;
-    public showMessageDialog = false;
+  public showSendDialog = false;
+  public showMessageDialog = false;
+  public showNonConformityDialog = false;
 
 
   closeColumnSelector() {
@@ -83,6 +84,9 @@ export class RATCTripsComponent implements OnInit {
       break;
       case 5: 
         this.showMessageDialog = true;
+         break;
+       case 6:
+         this.showNonConformityDialog = true;
      }
 
   }
@@ -92,6 +96,8 @@ export class RATCTripsComponent implements OnInit {
 
   public sendDialogClose = () => this.showSendDialog = false;
   public messageDialogClose = () => this.showMessageDialog = false;
+  public nonConformityDialogClose = () => this.showNonConformityDialog = false;
+
 
   public onPlacesKeyUp() {}
 
