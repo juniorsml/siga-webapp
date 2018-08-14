@@ -28,6 +28,8 @@ export class StartedTripsComponent implements OnInit {
   public showTripDialog = false;
   public showSummaryDialog = false;
   public showSendDialog = false;
+  public showNonConformityDialog = false;
+
 
 
   closeColumnSelector() {
@@ -94,7 +96,10 @@ export class StartedTripsComponent implements OnInit {
         break;
       case 5: 
         this.showMessageDialog = true;
-     }
+         break;
+           case 6:
+             this.showNonConformityDialog = true;
+         }
 
   }
 
@@ -104,6 +109,8 @@ export class StartedTripsComponent implements OnInit {
 
   public sendDialogClose = () => this.showSendDialog = false;
   public messageDialogClose = () => this.showMessageDialog = false;
+  public nonConformityDialogClose = () => this.showNonConformityDialog = false;
+
 
 
   public whenHeaderReady = headers => this.headers = headers;
