@@ -106,9 +106,15 @@ export class StartedTripsComponent implements OnInit {
          break;
            case 7:
              this.showConfirmDialog = true;
+
          }
 
 
+  }
+
+  public onConfirm() {
+    this.showNonConformityDialog = true;
+    this.confirmDialogClose();
   }
 
   public summaryDialogClose() {

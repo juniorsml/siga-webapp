@@ -15,8 +15,7 @@
       
     
         
-        <div class="field-body field">
-          <i class="fal fa-question-circle"></i>
+        <div class="field-body field">         
           <label class="label">Tem certeza que deseja enviar a viagem 2407896 para o grupo CTO?</label>
         </div>
   
@@ -25,12 +24,9 @@
         <!-- Botões de Ação -->
         <div class="cnt-buttons is-pulled-right">       
             
-          <button class="button" (click)="cancel()">Cancelar</button>
-        
+          <button class="button" (click)="cancel()">Cancelar</button>       
               
-          <button type="submit"
-                  class="button is-first"
-                  >Enviar mensagem
+          <button type="submit" (click)="confirm()"  class="button is-first">Sim
           </button>
           
           
