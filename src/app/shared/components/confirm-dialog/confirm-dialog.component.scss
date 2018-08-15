@@ -1,0 +1,156 @@
+
+.content-modal{
+    background-color: #FFF;
+    width: 100%;
+    max-width:600px;
+    max-height: 91%;
+    background: #ffffff;
+    -webkit-box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.1);
+    .cnt-profile{
+      width: 143px;
+    }
+    .cnt-personal-data{
+      position: relative;
+
+      &:after{
+        content: '';
+          width: 96%;
+          height: 1px;
+          position: absolute;
+          background: #e2e1e1;
+          left: 0;
+          right: 0;
+          margin: auto;
+          bottom: -2px;
+
+      }
+      .field{
+        margin-bottom: 13px;
+      }
+    }
+
+   
+    label{
+      margin: 0;
+      line-height: 1;
+    }
+    .header-modal{
+        margin-bottom:20px;
+    }
+    .header-modal-title{
+        width: 100%;
+        display: flex;
+    }
+    .motorist-profile-info {        
+        padding-left:25px;
+    }
+}
+
+.container-dialog-header {
+    padding: 0;
+    h3 {
+      color: #4d5675;
+      margin-left: 11px;
+      display: flex;
+      align-items: center;
+      font: 300 24.05px 'Sunflower', sans-serif;
+      position: relative;
+
+      &:after{
+        left: 2px;
+          bottom: -1px;
+          content: "";
+          position: absolute;
+          height: 1px;
+          background: #8c96b9;
+          width: 54%;
+        }
+    }
+    .btn-close i{
+      color: #8a90a4;
+      border: 1px solid #b5b9c5;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 1px 6px;
+      border-radius: 2px;
+      transition:all 200ms ease;
+      &:hover{
+        color: #FFF;
+        background: #4d5675;
+        border: 1px solid #4d5675;
+      }
+
+    }
+}
+
+.all select,
+.selected select{
+  min-height: 244px;
+  margin-top: 7px;
+}
+
+.list-commands{
+  height: 183px;
+  width: 100%;
+ 
+  border-radius: 2px;
+  border: 1px solid #dbdbdb;
+  .item{
+    width: 100%;
+    
+  }
+  .item input[type="checkbox"] {
+    display: none; }
+
+  .item label {
+    display: inline-block;
+    background-color: white;
+    width: 100%;
+    padding-left: 5px;
+    font-size: 14px;
+    line-height: 31px;
+    height: 31px;    
+
+    cursor: pointer; }
+
+  .item input[type="checkbox"]:checked + label {
+    
+    background: #a7acbf;
+    color: #FFF;
+
+  }
+
+}
+
+.slimscroll-grid{
+  transition:all 200ms ease !important;
+  width:4px !important;
+  background: rgba(0,0,0,0.2) !important;
+  opacity:0 !important;
+      
+}
+.slimscroll-bar{
+  transition:all 200ms ease !important;
+  width:4px !important;
+  height: 130px !important;
+  background: rgba(0,0,0,0.3) !important;
+  right: 2px !important; 
+  opacity:0 !important;
+}
+.slimscroll-wrapper:hover .slimscroll-bar{
+  transition:all 200ms ease !important;
+  width:4px !important;
+  opacity:1 !important;
+
+  background: rgba(0,0,0,0.3) !important;
+  right: 2px !important;
+}
+.slimscroll-wrapper:hover  .slimscroll-grid{
+  transition:all 200ms ease !important;
+  width:4px !important;
+  background: rgba(0,0,0,0.2) !important;
+}
+
+
+
