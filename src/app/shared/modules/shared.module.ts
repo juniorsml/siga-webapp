@@ -76,6 +76,9 @@ import { SummaryItineraryComponent } from '../components/summary-dialog/itinerar
 
 import { CommandsHistoricComponent } from '../components/summary-dialog/commands-historic/commands-historic.component';
 
+import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
+
+
 @NgModule({
   declarations: [
     PlacesPipe,
@@ -131,13 +134,14 @@ import { CommandsHistoricComponent } from '../components/summary-dialog/commands
     SendCommandModalComponent,
     SendMessageModalComponent,
     RegisterNonConformityComponent,
-    
+
     SummaryDialogComponent,
     SummaryComponent,
     SummaryMotoristComponent,
     SummaryVehicleComponent,
     SummaryItineraryComponent,
-    CommandsHistoricComponent
+    CommandsHistoricComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     HttpModule,
@@ -225,7 +229,8 @@ import { CommandsHistoricComponent } from '../components/summary-dialog/commands
     SummaryItineraryComponent,
     CommandsHistoricComponent,
 
-    RegisterNonConformityComponent
+    RegisterNonConformityComponent,
+    ConfirmDialogComponent
   ]
 })
 export class SharedModule {}
