@@ -30,6 +30,7 @@ export class StartedTripsComponent implements OnInit {
   public showSendDialog = false;
   public showNonConformityDialog = false;
   public showConfirmDialog = false;
+  public type: any;  
 
   
 
@@ -77,35 +78,42 @@ export class StartedTripsComponent implements OnInit {
 
   public contextMenuSelected(index) { 
 
-    switch (index) { 
+    switch (index) {
      case 0:      
         this.stepIndex = index;
         this.showSummaryDialog = true;
         break;
-     case 1:      
+     case 1:
         this.stepIndex = index;
         this.showSummaryDialog = true;
         break;
-     case 2: 
+     case 2:
         this.stepIndex = index;
         this.showSummaryDialog = true;
         break;
-     case 3:    
+     case 3:   
         this.stepIndex = index;
         this.showSummaryDialog = true;
         break;
-      case 4: 
+      case 4:
         this.showSendDialog = true;
         break;
-      case 5: 
+      case 5:
         this.showMessageDialog = true;
          break;
            case 6:
              this.showNonConformityDialog = true;
-         
+       
          break;
            case 7:
              this.showConfirmDialog = true;
+             this.type = "CTO";
+
+         
+         break;
+           case 8:
+             this.showConfirmDialog = true;
+             this.type = "RATC";
 
          }
 

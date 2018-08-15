@@ -8,7 +8,7 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
 export class ConfirmDialogComponent {
  
   @Input() showModal: boolean;
-
+  @Input() type: string;
   @Output() onDialogClose: EventEmitter<void> = new EventEmitter<void>();
   @Output() onConfirm: EventEmitter<void> = new EventEmitter<void>();
 
