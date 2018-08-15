@@ -181,6 +181,15 @@
 
   
   <!--  MODAIS  -->
+
+  <sga-modal>
+    <sga-confirm-dialog
+      [showModal]="showConfirmDialog"
+      (onDialogClose)="confirmDialogClose()">
+    </sga-confirm-dialog>
+  </sga-modal>
+
+
   <sga-modal>
     <sga-register-nonconformity
       [showModal]="showNonConformityDialog"
