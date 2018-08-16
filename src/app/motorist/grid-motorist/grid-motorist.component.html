@@ -69,10 +69,10 @@
           </div>
         </ng-template>
       </table-empty>
-      <column class="photo-profile" [key]="'id'" [header]="''" [width]="'60'" [isSortable]="true">
+      <column class="photo-profile" [key]="'avatar'" [header]="''" [width]="'60'" [isSortable]="true">
         <ng-template let-item="item">
           <div class="cnt-img">
-            <img (click)="showMotoristModal(item)" style="width: 40px; height: 40px; border-radius: 50%;" src="{{'api/motorist/public/profileImage?id=' + item}}"
+            <img (click)="showMotoristModal(item)" style="width: 40px; height: 40px; border-radius: 50%;" src="{{item ? item.url : 'api/motorist/public/profileImage?id=' + item}}"
               alt="">
           </div>
         </ng-template>

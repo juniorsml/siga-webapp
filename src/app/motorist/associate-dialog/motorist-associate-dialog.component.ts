@@ -96,7 +96,10 @@ export class MotoristAssociateDialogComponent implements OnInit {
     this.showMotoristRegister = true;
   }
 
-  public motoristFormClose() {
+  public motoristFormClose(event) {
+    if (event){
+      this.getMotorists();
+    }
     this.showMotoristRegister = false;
   }
 

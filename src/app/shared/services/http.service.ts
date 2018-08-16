@@ -41,10 +41,26 @@ export class HttpService extends Http {
       .finally(() => this.onFinally());
   }
 
-  post(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
+   post(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
     this.beforeRequest();
     return super
       .post(this.getFullUrl(url), body, this.requestOptions(options))
+      .catch(this.onCatch)
+      .do(this.onSuccess, this.onError)
+      .finally(() => this.onFinally());
+  }
+
+  postFile(url: string, body: FormData, options?: RequestOptionsArgs): Observable<any> {
+    this.beforeRequest();
+    debugger;
+    options = this.defaultOptions.merge(options);
+    const userAuthToken = this.getToken();
+
+    if (userAuthToken.token) {
+      options.headers.append(userAuthToken.key, userAuthToken.token);
+    }
+    return super
+      .post(this.getFullUrl(url), body, options)
       .catch(this.onCatch)
       .do(this.onSuccess, this.onError)
       .finally(() => this.onFinally());
@@ -75,12 +91,18 @@ export class HttpService extends Http {
       options.headers.append('Content-Type', 'application/json');
     }
 
-    const userAuthToken = localStorage.getItem(environment.authTokenName);
+    const userAuthToken = this.getToken();
 
-    if (userAuthToken) {
-      options.headers.append('x-auth-token', userAuthToken);
+    if (userAuthToken.token) {
+      options.headers.append(userAuthToken.key, userAuthToken.token);
     }
     return options;
+  }
+
+  private getToken() {
+    const token = localStorage.getItem(environment.authTokenName);
+    const userAuthToken  = {'key': 'x-auth-token', token};
+    return userAuthToken ;
   }
 
   private getFullUrl(url: string): string {
