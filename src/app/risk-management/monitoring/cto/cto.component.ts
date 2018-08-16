@@ -27,6 +27,8 @@ export class CTOTripsComponent implements OnInit {
   public showSendDialog = false;
   public showMessageDialog = false;
   public showNonConformityDialog = false;
+  public showConfirmDialog = false;
+  public type: any; 
 
 
   closeColumnSelector() {
@@ -87,6 +89,11 @@ export class CTOTripsComponent implements OnInit {
      
        case 6:
          this.showNonConformityDialog = true;
+         break;
+       case 7:
+         this.showConfirmDialog = true;
+         this.type = 'RATC';
+
      }
 
 
@@ -95,9 +102,16 @@ export class CTOTripsComponent implements OnInit {
     this.showSummaryDialog = false;
   }
 
+  public onConfirm() {
+    this.showNonConformityDialog = true;
+    this.confirmDialogClose();
+  }
+
   public sendDialogClose = () => this.showSendDialog = false;
   public messageDialogClose = () => this.showMessageDialog = false;
   public nonConformityDialogClose = () => this.showNonConformityDialog = false;
+  public confirmDialogClose = () => this.showConfirmDialog = false;
+
 
 
 

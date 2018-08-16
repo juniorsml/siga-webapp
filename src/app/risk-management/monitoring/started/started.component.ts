@@ -102,18 +102,15 @@ export class StartedTripsComponent implements OnInit {
         this.showMessageDialog = true;
          break;
            case 6:
-             this.showNonConformityDialog = true;
-       
+             this.showNonConformityDialog = true;   
          break;
            case 7:
              this.showConfirmDialog = true;
-             this.type = "CTO";
-
-         
+             this.type = 'CTO';    
          break;
            case 8:
              this.showConfirmDialog = true;
-             this.type = "RATC";
+             this.type = 'RATC';
 
          }
 
