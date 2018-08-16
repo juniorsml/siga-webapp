@@ -21,6 +21,23 @@ export class MotoristService {
     return this
       .http
       .post('api/motorists', motorist)
+      .first()
+      .pipe(map(res => res.json()));
+  }
+
+  public updateMotorist(motorist: Motorist): Observable<any> {
+    return this
+      .http
+      .put(`api/motorists/${motorist.id}`, motorist)
+      .first()
+      .pipe(map(res => res.json()));
+  }
+
+  public uploadImage(formdata: FormData): Observable<any> {
+    return this
+      .http
+      .postFile('api/assets', formdata)
+      .first()
       .pipe(map(res => res.json()));
   }
 

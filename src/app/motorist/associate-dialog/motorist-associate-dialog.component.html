@@ -137,10 +137,10 @@
           [haveFooter]="haveFooter"
           (onCellClick)="onAdminMotoristCellClick($event)">
 
-          <column [key]="'id'" [header]="''" [minWidth]="'60'">
+          <column [key]="'avatar'" [header]="''" [minWidth]="'60'">
             <ng-template let-item="item">
               <div class="cnt-img">
-                <img (click)="showMotoristModal()" style="width: 40px; height: 40px; border-radius: 50%;" src="{{'api/motorist/public/profileImage?id=' + item}}"
+                <img (click)="showMotoristModal()" style="width: 40px; height: 40px; border-radius: 50%;" src="{{item ? item.url : 'api/motorist/public/profileImage?id=' + item}}"
                   alt="">
               </div>
             </ng-template>
@@ -187,7 +187,7 @@
 <sga-modal>
   <sga-register-motorist
     [showForm]="showMotoristRegister"
-    (onFormClose)="motoristFormClose()">
+    (onFormClose)="motoristFormClose($event)">
   </sga-register-motorist>
 </sga-modal>
 
@@ -195,6 +195,6 @@
   <sga-profile-dialog
     [showDialog]="showMotoristDialog"
     [selectedMotorist]="selectedMotorist"
-    (onDialogClose)="motoristDialogClose()">
+    (onDialogClose)="motoristDialogClose($event)">
   </sga-profile-dialog>
 </sga-modal>
