@@ -28,6 +28,8 @@ export class RadarComponent implements OnInit {
   public showSendDialog = false;
   public showMessageDialog = false;
   public showNonConformityDialog = false;
+  public showConfirmDialog = false;
+  public type: any;  
 
 
   closeColumnSelector() {
@@ -61,14 +63,14 @@ export class RadarComponent implements OnInit {
     this.filterDistance = null;
     this.filterLocation = null;
   }
-  public contextMenuSelected(index) { 
+  public contextMenuSelected(index) {
 
     switch (index) {
-     case 0: 
+     case 0:
         this.stepIndex = index;
         this.showSummaryDialog = true;
       break;
-     case 1:  
+     case 1: 
         this.stepIndex = index;
         this.showSummaryDialog = true;
     break;
@@ -83,15 +85,29 @@ export class RadarComponent implements OnInit {
       case 4:
         this.showSendDialog = true;
      break;
-      case 5: 
+      case 5:
         this.showMessageDialog = true;
         break;
-       case 5:
+       case 6:
          this.showNonConformityDialog = true;
+     break;
+       case 7:
+         this.showConfirmDialog = true;
+         this.type = 'CTO';    
+     break;
+       case 8:
+         this.showConfirmDialog = true;
+         this.type = 'RATC';
+
      }
   }
   public summaryDialogClose() {
     this.showSummaryDialog = false;
+  }
+
+  public onConfirm() {
+    this.showNonConformityDialog = true;
+    this.confirmDialogClose();
   }
 
   public updateSelectedTrip(event) {
@@ -102,6 +118,8 @@ export class RadarComponent implements OnInit {
   public sendDialogClose = () => this.showSendDialog = false;
   public messageDialogClose = () => this.showMessageDialog = false;
   public nonConformityDialogClose = () => this.showNonConformityDialog = false;
+  public confirmDialogClose = () => this.showConfirmDialog = false;
+
 
 
 
