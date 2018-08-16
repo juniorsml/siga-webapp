@@ -29,7 +29,7 @@ export class GridMotoristComponent implements OnInit {
   public showSendDialog = false;
   public showSendCommandDialog = false;
   public showMessageDialog = false;
-
+  public showNonConformityDialog = false;
 
   public headers = new Array<string>();
   public motorists = new Array<Motorist>();
@@ -92,7 +92,9 @@ export class GridMotoristComponent implements OnInit {
         break;
       case 4: 
         this.showMessageDialog = true;
-      
+        break;
+      case 5:
+        this.showNonConformityDialog = true;
     }
   }
 
@@ -102,12 +104,12 @@ export class GridMotoristComponent implements OnInit {
 
   public showMotoristModal = () => this.showMotoristDialog = true;
 
+  // Close Methods
   public motoristDialogClose = () => this.showMotoristDialog = false;
-
   public sendDialogClose = () => this.showSendDialog = false;
-
   public messageDialogClose = () => this.showMessageDialog = false;
-
+  public nonConformityDialogClose = () => this.showNonConformityDialog = false;
+  
   public whenHeaderReady = headers => this.headers = headers;
 
   public onToggleItem = itemsSelected => this.filterHeaders = itemsSelected;

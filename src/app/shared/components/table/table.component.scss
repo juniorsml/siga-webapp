@@ -208,8 +208,6 @@
 .ui-datatable-contextmenu {
     position: fixed;
     z-index: 1;
-    min-width: 160px;
-    padding: 5px 0;
     margin: 2px 0 0;
     font-size: 14px;
     text-align: left;
@@ -226,11 +224,11 @@
 }
 
 .ui-datatable-contextmenu-item {
-    height: 42px;
-    line-height: 42px;
-    padding-left: 16px;
+    height: 29px;
+    line-height: 29px;
+    padding: 0 10px;
     /* border-bottom: 1px solid #efefef; */
-    width: 182px;
+    width: 100%;
     color: #5a6a84;
     font-size: 13px;
     display: flex;

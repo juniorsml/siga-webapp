@@ -1,0 +1,178 @@
+
+<div class="modal-box" [ngClass]="showModal ? 'opened-modal' : ''">
+  <div class="container-form content-modal">
+    <div class="container-dialog-header columns column is-12 is-marginless">
+      <div class="area column is-narrow">
+        <h3>Não conformidade</h3>  
+      </div>
+      <div class="column btn-close"> 
+         <i  (click)="cancel()" class="fal fa-times is-pulled-right"></i>
+      </div>      
+    </div>
+    <div class="container-scroll columns column is-12 is-marginless" slimScroll>    
+      
+      <form novalidate class="columns is-multiline is-marginless is-1" #formNonConformity="ngForm">     
+      
+      
+          <div class="column is-8">
+            <div class="field">
+              <label class="label is-small">Tipo</label>
+              <div class="select is-small">
+                <select name="op">
+                  <option>Tipo</option>
+                  <option value="Tipo I">Tipo I</option>
+                  <option value="Tipo II">Tipo II</option>
+                  <option value="Tipo III">Tipo  III</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="column is-pulled-right is-4">
+            <label class="label is-small">Data/Hora</label>
+            <div class="control">
+              <input type="datetime-local" class="input is-small" placeholder="" name="model" required/>
+            </div>
+          </div>
+          <div class="column is-6">
+            <div class="field">
+              <label class="label is-small">Motivo</label>
+              <div class="control">
+                <input type="text" class="input is-small" placeholder="" name="alias" required/>
+              </div>
+            </div>            
+          </div>
+          <div class="column is-6">
+             <div class="field">
+
+            <label class="label is-small">Ação</label>
+            <div class="control">
+              <input type="text" class="input is-small" placeholder="" required/>
+            </div>
+            </div> 
+          </div>
+          <div class="column is-12">
+            <div class="field">
+            <label class="label is-small">Solução</label>
+            <div class="control">
+              <input type="text" class="input is-small" placeholder="" required/>
+            </div>
+          </div>
+          </div>
+          <div class="column is-5">
+            <div class="field">
+            <div class="field">
+              <label class="label is-small">Cidade</label>
+             <div class="control">
+                <input type="text" class="input is-small" placeholder="" required/>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="column  i is-2">
+            <div class="field">
+            <label class="label is-small">UF</label>
+            <div class="control">
+              <div class="select is-small">
+                <select name="uf">
+                  <option></option>
+                  <option value="SP">SP</option>
+                  <option value="AL">AL</option>
+                  <option value="BA">BA</option>
+                </select>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="column is-5">
+            <div class="field">
+              <label class="label is-small">Referência</label>
+              <div class="control">
+                <input type="text" class="input is-small" placeholder="" required/>
+              </div>
+            </div>
+          </div>
+           <div class="column is-5">
+            <div class="field">
+             <label class="label is-small">Rodovia</label>
+             <div class="control">
+               <input type="text" class="input is-small" placeholder="" required/>
+             </div>
+             </div>
+           </div>
+           <div class="column is-2">
+            <div class="field">
+             <label class="label is-small">Km</label>
+             <div class="control">
+               <input type="text" class="input is-small" placeholder="" required/>
+             </div>
+             </div>
+           </div>
+           <div class="column is-5">
+            <div class="field">
+             <label class="label is-small">Número do Processo</label>
+             <div class="control">
+               <input type="text" class="input is-small" placeholder="" required/>
+             </div>
+             </div>
+           </div>
+           <div class="column is-4">
+            <div class="field">
+             <label class="label is-small">Latitude</label>
+             <div class="control">
+               <input type="text" class="input is-small" placeholder="" required/>
+             </div>
+             </div>
+           </div>
+           <div class="column is-4">
+            <div class="field">            
+         
+             <label class="label is-small">Longitude</label>
+             <div class="control">
+               <input type="text" class="input is-small" placeholder="" required/>
+             </div>
+                </div>
+           </div>
+          
+           <div class="column is-4">
+            <div class="field">
+             <label class="label is-small">Data da atuação</label>
+             <div class="control">
+               <input type="datetime-local" class="input is-small" placeholder="" required/>
+             </div>
+             </div>
+           </div>
+           <div class="column is-4">
+            <div class="field">
+             <label class="label is-small">Data de acionamento</label>
+             <div class="control">
+               <input type="datetime-local" class="input is-small" placeholder="" required/>
+             </div>
+           </div>
+           </div>
+           <div class="column is-paddingless is-4">
+            <div class="field">
+             <label class="label is-small">Equipe acionada</label>
+             <div class="control">
+               <input type="text" class="input is-small" placeholder="" required/>
+             </div>
+             </div>
+           </div>
+           <div class="column is-paddingless is-4">
+             <label class="label is-small">Quantidade de vítimas</label>
+             <div class="control">
+               <input type="text" class="input is-small" placeholder="" required/>
+             </div>
+  
+           </div>
+
+
+        <!-- Botões de Ação -->
+        <div class="cnt-buttons column is-12 is-pulled-right">        
+          <button class="button" (click)="cancel()">Cancelar</button>        
+          <button type="submit" class="button is-first">Gerar Não Conformidade</button>
+        </div>
+      </form>
+  
+    </div>
+  </div>
+</div>

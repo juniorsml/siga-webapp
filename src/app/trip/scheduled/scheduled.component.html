@@ -129,11 +129,25 @@
             <span>Enviar mensagem</span>
           </ng-template>
         </menu-item>
+         <menu-item [enabled]="true">
+          <ng-template>
+            <span class="table-menu-icon item-context-menu fal fa-exclamation-triangle" aria-hidden="true">
+            </span>
+            <span>Gerar não-conformidade</span>
+          </ng-template>
+        </menu-item>
       </context-menu>
 
     </data-table>
   </div>
 
+  <!--  MODAIS  -->
+  <sga-modal>
+    <sga-register-nonconformity
+      [showModal]="showNonConformityDialog"
+      (onDialogClose)="nonConformityDialogClose()">
+    </sga-register-nonconformity>
+  </sga-modal>
 
 <sga-modal>
   <sga-send-command

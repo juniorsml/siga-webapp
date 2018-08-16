@@ -56,6 +56,8 @@ import { OptionComponent } from '../components/sidebar-configuration/option/opti
 import { SendCommandModalComponent } from '../components/send-command/send-command.component';
 import { SendMessageModalComponent } from '../components/send-message/send-message.component';
 
+import { RegisterNonConformityComponent } from '../components/register-nonconformity/register-nonconformity.component';
+
 import { PageNotFoundComponent } from '../layout/404page/not-found.component';
 import { ColumnSelectorComponent } from '../components/column-selector/column-selector.component';
 import { MapComponent } from '../components/map/map.component';
@@ -73,6 +75,9 @@ import { SummaryVehicleComponent } from '../components/summary-dialog/vehicle/su
 import { SummaryItineraryComponent } from '../components/summary-dialog/itinerary/summary-itinerary.component';
 
 import { CommandsHistoricComponent } from '../components/summary-dialog/commands-historic/commands-historic.component';
+
+import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -128,13 +133,15 @@ import { CommandsHistoricComponent } from '../components/summary-dialog/commands
     SpinnerComponent,
     SendCommandModalComponent,
     SendMessageModalComponent,
-    
+    RegisterNonConformityComponent,
+
     SummaryDialogComponent,
     SummaryComponent,
     SummaryMotoristComponent,
     SummaryVehicleComponent,
     SummaryItineraryComponent,
-    CommandsHistoricComponent
+    CommandsHistoricComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     HttpModule,
@@ -220,7 +227,10 @@ import { CommandsHistoricComponent } from '../components/summary-dialog/commands
     SummaryMotoristComponent,
     SummaryVehicleComponent,
     SummaryItineraryComponent,
-    CommandsHistoricComponent
+    CommandsHistoricComponent,
+
+    RegisterNonConformityComponent,
+    ConfirmDialogComponent
   ]
 })
 export class SharedModule {}

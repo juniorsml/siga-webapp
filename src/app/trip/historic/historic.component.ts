@@ -27,6 +27,7 @@ export class HistoricTripsComponent implements OnInit {
  public haveFooter = true;
  public showSendDialog = false;
  public showMessageDialog = false;
+ public showNonConformityDialog = false;
  public headers = new Array<string>();
  public filterHeaders = new Array<string>();
 
@@ -80,6 +81,9 @@ export class HistoricTripsComponent implements OnInit {
         break;
      case 5: 
        this.showMessageDialog = true;
+    break;
+      case 6:
+        this.showNonConformityDialog = true;
     }
 
 
@@ -97,6 +101,8 @@ export class HistoricTripsComponent implements OnInit {
   
   public sendDialogClose = () => this.showSendDialog = false;
   public messageDialogClose = () => this.showMessageDialog = false;
+  public nonConformityDialogClose = () => this.showNonConformityDialog = false;
+
  
   public onPlacesKeyUp() {}
 
