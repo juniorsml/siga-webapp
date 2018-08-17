@@ -139,7 +139,6 @@ export class RegisterVehicleComponent implements OnInit {
     console.log(this.place);
   }
 
-
   public onRayChanged = event => {
     if (event > 0) {
       const ray = event / 1000;
