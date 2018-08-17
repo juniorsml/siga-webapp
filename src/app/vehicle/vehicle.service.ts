@@ -24,6 +24,14 @@ export class VehicleService {
       .pipe(map(res => res.json()));
   }
 
+  public uploadImage(formdata: FormData): Observable<any> {
+    return this
+      .http
+      .postFile('api/assets', formdata)
+      .first()
+      .pipe(map(res => res.json()));
+  }
+
   public updateVehicle(vehicle: Vehicle): Observable<any> {
     return this
       .http

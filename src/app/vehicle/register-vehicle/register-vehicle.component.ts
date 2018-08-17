@@ -95,13 +95,13 @@ export class RegisterVehicleComponent implements OnInit {
     return this .vehicleService.uploadImage(formdata).map(avatar =>  { vehicle.avatar = avatar ; return of(vehicle); });
   }
 
-  public onRegister(vehicle){
+  public onRegister(vehicle) {
     this.formVehicle.reset();
     this.removeProfilePhoto();
     this.onFormClose.emit(vehicle);
   }
 
-  public updateVehicle(vehicle) { 
+  public updateVehicle(vehicle) {
      return this.vehicleService.updateVehicle(vehicle);
    }
 
@@ -134,22 +134,12 @@ export class RegisterVehicleComponent implements OnInit {
     this.onFormClose.emit();
   }
 
-  create(formMotorist: NgForm) {
-    const vehicle = {
-      // location: this.place.formatted_address,
-      ...formMotorist.value,
-      ...this.model
-    };
-
-    this
-      .vehicleService
-      .saveVehicle(vehicle)
-      .subscribe(
-        success => this.onSuccess(success),
-        error => this.onError(error));
-
-    console.log(vehicle);
+  create(formVehicle: NgForm): Observable<any> {
+    const motorist = this.buildVehicle(formVehicle, this.place);
+    return this .vehicleService.saveVehicle(motorist);
   }
+
+
 
   onSuccess(data) {
     console.log(data);

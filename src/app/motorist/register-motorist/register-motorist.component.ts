@@ -66,7 +66,10 @@ class RegisterForm {
 }
 
 @Component( {
-  selector: 'sga-register-motorist', templateUrl: './register-motorist.component.html', styleUrls: ['./register-motorist.component.scss'], providers: [MotoristService]
+    selector: 'sga-register-motorist', 
+    templateUrl: './register-motorist.component.html', 
+    styleUrls: ['./register-motorist.component.scss'], 
+    providers: [MotoristService]
 }
 
 ) export class RegisterMotoristComponent implements OnInit {
