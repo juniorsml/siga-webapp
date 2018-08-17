@@ -105,10 +105,15 @@ export class RegisterVehicleComponent implements OnInit {
      return this.vehicleService.updateVehicle(vehicle);
    }
 
-  public buildVehicle(formVehicle: NgForm) {
+  public buildVehicle(formVehicle: NgForm, place: any) {
     const vehicle = {
-      
-      ...formVehicle.value,
+      country: place.address_components.filter(obj => obj.types.includes('country') ).map(obj =>  obj.long_name)[0],
+      state: place.address_components.filter(obj => obj.types.includes('administrative_area_level_1') )
+                                                                                     .map(obj =>  obj.long_name)[0],
+      city: place.address_components.filter(obj => obj.types.includes('administrative_area_level_2') ).map(obj =>  obj.long_name)[0],
+      vicinity: place.vicinity ,
+      addressLine: place.formatted_address,
+       ...formVehicle.value,
        enabled: true
     };
     return vehicle;
@@ -144,7 +149,7 @@ export class RegisterVehicleComponent implements OnInit {
   }
 
   create(formVehicle: NgForm): Observable<any> {
-    const vehicle = this.buildVehicle(formVehicle);
+    const vehicle = this.buildVehicle(formVehicle, this.place);
     return this .vehicleService.saveVehicle(vehicle);
   }
 
