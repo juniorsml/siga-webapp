@@ -95,7 +95,11 @@ export class RegisterVehicleComponent implements OnInit {
     return this .vehicleService.uploadImage(formdata).map(avatar =>  { vehicle.avatar = avatar ; return of(vehicle); });
   }
 
-
+  public onRegister(vehicle){
+    this.formVehicle.reset();
+    this.removeProfilePhoto();
+    this.onFormClose.emit(vehicle);
+  }
 
   public updateVehicle(vehicle) { 
      return this.vehicleService.updateVehicle(vehicle);
