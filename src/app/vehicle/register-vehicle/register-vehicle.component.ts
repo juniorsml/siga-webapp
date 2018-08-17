@@ -105,6 +105,15 @@ export class RegisterVehicleComponent implements OnInit {
      return this.vehicleService.updateVehicle(vehicle);
    }
 
+  public buildVehicle(formVehicle: NgForm) {
+    const vehicle = {
+      
+      ...formVehicle.value,
+       enabled: true
+    };
+    return vehicle;
+  }
+
   // Show image profile
   addProfilePhoto(event: any) {
     if (event.target.files && event.target.files[0]) {
@@ -135,8 +144,8 @@ export class RegisterVehicleComponent implements OnInit {
   }
 
   create(formVehicle: NgForm): Observable<any> {
-    const motorist = this.buildVehicle(formVehicle, this.place);
-    return this .vehicleService.saveVehicle(motorist);
+    const vehicle = this.buildVehicle(formVehicle);
+    return this .vehicleService.saveVehicle(vehicle);
   }
 
 
