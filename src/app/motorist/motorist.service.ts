@@ -17,6 +17,14 @@ export class MotoristService {
       .pipe(map(res => <Array<Motorist>>res.json()));
   }
 
+  public getMotorist(motoristId:string): Observable<any> {
+    return this
+      .http
+      .get(`api/motorists/${motoristId}`)
+      .first()
+      .pipe(map(res => res.json()));
+  }
+
   public saveMotorist(motorist: Motorist): Observable<any> {
     return this
       .http
@@ -26,6 +34,7 @@ export class MotoristService {
   }
 
   public updateMotorist(motorist: Motorist): Observable<any> {
+    
     return this
       .http
       .put(`api/motorists/${motorist.id}`, motorist)
