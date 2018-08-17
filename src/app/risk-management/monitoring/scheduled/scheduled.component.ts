@@ -29,6 +29,9 @@ export class ScheduledTripsComponent implements OnInit {
   public showMessageDialog = false;
   public showNonConformityDialog = false;
 
+  public showConfirmDialog = false;
+  public type: any;  
+
 
   closeColumnSelector() {
     this.showColumnSelector = false;
@@ -88,16 +91,30 @@ export class ScheduledTripsComponent implements OnInit {
         break
        case 6:
          this.showNonConformityDialog = true;
-     }
+      break;
+           case 7:
+             this.showConfirmDialog = true;
+             this.type = 'CTO';    
+         break;
+           case 8:
+             this.showConfirmDialog = true;
+             this.type = 'RATC';
+
+         }
+
 
   }
   public summaryDialogClose() {
     this.showSummaryDialog = false;
   }
-
+  public onConfirm() {
+    this.showNonConformityDialog = true;
+    this.confirmDialogClose();
+  }
   public sendDialogClose = () => this.showSendDialog = false;
   public messageDialogClose = () => this.showMessageDialog = false;
   public nonConformityDialogClose = () => this.showNonConformityDialog = false;
+  public confirmDialogClose = () => this.showConfirmDialog = false;
 
 
 
