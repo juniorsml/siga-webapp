@@ -3,6 +3,10 @@ import { Component, Output, EventEmitter, Input, OnInit} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Map } from '../../shared/models/Map';
 
+import { Observable } from '../../../../node_modules/rxjs';
+import { of } from '../../../../node_modules/rxjs';
+import { concatMap} from '../../../../node_modules/rxjs/operators';
+
 class RegisterForm {
   // Vehicle Info
   vehiclePlate: string;
