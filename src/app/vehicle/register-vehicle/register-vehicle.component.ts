@@ -74,15 +74,32 @@ export class RegisterVehicleComponent implements OnInit {
     const vehicle$ = this.create(this.formVehicle);
     const request$ = vehicle$.pipe(
           concatMap(vehicle => this.uploadAvatarImage(this.file, vehicle)))
-            .concatMap( ( vehicle: any ) =>  (vehicle.value && vehicle.value.avatar) ? this.updateMotorist(vehicle.value)
+            .concatMap( ( vehicle: any ) =>  (vehicle.value && vehicle.value.avatar) ? this.updateVehicle(vehicle.value)
                                                                                                                         : of(vehicle));
           request$.subscribe(vehicle => this.onRegister(vehicle) , error => this.onError(error));
     }
   }
 
+  uploadAvatarImage(file: File, vehicle): Observable <any> {
+    if ( file === undefined || file === null ) {
+          return of(vehicle);
+    }
+
+    const formdata: FormData = new FormData();
+
+    formdata.append('file', file);
+    formdata.append('name', vehicle.name);
+    formdata.append('type', 'VEHICLES');
+    formdata.append('correlationEntityId', vehicle.correlationEntityId);
+
+    return this .vehicleService.uploadImage(formdata).map(avatar =>  { vehicle.avatar = avatar ; return of(vehicle); });
+  }
 
 
 
+  public updateVehicle(vehicle) { 
+     return this.vehicleService.updateVehicle(vehicle);
+   }
 
   // Show image profile
   addProfilePhoto(event: any) {

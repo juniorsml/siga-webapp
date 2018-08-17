@@ -17,12 +17,21 @@ export class VehicleService {
       .pipe(map(res => <Array<Vehicle>>res.json()));
   }
 
-  public saveVehicle(motorist: Vehicle): Observable<Vehicle> {
+  public saveVehicle(vehicle: Vehicle): Observable<Vehicle> {
     return this
       .http
-      .post('api/vehicles', motorist)
+      .post('api/vehicles', vehicle)
       .pipe(map(res => res.json()));
   }
+
+  public updateVehicle(vehicle: Vehicle): Observable<any> {
+    return this
+      .http
+      .put(`api/vehicles/${vehicle.id}`, vehicle)
+      .first()
+      .pipe(map(res => res.json()));
+  }
+
 
   public associateVehicle(ids: Array<string>): Observable<any> {
     return this
