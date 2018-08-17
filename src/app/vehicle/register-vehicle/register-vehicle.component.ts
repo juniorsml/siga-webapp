@@ -1,5 +1,5 @@
 import { VehicleService } from '../vehicle.service';
-import { Component, Output, EventEmitter, Input, OnInit} from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnInit,ViewChild} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Map } from '../../shared/models/Map';
 
@@ -43,6 +43,7 @@ class RegisterForm {
 export class RegisterVehicleComponent implements OnInit {
 
   model: RegisterForm = new RegisterForm();
+  @ViewChild('formVehicle') formVehicle: any;
   anttDueDate: Date;
   comunication: string;
 
@@ -56,6 +57,9 @@ export class RegisterVehicleComponent implements OnInit {
   @Output() onSave = new EventEmitter();
   @Output() onFormClose: EventEmitter<void> = new EventEmitter();
   public selectedTabIndex = 0;
+  file: File;
+  vehicle ;
+
 
   constructor(
     private map: Map,
@@ -64,6 +68,21 @@ export class RegisterVehicleComponent implements OnInit {
   ngOnInit() {
     this.map.createMapBoxMapInstance();
   }
+
+  onSubmit() {
+    if (this.formVehicle.valid) {
+    const vehicle$ = this.create(this.formVehicle);
+    const request$ = vehicle$.pipe(
+          concatMap(vehicle => this.uploadAvatarImage(this.file, vehicle)))
+            .concatMap( ( vehicle: any ) =>  (vehicle.value && vehicle.value.avatar) ? this.updateMotorist(vehicle.value)
+                                                                                                                        : of(vehicle));
+          request$.subscribe(vehicle => this.onRegister(vehicle) , error => this.onError(error));
+    }
+  }
+
+
+
+
 
   // Show image profile
   addProfilePhoto(event: any) {
@@ -88,13 +107,7 @@ export class RegisterVehicleComponent implements OnInit {
      (removeImage as HTMLElement).style.display = 'none';
    }
 
-  onSubmit(form: NgForm) {
-      if (form.valid) {
-        this.create(form);
-        console.log('Form Submitted!');
-        form.reset();
-      }
-    }
+
 
   cancel() {
     this.onFormClose.emit();
