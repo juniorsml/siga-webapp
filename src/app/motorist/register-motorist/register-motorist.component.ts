@@ -35,33 +35,41 @@ class RegisterForm {
   lastName: string;
   dateOfBirth: Date;
   motherName: string;
-  document: string;
+  documentType: string;
   documentId: string;
   maritalStatus: string;
   wifeName: string;
   haveChildren: string;
-  howManyChildren: number;
+  numberOfChildren: number;
   educationalLevel: string;
   cnhNumber: string;
   cnhCategory: string;
   dueDate: string;
-  ray: number; // Address
+  ray: number;
+   // Address
+  addressNumber: string;
+  complementAddress:string;
   addressLine: string;
   country: string;
   city: string;
   state: string;
+  phone:string;
   cellPhone: string;
   messagePhone: string;
-  landlinePhone: string;
-  nextelPhone: string; // Profile
+
+  nextelPhone: string; 
+  // Profile
   bond: string;
-  dueDateMopp: Date;
-  dueDateAso: Date;
-  dueDateCdd: Date;
+  moppDocDueDate: Date;
+  asoDocDueDate: Date;
+  cddDocDueDate: Date;
 }
 
 @Component( {
-  selector: 'sga-register-motorist', templateUrl: './register-motorist.component.html', styleUrls: ['./register-motorist.component.scss'], providers: [MotoristService]
+    selector: 'sga-register-motorist', 
+    templateUrl: './register-motorist.component.html', 
+    styleUrls: ['./register-motorist.component.scss'], 
+    providers: [MotoristService]
 }
 
 ) export class RegisterMotoristComponent implements OnInit {
@@ -165,6 +173,9 @@ class RegisterForm {
        enabled: true
     };
     // hack para api enquanto nao aprendo do jeito certo
+    // if(){
+
+    // }
     motorist.asoDocDueDate = motorist.asoDocDueDate.replace(/-/gi, '/');
     motorist.cddDocDueDate = motorist.cddDocDueDate.replace(/-/gi, '/');
     motorist.moppDocDueDate = motorist.moppDocDueDate.replace(/-/gi, '/');

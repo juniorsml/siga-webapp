@@ -1,7 +1,11 @@
 import { VehicleService } from '../vehicle.service';
-import { Component, Output, EventEmitter, Input, OnInit} from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnInit,ViewChild} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Map } from '../../shared/models/Map';
+
+import { Observable } from '../../../../node_modules/rxjs';
+import { of } from '../../../../node_modules/rxjs';
+import { concatMap} from '../../../../node_modules/rxjs/operators';
 
 class RegisterForm {
   // Vehicle Info
@@ -39,6 +43,7 @@ class RegisterForm {
 export class RegisterVehicleComponent implements OnInit {
 
   model: RegisterForm = new RegisterForm();
+  @ViewChild('formVehicle') formVehicle: any;
   anttDueDate: Date;
   comunication: string;
 
@@ -52,6 +57,9 @@ export class RegisterVehicleComponent implements OnInit {
   @Output() onSave = new EventEmitter();
   @Output() onFormClose: EventEmitter<void> = new EventEmitter();
   public selectedTabIndex = 0;
+  file: File;
+  vehicle ;
+
 
   constructor(
     private map: Map,
@@ -59,6 +67,56 @@ export class RegisterVehicleComponent implements OnInit {
 
   ngOnInit() {
     this.map.createMapBoxMapInstance();
+  }
+
+  onSubmit() {
+    if (this.formVehicle.valid) {
+    const vehicle$ = this.create(this.formVehicle);
+    const request$ = vehicle$.pipe(
+          concatMap(vehicle => this.uploadAvatarImage(this.file, vehicle)))
+            .concatMap( ( vehicle: any ) =>  (vehicle.value && vehicle.value.avatar) ? this.updateVehicle(vehicle.value)
+                                                                                                                        : of(vehicle));
+          request$.subscribe(vehicle => this.onRegister(vehicle) , error => this.onError(error));
+    }
+  }
+
+  uploadAvatarImage(file: File, vehicle): Observable <any> {
+    if ( file === undefined || file === null ) {
+          return of(vehicle);
+    }
+
+    const formdata: FormData = new FormData();
+
+    formdata.append('file', file);
+    formdata.append('name', vehicle.name);
+    formdata.append('type', 'VEHICLES');
+    formdata.append('correlationEntityId', vehicle.correlationEntityId);
+
+    return this .vehicleService.uploadImage(formdata).map(avatar =>  { vehicle.avatar = avatar ; return of(vehicle); });
+  }
+
+  public onRegister(vehicle) {
+    this.formVehicle.reset();
+    this.removeProfilePhoto();
+    this.onFormClose.emit(vehicle);
+  }
+
+  public updateVehicle(vehicle) {
+     return this.vehicleService.updateVehicle(vehicle);
+   }
+
+  public buildVehicle(formVehicle: NgForm, place: any) {
+    const vehicle = {
+      country: place.address_components.filter(obj => obj.types.includes('country') ).map(obj =>  obj.long_name)[0],
+      state: place.address_components.filter(obj => obj.types.includes('administrative_area_level_1') )
+                                                                                     .map(obj =>  obj.long_name)[0],
+      city: place.address_components.filter(obj => obj.types.includes('administrative_area_level_2') ).map(obj =>  obj.long_name)[0],
+      vicinity: place.vicinity ,
+      addressLine: place.formatted_address,
+       ...formVehicle.value,
+       enabled: true
+    };
+    return vehicle;
   }
 
   // Show image profile
@@ -84,34 +142,18 @@ export class RegisterVehicleComponent implements OnInit {
      (removeImage as HTMLElement).style.display = 'none';
    }
 
-  onSubmit(form: NgForm) {
-      if (form.valid) {
-        this.create(form);
-        console.log('Form Submitted!');
-        form.reset();
-      }
-    }
+
 
   cancel() {
     this.onFormClose.emit();
   }
 
-  create(formMotorist: NgForm) {
-    const vehicle = {
-      // location: this.place.formatted_address,
-      ...formMotorist.value,
-      ...this.model
-    };
-
-    this
-      .vehicleService
-      .saveVehicle(vehicle)
-      .subscribe(
-        success => this.onSuccess(success),
-        error => this.onError(error));
-
-    console.log(vehicle);
+  create(formVehicle: NgForm): Observable<any> {
+    const vehicle = this.buildVehicle(formVehicle, this.place);
+    return this .vehicleService.saveVehicle(vehicle);
   }
+
+
 
   onSuccess(data) {
     console.log(data);
@@ -138,7 +180,6 @@ export class RegisterVehicleComponent implements OnInit {
     this.place = null;
     console.log(this.place);
   }
-
 
   public onRayChanged = event => {
     if (event > 0) {
