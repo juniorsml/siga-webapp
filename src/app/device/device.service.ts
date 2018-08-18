@@ -27,4 +27,12 @@ export class DeviceService {
       .pipe(map(res => res.json()));
   }
 
+  public updateDevice(device: Device): Observable<any> {
+    return this
+      .http
+      .put(`api/devices/${device.id}`, device)
+      .first()
+      .pipe(map(res => res.json()));
+  }
+
  }
