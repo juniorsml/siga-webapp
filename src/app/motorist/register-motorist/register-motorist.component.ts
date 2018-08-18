@@ -1,30 +1,9 @@
-import {
-  Component,
-  Output,
-  OnInit,
-  EventEmitter,
-  Input,
-  ViewChild
-}
+import { Component, Output, OnInit, EventEmitter, Input, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
-from '@angular/core';
-import {
-  NgForm
-}
+import { MotoristService } from '../motorist.service'; 
+import { Map } from '../../shared/models/Map';
 
-from '@angular/forms';
-import {
-  MotoristService
-}
-
-from '../motorist.service';
-import {
-  Map
-}
-
-
-
-from '../../shared/models/Map';
 import { Observable } from '../../../../node_modules/rxjs';
 import { of } from '../../../../node_modules/rxjs';
 import { concatMap} from '../../../../node_modules/rxjs/operators';
