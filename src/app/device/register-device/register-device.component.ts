@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter,Input } from '@angular/core';
+import { Component, Output, EventEmitter, Input, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { DeviceService } from '../device.service';
@@ -35,11 +35,22 @@ export class RegisterDeviceComponent {
 
 
   model: RegisterForm = new RegisterForm();
-  @ViewChild('formDevice') formMotorist: any;
+  @ViewChild('formDevice') formDevice: any;
 
-  public onSubmit(deviceForm: NgForm) {
-    const {} = deviceForm.value;
-    this.onFinish.emit();
+  device;
+
+  constructor(private deviceService: DeviceService) { }
+
+
+
+  public onSubmit() {
+     if(this.formDevice,valid) {
+       
+       const device$ = this.create(this.formDevice);
+       const request$ = device$.pipe(
+             concatMap((device : any) => (device.value) ? this.updateDevice(device.value) : of(device)));
+       request$.subscribe(device => this.onRegister(device) , error =>this.onError(error));
+     }
   }
 
 
