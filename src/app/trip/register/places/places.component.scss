@@ -8,204 +8,205 @@
   // bottom: 22px;
   // top: 79px;
   display: flex;
-  .slimscroll-wrapper{
-    width: 378px !important;
 
-  }
-  .slimscroll-bar{
-    display: block !important;
-    opacity:0.4 !important;
-  }
-  .places-sidebar{
-    height:70vh !important
-  }
-  .places-sidebar,
-  .places-detail {
-    height: 100%; 
+}
+.slimscroll-wrapper{
+  width: 378px !important;
 
-    padding: 4px 10px 0 10px;
+}
+.slimscroll-bar{
+  display: block !important;
+  opacity:0.4 !important;
+}
+.places-sidebar{
+  height:70vh !important
+}
+.places-sidebar,
+.places-detail {
+  height: 100%; 
+
+  padding: 4px 10px 0 10px;
+}
+.trip-places-header {
+  color: #38425b;
+  padding: 0 0 6px 0;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 7%;
+
+  i.fa {
+    position: absolute;
+    top: 0;
+    right: 10px;
   }
-  .trip-places-header {
+  .columns {
+    margin-top: 1em;
+  }
+  .media-left {
+    margin-right: 1rem;
+    position: absolute;
+    top: 0;
+  }
+}
+.trip-places-ac {
+  height: 11%;
+
+  .places {
+    margin-top: 1em
+  }
+  
+  .place-added{
+    margin: 0px 15px;
+    padding: 24px 11px;
+    background: #a6adb7;
+    color: #FFF;
+    position:relative;
+    display: flex;
+    align-items:center;
+    transition:all 150ms ease;
+    
+    .place-tags {        
+        position: absolute;
+         top: 46px;
+         left: 40px;
+      span{
+        background: #888b92;
+        padding: 1px 6px;
+        border-radius: 3px;
+        font-size: 12px;
+      }
+     
+    }
+
+    &:hover{
+      background: #8b939d;
+      .remove-place, .add-place {
+        visibility:visible;
+        opacity:1;
+      }
+    }
+
+    &:not(:last-child):after{ 
+      content: "";
+      position: absolute;
+      z-index: 9;
+      width: 2px;
+      border-left-style: dotted;
+      border-left-width: 3.5px;
+      border-left-color: white;
+      height: 20px;
+      bottom: -10px;
+      left: 17px;
+    }
+
+    .remove-place{
+      margin-left: auto;
+      cursor: pointer;
+      visibility:hidden;
+      opacity:0;
+      transition:all 150ms ease;
+    }
+      
+    .add-place {
+     
+      transition: all 150ms ease;
+      margin-left: auto;
+      cursor: pointer;
+      visibility:hidden;
+      opacity:0;
+    }
+    .controls{
+      margin-right: auto;
+      float: right;
+      width: 50px;
+      display: flex;
+      position: absolute;
+      right: 15px;
+    }
+    .reverse{
+      position: absolute;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      background: #4f5564;
+      /* border-radius: 50%; */
+      width: 27px;
+      height: 26px;
+      bottom: -11px;
+      right: 3px;
+      transform: rotate(90deg);
+      color: #FFF;
+    }
+    
+    .title-place-added{
+      font-size: 13.5px;
+    }
+
+    .fa-exchange-alt {
+      font-size: 9px;
+      &:before{      
+        transform: rotate(90deg);
+        font-weight: 300;
+        font-size: 1.5em;
+        cursor: pointer;
+      }
+    }
+
+    .number-radius {
+      border-radius: 50%;
+      border: solid 1px;
+      padding: 0px 7px;
+      vertical-align: middle;
+      text-align: center;
+      margin-right: 5px;
+    }
+  }
+  
+}
+
+.places-sidebar {
+  position: relative;
+  width: 378px;
+  padding-right: 10px;
+
+  .trip-places-lv {
+    height: 79.5%;
+    border-radius: 3px;
+    text-align: center;
+    min-height: 175px;
+
+    i {
+      font-size: 4em;
+      color: #bababa;
+      margin-top: .8em;
+    }
+  }
+}
+.places-detail {
+  position: absolute;
+  left: 425px;
+  right: 33px;
+
+  padding: 0;
+  .cnt-details {
+    padding: 12px;
+  }
+  .places-detail-header {
     color: #38425b;
-    padding: 0 0 6px 0;
-    font-size: 14px;
+    font-size: 13px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 7%;
-
-    i.fa {
-      position: absolute;
-      top: 0;
-      right: 10px;
-    }
-    .columns {
-      margin-top: 1em;
-    }
-    .media-left {
-      margin-right: 1rem;
-      position: absolute;
-      top: 0;
-    }
+    border-bottom: 1px solid #e7e9ef;
   }
-  .trip-places-ac {
-    height: 11%;
-  
-    .places {
-      margin-top: 1em
-    }
-    
-    .place-added{
-      margin: 0px 15px;
-      padding: 24px 11px;
-      background: #a6adb7;
-      color: #FFF;
-      position:relative;
-      display: flex;
-      align-items:center;
-      transition:all 150ms ease;
-      
-      .place-tags {        
-          position: absolute;
-           top: 46px;
-           left: 40px;
-        span{
-          background: #888b92;
-          padding: 1px 6px;
-          border-radius: 3px;
-          font-size: 12px;
-        }
-       
-      }
-
-      &:hover{
-        background: #8b939d;
-        .remove-place, .add-place {
-          visibility:visible;
-          opacity:1;
-        }
-      }
-
-      &:not(:last-child):after{ 
-        content: "";
-        position: absolute;
-        z-index: 9;
-        width: 2px;
-        border-left-style: dotted;
-        border-left-width: 3.5px;
-        border-left-color: white;
-        height: 20px;
-        bottom: -10px;
-        left: 17px;
-      }
-
-      .remove-place{
-        margin-left: auto;
-        cursor: pointer;
-        visibility:hidden;
-        opacity:0;
-        transition:all 150ms ease;
-      }
-        
-      .add-place {
-       
-        transition: all 150ms ease;
-        margin-left: auto;
-        cursor: pointer;
-        visibility:hidden;
-        opacity:0;
-      }
-      .controls{
-        margin-right: auto;
-        float: right;
-        width: 50px;
-        display: flex;
-        position: absolute;
-        right: 15px;
-      }
-      .reverse{
-        position: absolute;
-        align-items: center;
-        justify-content: center;
-        display: flex;
-        background: #4f5564;
-        /* border-radius: 50%; */
-        width: 27px;
-        height: 26px;
-        bottom: -11px;
-        right: 3px;
-        transform: rotate(90deg);
-        color: #FFF;
-      }
-      
-      .title-place-added{
-        font-size: 13.5px;
-      }
-
-      .fa-exchange-alt {
-        font-size: 9px;
-        &:before{      
-          transform: rotate(90deg);
-          font-weight: 300;
-          font-size: 1.5em;
-          cursor: pointer;
-        }
-      }
-
-      .number-radius {
-        border-radius: 50%;
-        border: solid 1px;
-        padding: 0px 7px;
-        vertical-align: middle;
-        text-align: center;
-        margin-right: 5px;
-      }
-    }
-    
+  .places-info-title {
+    color: #8d96ad;
+    font-size: 12px;
   }
-
-  .places-sidebar {
-    position: relative;
-    width: 378px;
-    padding-right: 10px;
-
-    .trip-places-lv {
-      height: 79.5%;
-      border-radius: 3px;
-      text-align: center;
-      min-height: 175px;
-
-      i {
-        font-size: 4em;
-        color: #bababa;
-        margin-top: .8em;
-      }
-    }
-  }
-  .places-detail {
-    position: absolute;
-    left: 425px;
-    right: 33px;
-
-    padding: 0;
-    .cnt-details {
-      padding: 12px;
-    }
-    .places-detail-header {
-      color: #38425b;
-      font-size: 13px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #e7e9ef;
-    }
-    .places-info-title {
-      color: #8d96ad;
-      font-size: 12px;
-    }
-    .places-info {
-      color: #38425b;
-      font-size: 13px;
-    }
+  .places-info {
+    color: #38425b;
+    font-size: 13px;
   }
 }
