@@ -1,30 +1,9 @@
-import {
-  Component,
-  Output,
-  OnInit,
-  EventEmitter,
-  Input,
-  ViewChild
-}
+import { Component, Output, OnInit, EventEmitter, Input, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
-from '@angular/core';
-import {
-  NgForm
-}
+import { MotoristService } from '../motorist.service'; 
+import { Map } from '../../shared/models/Map';
 
-from '@angular/forms';
-import {
-  MotoristService
-}
-
-from '../motorist.service';
-import {
-  Map
-}
-
-
-
-from '../../shared/models/Map';
 import { Observable } from '../../../../node_modules/rxjs';
 import { of } from '../../../../node_modules/rxjs';
 import { concatMap} from '../../../../node_modules/rxjs/operators';
@@ -66,17 +45,19 @@ class RegisterForm {
 }
 
 @Component( {
-    selector: 'sga-register-motorist', 
-    templateUrl: './register-motorist.component.html', 
-    styleUrls: ['./register-motorist.component.scss'], 
+    selector: 'sga-register-motorist',
+    templateUrl: './register-motorist.component.html',
+    styleUrls: ['./register-motorist.component.scss'],
     providers: [MotoristService]
-}
+})
 
-) export class RegisterMotoristComponent implements OnInit {
+export class RegisterMotoristComponent implements OnInit {
+
   model: RegisterForm=new RegisterForm();
   @Input() public showForm: boolean;
   @Output() onFormClose: EventEmitter < any > = new EventEmitter();
   @ViewChild('formMotorist') formMotorist: any;
+
   public selectedTabIndex=0;
   public ray=1000;
   private place: any;
@@ -97,7 +78,7 @@ class RegisterForm {
     const motorist$ = this.create(this.formMotorist);
     const request$ = motorist$.pipe(
           concatMap(motorist => this.uploadAvatarImage(this.file, motorist)))
-            .concatMap( ( motorist: any ) =>  (motorist.value && motorist.value.avatar) ? this.updateMotorist(motorist.value)
+          .concatMap( ( motorist: any ) =>  (motorist.value && motorist.value.avatar) ? this.updateMotorist(motorist.value)
                                                                                                                         : of(motorist));
           request$.subscribe(motorist => this.onRegister(motorist) , error => this.onError(error));
     }
@@ -157,7 +138,7 @@ class RegisterForm {
     const motorist = this.buildMotorist(formMotorist, this.place);
     return this .motoristService.saveMotorist(motorist);
   }
- public  updateMotorist(motorist) { 
+ public  updateMotorist(motorist) {
     return this.motoristService.updateMotorist(motorist);
   }
 

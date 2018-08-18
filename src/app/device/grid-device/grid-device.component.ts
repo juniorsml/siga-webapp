@@ -1,13 +1,17 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TableClickEvent } from '../../shared/components/table/table.component';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { OptionClickEvent } from '../../shared/events/OptionClickEvent';
 
+import { DeviceService } from '../device.service';
+
+import { Device } from '../../shared/models/api/Device';
 
 @Component({
   selector: 'sga-grid-device',
   templateUrl: './grid-device.component.html',
-  styleUrls: ['./grid-device.component.scss']
+  styleUrls: ['./grid-device.component.scss'],
+  providers: [DeviceService]
 })
 export class GridDeviceComponent implements OnInit {
 
@@ -38,10 +42,9 @@ export class GridDeviceComponent implements OnInit {
 
   @Input()
   public showBreadcrumb = true;
-
+  
   @Input()
-  public devices = new Array<any>();
-
+  public devices = new Array<Device>();
 
   closeColumnSelector() {
     this.showColumnSelector = false;
@@ -58,10 +61,24 @@ export class GridDeviceComponent implements OnInit {
     }
   }
 
-  constructor(private router: ActivatedRoute, private route: Router) { }
+  constructor( private deviceService: DeviceService, private route: Router) { }
 
   ngOnInit(): void {
-    this.router.data.subscribe(data => this.devices = data.devices);
+    this.getDevices();
+  }
+
+
+  private getDevices() {
+    this
+      .deviceService
+      .getDevices()
+      .subscribe(
+        data => this.onSuccess(data),
+        error => alert(error));
+  }
+
+  private onSuccess(data) {
+    this.devices = data;
   }
 
   public onPlacesFiltered(event) {
