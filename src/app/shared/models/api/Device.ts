@@ -1,13 +1,11 @@
 import { Subscriber } from './Subscriber';
 
 export class Device {
+  tipo:any;
   id: string;
-  name?: any;
+  maek?: any;
+  tech?: any;
   model?: any;
-  technology?: any;
-  updated: string;
-  location: string;
-  speed: string;
-  batterylevel: string;
+  nickname?: any;
   subscribers: Array<Subscriber>;
 }
