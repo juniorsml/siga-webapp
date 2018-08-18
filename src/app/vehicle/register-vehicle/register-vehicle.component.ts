@@ -106,6 +106,7 @@ export class RegisterVehicleComponent implements OnInit {
    }
 
   public buildVehicle(formVehicle: NgForm, place: any) {
+    debugger;
     const vehicle = {
       country: place.address_components.filter(obj => obj.types.includes('country') ).map(obj =>  obj.long_name)[0],
       state: place.address_components.filter(obj => obj.types.includes('administrative_area_level_1') )

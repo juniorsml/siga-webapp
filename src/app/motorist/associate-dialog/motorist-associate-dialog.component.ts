@@ -35,11 +35,13 @@ export class MotoristAssociateDialogComponent implements OnInit {
   public searchText: any;
   public hideAdminErrorModal = true;
 
+
   constructor(private motoristService: MotoristService) { }
 
   ngOnInit(): void {
     this.getMotorists();
   }
+  
 
   private getMotorists() {
     this
@@ -69,9 +71,10 @@ export class MotoristAssociateDialogComponent implements OnInit {
     this.addList.push(motorist);
   }
 
-  public showMotoristModal(id) {
+  public showMotoristModal(motorist) {
+    debugger;
+    this.selectedMotorist = motorist;
     this.showMotoristDialog = true;
-    this.selectedMotorist = this.motorists.filter(m => m.id === id)[0];
   }
 
   public motoristDialogClose() {

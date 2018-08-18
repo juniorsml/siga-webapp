@@ -137,12 +137,13 @@
           [haveFooter]="haveFooter"
           (onCellClick)="onAdminMotoristCellClick($event)">
 
-          <column [key]="'avatar'" [header]="''" [minWidth]="'60'">
+          <column  [header]="''" [minWidth]="'60'">
             <ng-template let-item="item">
               <div class="cnt-img">
-                <img (click)="showMotoristModal()" style="width: 40px; height: 40px; border-radius: 50%;" src="{{item ? item.url : 'api/motorist/public/profileImage?id=' + item}}"
+                <img (click)=showMotoristModal(item) id={{item.id}}  style="width: 40px; height: 40px; border-radius: 50%;" src="{{item.avatar ? item.avatar.url : 'api/motorist/public/profileImage?id=' + item}}"
                   alt="">
-              </div>
+                  
+                  </div>
             </ng-template>
           </column>
           <column [key]="'documentId'" [header]="'ID'" [width]="'40'" [isSortable]="true"> 

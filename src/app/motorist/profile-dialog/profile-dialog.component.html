@@ -16,7 +16,7 @@
           <div class="columns column is-12">
               <div class="column is-narrow cnt-profile">
                 <div class="profile-photo">
-                  <img *ngIf="selectedMotorist != null" src="{{'api/motorist/public/profileImage?id=' + selectedMotorist?.id}}"
+                  <img *ngIf="selectedMotorist != null" src="{{selectedMotorist.avatar.url}}"
                   alt="">
                 </div>                
               </div>
