@@ -53,11 +53,17 @@ export class RegisterDeviceComponent {
      }
   }
 
+  public onRegister(device){
+    this.formDevice.reset();   
+    this.onFinish.emit(device);
+  }
+
 
 
 
 
   onCancel() {
     this.onFinish.emit();
+    this.formDevice.reset();
   }
 }
