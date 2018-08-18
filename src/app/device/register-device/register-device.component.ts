@@ -16,7 +16,6 @@ class RegisterForm {
   location: string;
   speed: string;
   batterylevel: string;
-  subscribers: Array<Subscriber>;
 }
 
 
@@ -44,8 +43,7 @@ export class RegisterDeviceComponent {
 
 
   public onSubmit() {
-     if(this.formDevice,valid) {
-       
+     if ( this.formDevice.valid ) {
        const device$ = this.create(this.formDevice);
        const request$ = device$.pipe(
              concatMap((device : any) => (device.value) ? this.updateDevice(device.value) : of(device)));
@@ -53,14 +51,26 @@ export class RegisterDeviceComponent {
      }
   }
 
-  public onRegister(device){
-    this.formDevice.reset();   
+  public onRegister(device) {
+    this.formDevice.reset();
     this.onFinish.emit(device);
   }
 
+  create(formDevice: NgForm): Observable<any> {
+    const device = this.buildDevice(formDevice);
+    return this .deviceService.saveDevice(device);
+  }
 
+  public updateDevice(device) {
+     return this.deviceService.updateDevice(device);
+  }
 
+  public buildDevice(formDevice: NgForm) {
+    const device = formDevice.value;
+    return device;
+  }
 
+  onError=error=>console.log(error);
 
   onCancel() {
     this.onFinish.emit();
