@@ -364,15 +364,15 @@
                                  type="text" 
                                  class="input" 
                                  placeholder="Nº" 
-                                 name="ownerDocument" 
-                                 [(ngModel)]="model.ownerDocument"
-                                 #ownerDocument="ngModel" 
-                                 [ngClass]="{'is-danger': ownerDocument.invalid && (ownerDocument.dirty || ownerDocument.touched)}"
+                                 name="ownerDocumentId" 
+                                 [(ngModel)]="model.ownerDocumentId"
+                                 #ownerDocumentId="ngModel" 
+                                 [ngClass]="{'is-danger': ownerDocumentId.invalid && (ownerDocumentId.dirty || ownerDocumentId.touched)}"
                            required>
 
                        </div>
-                       <div class="form-control-feedback" *ngIf="ownerDocument.errors && (ownerDocument.dirty || ownerDocument.touched)">
-                         <p class="help is-danger" *ngIf="ownerDocument.errors.required">Nº é obrigatório</p>
+                       <div class="form-control-feedback" *ngIf="ownerDocumentId.errors && (ownerDocumentId.dirty || ownerDocumentId.touched)">
+                         <p class="help is-danger" *ngIf="ownerDocumentId.errors.required">Nº é obrigatório</p>
                        </div>
                       
                       

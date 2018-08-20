@@ -124,10 +124,11 @@ export class RegisterVehicleComponent implements OnInit {
          complement: formVehicle.value.complement,
          addressNumber: formVehicle.value.addressNumber
       },
-      // TODO : usar formgroup para criar objeto  
+      // TODO : usar formgroup para criar objeto
        ...formVehicle.value,
        enabled: true
     };
+    vehicle.anttDueDate = vehicle.anttDueDate.replace(/-/gi, '/');
     return vehicle;
   }
 
