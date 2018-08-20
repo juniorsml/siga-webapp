@@ -57,6 +57,9 @@ export class RegisterVehicleComponent implements OnInit {
   @Output() onSave = new EventEmitter();
   @Output() onFormClose: EventEmitter<void> = new EventEmitter();
   public selectedTabIndex = 0;
+
+  mobilephone=['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  landlinephone=['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   file: File;
   vehicle ;
 
@@ -106,7 +109,7 @@ export class RegisterVehicleComponent implements OnInit {
    }
 
   public buildVehicle(formVehicle: NgForm, place: any) {
-    debugger;
+    
     const vehicle = {
       country: place.address_components.filter(obj => obj.types.includes('country') ).map(obj =>  obj.long_name)[0],
       state: place.address_components.filter(obj => obj.types.includes('administrative_area_level_1') )
@@ -146,6 +149,8 @@ export class RegisterVehicleComponent implements OnInit {
 
 
   cancel() {
+    this.formVehicle.reset();
+    this.removeProfilePhoto();
     this.onFormClose.emit();
   }
 
