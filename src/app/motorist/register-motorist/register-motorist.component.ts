@@ -54,6 +54,7 @@ class RegisterForm {
 export class RegisterMotoristComponent implements OnInit {
 
   model: RegisterForm=new RegisterForm();
+  
   @Input() public showForm: boolean;
   @Output() onFormClose: EventEmitter < any > = new EventEmitter();
   @ViewChild('formMotorist') formMotorist: any;

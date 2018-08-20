@@ -7,13 +7,13 @@ export class Truck {
   comunication: string;
   fleetNumber: number;
   // --  informacoes da carreta --
-  tipo : string;
+  tipo: string;
   colour: string;
-  capacity:number;
+  capacity: number;
   make: string;
   model: string;
   number: number;
-  numberPlate: string; 
+  numberPlate: string;
   radius: number;
   renavan: number;
   tech: string;
@@ -21,12 +21,12 @@ export class Truck {
   year: number;
   // Informacoes do motorista --
 
-  ownerDocument: number; 
+  ownerDocument: number;
   ownerName:  string;
   ownerDocumentType:  string;
   ownerDocumentId: number;
-  ownerPhone:  string;
+  ownerPhone: string;
   ownerCellPhone:  string;
-  location:any;
+  location: any;
   subscribers: Array<Subscriber>;
 }

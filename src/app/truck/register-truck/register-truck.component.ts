@@ -2,7 +2,43 @@ import { Component, Output, OnInit, EventEmitter, ViewChild, Input } from '@angu
 import { NgForm } from '@angular/forms';
 import { Map } from '../../shared/models/Map';
 
+import { TruckService } from '../truck.service'; 
+
+
+import { Observable } from '../../../../node_modules/rxjs';
+import { of } from '../../../../node_modules/rxjs';
+import { concatMap} from '../../../../node_modules/rxjs/operators';
+
+
+
 class RegisterForm {
+
+    id: string;
+    anttDueDate: Date;
+    anttNumber: string;
+    comunication: string;
+    fleetNumber: number;
+    // --  informacoes da carreta --
+    tipo: string;
+    colour: string;
+    capacity: number;
+    make: string;
+    model: string;
+    number: number;
+    numberPlate: string;
+    radius: number;
+    renavan: number;
+    tech: string;
+    vehicleType: string;
+    year: number;
+    // Informacoes do motorista --
+
+    ownerDocument: number;
+    ownerName:  string;
+    ownerDocumentType:  string;
+    ownerDocumentId: number;
+    ownerPhone: string;
+    ownerCellPhone:  string;
 }
 
 
@@ -16,20 +52,28 @@ export class RegisterTruckComponent implements OnInit {
 
   model: RegisterForm = new RegisterForm();
   @ViewChild('formTruck') formTruck: any;
-  anttDueDate: Date;
-  comunication: string;
+
+
   pt: any;
   private place: any;
   private location: any;
 
   public ray = 1000;
 
+  file: File;
+  truck ;
+
+
+
   @Input()
   public showForm: boolean;
   @Output() onFormClose: EventEmitter<void> = new EventEmitter();
   public selectedTabIndex = 0;
 
-  constructor(private map: Map) { }
+  constructor(private map: Map, private truckService: TruckService) {}
+
+
+
 
   ngOnInit() {
     this.map.createMapBoxMapInstance();
@@ -37,10 +81,73 @@ export class RegisterTruckComponent implements OnInit {
 
   onSubmit() {
     if (this.formTruck.valid) {
-      console.log('Form Submitted!');
-      this.formTruck.reset();
+    const truck$ = this.create(this.formTruck);
+    const request$ = truck$.pipe(
+          concatMap(truck => this.uploadAvatarImage(this.file, truck)))
+          .concatMap( ( truck: any ) =>  (truck.value && truck.value.avatar) ? this.updateTruck(truck.value)
+                                                                                                                        : of(truck));
+          request$.subscribe(truck => this.onRegister(truck) , error => this.onError(error));
     }
   }
+
+  public onRegister(truck){
+    this.formTruck.reset();
+    this.removeProfilePhoto();
+    this.onFormClose.emit(truck);
+  }
+
+  uploadAvatarImage(file: File, truck): Observable <any> {
+    if ( file === undefined || file === null ) {
+          return of(truck);
+    }
+
+    const formdata: FormData = new FormData();
+
+    formdata.append('file', file);
+    formdata.append('name', truck.name);
+    formdata.append('type', 'TRUCKS');
+    formdata.append('correlationEntityId', truck.correlationEntityId);
+
+    return this .truckService.uploadImage(formdata).map(avatar =>  { truck.avatar = avatar ; return of(truck); });
+  }
+
+  create(formTruck: NgForm): Observable<any> {
+    const truck = this.buildTruck(formTruck, this.place);
+    return this .truckService.saveTruck(truck);
+  }
+
+  public  updateTruck(truck) {
+     return this.truckService.updateTruck(truck);
+   }
+
+   public buildTruck(formTruck: NgForm, place: any) {
+     const truck = {
+       country: place.address_components.filter(obj => obj.types.includes('country') ).map(obj =>  obj.long_name)[0],
+       state: place.address_components.filter(obj => obj.types.includes('administrative_area_level_1') )
+                                                                                      .map(obj =>  obj.long_name)[0],
+       city: place.address_components.filter(obj => obj.types.includes('administrative_area_level_2') ).map(obj =>  obj.long_name)[0],
+       vicinity: place.vicinity ,
+       addressLine: place.formatted_address,
+       ...formTruck.value,
+        enabled: true
+     };
+     // hack para api enquanto nao aprendo do jeito certo
+     // if(){
+
+     // }
+     // truck.asoDocDueDate = truck.asoDocDueDate.replace(/-/gi, '/');
+     // truck.cddDocDueDate = truck.cddDocDueDate.replace(/-/gi, '/');
+     // truck.moppDocDueDate = truck.moppDocDueDate.replace(/-/gi, '/');
+     // truck.dateOfBirth = truck.dateOfBirth.replace(/-/gi, '/');
+
+     return truck;
+   }
+   onSuccessCreate = (truck) => {
+    return truck;
+   }
+
+   onError = error => console.log(error);
+
 
   // Show image profile
   addProfilePhoto(event: any) {
@@ -83,17 +190,11 @@ export class RegisterTruckComponent implements OnInit {
   }
 
   cancel() {
-    this.onFormClose.emit();
+   this.formTruck.reset();
+   this.removeProfilePhoto();
+   this.onFormClose.emit();
   }
 
-  create(formTruck: NgForm) {
-    const truck = {
-      location: this.place.formatted_address,
-      ...formTruck.value
-    };
-
-    console.log(truck);
-  }
 
   public onRayChanged = event => {
     if (event > 0) {
