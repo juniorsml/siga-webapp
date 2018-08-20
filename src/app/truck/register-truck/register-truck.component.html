@@ -299,19 +299,18 @@
 
                       <div class="column is-12">
                         <div class="control">
-                          <label class="label is-small">CPF/CNPJ</label>  
-                          <input type="text" 
-                          class="input" 
-                          placeholder="CPF/CNPJ"  
-                          name="ownerDocument"
-                          [(ngModel)]="model.ownerDocument"
-                          #ownerDocument="ngModel"
-                          [ngClass]="{'is-danger': ownerDocument.invalid && (ownerDocument.dirty || ownerDocument.touched)
-                                }">
+                          <div class="select">
+                            <select name="ownerDocumentType" [(ngModel)]="model.ownerDocumentType" #ownerDocumentType="ngModel" [ngClass]="{'is-danger': ownerDocumentType.invalid && (ownerDocumentType.dirty || ownerDocumentType.touched)}"
+                              required>
+                              <option value="RG">RG</option>
+                              <option value="CPF">CPF</option>
+                              <option value="RNA">RNA</option>
+                              <option value="Passaporte">Passaporte</option>
+                            </select>
+                          </div>
                         </div>
-                        <div class="form-control-feedback"
-                              *ngIf="ownerDocument.errors && (ownerDocument.dirty || ownerDocument.touched)">
-                            <p class="help is-danger" *ngIf="ownerDocument.errors.required">CPF/CNPJ é obrigatório</p>
+                        <div class="form-control-feedback" *ngIf="ownerDocumentType.errors && (ownerDocumentType.dirty || ownerDocumentType.touched)">
+                          <p class="help is-danger" *ngIf="ownerDocumentType.errors.required">Escolha um documento</p>
                         </div>
                       </div>
 

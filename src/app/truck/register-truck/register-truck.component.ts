@@ -45,7 +45,8 @@ class RegisterForm {
 @Component({
   selector: 'sga-register-truck',
   templateUrl: './register-truck.component.html',
-  styleUrls: ['../../vehicle/register-vehicle/register-vehicle.component.scss']
+  styleUrls: ['../../vehicle/register-vehicle/register-vehicle.component.scss'],
+  providers :[TruckService]
 })
 
 export class RegisterTruckComponent implements OnInit {
