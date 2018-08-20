@@ -290,6 +290,27 @@
                               <p class="help is-danger" *ngIf="tech.errors.required">Tecnologia é obrigatório</p>
                           </div>
                         </div>
+                        <div class="is-6 column is-marginless">
+                          
+                          <label class="label is-small">Comunicação</label>   
+                          <div class="control">
+                            <div class="select">
+                              <select [(ngModel)]="model.comunication" 
+                                      #comunication="ngModel"
+                                      name="comunication"
+                                      [ngClass]="{'is-danger': comunication.invalid && (comunication.dirty || comunication.touched)}"
+                                      required>                               
+                                <option value="Frota">Frota</option>
+                                <option value="Agregado">Agregado</option>
+                                <option value="Terceiro">Terceiro</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-control-feedback"
+                                *ngIf="comunication.errors && (comunication.dirty || comunication.touched)">
+                              <p class="help is-danger" *ngIf="comunication.errors.required">Vínculo é obrigatório</p>
+                          </div>
+                        </div>
                       </div>
                       
                     </div>
