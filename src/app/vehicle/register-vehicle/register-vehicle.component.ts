@@ -57,6 +57,9 @@ export class RegisterVehicleComponent implements OnInit {
   @Output() onSave = new EventEmitter();
   @Output() onFormClose: EventEmitter<void> = new EventEmitter();
   public selectedTabIndex = 0;
+
+  mobilephone=['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  landlinephone=['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   file: File;
   vehicle ;
 
