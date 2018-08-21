@@ -166,7 +166,7 @@ export class RegisterVehicleComponent implements OnInit {
   }
 
   create(formVehicle: NgForm): Observable<any> {
-    debugger
+    
     const vehicle = this.buildVehicle(formVehicle, this.place);
     return this .vehicleService.saveVehicle(vehicle);
   }
