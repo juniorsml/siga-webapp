@@ -161,6 +161,8 @@
 </div>
 
 <!--  MODAIS  -->
+
+
 <sga-modal>
   <sga-register-nonconformity
     [showModal]="showNonConformityDialog"
@@ -180,4 +182,12 @@
     [showModal]="showSendDialog"
     (onDialogClose)="sendDialogClose()">
   </sga-send-command>
+</sga-modal>
+
+<sga-modal>
+  <sga-device-dialog
+    [showDialog]="showDeviceDialog"
+    [selectedDevice]="selectedDevice"
+    (onDialogClose)="deviceDialogClose()">
+  </sga-device-dialog>
 </sga-modal>

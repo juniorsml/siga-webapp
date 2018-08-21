@@ -1,0 +1,53 @@
+<div class="modal-box" [ngClass]="showDialog ? 'opened-modal' : ''">
+  <div class="content-modal columns is-12 is-multiline">
+      <div class="container-dialog-header columns column is-12 is-marginless">
+        <div class="area column is-narrow">
+          <h3 >Dispositivo</h3>  
+        </div>
+        <div class="column btn-close"> 
+           <i  (click)="onClose()" class="fal fa-times is-pulled-right"></i>
+        </div>      
+      </div>
+      <div class="cnt-personal-data columns column is-12 is-multiline is-marginless">
+         
+          <div class="columns column is-12">           
+              <div class="column is-three-quarters">
+                  <div class="field-body field">
+                   
+                    <div class="field">
+                      <label class="label is-small">Tipo</label>
+                      <span class="personal-info">{{selectedDevice == null ? '-' : selectedDevice?.tyoe}}</span>
+                    </div>
+                    <div class="field">
+                      <label class="label is-small">Id</label>
+                      <span class="personal-info">{{selectedDevice?.id}}</span>
+                    </div>
+                    <div class="field">
+                      <label class="label is-small">Marca</label>
+                      <span class="personal-info">{{selectedDevice?.make}}</span>
+                    </div>
+                  </div>
+                  <div class="field-body field">
+                    
+                    <div class="field">
+                      <label class="label is-small">Modelo</label>
+                      <span class="personal-info">{{selectedDevice == null ? '-' : selectedDevice?.model}}</span>
+                    </div>      
+                    <div class="field">
+                      <label class="label is-small">Tecnologia</label>
+                      <span class="personal-info">{{selectedDevice?.tech}}</span>
+                    </div>
+                    <div class="field">
+                      <label class="label is-small">Apelido</label>
+                      <span class="personal-info">{{selectedDevice?.nickname}}</span>
+                    </div>
+                                   
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    
+      
+  </div>
+</div>

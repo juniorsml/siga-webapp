@@ -29,6 +29,7 @@ export class GridDeviceComponent implements OnInit {
   public headers = new Array<string>();
   public filterHeaders = new Array<string>();
 
+  public showDeviceDialog = false;
   public showSendDialog = false;
   public showMessageDialog = false;
   public showNonConformityDialog = false;
@@ -65,6 +66,7 @@ export class GridDeviceComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDevices();
+
   }
 
 
@@ -93,8 +95,7 @@ export class GridDeviceComponent implements OnInit {
 
   public onCellClick(event) {
     this.selectedDevice = event.data;
-    this.onDeviceSelected.emit(this.selectedDevice);
-    // if (event.cellIndex === 0) this.showMotoristDialog = true;
+    if (event.cellIndex === 0) { this.showDeviceDialog = true; }
   }
 
   public onCellRightClick(event: TableClickEvent) {
@@ -114,8 +115,9 @@ export class GridDeviceComponent implements OnInit {
         this.showNonConformityDialog = true;
     }
   }
-  public sendDialogClose = () => this.showSendDialog = false;
 
+  public deviceDialogClose = () => this.showDeviceDialog = false;
+  public sendDialogClose = () => this.showSendDialog = false;
   public messageDialogClose = () => this.showMessageDialog = false;
   public nonConformityDialogClose = () => this.showNonConformityDialog = false;
 
