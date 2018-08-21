@@ -125,12 +125,17 @@ export class RegisterTruckComponent implements OnInit {
 
    public buildTruck(formTruck: NgForm, place: any) {
      const truck = {
-       country: place.address_components.filter(obj => obj.types.includes('country') ).map(obj =>  obj.long_name)[0],
-       state: place.address_components.filter(obj => obj.types.includes('administrative_area_level_1') )
-                                                                                      .map(obj =>  obj.long_name)[0],
-       city: place.address_components.filter(obj => obj.types.includes('administrative_area_level_2') ).map(obj =>  obj.long_name)[0],
-       vicinity: place.vicinity ,
-       addressLine: place.formatted_address,
+      address: {
+         country: place.address_components.filter(obj => obj.types.includes('country') ).map(obj =>  obj.long_name)[0],
+         state: place.address_components.filter(obj => obj.types.includes('administrative_area_level_1') )
+                                                                                        .map(obj =>  obj.long_name)[0],
+         city: place.address_components.filter(obj => obj.types.includes('administrative_area_level_2') ).map(obj =>  obj.long_name)[0],
+         vicinity: place.vicinity ,
+         addressLine: place.formatted_address,
+         complement: formTruck.value.complement,
+         number: formTruck.value.number,
+         street: place.name
+      },
        ...formTruck.value,
         enabled: true
      };
