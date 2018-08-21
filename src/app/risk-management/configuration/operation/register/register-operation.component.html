@@ -35,7 +35,7 @@
                            <input class="input is-small" type="text" placeholder="Observação" value="Em viagem" >
                          </div>
                        </div>
-                       <div class="field">
+                     <!--   <div class="field">
                          <label class="label is-small">Exige check-list:</label>
                          <div class="select is-small">
                            <select>
@@ -98,16 +98,33 @@
                              <option value="">Não</option>            
                            </select>
                          </div>
-                       </div>           
+                       </div>            -->
                      </div>
                       <div class="field-body field">
                          <div class="field is-3 column is-paddingless">
-                           <label class="label is-small">Define Faixa de Horário</label>
-                           <div class="control">
-                             <input class="input is-small" type="text" placeholder="Define Faixa de Horário">
+                           <label class="label is-small">Regra para inicio de viagem</label>
+                           <div class="control">                            
+                               <input class="styled-checkbox" id="Por Raio Inicio" type="checkbox" name="byRadiusBegin">
+                               <label for="Por Raio Inicio">Por Raio</label>
                            </div>
+                            <div class="control">                            
+                                <input class="styled-checkbox" id="Por Macro Inicio" type="checkbox" name="byMacroBegin">
+                                <label for="Por Macro Inicio">Por Macro</label>
+                            </div>
                          </div>
-                         <div class="field is-2 column is-paddingless">
+
+                         <div class="field is-3 column is-paddingless">
+                           <label class="label is-small">Regra para fim de viagem</label>
+                           <div class="control">                            
+                               <input class="styled-checkbox" id="Por Raio Fim" type="checkbox" name="byRadiusEnd">
+                               <label for="Por Raio Fim">Por Raio</label>
+                           </div>
+                            <div class="control">                            
+                                <input class="styled-checkbox" id="Por Macro Fim" type="checkbox" name="byMacroEnd">
+                                <label for="Por Macro Fim">Por Macro</label>
+                            </div>
+                         </div>
+                        <!--  <div class="field is-2 column is-paddingless">
                            <label class="label is-small">Inicio</label>
                            <div class="control">
                              <input class="input is-small" type="time">
@@ -118,7 +135,7 @@
                            <div class="control">
                              <input class="input is-small" type="time">
                            </div>
-                         </div>
+                         </div> -->
                        </div>                    
 
                     </div>
