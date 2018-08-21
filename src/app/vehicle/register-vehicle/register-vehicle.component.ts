@@ -43,7 +43,11 @@ class RegisterForm {
 export class RegisterVehicleComponent implements OnInit {
 
   model: RegisterForm = new RegisterForm();
+
+
   @ViewChild('formVehicle') formVehicle: any;
+
+
   anttDueDate: Date;
   comunication: string;
 
@@ -109,17 +113,22 @@ export class RegisterVehicleComponent implements OnInit {
    }
 
   public buildVehicle(formVehicle: NgForm, place: any) {
-    
     const vehicle = {
-      country: place.address_components.filter(obj => obj.types.includes('country') ).map(obj =>  obj.long_name)[0],
-      state: place.address_components.filter(obj => obj.types.includes('administrative_area_level_1') )
-                                                                                     .map(obj =>  obj.long_name)[0],
-      city: place.address_components.filter(obj => obj.types.includes('administrative_area_level_2') ).map(obj =>  obj.long_name)[0],
-      vicinity: place.vicinity ,
-      addressLine: place.formatted_address,
+      address:{ 
+         country: place.address_components.filter(obj => obj.types.includes('country') ).map(obj =>  obj.long_name)[0],
+         state: place.address_components.filter(obj => obj.types.includes('administrative_area_level_1') )
+                                                                                        .map(obj =>  obj.long_name)[0],
+         city: place.address_components.filter(obj => obj.types.includes('administrative_area_level_2') ).map(obj =>  obj.long_name)[0],
+         vicinity: place.vicinity ,
+         addressLine: place.formatted_address,
+         complement: formVehicle.value.complement,
+         addressNumber: formVehicle.value.addressNumber
+      },
+      // TODO : usar formgroup para criar objeto
        ...formVehicle.value,
        enabled: true
     };
+    vehicle.anttDueDate = vehicle.anttDueDate.replace(/-/gi, '/');
     return vehicle;
   }
 
@@ -155,6 +164,7 @@ export class RegisterVehicleComponent implements OnInit {
   }
 
   create(formVehicle: NgForm): Observable<any> {
+    debugger
     const vehicle = this.buildVehicle(formVehicle, this.place);
     return this .vehicleService.saveVehicle(vehicle);
   }

@@ -364,15 +364,15 @@
                                  type="text" 
                                  class="input" 
                                  placeholder="Nº" 
-                                 name="ownerDocument" 
-                                 [(ngModel)]="model.ownerDocument"
-                                 #ownerDocument="ngModel" 
-                                 [ngClass]="{'is-danger': ownerDocument.invalid && (ownerDocument.dirty || ownerDocument.touched)}"
+                                 name="ownerDocumentId" 
+                                 [(ngModel)]="model.ownerDocumentId"
+                                 #ownerDocumentId="ngModel" 
+                                 [ngClass]="{'is-danger': ownerDocumentId.invalid && (ownerDocumentId.dirty || ownerDocumentId.touched)}"
                            required>
 
                        </div>
-                       <div class="form-control-feedback" *ngIf="ownerDocument.errors && (ownerDocument.dirty || ownerDocument.touched)">
-                         <p class="help is-danger" *ngIf="ownerDocument.errors.required">Nº é obrigatório</p>
+                       <div class="form-control-feedback" *ngIf="ownerDocumentId.errors && (ownerDocumentId.dirty || ownerDocumentId.touched)">
+                         <p class="help is-danger" *ngIf="ownerDocumentId.errors.required">Nº é obrigatório</p>
                        </div>
                       
                       
@@ -407,6 +407,27 @@
                           (onPlacesFilteredEvent)="placesFiltered($event)" 
                           (onFilterRemovedEvent)="filterRemoved()">
                         </sga-places-auto-complete>
+                      </div>
+
+                      <div class="column is-3">
+                        <div class="control">
+                          <label class="label is-small">Número</label>
+                          <input type="text" class="input" placeholder="Número" name="addressNumber" [(ngModel)]="model.addressNumber"
+                            #addressNumber="ngModel" [ngClass]="{'is-danger': addressNumber.invalid && (addressNumber.dirty || addressNumber.touched)}" required>
+                        </div>
+                        <div class="form-control-feedback" *ngIf="addressNumber.errors && (addressNumber.dirty || addressNumber.touched)">
+                          <p class="help is-danger" *ngIf="addressNumber.errors.required">Número é obrigatório</p>
+                        </div>
+                      </div>
+                      <div class="column is-3">
+                        <div class="control">
+                          <label class="label is-small">Complemento</label>
+                          <input type="text" class="input" placeholder="Complemento" name="complement" [(ngModel)]="model.complement"
+                            #complement="ngModel" [ngClass]="{'is-danger': complement.invalid && (complement.dirty || complement.touched)}" required>
+                        </div>
+                        <div class="form-control-feedback" *ngIf="complement.errors && (complement.dirty || complement.touched)">
+                          <p class="help is-danger" *ngIf="complement.errors.required">Complemento é obrigatório</p>
+                        </div>
                       </div>
 
                       <div class="column is-12">
