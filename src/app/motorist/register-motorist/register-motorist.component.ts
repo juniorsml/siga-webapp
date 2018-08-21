@@ -26,8 +26,8 @@ class RegisterForm {
   dueDate: string;
   ray: number;
    // Address
-  addressNumber: string;
-  complementAddress:string;
+  number: string;
+  complement:string;
   addressLine: string;
   country: string;
   city: string;
