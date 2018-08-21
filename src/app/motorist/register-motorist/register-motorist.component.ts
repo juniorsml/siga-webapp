@@ -26,8 +26,8 @@ class RegisterForm {
   dueDate: string;
   ray: number;
    // Address
-  addressNumber: string;
-  complementAddress:string;
+  number: string;
+  complement:string;
   addressLine: string;
   country: string;
   city: string;
@@ -54,6 +54,7 @@ class RegisterForm {
 export class RegisterMotoristComponent implements OnInit {
 
   model: RegisterForm=new RegisterForm();
+  
   @Input() public showForm: boolean;
   @Output() onFormClose: EventEmitter < any > = new EventEmitter();
   @ViewChild('formMotorist') formMotorist: any;
@@ -144,12 +145,18 @@ export class RegisterMotoristComponent implements OnInit {
 
   public buildMotorist(formMotorist: NgForm, place: any) {
     const motorist = {
-      country: place.address_components.filter(obj => obj.types.includes('country') ).map(obj =>  obj.long_name)[0],
-      state: place.address_components.filter(obj => obj.types.includes('administrative_area_level_1') )
-                                                                                     .map(obj =>  obj.long_name)[0],
-      city: place.address_components.filter(obj => obj.types.includes('administrative_area_level_2') ).map(obj =>  obj.long_name)[0],
-      vicinity: place.vicinity ,
-      addressLine: place.formatted_address,
+      address: {
+         country: place.address_components.filter(obj => obj.types.includes('country') ).map(obj =>  obj.long_name)[0],
+         state: place.address_components.filter(obj => obj.types.includes('administrative_area_level_1') )
+                                                                                        .map(obj =>  obj.long_name)[0],
+         city: place.address_components.filter(obj => obj.types.includes('administrative_area_level_2') ).map(obj =>  obj.long_name)[0],
+         vicinity: place.vicinity ,
+         addressLine: place.formatted_address,
+         complement: formMotorist.value.complement,
+         number: formMotorist.value.number,
+         street: place.name
+      },
+
       ...formMotorist.value,
        enabled: true
     };
