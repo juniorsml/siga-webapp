@@ -412,11 +412,11 @@
                       <div class="column is-3">
                         <div class="control">
                           <label class="label is-small">Número</label>
-                          <input type="text" class="input" placeholder="Número" name="addressNumber" [(ngModel)]="model.addressNumber"
-                            #addressNumber="ngModel" [ngClass]="{'is-danger': addressNumber.invalid && (addressNumber.dirty || addressNumber.touched)}" required>
+                          <input type="text" class="input" placeholder="Número" name="number" [(ngModel)]="model.number"
+                            #number="ngModel" [ngClass]="{'is-danger': number.invalid && (number.dirty || number.touched)}" required>
                         </div>
-                        <div class="form-control-feedback" *ngIf="addressNumber.errors && (addressNumber.dirty || addressNumber.touched)">
-                          <p class="help is-danger" *ngIf="addressNumber.errors.required">Número é obrigatório</p>
+                        <div class="form-control-feedback" *ngIf="number.errors && (number.dirty || number.touched)">
+                          <p class="help is-danger" *ngIf="number.errors.required">Número é obrigatório</p>
                         </div>
                       </div>
                       <div class="column is-3">

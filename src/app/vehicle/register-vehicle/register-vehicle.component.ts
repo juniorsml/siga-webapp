@@ -114,7 +114,7 @@ export class RegisterVehicleComponent implements OnInit {
 
   public buildVehicle(formVehicle: NgForm, place: any) {
     const vehicle = {
-      address:{ 
+      address: {
          country: place.address_components.filter(obj => obj.types.includes('country') ).map(obj =>  obj.long_name)[0],
          state: place.address_components.filter(obj => obj.types.includes('administrative_area_level_1') )
                                                                                         .map(obj =>  obj.long_name)[0],
@@ -122,8 +122,10 @@ export class RegisterVehicleComponent implements OnInit {
          vicinity: place.vicinity ,
          addressLine: place.formatted_address,
          complement: formVehicle.value.complement,
-         addressNumber: formVehicle.value.addressNumber
+         number: formVehicle.value.number,
+         street: place.name
       },
+
       // TODO : usar formgroup para criar objeto
        ...formVehicle.value,
        enabled: true
