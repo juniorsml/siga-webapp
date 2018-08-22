@@ -66,6 +66,7 @@ export class RegisterDeviceComponent {
   }
 
   public buildDevice(formDevice: NgForm) {
+    debugger 
     const device = formDevice.value;
     return device;
   }
