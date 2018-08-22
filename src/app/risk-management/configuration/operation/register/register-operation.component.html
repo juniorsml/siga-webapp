@@ -19,126 +19,44 @@
             <sga-tab heading="Geral">
 
                   <!-- Geral -->
-                  <div class="cnt-info columns">               
-
-                    <div class="column  is-12">
-                     <div class="field-body field">
-                       <div class="field is-3 column is-paddingless">
-                         <label class="label is-small">Descrição da Operação</label>
-                         <div class="control">
-                           <input class="input is-small" type="text" placeholder="Descrição da Operação">
-                         </div>
+                  <div class="cnt-info columns is-multiline">    
+                    <div class="column  is-6">
+                      <label class="label is-small">Descrição da Operação</label>
+                      <div class="control">
+                        <input class="input is-small" type="text" placeholder="Descrição da Operação">
+                      </div>
+                    </div>
+                    <div class="column  is-6">
+                      <label class="label is-small">Observação</label>
+                      <div class="control">
+                        <input class="input is-small" type="text" placeholder="Observação" value="Em viagem" >
+                      </div>
+                    </div>
+                    <div class="is-3 column">
+                      <label class="label is-small">Regra para inicio de viagem</label>
+                      <div class="control">                            
+                          <input class="styled-checkbox" id="Por Raio Inicio" type="checkbox" name="byRadiusBegin">
+                          <label for="Por Raio Inicio">Por Raio</label>
+                                              
+                           <input class="styled-checkbox" id="Por Macro Inicio" type="checkbox" name="byMacroBegin">
+                           <label for="Por Macro Inicio">Por Macro</label>
                        </div>
-                       <div class="field is-3 column is-paddingless">
-                         <label class="label is-small">Observação</label>
-                         <div class="control">
-                           <input class="input is-small" type="text" placeholder="Observação" value="Em viagem" >
-                         </div>
+                    </div>
+                    <div class="is-3 column">
+                      <label class="label is-small">Regra para fim de viagem</label>
+                      <div class="control">                            
+                          <input class="styled-checkbox" id="Por Raio Fim" type="checkbox" name="byRadiusEnd">
+                          <label for="Por Raio Fim">Por Raio</label>
+                                              
+                           <input class="styled-checkbox" id="Por Macro Fim" type="checkbox" name="byMacroEnd">
+                           <label for="Por Macro Fim">Por Macro</label>
                        </div>
-                     <!--   <div class="field">
-                         <label class="label is-small">Exige check-list:</label>
-                         <div class="select is-small">
-                           <select>
-                             <option>Sim</option>
-                             <option>Não</option>
-                           </select>
-                         </div>
-                       </div>
-                       <div class="field">
-                         <label class="label is-small">Validade check-list</label>
-                          <div class="control">
-                           <input class="input is-small" type="number" placeholder="Dias">
-                         </div>
-                       </div>
-                       <div class="field">
-                         <label class="label is-small">Aguarda sinal(horas)</label>
-                         <div class="select is-small">
-                           <select>                
-                             <option value="">1</option>
-                             <option value="">2</option>
-                             <option value="">3</option>
-                             <option value="">4</option>
-                             <option value="">5</option>
-                           </select>
-                         </div>
-                       </div>           
-                     </div>  
-                     <div class="field-body field">
                       
-                       <div class="field is-3 column is-paddingless">
-                         <label class="label is-small">Embarcar configuração no veículo:</label>
-                         <div class="select is-small">
-                           <select >
-                             <option value="NÃO EMBARCAR">NÃO EMBARCAR</option>
-                             <option value="">EMBARCAR CONF. PADRÃO</option>
-                             <option value="">EMBARCAR CONF. POR VIAGEM</option>
-                           </select>
-                         </div>
-                       </div>
-                       <div class="field">
-                         <label class="label is-small">Empresa de pesquisa:</label>
-                         <div class="select is-small">
-                           <select >
-                             <option>NENHUM</option>
-                             <option>MAXX</option>
-                           </select>
-                         </div>
-                       </div>
-                       <div class="field">
-                         <label class="label is-small">Limite Máximo Garantia (LMG):</label>
-                         <div class="control">
-                           <input class="input is-small" type="text" placeholder="" value="" >
-                         </div>
-                       </div>
-                       <div class="field">
-                         <label class="label is-small">Aprovação Aut.:</label>
-                         <div class="select is-small">
-                           <select >                
-                             <option value="">Sim</option>
-                             <option value="">Não</option>            
-                           </select>
-                         </div>
-                       </div>            -->
-                     </div>
-                      <div class="field-body field">
-                         <div class="field is-3 column is-paddingless">
-                           <label class="label is-small">Regra para inicio de viagem</label>
-                           <div class="control">                            
-                               <input class="styled-checkbox" id="Por Raio Inicio" type="checkbox" name="byRadiusBegin">
-                               <label for="Por Raio Inicio">Por Raio</label>
-                                                   
-                                <input class="styled-checkbox" id="Por Macro Inicio" type="checkbox" name="byMacroBegin">
-                                <label for="Por Macro Inicio">Por Macro</label>
-                            </div>
-                         </div>
-
-                         <div class="field is-3 column is-paddingless">
-                           <label class="label is-small">Regra para fim de viagem</label>
-                           <div class="control">                            
-                               <input class="styled-checkbox" id="Por Raio Fim" type="checkbox" name="byRadiusEnd">
-                               <label for="Por Raio Fim">Por Raio</label>
-                                                   
-                                <input class="styled-checkbox" id="Por Macro Fim" type="checkbox" name="byMacroEnd">
-                                <label for="Por Macro Fim">Por Macro</label>
-                            </div>
-                         </div>
-                        <!--  <div class="field is-2 column is-paddingless">
-                           <label class="label is-small">Inicio</label>
-                           <div class="control">
-                             <input class="input is-small" type="time">
-                           </div>
-                         </div>
-                          <div class="field is-2 column is-paddingless">
-                           <label class="label is-small">Fim</label>
-                           <div class="control">
-                             <input class="input is-small" type="time">
-                           </div>
-                         </div> -->
-                       </div>                    
-
                     </div>
 
-                  </div>
+
+                 </div>                    
+
 
             </sga-tab>
 

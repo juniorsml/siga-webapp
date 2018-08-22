@@ -40,7 +40,6 @@ $main-blue: #4d5675;
   background-color: #FFF;
   width: 100%;
   max-width:1000px;
-  height: 90%;
   background: #ffffff;
   -webkit-box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.1);
   box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.1); 
@@ -57,7 +56,7 @@ $main-blue: #4d5675;
   }
   .cnt-info{
      margin-top: 5px;
-     min-height: 404px;
+ 
   }
   .file-cta, .places-ac, select, input {
     color:#8c8a8a;
@@ -161,6 +160,11 @@ $main-blue: #4d5675;
 }
 .select select,.select{
 width:100%;
+}
+
+.cnt-buttons{
+  text-align: right;
+
 }
 
 

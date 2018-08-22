@@ -284,14 +284,15 @@ $bg-titles: #4d5675;
   & + label {
     position: relative;
     cursor: pointer;
-    padding: 0;
+    padding: 0 8px 0 0;
+
     font-size: 14px;
   }
 
   // Box.
   & + label:before {
     content: '';
-    margin-right: 10px;
+    margin-right: 5px;
     display: inline-block;
     vertical-align: text-top;
     width: 20px;
