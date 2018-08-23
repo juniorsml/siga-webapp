@@ -7,18 +7,19 @@ import { Map } from '../../shared/models/Map';
 import { Feature, GeometryObject } from 'geojson';
 
 import { groups } from '../../shared/mocks/group';
-import { places } from '../../shared/mocks/place';
 import { areas } from '../../shared/mocks/area';
 import { GroupedItems } from '../../shared/components/select-grouped/Grouped';
 import { DirectionService } from '../../shared/services/direction.service';
 
 import { MapStyle } from '../../shared/models/MapStyle';
 import { Place } from '../../shared/models/Place';
+import { PlacesService } from './places.service';
 
 @Component({
   selector: 'sga-places',
   templateUrl: './places.component.html',
-  styleUrls: ['./places.component.scss']
+  styleUrls: ['./places.component.scss'],
+  providers: [PlacesService]
 })
 export class RegisterPlaceComponent implements OnInit {
   private location: any;
@@ -115,11 +116,19 @@ export class RegisterPlaceComponent implements OnInit {
     this.map.addCluster(this.mapMarkers);
   }
 
-  constructor(private map: Map,
+  constructor(
+    private map: Map,
+    private placesService: PlacesService,
     private directionService: DirectionService) { }
 
   ngOnInit() {
-    this.places = places;
+    this
+      .placesService
+      .getPlaces()
+      .subscribe(
+        data => this.places = data,
+        error => alert(error)
+      );
     this.groups = groups;
     this.areas = areas;
 
@@ -255,8 +264,10 @@ export class RegisterPlaceComponent implements OnInit {
       this.addMarker(this.createPoint(place.location.latitude, place.location.longitude));
       this.moveMap(place.location.latitude, place.location.longitude, 14);
     } else {
-      this.addMarker(this.createPoint(place.latitude, place.longitude));
-      this.moveMap(place.latitude, place.longitude, 14);
+      const location = this.getLocation(place);
+      this.addMarker(place.featureCollection);
+      // this.addMarker(this.createPoint(location.latitude, location.longitude));
+      this.moveMap(location.latitude, location.longitude, 14);
     }
   }
 
@@ -415,7 +426,8 @@ export class RegisterPlaceComponent implements OnInit {
       colorIcon: item.colorIcon,
       backgroundColor: item.backgroundColor,
       fillColor: item.fillColor,
-      strokeColor: item.strokeColor
+      strokeColor: item.strokeColor,
+      ...this.getPolygonOptions(item.strokeColor, item.fillColor)
     };
 
     const place = Place.create(
@@ -430,6 +442,14 @@ export class RegisterPlaceComponent implements OnInit {
 
       console.warn(place);
 
+      this
+        .placesService
+        .postPlace(place)
+        .subscribe(
+          success => this.onPlaceSuccess(success),
+          error => this.onPlaceError(error)
+        );
+
     // switch (this.selectedTabIndex) {
     //   case 0:
     //     this.areas.push(item);
@@ -443,6 +463,25 @@ export class RegisterPlaceComponent implements OnInit {
     //     this.groups.push({ ...item, location: [] });
     //     break;
     // }
+  }
+
+  private onPlaceSuccess(place) {
+    this.places.push(place);
+    this.showRegister = false;
+  }
+
+  private onPlaceError(error) {
+    alert(error);
+  }
+
+  private getLocation(place) {
+    if (!place.featureCollection) { return null; }
+
+    const coordinates = place.featureCollection.features.filter(p => p.geometry.type === 'Point')[0].geometry.coordinates;
+    return {
+      latitude: coordinates[1],
+      longitude: coordinates[0]
+    };
   }
 
   private getFeatureCollection() {
