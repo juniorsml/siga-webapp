@@ -20,19 +20,19 @@
 
                   <!-- Geral -->
                   <div class="cnt-info columns is-multiline">    
-                    <div class="column  is-6">
+                    <div class="column  is-12">
                       <label class="label is-small">Descrição da Operação</label>
                       <div class="control">
                         <input class="input is-small" type="text" placeholder="Descrição da Operação">
                       </div>
                     </div>
-                    <div class="column  is-6">
+                    <div class="column  is-12">
                       <label class="label is-small">Observação</label>
                       <div class="control">
                         <input class="input is-small" type="text" placeholder="Observação" value="Em viagem" >
                       </div>
                     </div>
-                    <div class="is-3 column">
+                    <div class="is-4 column">
                       <label class="label is-small">Regra para inicio de viagem</label>
                       <div class="control">                            
                           <input class="styled-checkbox" id="Por Raio Inicio" type="checkbox" name="byRadiusBegin">
@@ -42,7 +42,7 @@
                            <label for="Por Macro Inicio">Por Macro</label>
                        </div>
                     </div>
-                    <div class="is-3 column">
+                    <div class="is-4 column">
                       <label class="label is-small">Regra para fim de viagem</label>
                       <div class="control">                            
                           <input class="styled-checkbox" id="Por Raio Fim" type="checkbox" name="byRadiusEnd">
@@ -66,7 +66,7 @@
               
                     <div class="columns column is-multiline">                                
                         <div class="is-4 column">
-                          <a href="" class="button is-outlined is-small">Adicionar</a>                          
+                          <a class="button is-outlined is-small" (click)="openAddRules()">Adicionar</a>                          
                         </div>    
                         
                         <div class="is-12 column cnt-gr-list">                          
@@ -87,8 +87,17 @@
                             </tbody>
                           </table>
 
-                        </div>                
-                    </div>  
+                        </div>   
+
+
+                        <sga-modal>
+                          <sga-add-rules-dialog   
+                            [showModal]="showAddrules"
+                            (onDialogClose)="closeDialog()"
+                            (onConfirm)="AddRules()">
+                          </sga-add-rules-dialog>
+                        </sga-modal>             
+                  </div>  
                   </div>
             </sga-tab>
         

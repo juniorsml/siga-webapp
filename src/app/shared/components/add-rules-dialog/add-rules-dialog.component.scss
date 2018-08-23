@@ -2,8 +2,9 @@
 .content-modal{
     background-color: #FFF;
     width: 100%;
-    max-width:600px;
-    max-height: 91%;
+    max-width:550px;  
+
+    height: 400px; 
     background: #ffffff;
     -webkit-box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.1);
     box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.1);
@@ -42,9 +43,7 @@
         width: 100%;
         display: flex;
     }
-    .motorist-profile-info {        
-        padding-left:25px;
-    }
+ 
 }
 
 .container-dialog-header {
@@ -86,7 +85,43 @@
 
 
 .cnt-buttons{
-  margin-top: 27px;
+  margin-top: 5px;
+}
+
+.cnt-gr-list{
+  width: 100%;
+  table{    
+    tr{
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
+      display: flex;
+    }
+   thead, tbody{
+     display: block;  
+   }
+
+   tbody{
+     overflow-y: scroll;
+     height: 200px;
+     }
+    thead,tbody{
+      width: 100%;
+    }
+
+    th{
+      padding: 0;
+      text-align: left;
+      width: 50%;
+      font-size: 13.5px;
+    }
+    td{
+      width: 50%;
+      font-size: 12px;
+      padding: 4px;
+      vertical-align: middle;
+    }
+  }
 }
 
 

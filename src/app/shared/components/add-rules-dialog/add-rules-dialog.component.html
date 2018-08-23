@@ -15,8 +15,22 @@
       
     
         
-        <div class="field-body field">         
-          <label class="label">Tem certeza que deseja enviar esta viagem para o grupo {{type}} ?</label>
+        <div class="field-body field cnt-gr-list">         
+           <table class="table is-striped is-fullwidth">
+             <thead>
+               <tr>
+                 <th>Tecnologia</th>
+                 <th>Regra</th>                              
+               </tr>
+             </thead>                           
+             <tbody>
+               <tr *ngFor="let item of rulesManagement"  (click)="itemClick(item)">                                
+                 <td>{{item.tech}}</td>                           
+                 <td>{{item.rule}}</td>      
+               </tr>                                  
+              
+             </tbody>
+           </table>
         </div>
   
 

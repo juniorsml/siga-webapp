@@ -1,7 +1,6 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { rules } from '../../../../shared/mocks/rules';
 
 @Component({
   selector: 'sga-register-operation',
@@ -13,6 +12,10 @@ export
  class RegisterOperationComponent {
 
 
+   showAddrules = false;
+   
+   
+
   @Input()
   public showForm: boolean;
   @Output() onFormClose: EventEmitter<any> = new EventEmitter();
@@ -20,16 +23,11 @@ export
 
   public selectedTabIndex = 0;
 
-  
-  public rulesManagement = rules;
-
-  
-
   public associateRules: Array<any> = [];
 
 
   ngOnInit(): void {
-    debugger
+    
   }
 
   
@@ -42,6 +40,14 @@ export
   cancel() {
     this.onFormClose.emit();
   }
+  public openAddRules(){
+     this.showAddrules = true;
+  }
+  public AddRules() {
+
+  }
+  public closeDialog = () => this.showAddrules = false;
+
 }
 
 
