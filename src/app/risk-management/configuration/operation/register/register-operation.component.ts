@@ -12,9 +12,7 @@ export
  class RegisterOperationComponent {
 
 
-   showAddrules = false;
-   
-   
+  showAddrules = false;
 
   @Input()
   public showForm: boolean;
@@ -23,14 +21,9 @@ export
 
   public selectedTabIndex = 0;
 
-  public associateRules: Array<any> = [];
+  public onRulesSelected: any;
 
-
-  ngOnInit(): void {
-    
-  }
-
-  
+  public selectedRules: any;
 
   public onSubmit(formOperation: NgForm) {
     const {} = formOperation.value;
@@ -40,12 +33,13 @@ export
   cancel() {
     this.onFormClose.emit();
   }
-  public openAddRules(){
+  public openAddRules() {
      this.showAddrules = true;
   }
-  public AddRules() {
-
+  public AddRules(){
+     this.showAddrules = false ;
   }
+
   public closeDialog = () => this.showAddrules = false;
 
 }

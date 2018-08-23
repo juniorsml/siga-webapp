@@ -19,7 +19,7 @@ export class DeviceService {
       .pipe(map(res => <Array<Device>>res.json()));
   }
 
-  public getDevice(deviceId:string): Observable<any> {
+  public getDevice(deviceId: string): Observable<any> {
     return this
       .http
       .get(`api/devices/${deviceId}`)

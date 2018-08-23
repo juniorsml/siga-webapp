@@ -95,7 +95,8 @@
       cursor: pointer;
       width: 100%;
       text-align: left;
-      display: flex;
+           display: flex;
+      
     }
    thead, tbody{
      display: block;  
@@ -104,6 +105,17 @@
    tbody{
      overflow-y: scroll;
      height: 200px;
+
+       tr{
+        &:hover{
+          color:#FFF;
+          background: #9297aa;
+        }
+       }
+       tr.added{
+          background: #9297aa;
+          color: #FFF;
+       }
      }
     thead,tbody{
       width: 100%;

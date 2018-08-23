@@ -10,13 +10,17 @@ import { rules } from '../../../shared/mocks/rules';
 export class AddRulesDialogComponent {
  
   @Input() showModal: boolean;
-  @Input() type: string;
+
   @Output() onDialogClose: EventEmitter<void> = new EventEmitter<void>();
-  @Output() onConfirm: EventEmitter<void> = new EventEmitter<void>();
+  @Output() onConfirm: EventEmitter<any> = new EventEmitter<any>();
+
 
 
   public rulesManagement = rules;
-  public associateRules = new Array<>;
+ 
+
+  @Input() selectedRules = new Array<any>();
+  public addedClass = false;
 
 
   cancel() {
@@ -25,8 +29,9 @@ export class AddRulesDialogComponent {
   }
 
   itemClick(item){
-    this.associateRules.push(item);
-    console.log(this.associateRules);
+    this.selectedRules.push(item);
+    console.log(this.selectedRules);
+    item.addedClass = true;
   }
 
   confirm() {

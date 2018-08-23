@@ -71,7 +71,7 @@
                         
                         <div class="is-12 column cnt-gr-list">                          
 
-                          <table *ngIf="associateRules.length > 0" class="table is-striped is-fullwidth">
+                          <table class="table is-striped is-fullwidth">
                             <thead>
                               <tr>
                                 <th>Tecnologia</th>
@@ -79,7 +79,7 @@
                               </tr>
                             </thead>                           
                             <tbody>
-                              <tr *ngFor="let rule of associateRules">                                
+                              <tr >                                
                                 <td>OMNILINK</td>                           
                                 <td>KRONA_SOLIC DESLAC BAU PANICO</td>      
                               </tr>                                  
@@ -92,7 +92,7 @@
 
                         <sga-modal>
                           <sga-add-rules-dialog   
-                            [showModal]="showAddrules"
+                            [showModal]="showAddrules"                           
                             (onDialogClose)="closeDialog()"
                             (onConfirm)="AddRules()">
                           </sga-add-rules-dialog>
