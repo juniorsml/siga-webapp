@@ -8,14 +8,13 @@ import { of } from '../../../../node_modules/rxjs';
 import { concatMap} from '../../../../node_modules/rxjs/operators';
 
 class RegisterForm {
-  id: string;
+  idTerminal: any;
+  type: string;
   name?: any;
   model?: any;
   technology?: any;
-  updated: string;
-  location: string;
-  speed: string;
-  batterylevel: string;
+  comunication: string;
+  
 }
 
 
