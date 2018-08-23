@@ -104,7 +104,7 @@ export class RegisterTruckComponent implements OnInit {
     const formdata: FormData = new FormData();
 
     formdata.append('file', file);
-    formdata.append('name', truck.name);
+    formdata.append('name', truck.numberPlate);
     formdata.append('type', 'VEHICLE');
     formdata.append('correlationEntityId', truck.id);
 
