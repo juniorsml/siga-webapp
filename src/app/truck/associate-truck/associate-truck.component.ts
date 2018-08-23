@@ -1,6 +1,10 @@
 
 import { TruckService } from '../truck.service';
+import { forkJoin } from 'rxjs/observable/forkJoin';
+import { Observable } from 'rxjs/Observable';
 import { Component, OnInit, Input } from '@angular/core';
+
+
 
 @Component({
   selector: 'sga-associate-truck',
@@ -43,7 +47,6 @@ export class AssociateTruckComponent implements OnInit {
         error => console.warn(error));
   }
 
-  
   @Input()
   get vehicles(): Array<any> {
     return this._vehicles;
@@ -117,11 +120,47 @@ export class AssociateTruckComponent implements OnInit {
     list.splice(indexToRemove, 1);
   }
 
+  applyChanges() {
+    const addIds = this.addList.map(vehicle => vehicle.id);
+    const undoIds = this.removeList.map(vehicle => vehicle.id);
+
+    forkJoin([
+      this.associateVehicle(addIds),
+      this.disassociateVehicle(undoIds)
+    ]).subscribe(
+      success => this.onSuccessRequest(success),
+      error => console.log(error));
+  }
+
+  onSuccessRequest(data) {
+    console.log(data);
+    if (data.success) {
+      // todo: toast
+    }
+    this.getVehicles();
+    this.addList = new Array<any>();
+    this.removeList = new Array<any>();
+  }
+
+  associateVehicle(addIds: Array<any>): Observable<any> {
+    if (addIds.length === 0) {
+      return Observable.of([]);
+    }
+    return this.truckService.associateTruck(addIds);
+  }
+
+  disassociateVehicle(undoIds: Array<any>): Observable<any> {
+    if (undoIds.length === 0) {
+      return Observable.of([]);
+    }
+    return this.truckService.disassociateTruck(undoIds);
+  }
+
   onAdminVehicleCellClick(event) {
     if (event.cellIndex === 5) {
       this.deleteVehicle(event.data);
     }
   }
 
-  applyChanges() {}
+
 }

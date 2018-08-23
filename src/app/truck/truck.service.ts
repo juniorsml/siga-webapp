@@ -61,4 +61,5 @@ export class TruckService {
       .http
       .patch('api/trailers/account/disassociate', ids);
   }
+
 }

@@ -34,7 +34,7 @@
          minLength="3"
          styleClass = "autocomplete"
          noSuggestionsText="Nenhum Reboque encontrado"
-         url="api/vehicle/search?query="
+         url="api/trailers/search?number_plate="
          placeholder="Digite o número da Placa"
          style="width: 100%;"
          type="text"
@@ -43,11 +43,11 @@
          <ng-template let-item="item">
            <div class="autocomplete-suggestion">
              <span>
-               <img class="img-autocomplete" src="{{'/assets/images/flags/' + item.country +'.png'}}"
+               <img class="img-autocomplete" src="{{item.avatar ? item.avatar.url : 'api/motorist/public/profileImage?id=' + item}}"
                  alt="">
                <img>
                <span>
-                 <span style="font-size: 16px; font-weight: 500; color: #324263; margin-left: 4px;">{{item.vehiclePlate}} </span>
+                 <span style="font-size: 16px; font-weight: 500; color: #324263; margin-left: 4px;">{{item.numberPlate}} </span>
                  <span style="font-size: 14px; margin-left: 10px;">{{item.model}}</span>
                </span>
              </span>
@@ -56,61 +56,61 @@
        </sga-auto-complete>
      </div>
      <div class="cnt-list-view column is-12">
-       <list-view [listItems]="addList" styleClass="admin-list motorist-admin-add-list">
-         <list-view-item>
-           <ng-template let-item="item">
-             <div class="motorist-admin-add-item-valid">
-               <span>({{item.vehiclePlate}})</span>
-               <span style="font-weight: 500; margin-left: 8px">{{item.vehiclePlate}}</span>
-               <span (click)="undoAddVehicle(item)" class="fa fa-times motorist-admin-item-close" aria-hidden="true"></span>
-             </div>
-           </ng-template>
-         </list-view-item>
-         <list-view-empty>
-           <ng-template>
-             <div class="list-view-empty">
-               <i class="fal fa-truck-container"></i>
-               <span>Não há Reboques para adicionar à sua conta</span>
-             </div>
-           </ng-template>
-         </list-view-empty>
-       </list-view>
-     </div>
+      <list-view [listItems]="addList" styleClass="admin-list motorist-admin-add-list">
+        <list-view-item>
+          <ng-template let-item="item">
+            <div class="motorist-admin-add-item-valid">
+              <span>({{item.numberPlate}})</span>
+              <span style="font-weight: 500; margin-left: 8px">{{item.numberPlate}}</span>
+              <span (click)="undoAddVehicle(item)" class="fa fa-times motorist-admin-item-close" aria-hidden="true"></span>
+            </div>
+          </ng-template>
+        </list-view-item>
+        <list-view-empty>
+          <ng-template>
+            <div class="list-view-empty">
+              <i class="fal fa-truck-moving"></i>
+              <span>Não há Veículos para adicionar à sua conta</span>
+            </div>
+          </ng-template>
+        </list-view-empty>
+      </list-view>
+    </div>
    </div>
 
    <div class="motorist-admin-wrapper motorist-admin-remove-wrapper column is-12 is-marginless">
-     <div class="wrapper-header">Remover Reboque</div>
-     <div class="cnt-list-view ">
-       <list-view [listItems]="removeList" styleClass="admin-list motorist-admin-add-list">
-         <list-view-item>
-           <ng-template let-item="item">
-             <div class="motorist-admin-add-item-invalid">
-               <span>({{item.vehiclePlate}})</span>
-               <span style="font-weight: 500; margin-left: 8px">{{item.vehiclePlate}}</span>
-               <span (click)="undoRemoveVehicle(item)" class="fas fa-times motorist-admin-item-close" aria-hidden="true"></span>
-             </div>
-           </ng-template>
-         </list-view-item>
-         <list-view-empty>
-           <ng-template>
-             <div class="list-view-empty">
-               <i class="fal fa-truck-container"></i>
-               <span>Não há reboques para remover da sua conta</span>
-             </div>
-           </ng-template>
-         </list-view-empty>
-       </list-view>
-     </div>
-   </div>
+    <div class="wrapper-header">Remover Veículo</div>
+    <div class="cnt-list-view ">
+      <list-view [listItems]="removeList" styleClass="admin-list motorist-admin-add-list">
+        <list-view-item>
+          <ng-template let-item="item">
+            <div class="motorist-admin-add-item-invalid">
+              <span>({{item.numberPlate}})</span>
+              <span style="font-weight: 500; margin-left: 8px">{{item.numberPlate}}</span>
+              <span (click)="undoRemoveVehicle(item)" class="fas fa-times motorist-admin-item-close" aria-hidden="true"></span>
+            </div>
+          </ng-template>
+        </list-view-item>
+        <list-view-empty>
+          <ng-template>
+            <div class="list-view-empty">
+              <i class="fal fa-truck-moving"></i>
+              <span>Não há veículos para remover da sua conta</span>
+            </div>
+          </ng-template>
+        </list-view-empty>
+      </list-view>
+    </div>
+  </div>
 
-   <div class="cnt-custom-button column is-12 is-marginless">
-     <button 
-     (click)="applyChanges()" 
-     [disabled]="addList?.length == 0 && removeList?.length == 0" 
-     class="custom-button" >
-       aplicar mudanças
-     </button>
-   </div>
+  <div class="cnt-custom-button column is-12 is-marginless">
+  <button 
+  (click)="applyChanges()" 
+  [disabled]="addList?.length == 0 && removeList?.length == 0" 
+  class="custom-button" >
+    aplicar mudanças
+  </button>
+</div>
 
  </div>
  <div class="motorist-admin-right-container columns is-multiline is-marginless">
@@ -144,7 +144,7 @@
              </div>
            </ng-template>
          </column>
-         <column [key]="'vehiclePlate'" [header]="'Placa'" [minWidth]="'82'" [isSortable]="true">
+         <column [key]="'numberPlate'" [header]="'Placa'" [minWidth]="'82'" [isSortable]="true">
            <ng-template let-item="item">
              {{item}}
            </ng-template>
