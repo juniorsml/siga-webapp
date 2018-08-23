@@ -11,6 +11,7 @@ export class ConfigDeviceComponent implements OnInit {
 
   public showFormRegister = false;
 
+
   constructor(private router: ActivatedRoute) {}
 
   ngOnInit(): void {

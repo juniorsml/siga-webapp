@@ -19,6 +19,14 @@ export class DeviceService {
       .pipe(map(res => <Array<Device>>res.json()));
   }
 
+  public getDevice(deviceId:string): Observable<any> {
+    return this
+      .http
+      .get(`api/devices/${deviceId}`)
+      .first()
+      .pipe(map(res => res.json()));
+  }
+
   public saveDevice(device: Device): Observable<any> {
     return this
       .http

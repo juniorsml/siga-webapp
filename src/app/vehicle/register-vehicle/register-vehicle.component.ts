@@ -11,7 +11,7 @@ class RegisterForm {
   // Vehicle Info
   vehiclePlate: string;
   renavan: string;
-  brand: string;
+  make: string;
   model: string;
   color: string;
   year: string;

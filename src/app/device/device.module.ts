@@ -13,6 +13,8 @@ import { Map } from '../shared/models/Map';
 import { ConfigDeviceComponent } from './config-device/config-device.component';
 import { RegisterDeviceComponent } from './register-device/register-device.component';
 
+import { DeviceDialogComponent } from './device-dialog/device-dialog.component';
+
 @NgModule({
   imports: [
     FormsModule,
@@ -22,9 +24,10 @@ import { RegisterDeviceComponent } from './register-device/register-device.compo
   ],
   exports: [
     GridDeviceComponent,
-    RegisterDeviceComponent
+    RegisterDeviceComponent,
+    DeviceDialogComponent
   ],
-  declarations: [GridDeviceComponent, MapDeviceComponent, ConfigDeviceComponent, RegisterDeviceComponent],
+  declarations: [GridDeviceComponent, MapDeviceComponent, ConfigDeviceComponent, RegisterDeviceComponent, DeviceDialogComponent],
   providers: [
     {
       provide: Map,
