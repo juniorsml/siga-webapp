@@ -17,7 +17,7 @@ export class TruckService {
       .pipe(map(res => <Array<Truck>>res.json()));
   }
 
-  public getTruck(trailerId:string): Observable<any> {
+  public getTruck(trailerId: string): Observable<any> {
     return this
       .http
       .get(`api/trailers/${trailerId}`)
