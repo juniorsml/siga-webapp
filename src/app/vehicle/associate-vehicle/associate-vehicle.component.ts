@@ -82,9 +82,9 @@ export class AssociateVehicleComponent implements OnInit {
     this.addList.push(vehicle);
   }
 
-  public showVehicleModal(id) {
+  public showVehicleModal(motorist) {
     this.showVehicleDialog = true;
-    this.selectedVehicle = this.vehicles.filter(m => m.id === id)[0];
+    this.selectedVehicle = motorist;
   }
 
   public vehicleDialogClose() {
