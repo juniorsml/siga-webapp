@@ -94,7 +94,7 @@
                           <sga-add-rules-dialog   
                             [showModal]="showAddrules"                           
                             (onDialogClose)="closeDialog()"
-                            (onConfirm)="AddRules()">
+                            (data)="AddRules($event)">
                           </sga-add-rules-dialog>
                         </sga-modal>             
                   </div>  

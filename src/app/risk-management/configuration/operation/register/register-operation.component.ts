@@ -30,14 +30,19 @@ export
     this.onFormClose.emit();
   }
 
+
+
   cancel() {
     this.onFormClose.emit();
   }
   public openAddRules() {
      this.showAddrules = true;
   }
-  public AddRules(){
-     this.showAddrules = false ;
+ 
+  public AddRules(event:any){
+    debugger
+    this.showAddrules = false ;
+    this.selectedRules = event;
   }
 
   public closeDialog = () => this.showAddrules = false;

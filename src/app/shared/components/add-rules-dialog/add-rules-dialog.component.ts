@@ -12,8 +12,7 @@ export class AddRulesDialogComponent {
   @Input() showModal: boolean;
 
   @Output() onDialogClose: EventEmitter<void> = new EventEmitter<void>();
-  @Output() onConfirm: EventEmitter<any> = new EventEmitter<any>();
-
+  @Output() data: EventEmitter<any> = new EventEmitter<any>();
 
 
   public rulesManagement = rules;
@@ -36,6 +35,6 @@ export class AddRulesDialogComponent {
 
   confirm() {
     this.showModal = false;
-    this.onConfirm.emit();
+    this.data.emit(this.selectedRules);
   }
 }
