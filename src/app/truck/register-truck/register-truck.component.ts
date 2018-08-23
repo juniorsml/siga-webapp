@@ -108,8 +108,8 @@ export class RegisterTruckComponent implements OnInit {
 
     formdata.append('file', file);
     formdata.append('name', truck.name);
-    formdata.append('type', 'TRUCKS');
-    formdata.append('correlationEntityId', truck.correlationEntityId);
+    formdata.append('type', 'VEHICLE');
+    formdata.append('correlationEntityId', truck.id);
 
     return this .truckService.uploadImage(formdata).map(avatar =>  { truck.avatar = avatar ; return of(truck); });
   }
@@ -140,13 +140,7 @@ export class RegisterTruckComponent implements OnInit {
         enabled: true
      };
      // hack para api enquanto nao aprendo do jeito certo
-     // if(){
-
-     // }
-     // truck.asoDocDueDate = truck.asoDocDueDate.replace(/-/gi, '/');
-     // truck.cddDocDueDate = truck.cddDocDueDate.replace(/-/gi, '/');
-     // truck.moppDocDueDate = truck.moppDocDueDate.replace(/-/gi, '/');
-     // truck.dateOfBirth = truck.dateOfBirth.replace(/-/gi, '/');
+     truck.anttDueDate = truck.anttDueDate.replace(/-/gi, '/');
 
      return truck;
    }
@@ -158,21 +152,23 @@ export class RegisterTruckComponent implements OnInit {
 
 
   // Show image profile
+  // Show image profile
   addProfilePhoto(event: any) {
     if (event.target.files && event.target.files[0]) {
-      const reader = new FileReader();
-      reader.onload = (element: any) => {
-        const url = element.target.result;
-        const removeImage = document.querySelector('.remove-img-profile');
-        const containerImage = document.querySelector('.img-profile');
-        (removeImage as HTMLElement).style.display = 'flex';
-        (containerImage as HTMLElement).style.display = 'block';
-        (containerImage as HTMLElement).style.backgroundImage = 'url( ' + url + ' )';
+      const reader=new FileReader();
+      reader.onload=(element: any)=> {
+        const url=element.target.result;
+        const removeImage=document.querySelector('.remove-img-profile');
+        const containerImage=document.querySelector('.img-profile');
+        (removeImage as HTMLElement).style.display='flex';
+        (containerImage as HTMLElement).style.display='block';
+        (containerImage as HTMLElement).style.backgroundImage='url('+url+')';
       };
+      this.file = event.target.files[0];
       reader.readAsDataURL(event.target.files[0]);
-
     }
   }
+
   removeProfilePhoto() {
     const containerImage = document.querySelector('.img-profile');
     const removeImage = document.querySelector('.remove-img-profile');

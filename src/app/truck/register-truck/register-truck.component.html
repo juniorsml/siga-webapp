@@ -57,7 +57,7 @@
                             <input  type="text" 
                                     class="input" 
                                     placeholder="Placa" 
-                                    name="vehiclePlate"                   
+                                    name="numberPlate"                   
                                     [(ngModel)]="model.numberPlate"
                                     #numberPlate="ngModel"
                                     [ngClass]="{'is-danger': numberPlate.invalid && (numberPlate.dirty || numberPlate.touched)}"
@@ -185,15 +185,17 @@
                                  [ngClass]="{
                                    'is-danger': vehicleType.invalid && (vehicleType.dirty || vehicleType.touched)
                                   }">
-                              <option value="A">A</option>
-                              <option value="B">B</option>
-                              <option value="C">C</option>
-                              <option value="D">AD</option>
-                              <option value="E">AE</option>
-                              <option value="B">B</option>
-                              <option value="C">C</option>
-                              <option value="D">D</option>
-                              <option value="E">E</option>
+                              <option value="CARRETA ABERTA">CARRETA ABERTA</option>
+                              <option value="CARRETA BAU">CARRETA BAU</option>
+                              <option value="CARRETA BITREM">CARRETA BITREM</option>
+                              <option value="CARRETA ESPECIAL">CARRETA ESPECIAL</option>
+                              <option value="CARRETA GRANELEIRA">CARRETA GRANELEIRA</option>
+                              <option value="CARRETA SIDER">CARRETA SIDER</option>
+                              <option value="CARRETA TRITREM">CARRETA TRITREM</option>
+                              <option value="CONTAINER">CARRETA BAU FRIGORIFICA</option>
+                              <option value="CARRETA BASCULANTE">CARRETA BASCULANTE</option>
+                              <option value="CARRETA SILO">CARRETA SILO</option>
+                              <option value="CARRETA TANQUE">CARRETA TANQUE</option>
                             </select>
                             </div>
                           </div>
@@ -240,7 +242,7 @@
                         <div class="field  is-4 column is-marginless">
                           <label class="label is-small">Nº  registro ANTT</label>   
                           <div class="control">
-                            <input [(ngModel)]="model.anttNumber"  #anttNumber="ngModel" class="input" type="text" placeholder="Nº  registro ANTT">
+                            <input [(ngModel)]="model.anttNumber"  name="anttNumber" #anttNumber="ngModel" class="input" type="text" placeholder="Nº  registro ANTT">
                           </div>
                         </div>
 
@@ -276,12 +278,12 @@
                           <div class="control">
                             <div class="select">
                               <select [(ngModel)]="model.tech" 
+                                      name="tech"
                                       #tech="ngModel"
                                       [ngClass]="{'is-danger': tech.invalid && (tech.dirty || tech.touched)}"
                                       required>                               
-                                <option value="1">1</option> 
-                                <option value="2">2</option>
-                                <option value="3">3</option>
+                                <option value="OMNILINK">OMNILINK</option> 
+                                <option value="AUTOTRAC">AUTOTRAC</option>
                               </select>
                             </div>
                           </div>
@@ -300,9 +302,12 @@
                                       name="comunication"
                                       [ngClass]="{'is-danger': comunication.invalid && (comunication.dirty || comunication.touched)}"
                                       required>                               
-                                <option value="Frota">Frota</option>
-                                <option value="Agregado">Agregado</option>
-                                <option value="Terceiro">Terceiro</option>
+                                <<option value="GPS/GPRS">GPS/GPRS</option>
+                                <option value="GPS/DUPLO GPRS">GPS/DUPLO GPRS</option>
+                                <option value="GPS/GPRS+SATÉLITE">GPS/GPRS+SATÉLITE</option>
+                                <option value="GPS/SATÉLITE">GPS/SATÉLITE</option>
+                                <option value="GPS/GPRS GLOBAL">GPS/GPRS GLOBAL</option>
+                                <option value="RF/GPS/GPRS">RF/GPS/GPRS</option>
                               </select>
                             </div>
                           </div>
@@ -436,10 +441,10 @@
                           <input 
                             type="number" 
                             class="input is-small" 
-                            [(ngModel)]="ray"
+                            [(ngModel)]="ra"
                             (ngModelChange)="onRayChanged($event)"
                             placeholder="Raio"
-                            name="ray" 
+                            name="radius" 
                             ngModel />
                         </div>
                       </div>

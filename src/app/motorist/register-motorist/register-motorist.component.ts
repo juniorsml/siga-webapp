@@ -117,7 +117,7 @@ export class RegisterMotoristComponent implements OnInit {
     formdata.append('file', file);
     formdata.append('name', motorist.name);
     formdata.append('type', 'MOTORISTS');
-    formdata.append('correlationEntityId', motorist.correlationEntityId);
+    formdata.append('correlationEntityId', motorist.id);
 
     return this .motoristService.uploadImage(formdata).map(avatar =>  { motorist.avatar = avatar ; return of(motorist); });
   }
