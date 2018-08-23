@@ -65,8 +65,29 @@
                   <div class="cnt-info columns" style="align-items: flex-start;">
               
                     <div class="columns column is-multiline">                                
-          
-                  
+                        <div class="is-4 column">
+                          <a href="" class="button is-outlined is-small">Adicionar</a>                          
+                        </div>    
+                        
+                        <div class="is-12 column cnt-gr-list">                          
+
+                          <table *ngIf="associateRules.length > 0" class="table is-striped is-fullwidth">
+                            <thead>
+                              <tr>
+                                <th>Tecnologia</th>
+                                <th>Regra</th>                              
+                              </tr>
+                            </thead>                           
+                            <tbody>
+                              <tr *ngFor="let rule of associateRules">                                
+                                <td>OMNILINK</td>                           
+                                <td>KRONA_SOLIC DESLAC BAU PANICO</td>      
+                              </tr>                                  
+                             
+                            </tbody>
+                          </table>
+
+                        </div>                
                     </div>  
                   </div>
             </sga-tab>

@@ -76,7 +76,12 @@ import { SummaryItineraryComponent } from '../components/summary-dialog/itinerar
 
 import { CommandsHistoricComponent } from '../components/summary-dialog/commands-historic/commands-historic.component';
 
-import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../components/add-rules-dialog/add-rules-dialog.component';
+
+import { AddRulesDialogComponent } from '../components/add-rules-dialog/add-rules-dialog.component';
+
+
+
 
 
 @NgModule({
@@ -141,7 +146,8 @@ import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dia
     SummaryVehicleComponent,
     SummaryItineraryComponent,
     CommandsHistoricComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    AddRulesDialogComponent
   ],
   imports: [
     HttpModule,
@@ -230,7 +236,8 @@ import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dia
     CommandsHistoricComponent,
 
     RegisterNonConformityComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    AddRulesDialogComponent
   ]
 })
 export class SharedModule {}
