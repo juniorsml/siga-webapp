@@ -2,14 +2,11 @@ import { Component, Output, OnInit, EventEmitter, ViewChild, Input } from '@angu
 import { NgForm } from '@angular/forms';
 import { Map } from '../../shared/models/Map';
 
-import { TruckService } from '../truck.service'; 
+import { TruckService } from '../truck.service';
 
-
-import { Observable } from '../../../../node_modules/rxjs';
-import { of } from '../../../../node_modules/rxjs';
-import { concatMap} from '../../../../node_modules/rxjs/operators';
-
-
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+import { concatMap } from 'rxjs/operators';
 
 class RegisterForm {
 

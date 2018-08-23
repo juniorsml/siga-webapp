@@ -1,11 +1,11 @@
 import { VehicleService } from '../vehicle.service';
-import { Component, Output, EventEmitter, Input, OnInit,ViewChild} from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnInit, ViewChild} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Map } from '../../shared/models/Map';
 
-import { Observable } from '../../../../node_modules/rxjs';
-import { of } from '../../../../node_modules/rxjs';
-import { concatMap} from '../../../../node_modules/rxjs/operators';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+import { concatMap } from 'rxjs/operators';
 
 class RegisterForm {
   // Vehicle Info
@@ -62,8 +62,8 @@ export class RegisterVehicleComponent implements OnInit {
   @Output() onFormClose: EventEmitter<void> = new EventEmitter();
   public selectedTabIndex = 0;
 
-  mobilephone=['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
-  landlinephone=['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  mobilephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  landlinephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   file: File;
   vehicle ;
 
@@ -92,7 +92,6 @@ export class RegisterVehicleComponent implements OnInit {
           return of(vehicle);
     }
 
-    debugger;
     const formdata: FormData = new FormData();
     formdata.append('file', file);
     formdata.append('name', vehicle.name);
@@ -138,14 +137,14 @@ export class RegisterVehicleComponent implements OnInit {
    // Show image profile
    addProfilePhoto(event: any) {
     if (event.target.files && event.target.files[0]) {
-      const reader=new FileReader();
-      reader.onload=(element: any)=> {
-        const url=element.target.result;
-        const removeImage=document.querySelector('.remove-img-profile');
-        const containerImage=document.querySelector('.img-profile');
-        (removeImage as HTMLElement).style.display='flex';
-        (containerImage as HTMLElement).style.display='block';
-        (containerImage as HTMLElement).style.backgroundImage='url('+url+')';
+      const reader = new FileReader();
+      reader.onload = (element: any) => {
+        const url = element.target.result;
+        const removeImage = document.querySelector('.remove-img-profile');
+        const containerImage = document.querySelector('.img-profile');
+        (removeImage as HTMLElement).style.display = 'flex';
+        (containerImage as HTMLElement).style.display = 'block';
+        (containerImage as HTMLElement).style.backgroundImage = 'url(' + url + ')';
       };
       this.file = event.target.files[0];
       reader.readAsDataURL(event.target.files[0]);
@@ -169,7 +168,6 @@ export class RegisterVehicleComponent implements OnInit {
   }
 
   create(formVehicle: NgForm): Observable<any> {
-    
     const vehicle = this.buildVehicle(formVehicle, this.place);
     return this .vehicleService.saveVehicle(vehicle);
   }
