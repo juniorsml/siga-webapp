@@ -71,12 +71,11 @@
           </div>
         </ng-template>
       </table-empty>
-      <column class="photo-profile" [key]="'id'" [header]="''" [width]="'60'" [isSortable]="false">
+      <column class="photo-profile" [header]="''" [width]="'60'" [isSortable]="false">
         <ng-template let-item="item">
           <div class="cnt-img">
-
-            <img (click)="showVehicletModal(item)" style="width: 40px; height: 40px; border-radius: 50%;" src="{{'api/motorist/public/profileImage?id=' + item}}"
-              alt="">
+              <img (click)=showVehicletModal(item) id={{item.id}}  style="width: 40px; height: 40px; border-radius: 50%;" src="{{item.avatar ? item.avatar.url : 'api/motorist/public/profileImage?id=' + item}}"
+                  alt="">
           </div>
         </ng-template>
       </column>

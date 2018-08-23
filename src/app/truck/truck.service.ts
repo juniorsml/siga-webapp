@@ -13,31 +13,31 @@ export class TruckService {
   public getTrucks(): Observable<Array<Truck>> {
     return this
       .http
-      .get(`api/trucks`)
+      .get(`api/trailers`)
       .pipe(map(res => <Array<Truck>>res.json()));
   }
 
-  public getTruck(truckId:string): Observable<any> {
+  public getTruck(trailerId: string): Observable<any> {
     return this
       .http
-      .get(`api/trucks/${truckId}`)
+      .get(`api/trailers/${trailerId}`)
       .first()
       .pipe(map(res => res.json()));
   }
 
-  public saveTruck(truck: Truck): Observable<any> {
+  public saveTruck(trailer: Truck): Observable<any> {
     return this
       .http
-      .post('api/trucks', truck)
+      .post('api/trailers', trailer)
       .first()
       .pipe(map(res => res.json()));
   }
 
-  public updateTruck(truck: Truck): Observable<any> {
+  public updateTruck(trailer: Truck): Observable<any> {
     
     return this
       .http
-      .put(`api/trucks/${truck.id}`, truck)
+      .put(`api/trailers/${trailer.id}`, trailer)
       .first()
       .pipe(map(res => res.json()));
   }
@@ -53,12 +53,13 @@ export class TruckService {
   public associateTruck(ids: Array<string>): Observable<any> {
     return this
       .http
-      .patch('api/trucks/account/associate', ids);
+      .patch('api/trailers/account/associate', ids);
   }
 
   public disassociateTruck(ids: Array<string>): Observable<any> {
     return this
       .http
-      .patch('api/trucks/account/disassociate', ids);
+      .patch('api/trailers/account/disassociate', ids);
   }
+
 }

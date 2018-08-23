@@ -1,12 +1,12 @@
 import { Component, Output, OnInit, EventEmitter, Input, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { MotoristService } from '../motorist.service'; 
+import { MotoristService } from '../motorist.service';
 import { Map } from '../../shared/models/Map';
 
-import { Observable } from '../../../../node_modules/rxjs';
-import { of } from '../../../../node_modules/rxjs';
-import { concatMap} from '../../../../node_modules/rxjs/operators';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+import { concatMap } from 'rxjs/operators';
 
 class RegisterForm {
   // Personal Info
@@ -117,7 +117,7 @@ export class RegisterMotoristComponent implements OnInit {
     formdata.append('file', file);
     formdata.append('name', motorist.name);
     formdata.append('type', 'MOTORISTS');
-    formdata.append('correlationEntityId', motorist.correlationEntityId);
+    formdata.append('correlationEntityId', motorist.id);
 
     return this .motoristService.uploadImage(formdata).map(avatar =>  { motorist.avatar = avatar ; return of(motorist); });
   }

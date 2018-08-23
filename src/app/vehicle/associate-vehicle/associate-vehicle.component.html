@@ -138,11 +138,11 @@
            [haveFooter]="haveFooter"
            (onCellClick)="onAdminVehicleCellClick($event)">
 
-           <column [key]="'id'" [header]="''" [minWidth]="'60'">
+           <column  [header]="''" [minWidth]="'60'">
              <ng-template let-item="item">
                <div class="cnt-img">
-                 <img *ngIf="item !== null" (click)="showVehicleModal(item)" style="width: 40px; height: 40px; border-radius: 50%;" src="{{'api/motorist/public/profileImage?id=' + item}}"
-                   alt="">
+                   <img (click)=showVehicleModal(item) id={{item.id}}  style="width: 40px; height: 40px; border-radius: 50%;" src="{{item.avatar ? item.avatar.url : 'api/motorist/public/profileImage?id=' + item}}"
+                  alt=""> 
                </div>
              </ng-template>
            </column>

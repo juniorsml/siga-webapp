@@ -72,8 +72,9 @@ export class GridVehicleComponent implements OnInit {
     this.vehicles = data;
   }
 
-  public showVehicleModal() {
+  public showVehicleModal(motorist) {
     this.showVehicleDialog = true;
+    this.selectedVehicle = motorist;
   }
 
   public vehicleDialogClose() {

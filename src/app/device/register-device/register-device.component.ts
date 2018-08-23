@@ -3,9 +3,9 @@ import { NgForm } from '@angular/forms';
 
 import { DeviceService } from '../device.service';
 
-import { Observable } from '../../../../node_modules/rxjs';
-import { of } from '../../../../node_modules/rxjs';
-import { concatMap} from '../../../../node_modules/rxjs/operators';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+import { concatMap } from 'rxjs/operators';
 
 class RegisterForm {
   id: string;
