@@ -16,21 +16,14 @@ export class AddRulesDialogComponent {
   public rulesManagement = rules; 
 
   public selectedRules = new Array<any>();
-
   public addedClass = false;
-
   public removedClass = false;
 
   @Input() showModal: boolean;
-
   @Output() onDialogClose: EventEmitter<void> = new EventEmitter<void>();
   @Output() data: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(
-    private changeDetector: ChangeDetectorRef,
-  ) {
-    this.search = new SearchPipe();
-  }
+  constructor(private changeDetector: ChangeDetectorRef) {}
  ngOnInit() {
     this.filteredData = new SearchPipe().transform(this.rulesManagement, [
       this.searchText
@@ -49,12 +42,6 @@ export class AddRulesDialogComponent {
     }
     this.changeDetector.detectChanges();
   }
-
-
-
-
-
-
 
   cancel() {
     this.showModal = false;

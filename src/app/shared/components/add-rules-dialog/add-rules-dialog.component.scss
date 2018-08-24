@@ -83,12 +83,18 @@
     }
 }
 
-
+.container-scroll{
+  padding-top: 0;
+}
+.search{
+  margin: 0 0 9px 0;
+}
 .cnt-buttons{
-  margin-top: 5px;
+  padding-top: 0;
 }
 
 .cnt-gr-list{
+  margin: 0;
   width: 100%;
   table{    
     tr{
@@ -104,7 +110,7 @@
 
    tbody{
      overflow-y: scroll;
-     height: 200px;      
+     height: 267px;      
       
      }
     thead,tbody{
