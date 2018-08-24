@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { Component, EventEmitter, Output, Input, SimpleChanges,ChangeDetectorRef } from '@angular/core';
 
 import { rules } from '../../../shared/mocks/rules';
 
-import { RulePipe } from '../../../shared/filters/rules.pipe'
+import { SearchPipe } from '../../../shared/filters/search.pipe';
 
 @Component({
   selector: 'sga-add-rules-dialog',
@@ -10,13 +10,9 @@ import { RulePipe } from '../../../shared/filters/rules.pipe'
   styleUrls: ['./add-rules-dialog.component.scss']
 })
 export class AddRulesDialogComponent {
- 
-  @Input() showModal: boolean;
-
-  @Output() onDialogClose: EventEmitter<void> = new EventEmitter<void>();
-  @Output() data: EventEmitter<any> = new EventEmitter<any>();
-
-
+  public filteredData:any;
+  public searchText : any;
+  search: SearchPipe;
   public rulesManagement = rules; 
 
   public selectedRules = new Array<any>();
@@ -24,6 +20,41 @@ export class AddRulesDialogComponent {
   public addedClass = false;
 
   public removedClass = false;
+
+  @Input() showModal: boolean;
+
+  @Output() onDialogClose: EventEmitter<void> = new EventEmitter<void>();
+  @Output() data: EventEmitter<any> = new EventEmitter<any>();
+
+  constructor(
+    private changeDetector: ChangeDetectorRef,
+  ) {
+    this.search = new SearchPipe();
+  }
+ ngOnInit() {
+    this.filteredData = new SearchPipe().transform(this.rulesManagement, [
+      this.searchText
+    ]);
+
+ }
+  ngOnChanges(changes: SimpleChanges): void {  
+    
+    if (changes.searchText) {
+      this.filteredData = new SearchPipe().transform(this.rulesManagement, [
+        this.searchText
+      ]);
+  
+    } else {
+      this.filteredData = this.rulesManagement;
+    }
+    this.changeDetector.detectChanges();
+  }
+
+
+
+
+
+
 
   cancel() {
     this.showModal = false;
@@ -48,6 +79,9 @@ export class AddRulesDialogComponent {
 
   confirm() {
     this.showModal = false;
-    this.data.emit(this.selectedRules);
+    if(this.selectedRules){
+      this.data.emit(this.selectedRules);  
+    }
+    
   }
 }
