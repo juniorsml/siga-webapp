@@ -135,7 +135,20 @@
     }
   }
 }
-
+.actions{
+  span{
+     padding:0 5px;
+     font-size: 12px;
+  }
+  .add{
+    border:1px solid green;
+    color:green;
+  }
+  .remove{
+    border:1px solid red;
+    color:red;
+  }
+}
 
 
 

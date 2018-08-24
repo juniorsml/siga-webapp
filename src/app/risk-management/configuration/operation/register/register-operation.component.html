@@ -69,7 +69,7 @@
                           <a class="button is-outlined is-small" (click)="openAddRules()">Adicionar</a>                          
                         </div>    
                         
-                        <div class="is-12 column cnt-gr-list">                          
+                        <div *ngIf="selectedRules != null" class="is-12 column cnt-gr-list">                          
 
                           <table class="table is-striped is-fullwidth">
                             <thead>
@@ -79,9 +79,9 @@
                               </tr>
                             </thead>                           
                             <tbody>
-                              <tr >                                
-                                <td>OMNILINK</td>                           
-                                <td>KRONA_SOLIC DESLAC BAU PANICO</td>      
+                              <tr  *ngFor="let item of selectedRules">                                
+                                <td>{{item.tech}}</td>                           
+                                <td>{{item.rule}}</td>      
                               </tr>                                  
                              
                             </tbody>

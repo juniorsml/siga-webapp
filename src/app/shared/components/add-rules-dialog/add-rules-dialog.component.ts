@@ -15,10 +15,10 @@ export class AddRulesDialogComponent {
   @Output() data: EventEmitter<any> = new EventEmitter<any>();
 
 
-  public rulesManagement = rules;
- 
+  public rulesManagement = rules; 
 
-  @Input() selectedRules = new Array<any>();
+  public selectedRules = new Array<any>();
+
   public addedClass = false;
 
 
@@ -27,10 +27,16 @@ export class AddRulesDialogComponent {
     this.onDialogClose.emit();
   }
 
-  itemClick(item){
+  public addItem(item) {
+    debugger
     this.selectedRules.push(item);
     console.log(this.selectedRules);
     item.addedClass = true;
+  }
+
+  public removeItem(rule: any): void {
+    const index = this.selectedRules.findIndex(a => a === rule);
+    this.selectedRules.splice(index, 1);
   }
 
   confirm() {

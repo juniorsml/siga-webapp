@@ -39,8 +39,7 @@ export
      this.showAddrules = true;
   }
  
-  public AddRules(event:any){
-    debugger
+  public AddRules(event: any){    
     this.showAddrules = false ;
     this.selectedRules = event;
   }
