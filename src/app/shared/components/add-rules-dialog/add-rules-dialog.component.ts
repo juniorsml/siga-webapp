@@ -2,6 +2,8 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
 
 import { rules } from '../../../shared/mocks/rules';
 
+import { RulePipe } from '../../../shared/filters/rules.pipe'
+
 @Component({
   selector: 'sga-add-rules-dialog',
   templateUrl: './add-rules-dialog.component.html',
@@ -21,6 +23,7 @@ export class AddRulesDialogComponent {
 
   public addedClass = false;
 
+  public removedClass = false;
 
   cancel() {
     this.showModal = false;
@@ -32,11 +35,15 @@ export class AddRulesDialogComponent {
     this.selectedRules.push(item);
     console.log(this.selectedRules);
     item.addedClass = true;
+    item.removedClass = false;
+    
   }
 
   public removeItem(rule: any): void {
     const index = this.selectedRules.findIndex(a => a === rule);
     this.selectedRules.splice(index, 1);
+    rule.removedClass = true;
+    rule.addedClass = false;
   }
 
   confirm() {

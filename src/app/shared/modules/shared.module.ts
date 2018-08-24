@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
 import { SearchPipe } from '../filters/search.pipe';
 import { PagerPipe } from '../filters/pager.pipe';
 import { PlacesPipe } from '../filters/places.pipe';
+import { RulePipe} from './filters/rules.pipe';
 
 import { TagInputModule } from 'ngx-chips';
 import { NgSlimScrollModule, SLIMSCROLL_DEFAULTS } from 'ngx-slimscroll';
@@ -89,6 +90,7 @@ import { AddRulesDialogComponent } from '../components/add-rules-dialog/add-rule
     PlacesPipe,
     SearchPipe,
     PagerPipe,
+    RulePipe,
     TimeElapsedAsTextPipe,
 
     MapComponent,
@@ -172,6 +174,7 @@ import { AddRulesDialogComponent } from '../components/add-rules-dialog/add-rule
     PlacesPipe,
     SearchPipe,
     PagerPipe,
+    RulePipe,
     TimeElapsedAsTextPipe,
 
     PageNotFoundComponent,

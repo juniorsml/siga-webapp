@@ -104,18 +104,8 @@
 
    tbody{
      overflow-y: scroll;
-     height: 200px;
-
-       tr{
-        &:hover{
-          color:#FFF;
-          background: #9297aa;
-        }
-       }
-       tr.added{
-          background: #9297aa;
-          color: #FFF;
-       }
+     height: 200px;      
+      
      }
     thead,tbody{
       width: 100%;
@@ -139,14 +129,25 @@
   span{
      padding:0 5px;
      font-size: 12px;
+     border-radius: 2px;
+     margin:0 2px;
   }
   .add{
+    &.added{
+      background: green;
+      color:#FFF;
+    }   
     border:1px solid green;
     color:green;
   }
   .remove{
     border:1px solid red;
     color:red;
+    &.removed{
+      background: red;
+      color:#FFF;
+    }
+   
   }
 }
 

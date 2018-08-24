@@ -14,7 +14,7 @@
       <form novalidate class="column is-12 is-marginless" #formSendCommand="ngForm">
       
     
-        
+        <input [(ngModel)]="searchText" type="text" placeholder="Buscar regra..." class="input is-small">
         <div class="field-body field cnt-gr-list">         
            <table class="table is-striped is-fullwidth">
              <thead>
@@ -26,13 +26,13 @@
              </thead>                           
              <tbody>
                <tr  *ngFor="let item of rulesManagement;let i=index"
-                    [ngClass]="item.addedClass ? 'added' : ''"
+                    
                     >                                
                  <td>{{item.tech}}</td>                           
                  <td>{{item.rule}}</td>      
                  <td class="actions">
-                    <span class="add" (click)="addItem(item)"> + </span>
-                    <span class="remove" (click)="removeItem(item)"> - </span>
+                    <span [ngClass]="item.addedClass ? 'added' : ''" class="add" (click)="addItem(item)"> Adicionar </span>
+                    <span [ngClass]="item.removedClass ? 'removed' : ''" class="remove" (click)="removeItem(item)"> Remover </span>
                  </td>   
                </tr>                                  
               
