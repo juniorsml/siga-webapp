@@ -1,12 +1,12 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component, Output, EventEmitter, Input, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 
 
 import { OperationService } from '../operation.service';
 
-import { Observable } from '../../../../node_modules/rxjs';
-import { of } from '../../../../node_modules/rxjs';
+import { Observable } from '../../../../../../../node_modules/rxjs';
+import { of } from '../../../../../../node_modules/rxjs';
 import { concatMap} from '../../../../node_modules/rxjs/operators';
 
 
@@ -28,6 +28,11 @@ export
   public showForm: boolean;
   @Output() onFormClose: EventEmitter<any> = new EventEmitter();
 
+  @ViewChild('formOperation') formOperation: any;
+
+  constructor(private operationService: OperationService) {}
+
+
 
   public selectedTabIndex = 0;
 
@@ -35,11 +40,20 @@ export
 
   public selectedRules: any;
 
-  public onSubmit(formOperation: NgForm) {
-    const {} = formOperation.value;
-    this.onFormClose.emit();
+  onSubmit() {
+   if ( this.formOperation.valid ) {
+     const operation$ = this.create(this.formOperation);
+     const request$ = operation$.pipe(
+           concatMap((operation : any) => (operation.value) ? this.updateOperation(operation.value) : of(operation)));
+     request$.subscribe(operation => this.onRegister(operation) , error =>this.onError(error));
+   }
   }
 
+
+  public onRegister(operation) {
+    this.formOperation.reset();
+    this.onFormClose.emit(operation);
+  }
 
 
 

@@ -25,7 +25,7 @@ export class OperationService {
       .pipe(map(res => res.json()));
   }
 
-  public saveMotorist(operation: Operation): Observable<any> {
+  public saveOperation(operation: Operation): Observable<any> {
     return this
       .http
       .post('api/operations', operation)
@@ -33,7 +33,7 @@ export class OperationService {
       .pipe(map(res => res.json()));
   }
 
-  public updateMotorist(operation: Operation): Observable<any> {
+  public updateOperation(operation: Operation): Observable<any> {
     
     return this
       .http
