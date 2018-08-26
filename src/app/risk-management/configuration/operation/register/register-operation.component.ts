@@ -5,9 +5,9 @@ import { NgForm } from '@angular/forms';
 
 import { OperationService } from '../operation.service';
 
-import { Observable } from '../../../../../../../node_modules/rxjs';
+import { Observable } from '../../../../../../node_modules/rxjs';
 import { of } from '../../../../../../node_modules/rxjs';
-import { concatMap} from '../../../../node_modules/rxjs/operators';
+import { concatMap} from '../../../../../../node_modules/rxjs/operators';
 
 
 
@@ -32,7 +32,7 @@ export
 
   constructor(private operationService: OperationService) {}
 
-
+  
 
   public selectedTabIndex = 0;
 
@@ -54,8 +54,22 @@ export
     this.formOperation.reset();
     this.onFormClose.emit(operation);
   }
+  create(formOperation: NgForm): Observable<any> {
+    const operation = this.buildOperation(formOperation);
+    return this .operationService.saveOperation(operation);
+  }
 
+  public updateOperation(operation) {
+     return this.operationService.updateOperation(operation);
+  }
 
+  public buildOperation(formOperation: NgForm) {
+    debugger
+    const operation = formOperation.value;
+    return operation;
+  }
+
+  onError = error => console.log(error);
 
 
   cancel() {
