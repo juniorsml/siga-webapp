@@ -34,7 +34,6 @@ export class OperationService {
   }
 
   public updateOperation(operation: Operation): Observable<any> {
-    
     return this
       .http
       .put(`api/operations/${operation.id}`, operation)

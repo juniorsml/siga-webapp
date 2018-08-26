@@ -17,39 +17,41 @@ import { concatMap} from '../../../../../../node_modules/rxjs/operators';
   styleUrls: ['./register-operation.component.scss'],
   providers: [OperationService]
 })
-export
 
- class RegisterOperationComponent {
+class RegisterForm {
+  idTerminal: any;
+  type: string;
+  name?: any;
+  model?: any;
+  technology?: any;
+  comunication: string;
+  
+}
 
-
-  showAddrules = false;
+export class RegisterOperationComponent {
 
   @Input()
   public showForm: boolean;
+  public selectedTabIndex = 0;
+  public onRulesSelected: any;
+  public selectedRules: any;
+  public showAddrules = false;
+
   @Output() onFormClose: EventEmitter<any> = new EventEmitter();
 
+  model: RegisterForm = new RegisterForm();
   @ViewChild('formOperation') formOperation: any;
 
   constructor(private operationService: OperationService) {}
-
-  
-
-  public selectedTabIndex = 0;
-
-  public onRulesSelected: any;
-
-  public selectedRules: any;
 
   onSubmit() {
    if ( this.formOperation.valid ) {
      const operation$ = this.create(this.formOperation);
      const request$ = operation$.pipe(
            concatMap((operation : any) => (operation.value) ? this.updateOperation(operation.value) : of(operation)));
-     request$.subscribe(operation => this.onRegister(operation) , error =>this.onError(error));
+           request$.subscribe(operation => this.onRegister(operation) , error =>this.onError(error));
    }
   }
-
-
   public onRegister(operation) {
     this.formOperation.reset();
     this.onFormClose.emit(operation);
@@ -64,7 +66,6 @@ export
   }
 
   public buildOperation(formOperation: NgForm) {
-    debugger
     const operation = formOperation.value;
     return operation;
   }
@@ -78,8 +79,7 @@ export
   public openAddRules() {
      this.showAddrules = true;
   }
- 
-  public AddRules(event: any){    
+  public AddRules(event: any) {
     this.showAddrules = false ;
     this.selectedRules = event;
   }
