@@ -12,6 +12,7 @@
     }
     .cnt-personal-data{
       position: relative;
+      padding-top: 0;
 
       &:after{
         content: '';
@@ -26,7 +27,7 @@
 
       }
       .field{
-        margin-bottom: 13px;
+        margin-bottom: 0px;
       }
     }
 
@@ -116,7 +117,8 @@
  
 .ttl-profile {
   color: #72747d;
-  font: 300 20px 'Sunflower', sans-serif;
+  font: 300 17px 'Sunflower', sans-serif;
+  padding-bottom: 0;
 }
 
 .ui-icon-info {
