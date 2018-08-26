@@ -10,115 +10,111 @@
       </div>      
     </div>
     <div class="container-scroll">    
-      
-      <form novalidate class="cnt-form" #formMotorist="ngForm">
-          <sga-tabs 
-            [tabIndex]="selectedTabIndex"
-            styleClass="tabs no-margin tabs-register">
-
-            <sga-tab heading="Geral">
-
-                  <!-- Geral -->
-                  <div class="cnt-info columns is-multiline">    
-                    <div class="column  is-12">
-                      <label class="label is-small">Descrição da Operação</label>
-                      <div class="control">
-                        <input class="input is-small" type="text" placeholder="Descrição da Operação">
-                      </div>
-                    </div>
-                    <div class="column  is-12">
-                      <label class="label is-small">Observação</label>
-                      <div class="control">
-                        <input class="input is-small" type="text" placeholder="Observação" value="Em viagem" >
-                      </div>
-                    </div>
-                    <div class="is-4 column">
-                      <label class="label is-small">Regra para inicio de viagem</label>
-                      <div class="control">                            
-                          <input class="styled-checkbox" id="Por Raio Inicio" type="checkbox" name="byRadiusBegin">
-                          <label for="Por Raio Inicio">Por Raio</label>
-                                              
-                           <input class="styled-checkbox" id="Por Macro Inicio" type="checkbox" name="byMacroBegin">
-                           <label for="Por Macro Inicio">Por Macro</label>
-                       </div>
-                    </div>
-                    <div class="is-4 column">
-                      <label class="label is-small">Regra para fim de viagem</label>
-                      <div class="control">                            
-                          <input class="styled-checkbox" id="Por Raio Fim" type="checkbox" name="byRadiusEnd">
-                          <label for="Por Raio Fim">Por Raio</label>
-                                              
-                           <input class="styled-checkbox" id="Por Macro Fim" type="checkbox" name="byMacroEnd">
-                           <label for="Por Macro Fim">Por Macro</label>
-                       </div>
-                      
-                    </div>
-
-
-                 </div>                    
-
-
-            </sga-tab>
-
-            <sga-tab heading="Regras GR">
-              <!-- Regras GR -->
-                  <div class="cnt-info columns" style="align-items: flex-start;">
-              
-                    <div class="columns column is-multiline">                                
-                        <div class="is-4 column">
-                          <a class="button is-outlined is-small" (click)="openAddRules()">Adicionar</a>                          
-                        </div>    
-                        
-                        <div  class="is-12 column cnt-gr-list">                          
-
-                          <table class="table is-striped is-fullwidth">
-                            <thead>
-                              <tr>
-                                <th>Tecnologia</th>
-                                <th>Regra</th>                              
-                              </tr>
-                            </thead>                           
-                            <tbody>
-                              <tr  *ngFor="let item of selectedRules">                                
-                                <td>{{item.tech}}</td>                           
-                                <td>{{item.rule}}</td>      
-                              </tr>                                  
-                             
-                            </tbody>
-                          </table>
-
-                        </div>   
-
-
-                        <sga-modal>
-                          <sga-add-rules-dialog   
-                            [showModal]="showAddrules"                           
-                            (onDialogClose)="closeDialog()"
-                            (data)="AddRules($event)">
-                          </sga-add-rules-dialog>
-                        </sga-modal>             
-                  </div>  
-                  </div>
-            </sga-tab>
         
+      <form novalidate class="cnt-form" #formOperation="ngForm">
+        <sga-tabs 
+          [tabIndex]="selectedTabIndex"
+          styleClass="tabs no-margin tabs-register">
+
+          <sga-tab heading="Geral">
+
+                <!-- Geral -->
+                <div class="cnt-info columns is-multiline">    
+                  <div class="column  is-12">
+                    <label class="label is-small">Descrição da Operação</label>
+                    <div class="control">
+                      <input class="input is-small" type="text" placeholder="Descrição da Operação">
+                    </div>
+                  </div>
+                  <div class="column  is-12">
+                    <label class="label is-small">Observação</label>
+                    <div class="control">
+                      <input class="input is-small" type="text" placeholder="Observação" value="Em viagem" >
+                    </div>
+                  </div>
+                  <div class="is-4 column">
+                    <label class="label is-small">Regra para inicio de viagem</label>
+                    <div class="control">                            
+                        <input class="styled-checkbox" id="Por Raio Inicio" type="checkbox" name="byRadiusBegin">
+                        <label for="Por Raio Inicio">Por Raio</label>
+                                            
+                         <input class="styled-checkbox" id="Por Macro Inicio" type="checkbox" name="byMacroBegin">
+                         <label for="Por Macro Inicio">Por Macro</label>
+                     </div>
+                  </div>
+                  <div class="is-4 column">
+                    <label class="label is-small">Regra para fim de viagem</label>
+                    <div class="control">                            
+                        <input class="styled-checkbox" id="Por Raio Fim" type="checkbox" name="byRadiusEnd">
+                        <label for="Por Raio Fim">Por Raio</label>
+                                            
+                         <input class="styled-checkbox" id="Por Macro Fim" type="checkbox" name="byMacroEnd">
+                         <label for="Por Macro Fim">Por Macro</label>
+                     </div>
+                    
+                  </div>
+
+
+               </div>                    
+
+
+          </sga-tab>
+
+          <sga-tab heading="Regras GR">
+            <!-- Regras GR -->
+                <div class="cnt-info columns" style="align-items: flex-start;">
+            
+                  <div class="columns column is-multiline">                                
+                      <div class="is-4 column">
+                        <a class="button is-outlined is-small" (click)="openAddRules()">Adicionar</a>                          
+                      </div>    
+                      
+                      <div  class="is-12 column cnt-gr-list">                          
+
+                        <table class="table is-striped is-fullwidth">
+                          <thead>
+                            <tr>
+                              <th>Tecnologia</th>
+                              <th>Regra</th>                              
+                            </tr>
+                          </thead>                           
+                          <tbody>
+                            <tr  *ngFor="let item of selectedRules">                                
+                              <td>{{item.tech}}</td>                           
+                              <td>{{item.rule}}</td>      
+                            </tr>                                  
+                           
+                          </tbody>
+                        </table>
+
+                      </div>   
+
+
+                      <sga-modal>
+                        <sga-add-rules-dialog   
+                          [showModal]="showAddrules"                           
+                          (onDialogClose)="closeDialog()"
+                          (data)="AddRules($event)">
+                        </sga-add-rules-dialog>
+                      </sga-modal>             
+                </div>  
+                </div>
+          </sga-tab>
+
 
         </sga-tabs>
-            <!-- Botões de Ação -->
-        <div class="cnt-buttons">
-        
-            
-              <button class="button" (click)="cancel()">Cancelar</button>
-            
-                  
-              <button type="submit"
-                      class="button is-first"
-                      [disabled]="formMotorist.invalid">Cadastrar
-              </button>
-            
-          
-        </div>
+        <!-- Botões de Ação -->
+
       </form>
+   
   
+    </div>
+    <div class="cnt-buttons">        
+          <button class="button" (click)="cancel()">Cancelar</button>
+          <button type="submit"
+                  class="button is-first"
+                  [disabled]="formOperation.invalid">Cadastrar
+          </button>
     </div>
   </div>
 </div>
