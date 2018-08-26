@@ -2,10 +2,20 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 
+
+import { OperationService } from '../operation.service';
+
+import { Observable } from '../../../../node_modules/rxjs';
+import { of } from '../../../../node_modules/rxjs';
+import { concatMap} from '../../../../node_modules/rxjs/operators';
+
+
+
 @Component({
   selector: 'sga-register-operation',
   templateUrl: './register-operation.component.html',
-  styleUrls: ['./register-operation.component.scss']
+  styleUrls: ['./register-operation.component.scss'],
+  providers: [OperationService]
 })
 export
 

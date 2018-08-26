@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
-import { HttpService } from '../shared/services/http.service';
-import { Operation } from '../shared/models/api/Operation';
+import { HttpService } from '../../../shared/services/http.service';
+import { Operation } from '../../../shared/models/api/Operation';
 
 @Injectable()
 export class OperationService {
