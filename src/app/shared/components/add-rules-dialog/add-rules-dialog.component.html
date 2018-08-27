@@ -1,0 +1,58 @@
+
+<div class="modal-box" [ngClass]="showModal ? 'opened-modal' : ''">
+  <div class="container-form content-modal">
+    <div class="container-dialog-header columns column is-12 is-marginless">
+      <div class="area column is-narrow">
+        <h3>Adicionar Regras GR</h3>  
+      </div>
+      <div class="column btn-close"> 
+         <i  (click)="cancel()" class="fal fa-times is-pulled-right"></i>
+      </div>      
+    </div>
+    <div class="container-scroll columns column is-12 is-marginless">    
+      
+      <form novalidate class="column is-12 is-marginless" #formSendCommand="ngForm">
+      
+    
+        <input [(ngModel)]="searchText" type="text" placeholder="Buscar regra..." class="input is-small search">
+        <div class="field-body field cnt-gr-list">         
+           <table class="table is-striped is-fullwidth">
+             <thead>
+               <tr>
+                 <th>Tecnologia</th>
+                 <th>Regra</th>       
+                 <th>Ação</th>                           
+               </tr>
+             </thead>                           
+             <tbody>
+               <tr  *ngFor="let item of filteredData"                
+                    >                                
+                 <td>{{item.tech}}</td>                           
+                 <td>{{item.rule}}</td>      
+                 <td class="actions">
+                    <span [ngClass]="item.addedClass ? 'added' : ''" class="add" (click)="addItem(item)"> Adicionar </span>
+                    <span [ngClass]="item.removedClass ? 'removed' : ''" class="remove" (click)="removeItem(item)"> Remover </span>
+                 </td>   
+               </tr>                                  
+              
+             </tbody>
+           </table>
+        </div>
+  
+
+
+        <!-- Botões de Ação -->
+        <div class="cnt-buttons is-pulled-right">       
+            
+          <button class="button" (click)="cancel()">Cancelar</button>       
+              
+          <button type="submit" (click)="confirm()"  class="button is-first">Adicionar
+          </button>
+          
+          
+        </div>
+      </form>
+  
+    </div>
+  </div>
+</div>

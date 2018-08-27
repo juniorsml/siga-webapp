@@ -39,8 +39,8 @@ $main-blue: #4d5675;
 .content-modal{
   background-color: #FFF;
   width: 100%;
-  max-width:1000px;
-  height: 90%;
+  max-width:850px;
+  min-height: 479px;
   background: #ffffff;
   -webkit-box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.1);
   box-shadow: 2px 4px 20px -4px rgba(0, 0, 0, 0.1); 
@@ -57,7 +57,7 @@ $main-blue: #4d5675;
   }
   .cnt-info{
      margin-top: 5px;
-     min-height: 404px;
+ 
   }
   .file-cta, .places-ac, select, input {
     color:#8c8a8a;
@@ -147,6 +147,7 @@ $main-blue: #4d5675;
       justify-content: center;
       cursor:pointer;
       transition:all 300ms ease;
+
       &:hover{
       opacity: 1;
       }
@@ -161,4 +162,64 @@ $main-blue: #4d5675;
 }
 .select select,.select{
 width:100%;
+}
+
+.cnt-buttons{
+  text-align: right;
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  
+}
+
+.cnt-gr-list{
+  width: 100%;
+  table{
+
+    max-height: 350px;
+    
+    thead,tbody{
+      width: 100%;
+    }
+    th{
+      font-size: 13.5px;
+    }
+    td{
+      font-size: 12px;
+      padding: 4px;
+      vertical-align: middle;
+    }
+  }
+}
+
+
+
+
+.slimscroll-grid{
+  transition:all 200ms ease !important;
+  width:4px !important;
+  background: rgba(0,0,0,0.2) !important;
+  opacity:1 !important;
+      
+}
+.slimscroll-bar{
+  transition:all 200ms ease !important;
+  width:4px !important;
+  background: rgba(0,0,0,0.3) !important;
+  right: 2px !important; 
+  opacity:1 !important;
+}
+.slimscroll-wrapper:hover .slimscroll-bar{
+  transition:all 200ms ease !important;
+  width:4px !important;
+  opacity:1 !important;
+
+  background: rgba(0,0,0,0.3) !important;
+  right: 2px !important;
+}
+.slimscroll-wrapper:hover  .slimscroll-grid{
+  transition:all 200ms ease !important;
+  width:4px !important;
+  background: rgba(0,0,0,0.2) !important;
+
 }

@@ -22,6 +22,7 @@ import { SearchPipe } from '../filters/search.pipe';
 import { PagerPipe } from '../filters/pager.pipe';
 import { PlacesPipe } from '../filters/places.pipe';
 
+
 import { TagInputModule } from 'ngx-chips';
 import { NgSlimScrollModule, SLIMSCROLL_DEFAULTS } from 'ngx-slimscroll';
 import {
@@ -78,13 +79,18 @@ import { CommandsHistoricComponent } from '../components/summary-dialog/commands
 
 import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
 
+import { AddRulesDialogComponent } from '../components/add-rules-dialog/add-rules-dialog.component';
+
+
+
+
 
 @NgModule({
   declarations: [
     PlacesPipe,
     SearchPipe,
     PagerPipe,
-    TimeElapsedAsTextPipe,
+   TimeElapsedAsTextPipe,
 
     MapComponent,
 
@@ -141,7 +147,8 @@ import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dia
     SummaryVehicleComponent,
     SummaryItineraryComponent,
     CommandsHistoricComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    AddRulesDialogComponent
   ],
   imports: [
     HttpModule,
@@ -230,7 +237,8 @@ import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dia
     CommandsHistoricComponent,
 
     RegisterNonConformityComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    AddRulesDialogComponent
   ]
 })
 export class SharedModule {}

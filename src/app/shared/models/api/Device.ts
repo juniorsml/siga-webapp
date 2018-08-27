@@ -1,11 +1,11 @@
 import { Subscriber } from './Subscriber';
 
-export class Device {
-  tipo:any;
-  id: string;
-  maek?: any;
-  tech?: any;
+export interface Device {
+  type: any;
+  idTerminal: string;
+  technology?: any;
+  comunication: any;
   model?: any;
-  nickname?: any;
+  name?: any;
   subscribers: Array<Subscriber>;
 }

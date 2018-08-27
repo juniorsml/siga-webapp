@@ -19,7 +19,7 @@ export class DeviceService {
       .pipe(map(res => <Array<Device>>res.json()));
   }
 
-  public getDevice(deviceId:string): Observable<any> {
+  public getDevice(deviceId: string): Observable<any> {
     return this
       .http
       .get(`api/devices/${deviceId}`)
@@ -38,7 +38,7 @@ export class DeviceService {
   public updateDevice(device: Device): Observable<any> {
     return this
       .http
-      .put(`api/devices/${device.id}`, device)
+      .put(`api/devices/${device.idTerminal}`, device)
       .first()
       .pipe(map(res => res.json()));
   }

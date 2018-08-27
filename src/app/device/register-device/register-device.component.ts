@@ -8,14 +8,10 @@ import { of } from 'rxjs/observable/of';
 import { concatMap } from 'rxjs/operators';
 
 class RegisterForm {
-  id: string;
-  name?: any;
-  model?: any;
-  technology?: any;
-  updated: string;
-  location: string;
-  speed: string;
-  batterylevel: string;
+  id:any;
+  definition: any;
+  obs: string;
+  rules?: any;
 }
 
 
