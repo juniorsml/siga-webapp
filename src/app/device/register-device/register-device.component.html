@@ -32,12 +32,23 @@
               <input type="text" class="input" placeholder="Modelo" name="model" ngModel required/>
             </div>
           </div>
-        
+          
           <div class="column is-6">
-            <label class="label is-small">Tecnologia</label>
-            <div class="control">
-              <input type="text" class="input" placeholder="Tecnologia" name="tech" ngModel required/>
-            </div>
+          <label class="label is-small">Tecnologia</label>   
+                          <div class="control">
+                            <div class="select">
+                              <select [(ngModel)]="model.technology" 
+                                      #technology="ngModel"
+                                      name="technology"
+                                      [ngClass]="{'is-danger': technology.invalid && (technology.dirty || technology.touched)}"
+                                      required>                               
+                                <option value="OMNILINK">OMNILINK</option> 
+                                <option value="AUTOTRAC">AUTOTRAC</option>
+                              </select>
+                            </div>
+                          </div>
+                       
+            
           </div>
           <div class="column is-6">
             <label class="label is-small">Comunicação</label>

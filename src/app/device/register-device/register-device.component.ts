@@ -4,8 +4,6 @@ import { NgForm } from '@angular/forms';
 import { DeviceService } from '../device.service';
 
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
-import { concatMap } from 'rxjs/operators';
 
 class RegisterForm {
   id:any;
@@ -40,20 +38,20 @@ export class RegisterDeviceComponent {
 
   public onSubmit() {
      if ( this.formDevice.valid ) {
-       const device$ = this.create(this.formDevice);
-       const request$ = device$.pipe(
-             concatMap((device : any) => (device.value) ? this.updateDevice(device.value) : of(device)));
-       request$.subscribe(device => this.onRegister(device) , error =>this.onError(error));
+       this.create(this.formDevice)
+                .subscribe(device => this.onRegister(device) , error => this.onError(error));
      }
   }
 
   public onRegister(device) {
+    debugger;
     this.formDevice.reset();
     this.onFinish.emit(device);
   }
 
   create(formDevice: NgForm): Observable<any> {
     const device = this.buildDevice(formDevice);
+    debugger;
     return this .deviceService.saveDevice(device);
   }
 
@@ -62,7 +60,6 @@ export class RegisterDeviceComponent {
   }
 
   public buildDevice(formDevice: NgForm) {
-    debugger 
     const device = formDevice.value;
     return device;
   }
