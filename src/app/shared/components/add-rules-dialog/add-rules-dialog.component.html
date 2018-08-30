@@ -11,10 +11,10 @@
     </div>
     <div class="container-scroll columns column is-12 is-marginless">    
       
-      <form novalidate class="column is-12 is-marginless" #formSendCommand="ngForm">
+      <form novalidate class="column is-12 is-marginless">
       
     
-        <input [(ngModel)]="searchText" type="text" placeholder="Buscar regra..." class="input is-small search">
+        <input  name="term" [formControl]="term" type="text" placeholder="Buscar regra..." class="input is-small search">
         <div class="field-body field cnt-gr-list">         
            <table class="table is-striped is-fullwidth">
              <thead>

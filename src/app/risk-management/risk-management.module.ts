@@ -29,6 +29,7 @@ import { RegisterOperationComponent } from './configuration/operation/register/r
 
 @NgModule({
   imports: [
+  
     FormsModule,
     SharedModule,
     CommonModule,
