@@ -5,12 +5,10 @@ import { DeviceService } from '../device.service';
 
 import { Observable } from 'rxjs/Observable';
 
-class RegisterForm {
-  id:any;
-  definition: any;
-  obs: string;
-  rules?: any;
-}
+
+import { Device } from '../../shared/models/api/Device'
+
+
 
 
 @Component({
@@ -27,7 +25,7 @@ export class RegisterDeviceComponent {
   public showForm: boolean;
 
 
-  model: RegisterForm = new RegisterForm();
+  model: Device;
   @ViewChild('formDevice') formDevice: any;
 
   device;
