@@ -7,31 +7,8 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { concatMap } from 'rxjs/operators';
 
-class RegisterForm {
-  // Vehicle Info
-  vehiclePlate: string;
-  renavan: string;
-  make: string;
-  model: string;
-  color: string;
-  year: string;
-  type: string;
-  capacity: string;
-  fleetNumber: string;
-  anttNumber: number;
-  anttDueDate: Date;
-  cnhNumber: string;
+import { Vehicle } from '../../shared/models/api/Vehicle'
 
-  // Owner
-  ownerName: string;
-  ownerDocument: string;
-
-  // Devices
-
-  number: string;
-  tech: string;
-  comunication: string;
-}
 
 @Component({
   selector: 'sga-register-vehicle',
@@ -42,7 +19,7 @@ class RegisterForm {
 
 export class RegisterVehicleComponent implements OnInit {
 
-  model: RegisterForm = new RegisterForm();
+  model: Vehicle;
 
 
   @ViewChild('formVehicle') formVehicle: any;

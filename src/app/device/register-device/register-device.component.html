@@ -37,11 +37,7 @@
           <label class="label is-small">Tecnologia</label>   
                           <div class="control">
                             <div class="select">
-                              <select [(ngModel)]="model.technology" 
-                                      #technology="ngModel"
-                                      name="technology"
-                                      [ngClass]="{'is-danger': technology.invalid && (technology.dirty || technology.touched)}"
-                                      required>                               
+                              <select  name="technology" required>                               
                                 <option value="OMNILINK">OMNILINK</option> 
                                 <option value="AUTOTRAC">AUTOTRAC</option>
                               </select>
@@ -54,10 +50,7 @@
               <label class="label is-small">Comunicação</label>  
             <div class="control">
               <div class="select">
-                <select [(ngModel)]="model.comunication" 
-                        #comunication="ngModel"
-                        name="comunication"
-                        [ngClass]="{'is-danger': comunication.invalid && (comunication.dirty || comunication.touched)}"
+                <select  name="comunication"                
                         required>                               
                   <option value="GPS/GPRS">GPS/GPRS</option>
                   <option value="GPS/DUPLO GPRS">GPS/DUPLO GPRS</option>

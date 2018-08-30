@@ -49,7 +49,7 @@ export class RegisterDeviceComponent {
 
   create(formDevice: NgForm): Observable<any> {
     const device = this.buildDevice(formDevice);
-    debugger;
+    
     return this .deviceService.saveDevice(device);
   }
 
