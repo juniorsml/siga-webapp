@@ -1,15 +1,7 @@
 import { Component, Output, EventEmitter, Input, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
 import { DeviceService } from '../device.service';
-
 import { Observable } from 'rxjs/Observable';
-
-
-import { Device } from '../../shared/models/api/Device'
-
-
-
 
 @Component({
   selector: 'sga-register-device',
@@ -24,18 +16,16 @@ export class RegisterDeviceComponent {
   @Input('showForm')
   public showForm: boolean;
 
-
-  model: Device;
   @ViewChild('formDevice') formDevice: any;
 
   device;
 
   constructor(private deviceService: DeviceService) { }
 
-
-
   public onSubmit() {
+    
      if ( this.formDevice.valid ) {
+       
        this.create(this.formDevice)
                 .subscribe(device => this.onRegister(device) , error => this.onError(error));
      }

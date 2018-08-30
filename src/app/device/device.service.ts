@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import { HttpService } from '../shared/services/http.service';
+
 import { Device } from '../shared/models/api/Device';
 
 
@@ -15,14 +16,14 @@ export class DeviceService {
   public getDevices(): Observable<Array<Device>> {
     return this
       .http
-      .get('api/devices')
+      .get('api/device')
       .pipe(map(res => <Array<Device>>res.json()));
   }
 
   public getDevice(deviceId: string): Observable<any> {
     return this
       .http
-      .get(`api/devices/${deviceId}`)
+      .get(`api/device/${deviceId}`)
       .first()
       .pipe(map(res => res.json()));
   }
@@ -30,7 +31,7 @@ export class DeviceService {
   public saveDevice(device: Device): Observable<any> {
     return this
       .http
-      .post('api/devices', device)
+      .post('api/device', device)
       .first()
       .pipe(map(res => res.json()));
   }
@@ -38,7 +39,7 @@ export class DeviceService {
   public updateDevice(device: Device): Observable<any> {
     return this
       .http
-      .put(`api/devices/${device.idTerminal}`, device)
+      .put(`api/device/${device.idTerminal}`, device)
       .first()
       .pipe(map(res => res.json()));
   }
