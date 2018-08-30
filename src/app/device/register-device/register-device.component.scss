@@ -60,12 +60,15 @@ $main-blue:#4d5675;
   .columns:last-child {
       margin-bottom: 0;
   }
-
-
- 
-  
-
 }
+
+.select{
+  width: 100%;
+  select {
+    width: 100%;
+  }
+}
+
 .cnt-buttons{
   position: absolute !important;
   bottom: -15px;

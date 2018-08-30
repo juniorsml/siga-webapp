@@ -51,9 +51,22 @@
             
           </div>
           <div class="column is-6">
-            <label class="label is-small">Comunicação</label>
+              <label class="label is-small">Comunicação</label>  
             <div class="control">
-              <input type="text" class="input" placeholder="Make" name="comunication" ngModel required/>
+              <div class="select">
+                <select [(ngModel)]="model.comunication" 
+                        #comunication="ngModel"
+                        name="comunication"
+                        [ngClass]="{'is-danger': comunication.invalid && (comunication.dirty || comunication.touched)}"
+                        required>                               
+                  <option value="GPS/GPRS">GPS/GPRS</option>
+                  <option value="GPS/DUPLO GPRS">GPS/DUPLO GPRS</option>
+                  <option value="GPS/GPRS+SATÉLITE">GPS/GPRS+SATÉLITE</option>
+                  <option value="GPS/SATÉLITE">GPS/SATÉLITE</option>
+                  <option value="GPS/GPRS GLOBAL">GPS/GPRS GLOBAL</option>
+                  <option value="RF/GPS/GPRS">RF/GPS/GPRS</option>
+                </select>
+              </div>
             </div>
           </div>
           <div class="column is-6">
