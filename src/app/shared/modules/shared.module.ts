@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { TabComponent } from '../components/tabs/tab/tab.component';
 import { TabsComponent } from '../components/tabs/tabs.component';
 import { ModalComponent } from '../modal/modal.component';
@@ -149,6 +151,8 @@ import { AddRulesDialogComponent } from '../components/add-rules-dialog/add-rule
     CommandsHistoricComponent,
     ConfirmDialogComponent,
     AddRulesDialogComponent
+
+
   ],
   imports: [
     HttpModule,
@@ -157,7 +161,8 @@ import { AddRulesDialogComponent } from '../components/add-rules-dialog/add-rule
     TagInputModule,
     NgSlimScrollModule,
     CalendarModule,
-    TextMaskModule
+    TextMaskModule,
+    ReactiveFormsModule
   ],
   providers: [
     AuthService,
@@ -170,6 +175,7 @@ import { AddRulesDialogComponent } from '../components/add-rules-dialog/add-rule
     }
   ],
   exports: [
+  
     PlacesPipe,
     SearchPipe,
     PagerPipe,
