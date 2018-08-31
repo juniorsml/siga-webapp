@@ -16,14 +16,14 @@ export class DeviceService {
   public getDevices(): Observable<Array<Device>> {
     return this
       .http
-      .get('api/device')
+      .get('api/devices')
       .pipe(map(res => <Array<Device>>res.json()));
   }
 
   public getDevice(deviceId: string): Observable<any> {
     return this
       .http
-      .get(`api/device/${deviceId}`)
+      .get(`api/devices/${deviceId}`)
       .first()
       .pipe(map(res => res.json()));
   }
@@ -31,7 +31,7 @@ export class DeviceService {
   public saveDevice(device: Device): Observable<any> {
     return this
       .http
-      .post('api/device', device)
+      .post('api/devices', device)
       .first()
       .pipe(map(res => res.json()));
   }
@@ -39,7 +39,7 @@ export class DeviceService {
   public updateDevice(device: Device): Observable<any> {
     return this
       .http
-      .put(`api/device/${device.idTerminal}`, device)
+      .put(`api/devices/${device.idTerminal}`, device)
       .first()
       .pipe(map(res => res.json()));
   }
