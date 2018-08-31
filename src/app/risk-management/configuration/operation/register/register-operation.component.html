@@ -11,7 +11,7 @@
     </div>
     <div class="container-scroll">    
         
-      <form novalidate class="cnt-form" #formOperation="ngForm">
+      <form novalidate class="cnt-form"   (ngSubmit)="onSubmit()"  #formOperation="ngForm">
         <sga-tabs 
           [tabIndex]="selectedTabIndex"
           styleClass="tabs no-margin tabs-register">
@@ -29,7 +29,7 @@
                   <div class="column  is-12">
                     <label class="label is-small">Observação</label>
                     <div class="control">
-                      <input class="input is-small" type="text" placeholder="Observação" value="Em viagem" >
+                      <input class="input is-small" type="text" placeholder="Observação" value="" >
                     </div>
                   </div>
                   <div class="is-4 column">
@@ -104,19 +104,14 @@
 
         </sga-tabs>
         <!-- Botões de Ação -->
-
-      </form>
-   
-  
-    </div>
-    <div class="cnt-buttons">        
+        <div class="cnt-buttons">        
           <button class="button" (click)="cancel()">Cancelar</button>
           <button type="submit"
-                  class="button is-first"
-                  [disabled]="formOperation.invalid">Cadastrar
-          </button>
-    </div>
-  </div>
+                  class="button is-first">Cadastrar</button>
+      </div>
+    </form>
+  </div> 
+ </div>
 </div>
 
 
