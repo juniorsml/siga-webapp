@@ -225,6 +225,10 @@
                                     required>                        
                           </div>  
                         </div>
+                        <div class="form-control-feedback"
+                              *ngIf="fleetNumber.errors && (fleetNumber.dirty || fleetNumber.touched)">
+                            <p class="help is-danger" *ngIf="fleetNumber.errors.required">Nº Frota é obrigatório</p>
+                        </div>
                       </div>
 
 
