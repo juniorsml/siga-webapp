@@ -87,20 +87,43 @@
                         <div class="field is-4 column is-marginless" >
                           <label class="label is-small">Marca</label>
                                                 
-                          <div class="control">                          
-                              <input  type="text" 
-                                      class="input" 
-                                      name="make" 
-                                      placeholder="Marca" 
+                         <div class="control">                             
+                           <div class="select">                      
+                             <select  name="make"
                                       [(ngModel)]="model.make" 
                                       #make="ngModel"
                                       [ngClass]="{'is-danger': make.invalid && (make.dirty || make.touched)}"
-                                      required>
-                              <div class="form-control-feedback"
-                                   *ngIf="make.errors && (make.dirty || make.touched)">
-                                   <p class="help is-danger" *ngIf="make.errors.required">Marca é obrigatória</p>
-                              </div>
-                          </div>
+                                      required>                      
+                               <option value="Agrale">Agrale</option>
+                               <option value="Chrysler">Chrysler</option>
+                               <option value="Citroen">Citroen</option>
+                               <option value="Fiat">Fiat</option>
+                               <option value="Fnm">Fnm</option>
+                               <option value="Ford">Ford</option>
+                               <option value="GM/Chevrolet">gm/chevrolet</option>                                
+                               <option value="Honda">Honda</option>
+                               <option value="Hyundai">Hyundai</option>
+                               <option value="International">International</option>
+                               <option value="Iveco/fiat">Iveco/fiat</option>
+                               <option value="Kia">Kia</option>
+                               <option value="Mercedes benz">Mercedes benz</option>
+                               <option value="Mitsubishi">Mitsubishi</option>                              
+                               <option value="Peugeot">Peugeot</option>
+                               <option value="Renault">Renault</option>
+                               <option value="Scania">Scania</option>
+                               <option value="Sinotruk">Sinotruk</option>
+                               <option value="Toyota">Toyota</option>
+                               <option value="Volvo">Volvo</option>
+                               <option value="Vw">Vw</option>
+                               <option value="Outros">Outros</option>
+                             </select>
+                           </div>                   
+                         </div>
+                         <div class="form-control-feedback"
+                               *ngIf="make.errors && (make.dirty || make.touched)">
+                             <p class="help is-danger" *ngIf="make.errors.required">Marca é Obrigatória</p>
+                         </div>
+                         
                         </div>  
 
 
@@ -221,8 +244,9 @@
                                     name="fleetNumber"
                                     [(ngModel)]="model.fleetNumber"
                                     #fleetNumber="ngModel"
-                                    >                        
+                                    required>                        
                           </div>  
+                        </div>
                        
 
                       </div>
