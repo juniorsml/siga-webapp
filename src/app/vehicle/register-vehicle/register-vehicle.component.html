@@ -70,7 +70,7 @@
                         <div class="field is-4 column is-marginless" >
                           <label class="label is-small">Renavan</label>                                               
                           <div class="control">
-                            <input  type="text" 
+                            <input  type="number" 
                                     class="input" 
                                     placeholder="Renavan" 
                                     name="renavan"                  
@@ -224,24 +224,31 @@
                                     [ngClass]="{'is-danger': fleetNumber.invalid && (fleetNumber.dirty || fleetNumber.touched) }"
                                     required>                        
                           </div>  
+                          <div class="form-control-feedback"
+                                *ngIf="fleetNumber.errors && (fleetNumber.dirty || fleetNumber.touched)">
+                              <p class="help is-danger" *ngIf="fleetNumber.errors.required">Nº Frota é obrigatório</p>
+                          </div>
                         </div>
-                        <div class="form-control-feedback"
-                              *ngIf="fleetNumber.errors && (fleetNumber.dirty || fleetNumber.touched)">
-                            <p class="help is-danger" *ngIf="fleetNumber.errors.required">Nº Frota é obrigatório</p>
-                        </div>
+
                       </div>
 
 
                       <div class="field-body field">
                         <div class="field  is-4 column is-marginless">
-                          <label class="label is-small">Nº  registro ANTT</label>   
+                          <label class="label is-small">Nº registro ANTT</label>   
                           <div class="control">
                             <input [(ngModel)]="model.anttNumber"  
                                   #anttNumber="ngModel" 
                                   class="input" 
                                   name="anttNumber"
                                   type="number" 
-                                  placeholder="Nº  registro ANTT">
+                                  placeholder="Nº  registro ANTT"
+                                  [ngClass]="{'is-danger': anttNumber.invalid && (anttNumber.dirty || anttNumber.touched) }"
+                                  required>
+                          </div>
+                          <div class="form-control-feedback"
+                                *ngIf="anttNumber.errors && (anttNumber.dirty || anttNumber.touched)">
+                              <p class="help is-danger" *ngIf="anttNumber.errors.required">Nº registro ANTT é obrigatório</p>
                           </div>
                         </div>
 
