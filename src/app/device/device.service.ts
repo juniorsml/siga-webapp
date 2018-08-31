@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { HttpService } from '../shared/services/http.service';
 
 import { Device } from '../shared/models/api/Device';
-
+  
 
 @Injectable()
 export class DeviceService {
