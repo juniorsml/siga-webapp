@@ -383,7 +383,8 @@
                            <select name="ownerDocumentType" [(ngModel)]="model.ownerDocumentType" #ownerDocumentType="ngModel" [ngClass]="{'is-danger': ownerDocumentType.invalid && (ownerDocumentType.dirty || ownerDocumentType.touched)}"
                              required>
                              <option value="RG">RG</option>
-                             <option value="CPF">CPF</option>
+                             <option value="CPF">CPF</option>                          
+                             <option value="CNPJ">CNPJ</option>
                              <option value="RNA">RNA</option>
                              <option value="Passaporte">Passaporte</option>
                            </select>
