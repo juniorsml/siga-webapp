@@ -70,7 +70,7 @@
                         <div class="field is-4 column is-marginless" >
                           <label class="label is-small">Renavan</label>                                               
                           <div class="control">
-                            <input  type="text" 
+                            <input  type="number" 
                                     class="input" 
                                     placeholder="Renavan" 
                                     name="renavan"                  
@@ -87,20 +87,43 @@
                         <div class="field is-4 column is-marginless" >
                           <label class="label is-small">Marca</label>
                                                 
-                          <div class="control">                          
-                              <input  type="text" 
-                                      class="input" 
-                                      name="make" 
-                                      placeholder="Marca" 
+                         <div class="control">                             
+                           <div class="select">                      
+                             <select  name="make"
                                       [(ngModel)]="model.make" 
                                       #make="ngModel"
                                       [ngClass]="{'is-danger': make.invalid && (make.dirty || make.touched)}"
-                                      required>
-                              <div class="form-control-feedback"
-                                   *ngIf="make.errors && (make.dirty || make.touched)">
-                                   <p class="help is-danger" *ngIf="make.errors.required">Marca é obrigatória</p>
-                              </div>
-                          </div>
+                                      required>                      
+                               <option value="Agrale">Agrale</option>
+                               <option value="Chrysler">Chrysler</option>
+                               <option value="Citroen">Citroen</option>
+                               <option value="Fiat">Fiat</option>
+                               <option value="Fnm">Fnm</option>
+                               <option value="Ford">Ford</option>
+                               <option value="GM/Chevrolet">gm/chevrolet</option>                                
+                               <option value="Honda">Honda</option>
+                               <option value="Hyundai">Hyundai</option>
+                               <option value="International">International</option>
+                               <option value="Iveco/fiat">Iveco/fiat</option>
+                               <option value="Kia">Kia</option>
+                               <option value="Mercedes benz">Mercedes benz</option>
+                               <option value="Mitsubishi">Mitsubishi</option>                              
+                               <option value="Peugeot">Peugeot</option>
+                               <option value="Renault">Renault</option>
+                               <option value="Scania">Scania</option>
+                               <option value="Sinotruk">Sinotruk</option>
+                               <option value="Toyota">Toyota</option>
+                               <option value="Volvo">Volvo</option>
+                               <option value="Vw">Vw</option>
+                               <option value="Outros">Outros</option>
+                             </select>
+                           </div>                   
+                         </div>
+                         <div class="form-control-feedback"
+                               *ngIf="make.errors && (make.dirty || make.touched)">
+                             <p class="help is-danger" *ngIf="make.errors.required">Marca é Obrigatória</p>
+                         </div>
+                         
                         </div>  
 
 
@@ -134,11 +157,19 @@
                                        [(ngModel)]="model.colour" 
                                        #colour="ngModel"
                                        [ngClass]="{'is-danger': colour.invalid && (colour.dirty || colour.touched)}"
-                                       required>                       
+                                       required>                      
+                                <option value="Amarelo">Amarelo</option>
                                 <option value="Azul">Azul</option>
-                                <option value="Vermelho">Vermelho</option>
+                                <option value="Branco">Branco</option>
                                 <option value="Cinza">Cinza</option>
+                                <option value="Laranja">Laranja</option>
+                                <option value="Marrom">Marrom</option>                        
+                                <option value="Verde">Verde</option>
+                                <option value="Vermelho">Vermelho</option>
+                                <option value="Prata">Prata</option>
                                 <option value="Preto">Preto</option>
+                                <option value="Rosa">Rosa</option>
+                                <option value="Roxo">Roxo</option>
                               </select>
                             </div>                   
                           </div>
@@ -197,9 +228,9 @@
                         <div class="field  is-4 column is-marginless"> 
                           <label class="label is-small">Capacidade</label>    
                           <div class="control">                    
-                            <input  type="text" 
+                            <input  type="number" 
                                     class="input" 
-                                    placeholder="Capacidade"  
+                                    placeholder="(Kg)"  
                                     name="capacity"
                                     [(ngModel)]="model.capacity"
                                     #capacity="ngModel"
@@ -221,23 +252,30 @@
                                     name="fleetNumber"
                                     [(ngModel)]="model.fleetNumber"
                                     #fleetNumber="ngModel"
-                                    [ngClass]="{'is-danger': fleetNumber.invalid && (fleetNumber.dirty || fleetNumber.touched) }"
                                     required>                        
                           </div>  
                         </div>
+                       
+
                       </div>
 
 
                       <div class="field-body field">
                         <div class="field  is-4 column is-marginless">
-                          <label class="label is-small">Nº  registro ANTT</label>   
+                          <label class="label is-small">Nº registro ANTT</label>   
                           <div class="control">
                             <input [(ngModel)]="model.anttNumber"  
                                   #anttNumber="ngModel" 
                                   class="input" 
                                   name="anttNumber"
-                                  type="text" 
-                                  placeholder="Nº  registro ANTT">
+                                  type="number" 
+                                  placeholder="Nº  registro ANTT"
+                                  [ngClass]="{'is-danger': anttNumber.invalid && (anttNumber.dirty || anttNumber.touched) }"
+                                  required>
+                          </div>
+                          <div class="form-control-feedback"
+                                *ngIf="anttNumber.errors && (anttNumber.dirty || anttNumber.touched)">
+                              <p class="help is-danger" *ngIf="anttNumber.errors.required">Nº registro ANTT é obrigatório</p>
                           </div>
                         </div>
 
@@ -345,7 +383,8 @@
                            <select name="ownerDocumentType" [(ngModel)]="model.ownerDocumentType" #ownerDocumentType="ngModel" [ngClass]="{'is-danger': ownerDocumentType.invalid && (ownerDocumentType.dirty || ownerDocumentType.touched)}"
                              required>
                              <option value="RG">RG</option>
-                             <option value="CPF">CPF</option>
+                             <option value="CPF">CPF</option>                          
+                             <option value="CNPJ">CNPJ</option>
                              <option value="RNA">RNA</option>
                              <option value="Passaporte">Passaporte</option>
                            </select>
@@ -411,7 +450,7 @@
                       <div class="column is-3">
                         <div class="control">
                           <label class="label is-small">Número</label>
-                          <input type="text" class="input" placeholder="Número" name="number" [(ngModel)]="model.number"
+                          <input type="number" class="input" placeholder="Número" name="number" [(ngModel)]="model.number"
                             #number="ngModel" [ngClass]="{'is-danger': number.invalid && (number.dirty || number.touched)}" required>
                         </div>
                         <div class="form-control-feedback" *ngIf="number.errors && (number.dirty || number.touched)">
@@ -422,11 +461,9 @@
                         <div class="control">
                           <label class="label is-small">Complemento</label>
                           <input type="text" class="input" placeholder="Complemento" name="complement" [(ngModel)]="model.complement"
-                            #complement="ngModel" [ngClass]="{'is-danger': complement.invalid && (complement.dirty || complement.touched)}" required>
+                            #complement="ngModel">
                         </div>
-                        <div class="form-control-feedback" *ngIf="complement.errors && (complement.dirty || complement.touched)">
-                          <p class="help is-danger" *ngIf="complement.errors.required">Complemento é obrigatório</p>
-                        </div>
+                      
                       </div>
 
                       <div class="column is-12">
