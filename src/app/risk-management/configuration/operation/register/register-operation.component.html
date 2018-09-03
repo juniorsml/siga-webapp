@@ -17,19 +17,18 @@
           styleClass="tabs no-margin tabs-register">
 
           <sga-tab heading="Geral">
-
                 <!-- Geral -->
                 <div class="cnt-info columns is-multiline">    
                   <div class="column  is-12">
                     <label class="label is-small">Descrição da Operação</label>
                     <div class="control">
-                      <input class="input is-small" type="text" placeholder="Descrição da Operação">
+                      <input class="input is-small" name="description" ngModel type="text" placeholder="Descrição da Operação" required>
                     </div>
                   </div>
                   <div class="column  is-12">
                     <label class="label is-small">Observação</label>
                     <div class="control">
-                      <input class="input is-small" type="text" placeholder="Observação" value="" >
+                      <input class="input is-small" name="obs" ngModel type="text" placeholder="Observação" value="" >
                     </div>
                   </div>
                   <div class="is-4 column">
@@ -106,7 +105,8 @@
         <!-- Botões de Ação -->
         <div class="cnt-buttons">        
           <button class="button" (click)="cancel()">Cancelar</button>
-          <button type="submit"
+          <button [disabled]="formOperation.invalid" 
+                 type="submit"
                   class="button is-first">Cadastrar</button>
       </div>
     </form>

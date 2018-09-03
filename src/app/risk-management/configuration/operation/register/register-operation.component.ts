@@ -9,15 +9,6 @@ import { Observable } from '../../../../../../node_modules/rxjs';
 import { of } from '../../../../../../node_modules/rxjs';
 import { concatMap} from '../../../../../../node_modules/rxjs/operators';
 
-class RegisterForm {
-  idTerminal: any;
-  type: string;
-  name?: any;
-  model?: any;
-  technology?: any;
-  comunication: string;
-
-}
 
 
 @Component({
@@ -39,7 +30,7 @@ export class RegisterOperationComponent {
 
   @Output() onFormClose: EventEmitter<any> = new EventEmitter();
 
-  model: RegisterForm = new RegisterForm();
+ 
   @ViewChild('formOperation') formOperation: any;
 
   constructor(private operationService: OperationService) {}
