@@ -224,14 +224,29 @@ width:100%;
 
 }
 .rule-details{
+  padding: 6px 0 3px 1px;
   label{
-    font-size: 12px;
+    font-size: 11px;
     display: block;
   }
-  span{
-    font-size: 13px;
-    line-height: 14px;
+  .des{
+    font-size: 10.7px;
+    line-height: 12px;
     display: block;
     color: #60709a;
+    border:none;
+    margin: 0;
+    padding: 0 0 7px 0;
+  }
+  span{
+     border: 1px solid #60709a;
+     border-radius: 3px;
+     padding: 2px 5px;
+     margin: 0 6px 0 0;
+     line-height: 1;
+     display: inline-block;
+     color: #60709a;
+     font-size: 10.6px;
+     line-height: 14px;
   }
 }

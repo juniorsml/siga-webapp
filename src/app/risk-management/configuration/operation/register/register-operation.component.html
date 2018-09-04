@@ -31,7 +31,7 @@
                       <input class="input is-small" name="obs" ngModel type="text" placeholder="Observação" value="" >
                     </div>
                   </div>
-                  <div class="is-4 column">
+                  <div class="is-6 column">
                     <label class="label is-small">Regra para inicio de viagem</label>
                     <div class="control">                            
                         <!-- <input class="styled-checkbox" id="Por Raio Inicio" type="checkbox" name="byRadiusBegin">
@@ -45,15 +45,15 @@
                                <option  *ngFor="let item of rulesManagement" [ngValue]="item">{{item.name}}</option>                               
                              </select>
                              <div class="rule-details" *ngIf="selectedRuleStart">
-                               <label>Descrição :</label> <span>{{rulesByStartTrip?.description}}</span>
-                               <label>Tags:</label><span *ngFor="let tag of rulesByStartTrip?.tags">{{tag.name}}</span>    
+                               <label>Descrição :</label> <span class="des">{{rulesByStartTrip?.description}}</span>
+                               <label><i class="fal fa-tags"></i></label><span *ngFor="let tag of rulesByStartTrip?.tags">{{tag.name}}</span>    
                              </div>
                            </div>
                          </div>
                                        
                      </div>
                   </div>
-                  <div class="is-4 column">
+                  <div class="is-6 column">
                     <label class="label is-small">Regra para fim de viagem</label>
                     <div class="control">                            
                       <!--   <input class="styled-checkbox" id="Por Raio Fim" type="checkbox" name="byRadiusEnd">
@@ -67,8 +67,8 @@
                                <option  *ngFor="let item of rulesManagement" [ngValue]="item">{{item.name}}</option>                               
                              </select>
                              <div class="rule-details" *ngIf="selectedRuleEnd">
-                               <label>Descrição :</label> <span>{{rulesByEndTrip?.description}}</span>
-                               <label>Tags:</label><span *ngFor="let tag of rulesByEndTrip?.tags">{{tag.name}}</span>    
+                               <label>Descrição :</label> <span class="des">{{rulesByEndTrip?.description}}</span>
+                               <label><i class="fal fa-tags"></i></label><span *ngFor="let tag of rulesByEndTrip?.tags">{{tag.name}}</span>    
                              </div>
                            </div>
                          </div>
