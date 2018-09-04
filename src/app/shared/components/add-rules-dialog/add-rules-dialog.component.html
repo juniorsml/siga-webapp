@@ -19,20 +19,20 @@
            <table class="table is-striped is-fullwidth">
              <thead>
                <tr>
-                 <th>Tecnologia</th>
-                 <th>Regra</th>       
-                 <th>Ação</th>                           
+                 <th class="name">Nome</th>
+                 <th class="description">Descrição</th>
+                 <th class="tag_gr">Tags</th>       
+                                       
                </tr>
              </thead>                           
              <tbody>
-               <tr  *ngFor="let item of filteredData"                
-                    >                                
-                 <td>{{item.tech}}</td>                           
-                 <td>{{item.rule}}</td>      
-                 <td class="actions">
-                    <span  [ngClass]="item.addedClass ? 'added' : ''" class="add" (click)="addItem(item)"> Adicionar </span>
-                    <span  [ngClass]="item.removedClass ? 'removed' : ''" class="remove" (click)="removeItem(item)"> Remover </span>
-                 </td>   
+               <tr  *ngFor="let item of filteredData; let  i = index"                
+                    (click)="toggleItem(item,i)"  
+                    [ngClass]="item.addedItem ? 'addedItem' : ''">                                
+                 <td class="name">{{item.name}}</td>          
+                 <td class="description">{{item.description}}</td>                 
+                 <td class="tag_gr"><i class="fal fa-tags"></i></td>      
+                  
                </tr>                                  
               
              </tbody>
@@ -46,7 +46,7 @@
             
           <button class="button" (click)="cancel()">Cancelar</button>       
               
-          <button type="submit" (click)="confirm()"  class="button is-first">Adicionar
+          <button type="submit" (click)="confirm()"  class="button is-first">OK
           </button>
           
           

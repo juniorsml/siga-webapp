@@ -9,6 +9,7 @@ import { Observable } from '../../../../../../node_modules/rxjs';
 import { of } from '../../../../../../node_modules/rxjs';
 import { concatMap} from '../../../../../../node_modules/rxjs/operators';
 
+import { rules } from '../../../../shared/mocks/rules';
 
 
 @Component({
@@ -27,6 +28,14 @@ export class RegisterOperationComponent {
   public onRulesSelected: any;
   public selectedRules: any;
   public showAddrules = false;
+
+  public rulesManagement = rules;
+
+  rulesByEndTrip:any;
+  selectedRuleStart:any;
+
+  rulesByStartTrip:any;
+  selectedRuleEnd:any;
 
   @Output() onFormClose: EventEmitter<any> = new EventEmitter();
 
@@ -57,7 +66,16 @@ export class RegisterOperationComponent {
   }
 
   public buildOperation(formOperation: NgForm) {
-    const operation = formOperation.value;
+
+    debugger
+    const operation = {
+      rules:[
+        this.selectedRules
+      ],
+      ...formOperation.value
+    }
+
+
     return operation;
   }
 
@@ -73,6 +91,16 @@ export class RegisterOperationComponent {
   public AddRules(event: any) {
     this.showAddrules = false ;
     this.selectedRules = event;
+  }
+
+  changeEndRule(event) {
+     this.selectedRuleEnd = true;
+     this.rulesByEndTrip = event;
+  }
+
+  changeStartRule(event) {
+     this.selectedRuleStart = true;
+     this.rulesByStartTrip = event;
   }
 
   public closeDialog = () => this.showAddrules = false;
