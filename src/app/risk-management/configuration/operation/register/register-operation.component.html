@@ -28,7 +28,7 @@
                   <div class="column  is-12">
                     <label class="label is-small">Observação</label>
                     <div class="control">
-                      <input class="input is-small" name="obs" ngModel type="text" placeholder="Observação" value="" >
+                      <input class="input is-small" name="obs" ngModel type="text" placeholder="Observação">
                     </div>
                   </div>
                   <div class="is-6 column">
@@ -41,7 +41,7 @@
                          <label for="Por Macro Inicio">Por Macro</label>-->                       
                          <div class="control">
                            <div class="select">
-                             <select (ngModelChange)="changeStartRule($event)" [(ngModel)]="rule_start" name="rule_startt" required>                               
+                             <select (ngModelChange)="changeStartRule($event)" name="rule_startt" required>                               
                                <option  *ngFor="let item of rulesManagement" [ngValue]="item">{{item.name}}</option>                               
                              </select>
                              <div class="rule-details" *ngIf="selectedRuleStart">
@@ -63,7 +63,7 @@
                          <label for="Por Macro Fim">Por Macro</label> -->
                          <div class="control">
                            <div class="select">
-                             <select (ngModelChange)="changeEndRule($event)" [(ngModel)]="rule_end" name="rule_end" required>                               
+                             <select (ngModelChange)="changeEndRule($event)" name="rule_end" required>                               
                                <option  *ngFor="let item of rulesManagement" [ngValue]="item">{{item.name}}</option>                               
                              </select>
                              <div class="rule-details" *ngIf="selectedRuleEnd">
