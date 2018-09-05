@@ -30,7 +30,7 @@ export class RegisterOperationComponent implements OnInit {
   public showAddrules = false;
 
   public rulesManagement = rules;
-  public filteredRules:any;
+  public filteredRules:Array<any> = [];
   rulesByEndTrip:any;
   selectedRuleStart:any;
 
@@ -45,8 +45,17 @@ export class RegisterOperationComponent implements OnInit {
   constructor(private operationService: OperationService) {}
 
   ngOnInit():void {
-    this.filteredRules = this.rulesManagement.tags.filter(a => a.name.indexOf(`inicio de viagem`) > 0);
-    console.log(this.filteredRules);
+    
+    for (let item of this.rulesManagement) {
+      for(let tag of item.tags){
+        
+        if(tag.name === 'inicio de viagem'){
+          
+          this.filteredRules.push(item);
+        }        
+      }
+    }
+    
   }
 
   onSubmit() {
@@ -104,6 +113,7 @@ export class RegisterOperationComponent implements OnInit {
   }
 
   changeStartRule(event) {
+    debugger
      this.selectedRuleStart = true;
      this.rulesByStartTrip = event;
   }

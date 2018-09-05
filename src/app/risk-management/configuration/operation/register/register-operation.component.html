@@ -28,7 +28,7 @@
                   <div class="column  is-12">
                     <label class="label is-small">Observação</label>
                     <div class="control">
-                      <input class="input is-small" name="obs" ngModel type="text" placeholder="Observação">
+                      <input class="input is-small" name="observation" ngModel type="text" placeholder="Observação" required>
                     </div>
                   </div>
                   <div class="is-6 column">
@@ -41,8 +41,8 @@
                          <label for="Por Macro Inicio">Por Macro</label>-->                       
                          <div class="control">
                            <div class="select">
-                             <select (ngModelChange)="changeStartRule($event)" name="rule_startt" required>                               
-                               <option  *ngFor="let item of rulesManagement" [ngValue]="item">{{item.name}}</option>                               
+                             <select (ngModelChange)="changeStartRule($event)" ngModel name="rule_startt" required>                               
+                               <option  *ngFor="let item of filteredRules" [ngValue]="item">{{item.name}}</option>                               
                              </select>
                              <div class="rule-details" *ngIf="selectedRuleStart">
                                <label>Descrição :</label> <span class="des">{{rulesByStartTrip?.description}}</span>
