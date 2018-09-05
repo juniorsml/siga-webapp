@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, ViewChild } from '@angular/core';
+import { Component, Output, EventEmitter, Input, ViewChild, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 
@@ -20,7 +20,7 @@ import { rules } from '../../../../shared/mocks/rules';
 })
 
 
-export class RegisterOperationComponent {
+export class RegisterOperationComponent implements OnInit {
 
   @Input()
   public showForm: boolean;
@@ -30,7 +30,7 @@ export class RegisterOperationComponent {
   public showAddrules = false;
 
   public rulesManagement = rules;
-
+  public filteredRules:any;
   rulesByEndTrip:any;
   selectedRuleStart:any;
 
@@ -43,6 +43,11 @@ export class RegisterOperationComponent {
   @ViewChild('formOperation') formOperation: any;
 
   constructor(private operationService: OperationService) {}
+
+  ngOnInit():void {
+    this.filteredRules = this.rulesManagement.tags.filter(a => a.name.indexOf(`inicio de viagem`) > 0);
+    console.log(this.filteredRules);
+  }
 
   onSubmit() {
    if ( this.formOperation.valid ) {
