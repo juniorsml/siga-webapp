@@ -1,13 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TableClickEvent } from '../../../../shared/components/table/table.component';
-import { ActivatedRoute } from '@angular/router';
 import { OptionClickEvent } from '../../../../shared/events/OptionClickEvent';
+import { OperationService } from '../../operation/operation.service';
+
 
 
 @Component({
   selector: 'sga-grid-operation',
   templateUrl: './grid-operation.component.html',
-  styleUrls: ['./grid-operation.component.scss']
+  styleUrls: ['./grid-operation.component.scss'],
+  providers: [OperationService]
 })
 export class GridOperationComponent implements OnInit {
 
@@ -47,11 +49,23 @@ export class GridOperationComponent implements OnInit {
   @Input()
   public operations = new Array<any>();
 
-  constructor(private router: ActivatedRoute) { }
+  constructor(private operationService: OperationService) { }
 
   ngOnInit(): void {
-    this.router.data.subscribe(data => this.operations = data.operations);
+
+    this.getConfigs();
   }
+  getConfigs(){
+    this
+      .operationService
+      .getConfigs()
+        .subscribe(
+          data => this.operations = data,
+          error => alert(error));
+    }
+
+
+  
 
 
   openFormRegister() {

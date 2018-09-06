@@ -10,7 +10,7 @@ export class OperationService {
 
   constructor(private http: HttpService) { }
 
-  public getOperations(): Observable<Array<Operation>> {
+  public getConfigs(): Observable<Array<Operation>> {
     return this
       .http
       .get(`api/trips/configs`)

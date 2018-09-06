@@ -46,17 +46,16 @@ export class RegisterOperationComponent implements OnInit {
 
   ngOnInit():void {
     
-    for (let item of this.rulesManagement) {
-      for(let tag of item.tags){
-        
-        if(tag.name === 'inicio de viagem'){
-          
-          this.filteredRules.push(item);
+    for (let item of this.rulesManagement) { // iterar Array regras
+      for(let tag of item.tags){ // iterar array Tags dentro de Regras
+        if(tag.name === 'inicio de viagem'){ 
+          this.filteredRules.push(item); 
         }        
       }
     }
     
   }
+
 
   onSubmit() {
    if ( this.formOperation.valid ) {
