@@ -248,6 +248,20 @@
                   </div>
                 </div>
 
+                <div class="column is-12">
+                  <div class="control">
+                    <label class="label is-small">Raio</label>
+                    <input 
+                      type="number" 
+                      class="input is-small" 
+                      [(ngModel)]="radius"
+                      (ngModelChange)="onRayChanged($event)"
+                      placeholder="Raio"
+                      name="radius" 
+                      ngModel />
+                  </div>
+                </div>
+
               </div>
               <div class="columns column  is-multiline">
 
