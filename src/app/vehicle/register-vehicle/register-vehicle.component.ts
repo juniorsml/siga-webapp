@@ -1,11 +1,15 @@
 import { VehicleService } from '../vehicle.service';
 import { Component, Output, EventEmitter, Input, OnInit, ViewChild} from '@angular/core';
 import { NgForm } from '@angular/forms';
+
+
 import { Map } from '../../shared/models/Map';
 
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { concatMap } from 'rxjs/operators';
+
+import {IMyDpOptions} from 'mydatepicker';
 
 class RegisterForm {
   // Vehicle Info
@@ -47,7 +51,7 @@ export class RegisterVehicleComponent implements OnInit {
 
   @ViewChild('formVehicle') formVehicle: any;
 
-
+  
   anttDueDate: Date;
   comunication: string;
 
@@ -66,7 +70,11 @@ export class RegisterVehicleComponent implements OnInit {
   landlinephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   file: File;
   vehicle ;
-
+  // Return today's date and time
+  currentTime = new Date();
+  month = this.currentTime.getMonth() + 1
+  day = this.currentTime.getDate()
+  year = this.currentTime.getFullYear()
 
   constructor(
     private map: Map,
@@ -75,6 +83,14 @@ export class RegisterVehicleComponent implements OnInit {
   ngOnInit() {
     this.map.createMapBoxMapInstance();
   }
+
+
+
+  public myDatePickerOptions: IMyDpOptions = {
+    // other options...
+    disableUntil: {year: this.year, month: this.month, day: this.day},
+    dateFormat: 'dd/mm/yyyy',
+   };
 
   onSubmit() {
     if (this.formVehicle.valid) {

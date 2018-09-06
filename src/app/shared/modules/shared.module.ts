@@ -78,6 +78,7 @@ import { CommandsHistoricComponent } from '../components/summary-dialog/commands
 
 import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
 
+import { MyDatePickerModule } from 'mydatepicker';
 
 @NgModule({
   declarations: [
@@ -230,7 +231,8 @@ import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dia
     CommandsHistoricComponent,
 
     RegisterNonConformityComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    MyDatePickerModule
   ]
 })
 export class SharedModule {}
