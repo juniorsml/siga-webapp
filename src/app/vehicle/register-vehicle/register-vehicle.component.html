@@ -441,17 +441,8 @@
                         </sga-places-auto-complete>
                       </div>
 
-                      <div class="column is-3">
-                        <div class="control">
-                          <label class="label is-small">Número</label>
-                          <input type="number" class="input" placeholder="Número" name="number" [(ngModel)]="model.number"
-                            #number="ngModel" [ngClass]="{'is-danger': number.invalid && (number.dirty || number.touched)}" required>
-                        </div>
-                        <div class="form-control-feedback" *ngIf="number.errors && (number.dirty || number.touched)">
-                          <p class="help is-danger" *ngIf="number.errors.required">Número é obrigatório</p>
-                        </div>
-                      </div>
-                      <div class="column is-9">
+                      
+                      <div class="column is-12">
                         <div class="control">
                           <label class="label is-small">Complemento</label>
                           <input type="text" class="input" placeholder="Complemento" name="complement" [(ngModel)]="model.complement"

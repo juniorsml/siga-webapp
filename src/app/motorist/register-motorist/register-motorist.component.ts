@@ -7,6 +7,8 @@ import { Map } from '../../shared/models/Map';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { concatMap } from 'rxjs/operators';
+import {IMyDpOptions} from 'mydatepicker';
+
 
 class RegisterForm {
   // Personal Info
@@ -69,11 +71,20 @@ export class RegisterMotoristComponent implements OnInit {
   landlinephone=['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   file: File;
   motorist ;
+  currentTime = new Date();
+  month = this.currentTime.getMonth() + 1;
+  day = this.currentTime.getDate();
+  year = this.currentTime.getFullYear();
 
   constructor(private map: Map, private motoristService: MotoristService) {}
   ngOnInit() {
     this.map.createMapBoxMapInstance();
   }
+
+  public setDueDate: IMyDpOptions = {
+    disableUntil: {year: this.year, month: this.month, day: this.day},
+    dateFormat: 'dd/mm/yyyy',
+   };
   onSubmit() {
     if (this.formMotorist.valid) {
     const motorist$ = this.create(this.formMotorist);
