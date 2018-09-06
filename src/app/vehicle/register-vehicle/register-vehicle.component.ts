@@ -70,11 +70,11 @@ export class RegisterVehicleComponent implements OnInit {
   landlinephone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   file: File;
   vehicle ;
-  // Return today's date and time
+
   currentTime = new Date();
-  month = this.currentTime.getMonth() + 1
-  day = this.currentTime.getDate()
-  year = this.currentTime.getFullYear()
+  month = this.currentTime.getMonth() + 1;
+  day = this.currentTime.getDate();
+  year = this.currentTime.getFullYear();
 
   constructor(
     private map: Map,
@@ -86,8 +86,7 @@ export class RegisterVehicleComponent implements OnInit {
 
 
 
-  public myDatePickerOptions: IMyDpOptions = {
-    // other options...
+  public setDateDueANTT: IMyDpOptions = {
     disableUntil: {year: this.year, month: this.month, day: this.day},
     dateFormat: 'dd/mm/yyyy',
    };
