@@ -300,22 +300,22 @@
                 <div class="is-6 column is-marginless">
                   <label class="label is-small">Vencimento Mopp</label>
                   <div class="control">
-                    <input type="date" class="input" placeholder="Vencimento Mopp" name="moppDocDueDate" [(ngModel)]="model.moppDocDueDate" #moppDocDueDate="ngModel"
-                      [ngClass]="{'is-danger': moppDocDueDate.invalid && (moppDocDueDate.dirty || moppDocDueDate.touched)}" >
+                      <my-date-picker name="moppDocDueDate" [options]="setDueDate"
+                      [(ngModel)]="moppDocDueDate"></my-date-picker>
                   </div>
                 </div>
                 <div class="is-6 column is-marginless">
                   <label class="label is-small">Vencimento ASO</label>
                   <div class="control">
-                    <input type="date" class="input" placeholder="Vencimento ASO" name="asoDocDueDate" [(ngModel)]="model.asoDocDueDate" #asoDocDueDate="ngModel"
-                      [ngClass]="{'is-danger': asoDocDueDate.invalid && (asoDocDueDate.dirty || asoDocDueDate.touched)}" >
+                      <my-date-picker name="asoDocDueDate" [options]="setDueDate"
+                      [(ngModel)]="asoDocDueDate"></my-date-picker>
                   </div>
                 </div>
                 <div class="is-6 column is-marginless">
                   <label class="label is-small">Vencimento CDD</label>
                   <div class="control">
-                    <input type="date" class="input" placeholder="Vencimento Cdd" name="cddDocDueDate" [(ngModel)]="model.cddDocDueDate" #cddDocDueDate="ngModel"
-                      [ngClass]="{'is-danger': cddDocDueDate.invalid && (cddDocDueDate.dirty || cddDocDueDate.touched)}" >
+                      <my-date-picker name="cddDocDueDate" [options]="setDueDate"
+                      [(ngModel)]="cddDocDueDate"></my-date-picker>
                   </div>
                 </div>
               </div>
