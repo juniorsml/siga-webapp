@@ -34,12 +34,13 @@ export class GridMotoristComponent implements OnInit {
   public headers = new Array<string>();
   public motorists = new Array<Motorist>();
   public filterHeaders = new Array<string>();
-
+  isLoading = true;
   constructor(
     private router: Router,
     private motoristService: MotoristService) { }
 
   ngOnInit(): void {
+
     this.getMotorists();
   }
 
@@ -48,7 +49,10 @@ export class GridMotoristComponent implements OnInit {
       .motoristService
       .getMotorists()
       .subscribe(
-        data => this.onSuccess(data),
+        data => { 
+          this.isLoading = false;
+          this.onSuccess(data) 
+        },
         error => alert(error));
   }
 

@@ -17,8 +17,12 @@
       </sga-sidebar-configuration>
     </div>
    
-  </div>  
+  </div>    
 </div>
+<div *ngIf="isLoading" class="spinner">
+    <spinner></spinner>
+</div>
+
 
 <sga-modal [hidden]="!showColumnSelector">
   <sga-column-selector   
@@ -29,7 +33,7 @@
 </sga-modal>
    
 <div class="content-wrapper content-grid-motorist">
- 
+  <div *ngIf="!isLoading">
   <div [ngClass]="styleClass" class="columns level-left">
     <div class="column is-2">     
       <p class="control has-icons-left"> 
@@ -45,8 +49,9 @@
       class="column is-10">
     </sga-map-filter>
   </div>
+</div>
 
-  <div class="container-grid container-grid-wrapper">
+  <div *ngIf="!isLoading" class="container-grid container-grid-wrapper">
     <data-table 
       [data]="motorists | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
       [dataLength]="motorists?.length"
