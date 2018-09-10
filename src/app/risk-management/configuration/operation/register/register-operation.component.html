@@ -48,7 +48,7 @@
                          <div class="control">
                            <div class="select">
                              <select (ngModelChange)="changeStartRule($event)" ngModel name="rule_startt" required>                               
-                               <option  *ngFor="let item of filteredRules" [ngValue]="item">{{item.name}}</option>                               
+                               <option  *ngFor="let item of filteredRulesStart" [ngValue]="item">{{item.name}}</option>                               
                              </select>
                              <div class="rule-details" *ngIf="selectedRuleStart">
                                <label>Descrição :</label> <span class="des">{{rulesByStartTrip?.description}}</span>

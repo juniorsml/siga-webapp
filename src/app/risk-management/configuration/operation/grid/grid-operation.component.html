@@ -43,7 +43,7 @@
         [data]="operations | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
         [dataLength]="operations.length" 
         [searchText]="text" 
-        [searchColumns]="['name','description','observation']"
+        [searchColumns]="['name','description','observation','rules']"
         [emptySearchText]="'Nenhum dispositivo encontrado'" 
         [bodyBottom]="'42px'" 
         [bodyTop]="'26px'"
@@ -77,6 +77,11 @@
             <ng-template let-item="item">
                 {{item == null ? '-' : item}}  
             </ng-template>
+        </column>
+        <column [key]="'rules'" [header]="'Regra nome'" [minWidth]="'82'" [isSortable]="true">
+          <ng-template let-item="item" >
+            <span *ngFor="let rule of item">{{item == null ? '-' : rule?.name}}</span>
+          </ng-template>
         </column>
         
       </data-table>
