@@ -80,7 +80,7 @@
         </column>
         <column [key]="'rules'" [header]="'Regra nome'" [minWidth]="'82'" [isSortable]="true">
           <ng-template let-item="item" >
-            <span *ngFor="let rule of item">{{item == null ? '-' : rule?.name}}</span>
+            <span *ngFor="let rule of item?.rules">{{item == null ? '-' : rule?.name}}</span>
           </ng-template>
         </column>
         

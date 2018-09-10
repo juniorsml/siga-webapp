@@ -16,15 +16,12 @@ export class RegisterOperationComponent implements OnInit {
   public showForm: boolean;
   public selectedTabIndex = 0;
   public onRulesSelected: any;
-  public selectedRules: Array<any> = [];
+  public selectedRules: Array<any>;
   public showAddrules = false;
 
   public rulesManagement = rules;
-
   public filteredRulesStart:Array<any> = [];
-  
   public filteredRulesEnd:Array<any> = [];
-  
   rulesByEndTrip:any;
   selectedRuleStart:any;
 
@@ -38,7 +35,7 @@ export class RegisterOperationComponent implements OnInit {
 
   constructor(private operationService: OperationService) {}
 
-  buidMandatoryRules(rulesFiltered: Array<any>, term:string){
+buidMandatoryRules(rulesFiltered: Array<any>, term:string){
     for (let item of this.rulesManagement) { // iterar Array regras
       for(let tag of item.tags){ // iterar array Tags dentro de Regras
         if(tag.name === term){ 
@@ -64,22 +61,23 @@ export class RegisterOperationComponent implements OnInit {
   //          request$.subscribe(operation => this.onRegister(operation) , error =>this.onError(error));
   //  }
   // }
- 
+
   public onSubmit() {
     debugger
-    const operation = {
-    ...this.formOperation.value,
-    rules:{
-      ...this.selectedRules
-    }
-  }
-  this
-    .operationService
-    .saveOperation(operation)
-    .subscribe(
-      success => this.onSaveSuccess(success),
-      error => this.onError(error)
-    );
+     
+      const operation = {
+        ...this.formOperation.value,
+        rules:[
+          this.selectedRules
+        ]
+      }
+      this
+        .operationService
+        .saveOperation(operation)
+        .subscribe(
+          success => this.onSaveSuccess(success),
+          error => this.onError(error)
+        );
   }
   public onSaveSuccess(operation) {
     this.formOperation.reset();
