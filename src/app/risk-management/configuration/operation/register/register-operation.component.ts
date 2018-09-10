@@ -1,16 +1,6 @@
 import { Component, Output, EventEmitter, Input, ViewChild, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-
-
-
 import { OperationService } from '../operation.service';
-
-import { Observable } from '../../../../../../node_modules/rxjs';
-import { of } from '../../../../../../node_modules/rxjs';
-import { concatMap} from '../../../../../../node_modules/rxjs/operators';
-
 import { rules } from '../../../../shared/mocks/rules';
-
 
 @Component({
   selector: 'sga-register-operation',
@@ -57,40 +47,51 @@ export class RegisterOperationComponent implements OnInit {
   }
 
 
-  onSubmit() {
-   if ( this.formOperation.valid ) {
-     const operation$ = this.create(this.formOperation);
-     const request$ = operation$.pipe(
-           concatMap((operation : any) => (operation.value) ? this.updateOperation(operation.value) : of(operation)));
-           request$.subscribe(operation => this.onRegister(operation) , error =>this.onError(error));
-   }
+  // onSubmit() {
+  //  if ( this.formOperation.valid ) {
+  //    const operation$ = this.create(this.formOperation);
+  //    const request$ = operation$.pipe(
+  //          concatMap((operation : any) => (operation.value) ? this.updateOperation(operation.value) : of(operation)));
+  //          request$.subscribe(operation => this.onRegister(operation) , error =>this.onError(error));
+  //  }
+  // }
+
+  public onSubmit() {
+    debugger
+     
+      const operation = {
+
+        ...this.formOperation.value,
+        rules:[
+          this.selectedRules
+        ]
+      }
+      this
+        .operationService
+        .saveOperation(operation)
+        .subscribe(
+          success => this.onSaveSuccess(success),
+          error => this.onError(error)
+        );
   }
-  public onRegister(operation) {
+  public onSaveSuccess(operation) {
     this.formOperation.reset();
     this.onFormClose.emit(operation);
   }
-  create(formOperation: NgForm): Observable<any> {
-    const operation = this.buildOperation(formOperation);
-    return this .operationService.saveOperation(operation);
-  }
+ 
 
   public updateOperation(operation) {
      return this.operationService.updateOperation(operation);
   }
 
-  public buildOperation(formOperation: NgForm) {
+  // public buildOperation(formOperation: NgForm) {
 
-    debugger
-    const operation = {
-      rules:[
-        this.selectedRules
-      ],
-      ...formOperation.value
-    }
+  //   debugger
+    
 
 
-    return operation;
-  }
+  //   return operation;
+  // }
 
   onError = error => console.log(error);
 
@@ -109,12 +110,14 @@ export class RegisterOperationComponent implements OnInit {
   changeEndRule(event) {
      this.selectedRuleEnd = true;
      this.rulesByEndTrip = event;
+     this.selectedRules.push(event);
   }
 
   changeStartRule(event) {
     debugger
      this.selectedRuleStart = true;
      this.rulesByStartTrip = event;
+     this.selectedRules.push(event);
   }
 
   public closeDialog = () => this.showAddrules = false;
