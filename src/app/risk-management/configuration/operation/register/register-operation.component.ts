@@ -52,7 +52,7 @@ export class RegisterOperationComponent implements OnInit {
   ngOnInit():void {
     
     this.filteredRulesStart = this.buidMandatoryRules(this.filteredRulesStart,'inicio de viagem');
-    
+    this.filteredRulesEnd = this.buidMandatoryRules(this.filteredRulesEnd,'fim de viagem');
   }
 
 

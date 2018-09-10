@@ -69,8 +69,8 @@
                          <label for="Por Macro Fim">Por Macro</label> -->
                          <div class="control">
                            <div class="select">
-                             <select (ngModelChange)="changeEndRule($event)" name="rule_end" required>                               
-                               <option  *ngFor="let item of rulesManagement" [ngValue]="item">{{item.name}}</option>                               
+                             <select (ngModelChange)="changeEndRule($event)" ngModel name="rule_end" required>                               
+                               <option  *ngFor="let item of filteredRulesEnd" [ngValue]="item">{{item.name}}</option>                               
                              </select>
                              <div class="rule-details" *ngIf="selectedRuleEnd">
                                <label>Descrição :</label> <span class="des">{{rulesByEndTrip?.description}}</span>

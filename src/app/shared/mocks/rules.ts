@@ -86,11 +86,11 @@ export const rules = [
   },
   {
     id: 'HASD2352345auhsduahsduahA2',
-    name: 'KRONA- Regra 01',
+    name: 'KRONA- Regra FIM',
     tags:[
         {
           id: '234636',
-          name: 'Tag45745',
+          name: 'fim de viagem',
           description: 'Tag Lorem ipsum dolor sit amet,samus, voluptatumbus vero?'
         },
         {
@@ -112,7 +112,7 @@ export const rules = [
         },
         {
           id: 'st2346246ring',
-          name: 'Tag 12',
+          name: 'fim de viagem',
           description: 'Tagdolor sit amet,samus, voluptatumbus vero?'
         }          
     ],
