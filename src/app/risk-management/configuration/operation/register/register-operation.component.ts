@@ -1,24 +1,6 @@
-import { Component, Output, EventEmitter, Input, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
-
-
-
+import { Component, Output, EventEmitter, Input, ViewChild, OnInit } from '@angular/core';
 import { OperationService } from '../operation.service';
-
-import { Observable } from '../../../../../../node_modules/rxjs';
-import { of } from '../../../../../../node_modules/rxjs';
-import { concatMap} from '../../../../../../node_modules/rxjs/operators';
-
-class RegisterForm {
-  idTerminal: any;
-  type: string;
-  name?: any;
-  model?: any;
-  technology?: any;
-  comunication: string;
-
-}
-
+import { rules } from '../../../../shared/mocks/rules';
 
 @Component({
   selector: 'sga-register-operation',
@@ -28,47 +10,87 @@ class RegisterForm {
 })
 
 
-export class RegisterOperationComponent {
+export class RegisterOperationComponent implements OnInit {
 
   @Input()
   public showForm: boolean;
   public selectedTabIndex = 0;
   public onRulesSelected: any;
-  public selectedRules: any;
+  public selectedRules: Array<any> = [];
+  firstSelectedRules:Array<any> = [];
   public showAddrules = false;
+
+  public rulesManagement = rules;
+  public filteredRulesStart:Array<any> = [];
+  public filteredRulesEnd:Array<any> = [];
+  rulesByEndTrip:any;
+  selectedRuleStart:any;
+
+  rulesByStartTrip:any;
+  selectedRuleEnd:any;
 
   @Output() onFormClose: EventEmitter<any> = new EventEmitter();
 
-  model: RegisterForm = new RegisterForm();
+ 
   @ViewChild('formOperation') formOperation: any;
 
   constructor(private operationService: OperationService) {}
 
-  onSubmit() {
-   if ( this.formOperation.valid ) {
-     const operation$ = this.create(this.formOperation);
-     const request$ = operation$.pipe(
-           concatMap((operation : any) => (operation.value) ? this.updateOperation(operation.value) : of(operation)));
-           request$.subscribe(operation => this.onRegister(operation) , error =>this.onError(error));
-   }
+buidMandatoryRules(rulesFiltered: Array<any>, term:string){
+    for (let item of this.rulesManagement) { // iterar Array regras
+      for(let tag of item.tags){ // iterar array Tags dentro de Regras
+        if(tag.name === term){ 
+          rulesFiltered.push(item); 
+        }        
+      }
+    }
+    return rulesFiltered;
   }
-  public onRegister(operation) {
+
+  ngOnInit():void {
+    
+    this.filteredRulesStart = this.buidMandatoryRules(this.filteredRulesStart,'inicio de viagem');
+    this.filteredRulesEnd = this.buidMandatoryRules(this.filteredRulesEnd,'fim de viagem');
+  }
+
+
+  // onSubmit() {
+  //  if ( this.formOperation.valid ) {
+  //    const operation$ = this.create(this.formOperation);
+  //    const request$ = operation$.pipe(
+  //          concatMap((operation : any) => (operation.value) ? this.updateOperation(operation.value) : of(operation)));
+  //          request$.subscribe(operation => this.onRegister(operation) , error =>this.onError(error));
+  //  }
+  // }
+
+  public onSubmit() {
+      const operation = {
+        ...this.formOperation.value,
+        
+        rules:[
+          ...this.selectedRules
+        ]
+      }
+      debugger
+      this
+        .operationService
+        .saveOperation(operation)
+        .subscribe(
+          
+          success =>  this.onSaveSuccess(success),
+          error => this.onError(error)
+        );
+  }
+  public onSaveSuccess(operation) {
     this.formOperation.reset();
     this.onFormClose.emit(operation);
   }
-  create(formOperation: NgForm): Observable<any> {
-    const operation = this.buildOperation(formOperation);
-    return this .operationService.saveOperation(operation);
-  }
+ 
 
   public updateOperation(operation) {
      return this.operationService.updateOperation(operation);
   }
 
-  public buildOperation(formOperation: NgForm) {
-    const operation = formOperation.value;
-    return operation;
-  }
 
   onError = error => console.log(error);
 
@@ -80,8 +102,24 @@ export class RegisterOperationComponent {
      this.showAddrules = true;
   }
   public AddRules(event: any) {
+    debugger
     this.showAddrules = false ;
-    this.selectedRules = event;
+    this.selectedRules = this.firstSelectedRules.concat(event);
+  }
+
+  changeEndRule(event) {
+     this.selectedRuleEnd = true;
+     this.rulesByEndTrip = event;
+     this.firstSelectedRules.push(event);
+     this.selectedRules.push(event);
+  }
+
+  changeStartRule(event) {
+    debugger
+     this.selectedRuleStart = true;
+     this.rulesByStartTrip = event;
+     this.firstSelectedRules.push(event);
+     this.selectedRules.push(event);
   }
 
   public closeDialog = () => this.showAddrules = false;

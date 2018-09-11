@@ -19,6 +19,9 @@ export class AddRulesDialogComponent implements OnInit{
 
   public rulesManagement = rules;
 
+  public addedItem = false;
+  
+
   termSubscription; 
 
   public selectedRules = new Array<any>();
@@ -42,7 +45,7 @@ export class AddRulesDialogComponent implements OnInit{
              const filterBy = term ? term.toLowerCase() : null;
              // do case insensitive search
              const filteredData = filterBy
-               ? this.rulesManagement.filter(item => (item.tech.toLowerCase().indexOf(filterBy) !== -1) ||  item.rule.toLowerCase().indexOf(filterBy) !== -1)
+               ? this.rulesManagement.filter(item => (item.name.toLowerCase().indexOf(filterBy) !== -1))
           
                : this.rulesManagement;
              // generate display array
@@ -50,33 +53,29 @@ export class AddRulesDialogComponent implements OnInit{
            }
        ) 
      }
- 
   cancel() {
     this.showModal = false;
     this.onDialogClose.emit();
   }
 
-  public addItem(item) {
-    debugger
-    this.selectedRules.push(item);
-    console.log(this.selectedRules);
-    item.addedClass = true;
-    item.removedClass = false;
-    
+  public toggleItem(item , i) {
+
+    if (!this.selectedRules.includes(item)) {
+       debugger 
+       this.selectedRules.push(item);
+       item.addedItem = true;
+    }
+     else {
+       this.selectedRules.splice(i, 1);    
+       item.addedItem = false;
+     }
   }
 
-  public removeItem(rule: any): void {
-    const index = this.selectedRules.findIndex(a => a === rule);
-    this.selectedRules.splice(index, 1);
-    rule.removedClass = true;
-    rule.addedClass = false;
-  }
 
   confirm() {
     this.showModal = false;
-    if(this.selectedRules){
-      this.data.emit(this.selectedRules);  
-    }
-    
+    if (this.selectedRules) {
+      this.data.emit(this.selectedRules);
+    }  
   }
 }

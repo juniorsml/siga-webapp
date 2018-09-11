@@ -10,25 +10,26 @@ export class OperationService {
 
   constructor(private http: HttpService) { }
 
-  public getOperations(): Observable<Array<Operation>> {
+  public getConfigs(): Observable<Array<Operation>> {
     return this
       .http
-      .get(`api/operations`)
+      .get(`api/trips/configs`)
       .pipe(map(res => <Array<Operation>>res.json()));
   }
 
   public getOperation(operationId:string): Observable<any> {
     return this
       .http
-      .get(`api/operations/${operationId}`)
+      .get(`api/trips/configs/${operationId}`)
       .first()
       .pipe(map(res => res.json()));
   }
 
   public saveOperation(operation: Operation): Observable<any> {
+
     return this
       .http
-      .post('api/operations', operation)
+      .post('api/trips/configs', operation)
       .first()
       .pipe(map(res => res.json()));
   }
@@ -36,7 +37,7 @@ export class OperationService {
   public updateOperation(operation: Operation): Observable<any> {
     return this
       .http
-      .put(`api/operations/${operation.id}`, operation)
+      .put(`api/trips/configs/${operation.id}`, operation)
       .first()
       .pipe(map(res => res.json()));
   }

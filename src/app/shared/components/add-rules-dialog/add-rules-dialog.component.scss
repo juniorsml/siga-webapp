@@ -119,8 +119,7 @@
 
     th{
       padding: 0;
-      text-align: left;
-      width: 50%;
+      text-align: left;      
       font-size: 13.5px;
     }
     td{
@@ -130,6 +129,10 @@
       vertical-align: middle;
     }
   }
+}
+.addedItem{
+  background: #4d5675 !important;
+  color:#FFF;
 }
 .actions{
   span{
@@ -157,5 +160,20 @@
   }
 }
 
+.name{
+  width: 146px  !important;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.description{
+  text-overflow:ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 279px !important;
+}
+.tag_gr{
+  width: 60px !important;
+}
 
 

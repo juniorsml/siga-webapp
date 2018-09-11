@@ -43,10 +43,11 @@
         [data]="operations | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
         [dataLength]="operations.length" 
         [searchText]="text" 
-        [searchColumns]="['description','obs']"
+        [searchColumns]="['name','description','observation','rules']"
         [emptySearchText]="'Nenhum dispositivo encontrado'" 
         [bodyBottom]="'42px'" 
         [bodyTop]="'26px'"
+        [haveFooter]="true" 
         (onCellClick)="onCellClick($event)"
     
         (onCellRightClick)="onCellRightClick($event)"
@@ -63,15 +64,25 @@
             </div>
           </ng-template>
         </table-empty>
+        <column [key]="'name'" [header]="'Nome'" [minWidth]="'43'" [isSortable]="true"> 
+          <ng-template let-item="item">          
+              {{item == null ? '-' : item}}          
+          </ng-template>
+        </column>
          <column [key]="'description'" [header]="'Descrição'" [minWidth]="'43'" [isSortable]="true"> 
           <ng-template let-item="item">          
               {{item == null ? '-' : item}}          
           </ng-template>
         </column>
-        <column [key]="'obs'" [header]="'Observação'" [minWidth]="'82'" [isSortable]="true">
+        <column [key]="'observation'" [header]="'Observação'" [minWidth]="'82'" [isSortable]="true">
             <ng-template let-item="item">
                 {{item == null ? '-' : item}}  
             </ng-template>
+        </column>
+        <column [key]="'rules'" [header]="'Regra nome'" [minWidth]="'82'" [isSortable]="true">
+          <ng-template let-item="item" >
+            <span *ngFor="let rule of item">{{item == null ? '-' : rule?.name}}</span>
+          </ng-template>
         </column>
         
       </data-table>

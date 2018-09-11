@@ -17,39 +17,67 @@
           styleClass="tabs no-margin tabs-register">
 
           <sga-tab heading="Geral">
-
                 <!-- Geral -->
-                <div class="cnt-info columns is-multiline">    
+                <div class="cnt-info columns is-multiline"> 
+                  <div class="column  is-12">
+                    <label class="label is-small">Nome da Operação</label>
+                    <div class="control">
+                      <input class="input is-small" name="name" ngModel type="text" placeholder="Nome da Operação" required>
+                    </div>
+                  </div>   
                   <div class="column  is-12">
                     <label class="label is-small">Descrição da Operação</label>
                     <div class="control">
-                      <input class="input is-small" type="text" placeholder="Descrição da Operação">
+                      <input class="input is-small" name="description" ngModel type="text" placeholder="Descrição da Operação" required>
                     </div>
                   </div>
                   <div class="column  is-12">
                     <label class="label is-small">Observação</label>
                     <div class="control">
-                      <input class="input is-small" type="text" placeholder="Observação" value="" >
+                      <input class="input is-small" name="observation" ngModel type="text" placeholder="Observação" required>
                     </div>
                   </div>
-                  <div class="is-4 column">
+                  <div class="is-6 column">
                     <label class="label is-small">Regra para inicio de viagem</label>
                     <div class="control">                            
-                        <input class="styled-checkbox" id="Por Raio Inicio" type="checkbox" name="byRadiusBegin">
+                        <!-- <input class="styled-checkbox" id="Por Raio Inicio" type="checkbox" name="byRadiusBegin">
                         <label for="Por Raio Inicio">Por Raio</label>
                                             
                          <input class="styled-checkbox" id="Por Macro Inicio" type="checkbox" name="byMacroBegin">
-                         <label for="Por Macro Inicio">Por Macro</label>
+                         <label for="Por Macro Inicio">Por Macro</label>-->                       
+                         <div class="control">
+                           <div class="select">
+                             <select (ngModelChange)="changeStartRule($event)" ngModel name="rule_startt" required>                               
+                               <option  *ngFor="let item of filteredRulesStart" [ngValue]="item">{{item.name}}</option>                               
+                             </select>
+                             <div class="rule-details" *ngIf="selectedRuleStart">
+                               <label>Descrição :</label> <span class="des">{{rulesByStartTrip?.description}}</span>
+                               <label><i class="fal fa-tags"></i></label><span *ngFor="let tag of rulesByStartTrip?.tags">{{tag.name}}</span>    
+                             </div>
+                           </div>
+                         </div>
+                                       
                      </div>
                   </div>
-                  <div class="is-4 column">
+                  <div class="is-6 column">
                     <label class="label is-small">Regra para fim de viagem</label>
                     <div class="control">                            
-                        <input class="styled-checkbox" id="Por Raio Fim" type="checkbox" name="byRadiusEnd">
+                      <!--   <input class="styled-checkbox" id="Por Raio Fim" type="checkbox" name="byRadiusEnd">
                         <label for="Por Raio Fim">Por Raio</label>
                                             
                          <input class="styled-checkbox" id="Por Macro Fim" type="checkbox" name="byMacroEnd">
-                         <label for="Por Macro Fim">Por Macro</label>
+                         <label for="Por Macro Fim">Por Macro</label> -->
+                         <div class="control">
+                           <div class="select">
+                             <select (ngModelChange)="changeEndRule($event)" ngModel name="rule_end" required>                               
+                               <option  *ngFor="let item of filteredRulesEnd" [ngValue]="item">{{item.name}}</option>                               
+                             </select>
+                             <div class="rule-details" *ngIf="selectedRuleEnd">
+                               <label>Descrição :</label> <span class="des">{{rulesByEndTrip?.description}}</span>
+                               <label><i class="fal fa-tags"></i></label><span *ngFor="let tag of rulesByEndTrip?.tags">{{tag.name}}</span>    
+                             </div>
+                           </div>
+                         </div>
                      </div>
                     
                   </div>
@@ -74,14 +102,17 @@
                         <table class="table is-striped is-fullwidth">
                           <thead>
                             <tr>
-                              <th>Tecnologia</th>
-                              <th>Regra</th>                              
+                              <th>Nome</th>
+                              <th>Descrição</th>     
+                              <th class="tag_gr">Tags</th>                            
                             </tr>
                           </thead>                           
                           <tbody>
                             <tr  *ngFor="let item of selectedRules">                                
-                              <td>{{item.tech}}</td>                           
-                              <td>{{item.rule}}</td>      
+                              
+                              <td class="name">{{item.name}}</td>          
+                              <td class="description">{{item.description}}</td>                 
+                              <td class="tag_gr"><i class="fal fa-tags"></i></td>     
                             </tr>                                  
                            
                           </tbody>
@@ -106,7 +137,8 @@
         <!-- Botões de Ação -->
         <div class="cnt-buttons">        
           <button class="button" (click)="cancel()">Cancelar</button>
-          <button type="submit"
+          <button [disabled]="formOperation.invalid" 
+                 type="submit"
                   class="button is-first">Cadastrar</button>
       </div>
     </form>
