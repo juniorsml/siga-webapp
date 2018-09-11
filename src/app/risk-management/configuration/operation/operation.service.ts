@@ -26,6 +26,7 @@ export class OperationService {
   }
 
   public saveOperation(operation: Operation): Observable<any> {
+
     return this
       .http
       .post('api/trips/configs', operation)

@@ -16,7 +16,8 @@ export class RegisterOperationComponent implements OnInit {
   public showForm: boolean;
   public selectedTabIndex = 0;
   public onRulesSelected: any;
-  public selectedRules: Array<any>;
+  public selectedRules: Array<any> = [];
+  firstSelectedRules:Array<any> = [];
   public showAddrules = false;
 
   public rulesManagement = rules;
@@ -63,19 +64,20 @@ buidMandatoryRules(rulesFiltered: Array<any>, term:string){
   // }
 
   public onSubmit() {
-    debugger
-     
       const operation = {
         ...this.formOperation.value,
+        
         rules:[
-          this.selectedRules
+          ...this.selectedRules
         ]
       }
+      debugger
       this
         .operationService
         .saveOperation(operation)
         .subscribe(
-          success => this.onSaveSuccess(success),
+          
+          success =>  this.onSaveSuccess(success),
           error => this.onError(error)
         );
   }
@@ -100,13 +102,15 @@ buidMandatoryRules(rulesFiltered: Array<any>, term:string){
      this.showAddrules = true;
   }
   public AddRules(event: any) {
+    debugger
     this.showAddrules = false ;
-    this.selectedRules = event;
+    this.selectedRules = this.firstSelectedRules.concat(event);
   }
 
   changeEndRule(event) {
      this.selectedRuleEnd = true;
      this.rulesByEndTrip = event;
+     this.firstSelectedRules.push(event);
      this.selectedRules.push(event);
   }
 
@@ -114,6 +118,7 @@ buidMandatoryRules(rulesFiltered: Array<any>, term:string){
     debugger
      this.selectedRuleStart = true;
      this.rulesByStartTrip = event;
+     this.firstSelectedRules.push(event);
      this.selectedRules.push(event);
   }
 
