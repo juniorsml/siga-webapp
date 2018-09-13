@@ -22,7 +22,7 @@
         <div class="field">
           <label class="label is-small">Valor Documento</label>
           <div class="control">
-            <input class="input" type="text" placeholder="Código" required>
+            <input class="input" ngModel name="documentValue" type="text" placeholder="Código" required>
           </div>
         </div>
       </div>
@@ -41,12 +41,9 @@
       <div class="field">
         <label class="label is-small">Operação</label>
         <div class="select">
-          <select name="op">
-            <option>Operação</option>
-            <option value="Operação I">Operação I</option>
-            <option value="Operação II">Operação II</option>
-            <option value="Operação III">Operação III</option>
-          </select>
+            <select ngModel name="configId" required>                               
+                <option  *ngFor="let item of listOfConfigs" value="item.id">{{item.name}}</option>                               
+              </select>
         </div>
       </div>
     </div>

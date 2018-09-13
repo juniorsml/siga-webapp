@@ -5,7 +5,8 @@ import { OperationService } from '../../../risk-management/configuration/operati
 @Component({
   selector: 'sga-detail',
   templateUrl: './detail.component.html',
-  styleUrls: ['detail.component.scss']
+  styleUrls: ['detail.component.scss'],
+  providers:[OperationService]
 })
 
 export class DetailComponent implements OnInit {
