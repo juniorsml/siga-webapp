@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import { FormService } from '../dataform.service';
 
 
 @Component({
@@ -6,13 +7,20 @@ import {Component, OnInit} from '@angular/core';
   templateUrl: './detail.component.html',
   styleUrls: ['detail.component.scss']
 })
-export class DetailComponent implements OnInit {
 
-  constructor() {
+export class DetailComponent {
+ 
+ @ViewChild('formDetail') formDetail: any;
+ 
+
+ constructor(private formData: FormService) { }
+
+ 
+
+  ngOnDestroy(){
+    this.formData.updateObj(this.formDetail.value);
+    console.log(this.formDetail.value);
   }
-
-  ngOnInit() {
-
-  }
+  
 
 }
