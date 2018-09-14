@@ -3,6 +3,7 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Map } from '../../../shared/models/Map';
 import { DirectionService } from '../../../shared/services/direction.service';
 import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
+import { FormService } from '../dataform.service';
 
 @Component({
   selector: 'sga-places',
@@ -16,7 +17,13 @@ export class PlacesComponent implements OnInit {
   opts: ISlimScrollOptions;
   scrollEvents: EventEmitter<SlimScrollEvent>;
 
-  constructor(private map: Map, private directionService: DirectionService) { }
+  public timeStart;
+  public timeEnd;
+  public placeObj = [];
+
+  public itineraryInfo;
+
+  constructor(private map: Map, private directionService: DirectionService, private formItinerary: FormService) { }
 
   ngOnInit(): void {
     this.injectMap();
@@ -33,7 +40,23 @@ export class PlacesComponent implements OnInit {
       barMargin: '2px 2px'
     };
   }
-
+  ngOnDestroy(){
+    debugger
+    for(let item of this.places){
+      this
+         .placeObj
+         .push(item.address_components
+               .filter(obj => obj.types.includes('administrative_area_level_2') )
+               .map(obj =>  obj.long_name)[0],);
+    }
+    this.itineraryInfo = {
+        timeStart: this.timeStart.value,
+        timeEnd: this.timeEnd.value,
+        places: this.placeObj
+    }
+    this.formItinerary.updateObj(this.itineraryInfo,'generalInfos')
+  }
+  
   public selectPlace = place => {
     const location = {
       name: place.formatted_address,

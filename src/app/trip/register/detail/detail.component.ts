@@ -11,7 +11,7 @@ import { OperationService } from '../../../risk-management/configuration/operati
 
 export class DetailComponent implements OnInit {
  
-
+  generalInfos;
  @ViewChild('formDetail') formDetail: any;
  
  listOfConfigs:any;
@@ -19,8 +19,9 @@ export class DetailComponent implements OnInit {
  constructor(private formData: FormService, private operationService: OperationService) { }
 
   ngOnDestroy(){
-    this.formData.updateObj(this.formDetail.value);
-    console.log(this.formDetail.value);
+ 
+    this.generalInfos = this.formDetail.value;
+    this.formData.updateObj(this.generalInfos,'generalInfos')
   }
 
   ngOnInit(){
