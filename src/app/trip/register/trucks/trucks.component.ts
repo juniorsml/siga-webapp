@@ -27,10 +27,6 @@ export class TrucksComponent implements OnInit {
     );
   }
 
-  
-
-
-
   ngOnDestroy(){
     
     this.formService.updateObj(this.truckInfos,'trailers');

@@ -43,7 +43,6 @@ export class PlacesComponent implements OnInit {
     };
   }
   ngOnDestroy(){
-    debugger
     for(let item of this.places){
       this.placeObj.push(item.nameToRoute);
     }

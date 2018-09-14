@@ -28,7 +28,7 @@ export class RegisterTripComponent implements OnInit {
   
   ngOnInit() {
     this.detailData.currentObj.subscribe(obj => this.state = obj); 
-    console.log(this.state);
+    console.log(this.state['devices']);
   }
 
 

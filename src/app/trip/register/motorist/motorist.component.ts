@@ -36,8 +36,6 @@ export class MotoristComponent implements OnInit {
        const filteredMotoristKey = unwrap(item);
        this.motoristInfos.push(filteredMotoristKey);
     }
-    debugger
-    console.log(this.state);
   }
 
   public showMotoristData(motorist) {

@@ -20,7 +20,9 @@ export class SummaryRegisterComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.formdata$ = this.summaryData.currentObj.first().subscribe(obj => this.state = obj);
+    this.summaryData.currentObj.first().subscribe(obj => this.state = obj);
     console.log(this.state);
+    
+
   }
 }

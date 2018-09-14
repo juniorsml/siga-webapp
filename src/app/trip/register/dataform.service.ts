@@ -55,13 +55,26 @@ export class FormService {
             type: "Carreta",
             vehiclePlate:"RTT-2343"
           }
-        ]     
+        ],
+        devices : [
+          { 
+            id: "232Adas0000000000000",
+            model: "RTRRR",
+            tech:"GRE3"
+          },
+          { 
+            id: '232Adas0000000000000',
+            model: "FREWW",
+            tech:"RT343"
+          }
+        ]    
+
   });
   public currentObj:Observable<any> = this.objTrip.asObservable();
 
   constructor() { }
 
-  updateObj(obj,key) {
+  updateObj(obj,key) { 
     
     const valueCurrent = this.objTrip.getValue();
     valueCurrent[key] = obj;
