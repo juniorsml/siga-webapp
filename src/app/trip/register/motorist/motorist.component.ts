@@ -40,16 +40,6 @@ export class MotoristComponent implements OnInit {
     console.log(this.state);
   }
 
-  public splice()
-  {
-      var ret = new Object();
-
-      for(i = 1; i < arguments.length; i++)
-          ret[arguments[i]] = arguments[0][arguments[i]];
-
-      return ret;
-  }
-
   public showMotoristData(motorist) {
     this.selectedMotorist = motorist;
   }
