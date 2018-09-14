@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FormService } from '../dataform.service';
 
 @Component({
   selector: 'sga-trucks',
   templateUrl: './trucks.component.html',
-  styleUrls: ['../motorist/motorist.component.scss']
+  styleUrls: ['../motorist/motorist.component.scss'],
+  providers:[FormService]
 })
 export class TrucksComponent implements OnInit {
 
@@ -16,13 +18,29 @@ export class TrucksComponent implements OnInit {
   public associateTruck= new Array<any>();
 
   public showRegisterForm = false;
-
-  constructor(private router: ActivatedRoute) {}
+  public truckInfos = new Array<any>();
+  constructor(private router: ActivatedRoute, private formService:FormService) { }
 
   ngOnInit(): void {
     this.router.data.subscribe(
       data => (this.trucks = data.vehicles || new Array<any>())
     );
+  }
+
+  
+
+
+
+  ngOnDestroy(){
+    
+    this.formService.updateObj(this.truckInfos,'trailers');
+   
+    let unwrap = ({id, type, vehiclePlate}) => ({id, type, vehiclePlate});
+
+    for(let item of this.associateTruck){
+       const filterTruckKey = unwrap(item);
+       this.truckInfos.push(filterTruckKey);
+    }
   }
 
   public showTruckData(truck) {

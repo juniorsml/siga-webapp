@@ -43,7 +43,19 @@ export class FormService {
             type: "Carreta",
             vehiclePlate:"RTT-2343"
           }
-        ]   
+        ],
+        trailers : [
+          { 
+            id: "232Adas0000000000000",
+            type: "Caminhao",
+            vehiclePlate:"GRE-3253"
+          },
+          { 
+            id: '232Adas0000000000000',
+            type: "Carreta",
+            vehiclePlate:"RTT-2343"
+          }
+        ]     
   });
   public currentObj:Observable<any> = this.objTrip.asObservable();
 
