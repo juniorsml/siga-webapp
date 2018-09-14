@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, ViewChild } from '@angular/core';
 
 import { Map } from '../../../shared/models/Map';
 import { DirectionService } from '../../../shared/services/direction.service';
@@ -17,10 +17,12 @@ export class PlacesComponent implements OnInit {
   opts: ISlimScrollOptions;
   scrollEvents: EventEmitter<SlimScrollEvent>;
 
-  public timeStart;
-  public timeEnd;
-  public placeObj = [];
 
+  @ViewChild('timeStart') timeStart: any;
+  @ViewChild('timeEnd') timeEnd: any;
+ 
+  public placeObj = [];
+  public state;
   public itineraryInfo;
 
   constructor(private map: Map, private directionService: DirectionService, private formItinerary: FormService) { }
@@ -43,25 +45,31 @@ export class PlacesComponent implements OnInit {
   ngOnDestroy(){
     debugger
     for(let item of this.places){
-      this
-         .placeObj
-         .push(item.address_components
-               .filter(obj => obj.types.includes('administrative_area_level_2') )
-               .map(obj =>  obj.long_name)[0],);
+      this.placeObj.push(item.nameToRoute);
     }
     this.itineraryInfo = {
-        timeStart: this.timeStart.value,
-        timeEnd: this.timeEnd.value,
-        places: this.placeObj
+        name: this.placeObj,
+        timeStart: this.timeStart.nativeElement.value,
+        timeEnd: this.timeEnd.nativeElement.value
+        
     }
-    this.formItinerary.updateObj(this.itineraryInfo,'generalInfos')
+
+    this.formItinerary.updateObj(this.itineraryInfo,'itinerary');
+
+    this.formItinerary.currentObj.subscribe(obj => this.state = obj); 
+    console.log(this.state['itinerary']);
   }
   
   public selectPlace = place => {
+
     const location = {
       name: place.formatted_address,
+      nameToRoute: place.address_components
+      .filter(obj => obj.types.includes('administrative_area_level_2') )
+      .map(obj =>  obj.long_name)[0],
       lat: place.geometry.location.lat(),
-      lng: place.geometry.location.lng()
+      lng: place.geometry.location.lng(),
+      
     };
 
     this.places.push(location);

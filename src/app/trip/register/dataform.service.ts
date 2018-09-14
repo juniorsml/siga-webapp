@@ -7,15 +7,20 @@ import { Observable } from 'rxjs';
 export class FormService {
 
   public objTrip = new BehaviorSubject<any>({
-      generalInfos : {
-      keyDocument: "chave",
-      documentValue: "Valor do Documento",
-      configId: "5b972fb00000000000004352",
-      kindOfProduct: "Mercadoria/Produto",
-      totalAmoutn: "Valor do Embarque R$",
-      totalWeight: "Peso total da carga"
-    },
-    motorist : { id: '232Adas0000000000000'}
+          generalInfos : {
+          keyDocument: "chave",
+          documentValue: "Valor do Documento",
+          configId: "5b972fb00000000000004352",
+          kindOfProduct: "Mercadoria/Produto",
+          totalAmoutn: "Valor do Embarque R$",
+          totalWeight: "Peso total da carga"
+        },
+        itinerary: {
+           name:"Nome do Itinerario",
+           timeStart: "Start",
+           timeEnd: "End"
+        },
+        motorist : { id: '232Adas0000000000000'}
   
   });
   public currentObj:Observable<any> = this.objTrip.asObservable();
