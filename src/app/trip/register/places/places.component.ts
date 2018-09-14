@@ -56,8 +56,7 @@ export class PlacesComponent implements OnInit {
 
     this.formItinerary.updateObj(this.itineraryInfo,'itinerary');
 
-    this.formItinerary.currentObj.subscribe(obj => this.state = obj); 
-    console.log(this.state['itinerary']);
+   
   }
   
   public selectPlace = place => {

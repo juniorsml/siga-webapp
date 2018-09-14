@@ -20,8 +20,18 @@ export class FormService {
            timeStart: "Start",
            timeEnd: "End"
         },
-        motorist : { id: '232Adas0000000000000'}
-  
+        motorists : [
+          { 
+          id: '232Adas0000000000000',
+          firstName: "Valter",
+          documentId:"24362346236"
+          },
+          { 
+            id: '232Adas0000000000000',
+            firstName: "David",
+            documentId:"532623663462"
+          }
+        ]  
   });
   public currentObj:Observable<any> = this.objTrip.asObservable();
 
