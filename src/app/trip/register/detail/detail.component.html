@@ -1,6 +1,6 @@
 <div style="margin: auto; max-width: 1200px;">
   <h5 class="form-title">Dados da Viagem</h5>
-  <form #formDetail="ngForm" (ngModelChange)="detectChange($event)" class="block column columns is-12 is-multiline cnt-detail">
+  <form #formDetail="ngForm" class="block column columns is-12 is-multiline cnt-detail">
     <!-- Identification-->
     <div class="column is-12">
       <div class="form-section is-12">
@@ -16,7 +16,7 @@
         <div class="field">
           <label class="label is-small">Chave Documento</label>
           <div class="control">
-            <input class="input"  ngModel name="keyDocument" type="text" placeholder="Chave" required>
+            <input class="input" value="state.generalInfos?.keyDocument" ngModel name="keyDocument" type="text" placeholder="Chave" required>
           </div>
         </div>
         <div class="field">

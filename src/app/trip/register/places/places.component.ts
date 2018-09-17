@@ -3,12 +3,13 @@ import { Component, OnInit, EventEmitter, ViewChild } from '@angular/core';
 import { Map } from '../../../shared/models/Map';
 import { DirectionService } from '../../../shared/services/direction.service';
 import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
-import { FormService } from '../dataform.service';
+import { TripObject } from '../../../shared/services/trip-object.service';
 
 @Component({
   selector: 'sga-places',
   templateUrl: './places.component.html',
-  styleUrls: ['./places.component.scss']
+  styleUrls: ['./places.component.scss'],
+  providers:[TripObject]
 })
 export class PlacesComponent implements OnInit {
 
@@ -25,7 +26,7 @@ export class PlacesComponent implements OnInit {
   public state;
   public itineraryInfo;
 
-  constructor(private map: Map, private directionService: DirectionService, private formItinerary: FormService) { }
+  constructor(private map: Map, private directionService: DirectionService, private formItinerary: TripObject) { }
 
   ngOnInit(): void {
     this.injectMap();
@@ -52,9 +53,10 @@ export class PlacesComponent implements OnInit {
         timeEnd: this.timeEnd.nativeElement.value
         
     }
-
+  
     this.formItinerary.updateObj(this.itineraryInfo,'itinerary');
-
+    console.log(this.itineraryInfo);
+    debugger
    
   }
   

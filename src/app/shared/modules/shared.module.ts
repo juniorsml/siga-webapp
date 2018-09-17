@@ -66,6 +66,8 @@ import { ColumnSelectorComponent } from '../components/column-selector/column-se
 import { MapComponent } from '../components/map/map.component';
 import { SelectGroupedComponent } from '../components/select-grouped/select-grouped.component';
 import { DirectionService } from '../services/direction.service';
+import { TripObject } from '../services/trip-object.service'
+
 import { HttpModule } from '@angular/http';
 import { RouteInfoComponent } from '../components/route-info/route-info.component';
 
@@ -165,8 +167,10 @@ import { AddRulesDialogComponent } from '../components/add-rules-dialog/add-rule
     ReactiveFormsModule
   ],
   providers: [
+    TripObject,
     AuthService,
     DirectionService,
+    
     {
       provide: SLIMSCROLL_DEFAULTS,
       useValue: {

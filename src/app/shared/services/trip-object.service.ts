@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 
 @Injectable()
-export class FormService {
+export class TripObject {
 
   public objTrip = new BehaviorSubject<any>({
         generalInfos : {
@@ -77,6 +77,9 @@ export class FormService {
   updateObj(obj,key) { 
     
     const valueCurrent = this.objTrip.getValue();
+    
     valueCurrent[key] = obj;
-    }
+    this.objTrip.next(valueCurrent)
+  
+  }
 }

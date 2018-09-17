@@ -1,12 +1,12 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormService } from '../dataform.service';
+import { TripObject } from '../../../shared/services/trip-object.service';
 
 @Component({
   selector: 'sga-device',
   templateUrl: './device.component.html',
   styleUrls: ['../motorist/motorist.component.scss'],
-  providers:[FormService]
+  providers:[TripObject]
 })
 export class DeviceComponent implements OnInit {
 
@@ -22,7 +22,7 @@ export class DeviceComponent implements OnInit {
   @Input()
   public showBreadcrumb = false;
 
-  constructor(private router: ActivatedRoute, private formService : FormService) {}
+  constructor(private router: ActivatedRoute, private formService : TripObject) {}
 
   ngOnInit(): void {
     this.router.data.subscribe(

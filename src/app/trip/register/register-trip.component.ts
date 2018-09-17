@@ -2,18 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { StepClickEvent } from '../../shared/events/StepClickEvent';
 import { Router } from '@angular/router';
 import { RegisterStepEnum } from './RegisterStepEnum';
-import { FormService } from './dataform.service';
+
+import { TripObject } from '../../shared/services/trip-object.service';
 
 
 
 @Component({
   selector: 'sga-register-trip',
   templateUrl: './register-trip.component.html',
-  styleUrls: ['./register-trip.component.scss'],
-  providers:[FormService]
+  styleUrls: ['./register-trip.component.scss']
 })
 export class RegisterTripComponent implements OnInit {
-  constructor(private router: Router, private detailData : FormService) { }
+  constructor(private router: Router, private detailData : TripObject) { }
   public state:any;
   private _currentStep = 0;
   public get currentStep(): RegisterStepEnum {
@@ -27,8 +27,9 @@ export class RegisterTripComponent implements OnInit {
 
   
   ngOnInit() {
-    this.detailData.currentObj.subscribe(obj => this.state = obj); 
-    console.log(this.state['devices']);
+    
+    this.detailData.objTrip.subscribe(obj => this.state = obj); 
+    
   }
 
 

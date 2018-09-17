@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormService } from '../dataform.service';
+
+import { TripObject } from '../../../shared/services/trip-object.service';
 
 @Component({
   selector: 'sga-trucks',
   templateUrl: './trucks.component.html',
   styleUrls: ['../motorist/motorist.component.scss'],
-  providers:[FormService]
+  providers:[TripObject]
 })
 export class TrucksComponent implements OnInit {
 
@@ -19,7 +20,7 @@ export class TrucksComponent implements OnInit {
 
   public showRegisterForm = false;
   public truckInfos = new Array<any>();
-  constructor(private router: ActivatedRoute, private formService:FormService) { }
+  constructor(private router: ActivatedRoute, private formService:TripObject) { }
 
   ngOnInit(): void {
     this.router.data.subscribe(

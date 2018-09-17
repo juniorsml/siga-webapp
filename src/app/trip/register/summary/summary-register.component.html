@@ -10,68 +10,35 @@
         <div class="field">
           <label class="label is-small">Chave Documento</label>
           <div class="control">
-            <span>{{state.generalInfos.keyDocument}}</span>
+            <span>{{state == null ? '-' : state.generalInfos?.keyDocument}}</span>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label is-small">Documento</label>
+          <div class="control">
+           
+            <span>{{state == null ? '-' : state.generalInfos?.documentValue}}</span>
           </div>
         </div>
         <div class="field">
           <label class="label is-small">Mercadoria/Produto</label>
           <div class="control">
-           
-            <span>Mercadoria/Produto</span>
+           <span> {{state == null ? '-' : state.generalInfos?.kindOfProduct}}</span>
           </div>
         </div>
         <div class="field">
           <label class="label is-small">Valor total do embarque</label>
-          <div class="select is-small">
-           <span>R$</span>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label is-small">Peso total</label>
-          <div class="select is-small">
-            <span>KG</span>
+          <div class="control">
+            <span>{{state == null ? '-' : state.generalInfos?.totalAmount}} </span>
           
           </div>
         </div>
         <div class="field">
-          <label class="label is-small">Operação</label>
-          <div class="select is-small">
-              <span>Operação</span>
-          </div>
-        </div>
-         <div class="field">
-          <label class="label is-small">Tipo</label>
-          <div class="select is-small">
-            <span>Tipo</span>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label is-small">Percurso</label>
-          <div class="select is-small">
-             <span>Percurso</span>
-          </div>
-        </div>
-      </div>
-      <div class="field-body field"> 
-        <div class="field">
-          <label class="label is-small">Transportadora</label>
+          <label class="label is-small">Peso Total</label>
           <div class="control">
-           <span>Transportadora</span>
+              <span>{{state == null ? '-' : state.generalInfos?.totalWeight}} KG</span>
           </div>
         </div>
-        <div class="field">
-          <label class="label is-small">Cod. Liberação</label>
-          <div class="control">
-            <span>PL00987646</span>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label is-small">Observação</label>
-          <div class="control">
-            <span>OBS</span>
-          </div>
-        </div>
-       
       </div>
 
 
@@ -85,19 +52,19 @@
         <div class="field">
           <label class="label is-small">Prev. Fim</label>
           <div class="control">
-           <span>29/07/2018 08:00</span>
+           <span>{{state == null ? '-' : state.itinerary?.timeStart}}</span>
           </div>
         </div>
         <div class="field">
           <label class="label is-small">Fim real</label>
           <div class="control">
-            <span>30/07/2018 08:00</span>
+            <span>{{state == null ? '-' : state.itinerary?.timeEnd}}</span>
           </div>
         </div>
         <div class="field">
           <label class="label is-small">Rota</label>
           <div class="control">
-            <span>SP X GYN X SZL X FOR</span>
+            <span>{{state == null ? '-' : state.itinerary?.name}}</span>
           </div>
         </div>
       </div>   
@@ -106,17 +73,17 @@
       <h4>
         Motorista(s)
       </h4>
-      <div class="field-body field">
+      <div *ngFor="let motorist of state.motorists" class="field-body field">
         <div class="field">
           <label class="label is-small">Nome</label>
           <div class="control">
-           <span>Gustavo Gandolfo</span>
+           <span>{{motorist.firstName}}</span>
           </div>
         </div>
         <div class="field">
           <label class="label is-small">Documento</label>
           <div class="control">
-            <span>21632082810</span>
+            <span>{{motorist.documentId}}</span>
           </div>
         </div>
       </div>    
