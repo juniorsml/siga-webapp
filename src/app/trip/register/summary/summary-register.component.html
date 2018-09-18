@@ -93,17 +93,17 @@
       <h4>
         Veículo(s)
       </h4>
-      <div class="field-body field">
+      <div *ngFor="let vehicle of state.vehicles" class="field-body field">
         <div class="field">
           <label class="label is-small">Tipo</label>
           <div class="control">
-           <span>Carreta</span>
+           <span>{{vehicle.type}}</span>
           </div>
         </div>
         <div class="field">
           <label class="label is-small">PLaca</label>
           <div class="control">
-            <span>BBZ-7923</span>
+            <span>{{vehicle.vehiclePlate}}</span>
           </div>
         </div>
       </div>    
@@ -114,17 +114,17 @@
       <h4>
         Reboque(s)
       </h4>
-      <div class="field-body field">
+      <div *ngFor="let trailer of state.trailers"  class="field-body field">
         <div class="field">
           <label class="label is-small">Tipo</label>
           <div class="control">
-           <span>Carreta</span>
+           <span>{{trailer.type}}</span>
           </div>
         </div>
         <div class="field">
           <label class="label is-small">PLaca</label>
           <div class="control">
-            <span>BBZ-7923</span>
+            <span>{{trailer.vehiclePlate}}</span>
           </div>
         </div>
       </div>    
@@ -134,7 +134,7 @@
       <h4>
         Dispositivo(s)
       </h4>
-      <div class="field-body field">
+      <div *ngFor="let trailer of state.trailers" class="field-body field">
         <div class="field">
           <label class="label is-small">Nome</label>
           <div class="control">
