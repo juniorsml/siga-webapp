@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 import { TripObject } from '../../../shared/services/trip-object.service';
 import { MotoristService } from '../../../motorist/motorist.service';
@@ -20,7 +19,7 @@ export class MotoristComponent implements OnInit {
   public showMotoristRegister = false;
   public motoristInfos  = new Array<any>();
 
-  constructor(private motoristService: MotoristService, private motoristInfo: TripObject) {
+  constructor(private motoristService: MotoristServicegit , private motoristInfo: TripObject) {
     
     this.motoristInfo.objTrip.subscribe(obj => this.state = obj);
 
