@@ -20,7 +20,7 @@ export class MotoristComponent implements OnInit {
   public showMotoristRegister = false;
   public motoristInfos  = new Array<any>();
 
-  constructor(private motoristService: MotoristService, private router: ActivatedRoute, private motoristInfo: TripObject) {
+  constructor(private motoristService: MotoristService, private motoristInfo: TripObject) {
     
     this.motoristInfo.objTrip.subscribe(obj => this.state = obj);
 
