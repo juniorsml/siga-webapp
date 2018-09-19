@@ -9,7 +9,8 @@ export class DirectionService {
 
   public getCoordinates = locations =>
     this.http
-      .get(this.getDirectionUri(this.formatLocationArray(locations)))
+      .get(this.getDirectionUri(this.formatLocationArray(locations)), null, true)
+      .do(json => console.log(json))
       .map(response => response.json())
 
   private formatLocationArray = locations =>
@@ -22,9 +23,11 @@ export class DirectionService {
 
   private getDirectionUri = locations => {
     const { directionsApi, accessToken } = environment.mapbox;
-    return `${directionsApi}/${locations
+    const uri = `${directionsApi}/${locations
       .toString()
       .replace(/;,/g, ';')}?&access_token=${accessToken}&overview=full`;
+      console.log(uri);
+    return uri;
   }
 
   public decode(str: string, precision?) {
