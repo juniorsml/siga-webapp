@@ -1,5 +1,5 @@
 <div class="columns header-content">
-  <h1 class="section-heading">Cadastrar Viagem ----  {{state == null ? 'null' : state.generalInfos?.keyDocument}}</h1>
+  <h1 class="section-heading">Cadastrar Viagem</h1>
 </div>
 
 <div class="columns is-multiline content-trip">
@@ -7,7 +7,7 @@
     <div class="prev-button">
       <i (click)="prev()" class="icon fal fa-chevron-left"></i>
     </div>
-    <sga-steps [width]="'90%'" (onSelectStep)="onSelectStep($event)">
+    <sga-steps [width]="'100%'" (onSelectStep)="onSelectStep($event)">
       <sga-step [isHollow]="currentStep < 0" [hasGap]="true" header="Geral" icon="fal fa-home"></sga-step>
       <sga-step [isHollow]="currentStep < 1" [hasGap]="true" header="Itinerário" icon="fal fa-map"></sga-step>
       <sga-step [isHollow]="currentStep < 2" [hasGap]="true" header="Motorista" icon="fal fa-user"></sga-step>
