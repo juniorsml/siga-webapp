@@ -37,16 +37,9 @@ export class MotoristComponent implements OnInit {
 
   ngOnDestroy(){
     
-    this.motoristInfo.updateObj(this.motoristInfos,'motorists')
+    this.motoristInfo.updateObj(this.associateMotorist,'motorists')
 
     this.motoristInfo.currentObj.subscribe(obj => this.state = obj); 
-
-    let unwrap = ({id, documentId, firstName, lastName}) => ({id, documentId, firstName, lastName});
-
-    for(let item of this.associateMotorist){
-       const filteredMotoristKey = unwrap(item);
-       this.motoristInfos.push(filteredMotoristKey);
-    }
   }
 
   public showMotoristData(motorist) {
