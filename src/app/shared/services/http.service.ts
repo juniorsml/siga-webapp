@@ -23,10 +23,12 @@ export class HttpService extends Http {
     super(backend, defaultOptions);
   }
 
-  get(url: string, options?: RequestOptionsArgs): Observable<any> {
+  get(url: string, options?: RequestOptionsArgs, externalRequest?: boolean): Observable<any> {
     this.beforeRequest();
+    const  fullUrl = externalRequest ? url : this.getFullUrl(url);
+    debugger;
     return super
-      .get(this.getFullUrl(url), this.requestOptions(options))
+      .get(fullUrl , this.requestOptions(options))
       .catch(this.onCatch)
       .do(this.onSuccess, this.onError)
       .finally(() => this.onFinally());
