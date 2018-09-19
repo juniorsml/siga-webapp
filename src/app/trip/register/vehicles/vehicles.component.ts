@@ -29,15 +29,7 @@ export class VehiclesComponent implements OnInit {
   }
 
   ngOnDestroy(){
-    
-    this.formService.updateObj(this.vehiclesInfos,'vehicles');
-   
-    let unwrap = ({id, type, vehiclePlate}) => ({id, type, vehiclePlate});
-
-    for(let item of this.associateVehicle){
-       const filterVehiclesKey = unwrap(item);
-       this.vehiclesInfos.push(filterVehiclesKey);
-    }
+    this.formService.updateObj(this.associateVehicle,'vehicles');
   }
 
 

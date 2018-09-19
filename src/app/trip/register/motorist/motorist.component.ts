@@ -39,7 +39,6 @@ export class MotoristComponent implements OnInit {
     
     this.motoristInfo.updateObj(this.associateMotorist,'motorists')
 
-    this.motoristInfo.currentObj.subscribe(obj => this.state = obj); 
   }
 
   public showMotoristData(motorist) {
