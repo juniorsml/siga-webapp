@@ -15,6 +15,7 @@ export class PlacesComponent implements OnInit {
 
   public places = new Array<any>();
   public route: any;
+  public featureCollection
   opts: ISlimScrollOptions;
   scrollEvents: EventEmitter<SlimScrollEvent>;
 
@@ -101,17 +102,25 @@ export class PlacesComponent implements OnInit {
       this.places.map(this.addPoint);
       this.directionService
         .getCoordinates(this.places)
+        .first()
         .subscribe(
           data => this.onSuccessRoute(data),
           error => console.log(error));
     }
   }
 
+  private getFeatureCollection(features: any[]) {
+    return {
+      type: 'FeatureCollection',
+      features
+    };
+  }
+
   private onSuccessRoute = ({ routes }) => {
     const { geometry, distance, duration } = routes[0];
     this.route = { distance: this.formatToKm(distance), duration: this.formatDate(duration) };
-
     const featureList = this.directionService.decode(geometry);
+    console.log(JSON.stringify(this.getFeatureCollection(featureList)));
     const latLngs = featureList.map(feat => L.latLng(feat.geometry.coordinates[1], feat.geometry.coordinates[0]));
     this.map.drawPolyline(latLngs);
   }
