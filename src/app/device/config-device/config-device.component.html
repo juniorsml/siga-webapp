@@ -10,22 +10,24 @@
   
   </div>  
 </div>
+
 <div class="wrapper">
   <div class="register-area">
     <button class="button is-first" (click)="openFormRegister()">Novo Dispositivo</button>
   </div>
+ 
   <div class="grid-area">
     <sga-grid-device
       [showBreadcrumb]="false"
       [showFilterBar]="true"
-      [devices]="devices">
+      [reload]="reloadDevices">
     </sga-grid-device>
   </div>
 
   <sga-modal>
     <sga-register-device
       [showForm]="showFormRegister"
-      (onFinish)="closeFormRegister()">
+      (onFinish)="closeFormRegister($event)">
     </sga-register-device>
   </sga-modal>
 

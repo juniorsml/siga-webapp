@@ -1,28 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
+import { Device } from '../../shared/models/api/Device';
 
 @Component({
   selector: 'sga-config-device',
   templateUrl: './config-device.component.html',
   styleUrls: ['./config-device.component.scss']
 })
-export class ConfigDeviceComponent implements OnInit {
-  public devices: Array<any>;
-
+export class ConfigDeviceComponent {
+  public devices: Array<Device>;
   public showFormRegister = false;
 
+  constructor() {}
 
-  constructor(private router: ActivatedRoute) {}
-
-  ngOnInit(): void {
-    this.router.data.subscribe(data => (this.devices = data.devices));
-  }
+  public reloadDevices: boolean;
 
   openFormRegister() {
     this.showFormRegister = !this.showFormRegister;
   }
 
-  closeFormRegister() {
+  closeFormRegister(device) {
+    if ( device ) {
+      this.reloadDevices = true;
+    }
     this.showFormRegister = false;
   }
 }

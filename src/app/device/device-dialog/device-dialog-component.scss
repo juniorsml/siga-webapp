@@ -12,6 +12,7 @@
     }
     .cnt-personal-data{
       position: relative;
+      padding-top: 0;
 
       &:after{
         content: '';
@@ -26,7 +27,7 @@
 
       }
       .field{
-        margin-bottom: 13px;
+        margin-bottom: 0px;
       }
     }
 
@@ -84,8 +85,6 @@
     }
 }
 
-
-
 .profile-photo{
     width: 100%;
     max-width: 125px;
@@ -112,11 +111,12 @@
       width: 196px; 
       height: 196px;
     }
-}
+} 
  
 .ttl-profile {
   color: #72747d;
-  font: 300 20px 'Sunflower', sans-serif;
+  font: 300 17px 'Sunflower', sans-serif;
+  padding-bottom: 0;
 }
 
 .ui-icon-info {
@@ -125,12 +125,10 @@
   cursor: pointer;
 }
 
-
 .personal-info {
   font-size: 14px;
   color: #76787d;
 }
-
 
 .motorist-profile-info-item {
   height: 56px;

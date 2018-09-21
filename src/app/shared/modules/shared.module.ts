@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { TabComponent } from '../components/tabs/tab/tab.component';
 import { TabsComponent } from '../components/tabs/tabs.component';
 import { ModalComponent } from '../modal/modal.component';
@@ -21,6 +23,7 @@ import { FormsModule } from '@angular/forms';
 import { SearchPipe } from '../filters/search.pipe';
 import { PagerPipe } from '../filters/pager.pipe';
 import { PlacesPipe } from '../filters/places.pipe';
+
 
 import { TagInputModule } from 'ngx-chips';
 import { NgSlimScrollModule, SLIMSCROLL_DEFAULTS } from 'ngx-slimscroll';
@@ -78,14 +81,18 @@ import { CommandsHistoricComponent } from '../components/summary-dialog/commands
 
 import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
 
-import { MyDatePickerModule } from 'mydatepicker';
+import { AddRulesDialogComponent } from '../components/add-rules-dialog/add-rules-dialog.component';
+
+
+
+
 
 @NgModule({
   declarations: [
     PlacesPipe,
     SearchPipe,
     PagerPipe,
-    TimeElapsedAsTextPipe,
+   TimeElapsedAsTextPipe,
 
     MapComponent,
 
@@ -142,7 +149,10 @@ import { MyDatePickerModule } from 'mydatepicker';
     SummaryVehicleComponent,
     SummaryItineraryComponent,
     CommandsHistoricComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    AddRulesDialogComponent
+
+
   ],
   imports: [
     HttpModule,
@@ -151,7 +161,8 @@ import { MyDatePickerModule } from 'mydatepicker';
     TagInputModule,
     NgSlimScrollModule,
     CalendarModule,
-    TextMaskModule
+    TextMaskModule,
+    ReactiveFormsModule
   ],
   providers: [
     AuthService,
@@ -164,6 +175,7 @@ import { MyDatePickerModule } from 'mydatepicker';
     }
   ],
   exports: [
+  
     PlacesPipe,
     SearchPipe,
     PagerPipe,
@@ -232,7 +244,11 @@ import { MyDatePickerModule } from 'mydatepicker';
 
     RegisterNonConformityComponent,
     ConfirmDialogComponent,
+<<<<<<< HEAD
     MyDatePickerModule
+=======
+    AddRulesDialogComponent
+>>>>>>> develop
   ]
 })
 export class SharedModule {}

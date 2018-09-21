@@ -70,7 +70,7 @@
           </div>
         </ng-template>
       </table-empty>
-      <column [key]="'id'" [header]="'ID'" [minWidth]="'82'" [isSortable]="true">
+      <column [key]="'idTerminal'" [header]="'ID Terminal'" [minWidth]="'82'" [isSortable]="true">
         <ng-template let-item="item">
           {{item}}
         </ng-template>
@@ -85,14 +85,14 @@
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'tech'" [header]="'Tecnologia'" [minWidth]="'90'" [isSortable]="true">
+      <column [key]="'technology'" [header]="'Tecnologia'" [minWidth]="'90'" [isSortable]="true">
         <ng-template let-item="item">
           {{item}}
         </ng-template>
       </column>
-      <column [key]="'updated'" [header]="'Atualizado'" [width]="'233'" [isSortable]="true"> 
+      <column [key]="'updated'" [header]="'Atualizado'" [width]="'90'" [isSortable]="true"> 
         <ng-template let-item="item">
-          {{item | date:'medium'}}
+          {{item}}
         </ng-template>
       </column>
       <column [key]="'distance'" [header]="'Localização'" [minWidth]="'43'" [isSortable]="true"> 

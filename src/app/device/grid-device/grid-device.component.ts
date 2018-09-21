@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input , OnDestroy } from '@angular/core';
 import { TableClickEvent } from '../../shared/components/table/table.component';
 import { Router } from '@angular/router';
 import { OptionClickEvent } from '../../shared/events/OptionClickEvent';
@@ -6,6 +6,7 @@ import { OptionClickEvent } from '../../shared/events/OptionClickEvent';
 import { DeviceService } from '../device.service';
 
 import { Device } from '../../shared/models/api/Device';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'sga-grid-device',
@@ -13,7 +14,8 @@ import { Device } from '../../shared/models/api/Device';
   styleUrls: ['./grid-device.component.scss'],
   providers: [DeviceService]
 })
-export class GridDeviceComponent implements OnInit {
+export class GridDeviceComponent implements OnInit , OnDestroy {
+  
 
   public text: any;
   public styleClass: any;
@@ -43,10 +45,18 @@ export class GridDeviceComponent implements OnInit {
 
   @Input()
   public showBreadcrumb = true;
+
+  @Input()
+  public _reload = new BehaviorSubject<boolean>(false);
+
+  public devices = new Array<Device>();
   
   @Input()
-  public devices = new Array<Device>();
+  set reload(reload: boolean) {
+     this._reload.next(reload);
+  }
 
+  
   closeColumnSelector() {
     this.showColumnSelector = false;
   }
@@ -62,15 +72,18 @@ export class GridDeviceComponent implements OnInit {
     }
   }
 
-  constructor( private deviceService: DeviceService, private route: Router) { }
+constructor( private deviceService: DeviceService, private route: Router) { }
 
-  ngOnInit(): void {
+ngOnInit(): void {
+    this._reload.subscribe(() => this.getDevices());
     this.getDevices();
+}
+ngOnDestroy(): void {
+  this._reload.unsubscribe();
+}
 
-  }
 
-
-  private getDevices() {
+private getDevices() {
     this
       .deviceService
       .getDevices()

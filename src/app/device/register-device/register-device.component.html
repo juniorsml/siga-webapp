@@ -16,38 +16,56 @@
           <div class="column is-6">
             <label class="label is-small">Tipo</label>
             <div class="control">
-              <input type="text" class="input" placeholder="ID" name="tipo" ngModel required />
+              <input type="text" class="input" placeholder="ID" name="type" ngModel required />
             </div>
           </div>
           <div class="column is-6">
             <label class="label is-small">ID</label>
             <div class="control">
-              <input type="text" class="input" placeholder="ID" name="id" ngModel required />
+              <input type="text" class="input" placeholder="ID" name="idTerminal" ngModel required />
             </div>
           </div>
-          <div class="column is-6">
-            <label class="label is-small">Marca</label>
-            <div class="control">
-              <input type="text" class="input" placeholder="Make" name="make" ngModel required/>
-            </div>
-          </div>
+         
           <div class="column is-6">
             <label class="label is-small">Modelo</label>
             <div class="control">
               <input type="text" class="input" placeholder="Modelo" name="model" ngModel required/>
             </div>
           </div>
-        
+          
           <div class="column is-6">
-            <label class="label is-small">Tecnologia</label>
+          <label class="label is-small">Tecnologia</label>   
+                          <div class="control">
+                            <div class="select">
+                              <select  ngModel name="technology" required>                               
+                                <option value="OMNILINK">OMNILINK</option> 
+                                <option value="AUTOTRAC">AUTOTRAC</option>
+                              </select>
+                            </div>
+                          </div>
+                       
+            
+          </div>
+          <div class="column is-6">
+              <label class="label is-small">Comunicação</label>  
             <div class="control">
-              <input type="text" class="input" placeholder="Tecnologia" name="tech" ngModel required/>
+              <div class="select" >
+                <select ngModel  name="comunication"           
+                        required>                               
+                  <option value="GPS/GPRS">GPS/GPRS</option>
+                  <option value="GPS/DUPLO GPRS">GPS/DUPLO GPRS</option>
+                  <option value="GPS/GPRS+SATÉLITE">GPS/GPRS+SATÉLITE</option>
+                  <option value="GPS/SATÉLITE">GPS/SATÉLITE</option>
+                  <option value="GPS/GPRS GLOBAL">GPS/GPRS GLOBAL</option>
+                  <option value="RF/GPS/GPRS">RF/GPS/GPRS</option>
+                </select>
+              </div>
             </div>
           </div>
           <div class="column is-6">
-            <label class="label is-small">Apelido</label>
+            <label class="label is-small">Nome</label>
             <div class="control">
-              <input type="text" class="input" placeholder="Apelido" name="nickname " ngModel required/>
+              <input type="text" class="input" placeholder="Nome" name="name" ngModel required/>
             </div>
           </div>
           <div class="column is-12">            

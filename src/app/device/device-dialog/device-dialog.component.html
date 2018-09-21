@@ -8,36 +8,40 @@
            <i  (click)="onClose()" class="fal fa-times is-pulled-right"></i>
         </div>      
       </div>
+      
       <div class="cnt-personal-data columns column is-12 is-multiline is-marginless">
-         
-          <div class="columns column is-12">           
+          <div class="header-modal-title">
+              <h4 class="ttl-profile column is-11">Dados</h4>
+              <i class="fa fa-question-circle ui-icon-info column is-1"></i>
+          </div>
+          <div class="columns column is-12">
+             
               <div class="column is-three-quarters">
-                  <div class="field-body field">
-                   
-                    <div class="field">
+                  <div class="field-body field">                   
+                    <div class="field column">
                       <label class="label is-small">Tipo</label>
                       <span class="personal-info">{{selectedDevice == null ? '-' : selectedDevice?.tyoe}}</span>
                     </div>
-                    <div class="field">
+                    <div class="field column">
                       <label class="label is-small">Id</label>
                       <span class="personal-info">{{selectedDevice?.id}}</span>
                     </div>
-                    <div class="field">
+                    <div class="field column">
                       <label class="label is-small">Marca</label>
                       <span class="personal-info">{{selectedDevice?.make}}</span>
                     </div>
                   </div>
                   <div class="field-body field">
                     
-                    <div class="field">
+                    <div class="field column">
                       <label class="label is-small">Modelo</label>
                       <span class="personal-info">{{selectedDevice == null ? '-' : selectedDevice?.model}}</span>
                     </div>      
-                    <div class="field">
+                    <div class="field column">
                       <label class="label is-small">Tecnologia</label>
                       <span class="personal-info">{{selectedDevice?.tech}}</span>
                     </div>
-                    <div class="field">
+                    <div class="field column">
                       <label class="label is-small">Apelido</label>
                       <span class="personal-info">{{selectedDevice?.nickname}}</span>
                     </div>
@@ -45,6 +49,72 @@
                   </div>
               </div>
           </div>
+      </div>
+
+      <div class="columns column is-12 is-multiline is-marginless">
+        <div class="header-modal-title">
+           <h4 class="ttl-profile column is-11">Perfil</h4>
+           <i class="fa fa-question-circle ui-icon-info column is-1"></i>
+        </div>
+        <div class="column is-12 is-multiline is-paddingless">
+          <div class="field-body field">            
+            <div class="field column">
+              <label class="label is-small">Ranking</label>
+               <span class="personal-info">
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>               
+               </span>
+            </div>      
+            <div class="field column">
+              <label class="label is-small">GR</label>
+               <span class="personal-info">
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 
+               </span>
+            </div> 
+            <div class="field column">
+              <label class="label is-small">Logística</label>
+              
+               <span class="personal-info">
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+                 <i class="stars fa fa-star" aria-hidden="true"></i>
+               </span>
+            
+            </div>
+            <div class="field column">
+              <label class="label is-small">Viagens</label>
+              <span class="personal-info"> 44 </span>
+            </div>                       
+          </div>
+          <div class="field-body field">            
+            <div class="field column">
+              <label class="label is-small">Quilômetros</label>
+              <span class="personal-info"> 11987 </span>
+            </div>      
+            <div class="field column">
+              <label class="label is-small">Horas</label>
+              <span class="personal-info"> 387 </span>
+            </div>   
+            <div class="field column">
+              <label class="label is-small">Vídeos</label>
+              <span class="personal-info"> 19 </span>
+            </div>   
+            <div class="field column">
+              <label class="label is-small">Restrições</label>
+              <span class="personal-info"> 0 </span>
+            </div>                    
+          </div>
+        </div> 
       </div>
 
     

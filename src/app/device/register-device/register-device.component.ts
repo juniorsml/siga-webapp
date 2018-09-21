@@ -1,23 +1,6 @@
 import { Component, Output, EventEmitter, Input, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
 
 import { DeviceService } from '../device.service';
-
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
-import { concatMap } from 'rxjs/operators';
-
-class RegisterForm {
-  id: string;
-  name?: any;
-  model?: any;
-  technology?: any;
-  updated: string;
-  location: string;
-  speed: string;
-  batterylevel: string;
-}
-
 
 @Component({
   selector: 'sga-register-device',
@@ -32,46 +15,41 @@ export class RegisterDeviceComponent {
   @Input('showForm')
   public showForm: boolean;
 
-
-  model: RegisterForm = new RegisterForm();
   @ViewChild('formDevice') formDevice: any;
 
-  device;
+  device; 
 
   constructor(private deviceService: DeviceService) { }
 
-
+  // public onSubmit() {
+    
+  //    if ( this.formDevice.valid ) {
+       
+  //      this.create(this.formDevice)
+  //               .subscribe(device => this.onRegister(device) , error => this.onError(error));
+  //    }
+  // }
 
   public onSubmit() {
-     if ( this.formDevice.valid ) {
-       const device$ = this.create(this.formDevice);
-       const request$ = device$.pipe(
-             concatMap((device : any) => (device.value) ? this.updateDevice(device.value) : of(device)));
-       request$.subscribe(device => this.onRegister(device) , error =>this.onError(error));
-     }
+    debugger
+      const device = this.formDevice.value;
+      this
+        .deviceService
+        .saveDevice(device)
+        .subscribe(
+          success => this.onSaveSuccess(success),
+          error => this.onError(error)
+        );
   }
-
-  public onRegister(device) {
+  public onSaveSuccess(device) {
     this.formDevice.reset();
     this.onFinish.emit(device);
   }
-
-  create(formDevice: NgForm): Observable<any> {
-    const device = this.buildDevice(formDevice);
-    return this .deviceService.saveDevice(device);
-  }
-
   public updateDevice(device) {
      return this.deviceService.updateDevice(device);
   }
 
-  public buildDevice(formDevice: NgForm) {
-    debugger 
-    const device = formDevice.value;
-    return device;
-  }
-
-  onError=error=>console.log(error);
+  public onError = error => console.log(error);
 
   onCancel() {
     this.onFinish.emit();

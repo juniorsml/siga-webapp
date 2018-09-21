@@ -12,6 +12,7 @@ import { RadarComponent } from './monitoring/radar/radar.component';
 import { GridOperationComponent } from './configuration/operation/grid/grid-operation.component';
 
 
+
 import { trips } from '../shared/mocks/trips';
 
 import { operations } from '../shared/mocks/operations';
