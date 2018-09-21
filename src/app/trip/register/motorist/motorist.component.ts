@@ -12,18 +12,14 @@ import { MotoristService } from '../../../motorist/motorist.service';
 
 export class MotoristComponent implements OnInit {
   selectedMotorist: any;
-  public state:any;
+  public obj = new Array<any>();;
   public motorists: Array<any>;
   public associateMotorist = new Array<any>();
   public listOfMotorists: any;
   public showMotoristRegister = false;
   public motoristInfos  = new Array<any>();
 
-  constructor(private motoristService: MotoristService , private motoristInfo: TripObject) {
-    
-    this.motoristInfo.objTrip.subscribe(obj => this.state = obj);
-
-   }
+  constructor(private motoristService: MotoristService , private motoristInfo: TripObject) {}
 
   ngOnInit(): void {
     
@@ -32,6 +28,17 @@ export class MotoristComponent implements OnInit {
       .motoristService
       .getMotorists()
       .subscribe(list => this.motorists = list);
+
+      this
+      .motoristInfo
+      .currentObj
+      .subscribe(obj => this.obj = obj)
+      
+      if(this.obj['motorists']){
+        debugger
+        this.associateMotorist = this.obj['motorists'];
+      }
+
 
   }
 

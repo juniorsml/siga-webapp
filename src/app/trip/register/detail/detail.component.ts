@@ -43,7 +43,7 @@ export class DetailComponent implements OnInit {
       .currentObj
       .subscribe(obj => this.obj = obj)
 
-      debugger
+    
 
   }
   
