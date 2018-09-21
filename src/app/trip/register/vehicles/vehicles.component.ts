@@ -16,6 +16,8 @@ export class VehiclesComponent implements OnInit {
   public vehicles: Array<any>;
   public associateVehicle = new Array<any>();
   public vehiclesInfos = new Array<any>();
+  public obj = new Array<any>();
+
 
   public showRegisterForm = false;
 
@@ -26,6 +28,16 @@ export class VehiclesComponent implements OnInit {
       .vehicleService
       .getVehicles()
       .subscribe(list => this.vehicles = list);
+
+      this
+      .formService
+      .currentObj
+      .subscribe(obj => this.obj = obj)
+      
+      if(this.obj['vehicles']){
+        debugger
+        this.associateVehicle = this.obj['vehicles'];
+      }
   }
 
   ngOnDestroy(){
