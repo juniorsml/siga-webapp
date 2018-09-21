@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { TripObject } from '../../../shared/services/trip-object.service';
+import { TruckService } from '../../../truck/truck.service';
 
 @Component({
   selector: 'sga-trucks',
   templateUrl: './trucks.component.html',
-  styleUrls: ['../motorist/motorist.component.scss']
+  styleUrls: ['../motorist/motorist.component.scss'],
+  providers:[TruckService]
 })
 export class TrucksComponent implements OnInit {
 
@@ -15,14 +17,35 @@ export class TrucksComponent implements OnInit {
   public trucks: Array<any>;
   public associateTruck= new Array<any>();
 
-  public showRegisterForm = false;
+  public obj= new Array<any>();
 
-  constructor(private router: ActivatedRoute) {}
+  public showRegisterForm = false;
+  public truckInfos = new Array<any>();
+  constructor(private truckService: TruckService, private formService:TripObject) { }
 
   ngOnInit(): void {
-    this.router.data.subscribe(
-      data => (this.trucks = data.vehicles || new Array<any>())
-    );
+
+    this
+    .truckService
+    .getTrucks()
+    .subscribe(
+      list => this.trucks = list
+    )
+
+    this
+      .formService
+      .currentObj
+      .subscribe(obj => this.obj = obj)
+      
+      if(this.obj['trailers']){
+        debugger
+        this.associateTruck = this.obj['trailers'];
+      }
+   
+  }
+
+  ngOnDestroy(){
+    this.formService.updateObj(this.associateTruck,'trailers');
   }
 
   public showTruckData(truck) {

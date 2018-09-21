@@ -10,6 +10,7 @@
         <sga-auto-complete 
           [data]="vehicles"
           [propToFilter]="'vehiclePlate'"
+          url="api/vehicles/search?number_plate="
           minLength="3"
           styleClass = "autocomplete"
           noSuggestionsText="Nenhum veículo encontrado"

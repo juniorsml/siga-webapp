@@ -1,28 +1,50 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { TripObject } from '../../../shared/services/trip-object.service';
+import { DeviceService } from '../../../device/device.service';
 
 @Component({
   selector: 'sga-device',
   templateUrl: './device.component.html',
-  styleUrls: ['../motorist/motorist.component.scss']
+  styleUrls: ['../motorist/motorist.component.scss'],
+  providers:[DeviceService]
 })
 export class DeviceComponent implements OnInit {
 
   selectedDevice: any;
   public devices: Array<any>;
   public associateDevice = new Array<any>();
+  public obj = new Array<any>();
+
+  public deviceInfos = new Array<any>();
+
 
   public showRegisterForm = false;
   
   @Input()
   public showBreadcrumb = false;
 
-  constructor(private router: ActivatedRoute) {}
+  constructor(private deviceService: DeviceService, private formService : TripObject) {}
 
   ngOnInit(): void {
-    this.router.data.subscribe(
-      data => (this.devices = data.devices || new Array<any>())
-    );
+    this
+    .deviceService
+    .getDevices()
+    .subscribe(data => this.devices = data)
+
+    this
+    .formService
+    .currentObj
+    .subscribe(obj => this.obj = obj)
+    
+    if(this.obj['devices']){
+      debugger
+      this.associateDevice = this.obj['devices'];
+    }
+  }
+
+
+  ngOnDestroy(){ 
+    this.formService.updateObj(this.associateDevice,'devices');
   }
 
   public showDeviceForm(event): void {
