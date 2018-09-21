@@ -1,16 +1,19 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TableClickEvent } from '../../shared/components/table/table.component';
-import { ActivatedRoute,Router } from '@angular/router';
+import { Router } from '@angular/router';
+
 import { OptionClickEvent } from '../../shared/events/OptionClickEvent'; 
+import { TruckService } from '../truck.service';
 
 @Component({
   selector: 'sga-grid-truck',
   templateUrl: './grid-truck.component.html',
-  styleUrls: ['../../vehicle/grid-vehicle/grid-vehicle.component.scss']
+  styleUrls: ['../../vehicle/grid-vehicle/grid-vehicle.component.scss'],
+  providers:[TruckService]
 })
 export class GridTruckComponent implements OnInit {
 
-  @Input() vehicles = new Array();
+  public trucks = new Array();
   @Input() dataLoading: boolean = true;
   @Output() onVehicleSelected: EventEmitter<any> = new EventEmitter();
 
@@ -58,11 +61,11 @@ export class GridTruckComponent implements OnInit {
 
 
   
-   constructor(private router: ActivatedRoute,
+   constructor(private truckService: TruckService,
               private route: Router) { }
 
   ngOnInit(): void {
-    this.router.data.subscribe(data => this.vehicles = data.vehicles);
+    this.truckService.getTrucks().subscribe(data =>this.trucks = data)
   }
 
   public showVehicleModal() {

@@ -1,6 +1,6 @@
-<div style="margin: auto; max-width: 1200px;">
-  <h5 class="form-title">Dados da Viagem</h5>
-  <div class="block column columns is-12 is-multiline cnt-detail">
+<div class="details-form">
+  <h5>Dados da Viagem</h5>
+  <form #formDetail="ngForm" class="block column columns is-12 is-multiline cnt-detail">
     <!-- Identification-->
     <div class="column is-12">
       <div class="form-section is-12">
@@ -16,13 +16,13 @@
         <div class="field">
           <label class="label is-small">Chave Documento</label>
           <div class="control">
-            <input class="input" type="text" placeholder="Chave" required>
+            <input class="input" [ngModel]="obj.generalInfos?.keyDocument" ngModel name="keyDocument" type="text" required>
           </div>
         </div>
         <div class="field">
           <label class="label is-small">Valor Documento</label>
           <div class="control">
-            <input class="input" type="text" placeholder="Código" required>
+            <input class="input" [ngModel]="obj.generalInfos?.documentValue" ngModel name="documentValue" type="text" required>
           </div>
         </div>
       </div>
@@ -41,12 +41,9 @@
       <div class="field">
         <label class="label is-small">Operação</label>
         <div class="select">
-          <select name="op">
-            <option>Operação</option>
-            <option value="Operação I">Operação I</option>
-            <option value="Operação II">Operação II</option>
-            <option value="Operação III">Operação III</option>
-          </select>
+            <select ngModel name="configId" required>                               
+                <option  *ngFor="let item of listOfConfigs" value="{{item.id}}">{{item.name}}</option>                               
+              </select>
         </div>
       </div>
     </div>
@@ -65,7 +62,7 @@
         <div class="field">
           <label class="label is-small">Mercadoria/Produto</label>
           <div class="select">
-            <select name="product">
+            <select name="kindOfProduct" ngModel>
               <option>Mercadoria/Produto</option>
               <option value="Mercadoria/Produto I">Mercadoria/Produto I</option>
               <option value="Mercadoria/Produto II">Mercadoria/Produto II</option>
@@ -76,18 +73,18 @@
         <div class="field">
           <label class="label is-small">Valor total do embarque</label>
           <div class="control">
-            <input class="input" type="text" placeholder="R$">
+            <input ngModel [ngModel]="obj.generalInfos?.totalAmount" name="totalAmount" class="input" type="text" placeholder="R$">
           </div>
         </div>
         <div class="field">
           <label class="label is-small">Peso total</label>
           <div class="control">
-            <input class="input" type="text" placeholder="(kg)">
+            <input ngModel [ngModel]="obj.generalInfos?.totalWeight" name="totalWeight" class="input" type="text" placeholder="(kg)">
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </form>
 </div>
 
 <!--<div class="block column columns is-12 is-multiline cnt-detail">

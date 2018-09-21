@@ -50,8 +50,8 @@
   <div class="container-grid container-grid-vehicle">
     <data-table 
      
-      [data]="vehicles | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
-      [dataLength]="vehicles.length" 
+      [data]="trucks | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
+      [dataLength]="trucks.length" 
       [searchText]="text" 
       [searchColumns]="['vehiclePlate', 'renavan', 'brand', 'model', 'color', 'year', 'type', 'capacity']"
       [emptySearchText]="'nenhum veículo foi encontrado'" 

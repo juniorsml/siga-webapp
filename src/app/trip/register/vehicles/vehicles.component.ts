@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { TripObject } from '../../../shared/services/trip-object.service';
+import { VehicleService } from '../../../vehicle/vehicle.service';
 
 @Component({
   selector: 'sga-vehicles',
   templateUrl: './vehicles.component.html',
-  styleUrls: ['../motorist/motorist.component.scss']
+  styleUrls: ['../motorist/motorist.component.scss'],
+  providers:[VehicleService]
 })
 
 export class VehiclesComponent implements OnInit {
@@ -13,21 +15,38 @@ export class VehiclesComponent implements OnInit {
 
   public vehicles: Array<any>;
   public associateVehicle = new Array<any>();
+  public vehiclesInfos = new Array<any>();
+  public obj = new Array<any>();
+
 
   public showRegisterForm = false;
 
-  constructor(private router: ActivatedRoute) { }
+  constructor(private vehicleService: VehicleService, private formService:TripObject) { }
 
   ngOnInit(): void {
-    this.router.data.subscribe(
-      data => (this.vehicles = data.vehicles || new Array<any>())
-    );
+    this
+      .vehicleService
+      .getVehicles()
+      .subscribe(list => this.vehicles = list);
+
+      this
+      .formService
+      .currentObj
+      .subscribe(obj => this.obj = obj)
+      
+      if(this.obj['vehicles']){
+        debugger
+        this.associateVehicle = this.obj['vehicles'];
+      }
+  }
+
+  ngOnDestroy(){
+    this.formService.updateObj(this.associateVehicle,'vehicles');
   }
 
   public showVehicleData(vehicle) {
     this.selectedVehicle = vehicle;
   }
-
 
   public showVehicleForm() {
     this.showRegisterForm = true;

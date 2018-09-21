@@ -1,16 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { StepClickEvent } from '../../shared/events/StepClickEvent';
 import { Router } from '@angular/router';
 import { RegisterStepEnum } from './RegisterStepEnum';
+
+import { TripObject } from '../../shared/services/trip-object.service';
+
+
 
 @Component({
   selector: 'sga-register-trip',
   templateUrl: './register-trip.component.html',
   styleUrls: ['./register-trip.component.scss']
 })
-export class RegisterTripComponent {
-  constructor(private router: Router) { }
-
+export class RegisterTripComponent implements OnInit {
+  constructor(private router: Router, private detailData : TripObject) { }
+  public state:any;
   private _currentStep = 0;
   public get currentStep(): RegisterStepEnum {
     return this._currentStep;
@@ -20,6 +24,17 @@ export class RegisterTripComponent {
       this._currentStep = value;
     }
   }
+
+  
+  ngOnInit() {
+    
+    this.detailData.objTrip.subscribe(obj => this.state = obj); 
+    
+  }
+
+
+  
+
 
   public next = () => this.navigateByStep(this.currentStep + 1);
 

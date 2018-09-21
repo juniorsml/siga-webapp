@@ -10,7 +10,8 @@
       <div class="cnt-autocomplete">
       <sga-auto-complete 
         [data]="devices"
-        [propToFilter]="'name'"
+        [propToFilter]="'idTerminal'"
+        url="api/devices/search?idTerminal="
         minLength="3"
         styleClass = "autocomplete"
         noSuggestionsText="Nenhum dispositivo encontrado"

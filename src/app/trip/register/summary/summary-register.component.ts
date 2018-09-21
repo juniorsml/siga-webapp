@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { TripObject } from '../../../shared/services/trip-object.service';
 
 
 @Component({
@@ -7,10 +9,24 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./summary-register.component.scss']
 })
 
-export class SummaryRegisterComponent {
+export class SummaryRegisterComponent implements OnInit{
   @Input() public trip: any;
+  
+  public state:any;
+  
+  public formdata$;
+
+  constructor(private summaryData : TripObject){}
 
   public print(): void {
      window.print();
+  }
+
+  ngOnInit() {
+
+    this.summaryData.currentObj.subscribe(obj => this.state = obj);
+    debugger
+    console.log(this.state);
+
   }
 }
