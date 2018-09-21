@@ -25,6 +25,7 @@ export class SummaryRegisterComponent implements OnInit{
   ngOnInit() {
 
     this.summaryData.currentObj.subscribe(obj => this.state = obj);
+    debugger
     console.log(this.state);
 
   }

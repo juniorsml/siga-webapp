@@ -33,15 +33,7 @@ export class DeviceComponent implements OnInit {
 
 
   ngOnDestroy(){ 
-    
-    this.formService.updateObj(this.deviceInfos,'devices');
-   
-    let unwrap = ({id, model, tech}) => ({id, model, tech});
-
-    for(let item of this.associateDevice){
-       const filterDeviceKey = unwrap(item);
-       this.deviceInfos.push(filterDeviceKey);
-    }
+    this.formService.updateObj(this.associateDevice,'devices');
   }
 
   public showDeviceForm(event): void {

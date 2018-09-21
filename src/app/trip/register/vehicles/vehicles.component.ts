@@ -32,12 +32,9 @@ export class VehiclesComponent implements OnInit {
     this.formService.updateObj(this.associateVehicle,'vehicles');
   }
 
-
-
   public showVehicleData(vehicle) {
     this.selectedVehicle = vehicle;
   }
-
 
   public showVehicleForm() {
     this.showRegisterForm = true;
