@@ -13,6 +13,7 @@ export class DeviceComponent implements OnInit {
   selectedDevice: any;
   public devices: Array<any>;
   public associateDevice = new Array<any>();
+  public obj = new Array<any>();
 
   public deviceInfos = new Array<any>();
 
@@ -29,6 +30,16 @@ export class DeviceComponent implements OnInit {
     .deviceService
     .getDevices()
     .subscribe(data => this.devices = data)
+
+    this
+    .formService
+    .currentObj
+    .subscribe(obj => this.obj = obj)
+    
+    if(this.obj['devices']){
+      debugger
+      this.associateDevice = this.obj['devices'];
+    }
   }
 
 
