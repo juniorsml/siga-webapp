@@ -134,23 +134,23 @@
       <h4>
         Dispositivo(s)
       </h4>
-      <div *ngFor="let trailer of state.trailers" class="field-body field">
+      <div *ngFor="let device of state.devices" class="field-body field">
         <div class="field">
           <label class="label is-small">Nome</label>
           <div class="control">
-           <span>newest</span>
+           <span>{{device.name}}</span>
           </div>
         </div>
         <div class="field">
           <label class="label is-small">Modelo</label>
           <div class="control">
-           <span>Modelo</span>
+           <span>{{device.model}}</span>
           </div>
         </div>
         <div class="field">
           <label class="label is-small">Tecnologia</label>
           <div class="control">
-            <span>7775EBB</span>
+            <span>{{device.tech}}</span>
           </div>
         </div>
       </div>    

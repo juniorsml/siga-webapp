@@ -1,5 +1,5 @@
-<div style="margin: auto; max-width: 1200px;">
-  <h5 class="form-title">Dados da Viagem</h5>
+<div class="details-form">
+  <h5>Dados da Viagem</h5>
   <form #formDetail="ngForm" class="block column columns is-12 is-multiline cnt-detail">
     <!-- Identification-->
     <div class="column is-12">
@@ -16,13 +16,13 @@
         <div class="field">
           <label class="label is-small">Chave Documento</label>
           <div class="control">
-            <input class="input" value="state.generalInfos?.keyDocument" ngModel name="keyDocument" type="text" placeholder="Chave" required>
+            <input class="input" [ngModel]="obj.generalInfos?.keyDocument" ngModel name="keyDocument" type="text" required>
           </div>
         </div>
         <div class="field">
           <label class="label is-small">Valor Documento</label>
           <div class="control">
-            <input class="input" ngModel name="documentValue" type="text" placeholder="Código" required>
+            <input class="input" [ngModel]="obj.generalInfos?.documentValue" ngModel name="documentValue" type="text" required>
           </div>
         </div>
       </div>
@@ -73,13 +73,13 @@
         <div class="field">
           <label class="label is-small">Valor total do embarque</label>
           <div class="control">
-            <input ngModel name="totalAmount" class="input" type="text" placeholder="R$">
+            <input ngModel [ngModel]="obj.generalInfos?.totalAmount" name="totalAmount" class="input" type="text" placeholder="R$">
           </div>
         </div>
         <div class="field">
           <label class="label is-small">Peso total</label>
           <div class="control">
-            <input ngModel name="totalWeight" class="input" type="text" placeholder="(kg)">
+            <input ngModel [ngModel]="obj.generalInfos?.totalWeight" name="totalWeight" class="input" type="text" placeholder="(kg)">
           </div>
         </div>
       </div>

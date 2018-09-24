@@ -17,6 +17,8 @@ export class TrucksComponent implements OnInit {
   public trucks: Array<any>;
   public associateTruck= new Array<any>();
 
+  public obj= new Array<any>();
+
   public showRegisterForm = false;
   public truckInfos = new Array<any>();
   constructor(private truckService: TruckService, private formService:TripObject) { }
@@ -29,19 +31,21 @@ export class TrucksComponent implements OnInit {
     .subscribe(
       list => this.trucks = list
     )
+
+    this
+      .formService
+      .currentObj
+      .subscribe(obj => this.obj = obj)
+      
+      if(this.obj['trailers']){
+        debugger
+        this.associateTruck = this.obj['trailers'];
+      }
    
   }
 
   ngOnDestroy(){
-    
-    this.formService.updateObj(this.truckInfos,'trailers');
-   
-    let unwrap = ({id, type, vehiclePlate}) => ({id, type, vehiclePlate});
-
-    for(let item of this.associateTruck){
-       const filterTruckKey = unwrap(item);
-       this.truckInfos.push(filterTruckKey);
-    }
+    this.formService.updateObj(this.associateTruck,'trailers');
   }
 
   public showTruckData(truck) {

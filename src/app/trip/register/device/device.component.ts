@@ -13,6 +13,7 @@ export class DeviceComponent implements OnInit {
   selectedDevice: any;
   public devices: Array<any>;
   public associateDevice = new Array<any>();
+  public obj = new Array<any>();
 
   public deviceInfos = new Array<any>();
 
@@ -29,19 +30,21 @@ export class DeviceComponent implements OnInit {
     .deviceService
     .getDevices()
     .subscribe(data => this.devices = data)
+
+    this
+    .formService
+    .currentObj
+    .subscribe(obj => this.obj = obj)
+    
+    if(this.obj['devices']){
+      debugger
+      this.associateDevice = this.obj['devices'];
+    }
   }
 
 
   ngOnDestroy(){ 
-    
-    this.formService.updateObj(this.deviceInfos,'devices');
-   
-    let unwrap = ({id, model, tech}) => ({id, model, tech});
-
-    for(let item of this.associateDevice){
-       const filterDeviceKey = unwrap(item);
-       this.deviceInfos.push(filterDeviceKey);
-    }
+    this.formService.updateObj(this.associateDevice,'devices');
   }
 
   public showDeviceForm(event): void {

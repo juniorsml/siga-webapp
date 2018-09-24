@@ -14,7 +14,7 @@ export class DetailComponent implements OnInit {
  
   generalInfos;
  @ViewChild('formDetail') formDetail: any;
- public state:any;
+ public obj:any;
  listOfConfigs:any;
 
  constructor(private formData: TripObject, private operationService: OperationService) { }
@@ -25,8 +25,8 @@ export class DetailComponent implements OnInit {
 
     this.formData.updateObj(this.generalInfos,'generalInfos')
     
-    this.formData.currentObj.subscribe(obj => this.state = obj);
-    console.log(this.state);
+
+    
 
   }
 
@@ -35,6 +35,16 @@ export class DetailComponent implements OnInit {
       .operationService
       .getConfigs()
       .subscribe(list => this.listOfConfigs = list);
+
+    
+
+    this
+      .formData
+      .currentObj
+      .subscribe(obj => this.obj = obj)
+
+    
+
   }
   
 
