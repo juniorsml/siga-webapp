@@ -10,7 +10,7 @@
     </div>
     <div class="container-scroll">
 
-      <form novalidate (ngSubmit)="onSubmit()" class="cnt-form" #formMotorist="ngForm">
+      <form novalidate class="cnt-form" [formGroup]="formMotorist">
         <sga-tabs [tabIndex]="selectedTabIndex" styleClass="tabs no-margin tabs-register">
 
           <sga-tab heading="Dados Pessoais">
@@ -52,20 +52,20 @@
                   <div class="field is-4 column is-marginless">
                     <label class="label is-small">Nome</label>
                     <div class="control">
-                      <input type="text" class="input" placeholder="Nome" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" [ngClass]="{'is-danger': firstName.invalid && (firstName.dirty || firstName.touched)}"
+                      <input type="text" class="input" placeholder="Nome" name="firstName" formContolName="firstName"
                         required>
-                      <div class="form-control-feedback" *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
-                        <p class="help is-danger" *ngIf="firstName.errors.required">Nome é obrigatório</p>
+                      <div class="form-control-feedback" *ngIf="isErrorVisible('firstName','required')">
+                        <p class="help is-danger">Nome é obrigatório</p>
                       </div>
                     </div>
                   </div>
                   <div class="field is-4 column is-marginless">
                     <label class="label is-small">Sobrenome</label>
                     <div class="control">
-                      <input type="text" class="input" placeholder="Sobrenome" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel"
-                        [ngClass]="{'is-danger': lastName.invalid && (lastName.dirty || lastName.touched)}" required>
-                      <div class="form-control-feedback" *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
-                        <p class="help is-danger" *ngIf="lastName.errors.required">Sobrenome é obrigatório</p>
+                      <input type="text" class="input" formContolName="lastName" placeholder="Sobrenome" name="lastName"
+                        [ngClass]="{'is-danger': isErrorVisible('lastName','required')}" required>
+                      <div class="form-control-feedback" *ngIf="isErrorVisible('lastName','required')">
+                        <p class="help is-danger">Sobrenome é obrigatório</p>
                       </div>
                     </div>
                   </div>
@@ -73,10 +73,10 @@
                     <label class="label is-small">Data de Nasc.</label>
 
                     <div class="control">
-                      <input type="date" class="input" name="dateOfBirth" placeholder="Data de Nasc." [(ngModel)]="model.dateOfBirth" #dateOfBirth="ngModel"
-                        [ngClass]="{'is-danger': dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched)}" required>
-                      <div class="form-control-feedback" *ngIf="dateOfBirth.errors && (dateOfBirth.dirty || dateOfBirth.touched)">
-                        <p class="help is-danger" *ngIf="dateOfBirth.errors.required">Data de Nasc. é obrigatória</p>
+                      <input type="date" formGroupName="dateOfBirth" class="input" name="dateOfBirth" placeholder="Data de Nasc."
+                         required>
+                      <div class="form-control-feedback" *ngIf="isErrorVisible('dateOfBirth','required')">
+                        <p class="help is-danger">Data de Nasc. é obrigatória</p>
                       </div>
                     </div>
                   </div>
@@ -89,10 +89,10 @@
                   <div class="field is-4 column is-marginless">
                     <label class="label is-small">Nome da Mãe</label>
                     <div class="control">
-                      <input type="text" class="input" name="motherName" placeholder="Nome da Mãe" [(ngModel)]="model.motherName" #motherName="ngModel"
-                        [ngClass]="{'is-danger': motherName.invalid && (motherName.dirty || motherName.touched)}" >
-                      <div class="form-control-feedback" *ngIf="motherName.errors && (motherName.dirty || motherName.touched)">
-                        <p class="help is-danger" *ngIf="motherName.errors.required">Nome da Mãe é obrigatório</p>
+                      <input type="text" formGroupName="motherName" class="input" name="motherName" placeholder="Nome da Mãe" 
+                        >
+                      <div class="form-control-feedback" *ngIf="isErrorVisible('motherName','required')">
+                        <p class="help is-danger" >Nome da Mãe é obrigatório</p>
                       </div>
                     </div>
                   </div>
@@ -101,7 +101,7 @@
                     <label class="label is-small">Documento</label>
                     <div class="control">
                       <div class="select">
-                        <select name="documentType" [(ngModel)]="model.documentType" #documentType="ngModel" [ngClass]="{'is-danger': documentType.invalid && (documentType.dirty || documentType.touched)}"
+                        <select name="documentType">
                           required>
                           <option value="RG">RG</option>
                           <option value="CPF">CPF</option>
@@ -110,21 +110,20 @@
                         </select>
                       </div>
                     </div>
-                    <div class="form-control-feedback" *ngIf="documentType.errors && (documentType.dirty || documentType.touched)">
-                      <p class="help is-danger" *ngIf="documentType.errors.required">Escolha um documento</p>
+                    <div class="form-control-feedback" *ngIf="">
+                      <p class="help is-danger">Escolha um documento</p>
                     </div>
                   </div>
 
                   <div class="field is-4 column is-marginless">
                     <label class="label is-small">Nº</label>
                     <div class="control">
-                      <input [disabled]="documentType.invalid" type="text" class="input" placeholder="Nº" name="documentId" [(ngModel)]="model.documentId"
-                        #documentId="ngModel" [ngClass]="{'is-danger': documentId.invalid && (documentId.dirty || documentId.touched)}"
+                      <input type="text" class="input" placeholder="Nº" name="documentId"
                         required>
 
                     </div>
-                    <div class="form-control-feedback" *ngIf="documentId.errors && (documentId.dirty || documentId.touched)">
-                      <p class="help is-danger" *ngIf="documentId.errors.required">Nº é obrigatório</p>
+                    <div class="form-control-feedback" *ngIf="">
+                      <p class="help is-danger">Nº é obrigatório</p>
                     </div>
                   </div>
                 </div>
@@ -134,7 +133,7 @@
                     <label class="label is-small">Estado Civil</label>
                     <div class="control">
                       <div class="select">
-                        <select name="maritalStatus" [(ngModel)]="model.maritalStatus" #maritalStatus="ngModel" placeholder="Selecione" [ngClass]="{'is-danger': maritalStatus.invalid && (maritalStatus.dirty || maritalStatus.touched)}"
+                        <select name="maritalStatus" placeholder="Selecione"
                           required>
 
                           <option value="Casado">Casado</option>
@@ -145,26 +144,26 @@
                         </select>
                       </div>
                     </div>
-                    <div class="form-control-feedback" *ngIf="maritalStatus.errors && (maritalStatus.dirty || maritalStatus.touched)">
-                      <p class="help is-danger" *ngIf="maritalStatus.errors.required">Estado civil é obrigatório</p>
+                    <div class="form-control-feedback" *ngIf="">
+                      <p class="help is-danger" *ngIf="">Estado civil é obrigatório</p>
                     </div>
                   </div>
                   <div class="field  is-4 column is-marginless">
                     <label class="label is-small">Nome do Cônjuge</label>
                     <div class="control">
-                      <input type="text" class="input" placeholder="Nome do Cônjuge" name="spouseName" #spouseName="ngModel" ngModel [ngClass]="{'is-danger': spouseName.invalid && (spouseName.dirty || spouseName.touched) }"
+                      <input type="text" class="input" placeholder="Nome do Cônjuge" name="spouseName" [ngClass]=""
                         >
 
                     </div>
-                    <div class="form-control-feedback" *ngIf="spouseName.errors && (spouseName.dirty || spouseName.touched)">
-                      <p class="help is-danger" *ngIf="spouseName.errors.required">Nome do Cônjuge é obrigatório</p>
+                    <div class="form-control-feedback">
+                      <p class="help is-danger" >Nome do Cônjuge é obrigatório</p>
                     </div>
                   </div>
                   <div class="field-body field">
                       <div class="field  is-4 column is-marginless">
                         <label class="label is-small">Quantos Filhos?</label>
                         <div class="control">
-                          <input [(ngModel)]="model.numberOfChildren" name="numberOfChildren" #numberOfChildren="ngModel" class="input" value=0 type="number" placeholder="Quantos Filhos?">
+                          <input name="numberOfChildren" class="input" value=0 type="number" placeholder="Quantos Filhos?">
                         </div> 
                       </div>
                     </div>
@@ -192,50 +191,45 @@
                 <div class="column is-12">
                     <div class="control">
                       <label class="label is-small">Complemento</label>
-                      <input type="text"  class="input" placeholder="Complemento" name="complement" [(ngModel)]="model.complement"
-                         #complement="ngModel">
+                      <input type="text"  class="input" placeholder="Complemento" name="complement">
                     </div>
                   </div>
 
                 <div class="column is-12">
                   <div class="control">
                     <label class="label is-small">Telefone Fixo</label>
-                    <input type="text" [textMask]="{mask: landlinephone}" class="input" placeholder="Telefone Fixo" name="phone" [(ngModel)]="model.phone"
-                      required #phone="ngModel" [ngClass]="{'is-danger': phone.invalid && (phone.dirty || phone.touched)}">
+                    <input type="text" [textMask]="{mask: landlinephone}" class="input" placeholder="Telefone Fixo" name="phone" 
+                      required >
                   </div>
-                  <div class="form-control-feedback" *ngIf="phone.errors && (phone.dirty || phone.touched)">
-                    <p class="help is-danger" *ngIf="phone.errors.required">Telefone fixo é obrigatório</p>
+                  <div class="form-control-feedback" *ngIf="">
+                    <p class="help is-danger" >Telefone fixo é obrigatório</p>
                   </div>
                 </div>
 
                 <div class="column is-12">
                   <div class="control">
                     <label class="label is-small">Telefone Celular</label>
-                    <input type="text" [textMask]="{mask: mobilephone}" class="input" placeholder="Telefone Celular" name="cellPhone" [(ngModel)]="model.cellPhone"
-                      #cellPhone="ngModel" [ngClass]="{'is-danger': cellPhone.invalid && (cellPhone.dirty || cellPhone.touched)}" required>
+                    <input type="text" [textMask]="{mask: mobilephone}" class="input" placeholder="Telefone Celular" name="cellPhone"
+                       [ngClass]="" required>
                   </div>
-                  <div class="form-control-feedback" *ngIf="cellPhone.errors && (cellPhone.dirty || cellPhone.touched)">
-                    <p class="help is-danger" *ngIf="cellPhone.errors.required">Telefone Celular é obrigatório</p>
+                  <div class="form-control-feedback" *ngIf="">
+                    <p class="help is-danger">Telefone Celular é obrigatório</p>
                   </div>
                 </div>
 
                 <div class="column is-12">
                   <div class="control">
                     <label class="label is-small">Telefone para recado</label>
-                    <input type="text" [textMask]="{mask: landlinephone}" class="input" placeholder="Telefone para recado" name="messagePhone" [(ngModel)]="model.messagePhone"
-                      required #messagePhone="ngModel" [ngClass]="{    
-		    							           'is-danger': messagePhone.invalid && (messagePhone.dirty || messagePhone.touched)
-		    							          }">
+                    <input type="text" [textMask]="{mask: landlinephone}" class="input" placeholder="Telefone para recado" name="messagePhone" 
+                      required>
                   </div>
                 </div>
 
                 <div class="column is-12">
                   <div class="control">
                     <label class="label is-small">Nextel</label>
-                    <input type="text" class="input" [textMask]="{mask: mobilephone}" placeholder="Nextel" name="nextelPhone" [(ngModel)]="model.nextelPhone"  #nextelPhone="ngModel"
-                      [ngClass]="{    
-		    							           'is-danger': nextelPhone.invalid && (nextelPhone.dirty || nextelPhone.touched)
-		    							          }">
+                    <input type="text" class="input" [textMask]="{mask: mobilephone}" placeholder="Nextel" name="nextelPhone"
+                      >
                   </div>
                 </div>
 
@@ -245,11 +239,10 @@
                     <input 
                       type="number" 
                       class="input is-small" 
-                      [(ngModel)]="radius"
                       (ngModelChange)="onRayChanged($event)"
                       placeholder="Raio"
                       name="radius" 
-                      ngModel />
+                       />
                   </div>
                 </div>
 
@@ -292,21 +285,21 @@
                   <label class="label is-small">Vencimento Mopp</label>
                   <div class="control">
                       <my-date-picker name="moppDocDueDate" [options]="setDueDate"
-                      [(ngModel)]="moppDocDueDate"></my-date-picker>
+                      ></my-date-picker>
                   </div>
                 </div>
                 <div class="is-6 column is-marginless">
                   <label class="label is-small">Vencimento ASO</label>
                   <div class="control">
                       <my-date-picker name="asoDocDueDate" [options]="setDueDate"
-                      [(ngModel)]="asoDocDueDate"></my-date-picker>
+                      ></my-date-picker>
                   </div>
                 </div>
                 <div class="is-6 column is-marginless">
                   <label class="label is-small">Vencimento CDD</label>
                   <div class="control">
                       <my-date-picker name="cddDocDueDate" [options]="setDueDate"
-                      [(ngModel)]="cddDocDueDate"></my-date-picker>
+                      ></my-date-picker>
                   </div>
                 </div>
               </div>
@@ -322,7 +315,7 @@
           <button class="button" (click)="cancel()">Cancelar</button>
 
 
-          <button type="submit"  [disabled]="formMotorist.invalid" class="button is-first" >Cadastrar
+          <button type="submit"  [disabled]="!formMotorist.valid" class="button is-first" >Cadastrar
           </button>
 
 

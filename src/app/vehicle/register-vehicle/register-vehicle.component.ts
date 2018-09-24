@@ -1,6 +1,7 @@
 import { VehicleService } from '../vehicle.service';
 import { Component, Output, EventEmitter, Input, OnInit, ViewChild} from '@angular/core';
 import { NgForm } from '@angular/forms';
+import {IMyDpOptions} from 'mydatepicker';
 
 
 import { Map } from '../../shared/models/Map';
@@ -58,8 +59,6 @@ export class RegisterVehicleComponent implements OnInit {
   ngOnInit() {
     this.map.createMapBoxMapInstance();
   }
-
-
 
   public setDateDueANTT: IMyDpOptions = {
     disableUntil: {year: this.year, month: this.month, day: this.day},

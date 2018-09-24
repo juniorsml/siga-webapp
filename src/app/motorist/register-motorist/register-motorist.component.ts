@@ -1,5 +1,5 @@
-import { Component, Output, OnInit, EventEmitter, Input, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, Output, OnInit, EventEmitter, Input } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { MotoristService } from '../motorist.service';
 import { Map } from '../../shared/models/Map';
@@ -7,44 +7,7 @@ import { Map } from '../../shared/models/Map';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { concatMap } from 'rxjs/operators';
-import {IMyDpOptions} from 'mydatepicker';
-
-
-class RegisterForm {
-  // Personal Info
-  firstName: string;
-  lastName: string;
-  dateOfBirth: Date;
-  motherName: string;
-  documentType: string;
-  documentId: string;
-  maritalStatus: string;
-  wifeName: string;
-  haveChildren: string;
-  numberOfChildren: number;
-  educationalLevel: string;
-  cnhNumber: string;
-  cnhCategory: string;
-  dueDate: string;
-  ray: number;
-   // Address
-  number: string;
-  complement:string;
-  addressLine: string;
-  country: string;
-  city: string;
-  state: string;
-  phone:string;
-  cellPhone: string;
-  messagePhone: string;
-
-  nextelPhone: string; 
-  // Profile
-  bond: string;
-  moppDocDueDate: Date;
-  asoDocDueDate: Date;
-  cddDocDueDate: Date;
-}
+import { IMyDpOptions } from 'mydatepicker';
 
 @Component( {
     selector: 'sga-register-motorist',
@@ -55,11 +18,12 @@ class RegisterForm {
 
 export class RegisterMotoristComponent implements OnInit {
 
-  model: RegisterForm=new RegisterForm();
+  
   
   @Input() public showForm: boolean;
   @Output() onFormClose: EventEmitter < any > = new EventEmitter();
-  @ViewChild('formMotorist') formMotorist: any;
+
+  formMotorist: FormGroup;
 
   public selectedTabIndex=0;
   public ray=1000;
@@ -76,9 +40,24 @@ export class RegisterMotoristComponent implements OnInit {
   day = this.currentTime.getDate();
   year = this.currentTime.getFullYear();
 
-  constructor(private map: Map, private motoristService: MotoristService) {}
+  constructor(private fb:FormBuilder, private map: Map, private motoristService: MotoristService) {}
   ngOnInit() {
     this.map.createMapBoxMapInstance();
+
+    
+    this.formMotorist = this.fb.group({
+      firstName:['', Validators.required],
+      lastName:['', Validators.required],
+      dateOfBirth:['', Validators.required],
+      motherName:['', Validators.required],
+    })
+  }
+
+  isErrorVisible(field:string, error:string){
+    return this.formMotorist.controls[field].dirty
+            && this.formMotorist.controls[field].errors &&
+            this.formMotorist.controls[field].errors[error];
+
   }
 
   public setDueDate: IMyDpOptions = {
@@ -146,7 +125,7 @@ export class RegisterMotoristComponent implements OnInit {
     this.removeProfilePhoto();
     this.onFormClose.emit();
   }
-  create(formMotorist: NgForm): Observable<any> {
+  create(formMotorist: FormGroup): Observable<any> {
     const motorist = this.buildMotorist(formMotorist, this.place);
     return this .motoristService.saveMotorist(motorist);
   }
@@ -154,7 +133,7 @@ export class RegisterMotoristComponent implements OnInit {
     return this.motoristService.updateMotorist(motorist);
   }
 
-  public buildMotorist(formMotorist: NgForm, place: any) {
+  public buildMotorist(formMotorist: FormGroup, place: any) {
     const motorist = {
       address: {
          country: place.address_components.filter(obj => obj.types.includes('country') ).map(obj =>  obj.long_name)[0],

@@ -85,6 +85,8 @@ import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dia
 
 import { AddRulesDialogComponent } from '../components/add-rules-dialog/add-rules-dialog.component';
 
+import { MyDatePickerModule } from 'mydatepicker';
+
 
 
 
@@ -179,7 +181,7 @@ import { AddRulesDialogComponent } from '../components/add-rules-dialog/add-rule
     }
   ],
   exports: [
-  
+    ReactiveFormsModule,
     PlacesPipe,
     SearchPipe,
     PagerPipe,
@@ -248,11 +250,8 @@ import { AddRulesDialogComponent } from '../components/add-rules-dialog/add-rule
 
     RegisterNonConformityComponent,
     ConfirmDialogComponent,
-<<<<<<< HEAD
+    AddRulesDialogComponent,
     MyDatePickerModule
-=======
-    AddRulesDialogComponent
->>>>>>> develop
   ]
 })
 export class SharedModule {}
