@@ -44,7 +44,7 @@ export class RegisterMotoristComponent implements OnInit {
   ngOnInit() {
     this.map.createMapBoxMapInstance();
 
-    
+
     this.formMotorist = this.fb.group({
       firstName:['', Validators.required],
       lastName:['', Validators.required],
@@ -54,10 +54,10 @@ export class RegisterMotoristComponent implements OnInit {
   }
 
   isErrorVisible(field:string, error:string){
+    debugger
     return this.formMotorist.controls[field].dirty
             && this.formMotorist.controls[field].errors &&
             this.formMotorist.controls[field].errors[error];
-
   }
 
   public setDueDate: IMyDpOptions = {

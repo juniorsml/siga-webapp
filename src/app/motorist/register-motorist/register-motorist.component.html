@@ -52,7 +52,7 @@
                   <div class="field is-4 column is-marginless">
                     <label class="label is-small">Nome</label>
                     <div class="control">
-                      <input type="text" class="input" placeholder="Nome" name="firstName" formContolName="firstName"
+                      <input type="text" class="input" placeholder="Nome" name="firstName" formControlName="firstName"
                         required>
                       <div class="form-control-feedback" *ngIf="isErrorVisible('firstName','required')">
                         <p class="help is-danger">Nome é obrigatório</p>
@@ -62,8 +62,8 @@
                   <div class="field is-4 column is-marginless">
                     <label class="label is-small">Sobrenome</label>
                     <div class="control">
-                      <input type="text" class="input" formContolName="lastName" placeholder="Sobrenome" name="lastName"
-                        [ngClass]="{'is-danger': isErrorVisible('lastName','required')}" required>
+                      <input type="text" class="input" formControlName="lastName" placeholder="Sobrenome" name="lastName"
+                       required>
                       <div class="form-control-feedback" *ngIf="isErrorVisible('lastName','required')">
                         <p class="help is-danger">Sobrenome é obrigatório</p>
                       </div>
