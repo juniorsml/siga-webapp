@@ -14,7 +14,6 @@
         <sga-tabs [tabIndex]="selectedTabIndex" styleClass="tabs no-margin tabs-register">
 
           <sga-tab heading="Dados Pessoais">
-
             <!-- Dados pessoais -->
             <div class="cnt-info columns">
               <div class="column input-profile-photo">
@@ -73,8 +72,7 @@
                     <label class="label is-small">Data de Nasc.</label>
 
                     <div class="control">
-                      <input type="date" formGroupName="dateOfBirth" class="input" name="dateOfBirth" placeholder="Data de Nasc."
-                         required>
+                      <my-date-picker formControlName="dateOfBirth" name="dateOfBirth" [options]="setBirthDate"></my-date-picker>
                       <div class="form-control-feedback" *ngIf="isErrorVisible('dateOfBirth','required')">
                         <p class="help is-danger">Data de Nasc. é obrigatória</p>
                       </div>
@@ -89,7 +87,7 @@
                   <div class="field is-4 column is-marginless">
                     <label class="label is-small">Nome da Mãe</label>
                     <div class="control">
-                      <input type="text" formGroupName="motherName" class="input" name="motherName" placeholder="Nome da Mãe" 
+                      <input type="text" formControlName="motherName" class="input" name="motherName" placeholder="Nome da Mãe" 
                         >
                       <div class="form-control-feedback" *ngIf="isErrorVisible('motherName','required')">
                         <p class="help is-danger" >Nome da Mãe é obrigatório</p>
@@ -101,7 +99,7 @@
                     <label class="label is-small">Documento</label>
                     <div class="control">
                       <div class="select">
-                        <select name="documentType">
+                        <select name="documentType" formControlName="documentType">
                           required>
                           <option value="RG">RG</option>
                           <option value="CPF">CPF</option>
@@ -110,7 +108,7 @@
                         </select>
                       </div>
                     </div>
-                    <div class="form-control-feedback" *ngIf="">
+                    <div class="form-control-feedback" *ngIf="isErrorVisible('documentType','required')">
                       <p class="help is-danger">Escolha um documento</p>
                     </div>
                   </div>
@@ -118,11 +116,11 @@
                   <div class="field is-4 column is-marginless">
                     <label class="label is-small">Nº</label>
                     <div class="control">
-                      <input type="text" class="input" placeholder="Nº" name="documentId"
+                      <input type="text" class="input" formControlName="documentId" placeholder="Nº" name="documentId"
                         required>
 
                     </div>
-                    <div class="form-control-feedback" *ngIf="">
+                    <div class="form-control-feedback" *ngIf="isErrorVisible('documentId','required')">
                       <p class="help is-danger">Nº é obrigatório</p>
                     </div>
                   </div>
@@ -133,7 +131,7 @@
                     <label class="label is-small">Estado Civil</label>
                     <div class="control">
                       <div class="select">
-                        <select name="maritalStatus" placeholder="Selecione"
+                        <select name="maritalStatus" formControlName="maritalStatus" placeholder="Selecione"
                           required>
 
                           <option value="Casado">Casado</option>
@@ -144,26 +142,22 @@
                         </select>
                       </div>
                     </div>
-                    <div class="form-control-feedback" *ngIf="">
-                      <p class="help is-danger" *ngIf="">Estado civil é obrigatório</p>
+                    <div class="form-control-feedback" *ngIf="isErrorVisible('maritalStatus','required')">
+                      <p class="help is-danger">Estado civil é obrigatório</p>
                     </div>
                   </div>
                   <div class="field  is-4 column is-marginless">
                     <label class="label is-small">Nome do Cônjuge</label>
                     <div class="control">
-                      <input type="text" class="input" placeholder="Nome do Cônjuge" name="spouseName" [ngClass]=""
-                        >
+                      <input type="text" formControlName="spouseName" class="input" placeholder="Nome do Cônjuge" name="spouseName" >
 
-                    </div>
-                    <div class="form-control-feedback">
-                      <p class="help is-danger" >Nome do Cônjuge é obrigatório</p>
                     </div>
                   </div>
                   <div class="field-body field">
                       <div class="field  is-4 column is-marginless">
                         <label class="label is-small">Quantos Filhos?</label>
                         <div class="control">
-                          <input name="numberOfChildren" class="input" value=0 type="number" placeholder="Quantos Filhos?">
+                          <input name="numberOfChildren" formControlName="numberOfChildren" class="input" value=0 type="number" placeholder="Quantos Filhos?">
                         </div> 
                       </div>
                     </div>
@@ -191,33 +185,33 @@
                 <div class="column is-12">
                     <div class="control">
                       <label class="label is-small">Complemento</label>
-                      <input type="text"  class="input" placeholder="Complemento" name="complement">
+                      <input type="text" formControlName="complement"  class="input" placeholder="Complemento" name="complement">
                     </div>
                   </div>
 
-                <div class="column is-12">
+                <div class="column is-6">
                   <div class="control">
                     <label class="label is-small">Telefone Fixo</label>
-                    <input type="text" [textMask]="{mask: landlinephone}" class="input" placeholder="Telefone Fixo" name="phone" 
+                    <input type="text" formControlName="phone" [textMask]="{mask: landlinephone}" class="input" placeholder="Telefone Fixo" name="phone" 
                       required >
                   </div>
-                  <div class="form-control-feedback" *ngIf="">
+                  <div class="form-control-feedback" *ngIf="isErrorVisible('phone','required')">
                     <p class="help is-danger" >Telefone fixo é obrigatório</p>
                   </div>
                 </div>
 
-                <div class="column is-12">
+                <div class="column is-6">
                   <div class="control">
                     <label class="label is-small">Telefone Celular</label>
-                    <input type="text" [textMask]="{mask: mobilephone}" class="input" placeholder="Telefone Celular" name="cellPhone"
+                    <input type="text" formControlName="cellPhone" [textMask]="{mask: mobilephone}" class="input" placeholder="Telefone Celular" name="cellPhone"
                        [ngClass]="" required>
                   </div>
-                  <div class="form-control-feedback" *ngIf="">
+                  <div class="form-control-feedback" *ngIf="isErrorVisible('cellPhone','required')">
                     <p class="help is-danger">Telefone Celular é obrigatório</p>
                   </div>
                 </div>
 
-                <div class="column is-12">
+                <div class="column is-6">
                   <div class="control">
                     <label class="label is-small">Telefone para recado</label>
                     <input type="text" [textMask]="{mask: landlinephone}" class="input" placeholder="Telefone para recado" name="messagePhone" 
@@ -225,7 +219,7 @@
                   </div>
                 </div>
 
-                <div class="column is-12">
+                <div class="column is-6">
                   <div class="control">
                     <label class="label is-small">Nextel</label>
                     <input type="text" class="input" [textMask]="{mask: mobilephone}" placeholder="Nextel" name="nextelPhone"
@@ -264,41 +258,24 @@
             <div class="cnt-info columns " style="min-height: auto; margin-bottom: 30px;">
 
               <div class="columns column is-multiline">
-                <!-- <div class="is-6 column is-marginless">
-
-                  <label class="label is-small">Vínculo</label>
-                  <div class="control">
-                    <div class="select">
-                      <select [(ngModel)]="model.bond" #bond="ngModel" [ngClass]="{'is-danger': bond.invalid && (bond.dirty || bond.touched)}"
-                        required>
-                        <option value="Frota">Frota</option>
-                        <option value="Agregado">Agregado</option>
-                        <option value="Terceiro">Terceiro</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-control-feedback" *ngIf="bond.errors && (bond.dirty || bond.touched)">
-                    <p class="help is-danger" *ngIf="bond.errors.required">Vínculo é obrigatório</p>
-                  </div>
-                </div> -->
                 <div class="is-6 column is-marginless">
                   <label class="label is-small">Vencimento Mopp</label>
                   <div class="control">
-                      <my-date-picker name="moppDocDueDate" [options]="setDueDate"
+                      <my-date-picker name="moppDocDueDate" [locale]="pt-br" [options]="setDueDate"
                       ></my-date-picker>
                   </div>
                 </div>
                 <div class="is-6 column is-marginless">
                   <label class="label is-small">Vencimento ASO</label>
                   <div class="control">
-                      <my-date-picker name="asoDocDueDate" [options]="setDueDate"
+                      <my-date-picker name="asoDocDueDate" [locale]="pt-br" [options]="setDueDate"
                       ></my-date-picker>
                   </div>
                 </div>
                 <div class="is-6 column is-marginless">
                   <label class="label is-small">Vencimento CDD</label>
                   <div class="control">
-                      <my-date-picker name="cddDocDueDate" [options]="setDueDate"
+                      <my-date-picker name="cddDocDueDate" [locale]="pt-br" [options]="setDueDate"
                       ></my-date-picker>
                   </div>
                 </div>

@@ -50,6 +50,11 @@ export class RegisterMotoristComponent implements OnInit {
       lastName:['', Validators.required],
       dateOfBirth:['', Validators.required],
       motherName:['', Validators.required],
+      documentId:['', Validators.required],
+      documentType:['', Validators.required],
+      maritalStatus:['', Validators.required],
+      phone:['', Validators.required],
+      cellPhone:['', Validators.required]
     })
   }
 
@@ -60,10 +65,16 @@ export class RegisterMotoristComponent implements OnInit {
             this.formMotorist.controls[field].errors[error];
   }
 
-  public setDueDate: IMyDpOptions = {
-    disableUntil: {year: this.year, month: this.month, day: this.day},
+  public setBirthDate: IMyDpOptions = {
     dateFormat: 'dd/mm/yyyy',
    };
+
+   public setDueDate: IMyDpOptions = {
+    disableUntil: {year: this.year, month: this.month, day: this.day},
+
+    dateFormat: 'dd/mm/yyyy',
+   };
+
   onSubmit() {
     if (this.formMotorist.valid) {
     const motorist$ = this.create(this.formMotorist);
