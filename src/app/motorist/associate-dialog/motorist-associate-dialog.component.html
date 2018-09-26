@@ -118,7 +118,7 @@
     <div class="title column">
       Motoristas Associados
     </div>
-    <div class="cnt-btn-search">       
+    <div *ngIf="currentList.length > 0"  class="cnt-btn-search">       
        <p class="control has-icons-left"> 
           <input  [(ngModel)]="searchText" class="input is-small"  placeholder="Buscar" type="text"/>
           <span class="icon  is-left">
@@ -127,7 +127,7 @@
         </p>
     </div>
     <div>
-      <div class="grid-associate">
+      <div *ngIf="currentList.length > 0"  class="grid-associate">
         <data-table 
           [data]="currentList"
           [dataLength]="currentList.length"
@@ -178,6 +178,10 @@
           </column>
         </data-table>
       </div>
+
+      <div *ngIf="currentList.length === 0"  class="no-associate-text">
+          Não há Motoristas associados
+        </div>
     </div>
   </div>
 </div>
