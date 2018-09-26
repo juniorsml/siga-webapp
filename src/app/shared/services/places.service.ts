@@ -18,6 +18,13 @@ export class PlacesService {
       .pipe(map(res => <Array<Place>>res.json()));
   }
 
+  public getPlacesByTerm(term: string): Observable<Array<Place>> {
+    return this
+      .http
+      .get(this.service + `/search?term= ${term}`)
+      .pipe(map(res => <Array<Place>>res.json()));
+  }
+
   public postPlace(place: Place): Observable<Place> {
     return this
       .http
