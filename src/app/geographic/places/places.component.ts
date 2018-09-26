@@ -13,7 +13,7 @@ import { DirectionService } from '../../shared/services/direction.service';
 
 import { MapStyle } from '../../shared/models/MapStyle';
 import { Place } from '../../shared/models/Place';
-import { PlacesService } from './places.service';
+import { PlacesService } from '../../shared/services/places.service';
 
 @Component({
   selector: 'sga-places',
