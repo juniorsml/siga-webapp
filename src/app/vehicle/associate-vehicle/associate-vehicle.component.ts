@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'sga-associate-vehicle',
   templateUrl: './associate-vehicle.component.html',
-  styleUrls: ['../../motorist/associate-dialog/motorist-associate-dialog.component.scss'],
+  styleUrls: ['./associate-vehicle.component.scss'],
   providers: [VehicleService]
 })
 export class AssociateVehicleComponent implements OnInit {
