@@ -31,7 +31,6 @@ export class RegisterDeviceComponent {
   // }
 
   public onSubmit() {
-    debugger
       const device = this.formDevice.value;
       this
         .deviceService

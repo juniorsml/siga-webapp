@@ -35,6 +35,7 @@ export class GridVehicleComponent implements OnInit {
   public headers = new Array<string>();
   public vehicles = new Array<Vehicle>();
   public filterHeaders = new Array<string>();
+  isLoading = true;
 
   closeColumnSelector() {
     this.showColumnSelector = false;
@@ -64,7 +65,9 @@ export class GridVehicleComponent implements OnInit {
       .vehicleService
       .getVehicles()
       .subscribe(
-        data => this.onSuccess(data),
+        data => {
+          this.isLoading = false;
+          this.onSuccess(data)},
         error => alert(error));
   }
 

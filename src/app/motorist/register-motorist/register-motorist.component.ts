@@ -52,14 +52,17 @@ export class RegisterMotoristComponent implements OnInit {
       motherName:['', Validators.required],
       documentId:['', Validators.required],
       documentType:['', Validators.required],
-      maritalStatus:['', Validators.required],
+      maritalStatus:[],
       phone:['', Validators.required],
-      cellPhone:['', Validators.required]
+      cellPhone:['', Validators.required],
+      complement:[],
+
+
     })
   }
 
   isErrorVisible(field:string, error:string){
-    debugger
+    
     return this.formMotorist.controls[field].dirty
             && this.formMotorist.controls[field].errors &&
             this.formMotorist.controls[field].errors[error];
@@ -150,6 +153,7 @@ export class RegisterMotoristComponent implements OnInit {
   }
 
   public buildMotorist(formMotorist: FormGroup, place: any) {
+    debugger
     const motorist = {
       address: {
          country: place.address_components.filter(obj => obj.types.includes('country') ).map(obj =>  obj.long_name)[0],
@@ -159,7 +163,6 @@ export class RegisterMotoristComponent implements OnInit {
          vicinity: place.vicinity ,
          addressLine: place.formatted_address,
          complement: formMotorist.value.complement,
-         number: formMotorist.value.number,
          street: place.name
       },
 
@@ -170,11 +173,11 @@ export class RegisterMotoristComponent implements OnInit {
     // if(){
 
     // }
-    motorist.asoDocDueDate = motorist.asoDocDueDate.replace(/-/gi, '/');
-    motorist.cddDocDueDate = motorist.cddDocDueDate.replace(/-/gi, '/');
-    motorist.moppDocDueDate = motorist.moppDocDueDate.replace(/-/gi, '/');
-    motorist.dateOfBirth = motorist.dateOfBirth.replace(/-/gi, '/');
-
+    // motorist.asoDocDueDate = formMotorist.value.asoDocDueDate.formatted;
+    // motorist.cddDocDueDate = formMotorist.value.cddDocDueDate.formatted;
+    // motorist.moppDocDueDate = formMotorist.value.moppDocDueDate.formatted;
+    motorist.dateOfBirth = formMotorist.value.dateOfBirth.formatted;
+    console.log(motorist);
     return motorist;
   }
   onSuccessCreate = (motorist) => {

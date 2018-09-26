@@ -10,7 +10,7 @@
     </div>
     <div class="container-scroll">
 
-      <form novalidate class="cnt-form" [formGroup]="formMotorist">
+      <form [formGroup]="formMotorist" (ngSubmit)="onSubmit()"  novalidate class="cnt-form" >
         <sga-tabs [tabIndex]="selectedTabIndex" styleClass="tabs no-margin tabs-register">
           <sga-tab heading="Dados Pessoais">
             <!-- Dados pessoais -->
@@ -141,9 +141,9 @@
                         </select>
                       </div>
                     </div>
-                    <div class="form-control-feedback" *ngIf="isErrorVisible('maritalStatus','required')">
+                    <!-- <div class="form-control-feedback" *ngIf="isErrorVisible('maritalStatus','required')">
                       <p class="help is-danger">Estado civil é obrigatório</p>
-                    </div>
+                    </div> -->
                   </div>
                   <div class="field  is-4 column is-marginless">
                     <label class="label is-small">Nome do Cônjuge</label>
@@ -184,7 +184,7 @@
                 <div class="column is-12">
                     <div class="control">
                       <label class="label is-small">Complemento</label>
-                      <input type="text" formControlName="complement"  class="input" placeholder="Complemento" name="complement">
+                      <input type="text"  class="input" formControlName="complement" placeholder="Complemento" name="complement">
                     </div>
                   </div>
 
@@ -260,21 +260,21 @@
                 <div class="is-6 column is-marginless">
                   <label class="label is-small">Vencimento Mopp</label>
                   <div class="control">
-                      <my-date-picker name="moppDocDueDate" [options]="setDueDate"
+                      <my-date-picker name="moppDocDueDate"  [options]="setDueDate"
                       ></my-date-picker>
                   </div>
                 </div>
                 <div class="is-6 column is-marginless">
                   <label class="label is-small">Vencimento ASO</label>
                   <div class="control">
-                      <my-date-picker name="asoDocDueDate" [options]="setDueDate"
+                      <my-date-picker  name="asoDocDueDate" [options]="setDueDate"
                       ></my-date-picker>
                   </div>
                 </div>
                 <div class="is-6 column is-marginless">
                   <label class="label is-small">Vencimento CDD</label>
                   <div class="control">
-                      <my-date-picker name="cddDocDueDate" [options]="setDueDate"
+                      <my-date-picker  name="cddDocDueDate" [options]="setDueDate"
                       ></my-date-picker>
                   </div>
                 </div>
