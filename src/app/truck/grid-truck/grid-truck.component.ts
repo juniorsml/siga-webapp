@@ -42,6 +42,8 @@ export class GridTruckComponent implements OnInit {
   public headers = new Array<string>();
   public filterHeaders = new Array<string>();
 
+  isLoading = true;
+
   
   closeColumnSelector() {
     this.showColumnSelector = false;
@@ -65,7 +67,14 @@ export class GridTruckComponent implements OnInit {
               private route: Router) { }
 
   ngOnInit(): void {
-    this.truckService.getTrucks().subscribe(data =>this.trucks = data)
+    this
+    .truckService
+    .getTrucks()
+    .subscribe(
+      data => {
+        this.isLoading = false;
+        this.trucks = data
+      })
   }
 
   public showVehicleModal() {
