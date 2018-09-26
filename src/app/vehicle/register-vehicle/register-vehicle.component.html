@@ -62,8 +62,8 @@
                                     [ngClass]="{'is-danger': numberPlate.invalid && (numberPlate.dirty || numberPlate.touched)}"
                                     required>
                                     <div class="form-control-feedback"
-                                          *ngIf="numberPlate.errors && (numberPlate.dirty || numberPlate.touched)">
-                                         <p class="help is-danger" *ngIf="numberPlate.errors.required">Placa é obrigatório</p>
+                                          *ngIf="numberPlate?.errors && (numberPlate.dirty || numberPlate.touched)">
+                                         <p class="help is-danger" *ngIf="numberPlate?.errors.required">Placa é obrigatório</p>
                                     </div>
                           </div>
                         </div>
@@ -120,8 +120,8 @@
                            </div>                   
                          </div>
                          <div class="form-control-feedback"
-                               *ngIf="make.errors && (make.dirty || make.touched)">
-                             <p class="help is-danger" *ngIf="make.errors.required">Marca é Obrigatória</p>
+                               *ngIf="make?.errors && (make.dirty || make.touched)">
+                             <p class="help is-danger" *ngIf="make?.errors.required">Marca é Obrigatória</p>
                          </div>
                          
                         </div>  
@@ -143,8 +143,8 @@
                                       [ngClass]="{'is-danger': model.invalid && (model.dirty || model.touched)}"
                                       required>
                               <div class="form-control-feedback"
-                                   *ngIf="model.errors && (model.dirty || model.touched)">
-                                   <p class="help is-danger" *ngIf="model.errors.required">Modelo é obrigatório</p>
+                                   *ngIf="model?.errors && (model.dirty || model.touched)">
+                                   <p class="help is-danger" *ngIf="model?.errors.required">Modelo é obrigatório</p>
                               </div>
                           </div>
                         </div>
@@ -174,8 +174,8 @@
                             </div>                   
                           </div>
                           <div class="form-control-feedback"
-                                *ngIf="colour.errors && (colour.dirty || colour.touched)">
-                              <p class="help is-danger" *ngIf="colour.errors.required">Escolha uma cor</p>
+                                *ngIf="colour?.errors && (colour.dirty || colour.touched)">
+                              <p class="help is-danger" *ngIf="colour?.errors.required">Escolha uma cor</p>
                           </div>
                         </div>
 
@@ -194,8 +194,8 @@
                                      
                           </div>
                           <div class="form-control-feedback"
-                                *ngIf="year.errors && (year.dirty || year.touched)">
-                              <p class="help is-danger" *ngIf="year.errors.required">Nº é obrigatório</p>
+                                *ngIf="year?.errors && (year.dirty || year.touched)">
+                              <p class="help is-danger" *ngIf="year?.errors.required">Nº é obrigatório</p>
                           </div>
                         </div> 
 
@@ -208,7 +208,7 @@
                             <div class="select">                            
                             <select [(ngModel)]="model.vehicleType" name="vehicleType" required #vehicleType="ngModel"
                                  [ngClass]="{
-                                   'is-danger': vehicleType.invalid && (vehicleType.dirty || vehicleType.touched)
+                                   'is-danger': vehicleType?.invalid && (vehicleType.dirty || vehicleType.touched)
                                   }">
                               <option value="AUTOMOVEL">AUTOMÓVEL</option>
                               <option value="CAVALO MECANICO">CAVALO MECÂNICO</option>
@@ -221,8 +221,8 @@
                             </div>
                           </div>
                           <div class="form-control-feedback"
-                                *ngIf="vehicleType.errors && (vehicleType.dirty || vehicleType.touched)">
-                              <p class="help is-danger" *ngIf="vehicleType.errors.required">Tipo é obrigatório</p>  
+                                *ngIf="vehicleType?.errors && (vehicleType.dirty || vehicleType.touched)">
+                              <p class="help is-danger" *ngIf="vehicleType?.errors.required">Tipo é obrigatório</p>  
                           </div>
                         </div>
                         <div class="field  is-4 column is-marginless"> 
@@ -239,8 +239,8 @@
 
                           </div>
                           <div class="form-control-feedback"
-                                *ngIf="capacity.errors && (capacity.dirty || capacity.touched)">
-                              <p class="help is-danger" *ngIf="capacity.errors.required">Capacidade é obrigatório</p>
+                                *ngIf="capacity?.errors && (capacity.dirty || capacity.touched)">
+                              <p class="help is-danger" *ngIf="capacity?.errors.required">Capacidade é obrigatório</p>
                           </div>
                         </div>
                         <div class="field  is-4 column is-marginless">
@@ -274,27 +274,21 @@
                                   required>
                           </div>
                           <div class="form-control-feedback"
-                                *ngIf="anttNumber.errors && (anttNumber.dirty || anttNumber.touched)">
-                              <p class="help is-danger" *ngIf="anttNumber.errors.required">Nº registro ANTT é obrigatório</p>
+                                *ngIf="anttNumber?.errors && (anttNumber.dirty || anttNumber.touched)">
+                              <p class="help is-danger" *ngIf="anttNumber?.errors.required">Nº registro ANTT é obrigatório</p>
                           </div>
                         </div>
 
                         <div class="field  is-4 column is-marginless">
                           <label class="label is-small">Validade ANTT</label>  
                           <div class="control">
-                            <input  type="date" 
-                                    class="input" 
-                                    placeholder="Validade ANT" 
-                                    name="anttDueDate"
-                                    [(ngModel)]=model.anttDueDate
-                                    #anttDueDate="ngModel"
-                                    [ngClass]="{'is-danger': anttDueDate.invalid && (anttDueDate.dirty || anttDueDate.touched)}" 
-                                    required> 
+                            <my-date-picker name="anttDueDate" [options]="setDateDueANTT"
+                            [(ngModel)]="anttDueDate" required></my-date-picker>
                             
                           </div>
                           <div class="form-control-feedback"
-                                *ngIf="anttDueDate.errors && (anttDueDate.dirty || anttDueDate.touched)">
-                              <p class="help is-danger" *ngIf="anttDueDate.errors.required">Validade ANT é obrigatória</p>
+                                *ngIf="">
+                              <p class="help is-danger">Validade ANT é obrigatória</p>
                           </div>
                         </div>     
                       </div>
@@ -340,8 +334,8 @@
                             </div>
                           </div>
                           <div class="form-control-feedback"
-                                *ngIf="comunication.errors && (comunication.dirty || comunication.touched)">
-                              <p class="help is-danger" *ngIf="comunication.errors.required">Vínculo é obrigatório</p>
+                                *ngIf="comunication?.errors && (comunication.dirty || comunication.touched)">
+                              <p class="help is-danger" *ngIf="comunication?.errors.required">Vínculo é obrigatório</p>
                           </div>
                         </div>
                       </div>
@@ -371,8 +365,8 @@
                                   [ngClass]="{'is-danger': ownerName.invalid && (ownerName.dirty || ownerName.touched)}">
                         </div>
                         <div class="form-control-feedback"
-                              *ngIf="ownerName.errors && (ownerName.dirty || ownerName.touched)">
-                            <p class="help is-danger" *ngIf="ownerName.errors.required">Nome é obrigatório</p>
+                              *ngIf="ownerName?.errors && (ownerName.dirty || ownerName.touched)">
+                            <p class="help is-danger" *ngIf="ownerName?.errors.required">Nome é obrigatório</p>
                         </div>
                       </div>              
 
@@ -390,8 +384,8 @@
                            </select>
                          </div>
                        </div>
-                       <div class="form-control-feedback" *ngIf="ownerDocumentType.errors && (ownerDocumentType.dirty || ownerDocumentType.touched)">
-                         <p class="help is-danger" *ngIf="ownerDocumentType.errors.required">Escolha um documento</p>
+                       <div class="form-control-feedback" *ngIf="ownerDocumentType?.errors && (ownerDocumentType.dirty || ownerDocumentType.touched)">
+                         <p class="help is-danger" *ngIf="ownerDocumentType?.errors.required">Escolha um documento</p>
                        </div>
                      </div>
 
@@ -409,8 +403,8 @@
                            required>
 
                        </div>
-                       <div class="form-control-feedback" *ngIf="ownerDocumentId.errors && (ownerDocumentId.dirty || ownerDocumentId.touched)">
-                         <p class="help is-danger" *ngIf="ownerDocumentId.errors.required">Nº é obrigatório</p>
+                       <div class="form-control-feedback" *ngIf="ownerDocumentId?.errors && (ownerDocumentId.dirty || ownerDocumentId.touched)">
+                         <p class="help is-danger" *ngIf="ownerDocumentId?.errors.required">Nº é obrigatório</p>
                        </div>
                       
                       
@@ -421,8 +415,8 @@
                          <input type="text" [textMask]="{mask: landlinephone}" class="input" placeholder="Telefone" name="ownerPhone" [(ngModel)]="model.ownerPhone"
                            required #ownerPhone="ngModel" [ngClass]="{'is-danger': ownerPhone.invalid && (ownerPhone.dirty || ownerPhone.touched)}">
                        </div>
-                       <div class="form-control-feedback" *ngIf="ownerPhone.errors && (ownerPhone.dirty || ownerPhone.touched)">
-                         <p class="help is-danger" *ngIf="ownerPhone.errors.required">Telefone é obrigatório</p>
+                       <div class="form-control-feedback" *ngIf="ownerPhone?.errors && (ownerPhone.dirty || ownerPhone.touched)">
+                         <p class="help is-danger" *ngIf="ownerPhone?.errors.required">Telefone é obrigatório</p>
                        </div>
                      </div>
 
@@ -447,17 +441,8 @@
                         </sga-places-auto-complete>
                       </div>
 
-                      <div class="column is-3">
-                        <div class="control">
-                          <label class="label is-small">Número</label>
-                          <input type="number" class="input" placeholder="Número" name="number" [(ngModel)]="model.number"
-                            #number="ngModel" [ngClass]="{'is-danger': number.invalid && (number.dirty || number.touched)}" required>
-                        </div>
-                        <div class="form-control-feedback" *ngIf="number.errors && (number.dirty || number.touched)">
-                          <p class="help is-danger" *ngIf="number.errors.required">Número é obrigatório</p>
-                        </div>
-                      </div>
-                      <div class="column is-9">
+                      
+                      <div class="column is-12">
                         <div class="control">
                           <label class="label is-small">Complemento</label>
                           <input type="text" class="input" placeholder="Complemento" name="complement" [(ngModel)]="model.complement"
