@@ -19,6 +19,10 @@
   </div>  
 </div>
 
+<div *ngIf="isLoading" class="spinner">
+    <spinner></spinner>
+</div>
+
 <sga-modal [hidden]="!showColumnSelector">
   <sga-column-selector   
     [columns]="headers"
@@ -29,23 +33,27 @@
    
 <div [ngClass]="{'has-height' : hasHeight}"  class="content-wrapper content-grid-device" [ngStyle]="{'top': showFilterBar ? '43px' : '0'}">
  
-  <div *ngIf="showFilterBar" [ngClass]="styleClass" class="columns level-left">
-    <div class="column is-2">     
-      <p class="control has-icons-left"> 
-        <input [(ngModel)]="text" class="input is-small"  placeholder="Buscar" type="text"/>
-        <span class="icon is-small is-left">
-          <i class="fa fa-search"></i>
-        </span>       
-      </p>
+  <div *ngIf="!isLoading" >
+    <div *ngIf="showFilterBar" [ngClass]="styleClass" class="columns level-left">
+      <div class="column is-2">     
+        <p class="control has-icons-left"> 
+          <input [(ngModel)]="text" class="input is-small"  placeholder="Buscar" type="text"/>
+          <span class="icon is-small is-left">
+            <i class="fa fa-search"></i>
+          </span>       
+        </p>
+      </div>
+      <sga-map-filter 
+        (placesFiltered)="onPlacesFiltered($event)" 
+        (filterRemoved)="onPlacesFilterRemoved()"
+        class="column is-10">
+      </sga-map-filter>
     </div>
-    <sga-map-filter 
-      (placesFiltered)="onPlacesFiltered($event)" 
-      (filterRemoved)="onPlacesFilterRemoved()"
-      class="column is-10">
-    </sga-map-filter>
   </div>
 
-  <div class="container-grid container-grid-wrapper" [ngStyle]="{'top': showFilterBar ? '65px' : '20px'}">
+
+
+  <div *ngIf="!isLoading" class="container-grid container-grid-wrapper" [ngStyle]="{'top': showFilterBar ? '65px' : '20px'}">
     <data-table 
       [data]="devices | placesFilter: [filterLocation, filterDistance, 'location.latitude', 'location.longitude']"
       [dataLength]="devices.length" 

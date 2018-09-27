@@ -35,7 +35,7 @@ export class GridDeviceComponent implements OnInit , OnDestroy {
   public showSendDialog = false;
   public showMessageDialog = false;
   public showNonConformityDialog = false;
-
+  isLoading = true;
 
   @Input()
   public hasHeight = false;
@@ -88,7 +88,10 @@ private getDevices() {
       .deviceService
       .getDevices()
       .subscribe(
-        data => this.onSuccess(data),
+        data => {
+          this.isLoading = false;
+          this.onSuccess(data)
+        },
         error => alert(error));
   }
 
