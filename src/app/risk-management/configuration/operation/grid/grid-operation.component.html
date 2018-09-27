@@ -13,6 +13,12 @@
     </sga-sidebar-configuration>
   </div>  
 </div>
+
+<div *ngIf="isLoading" class="spinner">
+    <spinner></spinner>
+</div>
+
+
 <sga-modal [hidden]="!showColumnSelector">
   <sga-column-selector   
     [columns]="headers"
@@ -26,7 +32,7 @@
     <button class="button is-first" (click)="openFormRegister()">Cadastrar Operação</button>
   </div>
    
-  <div class="grid-area"> 
+  <div class="grid-area" *ngIf="!isLoading"> 
     <div *ngIf="showFilterBar" [ngClass]="styleClass" class="columns level-left">
       <div class="column is-3">     
         <p class="control has-icons-left"> 

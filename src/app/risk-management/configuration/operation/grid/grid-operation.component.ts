@@ -24,6 +24,8 @@ export class GridOperationComponent implements OnInit {
 
   showColumnSelector = false;
 
+  isLoading = true;
+
 
   closeColumnSelector() {
     this.showColumnSelector = false;
@@ -60,7 +62,10 @@ export class GridOperationComponent implements OnInit {
       .operationService
       .getConfigs()
         .subscribe(
-          data => this.operations = data,
+          data => {
+            this.isLoading = false,
+            this.operations = data
+          },
           error => alert(error));
     }
 
