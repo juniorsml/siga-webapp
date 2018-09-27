@@ -53,9 +53,17 @@ export class RegisterMotoristComponent implements OnInit {
       documentId:['', Validators.required],
       documentType:['', Validators.required],
       maritalStatus:[],
+      spouseName:[],
+      numberOfChildren:[],
       phone:['', Validators.required],
       cellPhone:['', Validators.required],
+      messagePhone:[],
+      nextelPhone:[],
+      radius:[],
       complement:[],
+      moppDocDueDate:[],
+      asoDocDueDate: [],
+      cddDocDueDate: []
 
 
     })

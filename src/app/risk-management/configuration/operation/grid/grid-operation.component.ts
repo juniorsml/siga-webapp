@@ -3,8 +3,6 @@ import { TableClickEvent } from '../../../../shared/components/table/table.compo
 import { OptionClickEvent } from '../../../../shared/events/OptionClickEvent';
 import { OperationService } from '../../operation/operation.service';
 
-
-
 @Component({
   selector: 'sga-grid-operation',
   templateUrl: './grid-operation.component.html',
@@ -19,13 +17,20 @@ export class GridOperationComponent implements OnInit {
   public filterDistance: any;
   public selectedDevice: any;
   public onDeviceSelected: any;
-
   public showOperationRegister = false;
-
+  public headers = new Array<string>();
+  public filterHeaders = new Array<string>();
   showColumnSelector = false;
-
   isLoading = true;
 
+  @Input()
+  public hasHeight = false;
+
+  @Input()
+  public showFilterBar = true;
+
+  @Input()
+  public operations = new Array<any>();
 
   closeColumnSelector() {
     this.showColumnSelector = false;
@@ -39,24 +44,12 @@ export class GridOperationComponent implements OnInit {
       }
     }
 
-  public headers = new Array<string>();
-  public filterHeaders = new Array<string>();
-
-   @Input()
-  public hasHeight = false;
-
-  @Input()
-  public showFilterBar = true;
-
-  @Input()
-  public operations = new Array<any>();
-
   constructor(private operationService: OperationService) { }
 
   ngOnInit(): void {
-
     this.getConfigs();
   }
+
   getConfigs(){
     this
       .operationService
@@ -68,10 +61,6 @@ export class GridOperationComponent implements OnInit {
           },
           error => alert(error));
     }
-
-
-  
-
 
   openFormRegister() {
     this.showOperationRegister = !this.showOperationRegister;
@@ -101,7 +90,6 @@ export class GridOperationComponent implements OnInit {
     this.selectedDevice = event.data;
     this.onDeviceSelected.emit(this.selectedDevice);
   }
-
 
   public whenHeaderReady = headers => this.headers = headers;
 

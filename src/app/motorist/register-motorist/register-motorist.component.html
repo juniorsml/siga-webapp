@@ -148,7 +148,7 @@
                   <div class="field  is-4 column is-marginless">
                     <label class="label is-small">Nome do Cônjuge</label>
                     <div class="control">
-                      <input type="text"  class="input" placeholder="Nome do Cônjuge" name="spouseName" >
+                      <input type="text" formControlName="spouseName"  class="input" placeholder="Nome do Cônjuge">
 
                     </div>
                   </div>
@@ -156,7 +156,7 @@
                       <div class="field  is-4 column is-marginless">
                         <label class="label is-small">Quantos Filhos?</label>
                         <div class="control">
-                          <input name="numberOfChildren" class="input" value=0 type="number" placeholder="Quantos Filhos?">
+                          <input formControlName="numberOfChildren" class="input" value=0 type="number" placeholder="Quantos Filhos?">
                         </div> 
                       </div>
                     </div>
@@ -213,7 +213,7 @@
                 <div class="column is-6">
                   <div class="control">
                     <label class="label is-small">Telefone para recado</label>
-                    <input type="text" [textMask]="{mask: landlinephone}" class="input" placeholder="Telefone para recado" name="messagePhone" 
+                    <input type="text" [textMask]="{mask: landlinephone}" class="input" placeholder="Telefone para recado" formControlName="messagePhone" 
                       required>
                   </div>
                 </div>
@@ -221,7 +221,7 @@
                 <div class="column is-6">
                   <div class="control">
                     <label class="label is-small">Nextel</label>
-                    <input type="text" class="input" [textMask]="{mask: mobilephone}" placeholder="Nextel" name="nextelPhone"
+                    <input type="text" class="input" [textMask]="{mask: mobilephone}" placeholder="Nextel" formControlName="nextelPhone"
                       >
                   </div>
                 </div>
@@ -234,7 +234,7 @@
                       class="input is-small" 
                       (ngModelChange)="onRayChanged($event)"
                       placeholder="Raio"
-                      name="radius" 
+                      formControlName="radius" 
                        />
                   </div>
                 </div>
@@ -260,21 +260,21 @@
                 <div class="is-6 column is-marginless">
                   <label class="label is-small">Vencimento Mopp</label>
                   <div class="control">
-                      <my-date-picker name="moppDocDueDate"  [options]="setDueDate"
+                      <my-date-picker formControlName="moppDocDueDate"  [options]="setDueDate"
                       ></my-date-picker>
                   </div>
                 </div>
                 <div class="is-6 column is-marginless">
                   <label class="label is-small">Vencimento ASO</label>
                   <div class="control">
-                      <my-date-picker  name="asoDocDueDate" [options]="setDueDate"
+                      <my-date-picker  formControlName="asoDocDueDate" [options]="setDueDate"
                       ></my-date-picker>
                   </div>
                 </div>
                 <div class="is-6 column is-marginless">
                   <label class="label is-small">Vencimento CDD</label>
                   <div class="control">
-                      <my-date-picker  name="cddDocDueDate" [options]="setDueDate"
+                      <my-date-picker  formControlName="cddDocDueDate" [options]="setDueDate"
                       ></my-date-picker>
                   </div>
                 </div>
