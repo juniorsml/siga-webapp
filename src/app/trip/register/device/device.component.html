@@ -134,10 +134,10 @@
    
   </div>
 
-  <sga-modal *ngIf="showRegisterForm">
+  <sga-modal>
     <sga-register-device
       [showForm]="showRegisterForm"
-      (onFinish)="closeFormRegister()">
+      (onFormClose)="closeFormRegister()">
     </sga-register-device>
   </sga-modal>
 
