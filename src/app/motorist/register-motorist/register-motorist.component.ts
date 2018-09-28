@@ -174,7 +174,7 @@ export class RegisterMotoristComponent implements OnInit {
          street: place.name
       },
 
-      ...formMotorist.value,
+      ...formMotorist.value,  
        enabled: true
     };
     // hack para api enquanto nao aprendo do jeito certo
@@ -183,7 +183,7 @@ export class RegisterMotoristComponent implements OnInit {
     // }
     // motorist.asoDocDueDate = formMotorist.value.asoDocDueDate.formatted;
     // motorist.cddDocDueDate = formMotorist.value.cddDocDueDate.formatted;
-    // motorist.moppDocDueDate = formMotorist.value.moppDocDueDate.formatted;
+    motorist.moppDocDueDate = formMotorist.value.moppDocDueDate.formatted;
     motorist.dateOfBirth = formMotorist.value.dateOfBirth.formatted;
     console.log(motorist);
     return motorist;
