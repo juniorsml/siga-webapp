@@ -7,15 +7,21 @@ import {
   AfterViewInit,
   ViewChild,
   ElementRef,
-  OnInit
+  OnInit,
+  OnDestroy
 } from '@angular/core';
+import {Observable, Subscription} from 'rxjs';
+import { PlacesService } from '../../services/places.service';
+import { Place } from '../../models/Place';
 
 @Component({
   selector: 'sga-places-auto-complete',
   templateUrl: './places-auto-complete.component.html',
-  styles: []
+  styles: [],
+  providers: [PlacesService]
 })
-export class PlacesAutoCompleteComponent implements AfterViewInit, OnInit {
+
+export class PlacesAutoCompleteComponent implements AfterViewInit, OnInit, OnDestroy {
 
   @Input() public styleClass: string;
   @Input() public keepTextAddress: boolean;
@@ -29,8 +35,11 @@ export class PlacesAutoCompleteComponent implements AfterViewInit, OnInit {
 
   private place: any;
   private placesInput: any;
+  private apiPlaces$: Subscription;
 
-  constructor(private ngZone: NgZone) { }
+
+
+  constructor(private ngZone: NgZone, private placesService: PlacesService) { }
 
   ngOnInit() {
     this.placesInput = new google.maps.places.Autocomplete(
@@ -39,10 +48,25 @@ export class PlacesAutoCompleteComponent implements AfterViewInit, OnInit {
     this.placesInput.addListener('place_changed', () => this.setPlace());
   }
 
+ searchPlace(place: string): Observable<Array<Place>> {
+  if ( place.length > 3) {
+    return this.placesService.getPlacesByTerm(place); 
+  } else {
+    return   Observable.empty();}
+ }
+
   ngAfterViewInit() {
     const nativeElement: HTMLInputElement = this.input.nativeElement;
     this.placesInput = new google.maps.places.Autocomplete(nativeElement);
     this.placesInput.addListener('place_changed', () => this.setPlace());
+    this.apiPlaces$ = Observable.fromEvent(this.input.nativeElement, 'keyup')
+                                .debounceTime(1000)
+                                .switchMap((k: any) => this.searchPlace(k.explicitOriginalTarget.value))
+                                .subscribe(r => console.log(r));
+  }
+
+  ngOnDestroy(){
+    this.apiPlaces$.unsubscribe();
   }
 
   public onPlacesKeyUp() {
