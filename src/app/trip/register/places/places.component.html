@@ -11,12 +11,15 @@
             <label class="label is-small">Previsão Início</label>
             <div class="field">
                 <my-date-picker #timeStart [options]="setStart" (dateChanged)="onDateChanged($event)"></my-date-picker>
+                <input #hourStart  type="time" class="input is-small" placeholder="Horário">
             </div>
           </div>
           <div class="column is-6">
             <label class="label is-small">Previsão Fim</label>
             <div class="field">
+
               <my-date-picker #timeEnd [options]="setEnd"></my-date-picker>
+              <input #hourEnd  type="time" class="input is-small"  placeholder="Horário">
             </div>
           </div>
         </div>

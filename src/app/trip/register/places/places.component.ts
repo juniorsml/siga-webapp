@@ -18,10 +18,13 @@ export class PlacesComponent implements OnInit {
   public route: any;
   opts: ISlimScrollOptions;
   scrollEvents: EventEmitter<SlimScrollEvent>;
+  hour=[/[0-9]/, /\d/, ':', /\d/, /\d/];
 
 
   @ViewChild('timeStart') timeStart: any;
   @ViewChild('timeEnd') timeEnd: any;
+  @ViewChild('hourStart') hourStart: any;
+  @ViewChild('hourEnd') hourEnd: any;
 
 
   currentTime = new Date();
@@ -58,13 +61,13 @@ export class PlacesComponent implements OnInit {
     }
     this.itineraryInfo = {
         name: this.placeObj,
-        timeStart: this.timeStart.selectionDayTxt,
-        timeEnd: this.timeEnd.selectionDayTxt
+        timeStart: this.timeStart.selectionDayTxt + ' - ' + this.hourStart.nativeElement.value,
+        timeEnd: this.timeEnd.selectionDayTxt + ' - ' + this.hourEnd.nativeElement.value
         
     }
   
     this.formItinerary.updateObj(this.itineraryInfo,'itinerary');
-    console.log(this.timeStart);
+    console.log(this.itineraryInfo);
     
    
   }
@@ -79,6 +82,7 @@ export class PlacesComponent implements OnInit {
 
   onDateChanged(event: IMyDateModel) {
     // event properties are: event.date, event.jsdate, event.formatted and event.epoc
+   debugger
     this.setEnd.disableUntil.year = event.date.year;
     this.setEnd.disableUntil.month = event.date.month;
     this.setEnd.disableUntil.day = event.date.day;

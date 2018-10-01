@@ -64,8 +64,6 @@ export class RegisterMotoristComponent implements OnInit {
       moppDocDueDate:[],
       asoDocDueDate: [],
       cddDocDueDate: []
-
-
     })
   }
 
