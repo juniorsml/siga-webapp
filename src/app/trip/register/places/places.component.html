@@ -10,13 +10,13 @@
           <div class="column is-6">
             <label class="label is-small">Previsão Início</label>
             <div class="field">
-              <input class="input" #timeStart style="font-size:13px;" placeholder="Previsão Inicio" type="datetime-local">
+                <my-date-picker #timeStart [options]="setStart" (dateChanged)="onDateChanged($event)"></my-date-picker>
             </div>
           </div>
           <div class="column is-6">
             <label class="label is-small">Previsão Fim</label>
             <div class="field">
-              <input class="input" #timeEnd style="font-size:13px;" placeholder="Previsão Fim" type="datetime-local">
+              <my-date-picker #timeEnd [options]="setEnd"></my-date-picker>
             </div>
           </div>
         </div>

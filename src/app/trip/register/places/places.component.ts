@@ -4,6 +4,7 @@ import { Map } from '../../../shared/models/Map';
 import { DirectionService } from '../../../shared/services/direction.service';
 import { ISlimScrollOptions, SlimScrollEvent } from 'ngx-slimscroll';
 import { TripObject } from '../../../shared/services/trip-object.service';
+import { IMyDpOptions, IMyDateModel } from 'mydatepicker';
 
 @Component({
   selector: 'sga-places',
@@ -21,6 +22,14 @@ export class PlacesComponent implements OnInit {
 
   @ViewChild('timeStart') timeStart: any;
   @ViewChild('timeEnd') timeEnd: any;
+
+
+  currentTime = new Date();
+  month = this.currentTime.getMonth() + 1;
+  day = this.currentTime.getDate();
+  year = this.currentTime.getFullYear();
+
+ 
  
   public placeObj = [];
   public state;
@@ -49,17 +58,42 @@ export class PlacesComponent implements OnInit {
     }
     this.itineraryInfo = {
         name: this.placeObj,
-        timeStart: this.timeStart.nativeElement.value,
-        timeEnd: this.timeEnd.nativeElement.value
+        timeStart: this.timeStart.selectionDayTxt,
+        timeEnd: this.timeEnd.selectionDayTxt
         
     }
   
     this.formItinerary.updateObj(this.itineraryInfo,'itinerary');
-    console.log(this.itineraryInfo);
-    debugger
+    console.log(this.timeStart);
+    
    
   }
   
+  public setStart: IMyDpOptions = {
+    disableUntil: {year: this.year, month: this.month, day: this.day},
+    dateFormat: 'dd/mm/yyyy',
+    monthLabels: { 1: 'Jan', 2: 'Fev', 3: 'Mar', 4: 'Abr', 5: 'Mai', 6: 'Jun', 7: 'Jul', 8: 'Ago', 9: 'Set', 10: 'Out', 11: 'Nov', 12: 'Dez' },
+    dayLabels: {su: 'Dom', mo: 'Seg', tu: 'Ter', we: 'Qua', th: 'Qui', fr: 'Sex', sa: 'Sáb'},
+    todayBtnTxt: 'Hoje'
+  };
+
+  onDateChanged(event: IMyDateModel) {
+    // event properties are: event.date, event.jsdate, event.formatted and event.epoc
+    this.setEnd.disableUntil.year = event.date.year;
+    this.setEnd.disableUntil.month = event.date.month;
+    this.setEnd.disableUntil.day = event.date.day;
+
+    }
+
+  public setEnd: IMyDpOptions = {
+    disableUntil: {year: this.year, month: this.month, day: this.day},
+    dateFormat: 'dd/mm/yyyy',
+    monthLabels: { 1: 'Jan', 2: 'Fev', 3: 'Mar', 4: 'Abr', 5: 'Mai', 6: 'Jun', 7: 'Jul', 8: 'Ago', 9: 'Set', 10: 'Out', 11: 'Nov', 12: 'Dez' },
+    dayLabels: {su: 'Dom', mo: 'Seg', tu: 'Ter', we: 'Qua', th: 'Qui', fr: 'Sex', sa: 'Sáb'},
+    todayBtnTxt: 'Hoje'
+  };
+
+
   public selectPlace = place => {
 
     const location = {
