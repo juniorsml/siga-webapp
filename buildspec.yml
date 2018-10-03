@@ -17,7 +17,7 @@ phases:
     commands:
     - echo Logging in to Amazon ECR....
     - aws --version
-    - aws ecr get-login --region --region us-east-2 --no-include-email
+    - aws ecr get-login --region  us-east-2 --no-include-email
     - REPOSITORY_URI=870750146603.dkr.ecr.us-east-2.amazonaws.com/webapp
     - IMAGE_TAG=latest
   build:
