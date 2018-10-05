@@ -28,12 +28,8 @@ phases:
     - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
+    - printf '[{"name":"webapp","imageUri":"870750146603.dkr.ecr.us-east-2.amazonaws.com/webapp"}]' > imagedefinitions.json
     - echo Build completed on `date`
-#artifacts:
-    # - location
-    # - location
-  #discard-paths: yes
-  #base-directory: location
-#cache:
-  #paths:
-    # - paths
+artifacts:
+    files:
+      - imagedefinitions.json
